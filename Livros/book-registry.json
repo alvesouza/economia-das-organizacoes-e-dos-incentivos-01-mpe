@@ -1,0 +1,115 @@
+{
+  "_comment": "Page mapping for each book PDF. Used by /study-pack to convert printed page numbers to PDF page indices. Formula: pdf_page = (printed_page + offset) // scale. Verified offsets should not be re-detected. MWG entries carried over from Microeconomia 01-MPE (byte-identical PDFs).",
+  "MWG": {
+    "file": "Andreu Mas-Colell, Michael D. Whinston, Jerry R. Green - Microeconomic Theory (1995, Oxford University Press, USA) - libgen.li.pdf",
+    "offset": 20,
+    "scale": 2,
+    "total_pdf_pages": 501,
+    "verified": true,
+    "notes": "2-up scan (2 printed pages per PDF page). Formula: pdf_page = (printed + 20) // 2. Course chapters: 9.AA p.296, 13 p.436, 14 p.477, 16 p.545."
+  },
+  "MWG Solutions": {
+    "file": "Andreu Mas-Colell, Michael D. Whinston, Jerry R. Greem - Solutions Manual for Microeconomic Theory (1997, Oxford University Press) - libgen.li.pdf",
+    "offset": null,
+    "scale": null,
+    "total_pdf_pages": null,
+    "verified": false,
+    "notes": "Not yet calibrated. Run /study-pack --calibrate to detect offset."
+  },
+  "Varian excerpt": {
+    "file": "Risco_Incerteza_Varian.pdf",
+    "offset": null,
+    "scale": 1,
+    "total_pdf_pages": 48,
+    "verified": false,
+    "notes": "Excerpt of Varian, Intermediate Microeconomics, Ch. 11-13 only. Scanned, no text layer. Superseded by 'Varian Calc'. Its page numbers differ from the calculus edition (PDF 18 reads p.218 in Ch. 12), so it is another edition, possibly the 8th the syllabus cites; not confirmed."
+  },
+  "Varian Calc": {
+    "file": "[First edition] Hal R. VArian - Intermediate Microeconomics with Calculus Hal (2014, W. W. Norton & Company) - libgen.li.pdf",
+    "offset": 25,
+    "scale": 1,
+    "total_pdf_pages": 827,
+    "verified": true,
+    "notes": "Intermediate Microeconomics with Calculus, 1st ed. (2014); the syllabus cites Intermediate Microeconomics 8th ed. (2010), so chapter numbers and pages differ from the syllabus edition. Offset checked at p.1, 219, 581, 621, 670, 741, 761. Course chapters (first-section page from the TOC): 12 p.219, 30 p.557 (Hold Up/Bargaining p.579-584), 32 p.602, 33 p.629, 35 p.667, 38 p.741."
+  },
+  "Cabral": {
+    "file": "Luis M. B. Cabral - Introduction to Industrial Organization, second edition (2017, MIT Press) - libgen.li.pdf",
+    "offset": 12,
+    "scale": 1,
+    "total_pdf_pages": 442,
+    "verified": true,
+    "notes": "2nd ed. (2017), matches the syllabus. Printed p.1 -> PDF 13; checked at p.52, 60, 87, 117, 149, 178, 344. Course chapters: 3 p.35 (3.3-3.5 p.52-59), 4 p.67, 5 p.93, 6 p.121 (6.4 p.140), 7 p.159, 13 p.333."
+  },
+  "Giambiagi Ch. 1": {
+    "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
+    "offset": 25,
+    "scale": 1,
+    "total_pdf_pages": 304,
+    "verified": true,
+    "notes": "The scan drops blank versos, so the offset falls from 25 (Ch. 1) to 13 (Ch. 17-18): one registry entry per in-scope chapter. Ch. 1 'Origens da Crise' pp.3-18."
+  },
+  "Giambiagi Ch. 7": {
+    "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
+    "offset": 20,
+    "scale": 1,
+    "total_pdf_pages": 304,
+    "verified": true,
+    "notes": "Ch. 7 'Incentivos e Crise' (Vinicius Carrasco) pp.99-110."
+  },
+  "Giambiagi Ch. 8": {
+    "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
+    "offset": 20,
+    "scale": 1,
+    "total_pdf_pages": 304,
+    "verified": true,
+    "notes": "Ch. 8 'Estrutura, Concorrência e Estabilidade' pp.111-123; Quadro 8.1 (S&L crisis) p.115."
+  },
+  "Giambiagi Ch. 11": {
+    "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
+    "offset": 16,
+    "scale": 1,
+    "total_pdf_pages": 304,
+    "verified": true,
+    "notes": "Ch. 11 'A Crise Bancária Norte-americana: algumas Lições da Experiência Brasileira' pp.157-169."
+  },
+  "Giambiagi Ch. 16": {
+    "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
+    "offset": 14,
+    "scale": 1,
+    "total_pdf_pages": 304,
+    "verified": true,
+    "notes": "Ch. 16 'Derivativos e Governança Corporativa: O Caso Sadia' pp.239-257."
+  },
+  "MR Ch. 1-2": {
+    "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
+    "offset": 17,
+    "scale": 1,
+    "total_pdf_pages": 635,
+    "verified": true,
+    "notes": "Milgrom & Roberts (1992), main textbook, syllabus edition. The scan drops part-divider versos, so the offset falls 17 -> 14 by part: one entry per band. Ch. 1 p.2 (PDF 19) to Ch. 2 end p.54. Checked at p.2, 6, 14, 18, 44. Ch. 1 pp.2-18, Ch. 2 pp.19-54."
+  },
+  "MR Ch. 3-6": {
+    "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
+    "offset": 16,
+    "scale": 1,
+    "total_pdf_pages": 635,
+    "verified": true,
+    "notes": "Milgrom & Roberts (1992), main textbook, syllabus edition. The scan drops part-divider versos, so the offset falls 17 -> 14 by part: one entry per band. Ch. 3 p.56 (PDF 72) to Ch. 6 end p.204. Checked at p.57, 89, 106, 113, 138, 171. Ch. 3 pp.56-87, Ch. 4 pp.88-124, Ch. 5 pp.126-165, Ch. 6 pp.166-204."
+  },
+  "MR Ch. 7-15": {
+    "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
+    "offset": 15,
+    "scale": 1,
+    "total_pdf_pages": 635,
+    "verified": true,
+    "notes": "Milgrom & Roberts (1992), main textbook, syllabus edition. The scan drops part-divider versos, so the offset falls 17 -> 14 by part: one entry per band. Ch. 7 p.206 (PDF 221) to Ch. 15. Checked at p.207, 249, 286, 289, 328, 449. Ch. 7 pp.206-247; Ch. 8 p.248; Ch. 9 p.288."
+  },
+  "MR Ch. 16-17": {
+    "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
+    "offset": 14,
+    "scale": 1,
+    "total_pdf_pages": 635,
+    "verified": true,
+    "notes": "Milgrom & Roberts (1992), main textbook, syllabus edition. The scan drops part-divider versos, so the offset falls 17 -> 14 by part: one entry per band. Ch. 16 p.540 (PDF 554) onward; out of scope."
+  }
+}

@@ -1,0 +1,517 @@
+Class 1. Does Organization Matter? Ford, General Motors and Toyota. A listening version of the class 1 notes.
+
+How to listen.
+
+This is the full text of the class 1 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every case, every number and every derivation from the written notes is here, with the mathematics spoken in words.
+
+The script has sixteen parts, numbered zero to fifteen. Part zero states the question of the class. Parts one to three tell the three car companies: Ford, General Motors and Toyota. Part four adds three shorter cases from other industries. Part five draws the patterns that organize the whole course. Parts six, seven and eight are the mathematics: complementarities, the existence of more than one coherent system, and the valley between systems, with the NUMMI plant as the test. After that come the support parts: common mistakes, a spoken formula sheet, the interactive companions described in words, the reading route and exercises, a self-test, a glossary, and the whole class in five lines.
+
+Two conventions. First, when the script says "M and R", it means the main textbook, Milgrom and Roberts, Economics, Organization, and Management, published by Prentice-Hall in 1992. Page numbers are the book's printed page numbers unless another book is named. Second, some numbers are illustrative. They come from small stylized models built for this class, and the script says so each time one appears. They are checked by computer, but they are not data.
+
+One scope note. The course covers Milgrom and Roberts chapters 1 to 7. When this class touches efficiency wages, which belong to chapter 8, the script says that it is outside the course's core.
+
+Part zero. The question.
+
+This part covers section zero of the notes.
+
+Ford had the technology, the scale and the cost advantage. General Motors beat it. Toyota was small, short of capital and technologically behind. It beat General Motors.
+
+Milgrom and Roberts give the answer this class builds up to. In their words, "organization and business strategy can be as important as technology, cost, and demand in determining a firm's success". That is on printed page 16. And on the same page they say what matters most: "the match of their strategies and their structures".
+
+The class has two halves. The first half reads the cases as answers to two problems every organization faces: coordination and motivation, named on page 17. The second half is the mathematics of fit: complementarities, why they make good systems coherent, and why coherent systems are hard to change one piece at a time.
+
+Keep one question in mind for the whole class. If a better system exists, and a rival can watch it working every day, why can the rival not simply copy it?
+
+Part one. Ford: one product, one system.
+
+This part covers section one of the notes, drawing on Milgrom and Roberts pages 2 and 109.
+
+Milgrom and Roberts describe Ford in one exact sentence, on page 109: "producing a single product, the Model T Ford, in high-volume factories using specialized equipment and rigidly disciplined labor paid according to the job being done". They call it "an entirely different but equally coherent strategy that was appropriate for its time", and it took Ford past 50 per cent of the United States car market.
+
+The share numbers come from page 2. By 1921 the Model T held 55 per cent of the market. Chevrolet held 4 per cent. All of General Motors' brands together held 11 per cent.
+
+Now the pieces of Ford's system, and why each raised the value of the others. There are five.
+
+First, one model, in one colour. It made long, identical production runs possible. It needed a buyer who wanted a cheap, standard car.
+
+Second, dedicated machines and the moving assembly line. Labour per car collapsed. This needed huge and steady volume, because a dedicated machine only pays when it never stops.
+
+Third, narrow, repetitive tasks. Unskilled labour could be used. This needed close supervision, and a pay premium to keep workers in such monotonous jobs.
+
+Fourth, a high wage: the five dollar day, introduced in 1914. Labour turnover fell. This needed the productivity of the line to pay for it.
+
+Fifth, making its own parts. This gave scale in components. It needed the single design, so that every part was the same part.
+
+Read the list again in your head and notice the shape. Each choice only made sense because of the others. The single model fed the dedicated machines; the machines made narrow tasks possible; narrow tasks made a wage premium necessary; the line's productivity paid for the premium.
+
+Some history that is not in Milgrom and Roberts. These figures come from the sources listed in the class video's provenance file. The Model T sold for about 850 dollars in 1908 and about 260 dollars by the mid-1920s. The moving chassis line, introduced in 1913, cut chassis assembly time from about twelve and a half hours to 93 minutes by early 1914. Labour turnover in 1913 was 370 per cent, before the five dollar day. That turnover figure traces to Raff and Summers, 1987, and the provenance file marks it as still to be confirmed against the paper.
+
+The economics of the wage story is efficiency wages: paying above the market rate raises effort and lowers turnover enough to lower the cost per unit of effective labour. Milgrom and Roberts treat efficiency wages in chapter 8, page 250. That chapter is outside this course's core, so treat the wage only as part of Ford's history here.
+
+The weakness was the same as the strength. When the 1920 recession hit, Ford's answer was to cut the Model T's price by about 25 per cent, and General Motors, with higher costs, could not match it. That is on page 2. Cost leadership worked while buyers wanted the same car. It stopped working when they wanted different cars.
+
+Recap of part one. Ford was a system, not a technique. One product, dedicated machines, narrow jobs, a high wage and its own parts formed a coherent whole, with 55 per cent of the market in 1921. Its strength, a cheap standard car, became its weakness once buyers wanted variety.
+
+Part two. General Motors: variety, and the organization it demanded.
+
+This part covers section two of the notes, drawing on Milgrom and Roberts pages 2 to 6.
+
+When Alfred Sloan took over General Motors in 1921, the company was in crisis. Unsold inventories were piling up. Sales fell 75 per cent between the summer and the fall of 1920. And the divisions, in the book's words, "competed mostly with one another". That is pages 2 and 3.
+
+The strategy. Sloan's plan was a car "for different segments of the market". Cadillac at the top, each other division serving a successively lower-income segment, and Chevrolet priced below the Model T. That is page 3.
+
+Why the strategy required a new organization. Variety multiplied the decisions: new designs, new dealers, market information for each segment, separate factories and separate supplies. At the same time, the divisions had to be coordinated. They must not compete too much with each other. They must share ideas and coordinate research and development. And they must standardize parts "enough to achieve economies of scale in parts production", again page 3.
+
+Neither of the existing models could do this. Ford's centralized, one-product organization was built for one decision repeated, not for many decisions coordinated. And the old General Motors was, in the book's words, "a collection of car companies and suppliers operating without any central direction". Its accounting system had not even charged the divisions for the inventories they built up, so they kept producing straight into the recession. That is page 3.
+
+The multidivisional form. Sloan's answer, on page 3, has three features.
+
+First, the divisions keep operating autonomy. Each has its own management team and its own market segment.
+
+Second, a strong central office that does not run day-to-day operations. Instead it audits and evaluates the divisions, plans and coordinates overall strategy, and keeps the research, legal and financial functions.
+
+Third, the centre checks internal accounting prices against market prices, so that supply divisions can be judged, in the book's words on page 4, "as if each were a separate firm".
+
+Henry Ford mocked this. He described the "great big chart", a family tree of authority, where a message from the bottom corner takes about six weeks to reach the president. That is page 4. The result answers him. From 1927 to 1937, Ford lost 200 million dollars while General Motors earned over 2 billion dollars. By 1940 General Motors had 45 per cent of the market and Ford had 16 per cent. Again page 4.
+
+General Motors' system fit together too. Shared components across many models let General Motors afford specialized equipment for chassis, engines and brakes, page 5. Its volumes fully used efficient-sized parts plants, so it integrated vertically, also page 5. And it made its suppliers compete on price, shifting business among them, page 6.
+
+The price of that specialization was rigidity. Specialized equipment does not adapt easily to radically new designs, so General Motors made major redesigns only about once every 12 years in the 1950s and 1960s. That is page 5.
+
+Recap of part two. Sloan's segmented strategy needed both variety and coordination. The multidivisional form delivered both: operating autonomy below, audit and strategy at the centre, and internal prices checked against the market. It too was a coherent system, built on shared specialized components, vertical integration and price competition among suppliers, and it paid for that with slow redesign.
+
+Part three. Toyota: small, poor, and coherent in the other direction.
+
+This part covers section three of the notes, drawing on Milgrom and Roberts pages 4 to 6 and 17, and on Cabral, page 57.
+
+In the early 1950s Toyota suffered, in the book's words, "a drastic lack of capital", and a scale too small to match American costs. That is page 4. It first tried to copy mass production. Then, under Eiji Toyoda and Taiichi Ohno, it built a different system.
+
+Take Toyota's practices one at a time, and for each ask two questions: why it followed from Toyota's position, and what it then required. There are five practices.
+
+First, just-in-time production, with kanban, and no buffer inventories. Why: inventory systems have large economies of scale, which a small producer could not reach. What it required: every step of production had to be reliable, and defects had to be caught at once, because nothing sat in stock to absorb a failure.
+
+Second, operators who maintain and repair their own machines. Why: without buffers, a single breakdown stops everything, so waiting for a repair specialist is ruinous. What it required: broader skills, and authority on the factory floor.
+
+Third, flexible equipment that can be reset quickly; Toyota was a world leader in industrial robots by the 1960s. Why: Toyota was too small to dedicate a machine to a single model. What it required, and what it made possible: frequent model changes became cheap, and Toyota redesigned its vehicles twice as often as General Motors.
+
+Fourth, outside suppliers even for complex components, such as headlamps, brake systems and fuel injection. Why: Toyota could neither reach efficient scale in parts nor afford to own its parts makers. What it required: close, day-to-day coordination with suppliers.
+
+Fifth, few suppliers, in long-term relations. Why: the components were high-level systems that had to fit together, and they were redesigned often, so simple market arrangements became problematic. What it required: suppliers willing to invest in skills and machinery specialized to Toyota's needs.
+
+Milgrom and Roberts summarize the logic on page 17, and the sentence is worth hearing whole. "If low inventories were to be achieved, the rest of the organization had to emphasize reliability, quick response to machine breakdowns, quick and close communications with suppliers, stable production plans, and other features that substitute for the buffer function of inventories."
+
+Cabral adds why the system was hard to copy. In his Introduction to Industrial Organization, section 3.5, page 57: "the system involved so many different aspects that it was difficult to pin down what the crucial success factors were".
+
+Ford, General Motors and Toyota side by side. Compare them in six dimensions.
+
+First, the product line. Ford: one model. General Motors: a ladder of segments. Toyota: several models, redesigned often.
+
+Second, equipment. Ford: dedicated. General Motors: specialized, with components shared across models. Toyota: flexible.
+
+Third, inventories. Ford and General Motors: buffer stocks. Toyota: none, just-in-time.
+
+Fourth, suppliers. Ford: made its own parts. General Motors: vertically integrated, with price competition among outside suppliers. Toyota: few, long-term, outside suppliers.
+
+Fifth, decisions. Ford: centralized in Henry Ford. General Motors: divisions operate, the centre audits and sets strategy. Toyota: problem solving on the factory floor.
+
+Sixth, workers. Ford: narrow tasks and a high wage. General Motors: not developed in Milgrom and Roberts. Toyota: multi-skilled workers who maintain their machines.
+
+Each of the three columns is coherent. None of them is a list of independent "best practices".
+
+Recap of part three. Toyota's practices are not a menu. Each follows from Toyota's constraints, small scale and little capital, and each requires the others: no inventories requires reliability, quick repair and close suppliers. And because the system has so many interlocking parts, it is hard to see, from outside, which ones matter.
+
+Part four. Three more cases, one lesson each.
+
+This part covers section four of the notes, Milgrom and Roberts pages 6 to 16. The book widens the claim beyond cars, and each case isolates one piece of the argument.
+
+Case one, the Hudson's Bay Company against the North West Company, pages 6 to 9. The lesson: incentives and decision rights.
+
+The Hudson's Bay Company had every advantage on paper. Its import costs were half those of its rival. It held a royal monopoly. Its trading posts sat on the bay itself, a short sailing route from England. But it was run from London, with communication lags as long as 15 months, flat salaries, and rules enforced by flogging. Employees had no reason to take risks for profits they would never share.
+
+The North West Company had to move its goods an extra 1,500 miles by canoe through the wilderness. But its "wintering partners", the traders in the field, made decisions on the spot and shared in the profits. By about 1810, the North West Company had nearly 80 per cent of the trade. That is page 8.
+
+The Hudson's Bay Company recovered only by copying the organization: it built posts inland, gave half the profits to its officers in the field, allowed more freedom of action, and recruited a new kind of employee. Pages 8 and 9.
+
+Case two, Salomon Brothers, pages 9 to 12. The lesson: incentives that are too individual.
+
+Salomon paid bonuses close to a piece rate: almost every transaction was priced and the profit credited to individuals or departments. The bonuses made traders work extremely hard and take great risks. But they discouraged sharing information across departments: a trader who learned something useful to another department had no reason to pass it on. That is page 11.
+
+The 1990 reform paid part of each bonus in company stock, held in trust for five years, tying each employee's bonus to the firm's value five years later. The announcement raised the firm's market value by 7 to 10 per cent. That is page 12. Food for Thought exercise 1.3, on page 18, asks what a later scandal, in 1991, says about that scheme.
+
+Case three, Eastern Europe, pages 12 to 16. The lesson: information, incentives and interdependent reforms.
+
+Central planning replaced prices with vertical flows of information to the planners, page 13. Its most important incentive failure was the ratchet effect, on page 14. A factory manager who beats this period's quota is rewarded with a higher quota for every future period. So nobody beats the quota. Managers meet it barely, or miss it on purpose; they hide capacity and hoard resources. And the planners, who depend on the managers' reports, receive systematically distorted information.
+
+When these economies moved toward markets, the reforms depended on each other: private enterprise needs the discipline of failure, output markets need input and capital markets, and none of it works without property rights and contract enforcement. So, page 16, "the worst outcome might be some halfway compromise". The book tells the joke of the country that decided to switch traffic from the left side of the road to the right, but, worried about going too fast, moved only the trucks in the first year.
+
+The ratchet effect returns at the end of the course, in Aula 16, with Milgrom and Roberts page 232.
+
+Recap of part four. The Hudson's Bay case shows decision rights and incentives beating a cost advantage. Salomon shows incentives that work for each person and against the firm. Central planning shows the ratchet effect, and shows that reforms which depend on each other fail when adopted halfway.
+
+Part five. The patterns: coordination, motivation, and fit.
+
+This part covers section five of the notes, Milgrom and Roberts pages 16 and 17.
+
+Milgrom and Roberts draw four patterns out of the cases. Listen for the fourth; it is the one the mathematics will formalize.
+
+Pattern one. Organization and strategy can matter as much as technology, cost and demand. Ford lost to General Motors despite better technology and scale. General Motors lost share to a smaller and weaker Toyota. The Hudson's Bay Company lost to the North West Company. Page 16.
+
+Pattern two. Incentives matter. Hudson's Bay employees got no share of extra profits. General Motors' divisions were not charged for their inventories. Salomon rewarded individuals and so discouraged cooperation. And the planned economies, page 16, "ran afoul of incentives at every turn".
+
+Pattern three. Put authority where the information is. Salomon's traders, General Motors' divisions, Toyota's machine operators, and the North West Company's wintering partners. Page 17.
+
+Pattern four. Incentives and delegated authority are complements. Delegating a decision is worth little "unless the decision makers share the organization's objectives". And incentives matter most "when more initiative is expected from employees". In the book's words, page 17: "incentives and delegated authority are complements: each makes the other more valuable".
+
+And the organizing pair for the whole course, page 16: "The study of organization is not about how berries are arranged on a tree of authority but about how people are coordinated and motivated to get things done."
+
+Coordination means getting the plans to fit; it is a problem of information. Motivation means getting people to carry the plans out; it is a problem of interests. Take each case through both.
+
+Ford. Coordination: one product, one centre, and the line sets the pace. Motivation: a high wage and close supervision.
+
+General Motors. Coordination: one division per segment, with the centre planning strategy and sharing parts. Motivation: divisions judged on profit, with internal prices checked against the market.
+
+Toyota. Coordination: just-in-time signals and close links with suppliers. Motivation: multi-skilled teams and long-term supplier relations.
+
+The Hudson's Bay Company, after it copied its rival. Coordination: decisions moved to the field. Motivation: profit shares for the people deciding.
+
+The course map follows this pair. Coordination is Aulas 6 to 8, Milgrom and Roberts chapters 3 and 4. Motivation is Aulas 9 to 16, chapters 5 to 7.
+
+Checklist for parts one to five. You should be able to state the five pieces of Ford's system and how each depended on the others. You should be able to state the three features of the multidivisional form and why Sloan's strategy needed them. You should be able to derive each of Toyota's practices from its constraints. You should be able to state the ratchet effect. And you should be able to state the four patterns, including the sentence on page 17 about incentives and delegated authority.
+
+Part six. Complementarities: the mathematics of fit.
+
+This part covers section six of the notes, Milgrom and Roberts chapter 4, pages 108 and 109.
+
+Six point one. The definition.
+
+The usual market definition says two inputs are complements if a fall in the price of one raises the demand for the other. Milgrom and Roberts use a "more inclusive" definition, one that also covers activities inside the firm. Page 108: "Several activities are mutually complementary if doing more of any one activity increases, or at least does not decrease, the marginal profitability of each other activity in the group."
+
+The smooth version is in footnote 8 on page 108. Let x be the vector of activity levels, x one through x n, and let pi of x be profit. The activities are complements if, for every pair i and j that are different, the second cross partial derivative of pi with respect to x i and x j is greater than or equal to zero. In words: raising activity j raises the marginal return to activity i.
+
+The discrete version is called increasing differences. Take two yes or no choices, x and y, each equal to zero or one. Increasing differences says: pi of one, one, minus pi of zero, one, is greater than or equal to pi of one, zero, minus pi of zero, zero. The left side is the gain from adopting x when y is already in place. The right side is the gain from adopting x when y is absent. Complementarity says the first gain is at least as large as the second.
+
+Rearrange that same inequality and three things follow. First, it is symmetric: the gain from y is also larger when x equals one. Second, it is equivalent to supermodularity: pi of one, one, plus pi of zero, zero, is greater than or equal to pi of one, zero, plus pi of zero, one. Third, in words: the two matched corners together beat the two mixed corners.
+
+A worked example, with the illustrative numbers from the class video. Pi of zero, zero is 0. Pi of one, zero is minus 2. Pi of zero, one is minus 1. And pi of one, one is 5.
+
+The gain from x when y equals zero is minus 2 minus 0, which is minus 2. The gain from x when y equals one is 5 minus minus 1, which is 6. Six is at least minus 2, so increasing differences hold.
+
+Notice what this means. Each practice alone loses money: minus 2 for x, minus 1 for y. The pair together earns 5. The cross effect, the difference between the two gains, is 6 minus minus 2, which is 8. And a firm that tests each practice separately rejects both.
+
+So complementarity says nothing about whether each practice is good on its own. It says that each one is better where the other is present.
+
+Six point two. Why complements move together.
+
+First, one choice and one parameter. The claim is a result associated with Topkis, and the course states it without proof.
+
+Suppose x star of t maximizes a function f of x and t, and f is concave in x. The first-order condition says the partial derivative of f with respect to x, evaluated at x star of t and t, equals zero. Differentiate that condition with respect to t. You get: f x x, times the derivative of x star with respect to t, plus f x t, equals zero. Solve: the derivative of x star with respect to t equals minus f x t divided by f x x.
+
+Now read the signs. Concavity makes f x x negative. So whenever the cross partial f x t is greater than or equal to zero, the derivative of x star is greater than or equal to zero. In words: when the environment raises the marginal return to a choice, the optimal level of that choice rises.
+
+Topkis' theorem reaches the same conclusion without derivatives and without concavity. If f has increasing differences in x and t, the optimal x is non-decreasing in t. Milgrom and Roberts used this in their 1990 article in the American Economic Review, volume 80, issue 3, pages 511 to 528, to explain why the elements of modern manufacturing were adopted together. The proof is lattice theory and is beyond the course; you need the statement and its meaning.
+
+Second, two choices: the systems effect. Let x be delegated authority and y be the intensity of incentive pay, the pair from page 17. Profit is: pi of x and y equals t times x, plus s times y, plus b times x times y, minus c over 2 times x squared, minus c over 2 times y squared.
+
+Here t is the value of local information, which raises the return to delegation. s is how well results can be measured, which raises the return to incentive pay. b is the cross partial derivative of profit with respect to x and y, so b is the strength of the complementarity. And c measures diminishing returns.
+
+The first-order conditions are two. For x: t plus b times y equals c times x. For y: s plus b times x equals c times y.
+
+Solve them together. x star equals c times t plus b times s, all divided by c squared minus b squared. y star equals c times s plus b times t, all divided by c squared minus b squared. These are a maximum if and only if c is greater than the absolute value of b: diminishing returns must outweigh the cross effect.
+
+Now ask how delegation responds to more valuable local information. The derivative of x star with respect to t equals c divided by c squared minus b squared. Rewrite it as one over c, times one divided by one minus b over c squared. And expand that last fraction as a geometric series: one over c, times the sum of one, plus b over c squared, plus b over c to the fourth, and so on.
+
+Read the series term by term. One over c is the response of x when y is held fixed. The next term is the first round of feedback: more x raises the return to y, y rises, and that raises the return to x again. Each further term is another round. This is exactly the sentence in footnote 8 on page 108, where more of one activity leads to more of the related ones, "possibly leading to another round of increases".
+
+Meanwhile, the derivative of y star with respect to t equals b divided by c squared minus b squared. So t never enters the condition for y, yet y star moves. With b positive, incentives rise when delegation becomes more valuable.
+
+Numbers, with the illustrative calibration. Take c equal to 2 and b equal to 1. The multiplier is one divided by one minus one quarter, which is four thirds. With s equal to 1 and t rising from 1 to 3, x star goes from 1 to seven thirds, instead of from 0.5 to 1.5 as it would with y held fixed.
+
+And one subtle point. With substitutes, meaning b negative, the multiplier is still above one, because b over c squared is positive whatever the sign of b. What happens is that incentives fall, and lower incentives raise the return to delegation again. Only the sign of the derivative of y star with respect to t flips.
+
+Six point three. Substitutes are complements upside down.
+
+Suppose the cross partial of f with respect to x and y is less than or equal to zero. For example, buffer inventories and problem solving on the factory floor are substitutes: each makes the other less needed. Define a new variable z equal to minus y, and a new function g of x and z equal to f of x and minus z. Then the cross partial of g with respect to x and z equals minus the cross partial of f, which is greater than or equal to zero. So every result in this part applies to x and z.
+
+The economic reading: "many buffers and narrow jobs", which is Ford, and "no buffers and problem solvers", which is Toyota, are both coherent. The mixtures are not.
+
+Six point four. Strong complementarity and design attributes, page 109.
+
+Complementarity makes the choices predictable: high levels go together. Milgrom and Roberts add a second and separate feature: a high cost of failing to fit. They call a group strongly complementary when raising some of the activities "greatly increases the returns" to raising the others, and in that case, they say, "design attributes are always present".
+
+Their box "Modern Manufacturing Strategy", on pages 109 and 110, traces one chain of such links. Follow it step by step. Small demand for each product leads to no finished-goods inventories. No inventories require close communication between sales and the factory. That leads to short production runs. Short runs mean frequent changeovers. Frequent changeovers make flexible equipment profitable. Flexible manufacturing needs multi-skilled workers, paid for their skills rather than by piece rates. And with many products on the same machines, the accounting system assigns machine costs by machine time.
+
+Recap of part six. Complements raise each other's marginal return; in the discrete case that is increasing differences, equivalent to supermodularity. Complements move together when the environment changes, by Topkis. With two choices the response is amplified by the multiplier, one over one minus b over c squared. Substitutes become complements by flipping one variable. And strong complementarity adds a high cost of misfit.
+
+Checklist for part six. You should be able to state M and R's definition and the cross-partial condition. You should be able to show, with the 2 by 2 example, that each practice can lose alone while the pair gains. You should be able to derive the derivative of x star with respect to t by differentiating the first-order condition. And you should be able to solve the two-choice model and derive the multiplier, including why it exceeds one for substitutes too.
+
+Part seven. More than one coherent system.
+
+This part covers section seven of the notes, Milgrom and Roberts chapter 4, pages 111 to 113.
+
+Seven point one. Figure 4.3, made exact.
+
+Milgrom and Roberts' Figure 4.3, on page 111, has two managers. A marketing manager chooses the number of product varieties, call it n. A manufacturing manager chooses the batch size, call it b: how many units of one item to make before switching production to another.
+
+The book gives two relations. More varieties at a fixed batch size raise inventories, so the larger the batch, the fewer varieties are worth offering. And more varieties raise the marginal inventory cost of a larger batch, so the more varieties, the smaller the best batch. Both best replies slope downward, and they can cross more than once, page 112.
+
+The book draws the curves without a formula. The notes supply one that produces them, adding a choice of equipment, either specialized or flexible, which the book discusses on pages 5 and 113.
+
+Profit, as a function of n, b and the equipment, equals: m times Q, plus A times the natural log of n, minus S times Q divided by b, minus h times n times b divided by 2, minus delta c times Q. The number of models n must be at least one.
+
+Here is what each term means. m is a margin per unit. Q is total volume. A is the taste for variety: each extra model is worth A times the increase in log n. S times Q divided by b is the changeover cost: there are Q over b changeovers, each costing S, and S depends on the equipment. h times n times b over 2 is the cost of holding inventory: average stock of b over 2 for each of n models, at holding cost h. And delta c is the extra cost per unit of flexible equipment, zero for specialized equipment.
+
+Now the two replies.
+
+Manufacturing's reply is the economic order quantity formula. The best batch size, given n, equals the square root of 2 times S times Q, divided by h times n. It decreases in n.
+
+Marketing's reply comes from setting A over n equal to h times b over 2. So the best number of models, given b, equals 2 times A divided by h times b, but never less than one. It decreases in b.
+
+The cross partial derivative of profit with respect to n and b is minus h over 2, which is negative. So variety and batch size are substitutes, and by part six point three, variety and small batches are complements.
+
+Within one type of equipment, the solution has a closed form. The best batch b star equals S times Q divided by A. The best number of models n star equals 2 times A squared divided by h times S times Q. The profit is m times Q, plus A times the log of n star, minus 2 times A, minus delta c times Q. And the solution sits at the corner n star equal to one, Ford's single model, when 2 times A squared is less than or equal to h times S times Q.
+
+Last, the equipment switch. Manufacturing switches to flexible equipment once n exceeds a switch point, n sub s, equal to delta c times Q, squared, divided by 2 times Q times h times the square of the difference between the square root of the specialized changeover cost and the square root of the flexible changeover cost. At that point, manufacturing's reply jumps down: with flexible equipment, small batches are cheap.
+
+Now the numbers, using the illustrative calibration of the class companion. A is 20, Q is 100, h is 1, the specialized changeover cost is 50, the flexible changeover cost is 2, delta c is 1, and m is 2.
+
+The specialized, Ford-type system sits at the corner: one model, with a batch size of 100, and a profit of 100.0.
+
+The flexible, Toyota-type system has 4 models, a batch size of 10, and a profit of 87.7.
+
+Both are coherent: at each one, neither manager wants to move. And between them, profit along manufacturing's reply falls to 83.9.
+
+Now raise the taste for variety, A, to 30. The flexible system earns 105.9, better than 100. But the valley between the two systems is still there, at 88.4.
+
+Seven point two. What the figure teaches. Three lessons.
+
+Lesson one. Alignment is not optimality. Each crossing is "a coherent strategy", page 112, but "only one combination is actually profit maximizing", also page 112. Ford's crossing was best for the early part of the century; the many-varieties, small-batch crossing is best for many industries now.
+
+Lesson two. Local adjustment cannot find the global shift. Managers can track the local movement of their own crossing as conditions change, "but recognizing that a radical strategic shift is desirable is likely to require information that neither manager has". That is page 113. Smooth changes in the curves can hide a jump in which crossing is best, page 112. The companion's numbers show it: as A rises from 20 to 30, each system moves only a little, but the best system switches.
+
+Lesson three. So the choice among coherent patterns is a job for central management, pages 113 and 115. It has innovation attributes, because the information needed lies outside the organization. This is the argument of Aula 7, met here first.
+
+A careful reading of footnote 9, on page 112. Milgrom and Roberts picture the profit surface as "a mountain with three peaks, one at each of the intersections". Here is the correction. With two smooth, decreasing best replies that cross three times, the middle crossing is a saddle point, not a peak. At that crossing the replies cross the "wrong" way: the square of the cross partial with respect to n and b is greater than the product of the two own second derivatives. That makes the Hessian matrix indefinite, which is the condition for a saddle. The outer two crossings are the peaks. The book's point is unaffected: there are several coherent systems, and only one of them is best.
+
+Recap of part seven. Figure 4.3 has two downward-sloping replies that can cross more than once. Each crossing is a coherent system. In the companion's model, the specialized system earns 100, the flexible one 87.7, and the path between them dips to 83.9. Coherence is local, optimality is global, and only a central decision can move the firm from one coherent system to a better one.
+
+Checklist for part seven. You should be able to derive both replies, including the economic order quantity formula. You should be able to explain why the batch reply jumps at the equipment switch. You should be able to say why alignment is not optimality, and why the strategic choice belongs to central management. And you should be able to explain why the middle crossing of smooth replies is a saddle.
+
+Part eight. The valley, and the plant that tested it.
+
+This part covers section eight of the notes.
+
+Eight point one. Three practices on a cube.
+
+Take three of Toyota's practices from part three. J is just-in-time. T is multi-skilled teams. S is long-term suppliers. Each is either adopted, one, or not, zero.
+
+The class's stylized payoff, illustrative, is: pi of J, T and S equals 10, minus 4 J, minus 2 T, minus S, plus 4 J T, plus 5 J S, plus 2 T S, plus 2 J T S.
+
+That gives eight corners. Corner zero zero zero, Ford's corner, earns 10. Corner one zero zero, just-in-time alone, earns 6. Corner zero one zero, teams alone, earns 8. Corner zero zero one, suppliers alone, earns 9. Corner one one zero earns 8. Corner one zero one earns 10. Corner zero one one earns 9. And corner one one one, Toyota's full system, earns 16.
+
+Four facts follow.
+
+Fact one. The payoff is supermodular: the pairwise gains are 4 plus 2 S, 5 plus 2 T, and 2 plus 2 J, and all of them are positive.
+
+Fact two. Every first step loses. From Ford's corner, the three single steps earn 6, 8 and 9, all below 10. Ford's corner is a local peak.
+
+Fact three. Every adoption order dips. There are six orders in which to adopt the three practices from zero zero zero to one one one. Even the best one falls to 9 before it reaches 16.
+
+Fact four. Corner one one one is also a local peak: its neighbours earn 9, 10 and 8. So there are two peaks, and marginal analysis cannot tell them apart. The package gain is plus 6; the best single step is minus 1.
+
+The general lesson. Complementarity tells you where the optimum is: all the practices together. It does not make the road uphill. It creates the valley, because a practice is worth least where its complements are missing.
+
+Eight point two. NUMMI: the same workers under two systems.
+
+This history is from outside Milgrom and Roberts; the sources and their status are in the class video's provenance file.
+
+General Motors closed its Fremont, California plant in 1982. It reopened in 1984 as NUMMI, a joint venture between General Motors and Toyota, run on Toyota's system. Over 85 per cent of its first workforce were the laid-off General Motors workers.
+
+In 1987, assembly hours per car were 31 at a comparable General Motors plant, Framingham; 19 at NUMMI; and 16 at Toyota's Takaoka plant in Japan. Assembly defects per 100 cars were 135, 45 and 45. These figures come from a secondary reproduction of Womack, Jones and Roos, 1990, and are marked as still to be confirmed against the book.
+
+General Motors owned half of the plant and its managers could study it. Yet its efforts to spread the system piece by piece across its American plants "proved largely unsuccessful". The exception was Brazil, where managers trained at NUMMI ran the transfer.
+
+Read this with the cube. Toyota moved the whole system at once: the jump across the valley. General Motors, adopting practice by practice, kept landing on the low corners.
+
+Eight point three. Evidence beyond one plant.
+
+To test for complementarity in data, the notes use a regression. Y equals beta zero, plus beta one times x, plus beta two times z, plus beta three times x times z, plus an error term epsilon. The effect of x is beta one when z equals zero, and beta one plus beta three when z equals one. So beta three is the cross effect.
+
+Ichniowski, Shaw and Prennushi, in the American Economic Review in 1997, volume 87, issue 3, pages 291 to 313, studied 36 steel finishing lines. The bundle of innovative human-resource practices raised productivity. Single practices adopted in isolation did not.
+
+One caution. Firms that adopt practices together may differ from other firms in other ways. So correlated adoption, on its own, does not prove complementarity.
+
+Recap of part eight. On the cube, the full system earns 16 against Ford's 10, yet every single step from Ford's corner loses and every adoption order dips to 9 or below. NUMMI showed the same workers performing under a whole new system, and General Motors failing to transfer it piece by piece. The regression's interaction coefficient is the cross effect, and the steel-line evidence fits complementarity, with the caution that adoption is not random.
+
+Checklist for part eight. You should be able to compute all eight corners of the cube from the formula. You should be able to show that every first step loses and that the best order still dips to 9. You should be able to state the NUMMI figures, with their status. And you should be able to say what beta three measures and why correlated adoption is not proof.
+
+Part nine. Common mistakes.
+
+This part covers section nine of the notes. Each mistake is said as the error, then the correction.
+
+Mistake one. The error is: copy best practices one at a time. The correction is: profit is not additive. With complements, a practice adopted alone can lose money, as the 2 by 2 example and the cube show.
+
+Mistake two. The error is: complements means each practice is good. The correction is: complements means each is better with the other. Both can lose money alone, as in the 2 by 2 table.
+
+Mistake three. The error is: a coherent system is the best system. The correction is: coherence is a local property. Several coherent systems can coexist, and only one is best.
+
+Mistake four. The error is: if a system is better, managers will drift to it. The correction is: marginal adjustment stays at a local peak. Reaching the other peak needs a coordinated jump, pages 112 and 113.
+
+Mistake five. The error is: using the market definition of complements, the cross-price one, for choices inside the firm. The correction is: M and R's definition is about marginal profitability, the cross partial derivative of profit being greater than or equal to zero, page 108.
+
+Mistake six. The error is: substitutes have a multiplier below one. The correction is: in the two-choice model, the own response is amplified for either sign of b. Only the direction of the other choice changes.
+
+Mistake seven. The error is: reading organization as the organization chart. The correction is page 16: organization is "not about how berries are arranged on a tree of authority but about how people are coordinated and motivated".
+
+Part ten. The spoken formula sheet.
+
+Use this part for active recall. After each number, pause the audio, say the formula yourself, then play on to hear it.
+
+Formula one, the smooth definition of complements. For every pair of different activities i and j, the second cross partial derivative of profit with respect to x i and x j is greater than or equal to zero.
+
+Formula two, increasing differences. Pi of one, one, minus pi of zero, one, is greater than or equal to pi of one, zero, minus pi of zero, zero.
+
+Formula three, supermodularity on two choices. Pi of one, one, plus pi of zero, zero, is greater than or equal to pi of one, zero, plus pi of zero, one.
+
+Formula four, monotone comparative statics. The derivative of x star with respect to t equals minus f x t divided by f x x, which is greater than or equal to zero when f x t is greater than or equal to zero and f is concave.
+
+Formula five, the two-choice profit. Pi equals t x plus s y plus b x y minus c over 2 x squared minus c over 2 y squared.
+
+Formula six, its first-order conditions. t plus b y equals c x; s plus b x equals c y.
+
+Formula seven, its solution. x star equals c t plus b s over c squared minus b squared; y star equals c s plus b t over c squared minus b squared; a maximum if and only if c exceeds the absolute value of b.
+
+Formula eight, the multiplier. The derivative of x star with respect to t equals one over c, times one over one minus b over c squared. The derivative of y star with respect to t equals b over c squared minus b squared.
+
+Formula nine, the variety and batch model. Profit equals m Q plus A log n minus S Q over b minus h n b over 2 minus delta c Q.
+
+Formula ten, the two replies. The best batch is the square root of 2 S Q over h n. The best number of models is 2 A over h b, and at least one.
+
+Formula eleven, the solution within one equipment type. b star equals S Q over A; n star equals 2 A squared over h S Q; the corner n star equal to one applies when 2 A squared is at most h S Q.
+
+Formula twelve, the cube. Pi of J, T, S equals 10 minus 4 J minus 2 T minus S plus 4 J T plus 5 J S plus 2 T S plus 2 J T S.
+
+Formula thirteen, the test regression. Y equals beta zero plus beta one x plus beta two z plus beta three x z plus epsilon, where beta three is the cross effect.
+
+Part eleven. The interactive companions, described in words.
+
+The class has three interactive pages, in the folder Aula, aula-01-companions. You cannot see them in an audio file, so here is what each one does and what to try.
+
+Companion one, Two Coherent Systems. It is Figure 4.3 with the formula of part seven. Five sliders: taste for variety, volume, inventory holding cost, the flexible changeover cost, and the flexible unit-cost premium. The first plate shows the two replies on log scales and marks where they cross. The second plate shows profit along manufacturing's reply, with the two peaks and the valley between them. What to try: the button "More taste for variety", then the button "Cheaper flexibility". In each case, notice that each system moves only a little, while the best system switches.
+
+Companion two, The Valley Between Systems. It is the cube of part eight. Sliders set the value of each practice alone and the strength of each interaction. The first plate draws the cube with all eight profits; the second draws all six adoption orders, step by step. What to try: "No interactions", which shows "best practices" thinking, where profits simply add up and the package loses; then "No stand-alone losses", where one order climbs without a dip.
+
+Companion three, The Complementarity Multiplier. It is the two-choice model of part six. Four sliders: the value of local information, the measurability of results, the complementarity b, and diminishing returns c. The first plate draws the two reply lines and the staircase of alternating adjustments; the second draws the optimal choices against the value of local information, with and without the complementarity. What to try: move t and watch the staircase; set b to zero and watch the multiplier fall to one; push b toward c and watch it explode until the optimum disappears.
+
+A computer check confirms every number these pages display against an independent calculation.
+
+Part twelve. Reading route and exercises.
+
+The reading route, in order. Milgrom and Roberts chapter 1, Does Organization Matter, printed pages 2 to 18. Then Milgrom and Roberts chapter 4, the section Coordination and Business Strategy, pages 106 to 113, with Figure 4.3 on page 111. Then Cabral, Introduction to Industrial Organization, second edition, section 3.5, Why are firms different, pages 56 to 59.
+
+The exercises, by address only. Statements are not read here; open the book.
+
+Milgrom and Roberts, Food for Thought 1.1, page 18. It practises splitting a business's decisions between the centre and the units, as coordination against motivation.
+
+Milgrom and Roberts, Food for Thought 1.2, page 18. The same split, in an organization that is not a business.
+
+Milgrom and Roberts, Food for Thought 1.3, page 18. The Salomon incentive scheme, judged against a later scandal.
+
+Cabral exercise 1.1, page 11. Competition and performance.
+
+Cabral exercise 3.14, page 63. Sustained competitive advantage, with section 3.5.
+
+Cabral exercise 3.20, page 64. Productivity dispersion across firms, an applied exercise that needs data.
+
+For the formal parts, six to eight, Milgrom and Roberts chapter 1 has no exercises. Use the companions' preset buttons as problems: predict what the page will show, then press the button. The practice list for this class, in the Listas folder, has twenty graded items built this way.
+
+Part thirteen. Self-test.
+
+Ten questions. After each one, pause the audio and answer aloud before continuing.
+
+Question one. What are the two problems every organization must solve, and which one is about information?
+
+Pause.
+
+Question two. Name the five pieces of Ford's system, and say which piece paid for the high wage.
+
+Pause.
+
+Question three. What three features define the multidivisional form, and why could neither Ford's organization nor the old General Motors carry Sloan's strategy?
+
+Pause.
+
+Question four. Why did Toyota adopt just-in-time, and what three things did it then require?
+
+Pause.
+
+Question five. State the ratchet effect, and say why it distorts the planners' information.
+
+Pause.
+
+Question six. In the 2 by 2 example, with corners 0, minus 2, minus 1 and 5, compute the gain from x with and without y, and the cross effect.
+
+Pause.
+
+Question seven. In the two-choice model with c equal to 2 and b equal to 1, what is the multiplier, and what is it when b equals minus 1?
+
+Pause.
+
+Question eight. In the variety and batch model, why does manufacturing's reply jump, and what are the two coherent systems' profits at the default calibration?
+
+Pause.
+
+Question nine. On the cube, what do the three first steps from Ford's corner earn, and how low does the best adoption order fall?
+
+Pause.
+
+Question ten. Why is the middle crossing of two smooth, decreasing best replies a saddle and not a peak?
+
+Pause.
+
+The answers, briefly. One: coordination and motivation; coordination is about information. Two: one model, dedicated machines and the line, narrow tasks, the high wage, making its own parts; the productivity of the line paid for the wage. Three: divisional operating autonomy, a central office that audits and sets strategy, and internal prices checked against market prices; Ford was built for one product and the old General Motors had no central direction. Four: inventory systems have scale economies Toyota could not reach; it then required reliability, quick repair by operators, and close communication with suppliers. Five: beating the quota raises future quotas, so managers hide capacity, and the planners receive distorted reports. Six: minus 2 without y, 6 with y, a cross effect of 8. Seven: four thirds, and four thirds again, because the multiplier depends on b squared. Eight: it jumps at the equipment switch, where flexible equipment makes small batches cheap; 100 for the specialized system and 87.7 for the flexible one. Nine: 6, 8 and 9; the best order falls to 9. Ten: there the replies cross the wrong way, the squared cross partial exceeds the product of the own second derivatives, and the Hessian is indefinite.
+
+Part fourteen. Glossary.
+
+Coordination: making the plans of different people and units fit together; a problem of information.
+
+Motivation: getting people to carry out the plans; a problem of interests.
+
+Multidivisional form: an organization of autonomous operating divisions under a central office that audits them and sets strategy.
+
+Just-in-time: production without buffer inventories, where each stage delivers exactly when the next needs it.
+
+Ratchet effect: the incentive to hold back performance because good performance raises future targets.
+
+Complements, in Milgrom and Roberts' sense: activities where doing more of one raises the marginal profitability of the others.
+
+Increasing differences: the gain from one choice is larger when the other choice is in place.
+
+Supermodularity: the matched corners together earn at least as much as the mixed corners.
+
+Topkis' theorem: with increasing differences between a choice and a parameter, the optimal choice does not fall as the parameter rises.
+
+Multiplier: the factor, one over one minus b over c squared, by which the feedback between two choices amplifies a response.
+
+Coherent system: a combination of choices where no single decision maker wants to change their own choice.
+
+Strong complementarity: complementarity together with a high cost of failing to fit.
+
+Design attribute: a feature of a decision where the parts must be chosen together and a mismatch is costly.
+
+Economic order quantity: the batch size that balances changeover costs against inventory holding costs, the square root of 2 S Q over h n in this model.
+
+Valley: the loss a firm takes on the way from one coherent system to a better one when it changes one practice at a time.
+
+NUMMI: the General Motors and Toyota joint venture at Fremont, California, from 1984, run on Toyota's system with mostly former General Motors workers.
+
+Part fifteen. The whole class in five lines.
+
+One. Organization and strategy can matter as much as technology, cost and demand; Ford, General Motors and Toyota each won with a coherent system, not a better machine.
+
+Two. Every organization must solve coordination, which is about information, and motivation, which is about interests; and incentives and delegated authority are complements.
+
+Three. Complements raise each other's marginal return, so they move together, and the feedback between them multiplies every response.
+
+Four. Several coherent systems can coexist; only one is best, and local adjustment cannot find the switch, so strategy is a central decision.
+
+Five. Complementarity creates a valley: every one-at-a-time path from Ford's corner loses money first, which is why Toyota moved its whole system at once and General Motors, copying piece by piece, could not.

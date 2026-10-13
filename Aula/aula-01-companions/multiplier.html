@@ -1,0 +1,330 @@
+<title>The Complementarity Multiplier</title>
+<meta name="description" content="Delegated authority and incentive pay as complements: the best-reply staircase and the multiplier 1/(1 − (b/c)²).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: a drafting sheet. Controls on the left like a spec column, verdict on top, two plates below. */
+:root {
+  --bg: #f2f4f7; --surface: #ffffff; --ink: #18202b; --muted: #586373; --rule: #d3d9e1;
+  --blue: #2456c4; --live: #a86b00; --red: #c0392b; --green: #1d7f4e; --grey: #8b95a3;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #10141a; --surface: #171d25; --ink: #e4e9ef; --muted: #98a3b2; --rule: #2a3340;
+  --blue: #7aa2ff; --live: #e0b44a; --red: #ff7d70; --green: #4fc98d; --grey: #7c8794; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #10141a; --surface: #171d25; --ink: #e4e9ef; --muted: #98a3b2; --rule: #2a3340;
+  --blue: #7aa2ff; --live: #e0b44a; --red: #ff7d70; --green: #4fc98d; --grey: #7c8794; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 56px; display: grid; gap: 28px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4.4vw, 46px); line-height: 1.05; letter-spacing: -.015em; margin: 6px 0 10px; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; margin: 0; }
+.lede { max-width: 68ch; margin: 0; color: var(--ink); }
+.lede em { font-style: italic; }
+header { display: grid; gap: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 20px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 310px) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 880px) { .main { grid-template-columns: minmax(0, 1fr); } }
+
+.controls { display: grid; gap: 22px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 880px) { .controls { position: static; } }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 16px; }
+legend { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px; }
+.ctl { display: grid; gap: 4px; }
+.ctl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.ctl label { font-family: var(--display); font-weight: 700; font-size: 15px; }
+.ctl label i { font-family: var(--body); font-weight: 400; }
+.ctl output { font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; color: var(--blue); white-space: nowrap; }
+.ctl p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+input[type="range"] { width: 100%; accent-color: var(--blue); margin: 2px 0; }
+input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+button { font-family: var(--display); font-weight: 600; font-size: 13px; padding: 7px 12px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
+button:hover { border-color: var(--blue); }
+button.primary { border-color: var(--ink); }
+
+.results { display: grid; gap: 26px; min-width: 0; }
+.verdict { display: grid; gap: 6px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.verdict .big { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.1; text-wrap: balance; }
+.verdict .big .win { color: var(--green); }
+.verdict .sub { margin: 0; max-width: 70ch; }
+.chip { display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.chip.good { color: var(--green); } .chip.bad { color: var(--red); } .chip.neutral { color: var(--muted); }
+
+.plates { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; max-width: 760px; }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 14px 10px; display: grid; gap: 8px; min-width: 0; }
+figcaption { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+svg { width: 100%; height: auto; display: block; max-width: 100%; }
+svg text { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+svg .lab { font-family: var(--display); font-weight: 700; font-size: 13px; fill: var(--ink); }
+
+.readouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 0 28px; margin: 0; }
+.readouts div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.readouts dt { color: var(--muted); font-size: 14px; flex: 0 0 auto; }
+.readouts dd { margin: 0; font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; }
+
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 760px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prov { font-size: 14px; color: var(--muted); max-width: 90ch; display: grid; gap: 8px; }
+.prov p { margin: 0; }
+.math { font-family: var(--mono); font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+section.below { display: grid; gap: 14px; }
+@media (prefers-reduced-motion: no-preference) { svg .pt { transition: cx .15s, cy .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">EOI · Aula 1 · Companion 3 of 3 · Milgrom &amp; Roberts (1992), Ch. 1, p. 17; Ch. 4, p. 108, footnote 8</p>
+    <h1>The Complementarity Multiplier</h1>
+    <p class="lede">"Incentives and delegated authority are complements: each makes the other more valuable" (M&amp;R, p. 17). Give the field more valuable local information and the firm delegates more; more delegation makes incentive pay worth more; stronger incentives make delegation worth more again. The staircase is those rounds. The multiplier is where they end.</p>
+  </header>
+
+  <div class="main">
+    <form class="controls" id="controls" autocomplete="off">
+      <fieldset>
+        <legend>Environment</legend>
+        <div class="ctl">
+          <div class="ctl-head"><label for="t">Value of local information <i>t</i></label><output id="t-out" for="t"></output></div>
+          <input type="range" id="t" min="0" max="4" step="0.1" value="1">
+          <p>How much better decisions get when the people on the spot make them. Raises the return to delegating.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="s">Measurability of results <i>s</i></label><output id="s-out" for="s"></output></div>
+          <input type="range" id="s" min="0" max="4" step="0.1" value="1">
+          <p>How well performance can be measured and paid for. Raises the return to incentive pay.</p>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Structure</legend>
+        <div class="ctl">
+          <div class="ctl-head"><label for="b">Complementarity <i>b</i></label><output id="b-out" for="b"></output></div>
+          <input type="range" id="b" min="-1.9" max="1.9" step="0.1" value="1">
+          <p>How much each choice raises the marginal return of the other. Zero: independent. Negative: substitutes.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="c">Diminishing returns <i>c</i></label><output id="c-out" for="c"></output></div>
+          <input type="range" id="c" min="1" max="4" step="0.1" value="2">
+          <p>How fast the gain from each choice runs out. A maximum exists only while c is larger than |b|.</p>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" class="primary" id="reset">Reset to defaults</button>
+        <button type="button" data-preset="b=0">Independent (b = 0)</button>
+        <button type="button" data-preset="b=-1">Substitutes (b = −1)</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <div class="verdict" aria-live="polite">
+        <p class="eyebrow">The answer</p>
+        <div class="big" id="verdict"></div>
+        <p class="sub" id="verdict-sub"></p>
+      </div>
+
+      <div class="plates">
+        <figure>
+          <h2>Plate 1 · Rounds of adjustment</h2>
+          <svg id="plane" viewBox="0 0 560 420" role="img" aria-label="Delegation on the horizontal axis and incentive pay on the vertical axis, with each choice's best-reply line and the staircase of alternating adjustments"></svg>
+          <figcaption>Start where each choice is set as if the other were zero. Then delegation adjusts, then incentives, and so on. Each step is one round of M&amp;R's footnote 8.</figcaption>
+        </figure>
+        <figure>
+          <h2>Plate 2 · Response to local information</h2>
+          <svg id="resp" viewBox="0 0 560 420" role="img" aria-label="Optimal delegation and optimal incentive pay against the value of local information, with and without the complementarity"></svg>
+          <figcaption>Solid: the optimal choices. Dashed: each choice alone (b = 0). The slope ratio of the two delegation lines is the multiplier.</figcaption>
+        </figure>
+      </div>
+
+      <dl class="readouts" id="readouts"></dl>
+    </div>
+  </div>
+
+  <section class="below">
+    <h2>The model</h2>
+    <div class="math">π(x, y) = t·x + s·y + b·x·y − (c/2)·x² − (c/2)·y²,&nbsp;&nbsp; x = delegated authority, y = incentive intensity (both measured from a baseline)</div>
+    <div class="math">First-order conditions: t + b·y = c·x,&nbsp; s + b·x = c·y&nbsp; ⇒&nbsp; x* = (c·t + b·s) / (c² − b²),&nbsp; y* = (c·s + b·t) / (c² − b²),&nbsp; maximum iff c &gt; |b|</div>
+    <div class="math">∂x*/∂t = c / (c² − b²) = (1/c) · 1 / (1 − (b/c)²) = (1/c)·(1 + (b/c)² + (b/c)⁴ + …),&nbsp;&nbsp; ∂y*/∂t = b / (c² − b²),&nbsp;&nbsp; ∂²π/∂x∂y = b</div>
+
+    <h2>Controls</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>What visibly moves</th></tr></thead>
+        <tbody>
+          <tr><td>Value of local information</td><td><i>t</i></td><td>marginal return to delegation</td><td class="num">0 – 4</td><td class="num">0.1</td><td class="num">1</td><td>profit per unit of x</td><td>delegation's reply line shifts right; the marker on plate 2</td></tr>
+          <tr><td>Measurability of results</td><td><i>s</i></td><td>marginal return to incentives</td><td class="num">0 – 4</td><td class="num">0.1</td><td class="num">1</td><td>profit per unit of y</td><td>incentives' reply line shifts up; both lines on plate 2 shift</td></tr>
+          <tr><td>Complementarity</td><td><i>b</i></td><td>cross effect ∂²π/∂x∂y</td><td class="num">−1.9 – 1.9</td><td class="num">0.1</td><td class="num">1</td><td>profit per unit x·y</td><td>slopes of both reply lines; the staircase; the multiplier</td></tr>
+          <tr><td>Diminishing returns</td><td><i>c</i></td><td>curvature of each choice</td><td class="num">1 – 4</td><td class="num">0.1</td><td class="num">2</td><td>profit per unit²</td><td>everything scales down; the multiplier through b/c</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prov">
+      <p><b>Source.</b> The claim is Milgrom &amp; Roberts (1992), Ch. 1, p. 17 ("In the language of economics, incentives and delegated authority are complements: each makes the other more valuable"), with the North West Company's wintering partners, Salomon's traders and the failed Eastern European reforms as the book's cases (pp. 8, 10–11, 15–17). The definition and the rounds of increases are Ch. 4, p. 108, footnote 8. The quadratic form, its closed forms and the default calibration (c = 2, b = 1, s = 1) are the class 1 video's (<code>Videos/aula-01-does-organization-matter/plan.md</code>, checked by <code>check_numbers.py</code>); at the defaults the multiplier is 4/3. Illustrative, not data.</p>
+      <p>Part of the class 1 notes, <code>Aula/aula-01-notes.md</code>. Checks: <code>Aula/aula-01-companions/check_companions.py</code>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+// MODEL:BEGIN  (pure functions; extracted and checked against check_companions.py)
+function solve(p) {
+  const d = p.c * p.c - p.b * p.b;
+  if (d <= 0) return { ok: false };
+  const x = (p.c * p.t + p.b * p.s) / d, y = (p.c * p.s + p.b * p.t) / d;
+  return {
+    ok: true, x, y,
+    dxdt: p.c / d, dydt: p.b / d, alone: 1 / p.c, mult: (p.c * p.c) / d,
+    profit: p.t * x + p.s * y + p.b * x * y - p.c / 2 * (x * x + y * y),
+  };
+}
+function staircase(p, sol, maxRounds = 200) {
+  let x = p.t / p.c, y = p.s / p.c;
+  const pts = [[x, y]];
+  const tol = 0.01 * Math.max(Math.abs(sol.x), Math.abs(sol.y), 0.01);
+  let rounds = 0;
+  while (rounds < maxRounds && Math.max(Math.abs(x - sol.x), Math.abs(y - sol.y)) > tol) {
+    x = (p.t + p.b * y) / p.c; pts.push([x, y]);
+    y = (p.s + p.b * x) / p.c; pts.push([x, y]);
+    rounds++;
+  }
+  return { pts, rounds };
+}
+// MODEL:END
+
+const DEFAULTS = { t: 1, s: 1, b: 1, c: 2 };
+const ids = Object.keys(DEFAULTS);
+const $ = (id) => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const minus = (s) => s.replace(/^-/, "−");
+const fmt = (x, d = 2) => { let s = Number(x).toFixed(d); if (/^-0(\.0+)?$/.test(s)) s = s.slice(1); return minus(s); };
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function el(parent, tag, attrs = {}, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text !== undefined) e.textContent = text;
+  parent.appendChild(e);
+  return e;
+}
+function niceStep(span) {
+  const raw = span / 5, p = 10 ** Math.floor(Math.log10(raw)), m = raw / p;
+  return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p;
+}
+function domain(vals) {
+  let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
+  const pad = Math.max((hi - lo) * 0.12, 0.3);
+  return [lo - (lo < 0 ? pad : 0.15 * pad), hi + pad];
+}
+const BOX = { l: 58, r: 496, t: 18, b: 368 };
+function frame(svg, xd, yd, xlab, ylab) {
+  const xs = (v) => BOX.l + (v - xd[0]) / (xd[1] - xd[0]) * (BOX.r - BOX.l);
+  const ys = (v) => BOX.b - (v - yd[0]) / (yd[1] - yd[0]) * (BOX.b - BOX.t);
+  el(svg, "rect", { x: BOX.l, y: BOX.t, width: BOX.r - BOX.l, height: BOX.b - BOX.t, fill: "none", stroke: css("--rule") });
+  const tick = (d, f) => { const st = niceStep(d[1] - d[0]); for (let v = Math.ceil(d[0] / st) * st; v <= d[1] + 1e-9; v += st) f(+v.toPrecision(10)); };
+  tick(xd, (v) => { el(svg, "line", { x1: xs(v), x2: xs(v), y1: BOX.t, y2: BOX.b, stroke: css("--rule"), "stroke-width": v === 0 ? 1.4 : 0.6 }); el(svg, "text", { x: xs(v), y: BOX.b + 16, "text-anchor": "middle" }, minus(String(v))); });
+  tick(yd, (v) => { el(svg, "line", { x1: BOX.l, x2: BOX.r, y1: ys(v), y2: ys(v), stroke: css("--rule"), "stroke-width": v === 0 ? 1.4 : 0.6 }); el(svg, "text", { x: BOX.l - 8, y: ys(v) + 4, "text-anchor": "end" }, minus(String(v))); });
+  el(svg, "text", { x: (BOX.l + BOX.r) / 2, y: BOX.b + 40, "text-anchor": "middle" }, xlab);
+  el(svg, "text", { x: 14, y: (BOX.t + BOX.b) / 2, "text-anchor": "middle", transform: `rotate(-90 14 ${(BOX.t + BOX.b) / 2})` }, ylab);
+  const id = svg.id + "-clip", cp = el(el(svg, "defs"), "clipPath", { id });
+  el(cp, "rect", { x: BOX.l, y: BOX.t, width: BOX.r - BOX.l, height: BOX.b - BOX.t });
+  return { xs, ys, g: el(svg, "g", { "clip-path": `url(#${id})` }) };
+}
+const line = (g, pts, attrs) => el(g, "polyline", Object.assign({ points: pts.map(([a, b]) => `${a.toFixed(2)},${b.toFixed(2)}`).join(" "), fill: "none" }, attrs));
+const word = (v, up, down, none) => Math.abs(v) < 1e-12 ? none : v > 0 ? up : down;
+
+function read() { const p = {}; for (const k of ids) p[k] = Math.round(parseFloat($(k).value) * 10) / 10; return p; }
+
+function draw() {
+  const p = read();
+  for (const k of ids) $(k + "-out").textContent = fmt(p[k], 1);
+  const sol = solve(p);
+  const v = $("verdict"), vs = $("verdict-sub");
+  const s1 = $("plane"), s2 = $("resp");
+  s1.innerHTML = ""; s2.innerHTML = "";
+
+  if (!sol.ok) {
+    v.innerHTML = `No optimum: <span style="color:var(--red)">|b| ≥ c</span>`;
+    vs.textContent = `With b = ${fmt(p.b, 1)} and c = ${fmt(p.c, 1)}, the cross effect outweighs diminishing returns. Profit grows without limit along the diagonal, so the model has no best choice. Raise c or move b toward zero.`;
+    $("readouts").innerHTML = [["Condition c > |b|", `fails: ${fmt(p.c, 1)} ≤ ${fmt(Math.abs(p.b), 1)}`], ["Optimal choices", "none (profit unbounded)"], ["Multiplier", "undefined"]]
+      .map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
+    for (const s of [s1, s2]) el(s, "text", { x: 280, y: 210, "text-anchor": "middle", class: "lab" }, "no maximum while |b| ≥ c");
+    return;
+  }
+
+  const st = staircase(p, sol);
+  const kind = p.b > 0 ? "complements" : p.b < 0 ? "substitutes" : "independent";
+  v.innerHTML = `Multiplier <span class="win">${fmt(sol.mult, 3)}×</span>`;
+  vs.textContent = p.b === 0
+    ? `Independent choices: delegation responds to local information exactly as it would alone (${fmt(sol.alone, 3)} per unit of t), and incentive pay does not move.`
+    : `Delegation responds ${fmt(sol.mult, 3)} times as strongly to local information as it would with incentives held fixed. ` +
+      `Incentive pay ${word(sol.dydt, "rises", "falls", "stays")} ${fmt(Math.abs(sol.dydt), 3)} per unit of t, although t never enters its own condition. ` +
+      (p.b < 0 ? "With substitutes the multiplier still exceeds one: incentives fall, and that raises delegation's return again." : "");
+
+  const rows = [
+    ["Optimal delegation x*", fmt(sol.x, 3)],
+    ["Optimal incentives y*", fmt(sol.y, 3)],
+    ["∂x*/∂t", `${fmt(sol.dxdt, 3)}  (alone ${fmt(sol.alone, 3)})`],
+    ["∂y*/∂t", `${fmt(sol.dydt, 3)}  · ${word(sol.dydt, "rises", "falls", "no change")}`],
+    ["Rounds to within 1%", String(st.rounds)],
+    ["Case", `${kind} (b/c = ${fmt(p.b / p.c, 3)})`],
+  ];
+  $("readouts").innerHTML = rows.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
+
+  // Plate 1
+  const xsAll = st.pts.map((q) => q[0]).concat(sol.x), ysAll = st.pts.map((q) => q[1]).concat(sol.y);
+  const xd = domain(xsAll), yd = domain(ysAll);
+  const f1 = frame(s1, xd, yd, "delegated authority x", "incentive intensity y");
+  const bx = [[(p.t + p.b * yd[0]) / p.c, yd[0]], [(p.t + p.b * yd[1]) / p.c, yd[1]]];
+  const by = [[xd[0], (p.s + p.b * xd[0]) / p.c], [xd[1], (p.s + p.b * xd[1]) / p.c]];
+  line(f1.g, bx.map(([a, b]) => [f1.xs(a), f1.ys(b)]), { stroke: css("--blue"), "stroke-width": 2.2 });
+  line(f1.g, by.map(([a, b]) => [f1.xs(a), f1.ys(b)]), { stroke: css("--ink"), "stroke-width": 2.2 });
+  line(f1.g, st.pts.map(([a, b]) => [f1.xs(a), f1.ys(b)]), { stroke: css("--live"), "stroke-width": 1.8 });
+  const [x0, y0] = st.pts[0];
+  el(s1, "circle", { cx: f1.xs(x0), cy: f1.ys(y0), r: 5, fill: css("--surface"), stroke: css("--grey"), "stroke-width": 2 });
+  el(s1, "text", { class: "lab", x: f1.xs(x0) + 8, y: f1.ys(y0) + 18 }, "each alone");
+  el(s1, "circle", { cx: f1.xs(sol.x), cy: f1.ys(sol.y), r: 6.5, fill: css("--green"), stroke: css("--green") });
+  el(s1, "text", { class: "lab", x: f1.xs(sol.x) + 12, y: f1.ys(sol.y) + 26, style: `fill:${css("--green")}` }, `optimum (${fmt(sol.x, 2)}, ${fmt(sol.y, 2)})`);
+  const yl = yd[0] + 0.88 * (yd[1] - yd[0]);
+  el(s1, "text", { class: "lab", x: Math.max(BOX.l + 120, f1.xs((p.t + p.b * yl) / p.c) - 10), y: f1.ys(yl), style: `fill:${css("--blue")}`, "text-anchor": "end" }, "delegation's reply");
+  const xl = xd[0] + 0.62 * (xd[1] - xd[0]);
+  el(s1, "text", { class: "lab", x: f1.xs(xl), y: f1.ys((p.s + p.b * xl) / p.c) + (p.b >= 0 ? 18 : -10) }, "incentives' reply");
+
+  // Plate 2
+  const T = [0, 4];
+  const lines = {
+    x: T.map((t) => (p.c * t + p.b * p.s) / (p.c * p.c - p.b * p.b)),
+    y: T.map((t) => (p.c * p.s + p.b * t) / (p.c * p.c - p.b * p.b)),
+    xa: T.map((t) => t / p.c), ya: T.map(() => p.s / p.c),
+  };
+  const yd2 = domain(Object.values(lines).flat());
+  const f2 = frame(s2, [0, 4], yd2, "value of local information t", "optimal level");
+  line(f2.g, T.map((t, i) => [f2.xs(t), f2.ys(lines.xa[i])]), { stroke: css("--blue"), "stroke-width": 1.6, "stroke-dasharray": "6 4" });
+  line(f2.g, T.map((t, i) => [f2.xs(t), f2.ys(lines.ya[i])]), { stroke: css("--ink"), "stroke-width": 1.6, "stroke-dasharray": "6 4" });
+  line(f2.g, T.map((t, i) => [f2.xs(t), f2.ys(lines.x[i])]), { stroke: css("--blue"), "stroke-width": 2.6 });
+  line(f2.g, T.map((t, i) => [f2.xs(t), f2.ys(lines.y[i])]), { stroke: css("--ink"), "stroke-width": 2.6 });
+  el(f2.g, "line", { x1: f2.xs(p.t), x2: f2.xs(p.t), y1: BOX.t, y2: BOX.b, stroke: css("--live"), "stroke-width": 1.5 });
+  el(s2, "circle", { cx: f2.xs(p.t), cy: f2.ys(sol.x), r: 5, fill: css("--green") });
+  el(s2, "circle", { cx: f2.xs(p.t), cy: f2.ys(sol.y), r: 5, fill: css("--green") });
+  const labs = [[lines.x[1], "x*", "--blue"], [lines.xa[1], "x alone", "--blue"], [lines.y[1], "y*", "--ink"], [lines.ya[1], "y alone", "--ink"]]
+    .map(([val, txt, col]) => ({ y: f2.ys(val), txt, col })).sort((a, b) => a.y - b.y);
+  for (let i = 1; i < labs.length; i++) labs[i].y = Math.max(labs[i].y, labs[i - 1].y + 13);
+  for (const l of labs) el(s2, "text", { x: BOX.r + 4, y: Math.min(BOX.b, Math.max(BOX.t + 8, l.y)) + 4, style: `fill:${css(l.col)}` }, l.txt);
+}
+
+for (const k of ids) $(k).addEventListener("input", draw);
+$("reset").addEventListener("click", () => { for (const k of ids) $(k).value = DEFAULTS[k]; draw(); });
+document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => {
+  for (const k of ids) $(k).value = DEFAULTS[k];
+  const [k, v] = b.dataset.preset.split("=");
+  $(k).value = v; draw();
+}));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+draw();
+</script>

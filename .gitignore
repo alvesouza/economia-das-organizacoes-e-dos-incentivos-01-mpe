@@ -1,0 +1,67 @@
+# ============================================================
+# Economia das Organizações e dos Incentivos - MPE Insper
+# ============================================================
+
+# --- Copyrighted material (do not version) ---
+# Textbooks and their conversions; BOOKS.md and book-registry.json stay versioned
+Livros/*
+!Livros/BOOKS.md
+!Livros/book-registry.json
+
+# Copies of the same files prepared for NotebookLM upload
+NotebookLM/sources/
+
+# --- LaTeX build artefacts ---
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# --- Claude Code (machine-local config; commands/ and rules/ stay versioned) ---
+.claude/settings.local.json
+
+# --- Graphify ---
+graphify-out/
+
+# --- OS / editors ---
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
+.vscode/
+.idea/
+*~
+*.tmp
+
+# --- Local secrets (NEVER version) ---
+.env
+.env.*
+!.env.example
+
+# --- Videos (/explainer): renders, audio and compile intermediates ---
+Videos/*/media*/
+Videos/*/audio/
+Videos/*/build/
+Videos/**/*.mp4
+Videos/*/*.log

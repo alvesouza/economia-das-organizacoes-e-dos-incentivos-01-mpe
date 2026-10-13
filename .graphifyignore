@@ -1,0 +1,22 @@
+# Graphify indexes code. This project is mostly prose, PDFs and notebooks; keep the bibliography out.
+Livros/
+NotebookLM/
+Leituras/
+Map/
+Resolucao/
+Simulados/
+Aula/
+Listas/
+Monitoria/
+Prova/
+graphify-out/
+__pycache__/
+.venv/
+*.pdf
+*.png
+**/data/
+**/cache/
+**/figures/
+Videos/*/media/
+Videos/*/audio/
+Videos/*/build/

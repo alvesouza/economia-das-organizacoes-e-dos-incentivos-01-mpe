@@ -1,0 +1,89 @@
+% Notes for Aulas 1-2 of Economia das Organizacoes e dos Incentivos (MPE Insper).
+% Compile: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=3pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize Notes, Aulas 1--2}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\definecolor{defc}{RGB}{30,80,150}
+\definecolor{propc}{RGB}{110,40,130}
+\definecolor{exc}{RGB}{20,110,70}
+\definecolor{warnc}{RGB}{170,60,30}
+
+% Boxes. \begin{defn}{Title} ... \end{defn}; same for prop, example, keyidea, caution.
+\newtcolorbox{defn}[1]{enhanced,breakable,colback=defc!4,colframe=defc,
+  fonttitle=\bfseries,title={Definition: #1},left=6pt,right=6pt}
+\newtcolorbox{prop}[1]{enhanced,breakable,colback=propc!4,colframe=propc,
+  fonttitle=\bfseries,title={#1},left=6pt,right=6pt}
+\newtcolorbox{example}[1]{enhanced,breakable,colback=exc!4,colframe=exc,
+  fonttitle=\bfseries,title={Example: #1},left=6pt,right=6pt}
+\newtcolorbox{keyidea}{enhanced,breakable,colback=gray!6,colframe=gray!60,
+  boxrule=0.4pt,left=6pt,right=6pt,fontupper=\itshape}
+\newtcolorbox{caution}[1]{enhanced,breakable,colback=warnc!4,colframe=warnc,
+  fonttitle=\bfseries,title={#1},left=6pt,right=6pt}
+
+\newcommand{\MR}{M\&R}
+\newcommand{\pg}[1]{(p.~#1)}          % printed page of M&R unless another book is named
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\title{\textbf{Does Organization Matter? and Bargaining}\\[4pt]
+  \large Notes for Aulas 1--2 --- Economics of Organizations and Incentives (MPE Insper)}
+\author{Built on Milgrom \& Roberts (1992), with Cabral (2017), Varian (2014, with Calculus)\\
+  and Mas-Colell, Whinston \& Green (1995)}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent Part I reads the Ford, GM and Toyota cases as answers to the two problems every
+organization faces, coordination and motivation, and then gives the mathematics of fit:
+complementarities, coherent systems, and the valley between them. Part II asks what bargaining
+decides. Under no wealth effects and complete information, the value maximization principle and
+the Coase theorem make the value-creating choice determinate, and bargaining power only divides
+the gains (Nash, Rubinstein). Private information breaks this: efficient trade can become
+infeasible, and incentive-efficient arrangements give up the small gains. Page numbers are
+Milgrom \& Roberts' printed pages unless another book is named. Every worked example is original;
+book exercises are cited by number and page only.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\part{Aula 1 --- Does Organization Matter? Ford $\times$ GM $\times$ Toyota}
+\input{part1}
+
+\newpage
+\part{Aula 2 --- Bargaining}
+\input{part2}
+
+\end{document}

@@ -1,0 +1,356 @@
+<title>The Valley Between Systems</title>
+<meta name="description" content="Three complementary Toyota practices on a cube: why the full system can pay while every piecemeal path loses money first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: a drafting sheet. Controls on the left like a spec column, verdict on top, two plates below. */
+:root {
+  --bg: #f2f4f7; --surface: #ffffff; --ink: #18202b; --muted: #586373; --rule: #d3d9e1;
+  --blue: #2456c4; --live: #a86b00; --red: #c0392b; --green: #1d7f4e; --grey: #8b95a3;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #10141a; --surface: #171d25; --ink: #e4e9ef; --muted: #98a3b2; --rule: #2a3340;
+  --blue: #7aa2ff; --live: #e0b44a; --red: #ff7d70; --green: #4fc98d; --grey: #7c8794; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #10141a; --surface: #171d25; --ink: #e4e9ef; --muted: #98a3b2; --rule: #2a3340;
+  --blue: #7aa2ff; --live: #e0b44a; --red: #ff7d70; --green: #4fc98d; --grey: #7c8794; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 56px; display: grid; gap: 28px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4.4vw, 46px); line-height: 1.05; letter-spacing: -.015em; margin: 6px 0 10px; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; margin: 0; }
+.lede { max-width: 68ch; margin: 0; color: var(--ink); }
+.lede em { font-style: italic; }
+header { display: grid; gap: 4px; border-bottom: 1px solid var(--rule); padding-bottom: 20px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 310px) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 880px) { .main { grid-template-columns: minmax(0, 1fr); } }
+
+.controls { display: grid; gap: 22px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 880px) { .controls { position: static; } }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 16px; }
+legend { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px; }
+.ctl { display: grid; gap: 4px; }
+.ctl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.ctl label { font-family: var(--display); font-weight: 700; font-size: 15px; }
+.ctl label i { font-family: var(--body); font-weight: 400; }
+.ctl output { font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; color: var(--blue); white-space: nowrap; }
+.ctl p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+input[type="range"] { width: 100%; accent-color: var(--blue); margin: 2px 0; }
+input:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+.buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+button { font-family: var(--display); font-weight: 600; font-size: 13px; padding: 7px 12px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
+button:hover { border-color: var(--blue); }
+button.primary { border-color: var(--ink); }
+
+.results { display: grid; gap: 26px; min-width: 0; }
+.verdict { display: grid; gap: 6px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.verdict .big { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.1; text-wrap: balance; }
+.verdict .big .win { color: var(--green); }
+.verdict .sub { margin: 0; max-width: 70ch; }
+.chip { display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.chip.good { color: var(--green); } .chip.bad { color: var(--red); } .chip.neutral { color: var(--muted); }
+
+.plates { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; max-width: 760px; }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 14px 10px; display: grid; gap: 8px; min-width: 0; }
+figcaption { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+svg { width: 100%; height: auto; display: block; max-width: 100%; }
+svg text { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+svg .lab { font-family: var(--display); font-weight: 700; font-size: 13px; fill: var(--ink); }
+
+.readouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 0 28px; margin: 0; }
+.readouts div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.readouts dt { color: var(--muted); font-size: 14px; flex: 0 0 auto; }
+.readouts dd { margin: 0; font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; }
+
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 760px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.prov { font-size: 14px; color: var(--muted); max-width: 90ch; display: grid; gap: 8px; }
+.prov p { margin: 0; }
+.math { font-family: var(--mono); font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+section.below { display: grid; gap: 14px; }
+@media (prefers-reduced-motion: no-preference) { svg .pt { transition: cx .15s, cy .15s; } }
+</style>
+<style>
+details { border-top: 1px solid var(--rule); padding-top: 12px; }
+summary { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); cursor: pointer; }
+details[open] summary { margin-bottom: 14px; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; color: var(--muted); }
+.key b { font-family: var(--mono); color: var(--ink); }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">EOI · Aula 1 · Companion 2 of 3 · Milgrom &amp; Roberts (1992), Ch. 1, pp. 4–6, 17; Ch. 4, pp. 108–113</p>
+    <h1>The Valley Between Systems</h1>
+    <p class="lede">Toyota's practices pay as a package. Start from Ford's corner, where none of them is in place, and try adopting them one at a time: each step changes profit by its own stand-alone value plus its interactions with what is already there. Set those numbers and see whether any order climbs to the full system without losing money on the way.</p>
+  </header>
+
+  <div class="main">
+    <form class="controls" id="controls" autocomplete="off">
+      <fieldset>
+        <legend>Each practice alone</legend>
+        <div class="ctl">
+          <div class="ctl-head"><label for="vJ">Just-in-time <i>J</i></label><output id="vJ-out" for="vJ"></output></div>
+          <input type="range" id="vJ" min="-8" max="4" step="1" value="-4">
+          <p>Profit change from removing buffer stocks while machines and suppliers stay as they are.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="vT">Multi-skilled teams <i>T</i></label><output id="vT-out" for="vT"></output></div>
+          <input type="range" id="vT" min="-8" max="4" step="1" value="-2">
+          <p>Profit change from operators who stop the line and repair machines, with buffers still in place.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="vS">Long-term suppliers <i>S</i></label><output id="vS-out" for="vS"></output></div>
+          <input type="range" id="vS" min="-8" max="4" step="1" value="-1">
+          <p>Profit change from few close suppliers instead of price competition among many.</p>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>How they interact</legend>
+        <div class="ctl">
+          <div class="ctl-head"><label for="iJT">Just-in-time × teams</label><output id="iJT-out" for="iJT"></output></div>
+          <input type="range" id="iJT" min="-4" max="8" step="1" value="4">
+          <p>Extra profit when both are in place. Without buffers, breakdowns must be fixed at once.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="iJS">Just-in-time × suppliers</label><output id="iJS-out" for="iJS"></output></div>
+          <input type="range" id="iJS" min="-4" max="8" step="1" value="5">
+          <p>Extra profit when both are in place. Without stocks, parts must arrive on time and fit.</p>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="iTS">Teams × suppliers</label><output id="iTS-out" for="iTS"></output></div>
+          <input type="range" id="iTS" min="-4" max="8" step="1" value="2">
+          <p>Extra profit when both are in place. Shared problem solving runs through the supply chain.</p>
+        </div>
+        <details id="adv">
+          <summary>Three-way term</summary>
+          <div class="ctl">
+            <div class="ctl-head"><label for="iJTS">All three together</label><output id="iJTS-out" for="iJTS"></output></div>
+            <input type="range" id="iJTS" min="-6" max="6" step="1" value="2">
+            <p>Profit that appears only when all three are in place, beyond the three pairs.</p>
+          </div>
+        </details>
+      </fieldset>
+      <div class="buttons">
+        <button type="button" class="primary" id="reset">Reset to defaults</button>
+        <button type="button" data-preset="additive">No interactions</button>
+        <button type="button" data-preset="mild">No stand-alone losses</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <div class="verdict" aria-live="polite">
+        <p class="eyebrow">The answer</p>
+        <div class="big" id="verdict"></div>
+        <p class="sub" id="verdict-sub"></p>
+      </div>
+
+      <div class="plates">
+        <figure>
+          <h2>Plate 1 · The cube</h2>
+          <svg id="cube" viewBox="0 0 560 420" role="img" aria-label="A cube whose eight corners are the eight combinations of the three practices, each labelled with its profit; the best one-at-a-time path is highlighted"></svg>
+          <div class="key"><span><b>J</b> just-in-time</span><span><b>T</b> teams</span><span><b>S</b> suppliers</span><span>green: above Ford's corner · red: below</span></div>
+        </figure>
+        <figure>
+          <h2>Plate 2 · Every adoption order</h2>
+          <svg id="paths" viewBox="0 0 560 420" role="img" aria-label="Profit after each step for all six orders of adopting the three practices"></svg>
+          <figcaption>Six orders, one practice per step. The highlighted order is the one whose worst point is highest; the dashed line is Ford's corner.</figcaption>
+        </figure>
+      </div>
+
+      <dl class="readouts" id="readouts"></dl>
+    </div>
+  </div>
+
+  <section class="below">
+    <h2>The model</h2>
+    <div class="math">π(J, T, S) = 10 + v<sub>J</sub>J + v<sub>T</sub>T + v<sub>S</sub>S + i<sub>JT</sub>JT + i<sub>JS</sub>JS + i<sub>TS</sub>TS + i<sub>JTS</sub>JTS,&nbsp;&nbsp; J, T, S ∈ {0, 1}</div>
+    <div class="math">Increasing differences in (J, T) at every S: i<sub>JT</sub> ≥ 0 and i<sub>JT</sub> + i<sub>JTS</sub> ≥ 0 (likewise for the other pairs) ⇔ π is supermodular on {0,1}³</div>
+
+    <h2>Controls</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>What visibly moves</th></tr></thead>
+        <tbody>
+          <tr><td>Just-in-time alone</td><td>v<sub>J</sub></td><td>stand-alone value of J</td><td class="num">−8 – 4</td><td class="num">1</td><td class="num">−4</td><td>profit</td><td>every corner with J = 1; the first steps of two orders</td></tr>
+          <tr><td>Teams alone</td><td>v<sub>T</sub></td><td>stand-alone value of T</td><td class="num">−8 – 4</td><td class="num">1</td><td class="num">−2</td><td>profit</td><td>every corner with T = 1</td></tr>
+          <tr><td>Suppliers alone</td><td>v<sub>S</sub></td><td>stand-alone value of S</td><td class="num">−8 – 4</td><td class="num">1</td><td class="num">−1</td><td>profit</td><td>every corner with S = 1</td></tr>
+          <tr><td>J × T</td><td>i<sub>JT</sub></td><td>pairwise interaction</td><td class="num">−4 – 8</td><td class="num">1</td><td class="num">4</td><td>profit</td><td>corners 110, 111; supermodularity</td></tr>
+          <tr><td>J × S</td><td>i<sub>JS</sub></td><td>pairwise interaction</td><td class="num">−4 – 8</td><td class="num">1</td><td class="num">5</td><td>profit</td><td>corners 101, 111; supermodularity</td></tr>
+          <tr><td>T × S</td><td>i<sub>TS</sub></td><td>pairwise interaction</td><td class="num">−4 – 8</td><td class="num">1</td><td class="num">2</td><td>profit</td><td>corners 011, 111; supermodularity</td></tr>
+          <tr><td>J × T × S</td><td>i<sub>JTS</sub></td><td>three-way interaction (collapsed group)</td><td class="num">−6 – 6</td><td class="num">1</td><td class="num">2</td><td>profit</td><td>corner 111 only; supermodularity</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prov">
+      <p><b>Source.</b> The three practices and how each depends on the others are Milgrom &amp; Roberts (1992), Ch. 1, pp. 4–6 (just-in-time without buffer inventories, operators who repair their own machines, close long-term suppliers) and p. 17 ("If low inventories were to be achieved, the rest of the organization had to emphasize reliability, quick response to machine breakdowns, quick and close communications with suppliers"). The definition of complementarity is Ch. 4, p. 108 and footnote 8; strong complementarity and the cost of failing to fit, p. 109; why gradual adjustment does not find the better system, pp. 112–113. The formal source of the cube is Milgrom &amp; Roberts (1990), "The Economics of Modern Manufacturing", <i>AER</i> 80(3), 511–528.</p>
+      <p><b>Numbers.</b> The defaults are the class 1 video's stylized cube (<code>Videos/aula-01-does-organization-matter/plan.md</code>, checked by its <code>check_numbers.py</code>): corners 10, 6, 8, 9, 8, 10, 9, 16. Illustrative, not data. Ford's corner is fixed at 10.</p>
+      <p>Part of the class 1 notes, <code>Aula/aula-01-notes.md</code>. Checks: <code>Aula/aula-01-companions/check_companions.py</code>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+// MODEL:BEGIN  (pure functions; extracted and checked against check_companions.py)
+const BASE = 10;
+const VERTS = [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[1,1,1]];
+const ORDERS = [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
+const LETTERS = ["J", "T", "S"];
+function payoff(v, p) {
+  const [J, T, S] = v;
+  return BASE + p.vJ * J + p.vT * T + p.vS * S + p.iJT * J * T + p.iJS * J * S + p.iTS * T * S + p.iJTS * J * T * S;
+}
+function report(p) {
+  const pay = {};
+  for (const v of VERTS) pay[v.join("")] = payoff(v, p);
+  const paths = ORDERS.map((o) => {
+    const v = [0, 0, 0], seq = [pay["000"]];
+    for (const i of o) { v[i] = 1; seq.push(pay[v.join("")]); }
+    return { order: o.map((i) => LETTERS[i]).join("→"), seq, worst: Math.min(...seq.slice(1)) };
+  });
+  let best = paths[0];
+  for (const q of paths) if (q.worst > best.worst) best = q;
+  const fails = [];
+  if (p.iJT < 0 || p.iJT + p.iJTS < 0) fails.push("J×T");
+  if (p.iJS < 0 || p.iJS + p.iJTS < 0) fails.push("J×S");
+  if (p.iTS < 0 || p.iTS + p.iJTS < 0) fails.push("T×S");
+  const nb = (key) => [0, 1, 2].map((i) => { const v = key.split("").map(Number); v[i] = 1 - v[i]; return pay[v.join("")]; });
+  const firstSteps = nb("000");
+  let top = "000";
+  for (const k in pay) if (pay[k] > pay[top]) top = k;
+  return {
+    pay, paths, best, fails,
+    gain: pay["111"] - pay["000"],
+    bestFirst: Math.max(...firstSteps) - pay["000"],
+    fordLocal: firstSteps.every((x) => x < pay["000"]),
+    fullLocal: nb("111").every((x) => x < pay["111"]),
+    top,
+  };
+}
+// MODEL:END
+
+const DEFAULTS = { vJ: -4, vT: -2, vS: -1, iJT: 4, iJS: 5, iTS: 2, iJTS: 2 };
+const PRESETS = {
+  additive: { iJT: 0, iJS: 0, iTS: 0, iJTS: 0 },
+  mild: { vJ: 0, vT: 0, vS: 0 },
+};
+const ids = Object.keys(DEFAULTS);
+const $ = (id) => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const minus = (s) => s.replace(/^-/, "−");
+const sg = (x) => (x > 0 ? "+" : "") + minus(String(x));
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function el(parent, tag, attrs = {}, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text !== undefined) e.textContent = text;
+  parent.appendChild(e);
+  return e;
+}
+const tone = (x, ref) => x > ref ? css("--green") : x < ref ? css("--red") : css("--grey");
+
+function read() { const p = {}; for (const k of ids) p[k] = parseFloat($(k).value); return p; }
+
+function draw() {
+  const p = read();
+  for (const k of ids) $(k + "-out").textContent = sg(p[k]);
+  const r = report(p);
+  const ref = r.pay["000"];
+
+  const v = $("verdict"), vs = $("verdict-sub");
+  if (r.gain <= 0) {
+    v.innerHTML = `The full system does <span style="color:var(--red)">not</span> pay`;
+    vs.textContent = `All three practices together earn ${minus(String(r.pay["111"]))} against ${ref} at Ford's corner (${sg(r.gain)}). With these values the package is not worth adopting.`;
+  } else if (r.best.worst >= ref) {
+    v.innerHTML = `Piecemeal adoption <span class="win">works</span>: ${r.best.order}`;
+    vs.textContent = `The full system pays ${sg(r.gain)}, and adopting in the order ${r.best.order} never drops below Ford's corner. No valley to cross.`;
+  } else {
+    v.innerHTML = `The package pays ${sg(r.gain)}, yet every path dips to <span style="color:var(--red)">${minus(String(r.best.worst))}</span>`;
+    vs.textContent = `Even the best order, ${r.best.order}, loses ${ref - r.best.worst} on the way before ending at ${r.pay["111"]}. ` +
+      (r.fordLocal ? "Every single first step loses money, so a manager who tests one change at a time never leaves Ford's corner." : "Some first step gains, but the climb still passes below the start.");
+  }
+
+  const rows = [
+    ["Full system 111", `${minus(String(r.pay["111"]))}  (${sg(r.gain)})`],
+    ["Best single first step", sg(r.bestFirst)],
+    ["Ford's corner a local peak?", r.fordLocal ? "yes: every one change loses" : "no"],
+    ["Full system a local peak?", r.fullLocal ? "yes: every one change loses" : "no"],
+    ["Best of all eight corners", `${r.top}  (${minus(String(r.pay[r.top]))})`],
+    ["Supermodular?", r.fails.length ? "no: fails for " + r.fails.join(", ") : "yes: every pair complementary"],
+  ];
+  $("readouts").innerHTML = rows.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
+
+  // Plate 1: the cube in oblique projection
+  const s1 = $("cube"); s1.innerHTML = "";
+  const P = (v) => [120 + v[0] * 250 + v[2] * 120, 345 - v[1] * 200 - v[2] * 95];
+  const key = (v) => v.join("");
+  const onBest = new Set();
+  { const vv = [0, 0, 0]; let prev = key(vv);
+    for (const ch of r.best.order.split("→")) { vv[LETTERS.indexOf(ch)] = 1; const k = key(vv); onBest.add(prev + ">" + k); prev = k; } }
+  for (const a of VERTS) for (let i = 0; i < 3; i++) {
+    if (a[i] === 1) continue;
+    const b = a.slice(); b[i] = 1;
+    const [x1, y1] = P(a), [x2, y2] = P(b);
+    const hot = onBest.has(key(a) + ">" + key(b));
+    el(s1, "line", { x1, y1, x2, y2, stroke: hot ? tone(r.pay[key(b)], ref) : css("--rule"), "stroke-width": hot ? 4 : 1.5, "stroke-linecap": "round" });
+  }
+  for (const vtx of VERTS) {
+    const [x, y] = P(vtx), k = key(vtx), val = r.pay[k];
+    const isEnd = k === "000" || k === "111";
+    el(s1, "circle", { cx: x, cy: y, r: isEnd ? 24 : 20, fill: css("--surface"), stroke: k === "000" ? css("--ink") : tone(val, ref), "stroke-width": isEnd ? 3 : 2 });
+    el(s1, "text", { x, y: y + 5, "text-anchor": "middle", class: "lab", style: `font-size:${isEnd ? 15 : 13}px;fill:${k === "000" ? css("--ink") : tone(val, ref)}` }, minus(String(val)));
+    const name = k === "000" ? "000 Ford" : k === "111" ? "111 Toyota" : k;
+    el(s1, "text", { x, y: y + (vtx[1] ? -32 : 40), "text-anchor": "middle" }, name);
+  }
+
+  // Plate 2: the six orders
+  const s2 = $("paths"); s2.innerHTML = "";
+  const L = 58, R = 470, T = 22, B = 368;
+  const all = r.paths.flatMap((q) => q.seq);
+  let lo = Math.min(...all), hi = Math.max(...all);
+  if (hi - lo < 4) { lo -= 2; hi += 2; }
+  lo -= 1; hi += 1;
+  const xs = (i) => L + i * (R - L) / 3, ys = (x) => B - (x - lo) / (hi - lo) * (B - T);
+  const step = (hi - lo) > 24 ? 5 : (hi - lo) > 10 ? 2 : 1;
+  for (let t = Math.ceil(lo / step) * step; t <= hi; t += step) {
+    el(s2, "line", { x1: L, x2: R, y1: ys(t), y2: ys(t), stroke: css("--rule"), "stroke-width": 0.6 });
+    el(s2, "text", { x: L - 8, y: ys(t) + 4, "text-anchor": "end" }, minus(String(t)));
+  }
+  ["start", "1st", "2nd", "3rd"].forEach((t, i) => el(s2, "text", { x: xs(i), y: B + 18, "text-anchor": "middle" }, t));
+  el(s2, "text", { x: (L + R) / 2, y: B + 42, "text-anchor": "middle" }, "practices adopted, one per step");
+  el(s2, "text", { x: 14, y: (T + B) / 2, "text-anchor": "middle", transform: `rotate(-90 14 ${(T + B) / 2})` }, "profit");
+  el(s2, "line", { x1: L, x2: R, y1: ys(ref), y2: ys(ref), stroke: css("--grey"), "stroke-dasharray": "6 4" });
+  el(s2, "text", { x: R + 6, y: ys(ref) + 4 }, "Ford " + ref);
+  for (const q of r.paths) {
+    if (q === r.best) continue;
+    el(s2, "polyline", { points: q.seq.map((x, i) => `${xs(i)},${ys(x)}`).join(" "), fill: "none", stroke: css("--grey"), "stroke-width": 1.4, opacity: 0.7 });
+  }
+  el(s2, "polyline", { points: r.best.seq.map((x, i) => `${xs(i)},${ys(x)}`).join(" "), fill: "none", stroke: css("--blue"), "stroke-width": 3 });
+  r.best.seq.forEach((x, i) => el(s2, "circle", { cx: xs(i), cy: ys(x), r: 4.5, fill: i === 0 ? css("--ink") : tone(x, ref), stroke: css("--surface"), "stroke-width": 1.5 }));
+  el(s2, "text", { class: "lab", x: R + 6, y: ys(r.best.seq[3]) - 8, style: `fill:${css("--blue")}` }, r.best.order);
+  const wi = r.best.seq.indexOf(r.best.worst, 1);
+  if (r.best.worst < ref) el(s2, "text", { class: "lab", x: xs(wi), y: ys(r.best.worst) + 22, "text-anchor": "middle", style: `fill:${css("--red")}` }, "valley " + minus(String(r.best.worst)));
+}
+
+for (const k of ids) $(k).addEventListener("input", draw);
+$("reset").addEventListener("click", () => { for (const k of ids) $(k).value = DEFAULTS[k]; draw(); });
+document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => {
+  for (const k of ids) $(k).value = DEFAULTS[k];
+  for (const [k, v] of Object.entries(PRESETS[b.dataset.preset])) $(k).value = v;
+  if ("iJTS" in PRESETS[b.dataset.preset]) $("adv").open = true;
+  draw();
+}));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+draw();
+</script>
