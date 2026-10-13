@@ -1,5 +1,5 @@
 {
-  "_comment": "Page mapping for each book PDF. Used by /study-pack to convert printed page numbers to PDF page indices. Formula: pdf_page = (printed_page + offset) // scale. Verified offsets should not be re-detected. MWG entries carried over from Microeconomia 01-MPE (byte-identical PDFs).",
+  "_comment": "Page mapping for each book PDF. Used by /study-pack to convert printed page numbers to PDF page indices. Formula: pdf_index = (printed_page + offset) // scale, where pdf_index is 0-based (PyMuPDF); the 1-based page a PDF viewer shows is pdf_index + 1, so notes saying 'printed p.1 -> PDF 13' mean offset 11. Offsets were re-based from 1-based to 0-based on 2026-10-13 (all entries except MWG, which was already 0-based) after the Aulas 1-2 study pack came out one page late; checked against page headers. Verified offsets should not be re-detected. MWG entries carried over from Microeconomia 01-MPE (byte-identical PDFs).",
   "MWG": {
     "file": "Andreu Mas-Colell, Michael D. Whinston, Jerry R. Green - Microeconomic Theory (1995, Oxford University Press, USA) - libgen.li.pdf",
     "offset": 20,
@@ -26,7 +26,7 @@
   },
   "Varian Calc": {
     "file": "[First edition] Hal R. VArian - Intermediate Microeconomics with Calculus Hal (2014, W. W. Norton & Company) - libgen.li.pdf",
-    "offset": 25,
+    "offset": 24,
     "scale": 1,
     "total_pdf_pages": 827,
     "verified": true,
@@ -34,7 +34,7 @@
   },
   "Cabral": {
     "file": "Luis M. B. Cabral - Introduction to Industrial Organization, second edition (2017, MIT Press) - libgen.li.pdf",
-    "offset": 12,
+    "offset": 11,
     "scale": 1,
     "total_pdf_pages": 442,
     "verified": true,
@@ -42,7 +42,7 @@
   },
   "Giambiagi Ch. 1": {
     "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
-    "offset": 25,
+    "offset": 24,
     "scale": 1,
     "total_pdf_pages": 304,
     "verified": true,
@@ -50,7 +50,7 @@
   },
   "Giambiagi Ch. 7": {
     "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
-    "offset": 20,
+    "offset": 19,
     "scale": 1,
     "total_pdf_pages": 304,
     "verified": true,
@@ -58,7 +58,7 @@
   },
   "Giambiagi Ch. 8": {
     "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
-    "offset": 20,
+    "offset": 19,
     "scale": 1,
     "total_pdf_pages": 304,
     "verified": true,
@@ -66,7 +66,7 @@
   },
   "Giambiagi Ch. 11": {
     "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
-    "offset": 16,
+    "offset": 15,
     "scale": 1,
     "total_pdf_pages": 304,
     "verified": true,
@@ -74,7 +74,7 @@
   },
   "Giambiagi Ch. 16": {
     "file": "Fabio Giambiagi, Marcio Garcia - Risco E Regulação (2010, Campus) - libgen.li.pdf",
-    "offset": 14,
+    "offset": 13,
     "scale": 1,
     "total_pdf_pages": 304,
     "verified": true,
@@ -82,7 +82,7 @@
   },
   "MR Ch. 1-2": {
     "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
-    "offset": 17,
+    "offset": 16,
     "scale": 1,
     "total_pdf_pages": 635,
     "verified": true,
@@ -90,7 +90,7 @@
   },
   "MR Ch. 3-6": {
     "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
-    "offset": 16,
+    "offset": 15,
     "scale": 1,
     "total_pdf_pages": 635,
     "verified": true,
@@ -98,7 +98,7 @@
   },
   "MR Ch. 7-15": {
     "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
-    "offset": 15,
+    "offset": 14,
     "scale": 1,
     "total_pdf_pages": 635,
     "verified": true,
@@ -106,7 +106,7 @@
   },
   "MR Ch. 16-17": {
     "file": "Paul Milgrom, John Roberts - Economics, Organization, and Management (1992, Prentice-Hall, Inc.) - libgen.li.pdf",
-    "offset": 14,
+    "offset": 13,
     "scale": 1,
     "total_pdf_pages": 635,
     "verified": true,

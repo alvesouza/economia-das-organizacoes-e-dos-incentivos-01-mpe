@@ -107,14 +107,18 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 
 ---
 
-## Consolidated reading by book
+## Consolidated Reading by Book
 
-### M&R — Milgrom & Roberts (1992)
+### MR Ch. 1-2 — Milgrom & Roberts (1992), Ch. 1–2
 | Topic | Chapter / Section | Pages | Priority |
 |---|---|---|---|
 | The cases: GM, Toyota, Salomon; the patterns | Ch. 1, whole chapter | p. 2–18 | Foundations |
 | Value maximization principle; Coase theorem | Ch. 2, "Wealth Effects, Value Maximization and the Coase Theorem" | p. 35–39 | Foundations |
 | FFT 2.5; Q 2.1–2.4 | Ch. 2, Exercises | p. 52–53 | Exam |
+
+### MR Ch. 3-6 — Milgrom & Roberts (1992), Ch. 4–5
+| Topic | Chapter / Section | Pages | Priority |
+|---|---|---|---|
 | Design attributes | Ch. 4, "The Variety of Coordination Problems and Solutions" | p. 90–93 | Advanced |
 | Scale, scope, core competencies; complementarities; coherent strategies | Ch. 4, "Coordination and Business Strategy" | p. 106–113 | Exam |
 | FFT 4.1–4.3, Math 4.2 | Ch. 4, Exercises | p. 119–120 | Exam |
@@ -137,7 +141,7 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | Vertical integration; investment incentives | §13.1 | p. 334–340 | Advanced |
 | Exercise 13.10 | Ch. 13, Exercises | p. 346 | Advanced |
 
-### Varian — Varian (2014, with Calculus)
+### Varian Calc — Varian (2014, with Calculus)
 | Topic | Chapter / Section | Pages | Priority |
 |---|---|---|---|
 | Pareto efficient allocations; the contract curve | §32.3 | p. 605–609 | Foundations |
@@ -152,7 +156,7 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | Finite and infinite horizon bilateral bargaining (Examples 9.AA.1–9.AA.2) | Ch. 9, Appendix A | p. 296–299 | Advanced |
 | 9.B.12, 9.B.13 | Ch. 9, Exercises | p. 302–303 | Advanced |
 
-## Consolidated exercises
+## Consolidated Exercises
 
 | # | Exercise | Book | Page | Topic | Level |
 |---|---|---|---|---|---|
