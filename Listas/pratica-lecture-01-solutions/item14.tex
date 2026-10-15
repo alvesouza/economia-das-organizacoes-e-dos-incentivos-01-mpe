@@ -1,0 +1,65 @@
+\begin{exsol}{14}{\MG{} Ch.~1, Exercise 12}{23}{Exam}{B3}
+\asked For the $3 \times 3$ game of Fig.~1.30: (a) strictly dominant strategies; (b) strictly
+dominated strategies; (c) what each player deletes under rationality alone; (d) what survives
+under common knowledge of rationality (IESDS).
+
+\method Dominance (slide~23) and the epistemic reading of IESDS (slide~28; Tadelis \S4.2.1,
+p.~65). Round~1 of IESDS uses only each player's own rationality. Round~2 uses ``each knows the
+other is rational'', and so on.
+
+\solution
+Matrix from the book (p.~23):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$B$}\\ \cline{2-4}
+$F$ & $0,\ 5$ & $2,\ 4$ & $2,\ 3$ \\ \cline{2-4}
+$C$ & $2,\ 3$ & $0,\ 5$ & $3,\ 2$ \\ \cline{2-4}
+$B$ & $5,\ 0$ & $2,\ 4$ & $2,\ 3$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{(a)} Player~1's best rows are $B$ against $F$ (5), $F$ or $B$ against $C$ (tie at 2),
+and $C$ against $B$ (3). No row is the unique best everywhere: no strictly dominant strategy.
+Player~2's best columns are $F$ in row $F$ (5), $C$ in row $C$ (5), $C$ in row $B$ (4): none is
+best everywhere. Neither player has a strictly dominant strategy.
+
+\textbf{(b)} Player~1: $F = (0, 2, 2)$, $C = (2, 0, 3)$, $B = (5, 2, 2)$ over columns
+$(F, C, B)$. $B$ and $C$ are the unique best replies to columns $F$ and $B$, so they are not
+dominated; $F$ ties with $B$ against columns $C$ and $B$ and beats $C$ against column $C$, so it
+is not strictly dominated either (it is weakly dominated by $B$). No row is strictly dominated. Player~2:
+$F = (5, 3, 0)$, $C = (4, 5, 4)$, $B = (3, 2, 3)$ over rows $(F, C, B)$. $B$ is strictly dominated
+by $C$: $3 < 4$, $2 < 5$, $3 < 4$. $F$ and $C$ are not dominated (each is the best reply to some
+row). The only strictly dominated strategy is player~2's $B$.
+
+\textbf{(c) Rationality, no common knowledge.} Each player deletes his own strictly dominated
+strategies but does not use the fact that the other does the same. Player~2 drops $B$;
+player~1 has nothing to drop and still evaluates his rows against all three columns:
+\[
+  \{F, C, B\} \times \{F, C\} = \{(F,F), (F,C), (C,F), (C,C), (B,F), (B,C)\}.
+\]
+
+\textbf{(d) Common knowledge of rationality.} Player~1 knows player~2 is rational, so he compares
+rows on columns $\{F, C\}$ only: $F = (0, 2)$, $C = (2, 0)$, $B = (5, 2)$. Now $C$ is strictly
+dominated by $B$ ($2 < 5$, $0 < 2$); $F$ is only weakly dominated by $B$ (tie against $C$).
+Round~3: player~2 compares $F = (5, 0)$ and $C = (4, 4)$ on rows $(F, B)$; neither dominates.
+Player~1 compares $F = (0, 2)$ and $B = (5, 2)$; only weak. Stop:
+\[
+  S^\infty = \{F, B\} \times \{F, C\} = \{(F,F), (F,C), (B,F), (B,C)\}.
+\]
+
+\interp Rationality alone removes only strategies that are bad against \emph{everything}.
+Player~1's $C$ is a good reply to $B$, so it can only be discarded by someone who knows that
+player~2 will not play $B$, that is, by someone who uses player~2's rationality. Each extra layer
+of ``I know that you know'' can remove more strategies; here two layers suffice.
+
+\verify \texttt{check\_A.py} checks the dominance statements in (a)--(b), that IESDS removes $B$
+for player~2 in round~1 and $C$ for player~1 in round~2, and that $F$ is only weakly dominated
+by $B$ in the final game. The book's answer (pp.~23--26) agrees with (a)--(d). Its text for (b)
+and (d) describes the comparisons loosely (for example, it says player~1 deletes $C$ because his
+payoff ``is higher from $B$ \dots when player 2 plays $F$''), but the deletions and the final
+sets are the same as ours.
+
+\answer{(a) None. (b) Only player~2's $B$ (strictly dominated by $C$). (c) Rationality alone:
+$\{F, C, B\} \times \{F, C\}$, six profiles. (d) With common knowledge, player~1 then drops $C$
+(dominated by $B$ on $\{F, C\}$): $S^\infty = \{F, B\} \times \{F, C\}$, four profiles.}
+\end{exsol}

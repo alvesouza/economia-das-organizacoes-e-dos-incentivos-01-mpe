@@ -1,0 +1,71 @@
+\begin{exsol}{15}{Tadelis Exercise 4.6}{77}{Exam}{B3}
+\asked Two roommates choose cleaning times $t_i \ge 0$ with payoff
+$u_i = (10 - t_j)\,t_i - t_i^2$. Find (a) the best-response correspondence, (b) the choices that
+survive one round of IESDS, and (c) those that survive IESDS.
+
+\method IESDS with continuous strategies by bounding best replies, exactly as in Tadelis's
+Cournot example (\S4.2.2, pp.~65--67, Fig.~4.1). Tool: for a payoff that is a concave parabola
+in own action, an action outside the range of possible best replies is strictly dominated by the
+nearest end of that range.
+
+\solution
+\textbf{(a) Best response.} $u_i$ is strictly concave in $t_i$ ($\partial^2 u_i/\partial t_i^2 = -2$).
+The first-order condition $10 - t_j - 2t_i = 0$ and the constraint $t_i \ge 0$ give the unique
+best reply
+\[
+  BR_i(t_j) = \max\Big\{0,\ \frac{10 - t_j}{2}\Big\} = \max\Big\{0,\ 5 - \frac{t_j}{2}\Big\}.
+\]
+It is a function (single-valued) and decreasing in $t_j$: cleaning is a strategic substitute.
+
+\textbf{Dominance lemma.} Write $x = (10 - t_j)/2$, so $u_i(t, t_j) = t(2x - t)$. For any two
+times $a, t$,
+\[
+  u_i(a, t_j) - u_i(t, t_j) = (t - a)\,(t + a - 2x). \tag{1}
+\]
+If $t > a \ge x$ the right side is positive; if $t < a \le x$ it is positive too. So if every
+possible $x$ (given the opponent's surviving set) lies in $[\underline{a}, \bar a]$, then every
+$t > \bar a$ is strictly dominated by $\bar a$ and every $t < \underline{a}$ by $\underline{a}$.
+Conversely, a $t$ that is the unique best reply to some surviving $t_j$ is not strictly
+dominated.
+
+\textbf{(b) One round.} With $t_j \in [0, \infty)$, the best reply ranges over $[0, 5]$
+($BR = 5$ at $t_j = 0$, $BR = 0$ for $t_j \ge 10$). By (1) with $\bar a = 5$, every $t_i > 5$
+is strictly dominated by $t_i = 5$. Every $t_i \in [0,5]$ is the best reply to
+$t_j = 10 - 2t_i \in [0, 10]$, so it survives. Hence $S_i^1 = [0, 5]$.
+
+\textbf{(c) Iterating.} If $S_j^k = [L_k, U_k]$, the surviving best replies form
+$[BR(U_k), BR(L_k)]$, so
+\[
+  L_{k+1} = 5 - \tfrac{U_k}{2}, \qquad U_{k+1} = 5 - \tfrac{L_k}{2}, \qquad (L_1, U_1) = (0, 5).
+\]
+\begin{center}
+\begin{tabular}{c|cccccc}
+$k$ & 1 & 2 & 3 & 4 & 5 & $\infty$ \\ \hline
+$S_i^k$ & $[0, 5]$ & $[2.5, 5]$ & $[2.5, 3.75]$ & $[3.125, 3.75]$ & $[3.125, 3.4375]$ & $\{10/3\}$
+\end{tabular}
+\end{center}
+The width halves each round: $U_{k+1} - L_{k+1} = \tfrac12 (U_k - L_k)$, so
+$U_k - L_k = 5/2^{k-1} \to 0$. The midpoint $M_k$ satisfies $M_{k+1} = 5 - M_k/2$, whose fixed
+point is $10/3$, and
+\[
+  M_k - \tfrac{10}{3} = \big(-\tfrac12\big)^{k-1}\big(M_1 - \tfrac{10}{3}\big)
+  = \big(-\tfrac12\big)^{k-1}\big(-\tfrac56\big) \to 0 .
+\]
+Therefore $S_i^\infty = \bigcap_k S_i^k = \{10/3\}$ for both roommates: IESDS predicts the
+unique profile $t_1 = t_2 = 10/3$, the point where $t = 5 - t/2$.
+
+\interp Each round uses one more layer of knowledge: round~1, ``I am rational'' (never clean more
+than 5 hours); round~2, ``I know you are rational'' (you clean at most 5, so I clean at least
+2.5); and so on. Each player gets $u_i = (10 - 10/3)(10/3) - (10/3)^2 = 100/9$. Both cleaning
+$t = 2.5$ would give $(7.5)(2.5) - 6.25 = 12.5 > 100/9$: the IESDS outcome over-cleans relative to
+the joint optimum. Each roommate ignores that his cleaning lowers the value of the other's.
+
+\verify \texttt{check\_B.py} checks the best reply and the factorization (1) with sympy, runs the
+interval recursion for 40 rounds in exact arithmetic (width $5/2^{k-1}$ and the midpoint formula
+at every round), and, as a second route, runs brute-force IESDS on the grid
+$\{0, \tfrac16, \dots, 10\}$, which leaves exactly $t_1 = t_2 = 10/3$.
+
+\answer{(a) $BR_i(t_j) = \max\{0, (10 - t_j)/2\}$. (b) $S_i^1 = [0, 5]$: any $t_i > 5$ is
+strictly dominated by $5$. (c) Rounds give $[2.5, 5]$, $[2.5, 3.75]$, $[3.125, 3.75]$, \dots,
+with widths $5/2^{k-1}$; only $t_1 = t_2 = 10/3$ survives IESDS.}
+\end{exsol}

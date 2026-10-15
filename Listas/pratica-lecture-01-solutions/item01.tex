@@ -1,0 +1,49 @@
+\begin{exsol}{1}{Tadelis Exercise 3.2}{58}{Foundations}{B1}
+\asked Model the penalty-kick story (kicker against goalie, both choosing a side at the same
+time) as a normal-form game and write its payoff matrix.
+
+\method A normal-form game needs three objects: players, strategy sets and payoff functions
+(Tadelis Def.~3.3, p.~47; Lecture~1, slides~13--14). Moves are simultaneous, so a strategy is
+just an action (slide~17). The story only says who wins; payoffs must represent the players'
+preferences over outcomes (slide~18), so any numbers with ``win $>$ lose'' do.
+
+\solution
+\begin{itemize}
+  \item Players: $I = \{K, G\}$ (kicker, goalie).
+  \item Strategies: $S_K = S_G = \{L, R\}$, the side of the goal the ball is kicked to or the
+  goalie jumps to. ``Same direction'' means the same side of the goal, so both players' $L$
+  refer to the same post.
+  \item Payoffs: winning is worth $1$ and losing $-1$:
+  \[
+    u_K(s_K, s_G) = \begin{cases} -1 & s_K = s_G,\\ \phantom{-}1 & s_K \ne s_G,\end{cases}
+    \qquad u_G(s_K, s_G) = -u_K(s_K, s_G).
+  \]
+\end{itemize}
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{Kicker $\backslash$ Goalie} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$L$ & $-1,\ 1$ & $\phantom{-}1,\ -1$ \\ \cline{2-3}
+$R$ & $\phantom{-}1,\ -1$ & $-1,\ 1$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Payoffs sum to zero in every cell: the game is \emph{zero-sum} (one player's gain is the other's
+loss). With win $=1$, lose $=0$ it is constant-sum, which is strategically the same game.
+
+\textbf{Dominance (preview of the lecture's tools).} For the kicker, $L$ is better against $R$
+and worse against $L$; the same holds for $R$, and symmetrically for the goalie. No strategy is
+strictly or weakly dominated, so IESDS removes nothing: $S_i^\infty = \{L, R\}$ for both. Nor is
+there a pure profile from which neither player wants to deviate: the loser of each cell always
+wants to switch. This is the structure of Matching Pennies (Tadelis 3.5); its solution needs
+mixed strategies (Lecture~2).
+
+\interp The point of the exercise is the modelling step: identify who moves, what each can
+choose without seeing the other's choice, and rank outcomes. Here pure conflict makes
+predictability fatal, which is why real kickers and goalies randomize.
+
+\verify \texttt{check\_A.py} builds the matrix from the rule ``goalie wins iff same side'',
+confirms it is zero-sum, that IESDS deletes nothing and that no pure profile is stable.
+
+\answer{$G = (\{K, G\}, \{S_K = S_G = \{L, R\}\}, \{u_K, u_G\})$ with $u_K = -1$, $u_G = 1$ if the
+sides match and $u_K = 1$, $u_G = -1$ otherwise (matrix above). Zero-sum; no dominated strategy,
+so IESDS has no bite.}
+\end{exsol}

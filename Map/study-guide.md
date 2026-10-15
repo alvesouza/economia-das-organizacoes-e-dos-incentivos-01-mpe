@@ -1,168 +1,136 @@
 ---
 tags: [map, cross-reference]
-date: 2026-10-09
+date: 2026-10-13
 ---
 
 # Class plan and study guide
 
-**Draft** built from the syllabus (30 h ≈ 16 sessions of 1 h 50), **re-anchored in Milgrom &
-Roberts (1992) on 2026-10-09** now that the book is in `Livros/`. The order follows the
-*Conteúdo Programático* line by line; the three heaviest theory items keep two sessions each
-(bargaining, adverse selection, managing moral hazard). Replace with the real schedule when
-slides arrive, then re-run `/study-map`. **Read M&R before class** (the pages listed are the
-session's core), Varian/Cabral for intuition, MWG after class for the formal side. Page details:
-[[Map/books-index|books-index]]; exercise details: [[Map/exercises-index|exercises-index]].
+**Real schedule**, from the first lecture's slides (`Aula/Lecture01.pdf`, 2026-10-13):
+instructor Isabela Brandão Furtado, MPE 4th term 2026, **10 lectures** (8 content lectures,
+paper presentations, final exam), Tuesdays except Lecture 5 (Friday). The course is **game
+theory** applied to organizations and incentives, and its slides follow **Tadelis (2013)**.
+This replaces the 16-session draft built from the 2024/34 syllabus record (kept at the end).
+Estimate vs. reality: `.agent/notes/roadmap-reality.md`.
 
-**What the book changed (2026-10-09).** The 16-session skeleton holds: M&R splits the same
-material the same way. Four anchors moved. (1) Aula 1 now reads Ch. 1 whole *and* Ch. 4's
-complementarities section (pp. 106–113): the book's own argument for why Ford, GM and Toyota
-are three coherent systems. (2) Bargaining II is M&R's bargaining with private information
-(Ch. 5, pp. 140–149); the alternating-offers model (MWG 9.AA) becomes the formal supplement.
-(3) NEPKE pairs with M&R's matching case, the market for medical interns (Ch. 2, pp. 43–48).
-(4) Sears pairs with transfer pricing in multidivisional firms (Ch. 3, pp. 78–85) and influence
-costs (Ch. 6, pp. 192–194). Controlling moral hazard (Ch. 6, pp. 185–191) moves into Aula 13 and
-Aulas 15–16 follow Ch. 7 in the book's order.
+**Assessment.** In-class exercises 10% (in pairs, handed in the same day) · short paper in
+groups 35% (content 15%, presentation and Q&A in Lecture 9 15%, comments on another group's
+paper 5%; motivation, brief literature review, research question and an economic model;
+partial-submission dates to be agreed in class) · final exam, individual, Lecture 10: 55%.
 
-| Aula | Block | Session | M&R (printed pp.) | Topic |
-|---|---|---|---|---|
-| 1 | I | Does organization matter? Ford × GM × Toyota | Ch. 1 (2–18); Ch. 4 (106–113) | [[rules/01_organizacoes_importam\|01]] |
-| 2 | I | Bargaining I: value maximization and the Coase theorem | Ch. 2 (35–39) | [[rules/02_barganha\|02]] |
-| 3 | I | Bargaining II: private information, bargaining costs, bargaining position | Ch. 5 (140–149) | [[rules/02_barganha\|02]] |
-| 4 | I | Efficiency and economic organization | Ch. 2 (19–34, 39–42) | [[rules/03_eficiencia_organizacao\|03]] |
-| 5 | I | Application: NEPKE kidney exchange | Ch. 2 (43–48) | [[rules/03_eficiencia_organizacao\|03]] |
-| 6 | II | Coordination through the market | Ch. 3 (56–78) | [[rules/04_coordenacao_mercado\|04]] |
-| 7 | II | Coordination through management | Ch. 4 (88–105, 113–118) | [[rules/05_coordenacao_management\|05]] |
-| 8 | II | Application: Eddie Lampert at Sears | Ch. 3 (78–85); Ch. 6 (192–194) | [[rules/05_coordenacao_management\|05]] |
-| 9 | III | Bounded rationality, information and contracts | Ch. 5 (126–140) | [[rules/06_racionalidade_limitada_contratos\|06]] |
-| 10 | III | Adverse selection | Ch. 5 (149–154) | [[rules/07_selecao_adversa\|07]] |
-| 11 | III | Controlling adverse selection: screening and self-selection | Ch. 5 (156–162) | [[rules/07_selecao_adversa\|07]] |
-| 12 | III | Application: signaling in the labour market | Ch. 5 (154–156) | [[rules/07_selecao_adversa\|07]] |
-| 13 | IV | Moral hazard and its control | Ch. 6 (166–170, 176–191) | [[rules/08_risco_moral\|08]] |
-| 14 | IV | Application: the 1980s US savings-and-loan crisis | Ch. 6 (170–176) | [[rules/08_risco_moral\|08]] |
-| 15 | IV | Managing moral hazard I: risk sharing and the incentive-pay model | Ch. 7 (206–221) | [[rules/09_gestao_risco_moral\|09]] |
-| 16 | IV | Managing moral hazard II: the incentive principles + course synthesis | Ch. 7 (221–242) | [[rules/09_gestao_risco_moral\|09]] |
+**How to read.** Tadelis before class (the slides use its definitions, notation and
+examples); Gibbons for a second, more applied pass; MWG after class for the formal side;
+Muñoz-Garcia & Toro-Gonzalez for drill with worked answers; Milgrom & Roberts and Cabral for
+the organizational and IO applications. Pages are printed pages, verified on 2026-10-13
+([[Map/books-index|books-index]]; offsets in `Livros/book-registry.json`).
+
+| L | Date | Session | Tadelis (2013) | Gibbons (1992) | Project material |
+|---|---|---|---|---|---|
+| 1 | Tue Oct 13 | Static games I: dominance, iterated elimination | Ch. 3 (43–58); §4.1–4.2 (59–69) | §1.1.A–B (2–7) | `Listas/pratica-lecture-01.md`, `Listas/lista-lecture-01.tex`, 3 quizzes |
+| 2 | Tue Oct 20 | Static games II: Nash equilibrium, mixed strategies | §4.3 (69–76); Ch. 5 (79–100); Ch. 6 (101–126) | §1.1.C, §1.2, §1.3 (8–48) | — |
+| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | — |
+| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) |
+| 5 | **Fri Nov 6** | Repeated games I: cooperation | §10.1–10.3 (190–201); §10.6 (209) | §2.3.A–B (82–102) | — |
+| 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | — |
+| 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] |
+| 8 | Tue Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | [[rules/07_selecao_adversa\|Topic 7]] |
+| 9 | Tue Dec 1 | Short-paper presentations | — | — | — |
+| 10 | Tue Dec 8 | Final exam (55%) | — | — | — |
+
+**Tight stretch.** Lectures 4, 5 and 6 fall within eight days (Nov 3, 6, 10): read Tadelis
+Ch. 10 before Nov 3.
 
 ---
 
-## Block I — Organization, bargaining and efficiency (M&R Ch. 1–2, with Ch. 4 §§ and Ch. 5 §§)
+## Static games of complete information
 
-### Aula 1 — Does organization matter? Ford × GM × Toyota
-#aula/1
-- **Syllabus:** *Aplicação: As organizações importam? Ford x GM x Toyota*
-- **Content:** Ford's one-product, high-volume system vs. Sloan's segmented strategy and the multidivisional form; Toyota's just-in-time system and everything it requires; the supporting cases (Hudson's Bay vs. North West Company, Salomon Brothers, central planning and the ratchet effect); the two problems every organization solves, coordination and motivation; **complementarities**: definition, coherent systems, several coherent patterns and why marginal adjustment cannot find the better one.
-- **Before class:** M&R Ch. 1 (pp. 2–18) · M&R Ch. 4 "Coordination and Business Strategy" (pp. 106–113; Figure 4.3, p. 111) · Cabral §3.5 "Why are firms different?" (pp. 56–59; Toyota procurement p. 57)
-- **After class:** M&R FFT 1.1–1.3 (p. 18) · Cabral 1.1, 3.14 · notes and companions: `Aula/aula-01-notes.md`
-- **Connections:** sets up the coordination ([[#Aula 6 — Coordination through the market|Aulas 6–8]]) and motivation ([[#Aula 9 — Bounded rationality, information and contracts|Aulas 9–16]]) halves of the course; the ratchet effect returns in Aula 16 (M&R p. 232); Ch. 4 returns in full in Aula 7.
+### Lecture 1 — Static games I: dominance and iterated elimination
+#lecture/1
+- **Content:** what a game is (rationality, interdependence, strategic reasoning); normal-form games $G = (I, \{S_i\}, \{u_i\})$, profiles and $s_{-i}$; static vs. dynamic; complete information and common knowledge; strategies as complete contingent plans; payoffs over outcomes (the grade game); solution concepts judged by existence, uniqueness, invariance; strict and weak dominance; strict dominant-strategy equilibrium and its uniqueness; Pareto optimality and social dilemmas (prisoner's dilemma); IESDS and common knowledge of rationality; application: spatial competition (two pharmacy chains on a 7-block avenue, in-class exercise).
+- **Before class:** Tadelis Ch. 3 (pp. 43–58: common knowledge Def. 3.1 p. 45, normal form Def. 3.3 p. 47, the M/F prisoner's dilemma pp. 48, 51–52, existence/uniqueness/invariance pp. 55–56, Pareto Def. 3.5 p. 57) and §4.1–4.2 (pp. 59–69: dominance Defs. 4.1–4.3 and Prop. 4.1 pp. 60–61, IESDS pp. 63–65 with the slides' 3×3 game on p. 64, Cournot by IESDS p. 65, Prop. 4.2 p. 68) · Gibbons §1.1.A–B (pp. 2–7)
+- **After class:** `Listas/pratica-lecture-01.md` (24 items: Tadelis 3.2–3.7, 4.1–4.7, 4.10; Gibbons 1.2; MWG 8.B.1, 8.B.3–8.B.5, 8.B.7; Muñoz-Garcia Ch. 1) · worked solutions `Listas/pratica-lecture-01-solutions.pdf` · exam-style list `Listas/lista-lecture-01.tex` · quizzes `Simulados/quiz-lecture01-{1,2,3}-*.md`
+- **Formal side:** MWG §7.D (p. 228), §8.A–8.B (pp. 235–241)
+- **Applications:** Cabral §7.1 (pp. 161–163); Hotelling's linear city, Cabral §14.2 (pp. 354, 358–360); M&R's "grabbing" game as a prisoner's dilemma, Table 5.1 (pp. 138–139)
 
-### Aula 2 — Bargaining I: value maximization and the Coase theorem
-#aula/2
-- **Syllabus:** *Barganha*
-- **Content:** gains from trade and their division; no wealth effects (transferable utility); the value maximization principle: efficiency is independent of distribution; the Coase theorem and its conditions; threat points and the Nash bargaining solution.
-- **Before class:** M&R Ch. 2 "Wealth Effects, Value Maximization and the Coase Theorem" (pp. 35–39) · Varian §35.2 Coase (p. 670) · Cabral §5.1 Coase Theorem (p. 96)
-- **After class:** M&R Q 2.1–2.2 (p. 53), then Q 2.3–2.4 (proofs) · Varian 35 RQ 1–2 · Cabral 5.1 · notes: `Aula/aula-02-notes.md` · graduate list for Aulas 1–2: `Listas/lista-aulas-01-02.tex`
+### Lecture 2 — Static games II: Nash equilibrium and mixed strategies
+#lecture/2
+- **Content (from the slides' preview and the course outline):** best responses and rationalizability; Nash equilibrium; mixed strategies and existence.
+- **Before class:** Tadelis §4.3 (pp. 69–76), Ch. 5 (pp. 79–100; Hotelling voting §5.2.5 p. 93), Ch. 6 (pp. 101–126; IESDS revisited §6.3 p. 114, existence §6.4 p. 117) · Gibbons §1.1.C (p. 8), §1.2 (pp. 14–29), §1.3 (pp. 29–48)
+- **After class:** Tadelis 5.2, 5.3, 5.15 (pp. 95, 99), 6.2, 6.3 (p. 123) · Gibbons 1.3, 1.5, 1.8 (pp. 49–50) · MWG 8.C.1, 8.D.3–8.D.5 (p. 263) · Muñoz-Garcia Ch. 2 (pp. 37–84), Ch. 3 (pp. 85–151)
+- **Formal side:** MWG §8.C (p. 242), §8.D (p. 246), App. A (p. 260)
+- **Applications:** Cabral §7.1 (from p. 161)
 
-### Aula 3 — Bargaining II: private information, bargaining costs, bargaining position
-#aula/3
-- **Syllabus:** *Barganha*
-- **Content:** bargaining over a sale when values are private: why efficient trade can fail; incentive efficiency; many participants; bargaining costs (delay, haggling); measurement costs and investments in bargaining position (De Beers). Formal supplement: alternating offers, finite horizon by backward induction and infinite horizon (Rubinstein); the ultimatum game.
-- **Before class:** M&R Ch. 5 "Private Information and Precontractual Opportunism" and "Measurement Costs and Investments in Bargaining Position" (pp. 140–149) · Varian §30.7 Bargaining, The Ultimatum Game (pp. 581–584) · Cabral §6.4 "Negotiations" (p. 143)
-- **After class:** M&R Q 5.4–5.5 (p. 165) · MWG 9.AA (p. 296) · Cabral 7.6, 7.14 · MWG 9.B.13, then 9.B.12
-- **Connections:** depends on Aula 2; the same private information drives adverse selection in [[#Aula 10 — Adverse selection|Aula 10]] (MWG 13.B.4).
+## Dynamic games of complete information
 
-### Aula 4 — Efficiency and economic organization
-#aula/4
-- **Syllabus:** *Eficiência e Organização Econômica*
-- **Content:** economic organizations and the transaction as the unit of analysis; efficiency of allocations and of organizations; **efficiency as a positive principle** (organizations tend to be efficient, so ask what problem a form solves); the tasks of coordination and motivation; transaction costs: types, the dimensions of transactions, the approach's limits; organizational objectives and stakeholders.
-- **Before class:** M&R Ch. 2 (pp. 19–34, 39–42) · Varian §32.3 Pareto efficient allocations (p. 605) · Cabral §4.4 Efficiency (p. 81)
-- **After class:** M&R FFT 2.1–2.5 (p. 52) · MWG §16.C (p. 549) · Varian 32 RQ 1–5 · MWG 16.C.2, 16.C.4
+### Lecture 3 — Dynamic games: backward induction and subgame perfection
+#lecture/3
+- **Before class:** Tadelis Ch. 7 (pp. 129–150), Ch. 8 (pp. 151–174) · Gibbons §2.1.A (p. 57), §2.2.A (p. 71), §2.4 (pp. 115–129)
+- **After class:** Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
+- **Formal side:** MWG §7.C (p. 221), §9.A–9.B (pp. 267–281)
+- **Applications:** Cabral §7.2 (p. 167)
 
-### Aula 5 — Application: NEPKE kidney exchange
-#aula/5
-- **Syllabus:** *Aplicação: New England Program for Kidney Exchange (NEPKE)*
-- **Content:** M&R's matching case first: the market for medical interns, its failed decentralized solutions (hospitals making offers earlier and earlier) and the National Intern Matching Program, a centralized clearinghouse whose matches are **stable**, which is why it persisted (and why couples later strained it). Then NEPKE: exchange where prices are banned; incompatible donor–patient pairs; two-way and longer cycles, chains; a centralized clearinghouse as designed coordination; efficiency gains and their limits (simultaneous surgeries, incentives to participate).
-- **Before class:** M&R Ch. 2 "Case Study: Coordination, Motivation, and Efficiency in the Market for Medical Interns" (pp. 43–48) · [[rules/03_eficiencia_organizacao|Topic 3]] · Cabral §4.4 (kidney-market context)
-- **After class:** no book exercises on NEPKE; good `/lab` candidate (find exchange cycles in a compatibility graph).
-- **Connections:** applies Aula 4; previews coordination without prices (Aula 7).
+### Lecture 4 — Multistage games and bargaining
+#lecture/4
+- **Before class:** Tadelis Ch. 9 (pp. 175–189), Ch. 11 (pp. 220–237) · Gibbons §2.1.D sequential bargaining (p. 68), §2.2 (pp. 71–82)
+- **After class:** Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
+- **Formal side:** MWG 9.AA (p. 296)
+- **Applications and project material:** M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · `Listas/lista-aulas-01-02.tex` block 3 · [[rules/02_barganha|Topic 2]]
 
-## Block II — Coordination: markets and management (M&R Ch. 3–4)
+### Lecture 5 — Repeated games I: cooperation
+#lecture/5
+- **Before class:** Tadelis §10.1–10.3 (pp. 190–201), folk theorem §10.6 (p. 209) · Gibbons §2.3.A–B (pp. 82–102)
+- **After class:** Muñoz-Garcia Ch. 6 Ex. 1 (p. 274) · Tadelis Ch. 10 exercises
+- **Formal side:** MWG §12.D (p. 400), App. 12.A "Infinitely Repeated Games and the Folk Theorem" (p. 417)
+- **Applications:** Cabral §7.3 (p. 172)
 
-### Aula 6 — Coordination through the market
-#aula/6
-- **Syllabus:** *Coordenação através do mercado*
-- **Content:** prices as coordination with one scarce resource, and their market-clearing reading; the fundamental theorem of welfare economics and the neoclassical model's scope; incentives and informational efficiency of markets; market failures and why they call for organization.
-- **Before class:** M&R Ch. 3 (pp. 56–78) · Varian §33.14 Decentralized resource allocation (p. 648), §32.12 (p. 623)
-- **After class:** M&R FFT 3.1–3.4 (pp. 86–87), Q 3.2–3.3 (p. 87) · Cabral Ch. 5 Market failure (pp. 93–119) · Varian 33 RQ 1–5 · MWG 16.C.3
+### Lecture 6 — Repeated games II: collusion and relational contracts
+#lecture/6
+- **Before class:** Tadelis §10.4 tacit collusion (p. 201), §10.5 reputation (pp. 204–209) · Gibbons §2.3.C Cournot collusion (p. 102), §2.3.D efficiency wages (p. 107) · M&R Ch. 8 "Reputations as contract enforcers" (p. 259), the repeated trust game (pp. 261–263), "live and let live" (p. 264), limits of reputation (p. 265)
+- **After class:** Muñoz-Garcia Ch. 6 Ex. 2–5 (pp. 278–290), Ex. 10 (p. 310); Ch. 5 Ex. 4–5, 8 (pp. 228–239) · M&R Quantitative Exercise 4 (p. 286)
+- **Formal side:** MWG §12.D (p. 400)
+- **Applications:** Cabral Ch. 9 (from p. 217: stability of collusive agreements p. 218, price wars p. 222) · M&R efficiency wages (p. 250)
 
-### Aula 7 — Coordination through management
-#aula/7
-- **Syllabus:** *Coordenação através do management*
-- **Content:** design attributes and innovation attributes; prices vs. quantities and the brittleness of each; economizing on information and communication; planning with design attributes; centralization vs. decentralization; the role of management in coordination (Aula 1's complementarities, now as the reason strategy must be centralised); boundaries of the firm.
-- **Before class:** M&R Ch. 4 (pp. 88–105, 113–118) · Cabral §3.4 "What determines a firm's boundaries?" (pp. 54–56)
-- **After class:** M&R FFT 4.1–4.3 (p. 119), Q 4.1–4.3 (p. 120) · Cabral §13.1–13.2 (pp. 334–342) · Cabral 3.9, 3.10, 13.1, then 13.6
+## Games of incomplete information
 
-### Aula 8 — Application: Eddie Lampert at Sears
-#aula/8
-- **Syllabus:** *Aplicação: A gestão de Eddie Lampert na Sears*
-- **Content:** prices inside the firm: transfer pricing in multidivisional firms and when it misleads; divisions run as competing business units; influence activities and influence costs once units fight over central decisions; what breaks when units ignore their effects on each other (shared resources, brand, customers): Aula 6's market logic applied where Aula 7 says management should coordinate. Sears itself was an early multidivisional firm (M&R Ch. 1 n. 2, p. 4).
-- **Before class:** M&R Ch. 3 "Using the Price System within Organizations" (pp. 78–85) · M&R Ch. 6 "Influence Activities and Unified Ownership" (pp. 192–194) · [[rules/05_coordenacao_management|Topic 5]]
-- **After class:** M&R Q 3.1 (p. 87, transfer pricing) · Cabral 5.6 "Common facility" (divisions sharing a resource: the case in miniature)
+### Lecture 7 — Bayesian games, adverse selection and auctions
+#lecture/7
+- **Before class:** Tadelis Ch. 12 (pp. 241–269; adverse selection §12.3 p. 258), Ch. 13 (pp. 270–287) · Gibbons Ch. 3 (pp. 143–172; auctions §3.2.B p. 155, double auction §3.2.C p. 158)
+- **After class:** Muñoz-Garcia Ch. 7 (pp. 317–347), Ch. 8 (pp. 349–373) · MWG 13.B.1, 13.B.2
+- **Formal side:** MWG §8.E (p. 253), §13.B (pp. 437–449)
+- **Applications:** M&R adverse selection (p. 149) · Cabral §7.4 (p. 174), §6.4 auctions and negotiations (p. 140) · [[rules/07_selecao_adversa|Topic 7]]
 
-## Block III — Information and contracts (M&R Ch. 5)
+### Lecture 8 — Signaling and perfect Bayesian equilibrium
+#lecture/8
+- **Before class:** Tadelis Ch. 15 (pp. 303–317), Ch. 16 (pp. 318–338) · Gibbons §4.1 (p. 175), §4.2 (pp. 183–210; job-market signaling p. 190)
+- **After class:** Muñoz-Garcia Ch. 9 (pp. 375–451), Ch. 11 (pp. 481–520) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
+- **Formal side:** MWG §9.C (p. 282), §9.D (p. 292), §13.C (pp. 450–459), 13.AA (p. 467)
+- **Applications:** M&R signaling and screening (p. 154) · [[rules/07_selecao_adversa|Topic 7]]
 
-### Aula 9 — Bounded rationality, information and contracts
-#aula/9
-- **Syllabus:** *Racionalidade limitada, informação e contratos*
-- **Content:** what a perfect, complete contract would need; bounded rationality and contractual incompleteness; contractual responses; specific investments and hold-up; achieving commitment; precontractual vs. postcontractual opportunism as the map of Aulas 10–16.
-- **Before class:** M&R Ch. 5 (pp. 126–140) · Varian "Hold Up" (p. 579)
-- **After class:** M&R FFT 5.1 (p. 163), Q 5.6 (p. 165) · M&R Ch. 9 hold-up (p. 307, optional) · Cabral §13.1 "Investment incentives" (p. 338) · Varian 30 RQ 5 · Cabral 3.11, 13.10 · MWG 14.C.3
+## Paper and exam
 
-### Aula 10 — Adverse selection
-#aula/10
-- **Syllabus:** *Seleção adversa e seu controle* (part 1)
-- **Content:** adverse selection and the closing of markets (lemons, unravelling); adverse selection and rationing; insurance and labour markets; why the competitive equilibrium is inefficient; advantageous selection.
-- **Before class:** M&R Ch. 5 "Adverse Selection" (pp. 149–154) · Varian §38.1–38.3 (pp. 741–746) · Cabral §5.2 (p. 99)
-- **After class:** M&R Q 5.5 (p. 165) · MWG §13.B (p. 437) · Varian 38 RQ 1–2 · Cabral 7.10 · MWG 13.B.1, 13.B.2
+### Lecture 9 — Short-paper presentations (Tue Dec 1)
+- Group paper: motivation, brief literature review, research question, an economic model (35% in all). Comments on another group's paper count 5%. Partial-submission dates: to be agreed in class (not yet known).
 
-### Aula 11 — Controlling adverse selection: screening and self-selection
-#aula/11
-- **Syllabus:** *Seleção adversa e seu controle* (part 2)
-- **Content:** screening: the uninformed side offers a menu and types self-select; existence problems in competitive screening; implications for organizations; other controls: warranties, reputation, certification, mandatory insurance and regulation.
-- **Before class:** M&R Ch. 5 "Screening" and "Implications" (pp. 156–162) · Cabral §6.2 Self selection (p. 130), §7.4 Information (p. 174)
-- **After class:** M&R FFT 5.2–5.3 (p. 164) · MWG §13.D (p. 460) · Cabral 7.9, 6.15 · MWG 13.D.2, 14.C.7
+### Lecture 10 — Final exam (Tue Dec 8)
+- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture).
 
-### Aula 12 — Application: signaling in the labour market
-#aula/12
-- **Syllabus:** *Aplicação: Sinalização no mercado de trabalho*
-- **Content:** the Spence model as M&R present it; costly signals and single crossing; separating vs. pooling equilibria; the welfare cost of signaling; the sheepskin effect; equilibrium refinement (graduate mode only).
-- **Before class:** M&R Ch. 5 "Signaling" (pp. 154–156) · Varian §38.6 Signaling (p. 748)
-- **After class:** M&R Q 5.2 (p. 164) · MWG §13.C (p. 450), App. A (p. 467) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
+---
 
-## Block IV — Moral hazard and incentives (M&R Ch. 6–7)
+## Superseded draft (2026-10-09)
 
-### Aula 13 — Moral hazard and its control
-#aula/13
-- **Syllabus:** *Risco moral*
-- **Content:** hidden action; insurance and misbehavior; efficiency effects and incidence; public vs. private insurance; moral hazard in organizations (shirking, managerial misbehavior, financial contracts); the four controls: monitoring, explicit incentive contracts, bonding, ownership changes and redesign.
-- **Before class:** M&R Ch. 6 (pp. 166–170, 176–191) · Varian §38.4–38.5 (pp. 746–748) · Cabral §3.3 (pp. 52–54)
-- **After class:** M&R FFT 6.3–6.7 (pp. 197–198), Q 6.1–6.3 (p. 198) · MWG §14.B (p. 478) · Cabral 3.8 · MWG 14.B.1, 14.B.2
+The 16-session plan built from the 2024/34 syllabus record, anchored in Milgrom & Roberts
+(1992). Not taught as such; kept because Aulas 1–2 material was produced against it
+(`Aula/aula-01-notes.md`, `Aula/aula-02-notes.md`, the six `quiz-aula01-*`/`quiz-aula02-*`
+quizzes, `Listas/lista-aulas-01-02.*`, `Listas/pratica-aula-01*.md`). Use it as M&R
+background for the applications above.
 
-### Aula 14 — Application: the 1980s US savings-and-loan crisis
-#aula/14
-- **Syllabus:** *Aplicação: A crise das caixas econômicas americanas na década de 80*
-- **Content:** M&R's case: the S&L industry; deposit insurance and risk taking (the book's numerical example); risk taking with borrowed funds and limited liability; the perverse effect of competition; fraud; who is to blame. Then the regulator's side: FSLIC, deregulated deposit rates, cost to taxpayers; the efficiency–stability trade-off; the Brazilian contrast (Lei 6.024/74, PROER).
-- **Before class:** M&R Ch. 6 "Case Study: The U.S. Savings and Loan Crisis" (pp. 170–176) · Giambiagi & Garcia, Quadro 8.1 (p. 115) and Cap. 8 (pp. 111–123)
-- **After class:** M&R FFT 6.1–6.2 (p. 197) · Giambiagi & Garcia Cap. 11 (pp. 157–169) · MWG 13.C.6 (loan market: adverse selection × moral hazard)
-
-### Aula 15 — Managing moral hazard I: risk sharing and the incentive-pay model
-#aula/15
-- **Syllabus:** *Managing o risco moral numa organização* (part 1)
-- **Content:** sources of randomness and the risk–incentive balance; means, variances, certainty equivalents and risk premia; efficient risk sharing (the book's mathematical example); basing pay on measured performance; **M&R's linear model of incentive compensation**; the informativeness principle.
-- **Before class:** M&R Ch. 7 (pp. 206–221) · Varian §12.5 Risk aversion (p. 228), §38.7 Incentives (p. 752)
-- **After class:** M&R Q 7.1–7.2 (p. 244) · MWG §14.B–14.C (pp. 478–500) · Varian 12 RQ 3–6, 38 RQ 3–5 · MWG 14.B.5, 14.B.8
-
-### Aula 16 — Managing moral hazard II: the incentive principles + course synthesis
-#aula/16
-- **Syllabus:** *Managing o risco moral numa organização* (part 2)
-- **Content:** the incentive intensity, monitoring intensity and equal compensation principles (multitasking); the ratchet effect (back to Aula 1's planners); risk-neutral agents and selling the firm to the agent; executive pay and risk-taking in banks; governance failures (Sadia); synthesis: coordination × motivation across the course.
-- **Before class:** M&R Ch. 7 (pp. 221–242) · Varian §38.8 (p. 757) · Giambiagi & Garcia Cap. 7 "Incentivos e Crise" (pp. 99–110)
-- **After class:** M&R FFT 7.1–7.6 (pp. 243–244), Q 7.3 (p. 244), Q 6.5 (p. 199) · Giambiagi & Garcia Cap. 16 (pp. 239–257) · Cabral 3.12, 3.13, 3.19 · MWG 14.B.6, 14.C.4
+| Aula | Session | M&R (printed pp.) | Real lecture that now covers it |
+|---|---|---|---|
+| 1 | Does organization matter? Ford × GM × Toyota | Ch. 1 (2–18); Ch. 4 (106–113) | — (background) |
+| 2 | Bargaining I: value maximization and the Coase theorem | Ch. 2 (35–39) | — (background; §5 feeds L4) |
+| 3 | Bargaining II: private information, bargaining costs | Ch. 5 (140–149) | L4, L7 |
+| 4–5 | Efficiency and economic organization; NEPKE | Ch. 2 (19–48) | — |
+| 6–8 | Coordination: market, management, Sears | Ch. 3–4 | — |
+| 9 | Bounded rationality, information and contracts | Ch. 5 (126–140) | L6 (relational contracts) |
+| 10–12 | Adverse selection, screening, signaling | Ch. 5 (149–162) | L7, L8 |
+| 13–14 | Moral hazard; the S&L crisis | Ch. 6 | — |
+| 15–16 | Managing moral hazard | Ch. 7 | — |

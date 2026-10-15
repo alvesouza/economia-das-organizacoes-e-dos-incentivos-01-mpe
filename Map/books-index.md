@@ -9,6 +9,13 @@ Only the chapters inside the course scope are mapped (see `CLAUDE.md`). Pages ar
 pages. Sources: MWG, Cabral, Varian (2014) and Giambiagi & Garcia and M&R from their text
 layers (TOC + chapter body, verified against running heads). PDF page conversions: `Livros/book-registry.json`.
 
+**Since 2026-10-13 the course is a game-theory sequence (Lecture 1) and Tadelis is the main
+reference**; Tadelis, Gibbons and Muñoz-Garcia & Toro-Gonzalez are mapped at the end of this file
+(TOC checked against the chapter bodies and folios). Lectures: L1 static games, dominance, IESDS ·
+L2 Nash, mixed strategies · L3 backward induction, SPE · L4 multistage games, bargaining · L5
+repeated games I · L6 repeated games II, collusion, relational contracts · L7 Bayesian games,
+adverse selection, auctions · L8 signaling, PBE.
+
 ---
 
 # Milgrom & Roberts, *Economics, Organization, and Management* (1992)
@@ -379,3 +386,266 @@ exercises.
 
 Other chapters (2–6, 9–10, 12–15, 17–18: systemic risk, regulation, risk models, macro, central
 bank, credit risk, pension funds, derivatives) are background only.
+
+---
+
+# Tadelis, *Game Theory: An Introduction* (2013)
+
+#book/tadelis
+
+**Main reference since 2026-10-13**: the Lecture 1 slides follow its notation and examples. Publisher
+e-book with a clean text layer; PDF index = printed + 18 throughout (registry entry `Tadelis`).
+Sections and pages from the TOC (PDF 7–12), each one found in the chapter body at the stated page.
+Every chapter ends with exercises; **the book prints no answers** (the preface, p. xiii, says about
+half have solutions on the publisher's web page and the rest are instructor-only).
+
+## Part I — Rational Decision Making
+
+## Ch. 1 — The Single-Person Decision Problem (pp. 3–13)
+### §1.1 — Actions, Outcomes, and Preferences (p. 4)
+- 1.1.1 Preference Relations (p. 5); 1.1.2 Payoff Functions (p. 7).
+### §1.2 — The Rational Choice Paradigm (p. 9)
+### §1.3 — Summary (p. 11) · §1.4 — Exercises 1.1–1.7 (pp. 11–13)
+
+## Ch. 2 — Introducing Uncertainty and Time (pp. 14–40)
+### §2.1 — Risk, Nature, and Random Outcomes (p. 14)
+- 2.1.1 Finite Outcomes and Simple Lotteries (p. 15); 2.1.2 Simple versus Compound Lotteries (p. 16); 2.1.3 Lotteries over Continuous Outcomes (p. 17).
+### §2.2 — Evaluating Random Outcomes (p. 18)
+- 2.2.1 Expected Payoff: The Finite Case (p. 19); 2.2.2 The Continuous Case (p. 20); 2.2.3 Caveat: It's Not Just the Order Anymore (p. 21); 2.2.4 Risk Attitudes (p. 22); 2.2.5 The St. Petersburg Paradox (p. 23).
+### §2.3 — Rational Decision Making with Uncertainty (p. 24)
+- 2.3.1 Rationality Revisited (p. 24); 2.3.2 Maximizing Expected Payoffs (p. 24).
+### §2.4 — Decisions over Time (p. 26)
+- 2.4.1 Backward Induction (p. 26); 2.4.2 Discounting Future Payoffs (p. 28).
+### §2.5 — Applications (p. 29)
+- 2.5.1 The Value of Information (p. 29); 2.5.2 Discounted Future Consumption (p. 31).
+### §2.6 — Theory versus Practice (p. 32) · §2.7 — Summary (p. 33) · §2.8 — Exercises 2.1–2.13 (pp. 33–40)
+
+## Part II — Static Games of Complete Information
+
+## Ch. 3 — Preliminaries (pp. 43–58) · Lecture 1
+- Chapter opening (pp. 43–45): static games; games of complete information; **Definition 3.1, common knowledge** (p. 45).
+### §3.1 — Normal-Form Games with Pure Strategies (p. 46)
+- Definition 3.2 pure strategy (p. 46); **Definition 3.3 normal-form game** (p. 47).
+- 3.1.1 Example: The Prisoner's Dilemma (p. 48; mum/fink, payoffs −2, −4, −5, −1); 3.1.2 Example: Cournot Duopoly (p. 49); 3.1.3 Example: Voting on a New Agenda (p. 49).
+### §3.2 — Matrix Representation: Two-Player Finite Game (p. 50)
+- Definition 3.4 finite game (p. 51); 3.2.1 Example: The Prisoner's Dilemma (p. 51; the matrix is on p. 52); 3.2.2 Example: Rock-Paper-Scissors (p. 52).
+### §3.3 — Solution Concepts (p. 52)
+- Altruistic Prisoner's Dilemma (p. 53); Battle of the Sexes (pp. 53–54); solution concept and equilibrium (p. 54).
+- 3.3.1 Assumptions and Setup (p. 54; rationality, intelligence, common knowledge, self-enforcement p. 55).
+- 3.3.2 Evaluating Solution Concepts (p. 55): **existence** (p. 55), **uniqueness** (pp. 55–56), **invariance** (p. 56).
+- 3.3.3 Evaluating Outcomes (p. 56): **Definition 3.5, Pareto dominance and Pareto optimality** (p. 57).
+### §3.4 — Summary (p. 57) · §3.5 — Exercises 3.1–3.7 (p. 58)
+
+## Ch. 4 — Rationality and Common Knowledge (pp. 59–78) · Lectures 1–2
+### §4.1 — Dominance in Pure Strategies (p. 59)
+- 4.1.1 Dominated Strategies (p. 59): Definition 4.1 strict dominance, Claim 4.1 (p. 60); advertising L/M/H game (p. 60).
+- 4.1.2 Dominant Strategy Equilibrium (p. 61): Definitions 4.2–4.3, Proposition 4.1 (uniqueness) (p. 61).
+- 4.1.3 Evaluating Dominant Strategy Equilibrium (p. 62): existence fails (Battle of the Sexes), invariance holds, Pareto failure; "mafia-modified" Prisoner's Dilemma (pp. 62–63); weak dominance remark (p. 63).
+### §4.2 — Iterated Elimination of Strictly Dominated Pure Strategies (p. 63)
+- 4.2.1 Iterated Elimination and Common Knowledge of Rationality (p. 63): **the 3×3 game (4.1)** (p. 64); the IESDS algorithm and Definition 4.4 (p. 65).
+- 4.2.2 Example: Cournot Duopoly (p. 65; convergence to $q_i = 30$, Figure 4.1 p. 67).
+- 4.2.3 Evaluating IESDS (p. 67): existence yes, uniqueness no, Pareto (p. 68); Proposition 4.2 (p. 68).
+### §4.3 — Beliefs, Best Response, and Rationalizability (p. 69)
+- 4.3.1 The Best Response (p. 69); 4.3.2 Beliefs and Best-Response Correspondences (p. 71); 4.3.3 Rationalizability (p. 73); 4.3.4 The Cournot Duopoly Revisited (p. 73); 4.3.5 The "p-Beauty Contest" (p. 74); 4.3.6 Evaluating Rationalizability (p. 76).
+### §4.4 — Summary (p. 76) · §4.5 — Exercises 4.1–4.10 (pp. 76–78; 4.10 *Popsicle Stands* is a discrete location game, p. 78)
+
+## Ch. 5 — Pinning Down Beliefs: Nash Equilibrium (pp. 79–100) · Lecture 2
+### §5.1 — Nash Equilibrium in Pure Strategies (p. 80)
+- 5.1.1 Pure-Strategy Nash Equilibrium in a Matrix (p. 81); 5.1.2 Evaluating the Nash Equilibria Solution (p. 83).
+### §5.2 — Nash Equilibrium: Some Classic Applications (p. 83)
+- 5.2.1 Two Kinds of Societies (p. 83); 5.2.2 The Tragedy of the Commons (p. 84); 5.2.3 Cournot Duopoly (p. 87); 5.2.4 Bertrand Duopoly (p. 88); 5.2.5 Political Ideology and Electoral Competition (p. 93; the **Hotelling** voting model, figure p. 94).
+### §5.3 — Summary (p. 95) · §5.4 — Exercises 5.1–5.18 (pp. 95–100; 5.15–5.16 Hotelling, p. 99)
+
+## Ch. 6 — Mixed Strategies (pp. 101–126) · Lecture 2
+### §6.1 — Strategies, Beliefs, and Expected Payoffs (p. 102)
+- 6.1.1 Finite Strategy Sets (p. 102); 6.1.2 Continuous Strategy Sets (p. 104); 6.1.3 Beliefs and Mixed Strategies (p. 105); 6.1.4 Expected Payoffs (p. 105).
+### §6.2 — Mixed-Strategy Nash Equilibrium (p. 107)
+- 6.2.1 Example: Matching Pennies (p. 108); 6.2.2 Example: Rock-Paper-Scissors (p. 111); 6.2.3 Multiple Equilibria: Pure and Mixed (p. 113).
+### §6.3 — IESDS and Rationalizability Revisited (p. 114)
+### §6.4 — Nash's Existence Theorem (p. 117)
+### §6.5 — Summary (p. 123) · §6.6 — Exercises 6.1–6.12 (pp. 123–126)
+
+## Part III — Dynamic Games of Complete Information
+
+## Ch. 7 — Preliminaries (pp. 129–150) · Lecture 3
+### §7.1 — The Extensive-Form Game (p. 130)
+- 7.1.1 Game Trees (p. 132); 7.1.2 Imperfect versus Perfect Information (p. 136).
+### §7.2 — Strategies and Nash Equilibrium (p. 137)
+- 7.2.1 Pure Strategies (p. 137); 7.2.2 Mixed versus Behavioral Strategies (p. 139); 7.2.3 Normal-Form Representation of Extensive-Form Games (p. 143).
+### §7.3 — Nash Equilibrium and Paths of Play (p. 145)
+### §7.4 — Summary (p. 147) · §7.5 — Exercises 7.1–7.10 (pp. 147–150)
+
+## Ch. 8 — Credibility and Sequential Rationality (pp. 151–174) · Lecture 3
+### §8.1 — Sequential Rationality and Backward Induction (p. 152)
+### §8.2 — Subgame-Perfect Nash Equilibrium: Concept (p. 153)
+### §8.3 — Subgame-Perfect Nash Equilibrium: Examples (p. 159)
+- 8.3.1 The Centipede Game (p. 159); 8.3.2 Stackelberg Competition (p. 160); 8.3.3 Mutually Assured Destruction (p. 163); 8.3.4 Time-Inconsistent Preferences (p. 166).
+### §8.4 — Summary (p. 169) · §8.5 — Exercises 8.1–8.16 (pp. 170–174)
+
+## Ch. 9 — Multistage Games (pp. 175–189) · Lecture 4
+### §9.1 — Preliminaries (p. 176) · §9.2 — Payoffs (p. 177) · §9.3 — Strategies and Conditional Play (p. 178)
+### §9.4 — Subgame-Perfect Equilibria (p. 180)
+### §9.5 — The One-Stage Deviation Principle (p. 184)
+### §9.6 — Summary (p. 186) · §9.7 — Exercises 9.1–9.6 (pp. 186–189)
+
+## Ch. 10 — Repeated Games (pp. 190–219) · Lectures 5–6
+### §10.1 — Finitely Repeated Games (p. 190)
+### §10.2 — Infinitely Repeated Games (p. 192)
+- 10.2.1 Payoffs (p. 193); 10.2.2 Strategies (p. 195).
+### §10.3 — Subgame-Perfect Equilibria (p. 196)
+### §10.4 — Application: Tacit Collusion (p. 201)
+### §10.5 — Sequential Interaction and Reputation (p. 204)
+- 10.5.1 Cooperation as Reputation (p. 204); 10.5.2 Third-Party Institutions as Reputation Mechanisms (p. 205); 10.5.3 Reputation Transfers without Third Parties (p. 207).
+### §10.6 — The Folk Theorem: Almost Anything Goes (p. 209)
+### §10.7 — Summary (p. 214) · §10.8 — Exercises 10.1–10.9 (pp. 215–219)
+
+## Ch. 11 — Strategic Bargaining (pp. 220–237) · Lecture 4
+### §11.1 — One Round of Bargaining: The Ultimatum Game (p. 222)
+### §11.2 — Finitely Many Rounds of Bargaining (p. 224)
+### §11.3 — The Infinite-Horizon Game (p. 228)
+### §11.4 — Application: Legislative Bargaining (p. 229)
+- 11.4.1 Closed-Rule Bargaining (p. 230); 11.4.2 Open-Rule Bargaining (p. 232).
+### §11.5 — Summary (p. 235) · §11.6 — Exercises 11.1–11.7 (pp. 236–237)
+
+## Part IV — Static Games of Incomplete Information
+
+## Ch. 12 — Bayesian Games (pp. 241–269) · Lecture 7
+### §12.1 — Strategic Representation of Bayesian Games (p. 246)
+- 12.1.1 Players, Actions, Information, and Preferences (p. 246); 12.1.2 Deriving Posteriors from a Common Prior: A Player's Beliefs (p. 247); 12.1.3 Strategies and Bayesian Nash Equilibrium (p. 249).
+### §12.2 — Examples (p. 252)
+- 12.2.1 Teenagers and the Game of Chicken (p. 252); 12.2.2 Study Groups (p. 255).
+### §12.3 — Inefficient Trade and Adverse Selection (p. 258)
+### §12.4 — Committee Voting (p. 261)
+### §12.5 — Mixed Strategies Revisited: Harsanyi's Interpretation (p. 264)
+### §12.6 — Summary (p. 266) · §12.7 — Exercises 12.1–12.9 (pp. 266–269)
+
+## Ch. 13 — Auctions and Competitive Bidding (pp. 270–287) · Lecture 7
+### §13.1 — Independent Private Values (p. 272)
+- 13.1.1 Second-Price Sealed-Bid Auctions (p. 272); 13.1.2 English Auctions (p. 275); 13.1.3 First-Price Sealed-Bid and Dutch Auctions (p. 276); 13.1.4 Revenue Equivalence (p. 279).
+### §13.2 — Common Values and the Winner's Curse (p. 282)
+### §13.3 — Summary (p. 285) · §13.4 — Exercises 13.1–13.9 (pp. 285–287)
+
+## Ch. 14 — Mechanism Design (pp. 288–299) · out of scope unless a lecture brings it
+### §14.1 — Setup: Mechanisms as Bayesian Games (p. 288)
+- 14.1.1 The Players (p. 288); 14.1.2 The Mechanism Designer (p. 289); 14.1.3 The Mechanism Game (p. 290).
+### §14.2 — The Revelation Principle (p. 292)
+### §14.3 — Dominant Strategies and Vickrey-Clarke-Groves Mechanisms (p. 295)
+- 14.3.1 Dominant Strategy Implementation (p. 295); 14.3.2 Vickrey-Clarke-Groves Mechanisms (p. 295).
+### §14.4 — Summary (p. 299) · §14.5 — Exercise 14.1 (p. 299)
+
+## Part V — Dynamic Games of Incomplete Information
+
+## Ch. 15 — Sequential Rationality with Incomplete Information (pp. 303–317) · Lecture 8
+### §15.1 — The Problem with Subgame Perfection (p. 303)
+### §15.2 — Perfect Bayesian Equilibrium (p. 307)
+### §15.3 — Sequential Equilibrium (p. 312)
+### §15.4 — Summary (p. 314) · §15.5 — Exercises 15.1–15.6 (pp. 314–317)
+
+## Ch. 16 — Signaling Games (pp. 318–338) · Lecture 8
+### §16.1 — Education Signaling: The MBA Game (p. 319)
+### §16.2 — Limit Pricing and Entry Deterrence (p. 323)
+- 16.2.1 Separating Equilibria (p. 324); 16.2.2 Pooling Equilibria (p. 330).
+### §16.3 — Refinements of Perfect Bayesian Equilibrium in Signaling Games (p. 332)
+### §16.4 — Summary (p. 335) · §16.5 — Exercises 16.1–16.8 (pp. 335–338)
+
+## Ch. 17 — Building a Reputation (pp. 339–356) · background for Lectures 6 and 8
+### §17.1 — Cooperation in a Finitely Repeated Prisoner's Dilemma (p. 339)
+### §17.2 — Driving a Tough Bargain (p. 342)
+### §17.3 — A Reputation for Being "Nice" (p. 349)
+### §17.4 — Summary (p. 354) · §17.5 — Exercises 17.1–17.3 (pp. 354–356)
+
+## Ch. 18 — Information Transmission and Cheap Talk (pp. 357–368)
+### §18.1 — Information Transmission: A Finite Example (p. 358)
+### §18.2 — Information Transmission: The Continuous Case (p. 361)
+### §18.3 — Application: Information and Legislative Organization (p. 365)
+### §18.4 — Summary (p. 367) · §18.5 — Exercises 18.1–18.4 (pp. 367–368)
+
+## Ch. 19 — Mathematical Appendix (pp. 369–384)
+### §19.1 — Sets and Sequences (p. 369) · §19.2 — Functions (p. 371) · §19.3 — Calculus and Optimization (p. 373) · §19.4 — Probability and Random Variables (p. 378)
+- 19.4.3 Independence, Conditional Probability, and Bayes' Rule (p. 380); 19.4.4 Expected Values (p. 382).
+
+References (p. 385) · Index (p. 389).
+
+---
+
+# Gibbons, *Game Theory for Applied Economists* (1992)
+
+#book/gibbons
+
+Added 2026-10-13. OCR scan; the PDF offset changes by chapter (registry entries `Gibbons Ch. 1`,
+`Gibbons Ch. 2`, `Gibbons Ch. 3-4`). Sections and pages from the TOC (PDF 1–3), each found in the
+body at the stated page. Problems at the end of each chapter, grouped by section. Answers: only the
+external, unofficial and unfinished manual described in `Livros/BOOKS.md` (Problems 1.1–1.14,
+2.1–2.23, 3.1–3.8, 4.1–4.6).
+
+## Ch. 1 — Static Games of Complete Information (pp. 1–53) · Lectures 1–2
+### §1.1 — Basic Theory: Normal-Form Games and Nash Equilibrium (p. 2)
+- 1.1.A Normal-Form Representation of Games (p. 2; Prisoners' Dilemma with Mum/Fink, payoffs −1, −9, 0, −6, p. 3).
+- 1.1.B Iterated Elimination of Strictly Dominated Strategies (p. 4; Figures 1.1.1–1.1.3, pp. 6–7; common knowledge of rationality and the two drawbacks, p. 7).
+- 1.1.C Motivation and Definition of Nash Equilibrium (p. 8).
+### §1.2 — Applications (p. 14)
+- 1.2.A Cournot Model of Duopoly (p. 14); 1.2.B Bertrand Model of Duopoly (p. 21); 1.2.C Final-Offer Arbitration (p. 22); 1.2.D The Problem of the Commons (p. 27).
+### §1.3 — Advanced Theory: Mixed Strategies and Existence of Equilibrium (p. 29)
+- 1.3.A Mixed Strategies (p. 29); 1.3.B Existence of Nash Equilibrium (p. 33).
+### §1.4 — Further Reading (p. 48) · §1.5 — Problems 1.1–1.14 (pp. 48–51; Section 1.1: 1.1–1.3; 1.8 is the Hotelling voting problem, p. 50) · §1.6 — References (p. 51)
+
+## Ch. 2 — Dynamic Games of Complete Information (pp. 55–141) · Lectures 3–6
+### §2.1 — Dynamic Games of Complete and Perfect Information (p. 57)
+- 2.1.A Theory: Backwards Induction (p. 57); 2.1.B Stackelberg Model of Duopoly (p. 61); 2.1.C Wages and Employment in a Unionized Firm (p. 64); 2.1.D Sequential Bargaining (p. 68).
+### §2.2 — Two-Stage Games of Complete but Imperfect Information (p. 71)
+- 2.2.A Theory: Subgame Perfection (p. 71); 2.2.B Bank Runs (p. 73); 2.2.C Tariffs and Imperfect International Competition (p. 75); 2.2.D Tournaments (p. 79).
+### §2.3 — Repeated Games (p. 82)
+- 2.3.A Theory: Two-Stage Repeated Games (p. 82); 2.3.B Theory: Infinitely Repeated Games (p. 88); 2.3.C Collusion between Cournot Duopolists (p. 102); 2.3.D Efficiency Wages (p. 107); 2.3.E Time-Consistent Monetary Policy (p. 112).
+### §2.4 — Dynamic Games of Complete but Imperfect Information (p. 115)
+- 2.4.A Extensive-Form Representation of Games (p. 115); 2.4.B Subgame-Perfect Nash Equilibrium (p. 122).
+### §2.5 — Further Reading (p. 129) · §2.6 — Problems 2.1–2.23 (pp. 130–138) · §2.7 — References (p. 138)
+
+## Ch. 3 — Static Games of Incomplete Information (pp. 143–172) · Lecture 7
+### §3.1 — Theory: Static Bayesian Games and Bayesian Nash Equilibrium (p. 144)
+- 3.1.A An Example: Cournot Competition under Asymmetric Information (p. 144); 3.1.B Normal-Form Representation of Static Bayesian Games (p. 146); 3.1.C Definition of Bayesian Nash Equilibrium (p. 149).
+### §3.2 — Applications (p. 152)
+- 3.2.A Mixed Strategies Revisited (p. 152); 3.2.B An Auction (p. 155); 3.2.C A Double Auction (p. 158).
+### §3.3 — The Revelation Principle (p. 164)
+### §3.4 — Further Reading (p. 168) · §3.5 — Problems 3.1–3.8 (pp. 169–171) · §3.6 — References (p. 172)
+
+## Ch. 4 — Dynamic Games of Incomplete Information (pp. 173–255) · Lecture 8
+### §4.1 — Introduction to Perfect Bayesian Equilibrium (p. 175)
+### §4.2 — Signaling Games (p. 183)
+- 4.2.A Perfect Bayesian Equilibrium in Signaling Games (p. 183); 4.2.B Job-Market Signaling (p. 190); 4.2.C Corporate Investment and Capital Structure (p. 205); 4.2.D Monetary Policy (p. 208).
+### §4.3 — Other Applications of Perfect Bayesian Equilibrium (p. 210)
+- 4.3.A Cheap-Talk Games (p. 210); 4.3.B Sequential Bargaining under Asymmetric Information (p. 218); 4.3.C Reputation in the Finitely Repeated Prisoners' Dilemma (p. 224).
+### §4.4 — Refinements of Perfect Bayesian Equilibrium (p. 233)
+### §4.5 — Further Reading (p. 244) · §4.6 — Problems 4.1–4.16 (pp. 245–253) · §4.7 — References (p. 253)
+
+Index (p. 257).
+
+---
+
+# Muñoz-Garcia & Toro-Gonzalez, *Strategy and Game Theory: Practice Exercises with Answers*, 2nd ed. (2019)
+
+#book/munoz-garcia
+
+Added 2026-10-13. Exercise book: each chapter opens with a short introduction, then numbered
+exercises, each followed by a worked **Answer**. The superscript letter after each title grades
+difficulty (A easy, B intermediate, C hard). Chapter pages and exercise ranges from the TOC (PDF
+8–12) and checked against the exercise headings in the body: 134 numbered exercises in all (the
+preface says 153). The PDF offset changes by chapter (registry entries `Munoz-Garcia Ch. …`).
+
+## Ch. 1 — Dominance Solvable Games (pp. 1–36) · Lecture 1 · Exercises 1–17
+- From extensive to normal form (Ex. 1–4, pp. 2–8); Prisoners' Dilemma (Ex. 5, p. 8); IDSDS (Ex. 6–13, pp. 11–26); applications and continuous strategies (Ex. 14–15, pp. 28–29); IDSDS vs. IDWDS (Ex. 16–17, pp. 31–33).
+## Ch. 2 — Pure Strategy Nash Equilibrium and Simultaneous-Move Games with Complete Information (pp. 37–84) · Lecture 2 · Exercises 1–17
+- Includes Ex. 12 Political Competition (Hotelling model) (p. 64).
+## Ch. 3 — Mixed Strategies, Strictly Competitive Games, and Correlated Equilibria (pp. 85–151) · Lecture 2 · Exercises 1–18
+## Ch. 4 — Sequential-Move Games with Complete Information (pp. 153–214) · Lectures 3–4 · Exercises 1–21
+- Bargaining: Ex. 1 ultimatum (p. 154), Ex. 16–17 alternating offers (pp. 198–199).
+## Ch. 5 — Applications to Industrial Organization (pp. 215–271) · Lectures 2–3, 6 · Exercises 1–16
+- One-shot cartels: Ex. 4–5 (pp. 228–231), Ex. 8 (p. 239).
+## Ch. 6 — Repeated Games and Correlated Equilibria (pp. 273–316) · Lectures 5–6 · Exercises 1–10
+- Infinitely repeated PD (Ex. 1, p. 274); collusion (Ex. 2–5, pp. 278–290); imperfect monitoring (Ex. 10, p. 310).
+## Ch. 7 — Simultaneous-Move Games with Incomplete Information (pp. 317–347) · Lecture 7 · Exercises 1–7
+## Ch. 8 — Auctions (pp. 349–373) · Lecture 7 · Exercises 1–8
+## Ch. 9 — Perfect Bayesian Equilibrium and Signaling Games (pp. 375–451) · Lecture 8 · Exercises 1–9
+## Ch. 10 — Cheap Talk Games (pp. 453–479) · Exercises 1–5
+## Ch. 11 — More Advanced Signaling Games (pp. 481–520) · Lecture 8 · Exercises 1–6
+
+Index (p. 521).

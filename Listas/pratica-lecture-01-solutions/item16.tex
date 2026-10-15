@@ -1,0 +1,58 @@
+\begin{exsol}{16}{Tadelis Exercise 4.7}{77--78}{Exam}{B3}
+\asked Two candidates choose a positive ($P$), balanced ($B$) or negative ($N$) campaign; payoffs
+are win probabilities given by the book's rules. (a) Model it as a normal-form game; (b) write
+the matrix; (c) describe each stage of IESDS and say whether it gives a clear prediction.
+
+\method Normal form (slides~13--14); IESDS (slide~29; Tadelis \S4.2).
+
+\solution
+\textbf{(a)} $I = \{1, 2\}$, $S_1 = S_2 = \{P, B, N\}$. Let $\pi(s_i, s_j)$ be the probability that
+the candidate playing $s_i$ wins against $s_j$. The book's rules give
+\[
+  \pi(s,s) = 0.5,\quad \pi(P,B) = 0,\quad \pi(P,N) = 0.3,\quad \pi(N,B) = 0.6 .
+\]
+The other three entries follow because exactly one candidate wins:
+$\pi(B,P) = 1$, $\pi(N,P) = 0.7$, $\pi(B,N) = 0.4$. Payoffs are $u_1(s_1,s_2) = \pi(s_1,s_2)$ and
+$u_2(s_1,s_2) = 1 - u_1(s_1,s_2) = \pi(s_2,s_1)$. Player~2's payoff function is the same rule
+applied with the roles swapped. It is the complement of player~1's because the probabilities of
+the two candidates winning add up to one: the game is constant-sum and symmetric.
+
+\textbf{(b)}
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$P$} & \multicolumn{1}{c}{$B$} & \multicolumn{1}{c}{$N$}\\ \cline{2-4}
+$P$ & $0.5,\ 0.5$ & $0,\ 1$ & $0.3,\ 0.7$ \\ \cline{2-4}
+$B$ & $1,\ 0$ & $0.5,\ 0.5$ & $0.4,\ 0.6$ \\ \cline{2-4}
+$N$ & $0.7,\ 0.3$ & $0.6,\ 0.4$ & $0.5,\ 0.5$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{(c) IESDS.}
+\begin{itemize}
+  \item Round 1. Player~1's rows over columns $(P, B, N)$: $P = (0.5, 0, 0.3)$,
+  $B = (1, 0.5, 0.4)$, $N = (0.7, 0.6, 0.5)$. $P$ is strictly dominated by $B$
+  ($0.5 < 1$, $0 < 0.5$, $0.3 < 0.4$) and also by $N$. $B$ and $N$ are not ranked ($B$ is better
+  against $P$, $N$ against $B$ and $N$). By symmetry the same holds for player~2.
+  $S_i^1 = \{B, N\}$.
+  \item Round 2. On $\{B, N\}$: $B = (0.5, 0.4)$, $N = (0.6, 0.5)$. $B$ is strictly dominated
+  by $N$. The same holds for player~2. $S_i^2 = \{N\}$.
+\end{itemize}
+$S^\infty = \{(N, N)\}$: both run negative campaigns and each wins with probability $0.5$. The
+prediction is clear (a unique profile) after two rounds.
+
+\interp $B$ survives round~1 only because it crushes a positive campaign. Once each candidate
+knows the other will not run a purely positive campaign, going fully negative wins. The
+outcome has the same win probabilities as $(P,P)$, and in a constant-sum game every profile is
+Pareto optimal \emph{for the candidates}. If voters dislike negative campaigning, the
+equilibrium is a prisoner's-dilemma outcome for them: the candidates end up exactly where they
+would have been with positive campaigns, but with a nastier campaign.
+
+\verify \texttt{check\_A.py} builds the matrix from the four rules plus complementarity, checks
+symmetry, that $P$ is dominated by both $B$ and $N$, and that IESDS removes $P$ (round~1) and
+$B$ (round~2) for both players, leaving $(N, N)$.
+
+\answer{(a) $S_i = \{P,B,N\}$, $u_1 = \pi(s_1,s_2)$ from the rules, $u_2 = 1 - u_1$ (the same
+rule from candidate~2's side). (b) Matrix above. (c) Round~1 deletes $P$ (dominated by $B$ and
+$N$); round~2 deletes $B$ (dominated by $N$); unique prediction $(N, N)$, each wins with
+probability $0.5$.}
+\end{exsol}

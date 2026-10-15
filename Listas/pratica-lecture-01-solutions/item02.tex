@@ -1,0 +1,46 @@
+\begin{exsol}{2}{Tadelis Exercise 3.4}{58}{Foundations}{B1}
+\asked Represent the two-hunter stag/hare story, with the payoffs the book gives, as a matrix.
+The plan also asks which payoff orderings make a game a stag hunt.
+
+\method Normal form (Tadelis Def.~3.3, p.~47; slides~13--14). Then compare each player's
+payoffs across his rows/columns, as in the dominance analysis of slide~23.
+
+\solution
+$I = \{1, 2\}$, $S_1 = S_2 = \{S, H\}$ (stag, hare). A hare hunter always catches a hare (1),
+whatever the other does; a stag is caught only if both hunt it (3 each); a lone stag hunter gets 0.
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$S$} & \multicolumn{1}{c}{$H$}\\ \cline{2-3}
+$S$ & $3,\ 3$ & $0,\ 1$ \\ \cline{2-3}
+$H$ & $1,\ 0$ & $1,\ 1$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{What makes it a stag hunt.} Write a player's payoffs as $a = u(S,S)$, $b = u(H,S)$,
+$c = u(S,H)$, $d = u(H,H)$ (own action first). The stag hunt is the symmetric game with
+\[
+  a > b \ge d > c .
+\]
+Here $a = 3 > b = 1 = d = 1 > c = 0$. The first inequality says that hunting the stag is the best
+reply to a partner who hunts the stag; $d > c$ says that the hare is the best reply to a partner
+who hunts the hare; $b \ge d$ (hare pays at least as much whatever the partner does) makes $H$
+the safe action. Compare: if $b > a$ and $d > c$, then $H$ would be strictly dominant and the
+game a prisoner's dilemma.
+
+\textbf{Dominance.} For each player, $S$ is strictly better against $S$ ($3 > 1$) and $H$ is
+strictly better against $H$ ($1 > 0$). Neither strategy is dominated, so IESDS removes nothing.
+Both $(S,S)$ and $(H,H)$ are profiles where each player's action is a best reply to the other's
+(the pure Nash equilibria of Lecture~2). $(S,S)$ Pareto-dominates every other cell (slide~26).
+
+\interp Unlike the prisoner's dilemma, nothing in individual incentives pulls players away from
+the efficient outcome; the problem is \emph{confidence}: stag pays only if the partner is
+trusted to hunt stag too. Dominance arguments are silent here; the game is a coordination
+problem, the central case for Lecture~2.
+
+\verify \texttt{check\_A.py} checks the ordering $a > b = d > c$, that IESDS deletes nothing,
+and that $(S,S)$ and $(H,H)$ are the only profiles with mutual best replies.
+
+\answer{Matrix above: $(S,S) = (3,3)$, $(S,H) = (0,1)$, $(H,S) = (1,0)$, $(H,H) = (1,1)$. It is a
+stag hunt because $u(S,S) > u(H,S) \ge u(H,H) > u(S,H)$: no dominated strategies, two
+self-enforcing outcomes, and $(S,S)$ is the Pareto-best one.}
+\end{exsol}

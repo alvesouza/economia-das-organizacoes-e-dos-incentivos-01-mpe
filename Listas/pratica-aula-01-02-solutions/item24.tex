@@ -1,0 +1,114 @@
+\begin{exsol}{24}{\MR{} Mathematical Exercise 4.2}{120}{Advanced}{A3}
+\asked A product can be launched only when three departments are all ready; earlier readiness raises
+post-launch profit but each department pays a linear cost for speed. Find the optimal launch date,
+the profit when all departments are mistimed together by one month, the profit when only
+department~2 is mistimed by one month, and say whether the launch date is a design decision.
+
+\method Chapter~4's model of design decisions: ``The Variety of Coordination Problems and
+Solutions'' (pp.~90--93, design attributes p.~91), ``Planning with Design Attributes''
+(pp.~103--106, Figure~4.2 p.~105) and the Mathematical Appendix (pp.~121--124): revenue depends on
+the date of the \emph{last} department, $R[\max_n t^n]$ (Eq.~4.3, p.~121); at an optimum all dates
+are equal and marginal benefit of a speed-up equals the sum of marginal costs (Eqs.~4.5--4.6,
+p.~122); a common error costs nothing to first order, a misfit costs a first-order amount
+(Eq.~4.7, pp.~123--124).
+
+\solution
+Write $t_n$ for the date department $n$ is told to be ready, $c_1=3$, $c_2=4$, $c_3=5$ for the
+cost per month of speeding it up, and $C=c_1+c_2+c_3=12$. Production starts at
+$T=\max\{t_1,t_2,t_3\}$, so for dates below $12$
+\[
+  \pi(t_1,t_2,t_3) \;=\; 144-T^2-\sum_{n=1}^{3} c_n\,(12-t_n),\qquad T=\max_n t_n .
+\]
+For $t\ge 12$ the launch earns nothing, and no department is paid to get ready, so $\pi=0$.
+
+\subparagraph{(1) Optimal date.} No department should be ready before the last one: lowering
+$t_n$ below $T$ raises cost by $c_n$ per month and leaves revenue unchanged. Hence at an optimum
+$t_1=t_2=t_3=t$ (the equality constraints of Eq.~4.5, p.~122) and
+\[
+  \pi(t)=144-t^2-12(12-t)=12t-t^2,\qquad \pi'(t)=12-2t=0\;\Longrightarrow\; t^*=6,
+\]
+with $\pi''=-2<0$, so the stationary point is the global maximum on $[0,12)$; the corners give
+$\pi(0)=0$ and $\pi=0$ for $t\ge12$. At $t^*=6$: revenue $144-36=108$, readiness cost
+$12\times6=72$, profit $\pi^*=36$. The first-order condition reads $2t^*=c_1+c_2+c_3$: the marginal
+benefit of launching a month sooner equals the \emph{sum} of the departments' marginal costs of
+speeding up --- the third adding-up condition in Eq.~4.6 and the crossing in Figure~4.2 (p.~105).
+
+\subparagraph{(2) All three mistimed together.} $\pi(5)=60-25=35$ and $\pi(7)=84-49=35$. Each
+costs one unit. In general $\pi(6+\varepsilon)=36-\varepsilon^2$: a coordinated error is a
+second-order loss, because at $t^*$ the marginal benefit and the summed marginal cost cancel
+(p.~123).
+
+\subparagraph{(3) Department 2 alone mistimed, departments 1 and 3 at $t^*=6$.}
+\begin{itemize}
+  \item \emph{Department 2 one month early} ($t_2=5$). Launch still at $T=6$: revenue $108$, cost
+    $3\cdot6+4\cdot7+5\cdot6=76$, profit $32$. Loss $4=c_2\times1$: department~2 pays for speed
+    nobody can use.
+  \item \emph{Department 2 one month late} ($t_2=7$). Launch slips to $T=7$: revenue $144-49=95$,
+    cost $3\cdot6+4\cdot5+5\cdot6=68$, profit $27$. Loss $9$: departments 1 and 3 paid for a
+    month of speed that is wasted ($3+5=8$), plus the second-order term $\varepsilon^2=1$.
+    Equivalently, $27=\pi(7)-(c_1+c_3)=35-8$.
+\end{itemize}
+In general, with $t_m=t^*$ for $m\ne n$, a misfit of size $\varepsilon$ costs $c_n\varepsilon$ if
+department $n$ is early and $(C-c_n)\varepsilon+\varepsilon^2$ if it is late. The profit is kinked
+at $t^*$: as a function of $t_2$ its left slope is $c_2=4$ and its right slope is
+$-(c_1+c_3)=-8$ --- the left- and right-hand derivatives of Eq.~4.7 (p.~123), both non-zero.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=10.5cm,height=6.2cm,xmin=3,xmax=9,ymin=8,ymax=40,
+  xlabel={date (months)},ylabel={profit},legend pos=south west,legend style={font=\small},
+  grid=major,grid style={gray!25}]
+  \addplot[hdr,thick,domain=3:9,samples=60]{12*x-x^2};
+  \addlegendentry{all three at $t$ (coordinated)}
+  \addplot[ans,thick,dashed,domain=3:6,samples=2]{4*x+12};
+  \addlegendentry{only $t_2$ moves, $t_1=t_3=6$ (misfit)}
+  \addplot[ans,thick,dashed,domain=6:9,samples=40,forget plot]{48+4*x-x^2};
+  \addplot[only marks,mark=*,mark size=1.6pt]
+    coordinates{(6,36)(5,35)(7,35)(5,32)(7,27)};
+  \node[anchor=south] at (axis cs:6,36){\small $36$};
+  \node[anchor=south east] at (axis cs:5,35){\small $35$};
+  \node[anchor=south west] at (axis cs:7,35){\small $35$};
+  \node[anchor=north west] at (axis cs:5,32){\small $32$};
+  \node[anchor=north east] at (axis cs:7,27){\small $27$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subparagraph{(4) A design decision?} Yes; both attributes of p.~91 hold.
+(i) \emph{A priori information about the form of the optimum}: before knowing any cost or revenue
+numbers, the coordinator knows that every department must be ready on the same date, because
+revenue depends only on the last date (Eq.~4.3, p.~121; Eq.~4.5, p.~122).
+(ii) \emph{Misfits cost more than a wrong common design}: a one-month error costs $1$ when all
+move together but $4$ or $9$ when one department is out of step --- second-order against
+first-order losses (pp.~123--124).
+
+The organizational corollary (pp.~104--106): the centre should announce the \emph{date} $t^*=6$,
+one number, and check it with the marginal benefit $2t$ and the three marginal costs (four numbers,
+cf.\ the ``three numbers'' for two suppliers on p.~105). Prices would do badly. If the centre paid
+department $n$ a price $p$ per month of earliness, its payoff $(p-c_n)(12-t_n)$ is linear in $t_n$:
+it would choose $t_n=0$ if $p>c_n$, $t_n=12$ if $p<c_n$, and be indifferent if $p=c_n$. No single
+price synchronizes the three; department-specific prices equal to $c_n$ leave each indifferent, so
+the date must still be dictated. This is the brittleness and communication argument of p.~104 in
+its sharpest form.
+
+\interp Getting the parts to fit matters more than getting the common target exactly right. This
+is the coxswain's call (p.~91) and the new-car launch date (p.~104) in numbers: centralize the
+design variable (the date), and leave each department free to choose \emph{how} to be ready
+(p.~115). It is also why a planner who is unsure of $t^*$ should still insist that everyone works
+to the same date: a wrong common date costs little, a broken synchronization costs a lot.
+
+\verify (a) The first-order condition $2t^*=C$ gives $t^*=C/2=6$. Check: $\pi(5.9)=35.99$ and
+$\pi(6.1)=35.99$, both below $36$. (b) The misfit losses add up: delaying $t_2$ by one month changes
+revenue by $-(49-36)=-13$ and saves department~2 $4$, net $-9$. Bringing $t_2$ forward costs $4$
+and changes no revenue. (c) Limit case: if department~2 were the only department ($c_1=c_3=0$),
+being late would cost only $\varepsilon^2$; the first-order misfit loss $(C-c_n)\varepsilon$
+appears only because the others have already paid to be ready. (d) \texttt{check\_A.py} verifies
+$t^*$, every profit ($36,35,35,32,27$), the kink slopes $4$ and $-8$, the general loss formulas for
+each department, and the corner response to a price.
+
+\answer{(1) $t^*=6$ months, profit $36$ (revenue $108$ minus readiness cost $72$), where
+$2t^*=3+4+5$. (2) All one month early or late: profit $35$ each (loss $1$, second order).
+(3) Department~2 early: $32$ (loss $4$); department~2 late: $27$ (loss $9$); misfits are
+first-order losses. (4) Yes: the optimum is known to require equal dates, and misfits cost far more
+than a common timing error, so the centre should announce the date rather than prices.}
+\end{exsol}

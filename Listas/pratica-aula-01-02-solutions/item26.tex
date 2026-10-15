@@ -1,0 +1,115 @@
+\begin{exsol}{26}{\MR{} Mathematical Exercise~2.3}{53}{Advanced}{B1}
+\asked Prove the value maximization principle for $N$ people with quasilinear utilities who share
+the net profit of a decision: an allocation is efficient exactly when its decision maximizes total
+value.
+
+\method Definitions of feasibility and Pareto efficiency; the identity ``sum of utilities $=$
+total value'' under quasilinearity; a direct argument for sufficiency and the equal-split
+transfer construction of the book's hint for necessity (\MR{} pp.~35--37, Figure~2.1; notes,
+Part~II, ``The value maximization principle''). The remark on wealth effects follows \MR{}
+n.~10, p.~37.
+
+\solution
+\textbf{Setting.} Individuals $n = 1, \dots, N$ have utilities $u_n(x_n, y) = x_n + v_n(y)$,
+where $y$ ranges over an arbitrary set $Y$ of decisions and $x_n \in \mathbb{R}$ is $n$'s cash
+receipt (a payment if negative). Decision $y$ generates net profit $P(y)$. An allocation
+$(y, x_1, \dots, x_N)$ is \emph{feasible} if $\sum_{n} x_n = P(y)$. A feasible allocation $A'$
+\emph{Pareto dominates} $A$ if $u_n(A') \ge u_n(A)$ for all $n$ with strict inequality for some
+$n$; $A$ is \emph{efficient} if no feasible allocation dominates it. Define total value
+\[
+  W(y) \;\equiv\; P(y) + \sum_{n=1}^{N} v_n(y).
+\]
+
+\textbf{Claim.} \emph{A feasible allocation $A = (y, x_1, \dots, x_N)$ is efficient if and only
+if $W(y) \ge W(y')$ for every $y' \in Y$.}
+
+\textbf{Lemma (sum of utilities).} For every feasible allocation,
+\[
+  \sum_n u_n(x_n, y) = \sum_n x_n + \sum_n v_n(y) = P(y) + \sum_n v_n(y) = W(y).
+\]
+The sum of utilities depends on $y$ only; transfers move utility between people one for one and
+never change the total (the $45^\circ$ lines of \MR's Figure~2.1).
+
+\begin{proof}[Proof of ``if'' (value maximizing $\Rightarrow$ efficient)]
+Let $y$ maximize $W$ and suppose, for a contradiction, that a feasible
+$A' = (y', x'_1, \dots, x'_N)$ dominates $A$. Summing the $N$ inequalities
+$u_n(A') \ge u_n(A)$, at least one of them strict, and using the lemma for both allocations,
+\[
+  W(y') = \sum_n u_n(A') \;>\; \sum_n u_n(A) = W(y),
+\]
+contradicting the maximality of $W(y)$. Hence no feasible allocation dominates $A$.
+\end{proof}
+
+\begin{proof}[Proof of ``only if'' (efficient $\Rightarrow$ value maximizing)]
+By contraposition: suppose $y$ does \emph{not} maximize $W$. Then there is $y^* \in Y$ with
+\[
+  G \;\equiv\; W(y^*) - W(y) > 0 .
+\]
+Following the hint, divide the gain equally. Define
+\[
+  x^*_n \;=\; x_n + v_n(y) - v_n(y^*) + \frac{G}{N}, \qquad n = 1, \dots, N .
+\]
+\emph{Everyone strictly gains:}
+$u_n(x^*_n, y^*) = x^*_n + v_n(y^*) = x_n + v_n(y) + G/N > u_n(x_n, y)$ for every $n$.
+
+\emph{The allocation is feasible:} using $\sum_n x_n = P(y)$ and the definition of $G$,
+\[
+  \sum_n x^*_n = P(y) + \sum_n v_n(y) - \sum_n v_n(y^*) + G
+  = W(y) - \sum_n v_n(y^*) + W(y^*) - W(y) = P(y^*) .
+\]
+So $(y^*, x^*_1, \dots, x^*_N)$ is feasible and strictly preferred by all $N$ people: $A$ is not
+efficient.
+\end{proof}
+
+The second part proves more than the claim: every inefficient allocation is \emph{strictly}
+Pareto dominated (all $N$ people gain) by an allocation using a better $y^*$, and if $y^*$ is
+chosen in $\argmax W$ the dominating allocation is itself efficient. That is the second sentence of
+\MR's statement of the principle (p.~36). Note also that efficiency restricts $y$ only: every
+transfer vector adding up to $P(y)$ is efficient when $y$ is value maximizing.
+
+\textbf{Where ``no wealth effects'' enters.} Two places.
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{The form $x_n + v_n(y)$} (conditions (i)--(ii) of the definition, \MR{} p.~35;
+  item~27 derives it). It makes utility transferable one for one, so that the lemma holds and the
+  utility possibility set for each $y$ is a $45^\circ$ hyperplane.
+  \item \emph{Affordability of the transfers} (condition (iii)). The ``only if'' construction
+  may require some $x^*_n$ to be large and negative: person $n$'s payment rises by
+  $v_n(y^*) - v_n(y) - G/N$, so whoever gains most from the switch pays for it. The proof takes $x_n \in \mathbb{R}$ unrestricted. If each person can pay at most
+  his or her wealth, $x_n \ge -w_n$, the ``if'' direction survives (it constructs nothing), but
+  the ``only if'' direction can fail. Example: $N = 2$, $Y = \{a, b\}$, $P \equiv 0$,
+  $v_1(a) = 0$, $v_1(b) = 10$, $v_2(a) = 5$, $v_2(b) = 0$, and $w_1 = 1$. Then $W(a) = 5 < W(b) = 10$.
+  The allocation $(a, 0, 0)$ is not value maximizing, yet it is efficient under the wealth
+  constraint: allocations with $y = a$ only redistribute, and any allocation with $y = b$
+  gives person~2 $x_2 = -x_1 \le w_1 = 1 < 5 = u_2(a, 0)$. Person~1 cannot afford to compensate
+  person~2.
+\end{enumerate}
+
+\textbf{Remark: wealth effects (\MR{} n.~10, p.~37).} With general utilities $U_n(x_n, y)$
+increasing in money, an allocation that maximizes $\sum_n U_n$ over feasible allocations is
+still efficient (the ``if'' argument uses only that summing Pareto inequalities raises the sum).
+But the converse fails: there can be efficient allocations that do not maximize the sum. The
+reason is that the utility possibility frontier for a given $y$ is no longer a straight line with
+slope $-1$: moving a dollar from one person to another changes their utilities by different amounts
+that depend on their wealth. Efficient points then correspond to maximizing \emph{weighted} sums
+$\sum_n \lambda_n U_n$ with weights that vary along the frontier, and different points of the
+frontier can use different decisions $y$ (the WTP/WTA example of item~7). ``Total value'' is a
+meaningful single index of efficiency only because quasilinearity fixes all weights at one.
+
+\interp This is the formal backbone of \MR{} Ch.~2: under no wealth effects, efficiency is
+equivalent to choosing the $y$ with the largest total value, and distribution is handled entirely
+by the transfers. Combined with the hypothesis of efficient bargaining it gives the Coase theorem
+(p.~38). The affordability counterexample is exactly the limit \MR{} stress on p.~39: with very
+limited capital, value-creating changes can be blocked.
+
+\verify Beach example (items~16--17): $W$ is maximized at $y^* = 4$; from the equal-share
+allocation at $\bar y = 3.75$ the construction gives each family $G/N = (5/32)/4 = 5/128$ more, with
+contributions summing to $4 = -P(4)$. Counterexample: $W(a) = 5$, $W(b) = 10$, and the largest
+$u_2$ reachable at $b$ with $x_1 \ge -1$ is $1 < 5$ (\texttt{check\_C.py}).
+
+\answer{With $u_n = x_n + v_n(y)$ and $\sum_n x_n = P(y)$, the sum of utilities of any feasible
+allocation equals $W(y) = P(y) + \sum_n v_n(y)$. If $y$ maximizes $W$, a Pareto improvement would
+raise $W$: contradiction. If it does not, some $y^*$ has $G = W(y^*) - W(y) > 0$, and transfers
+$x^*_n = x_n + v_n(y) - v_n(y^*) + G/N$ are feasible and make everyone strictly better off. The
+necessity part needs transfers to be affordable; with wealth effects, value maximization is
+sufficient but not necessary for efficiency.}
+\end{exsol}

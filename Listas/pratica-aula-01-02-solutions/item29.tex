@@ -1,0 +1,94 @@
+\begin{exsol}{29}{MWG Exercise 9.B.12}{302--303}{Advanced}{B2}
+\asked In the infinite-horizon alternating-offer game of MWG Example 9.AA.2, let the two players
+discount the future with different factors $\delta_1 \neq \delta_2$, and find the (unique) subgame
+perfect Nash equilibrium.
+
+\method Rubinstein (1982) as presented in MWG Appendix A (Example 9.AA.2, p.~298): guess
+stationary strategies from the two indifference conditions, verify them with one-shot
+deviations, and prove uniqueness with the Shaked--Sutton bounds on the sup and inf of SPNE
+payoffs. Notation as in the course notes (Part~II, ``Infinite horizon: Rubinstein''), with pie $v$.
+
+\solution
+\textbf{(a) Stationary strategies.} Let $x_i$ be what player~$i$ keeps when proposing. A
+responder $j$ who rejects becomes the proposer next period and gets $x_j$ then, worth
+$\delta_j x_j$ today. The proposer offers exactly that:
+\[
+  v - x_1 = \delta_2 x_2, \qquad v - x_2 = \delta_1 x_1 .
+\]
+Solving,
+\[
+  \boxed{x_1^* = \frac{1 - \delta_2}{1 - \delta_1\delta_2}\,v, \qquad
+  x_2^* = \frac{1 - \delta_1}{1 - \delta_1\delta_2}\,v .}
+\]
+\emph{SPNE strategies}: player~$i$, when proposing, keeps $x_i^*$ and offers
+$v - x_i^* = \delta_j x_j^*$; when responding, accepts iff offered at least $\delta_i x_i^*$.
+On the path player~1 proposes in period 1 and player~2 accepts:
+\[
+  u_1 = x_1^* = \frac{1 - \delta_2}{1 - \delta_1\delta_2}\,v, \qquad
+  u_2 = v - x_1^* = \frac{\delta_2(1 - \delta_1)}{1 - \delta_1\delta_2}\,v .
+\]
+
+\emph{Verification (one-shot deviations, valid with discounting).} A responder $j$ offered
+$y \ge \delta_j x_j^*$ gets $y$ by accepting and $\delta_j x_j^*$ by rejecting, so accepting is
+optimal; below that, rejecting is optimal. A proposer $i$ who offers more than $\delta_j x_j^*$
+gives away surplus; one who offers less is rejected and then receives $\delta_i x_i^*$ one period
+later, worth $\delta_i \cdot \delta_i x_i^* < x_i^*$ today.
+
+\textbf{(b) Uniqueness (Shaked--Sutton).} Let $M_i$ and $m_i$ be the sup and inf of player~$i$'s
+SPNE payoffs in subgames where $i$ proposes; by stationarity they do not depend on the date.
+\begin{itemize}
+  \item Player~2 accepts anything above $\delta_2 M_2$ and rejects anything below $\delta_2 m_2$.
+  Hence $m_1 \ge v - \delta_2 M_2$. A rejected offer is no better, because the pie is only
+  available later, so $M_1 \le v - \delta_2 m_2$.
+  \item Symmetrically, $m_2 \ge v - \delta_1 M_1$ and $M_2 \le v - \delta_1 m_1$.
+\end{itemize}
+Combining, $M_1 \le v - \delta_2(v - \delta_1 M_1)$, so $M_1 \le (1-\delta_2)v/(1 - \delta_1\delta_2)$;
+and $m_1 \ge v - \delta_2(v - \delta_1 m_1)$, so $m_1 \ge (1-\delta_2)v/(1-\delta_1\delta_2)$. Hence
+$M_1 = m_1 = x_1^*$, and likewise $M_2 = m_2 = x_2^*$. Since every SPNE gives the first proposer
+exactly $x_1^*$, and any delay would shrink the total below $v$ and leave someone worse off than
+these bounds allow, agreement is immediate and the strategies in (a) are the unique SPNE. The
+key step is that the map $M \mapsto v - \delta_2(v - \delta_1 M)$ is a contraction with slope
+$\delta_1\delta_2 < 1$.
+
+\textbf{(c) Comparative statics and limits.}
+\begin{itemize}
+  \item \emph{Equal factors}: $\delta_1 = \delta_2 = \delta$ gives $x_1^* = v/(1+\delta)$, the
+  result of Example 9.AA.2 and the $T \to \infty$ limit of Example 9.AA.1.
+  \item \emph{Patience is power}: $\partial x_1^*/\partial\delta_1 =
+  \delta_2(1-\delta_2)v/(1-\delta_1\delta_2)^2 > 0$, and $x_1^*$ falls in $\delta_2$.
+  \item $\delta_1 \to 1$ with $\delta_2 < 1$ fixed: $x_1^* \to v$, so the perfectly patient
+  player takes everything. With $\delta_2 \to 1$ and $\delta_1 < 1$ fixed: $x_1^* \to 0$, so
+  player~2 gets everything even though player~1 moves first.
+  \item \emph{Frequent offers}: with $\delta_i = e^{-r_i\Delta}$ and $\Delta$ the time between
+  offers, $1 - e^{-r_2\Delta} \approx r_2\Delta$ and $1 - e^{-(r_1+r_2)\Delta} \approx
+  (r_1+r_2)\Delta$, so
+  \[
+    \lim_{\Delta \to 0} x_1^* = \frac{r_2}{r_1 + r_2}\,v .
+  \]
+  The first-mover advantage disappears and only relative impatience matters; equal rates give
+  $v/2$.
+  \item \emph{Example}: $\delta_1 = 0.9$, $\delta_2 = 0.8$, $v = 1$: $x_1^* = 0.2/0.28 = 5/7
+  \approx 0.714$, player~2 gets $2/7$; if player~2 proposed first she would keep
+  $x_2^* = 0.1/0.28 = 5/14$. With $r_1 = 1$, $r_2 = 2$ and $\Delta \to 0$ player~1 gets $2/3$.
+\end{itemize}
+
+\interp Under complete information bargaining is efficient (immediate agreement) and the split is
+determinate: it rewards the player who can better afford to wait. That is the formal content of
+``bargaining power'' in the transfers that the Coase theorem and \MR's value maximization
+principle leave open; discount factors move the split, never the value-creating decision.
+Contrast item 28, where a fixed per-offer cost instead of discounting destroys the uniqueness.
+
+\verify \texttt{check\_D.py} confirms symbolically that $x_1^*, x_2^*$ solve both indifference
+conditions and the Shaked--Sutton fixed point, the equal-$\delta$ case, both one-sided limits, the
+$\Delta \to 0$ limit $r_2/(r_1+r_2)$, and the derivative. It also runs the finite-horizon recursion
+of the course notes with $(\delta_1, \delta_2) = (0.9, 0.8)$ for $T = 400$ and $401$, which gives
+$5/7$ to machine precision: the infinite-horizon split is the limit of the finite ones. The MWG
+solutions manual gives the same strategies: the proposer $i$ offers $j$ the share
+$\delta_j(1-\delta_i)v/(1-\delta_i\delta_j)$, and $j$ accepts iff offered at least that.
+
+\answer{Unique SPNE: player~$i$ as proposer keeps $x_i^* = (1-\delta_j)v/(1-\delta_1\delta_2)$ and
+offers $\delta_j x_j^*$; as responder accepts iff offered at least $\delta_i x_i^*$. Agreement is
+immediate with payoffs $\big((1-\delta_2)v,\ \delta_2(1-\delta_1)v\big)/(1-\delta_1\delta_2)$. The
+share rises in own patience; $\delta_1 \to 1$ gives player~1 everything; with
+$\delta_i = e^{-r_i\Delta}$ and $\Delta \to 0$, player~1 gets $r_2 v/(r_1+r_2)$.}
+\end{exsol}

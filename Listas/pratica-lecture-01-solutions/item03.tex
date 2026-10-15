@@ -1,0 +1,56 @@
+\begin{exsol}{3}{\MG{} Ch.~1, Exercise 2}{4}{Foundations}{B1}
+\asked From the game tree of Fig.~1.3 (player~1 chooses $H$, $M$ or $L$; player~2 observes the
+choice and accepts or rejects), give each player's strategy space and the normal-form matrix.
+
+\method A strategy is a complete contingent plan: it says what to do at every node where the
+player may be called to move (Lecture~1, slide~17; Tadelis \S3.1, p.~47). Any game can then be
+written in normal form (slide~15).
+
+\solution
+\textbf{(a)} Player~1 moves once: $S_1 = \{H, M, L\}$.
+
+\textbf{(b)} Player~2 moves at three nodes and can tell them apart, so a strategy is a triple
+$xyz$ = (reply after $H$, after $M$, after $L$), each $a$ or $r$:
+\[
+  S_2 = \{a, r\}^3 = \{aaa, aar, ara, arr, raa, rar, rra, rrr\}, \qquad |S_2| = 2^3 = 8 .
+\]
+Had player~2 \emph{not} observed player~1's move (one information set), she would have only
+$\{a, r\}$.
+
+\textbf{(c)} In cell $(m, xyz)$ only the reply at node $m$ matters. Leaves: $(H,a) = (0,10)$,
+$(M,a) = (5,5)$, $(L,a) = (10,0)$, and $(0,0)$ after any $r$.
+\begin{center}
+\small
+\begin{tabular}{r|c|c|c|c|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$aaa$} & \multicolumn{1}{c}{$aar$} &
+\multicolumn{1}{c}{$ara$} & \multicolumn{1}{c}{$arr$} & \multicolumn{1}{c}{$raa$} &
+\multicolumn{1}{c}{$rar$} & \multicolumn{1}{c}{$rra$} & \multicolumn{1}{c}{$rrr$}\\ \cline{2-9}
+$H$ & $0,10$ & $0,10$ & $0,10$ & $0,10$ & $0,0$ & $0,0$ & $0,0$ & $0,0$ \\ \cline{2-9}
+$M$ & $5,5$ & $5,5$ & $0,0$ & $0,0$ & $5,5$ & $5,5$ & $0,0$ & $0,0$ \\ \cline{2-9}
+$L$ & $10,0$ & $0,0$ & $10,0$ & $0,0$ & $10,0$ & $0,0$ & $10,0$ & $0,0$ \\ \cline{2-9}
+\end{tabular}
+\end{center}
+
+\textbf{Comparison with the book.} Our matrix agrees with the book's Fig.~1.4 (p.~5) in 23 of 24
+cells. The exception is $(L, aar)$: the book prints $(10, 0)$, but $aar$ rejects after $L$, so the
+outcome is the $(0,0)$ leaf. This is a typo in the book; the rest of its answer (strategy sets,
+the remark on information sets) agrees with ours.
+
+\textbf{What dominance says (beyond the question).} No strategy is strictly dominated. Player~1's
+$H$ earns $0$ in every column but is not \emph{strictly} dominated, because against $rrr$ every
+row earns $0$. Player~2's payoff in row $L$ is $0$ whatever she does, so no plan strictly beats
+another in all three rows. Accepting at $H$ and $M$ ($aaa$ or $aar$) only \emph{weakly}
+dominates any plan that rejects at $H$ or $M$. IESDS therefore has no bite on this matrix; the
+tree's sequential structure (Lecture~3) will do the work.
+
+\interp The normal form multiplies strategies: three decision nodes with two actions each
+give $2^3$ plans, most of them differing only at nodes that are never reached. That is why the
+normal form of a dynamic game is large and why solving it needs more than dominance.
+
+\verify \texttt{check\_A.py} rebuilds every cell from the six leaves, finds that only
+$(L, aar)$ differs from the book's table, and checks the dominance statements above.
+
+\answer{$S_1 = \{H, M, L\}$; $S_2 = \{a, r\}^3$ (8 plans $xyz$, one reply per node). Matrix above;
+cell $(m, xyz)$ is the leaf of $m$ followed by the reply to $m$. The book's cell $(L, aar)$ should
+read $(0,0)$, not $(10,0)$.}
+\end{exsol}

@@ -1,0 +1,84 @@
+\begin{exsol}{24}{Tadelis Exercise 4.4}{76--77}{Advanced}{B4}
+\asked Under eBay's proxy bidding (the winner pays one increment above the second-highest proxy
+bid) with independent private values: (a) argue that bidding above one's value is weakly
+dominated by bidding one's value; (b) the same for bidding below; (c) make sense of eBay's
+advice to bid one's true value, and say whether you would follow it.
+
+\method Weak dominance (Lecture~1, slide~23; Tadelis Remark, p.~63), by comparing outcomes case
+by case in the highest rival proxy bid. As the increment ($\$0.01$) goes to zero, proxy bidding
+\emph{is} the second-price auction of item~23. We first argue in that limit, which is the
+exercise's intent, and then check what the increment changes.
+
+\solution
+Let $v$ be your value, $b$ your proxy bid, $h$ the highest rival proxy bid. In the limit model
+you win iff $b > h$ (ties split at random) and pay $h$, whatever $b$ is.
+
+\textbf{(a) Overbidding, $b > v$.} Compare with bidding $v$:
+\begin{itemize}
+  \item $h < v$: both bids win at price $h$; same payoff $v - h$.
+  \item $h > b$: both lose; payoff $0$ for both.
+  \item $v \le h \le b$: bid $v$ earns $0$ (it loses, or ties at a price equal to $v$), while
+  bid $b$ wins (or ties) at price $h \ge v$, earning $v - h \le 0$. For $v < h < b$ this is
+  strictly negative.
+\end{itemize}
+Bidding $v$ is never worse and is strictly better when $v < h < b$: $b$ is weakly dominated by
+$v$. Overbidding only matters when it makes you win at a price above your value.
+
+\textbf{(b) Underbidding, $b < v$.}
+\begin{itemize}
+  \item $h < b$: both win at price $h$; same payoff.
+  \item $h > v$: both lose; same payoff $0$.
+  \item $b \le h < v$: bid $v$ wins and earns $v - h > 0$; bid $b$ loses (or ties) and earns
+  $0$ (or $(v-h)/2$). Strictly worse.
+  \item $h = v$: both earn $0$.
+\end{itemize}
+So $b$ is weakly dominated by $v$. Underbidding only matters when it makes you lose an auction
+you would have won profitably; it never lowers the price you pay.
+
+\textbf{What the increment changes.} With a positive increment the price is
+$\min\{b,\ h + \text{increment}\}$ (the winner never pays above his own proxy).
+\texttt{check\_C.py} enumerates this rule with bids in cents, a one-cent increment, two bidders,
+random tie-breaking and $v = \$10.00$.
+\begin{itemize}
+  \item (a) holds exactly: $v$ weakly dominates every $b > v$.
+  \item (b) holds for every $b \le v - 3$ cents. Bidding $v - 2$ cents is payoff-equivalent to
+  bidding $v$. Bidding $v - 1$ cent \emph{weakly dominates} bidding $v$: it ties with probability
+  $\tfrac12$ when $h = v - 1$ cent (expected gain half a cent), where bidding $v$ wins at a price of
+  exactly $v$ and earns nothing.
+\end{itemize}
+So the exact statement in (b) holds only up to the size of one increment. Any gain from shading is
+below one cent, and it disappears in the limit model the exercise intends.
+
+\textbf{(c) eBay's recommendation.} By (a) and (b), bidding your true value is (weakly) optimal
+whatever the other bidders do: you do not need to guess their values, their strategies, or how
+many of them there are. Proxy bidding turns eBay's ascending auction into a second-price
+auction, and the advice ``enter your true value, no more, no less'' is exactly the weakly dominant
+strategy of item~23. I would follow it, with caveats that come from features the model leaves out:
+\begin{itemize}
+  \item \emph{Dynamics.} Real eBay auctions have a fixed end time and bids arrive over time. Late
+  bidding (``sniping'') is common because it gives rivals no time to react, for example to
+  incremental bidders who raise their bids step by step. If everyone bids their value once, the
+  timing does not matter.
+  \item \emph{Values not independent.} For goods with resale or common value, rivals' bids carry
+  information about the value (the winner's curse), and ``your value'' must take that into account.
+  \item \emph{Increments and shill bidding.} Shading by a few cents is harmless (above); a seller
+  bidding on her own item to raise $h$ does not change the advice either, because your bid still
+  never affects your price.
+\end{itemize}
+
+\interp The general lesson: when your bid affects only \emph{whether} you win and not \emph{what}
+you pay, truthful bidding is weakly dominant. The ``weakly'' matters: against many rival profiles
+truth-telling only ties with other bids, so it is a safe prescription, not a unique prediction
+of what everyone else will do.
+
+\verify \texttt{check\_C.py} checks the limit model as the second-price auction of item~23
+(truthful bidding weakly dominates every other grid bid, with one or two rivals) and the
+one-cent-increment rule as described above. Tadelis gives no answer in the book.
+
+\answer{(a) Bidding $b > v$ changes the outcome only when $v < h < b$, where it wins at a loss,
+so $v$ weakly dominates $b$. (b) Bidding $b < v$ changes the outcome only when $b \le h < v$,
+where it gives up a profitable win, so $v$ weakly dominates $b$. (c) Proxy bidding is a
+second-price auction, so the true value is a weakly dominant bid, which justifies eBay's advice.
+With a positive increment, (b) holds only up to one increment: in cents, $v - 1$ cent weakly
+dominates $v$ by half a cent.}
+\end{exsol}

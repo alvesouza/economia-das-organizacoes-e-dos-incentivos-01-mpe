@@ -1,0 +1,106 @@
+\begin{exsol}{23}{\MR{} Food for Thought~2.5}{52}{Exam}{B3}
+\asked Assess how specific a cable-television company's investment in wiring a community is,
+and predict the arrangements the company would seek with local communities over the pricing and
+taxation of its service.
+
+\method Transaction attributes, asset specificity first (\MR{} Ch.~2, pp.~30--31, and summary,
+p.~49); imperfect commitment and opportunistic renegotiation (p.~30); specific and cospecialized
+assets, the hold-up problem and the contractual remedies observed in coal supply (\MR{} Ch.~5,
+``Investments and Specific Assets'', pp.~134--139); quasi-rents (\MR{} Ch.~8, p.~269);
+investments in bargaining position (\MR{} p.~149).
+
+\solution
+\textbf{(a) How specific is the investment? Very.} \MR{} measure specificity, when value
+maximization applies, as ``the percentage of investment value that is lost when the asset is
+used outside the specific setting or relationship'' (p.~135). For a cable network:
+\begin{itemize}
+  \item \emph{Site specificity.} Cable strung on poles or buried along a town's streets to its
+  households cannot be moved to another town. The bulk of the cost is installation (trenching,
+  pole attachments, drops to each house, engineering), which has no salvage value; only the
+  head-end electronics and some equipment are redeployable.
+  \item \emph{Dedicated to one counterparty.} The network serves only that community, and the
+  firm's access to streets, poles and subscribers runs through a franchise that the local
+  government grants, renews and can regulate and tax.
+  \item \emph{Durable.} The cable lasts many years, so the investment is recovered only over a
+  long horizon, during which conditions (technology, costs, local politics) change.
+\end{itemize}
+So most of the investment would be lost if the relationship with the community ended: the
+specificity is close to $100\%$ for the installed plant. The specificity is \emph{two-sided}, though
+not symmetric: once one network is in place, duplicating it is wasteful (cable distribution is a
+natural monopoly), so the community also has few alternatives and the firm could exploit its
+local monopoly. Ex ante, several firms can compete for the franchise; ex post, firm and community
+are locked in a bilateral relationship.
+
+\textbf{(b) The hazard: hold-up.} After the cable is sunk, the community can change the terms:
+cap subscriber prices, raise franchise fees or taxes, impose new service obligations, or threaten
+not to renew. The firm keeps operating as long as revenue covers its \emph{avoidable} costs, so
+the community can appropriate the firm's quasi-rent, the excess of revenue over what the firm
+needs to stay rather than exit (\MR{} p.~269). A firm that foresees this underinvests or does not
+enter at all. A minimal example: the network costs $K = 100$ (fully specific) and generates
+operating returns worth $R = 150$ in present value. Building is efficient ($150 > 100$). If,
+after the investment, the returns are split $50/50$ by renegotiation with the community, the firm
+gets $75 < 100$ and does not build: $50$ of value is lost although nobody behaves irrationally.
+The danger runs both ways: a firm with a captive market can also hold up subscribers with high
+prices or poor service. This is \MR's mine-mouth plant problem (pp.~135--137), with the community
+in the role of the utility.
+
+A community is also a government: it can change taxes and regulations unilaterally, and its
+promises are hard to enforce against it. Imperfect commitment (\MR{} p.~30) is therefore
+particularly severe here.
+
+\textbf{(c) Arrangements to expect.} Because the investment is large and specific, the parties
+``seek to organize in ways that safeguard those investments'' (\MR{} p.~49). Before investing,
+the company would want a long-term, detailed franchise contract with the community, of the kind
+Joskow found for coal (\MR{} p.~137):
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Long duration}, enough to recover the investment, with renewal procedures that
+  presume renewal for satisfactory performance, or compensation for the network (e.g.\ purchase
+  at an agreed valuation) if the franchise is not renewed or is given to a rival.
+  \item \emph{Pricing rules fixed in advance}: an initial rate schedule with escalator clauses
+  tied to cost or price indices, or a price-cap formula, rather than rates set at the community's
+  discretion after the cable is laid.
+  \item \emph{Taxation fixed by formula}: a franchise fee set as a stated percentage of gross
+  revenue, with a ceiling, instead of discretionary taxes that could be raised later.
+  \item \emph{Exclusivity or protection against overbuilding} for a period, so that the
+  community cannot extract terms by threatening to license a competitor once the firm has sunk
+  its cost.
+  \item \emph{Obligations on the firm}, protecting the community against the monopoly side of
+  the lock-in: build-out to all neighbourhoods, service-quality standards, regulated rates for a
+  basic tier, public-access channels.
+  \item \emph{Dispute resolution} by arbitration or an outside regulator, and where possible
+  commitments at a higher level of government that limit what local authorities can change
+  later.
+\end{enumerate}
+The alternative remedy is the one \MR{} report for GM and Fisher Body (p.~137): unified ownership.
+Here that means municipal ownership of the network, with the operation contracted out, which
+removes the firm's exposure but brings its own incentive problems.
+
+\textbf{(d) Investments in bargaining position.} Since the terms are renegotiated at each renewal,
+both sides have an incentive to spend resources that shift the division without creating value
+(\MR{} p.~149): the community may cultivate a credible threat to license a second operator or
+build a municipal system; the firm may lobby, litigate, or design its network to raise the
+community's switching costs. Such spending is pure waste in total-value terms, and good contracts
+reduce it by fixing the renewal terms in advance.
+
+\interp This item connects the Ch.~2 vocabulary (asset specificity, imperfect commitment) to the
+hold-up logic developed later in the course. Under the Coase benchmark the efficient network would
+be built whatever the bargaining power; with specific assets and incomplete, imperfectly enforceable
+contracts, the threat of ex-post renegotiation distorts the ex-ante investment. The transaction
+cost approach predicts the governance structure that maximizes total value net of those costs:
+long-term contracts with pricing formulas, protected tax treatment and renewal guarantees, or
+integration. (For a classic study of cable franchise bidding along these lines, see Williamson,
+``Franchise Bidding for Natural Monopolies---in General and with Respect to CATV'', \emph{Bell
+Journal of Economics}, 1976.)
+
+\verify Internal consistency: the efficient decision compares $R = 150$ with $K = 100$; the firm
+compares its post-renegotiation share $R/2 = 75$ with $K$. Any ex-ante agreement guaranteeing the
+firm at least $100$ out of $150$ (e.g.\ a fee formula capping the community's take at $50$)
+restores the investment, consistent with the remedies in (c) (\texttt{check\_C.py}).
+
+\answer{The investment is highly specific (site-specific, durable, dedicated to one community;
+most of its value is lost outside the relationship), which exposes the company to hold-up through
+price controls, taxes or non-renewal once the cable is sunk. Expect long-term franchise agreements
+signed before investment: long duration and renewal or buy-out guarantees, rate formulas with
+escalators or price caps, franchise fees fixed as a capped share of revenue, exclusivity, and
+service obligations protecting the community; or, as the alternative, municipal ownership.}
+\end{exsol}

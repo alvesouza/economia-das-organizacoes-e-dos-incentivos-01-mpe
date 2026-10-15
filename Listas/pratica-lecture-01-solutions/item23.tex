@@ -1,0 +1,64 @@
+\begin{exsol}{23}{MWG Exercise 8.B.3}{262}{Advanced}{B4}
+\asked In a sealed-bid second-price (Vickrey) auction with $I$ bidders and private valuations
+$v_i$ (ties broken at random), show that bidding $v_i$ is weakly dominant for bidder~$i$, and
+that it is bidder~$i$'s unique weakly dominant strategy.
+
+\method Weak dominance (MWG Def.~8.B.3, pp.~237--238; Lecture~1, slide~23) by case analysis on
+the highest competing bid; the second-price auction is one of the slides' opening examples
+(slide~4). We use the lecture's definition: $b$ weakly dominates $b'$ if it does at least as well
+against every opponent profile and strictly better against at least one.
+
+\solution
+Fix bidder~$i$ ($I \ge 2$) and let $h = \max_{j \ne i} b_j \ge 0$ be the highest rival bid and
+$k \ge 1$ the number of rivals bidding $h$. Bidder~$i$'s payoff from bid $b$ depends on the rivals
+only through $(h, k)$:
+\[
+  u_i(b; h, k) = \begin{cases} v_i - h & b > h,\\ \dfrac{v_i - h}{k + 1} & b = h,\\ 0 & b < h. \end{cases}
+\]
+The price never depends on bidder~$i$'s own bid; the bid only decides \emph{whether} he wins.
+
+\textbf{Step 1: $v_i$ is a best reply to every $(h, k)$.} If $h < v_i$, bidding $v_i$ wins and
+earns $v_i - h > 0$, the most any bid can earn. If $h > v_i$, bidding $v_i$ loses and earns $0$,
+while any winning or tying bid earns $v_i - h < 0$ or a share of it. If $h = v_i$, every bid earns
+$0$. So $u_i(v_i; h, k) \ge u_i(b; h, k)$ for every bid $b$ and every rival profile.
+
+\textbf{Step 2: strict somewhere against each alternative.}
+\begin{itemize}
+  \item $b > v_i$ (overbidding): take $h \in (v_i, b)$. Bid $b$ wins and pays $h > v_i$, earning
+  $v_i - h < 0$; bid $v_i$ loses and earns $0$.
+  \item $b < v_i$ (underbidding): take $h \in (b, v_i)$. Bid $b$ loses and earns $0$; bid $v_i$
+  wins and earns $v_i - h > 0$.
+\end{itemize}
+With Step~1, $v_i$ weakly dominates every other bid: \emph{bidding $v_i$ is weakly dominant}.
+
+\textbf{Step 3: uniqueness.} Let $b \ne v_i$. The rival profile constructed in Step~2 gives
+$u_i(b; h, \cdot) < u_i(v_i; h, \cdot)$, so $b$ is not even a best reply there, and a fortiori
+not weakly dominant. Mixed bids (MWG's ``with certainty'' refers to them) fail too. If $\sigma$
+puts probability $p > 0$ on bids below $v_i$, there is an $h < v_i$ with
+$\sigma([0, h]) > 0$ (since $[0, v_i) = \bigcup_n [0, v_i - 1/n]$). Against that $h$, every bid
+$b \le h$ earns strictly less than $v_i$ does ($0$ or $(v_i - h)/(k+1) < v_i - h$), and no bid
+earns more. So $\sigma$ is strictly worse than $v_i$ there. The case of mass above $v_i$ is
+symmetric. Hence bidding $v_i$ with certainty is the \emph{unique} weakly dominant strategy.
+
+\interp Truth-telling is optimal whatever the others do, and whatever bidder~$i$ believes about
+them: no knowledge of rivals' values, rationality or bids is needed, which is much less than
+IESDS or Nash equilibrium require. The second-price rule separates \emph{whether} you win (your
+bid) from \emph{what} you pay (others' bids), so the only effect of shading or inflating a bid is
+to win in the wrong cases. In a first-price auction the bid also sets the price, and bidders shade
+(item~17). Truthful bidding by all is a weakly dominant-strategy equilibrium and allocates the
+object efficiently, to the highest valuation.
+
+\verify \texttt{check\_C.py} enumerates bids on the grid $\{0, \dots, 8\}$ with one and with two
+rivals and values $v \in \{0, 3, 8\}$. In every case $v$ weakly dominates each other grid bid,
+and $v$ is the only grid bid that does at least as well as every other bid against every rival
+profile. \emph{Comparison with the MWG solutions manual} (p.~8-2): it gives the same two-case
+argument (overbidding and underbidding are weakly dominated by $v_i$) but does not argue the
+``unique'' part, which Step~3 supplies. It does not treat ties explicitly either; here
+they are handled by the $(v_i - h)/(k+1)$ term.
+
+\answer{The price paid is the highest rival bid $h$, independent of one's own bid. Bidding
+$v_i$ wins exactly when $h < v_i$, that is, exactly when winning is profitable, so it is a best
+reply to every rival profile. Any $b > v_i$ does strictly worse when $h \in (v_i, b)$, and any
+$b < v_i$ when $h \in (b, v_i)$. Hence bidding $v_i$ is weakly dominant, and no other bid, pure
+or mixed, is.}
+\end{exsol}

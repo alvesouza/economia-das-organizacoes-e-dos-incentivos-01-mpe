@@ -221,7 +221,7 @@ economically (max. half the item); a cross-topic question answered inside one mo
 curve, the equilibrium point, and the reading off it; a graph contradicting the student's
 algebra loses the graph points.
 
-## 9. Study-roadmap PDF (every exercise list)
+## 9. Study-roadmap PDF and practice-plan solutions (every exercise list)
 
 - After building any exercise list, ask the user whether to split its study roadmap into a
   PDF. This covers `/exam-gen` lists and mock exams, and `/exercise-plan` practice plans built
@@ -235,3 +235,13 @@ algebra loses the graph points.
 - On "yes", run `/study-pack` on the file that carries the roadmap tables (an `/exercise-plan`
   file already does; for an `/exam-gen` list, first write the reading and roadmap tables of the
   `/exercise-plan` format to `Listas/roteiro-<topic>.md`).
+- After building an `/exercise-plan` practice plan, also ask whether to write the solutions of
+  its exercises as a PDF, in the same AskUserQuestion call as the roadmap question.
+  *Why:* a practice plan points to book exercises whose answers are not in M&R, Cabral or MWG,
+  so without solutions the student cannot check the work; writing 30 solutions unasked is a
+  long build the student may not want. (`/exam-gen` lists already ship their answer key.)
+  *Check:* the plan's final question offers both PDFs; a "yes" produces
+  `Listas/pratica-<topic>-solutions.pdf`.
+- On "yes", solve every exercise of the plan with `/solution` in plan order, cite each one by
+  number and page without restating it, and compile one pdflatex PDF (lmodern + cmap) from
+  `Listas/pratica-<topic>-solutions.tex`, with a check script for every computed number.

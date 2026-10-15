@@ -1,0 +1,104 @@
+\begin{exsol}{6}{Varian Ch.~32, Review Question~3}{628}{Foundations}{B1}
+\asked Decide whether knowing the contract curve of an exchange economy is enough to know where
+trade between the two consumers will end up, and justify the verdict.
+
+\method Pareto efficiency in the Edgeworth box and the contract curve (Varian \S32.3,
+pp.~605--607); the role of the endowment and of the trading mechanism (competitive equilibrium,
+take-it-or-leave-it offers, Nash bargaining); the course notes, Part~II, sections ``The
+question: is bargaining indeterminate?'' and ``Dividing the gains: the Nash bargaining solution''.
+
+\solution
+\textbf{Verdict: false.} The contract curve tells us \emph{which kind} of point trade ends at, not
+\emph{which} point.
+
+\emph{(a) What the contract curve is.} In a two-person, two-good exchange economy with total
+endowment $(\bar\omega_1,\bar\omega_2)$, an allocation is Pareto efficient when no reallocation
+makes one consumer better off without making the other worse off. At an interior efficient
+allocation the indifference curves are tangent,
+\[
+  MRS^A_{12}(x^A) \;=\; MRS^B_{12}(\bar\omega - x^A),
+\]
+because crossing curves leave a lens of mutually preferred allocations (Varian p.~606). The
+contract curve (Pareto set) is the locus of all such points; it typically runs from $A$'s origin
+to $B$'s origin, and it is defined by preferences and totals alone.
+
+\emph{(b) What it does tell us.} If trade is voluntary and the parties keep trading until no
+mutually advantageous trade remains, the final allocation is on the contract curve: a point off
+the curve would not be a ``final contract'' (Varian p.~606). Voluntary trade also requires that
+each consumer end up at least as well off as at the endowment $\omega$. So trade ends in the
+segment of the contract curve inside the lens through $\omega$ (Varian p.~607; this segment is the
+core of the two-person economy). This is exactly Varian's answer (p.~A27): trade ends ``somewhere on
+the curve; however, we don't know where.'' We agree, and add what decides the point.
+
+\emph{(c) What it does not tell us.} Two things, neither of which is in the contract curve:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{The endowment.} A different $\omega$ selects a different segment.
+  \item \emph{The mechanism.} Within the segment, the point is set by how trade happens: a
+  competitive (Walrasian) equilibrium, a take-it-or-leave-it offer by one side, or a bargaining
+  rule that splits the gains according to bargaining power and patience.
+\end{enumerate}
+
+\emph{Example.} Let $u_A = \ln x_1^A + \ln x_2^A$, $u_B = \ln x_1^B + \ln x_2^B$, totals
+$(10,10)$ and endowment $\omega^A = (8,2)$, $\omega^B = (2,8)$. Tangency gives
+$x_2^A/x_1^A = (10-x_2^A)/(10-x_1^A)$, i.e.\ the contract curve is the diagonal
+$x_1^A = x_2^A = t$. Individual rationality on the diagonal:
+\[
+  u_A:\; t^2 \ge 8\cdot 2 = 16 \;\Rightarrow\; t \ge 4, \qquad
+  u_B:\; (10-t)^2 \ge 16 \;\Rightarrow\; t \le 6 .
+\]
+So trade ends somewhere on the segment $t \in [4,6]$, and the mechanism picks the point:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Mechanism & Final allocation of $A$ \\
+\midrule
+$A$ makes a take-it-or-leave-it offer & $t = 6$ ($B$ indifferent to $\omega$) \\
+$B$ makes a take-it-or-leave-it offer & $t = 4$ ($A$ indifferent to $\omega$) \\
+Competitive equilibrium ($p_1/p_2 = 1$, $A$'s income $10$) & $t = 5$ \\
+Symmetric Nash bargaining & $t = 5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+All four outcomes are on the same contract curve; they differ in who gets the gains from trade.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5,>=Stealth]
+  \draw (0,0) rectangle (10,10);
+  \node[below left] at (0,0) {$O_A$};
+  \node[above right] at (10,10) {$O_B$};
+  \node[below] at (5,-0.2) {\footnotesize good 1 ($A$)};
+  \node[left, rotate=90, anchor=south] at (-0.3,5) {\footnotesize good 2 ($A$)};
+  \draw[thick, hdr] (0,0) -- (10,10);
+  \node[hdr, font=\footnotesize, below right] at (7.4,7.4) {contract curve};
+  \draw[gray] plot[domain=1.6:10, samples=60] (\x,{16/\x});
+  \draw[gray, dashed] plot[domain=0:8.4, samples=60] (\x,{10-16/(10-\x)});
+  \draw[ultra thick, ans] (4,4) -- (6,6);
+  \fill (8,2) circle (3pt) node[right] {$\omega$};
+  \fill (5,5) circle (3pt) node[right] {\footnotesize CE / Nash};
+  \fill (4,4) circle (2pt); \fill (6,6) circle (2pt);
+\end{tikzpicture}
+\end{center}
+{\footnotesize Solid grey: $A$'s indifference curve through $\omega$; dashed: $B$'s. Green: the
+part of the contract curve both prefer to $\omega$, where voluntary efficient trade ends.}
+
+\emph{(d) A caveat in the other direction.} Even ``somewhere on the curve'' presumes that trade
+exhausts the gains. With private information about valuations, no bargaining procedure may reach
+the contract curve (\MR{} Ch.~5, pp.~141--143; notes, Part~II, ``Private information''). The contract curve is
+then the set of \emph{possible} efficient outcomes, not a prediction.
+
+\interp This is the exchange-economy version of \MR's separation (pp.~36--38): efficiency
+restricts \emph{what} is done, while bargaining power, patience and the initial position decide
+\emph{who gets what}. Efficiency is a property of the outcome; the division needs a theory of the
+bargaining process (Nash, Rubinstein), which is why the course moves on to bargaining after the
+value maximization principle.
+
+\verify At $t=4$, $u_A = 2\ln 4 = \ln 16 = u_A(\omega)$; at $t=6$, $u_B = 2\ln 4 = u_B(\omega)$.
+With $p_1 = p_2 = 1$, $A$'s income is $8+2 = 10$ and Cobb--Douglas demand spends half on each good:
+$x^A = (5,5)$, $x^B = (5,5)$, markets clear. Symmetry of the Nash product
+$(2\ln t - \ln 16)(2\ln(10-t) - \ln 16)$ around $t=5$ gives $t=5$ (\texttt{check\_C.py}).
+
+\answer{False. The contract curve is the set of efficient allocations; voluntary efficient trade
+ends on its segment inside the lens through the endowment, but the point within that segment
+depends on the endowment and on the trading mechanism (in the example, anywhere in $t\in[4,6]$:
+$4$ or $6$ under take-it-or-leave-it offers, $5$ under competition or symmetric Nash).}
+\end{exsol}

@@ -1,0 +1,85 @@
+\begin{exsol}{20}{MWG Exercise 8.B.4}{262}{Advanced}{B3}
+\asked Show that the order of deletion does not matter for the set of strategies that survive
+iterated deletion of strictly dominated strategies.
+
+\method Proof for finite games with dominance by pure strategies (MWG \S8.B, pp.~239--240;
+Lecture~1, slide~29). Two facts do the work: strict dominance is inherited by smaller opponent
+sets, and in a finite game a strictly dominated strategy has an undominated dominator.
+
+\solution
+\textbf{Setup.} $G = (I, \{S_i\}, \{u_i\})$ with every $S_i$ finite. For a product set
+$T = \prod_i T_i \subseteq S$, say $s_i \in T_i$ is \emph{dominated in $T$} if some $t_i \in T_i$
+satisfies $u_i(t_i, \sm) > u_i(s_i, \sm)$ for all $\sm \in T_{-i}$. A \emph{deletion sequence} is
+$S = T^0 \supsetneq T^1 \supsetneq \dots \supsetneq T^K$, where each step removes a nonempty set
+of strategies that are dominated in the current set (any players, any number, in any order), and
+where nothing is dominated in $T^K$. The lecture's procedure (remove everything dominated each
+round) is one such sequence. \emph{Claim:} every deletion sequence ends at the same $T^K$.
+
+\textbf{Two facts.}
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Inheritance.} If $t_i$ beats $s_i$ against every $\sm \in A_{-i}$ and
+  $B_{-i} \subseteq A_{-i}$, it beats $s_i$ against every $\sm \in B_{-i}$.
+  \item \emph{Transitivity.} If $t_i$ beats $s_i$ and $r_i$ beats $t_i$ on the same set, then
+  $r_i$ beats $s_i$ there.
+\end{enumerate}
+
+\textbf{Proof.} Let $(A^k)_{k=0}^{K}$ and $(B^m)_{m=0}^{M}$ be two deletion sequences with end
+sets $A = A^K$ and $B = B^M$. We show $B \subseteq A^k$ for all $k$, by induction. It holds for
+$k=0$. Suppose $B \subseteq A^k$ and that some $s_i \in B_i$ is deleted at step $k+1$ of the
+$A$-sequence. Then some $t_i \in A_i^k$ beats $s_i$ on $A_{-i}^k \supseteq B_{-i}$, so by (i)
+the set
+\[
+  D = \{\, r_i \in S_i : u_i(r_i, \sm) > u_i(s_i, \sm) \ \forall \sm \in B_{-i} \,\}
+\]
+is nonempty. We show that $D \cap B_i \neq \emptyset$. Then $s_i$ is dominated in $B$, which
+contradicts the fact that the $B$-sequence stopped.
+
+Suppose instead that every $r_i \in D$ is deleted at some step of the $B$-sequence. Let $m$ be the
+last step at which an element of $D$ is deleted ($D$ is finite), and let $D_m$ be the elements of
+$D$ deleted at step $m$. ``Beats on $B_{-i}^{m-1}$'' is a strict partial order on $D_m$
+(irreflexive and transitive), so $D_m$ has an element $r^*$ that no other element of $D_m$
+beats on $B_{-i}^{m-1}$. Since $r^*$ is deleted at step $m$, some $q \in B_i^{m-1}$ beats $r^*$
+on $B_{-i}^{m-1} \supseteq B_{-i}$. By (i) and (ii), $q$ beats $s_i$ on $B_{-i}$, so $q \in D$.
+Now $q \in B_i^{m-1}$ and $q \in D$, so either $q$ is deleted at step $m$, and then $q \in D_m$
+beats $r^*$, contradicting the choice of $r^*$; or $q$ is deleted after $m$, contradicting the
+choice of $m$; or $q$ is never deleted, so $q \in D \cap B_i$, contradicting our supposition.
+Hence $D \cap B_i \ne \emptyset$.
+
+So no strategy of $B$ is ever deleted by the $A$-sequence: $B \subseteq A$. Exchanging the roles
+of the two sequences gives $A \subseteq B$, so $A = B$. \hfill$\square$
+
+\textbf{Remarks.}
+\begin{itemize}
+  \item The selection of $r^*$ handles a subtle point: the strategy that dominates $s_i$ may itself
+  be deleted, possibly in the same step. Finiteness guarantees that the chain of dominators
+  ends at a strategy that survives.
+  \item Finiteness matters. In infinite games a strategy can be dominated only by strategies that
+  are themselves dominated, and different orders can then end at different sets. Dufwenberg and
+  Stegeman (2002, \emph{Econometrica}) give such examples. In the continuous games of items~15
+  and~21 there is no such problem, because each round's survivors are exactly the possible best
+  replies.
+  \item The argument breaks for \emph{weak} dominance at step (i): weak dominance on $A_{-i}$ need not
+  survive on a subset $B_{-i}$, because the strict inequality may sit on a deleted $\sm$
+  (item~19).
+\end{itemize}
+
+\interp The set $S^\infty$ is a property of the game, not of the analyst's bookkeeping. One may
+delete in whatever order is convenient (one player at a time, one strategy at a time) and the
+prediction is the same. This is part of what makes IESDS a well-defined solution concept.
+
+\verify \texttt{check\_C.py} draws 3\,000 random finite games (between $2\times2$ and $5\times5$,
+payoffs $0$--$6$). For each it runs the lecture's simultaneous procedure and five random
+sequences that each delete a random nonempty subset of one random player's dominated
+strategies. All end at the same set. \emph{Comparison with the MWG solutions manual}
+(pp.~8-2--8-3): it shows that a strategy strictly dominated at some round will be deleted at the
+next round, assuming that its dominator $s_i^*$ is ``not a strictly dominated strategy''. It does
+not prove that such an undominated dominator exists (the finiteness step above), and it does not
+complete the comparison of two whole sequences. The conclusion is the same; the proof above
+fills those two gaps. The manual's note on weak dominance agrees with item~19.
+
+\answer{In a finite game every deletion sequence ends at the same set. A strategy in one end set
+$B$ can never be deleted by another sequence. If it were, a dominator chain, cut off at a maximal
+element of the last-deleted batch, would produce a strategy in $B$ that dominates it on
+$B_{-i}$, contradicting that $B$ is final. Strict dominance is inherited by smaller opponent
+sets; weak dominance is not, which is why weak deletion is order-dependent.}
+\end{exsol}

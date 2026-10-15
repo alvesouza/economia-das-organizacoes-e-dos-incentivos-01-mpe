@@ -1,0 +1,55 @@
+\begin{exsol}{10}{Tadelis Exercise 3.7}{58}{Exam}{B1}
+\asked Write the normal form of the three-player streetlamp game (contribute 1 or nothing; the
+lamp, worth 3 to everyone, is built iff at least two contribute; contributions are not
+refunded).
+
+\method Normal form with $n = 3$ players (slides~13--14); a three-player game is drawn as one
+matrix for players~1 and~2 per strategy of player~3 (Tadelis \S3.1).
+
+\solution
+Let $s_i = 1$ if player~$i$ contributes and $s_i = 0$ otherwise.
+\begin{itemize}
+  \item Players: $I = \{1, 2, 3\}$; strategies $S_i = \{0, 1\}$, so $|S| = 2^3 = 8$ profiles.
+  \item Payoffs: the lamp is built iff $s_1 + s_2 + s_3 \ge 2$, so
+  \[
+    u_i(s_1, s_2, s_3) = 3 \cdot \mathbf{1}\{s_1 + s_2 + s_3 \ge 2\} - s_i .
+  \]
+\end{itemize}
+Payoffs $(u_1, u_2, u_3)$; player~1 picks the row, player~2 the column, player~3 the matrix:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{3}{c}{Player 3: $s_3 = 0$}\\
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$0$} & \multicolumn{1}{c}{$1$}\\ \cline{2-3}
+$0$ & $0,\ 0,\ 0$ & $0,\ -1,\ 0$ \\ \cline{2-3}
+$1$ & $-1,\ 0,\ 0$ & $2,\ 2,\ 3$ \\ \cline{2-3}
+\end{tabular}
+\qquad
+\begin{tabular}{r|c|c|}
+\multicolumn{3}{c}{Player 3: $s_3 = 1$}\\
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$0$} & \multicolumn{1}{c}{$1$}\\ \cline{2-3}
+$0$ & $0,\ 0,\ -1$ & $3,\ 2,\ 2$ \\ \cline{2-3}
+$1$ & $2,\ 3,\ 2$ & $2,\ 2,\ 2$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{Dominance (beyond the question).} Player~$i$'s best action depends on how many
+\emph{others} contribute, $m \in \{0, 1, 2\}$:
+\[
+  u_i(1; m) - u_i(0; m) = \begin{cases} -1 & m = 0 \text{ (lamp fails either way)},\\
+  3 - 1 = 2 & m = 1 \text{ (player $i$ is pivotal)},\\ -1 & m = 2 \text{ (lamp built anyway)}.\end{cases}
+\]
+Neither action is dominated, so IESDS removes nothing. The profiles where every player is
+best-replying are ``nobody contributes'' and the three profiles with exactly two contributors.
+
+\interp Contributing pays only when one is pivotal. That is the free-rider problem of public
+goods: with two others contributing, a player keeps her coin. The game has both
+coordination (no lamp vs.\ lamp) and conflict (who pays).
+
+\verify \texttt{check\_A.py} evaluates the payoff formula on all eight profiles (it matches the
+matrices), confirms that IESDS deletes nothing for any player, and finds the four profiles with
+mutual best replies by brute force.
+
+\answer{$I = \{1,2,3\}$, $S_i = \{0,1\}$, $u_i(s) = 3\cdot\mathbf{1}\{\sum_j s_j \ge 2\} - s_i$;
+matrices above, one per choice of player~3. No strategy is dominated: contributing pays iff
+exactly one other player contributes.}
+\end{exsol}

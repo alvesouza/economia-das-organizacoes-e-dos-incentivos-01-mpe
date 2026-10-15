@@ -1,0 +1,82 @@
+\begin{exsol}{7}{Varian Ch.~35, Review Question~1}{687}{Foundations}{B1}
+\asked Judge the claim that clearly defining property rights usually removes the problem of
+externalities, saying what such a delineation achieves and what it leaves open.
+
+\method Externalities as missing or ill-defined property rights (Varian \S35.1, pp.~667--670);
+quasilinear preferences and the Coase theorem (Varian \S35.2, pp.~670--672); \MR's value
+maximization principle and Coase theorem with their hypotheses (pp.~35--39); bargaining costs,
+private information and many parties (\MR{} Ch.~5, pp.~140--149).
+
+\solution
+\textbf{Verdict: true as a statement about efficiency in small-numbers, low-cost bargaining; false
+as a general policy claim.} Varian's own answer (p.~A29) is ``True'' with a distributional
+caveat. We agree with it and make the qualifications explicit.
+
+\emph{(a) What delineation fixes.} An externality is an effect of one agent's action on another's
+utility or production that is not priced. Varian's diagnosis is that ``the practical problems with
+externalities generally arise because of poorly defined property rights'' (p.~670): if the smoker
+believes he may smoke and the roommate believes she is entitled to clean air, nobody can buy or
+sell the right, and the level of smoke is set by whoever acts. Once the right is assigned and
+enforceable, it becomes an endowment that can be traded like money or bread. Starting from that
+endowment, voluntary trade moves the parties to the contract curve, where
+\[
+  MRS^A_{\text{smoke},\,\text{money}} \;=\; MRS^B_{\text{smoke},\,\text{money}},
+\]
+so the level of the externality is Pareto efficient \emph{whichever} party holds the right
+(Varian p.~669, points $X$ and $X'$ of Figure~35.1).
+
+\emph{(b) What delineation does not fix.}
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Distribution.} Assigning the right is assigning an endowment. The holder is paid
+  to give it up rather than paying to obtain it, so the final money holdings differ across
+  assignments (Varian p.~A29; item~8 computes the difference).
+
+  \item \emph{The efficient level itself, when there are wealth effects.} Without quasilinearity
+  the efficient amount of the externality depends on who holds the right (Varian p.~670).
+  Example: a plant gains $G = 40$ from dumping into a river; a resident with wealth $w = 100$ has
+  $u = \ln x + a\,y$, $y = 1$ if the river is clean, with $a = \ln 1.5$. Then
+  \[
+    \text{WTP} = w(1 - e^{-a}) = 100\big(1 - \tfrac{2}{3}\big) = 33.33, \qquad
+    \text{WTA} = w(e^{a} - 1) = 100(1.5 - 1) = 50 .
+  \]
+  If the plant holds the right, the resident can offer at most $33.33 < 40$: the river is
+  polluted. If the resident holds it, the plant would have to pay at least $50 > 40$: the river
+  stays clean. Both outcomes are efficient given their endowment, yet the \emph{real} outcome
+  differs. Delineation still delivers efficiency, but ``the'' efficient level no longer exists
+  independently of the assignment (this is the gap between value maximization and efficiency
+  under wealth effects, \MR{} n.~10, p.~37).
+
+  \item \emph{Transaction costs.} The Coase theorem assumes that the parties ``bargain to an
+  efficient agreement'' (\MR{} p.~38). That fails when
+  \begin{itemize}
+    \item there are many parties (air pollution over a city): each victim free rides on the
+    others' payments, and the chance that anyone volunteers stays bounded away from one even when
+    the project is surely value maximizing (\MR{} pp.~145--147);
+    \item valuations are private: no bargaining procedure may reach the efficient trade
+    (\MR{} pp.~141--143);
+    \item measuring and enforcing the right is costly (diffuse emissions, noise at 3~a.m.), or
+    bargaining itself absorbs resources (\MR{} pp.~147--149);
+    \item parties are wealth constrained and cannot pay the compensation that efficiency
+    requires (\MR{} p.~39).
+  \end{itemize}
+  In these cases, rights alone leave an inefficiency and other tools are needed: Pigouvian taxes,
+  quotas, tradable permits, or mergers that internalize the effect (Varian \S35.3 and \S35.6).
+\end{enumerate}
+
+\interp The question is a compressed statement of the Coase theorem and its limits. Under its
+hypotheses, assigning rights decides only the transfers; that is why \MR{} turn the theorem into
+a research programme: look for the transaction costs that stop the parties from bargaining to the
+efficient $y$, and explain organizations as ways to reduce them (p.~38). ``Property rights solve
+externalities'' is the benchmark, not the conclusion.
+
+\verify With $a = \ln 1.5$: $e^{-a} = 2/3$, so WTP $=100/3 \approx 33.33$; $e^{a} - 1 = 0.5$, so WTA
+$= 50$; and $33.33 < 40 < 50$, so the efficient outcome flips with the assignment. Utility checks:
+$\ln(100 - 100/3) + \ln 1.5 = \ln 100$ and $\ln(150) = \ln 100 + \ln 1.5$ (\texttt{check\_C.py}).
+
+\answer{True only in the Coasean benchmark (well-defined, enforceable rights; few parties;
+costless bargaining with full information): rights turn the externality into a tradable good and
+trade reaches an efficient level. Even then the assignment changes the distribution, and with
+wealth effects it changes the efficient level itself (WTP $33.33$ vs.\ WTA $50$ around a gain of
+$40$). With many parties, private information or costly enforcement, rights alone do not remove
+the inefficiency.}
+\end{exsol}

@@ -1,0 +1,107 @@
+\begin{exsol}{17}{\MR{} Mathematical Exercise~2.2}{53}{Exam}{B1}
+\asked In the beach-improvement setting of Q~2.1, show that equal cost sharing makes one family
+reject the efficient project, find the largest project all families accept under equal shares,
+and exhibit a different spending level and cost split that every family prefers.
+
+\method Participation (voluntary agreement) constraints under a fixed sharing rule; the value
+maximization principle and its second sentence: an inefficient allocation is strictly
+Pareto dominated by a value-maximizing one once transfers are free (\MR{} p.~36; the construction
+in Q~2.3, item~26).
+
+\solution
+Values as in item~16: $v_1 = v_2 = 5y - \tfrac12 y^2$, $v_3 = 7y - \tfrac12 y^2$,
+$v_4 = 4y - y^2$; total value $W(y) = 20y - \tfrac52 y^2$, maximized at $y^* = 4$ with $W(4) = 40$.
+Each family can refuse, in which case nothing is built and it gets $0$.
+
+\textbf{(a) Equal shares at the efficient level.} With equal shares each family pays $y/4$, so its
+net value is $n_i(y) = v_i(y) - y/4$:
+\[
+  n_1(y) = n_2(y) = 4.75\,y - \tfrac12 y^2, \qquad n_3(y) = 6.75\,y - \tfrac12 y^2, \qquad
+  n_4(y) = 3.75\,y - y^2 .
+\]
+At $y^* = 4$: $n_1 = n_2 = 19 - 8 = 11$, $n_3 = 27 - 8 = 19$, and
+\[
+  n_4(4) = 15 - 16 = -1 < 0 .
+\]
+Family~4 values the improvement at $v_4(4) = 0$ but would pay $1$: it is better off with no
+project and will not agree. (The net values still sum to $W(4) = 11 + 11 + 19 - 1 = 40$; the problem
+is the division, not the size of the pie.)
+
+\textbf{(b) Largest unanimous project under equal shares.} Each family accepts $y$ iff
+$n_i(y) \ge 0$:
+\[
+  n_1, n_2 \ge 0 \iff y \le 9.5, \qquad n_3 \ge 0 \iff y \le 13.5, \qquad
+  n_4 = y(3.75 - y) \ge 0 \iff y \le 3.75 .
+\]
+The binding constraint is family~4's, so the largest project everyone accepts is
+\[
+  \bar y = 3.75 ,
+\]
+at which family~4 is just indifferent (any $y < 3.75$ it strictly prefers to nothing). Net values
+at $\bar y$: $n_1 = n_2 = 10.78125$, $n_3 = 18.28125$, $n_4 = 0$, so
+$W(3.75) = 39.84375$. (Family~4's \emph{favourite} level under equal shares is $1.875$, where
+$n_4' = 3.75 - 2y = 0$; the question asks for the largest level it would still accept.)
+
+\textbf{(c) $\bar y$ is inefficiently low.} $\bar y = 3.75 < 4 = y^*$ and
+$W(4) - W(3.75) = 40 - 39.84375 = 0.15625 = 5/32 > 0$. Since total value is higher at $y^* = 4$,
+there must be a cost split at $y = 4$ that every family prefers. Following the construction of
+Q~2.3, give each family its net value at $\bar y$ plus an equal share of the gain, $5/128$
+each, and round to cents. Family $i$ pays $t_i = v_i(4) - n_i(\bar y) - 5/128$:
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+Family & 1 & 2 & 3 & 4 & Total \\
+\midrule
+Value $v_i(4)$ & $12$ & $12$ & $20$ & $0$ & $44$ \\
+Contribution $t_i$ & $1.18$ & $1.18$ & $1.68$ & $-0.04$ & $4.00$ \\
+Net value at $y=4$ & $10.82$ & $10.82$ & $18.32$ & $0.04$ & $40.00$ \\
+Net value at $\bar y = 3.75$, equal shares & $10.78125$ & $10.78125$ & $18.28125$ & $0$ & $39.84375$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The contributions cover the cost exactly ($1.18 + 1.18 + 1.68 - 0.04 = 4$), and every family is
+strictly better off than under the equal-share plan: the three families with high marginal values
+spend a little more and pay family~4 a side payment of $\$0.04$ to accept the larger project.
+
+\emph{Without a payment to family~4.} If contributions must be non-negative, a level just below
+$y^*$ works because family~4 then values the project positively. At $y = 3.9$
+($v = 11.895,\ 11.895,\ 19.695,\ 0.39$), contributions $(1.10, 1.10, 1.40, 0.30)$ sum to $3.9$
+and give net values $(10.795,\ 10.795,\ 18.295,\ 0.09)$, again strictly above
+$(10.78125, 10.78125, 18.28125, 0)$.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=0.66\linewidth, height=5.4cm, xmin=0, xmax=5.2, ymin=-7, ymax=23,
+  xlabel={total spending $y$}, ylabel={net value with equal shares}, axis lines=left,
+  legend style={font=\footnotesize, draw=none, at={(0.02,0.98)}, anchor=north west},
+  tick label style={font=\footnotesize}, clip=false]
+  \addplot[thick, hdr, domain=0:5] {6.75*x-0.5*x^2}; \addlegendentry{family 3}
+  \addplot[thick, ans, domain=0:5] {4.75*x-0.5*x^2}; \addlegendentry{families 1, 2}
+  \addplot[thick, red!70!black, domain=0:5] {3.75*x-x^2}; \addlegendentry{family 4}
+  \draw[gray] (axis cs:0,0) -- (axis cs:5.2,0);
+  \draw[dotted] (axis cs:3.75,-7) -- (axis cs:3.75,23);
+  \draw[dotted] (axis cs:4,-7) -- (axis cs:4,23);
+  \node[font=\footnotesize, anchor=south east] at (axis cs:3.75,23) {$\bar y$};
+  \node[font=\footnotesize, anchor=south west] at (axis cs:4,23) {$y^*$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\interp A fixed cost-sharing rule ties the division ($x$) to the decision ($y$), which destroys
+the separation behind the value maximization principle: the low-value family's veto caps the
+project below the efficient level. Side payments (or any flexible cost split) restore the
+separation, and then unanimity and efficiency coincide. This is the organizational lesson of
+\MR{} pp.~36--38: rules that restrict transfers (equal shares, uniform prices, one-size-fits-all
+policies) can block value-creating decisions, so the question is always whether the transfer
+needed is feasible and affordable.
+
+\verify $n_4(3.75) = 14.0625 - 14.0625 = 0$; $n_4(4) = -1$. $W(3.75) = 75 - 35.15625 = 39.84375$.
+The contributions in the table sum to $4$ and each net value exceeds its benchmark; likewise at
+$y = 3.9$ (\texttt{check\_C.py} checks all entries exactly in rationals).
+
+\answer{With equal shares family~4's net value at $y^* = 4$ is $4\cdot4 - 16 - 1 = -1 < 0$, so it
+refuses. The largest project all accept is $\bar y = 3.75$ (family~4's
+$3.75y - y^2 \ge 0$), with total value $39.84375 < 40$. Spending $4$ with contributions
+$(1.18, 1.18, 1.68, -0.04)$ gives net values $(10.82, 10.82, 18.32, 0.04)$, strictly above
+$(10.78125, 10.78125, 18.28125, 0)$ for every family.}
+\end{exsol}

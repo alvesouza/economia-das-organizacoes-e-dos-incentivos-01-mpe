@@ -1,0 +1,57 @@
+\begin{exsol}{7}{Gibbons Problem 1.2}{48}{Foundations}{B3}
+\asked Which strategies of the given $3 \times 3$ game survive IESDS, and what are the
+pure-strategy Nash equilibria?
+
+\method IESDS (Gibbons \S1.1.B, pp.~4--7; Lecture~1, slide~29). For the second question, a pure
+Nash equilibrium is a profile in which each player's strategy is a best reply to the other's
+(Gibbons \S1.1.C; Lecture~2). Every Nash equilibrium survives IESDS (Gibbons Prop.~B, p.~12), so
+we only need to search the surviving cells.
+
+\solution
+The matrix as printed (the top-left cell reads ``2.0'' in the scan; it is $(2,0)$):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $2,\ 0$ & $1,\ 1$ & $4,\ 2$ \\ \cline{2-4}
+$M$ & $3,\ 4$ & $1,\ 2$ & $2,\ 3$ \\ \cline{2-4}
+$B$ & $1,\ 3$ & $0,\ 2$ & $3,\ 0$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Round 1.} Player~1: $B$ is strictly dominated by $T$ ($1 < 2$, $0 < 1$, $3 < 4$); it is
+not dominated by $M$ ($3 > 2$ against $R$). $T$ and $M$ are best replies to $R$ and $L$, so they
+stay. Player~2, columns over rows $(T, M, B)$: $L = (0, 4, 3)$, $C = (1, 2, 2)$, $R = (2, 3, 0)$.
+$C$ is \emph{not} dominated yet: it beats $R$ in row $B$ ($2 > 0$) and $L$ in row $T$.
+$S_1^1 = \{T, M\}$, $S_2^1 = \{L, C, R\}$.
+
+\textbf{Round 2.} On rows $(T, M)$: $C = (1, 2)$ and $R = (2, 3)$, so $C$ is strictly dominated by
+$R$. $L = (0, 4)$ and $R = (2, 3)$ are not ranked. $S_2^2 = \{L, R\}$.
+
+\textbf{Round 3.} Player~1 on $(L, R)$: $T = (2, 4)$, $M = (3, 2)$, not ranked. Player~2 on
+$(T, M)$: $L = (0, 4)$, $R = (2, 3)$, not ranked. Stop.
+\[
+  S^\infty = \{T, M\} \times \{L, R\}.
+\]
+
+\textbf{Pure Nash equilibria.} Check the four surviving cells:
+\begin{itemize}
+  \item $(T, L)$: player~1 would switch to $M$ ($3 > 2$). Not NE.
+  \item $(T, R)$: player~1 gets $4 \ge 3, 2$ in column $R$; player~2 gets $2 \ge 0, 1$ in row $T$. NE.
+  \item $(M, L)$: player~1 gets $3 \ge 2, 1$; player~2 gets $4 \ge 2, 3$. NE.
+  \item $(M, R)$: player~1 would switch to $T$ ($4 > 2$). Not NE.
+\end{itemize}
+The pure Nash equilibria are $(T, R)$ and $(M, L)$.
+
+\interp Note the order: $C$ is a sensible reply only to beliefs that put weight on $B$; once
+player~2 knows player~1 is rational, $C$ goes. IESDS leaves four profiles; Nash equilibrium,
+which requires beliefs to be correct, cuts them to two. This previews Lecture~2.
+
+\verify \texttt{check\_A.py} reproduces the rounds (round~1: $B$; round~2: $C$), checks that $C$
+is not dominated in the full game, and finds by brute force over all nine cells that the pure
+Nash equilibria are exactly $(T,R)$ and $(M,L)$. Kumar's unofficial Gibbons manual (Answer~1.2,
+not in \texttt{Livros/}) gives the same deletions and equilibria; it writes the survivors as
+``(T,M) and (L,R)'', meaning $\{T,M\}$ for player~1 and $\{L,R\}$ for player~2.
+
+\answer{IESDS: delete $B$ (by $T$), then $C$ (by $R$); survivors $\{T, M\} \times \{L, R\}$.
+Pure Nash equilibria: $(T, R)$ with payoffs $(4,2)$ and $(M, L)$ with payoffs $(3,4)$.}
+\end{exsol}

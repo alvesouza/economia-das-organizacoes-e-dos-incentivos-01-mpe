@@ -1,0 +1,71 @@
+\begin{exsol}{8}{Varian Ch.~35, Review Question~2}{687}{Foundations}{B1}
+\asked Decide whether quasilinear preferences remove the distributional consequences of how
+property rights over an externality are assigned.
+
+\method Quasilinear preferences and the Coase theorem (Varian \S35.2, pp.~670--672, Figure~35.2);
+\MR's value maximization principle and Coase theorem (pp.~36--38), of which Varian's result is the
+two-person special case; symmetric Nash bargaining to fix a split.
+
+\solution
+\textbf{Verdict: false.} Quasilinearity removes the effect of the assignment on the
+\emph{efficient level} of the externality, not on the \emph{distribution}. Varian's answer
+(p.~A29) is a bare ``False''; the argument follows.
+
+\emph{(a) The level is independent of the assignment.} Let $u_A = m_A + v_A(s)$ and
+$u_B = m_B + v_B(s)$, where $s$ is the amount of smoke and $m_i$ money, with
+$m_A + m_B = \bar M$. Pareto efficient allocations solve
+\[
+  \max_{s,\,m_A,\,m_B}\; m_A + v_A(s) \quad\text{s.t.}\quad m_B + v_B(s) \ge \bar u_B,\;\;
+  m_A + m_B = \bar M .
+\]
+The constraint binds, so $m_A = \bar M - \bar u_B + v_B(s)$ and the problem becomes
+$\max_s\, v_A(s) + v_B(s) + \text{const}$. The first-order condition
+\[
+  v_A'(s^*) \;=\; -\,v_B'(s^*)
+\]
+does not involve $\bar u_B$, $\bar M$ or the endowment. Every interior Pareto efficient
+allocation has the same $s^*$; the Pareto set is a horizontal line in the smoke--money box
+(Varian Figure~35.2), and only the money holdings vary along it. This is the Coase theorem in
+Varian's form: ``the efficient amount of the good involved in the externality is independent of
+the distribution of property rights'' (p.~671). It needs both parties to hold enough money for the
+compensating payments, so that the solution is interior (\MR's condition~(iii), p.~35).
+
+\emph{(b) The distribution is not.} The assignment fixes the disagreement point, and the
+bargaining gains are divided starting from it.
+
+\emph{Example.} $v_A(s) = 6s - s^2$ (the smoker's benefit, maximal at $s = 3$) and
+$v_B(s) = -s^2$ (the nonsmoker's harm). Joint value $v_A + v_B = 6s - 2s^2$ is maximal at
+$s^* = 1.5$, where it equals $4.5$; it is $0$ both at $s = 0$ and at $s = 3$.
+\begin{center}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{3.0cm}XX}
+\toprule
+ & $A$ holds the right to smoke & $B$ holds the right to clean air \\
+\midrule
+Without trade & $s = 3$: $A$ gets $9$, $B$ gets $-9$ & $s = 0$: both get $0$ \\
+Deal & $B$ pays $A$ an amount $T$ to cut to $s = 1.5$ & $A$ pays $B$ an amount $T$ to smoke $s = 1.5$ \\
+Acceptable $T$ & $A$: $6.75 + T \ge 9$; $B$: $-2.25 - T \ge -9$ $\Rightarrow T \in [2.25, 6.75]$
+ & $A$: $6.75 - T \ge 0$; $B$: $T - 2.25 \ge 0$ $\Rightarrow T \in [2.25, 6.75]$ \\
+Nash split of the gain $4.5$ & $T = 4.5$ from $B$ to $A$ & $T = 4.5$ from $A$ to $B$ \\
+Final payoffs (net of initial money) & $u_A = 11.25$, $u_B = -6.75$ & $u_A = 2.25$, $u_B = 2.25$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+The smoke level is $1.5$ and total surplus is $4.5$ under both assignments. But $A$ is better off
+by $9$ when he holds the right and $B$ is worse off by $9$: the right is an asset worth
+$v_A(3) - v_A(0) = 9$ to whoever starts with it, and the direction of the payment flips. Within $[2.25, 6.75]$ the size of
+the payment depends on bargaining power, which quasilinearity also leaves open.
+
+\interp Quasilinear utility is the two-person version of \MR's ``no wealth effects''
+(item~27 derives it). Then the value maximization principle separates \emph{what} is done
+(efficiency alone chooses $s^*$) from \emph{who gets what} (the assignment and bargaining
+power choose the transfers, \MR{} p.~38). Coase's result is a statement about efficiency, not
+fairness: choosing who holds the right remains a distributive decision.
+
+\verify $v_A'(1.5) = 6 - 3 = 3 = -v_B'(1.5)$. $v_A(1.5) = 6.75$, $v_B(1.5) = -2.25$,
+$v_A(3) = 9$. Payoffs add up: $11.25 - 6.75 = 4.5 = 2.25 + 2.25$ (\texttt{check\_C.py}).
+
+\answer{False. With quasilinear preferences every efficient allocation has the same level of the
+externality ($v_A'(s^*) = -v_B'(s^*)$; in the example $s^* = 1.5$ under either assignment), so
+the assignment of rights does not affect efficiency. It still decides who pays whom: payoffs
+$(11.25, -6.75)$ when the smoker holds the right versus $(2.25, 2.25)$ when the nonsmoker does.}
+\end{exsol}

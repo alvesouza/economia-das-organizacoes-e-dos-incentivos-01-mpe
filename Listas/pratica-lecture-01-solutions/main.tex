@@ -1,0 +1,113 @@
+% Solutions to the 24 exercises of Listas/pratica-lecture-01.md (Lecture 1).
+% Compile: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=3pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize Practice plan, Lecture 1: solutions}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\definecolor{hdr}{RGB}{30,80,150}
+\definecolor{ans}{RGB}{20,110,70}
+
+% \begin{exsol}{<item #>}{<source and exercise>}{<page>}{<level>}{<block>} ... \end{exsol}
+% Starts a new section-level entry for one exercise of the plan.
+\newenvironment{exsol}[5]{%
+  \setcounter{section}{\numexpr #1-1\relax}% section number = the plan's item number
+  \section[#2 (p.~#3)]{#2 \hfill{\normalsize\mdseries #4 $\cdot$ block #5}}%
+  \textbf{Source:} #2, page~#3 (statement in the book; not reproduced here).\par}{\par}
+% Fixed sub-heads, in this order inside each exsol.
+\newcommand{\asked}{\paragraph{What is asked.}}
+\newcommand{\method}{\paragraph{Method.}}
+\newcommand{\solution}{\paragraph{Solution.}}
+\newcommand{\interp}{\paragraph{Interpretation.}}
+\newcommand{\verify}{\paragraph{Verification.}}
+% Boxed final answer: \answer{...}
+\newcommand{\answer}[1]{\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.6pt,
+  left=5pt,right=5pt,top=3pt,bottom=3pt]\textbf{Answer.} #1\end{tcolorbox}}
+\newcommand{\MG}{Mu\~noz-Garcia}
+\newcommand{\Sm}{S_{-i}}
+\newcommand{\sm}{s_{-i}}
+
+\title{\textbf{Practice Plan, Lecture 1: Solutions}\\[4pt]
+  \large Economics of Organizations and Incentives (MPE Insper)}
+\author{Solutions to the 24 exercises of \texttt{Listas/pratica-lecture-01.md}}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent The 24 exercises are solved in the plan's order (foundations, exam level, advanced),
+numbered as in the plan's tier tables. Each is cited by book, number and page; the statement is
+in the book and is not reproduced. Books: Tadelis (2013), \MG{} \& Toro-Gonzalez (2019, 2nd ed.),
+Gibbons (1992) and Mas-Colell, Whinston \& Green (1995) (MWG). Page numbers are printed pages.
+Notation follows the slides of Lecture~1: a game is $G = (I, \{S_i\}_{i\in I}, \{u_i\}_{i\in I})$,
+$\sm$ is a profile of the others' strategies, $S_i^k$ is the set of player~$i$'s strategies that
+survive $k$ rounds of iterated elimination of strictly dominated strategies (IESDS), with every
+strictly dominated strategy removed in each round (slide~29), $S_i^\infty = \bigcap_k S_i^k$, and
+a surviving profile is an \emph{iterated-elimination equilibrium}. In bimatrices player~1 picks
+rows and the first payoff is player~1's. Every matrix, dominance claim and formula is checked by
+the Python scripts in this folder: \texttt{check\_A.py} (finite games), \texttt{check\_B.py}
+(continuous strategies, sympy) and \texttt{check\_C.py} (proofs and auctions).
+
+\tableofcontents
+\newpage
+
+\part*{Tier 1 --- Foundations}
+\addcontentsline{toc}{part}{Tier 1 --- Foundations}
+\input{item01}
+\input{item02}
+\input{item03}
+\input{item04}
+\input{item05}
+\input{item06}
+\input{item07}
+\input{item08}
+
+\part*{Tier 2 --- Exam level}
+\addcontentsline{toc}{part}{Tier 2 --- Exam level}
+\input{item09}
+\input{item10}
+\input{item11}
+\input{item12}
+\input{item13}
+\input{item14}
+\input{item15}
+\input{item16}
+\input{item17}
+\input{item18}
+
+\part*{Tier 3 --- Advanced}
+\addcontentsline{toc}{part}{Tier 3 --- Advanced}
+\input{item19}
+\input{item20}
+\input{item21}
+\input{item22}
+\input{item23}
+\input{item24}
+
+\end{document}

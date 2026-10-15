@@ -1,27 +1,32 @@
 # Economia das Organizações e dos Incentivos — MPE Insper
 
 Study project for **ECONOMIA DAS ORGANIZAÇÕES E DOS INCENTIVOS: TEORIA E APLICAÇÕES**
-(Mestrado Profissional em Economia, 30 h). Main book: Milgrom & Roberts (1992),
-*Economics, Organization, and Management*.
+(Mestrado Profissional em Economia, 4th term 2026, instructor Isabela Brandão Furtado). The syllabus
+record names Milgrom & Roberts (1992); the course as taught is **game theory**, with slides that
+follow Tadelis (2013), *Game Theory: An Introduction*. M&R supplies the organizational applications.
 
-> **Books:** all five are in `Livros/`, Milgrom & Roberts included (mapped section by section).
+> **Books:** the five syllabus books plus Tadelis, Gibbons and Muñoz-Garcia & Toro-Gonzalez are in `Livros/`, all mapped section by section.
 > Varian is the *with Calculus* edition (2014), not the 8th edition the syllabus cites. See [`Livros/BOOKS.md`](Livros/BOOKS.md) and [`Map/books-index.md`](Map/books-index.md).
 
-## Topics
+## Lectures
 
-| # | Topic | Aulas | M&R | Rules |
+| L | Date | Lecture | Tadelis | Material |
 |---|---|---|---|---|
-| 01 | Does organization matter? (Ford × GM × Toyota) | 1 | Ch. 1; Ch. 4 pp. 106–113 | [rules/01](rules/01_organizacoes_importam.md) |
-| 02 | Bargaining | 2–3 | Ch. 2 pp. 35–39; Ch. 5 pp. 140–149 | [rules/02](rules/02_barganha.md) |
-| 03 | Efficiency and economic organization (+ NEPKE kidney exchange) | 4–5 | Ch. 2 | [rules/03](rules/03_eficiencia_organizacao.md) |
-| 04 | Coordination through the market | 6 | Ch. 3 | [rules/04](rules/04_coordenacao_mercado.md) |
-| 05 | Coordination through management (+ Eddie Lampert at Sears) | 7–8 | Ch. 4; Ch. 3 pp. 78–85 | [rules/05](rules/05_coordenacao_management.md) |
-| 06 | Bounded rationality, information and contracts | 9 | Ch. 5 | [rules/06](rules/06_racionalidade_limitada_contratos.md) |
-| 07 | Adverse selection and its control (+ labour-market signaling) | 10–12 | Ch. 5 | [rules/07](rules/07_selecao_adversa.md) |
-| 08 | Moral hazard (+ 1980s US S&L crisis) | 13–14 | Ch. 6 | [rules/08](rules/08_risco_moral.md) |
-| 09 | Managing moral hazard in an organization | 15–16 | Ch. 7 | [rules/09](rules/09_gestao_risco_moral.md) |
+| 1 | Oct 13 | Static games: dominance, iterated elimination | Ch. 3; §4.1–4.2 | [practice plan](Listas/pratica-lecture-01.md) · `Listas/lista-lecture-01.tex` · 3 quizzes in `Simulados/` |
+| 2 | Oct 20 | Static games: Nash equilibrium, mixed strategies | §4.3; Ch. 5–6 | |
+| 3 | Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7–8 | |
+| 4 | Nov 3 | Multistage games and bargaining | Ch. 9, 11 | [rules/02](rules/02_barganha.md) · Aula 2 notes §5 |
+| 5 | Nov 6 (Fri) | Repeated games I: cooperation | §10.1–10.3 | |
+| 6 | Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 | |
+| 7 | Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12–13 | [rules/07](rules/07_selecao_adversa.md) |
+| 8 | Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15–16 | [rules/07](rules/07_selecao_adversa.md) |
+| 9 | Dec 1 | Short-paper presentations | | |
+| 10 | Dec 8 | Final exam | | |
 
-Draft class plan, 16 sessions in syllabus order, anchored in M&R pages: [Map/study-guide.md](Map/study-guide.md). Full programme: [rules/11_curso_programa.md](rules/11_curso_programa.md).
+Assessment: in-class exercises 10% · short paper (groups) 35% · final exam 55%. Class plan with
+pages: [Map/study-guide.md](Map/study-guide.md). Full programme: [rules/11_curso_programa.md](rules/11_curso_programa.md).
+The earlier 16-session M&R draft and its Aula 1–2 material (`Aula/aula-0*-notes.md`, the `quiz-aula0*`
+quizzes, `Listas/*aulas-01-02*`) are kept as application background.
 
 ## Project structure
 

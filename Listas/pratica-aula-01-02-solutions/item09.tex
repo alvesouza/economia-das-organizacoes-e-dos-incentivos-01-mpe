@@ -1,0 +1,76 @@
+\begin{exsol}{9}{Cabral 5.1 Front yards}{117}{Foundations}{B1}
+\asked Judge whether the positive externality from a well-tended front yard is important, and
+whether the market outcome is inefficient.
+
+\method Externalities and market failure, Pigou corrections, social norms and the Coase theorem
+(Cabral \S5.1, pp.~93--99); the Coase theorem and its failure conditions (\MR{} Ch.~2, pp.~35--39;
+notes, Aula~2, ``The Coase theorem''). A two-neighbour model makes the comparison exact.
+
+\solution
+\subparagraph{(a) A two-sided externality: the model.} Two neighbours $i=1,2$ choose yard care
+$x_i \ge 0$. Care gives the owner a benefit $a x_i$ (enjoyment, resale value), gives the
+neighbour a spillover $s x_i$ with $s>0$, and costs $x_i^2/2$. Neighbour~1's payoff is
+\[
+u_1 = a x_1 + s x_2 - \tfrac12 x_1^2 ,
+\]
+and symmetrically for neighbour~2. The externality runs both ways: each is a producer and a
+receiver of it.
+
+\emph{Without bargaining} (each chooses alone), $\partial u_i/\partial x_i = a - x_i = 0$, so
+$x_i^{N} = a$. The spillover $s$ does not enter the choice.
+
+\emph{Efficient care} maximizes $u_1 + u_2$: $\partial(u_1+u_2)/\partial x_i = a + s - x_i = 0$,
+so $x_i^{*} = a + s > a$. Each neighbour's gain from moving both to $x^*$ is
+\[
+u_1(x^*) - u_1(x^N) = \Big[(a+s)^2 - \tfrac12(a+s)^2\Big] - \Big[a^2 + sa - \tfrac12 a^2\Big]
+= \tfrac12 s^2 ,
+\]
+so the joint loss of the uncoordinated outcome is $s^2$. With $a=1$, $s=\tfrac12$: care $1$
+instead of $1.5$, and the pair loses $\tfrac14$. Without some mechanism, yards are
+under-tended: the market outcome is inefficient, as with any positive externality (p.~94).
+
+\subparagraph{(b) Is the externality important?} Per household the stakes are small: $s^2$ is
+second order in the spillover, and a neighbour's yard is a modest part of the value of one's own
+home. Two forces make it larger than it looks. A street has many neighbours, and the effects add
+up across all who see the yard (the externality is close to a local public good, p.~95); and the
+effect is capitalized into house prices, so a run-down block lowers every owner's wealth. Even
+so, compared with pollution or congestion (pp.~94--95), it is a minor externality.
+
+\subparagraph{(c) Can the neighbours bargain to the efficient level (Coase)?} With two
+neighbours the Coase conditions nearly hold: few parties, a visible activity, low bargaining
+costs, and no large wealth effects. The two-sided structure helps further: the deal is
+reciprocal (``I keep my yard if you keep yours''), so with symmetric neighbours no money needs to
+change hands; each gains $\tfrac12 s^2$. Two problems remain.
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Enforcement.} Given that the neighbour keeps $x_2 = a+s$, neighbour~1's best
+  reply is still $x_1 = a$, which gains him $\tfrac12 s^2$ over keeping the deal. The agreement
+  needs enforcement. Neighbours interact for years, so a social norm with the threat of
+  withdrawn goodwill can sustain it (the repeated-game argument of p.~96).
+  \item \emph{Many parties and measurement.} Along a whole street, each owner free rides on the
+  others (the free-riding logic of p.~94), and ``well tended'' is hard to specify and verify;
+  private information about how much each values tidiness makes a full agreement harder still
+  (Aula~2, failure conditions of Coase).
+\end{enumerate}
+Where these costs bite, communities use other instruments: homeowners' associations with
+covenants (a contract signed when the house is bought), municipal ordinances (direct regulation,
+p.~96) and the social norm itself. A Pigou subsidy (p.~96) is possible in principle but
+impractical because yard care is hard to measure.
+
+\interp This is the Coase theorem at small scale. The externality creates an inefficiency only
+to the extent that transaction costs block bargaining; in a two-household setting those costs
+are low and norms do most of the work, so the residual inefficiency is small. On a large street,
+free riding and measurement make explicit rules (covenants) the efficient organizational
+response, which is \MR's corollary that efficient organization minimizes transaction costs
+(p.~38).
+
+\verify The sympy script \texttt{check\_B.py} confirms $x^N = a$, $x^* = a+s$, the gain
+$\tfrac12 s^2$ per neighbour, the deviation gain $\tfrac12 s^2$ against the reciprocal deal, and
+the loss $\tfrac14$ at $a=1$, $s=\tfrac12$. Limit case: $s \to 0$ gives $x^* \to x^N$ and no
+loss; the inefficiency rises with the square of the spillover.
+
+\answer{Yes, the outcome without bargaining is inefficient: each owner sets
+$x^N = a < x^* = a+s$ because the neighbour's benefit is ignored, losing $\tfrac12 s^2$ per
+household. The externality is modest per house but adds up across a street and is capitalized
+into prices. Two neighbours can largely fix it by a reciprocal, norm-enforced deal (Coase); on a
+whole street free riding and measurement push the solution towards covenants or ordinances.}
+\end{exsol}

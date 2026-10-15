@@ -1,0 +1,99 @@
+\begin{exsol}{27}{\MR{} Mathematical Exercise~2.4}{53}{Advanced}{B1}
+\asked Show that if every switch between decisions has a cash equivalent that does not depend on
+the decision maker's other cash, and more money is preferred to less, then preferences are
+represented by cash plus a value function of the decision.
+
+\method Axiomatic derivation of quasilinear utility from ``no wealth effects'' (\MR{} pp.~35--36
+and n.~7; notes, Part~II, ``Wealth effects and the value index''), following the hint: construct
+$v$ from the compensation function $C$ with a fixed reference decision, show indifference between
+$(x, y)$ and $(x + v(y), \bar y)$, then compare on the reference decision using monotonicity.
+
+\solution
+\textbf{Setting and assumptions.} The decision maker has a complete and transitive preference
+$\succsim$ over pairs $(x, y)$, with $x \in \mathbb{R}$ a cash receipt (negative: a payment) and
+$y \in Y$ a decision. Write $\sim$ for indifference and $\succ$ for strict preference. The book's
+hypotheses are:
+\begin{enumerate}[label=(A\arabic*)]
+  \item \emph{Compensation exists.} For all $y, y' \in Y$ there is $C(y, y') \in \mathbb{R}$
+  with $(C(y, y'), y) \sim (0, y')$.
+  \item \emph{It does not depend on other cash} (no wealth effects). For all $z \in \mathbb{R}$:
+  $(z + C(y, y'), y) \sim (z, y')$.
+  \item \emph{More money is better.} For every $y$: $(x, y) \succ (x', y) \iff x > x'$.
+\end{enumerate}
+(A1) is the case $z = 0$ of (A2); both are kept to mirror the book.
+
+\textbf{Construction.} Fix any reference decision $\bar y \in Y$ and define
+\[
+  v(y) \;\equiv\; C(\bar y, y), \qquad y \in Y ,
+\]
+the cash that, added to $\bar y$, makes the decision maker as well off as $y$ with no cash.
+
+\textbf{Step 1: $(x, y) \sim (x + v(y), \bar y)$ for all $x, y$.} Apply (A2) with the pair
+$(\bar y, y)$ and $z = x$:
+\[
+  (x + C(\bar y, y), \bar y) \sim (x, y), \quad\text{i.e.}\quad (x + v(y), \bar y) \sim (x, y).
+\]
+In words: having $y$ is the same as having $\bar y$ plus the cash equivalent $v(y)$, whatever cash
+$x$ comes with it. This is where (A2) is essential: without it the compensation needed at cash
+level $x$ would be some $C_x(\bar y, y)$ depending on $x$.
+
+\textbf{Step 2: comparison of two allocations.} Take any $(x, y)$ and $(x', y')$. By Step~1,
+$(x, y) \sim (x + v(y), \bar y)$ and $(x', y') \sim (x' + v(y'), \bar y)$. By transitivity of
+$\succsim$ (indifference can replace either side of a comparison),
+\[
+  (x, y) \succ (x', y') \iff (x + v(y), \bar y) \succ (x' + v(y'), \bar y)
+  \iff x + v(y) > x' + v(y'),
+\]
+the last step by (A3) applied to the common decision $\bar y$. The same argument with $\sim$
+(using (A3) in both directions, which gives $(x,\bar y) \sim (x', \bar y) \iff x = x'$) shows
+$(x, y) \sim (x', y') \iff x + v(y) = x' + v(y')$. Therefore
+\[
+  u(x, y) \;=\; x + v(y)
+\]
+represents $\succsim$: $(x, y) \succsim (x', y') \iff u(x, y) \ge u(x', y')$.
+
+\textbf{The hint's version.} If $U$ is any utility function representing $\succsim$, Step~1 gives
+$U(x, y) = U(x + v(y), \bar y)$ and $U(x', y') = U(x' + v(y'), \bar y)$. By (A3),
+$t \mapsto U(t, \bar y)$ is strictly increasing, so
+$U(x, y) > U(x', y') \iff x + v(y) > x' + v(y')$: every representation is a strictly increasing
+transformation of $x + v(y)$.
+
+\textbf{Consistency and uniqueness.}
+\begin{itemize}
+  \item $v(\bar y) = C(\bar y, \bar y) = 0$: by (A1), $(C(\bar y, \bar y), \bar y) \sim (0, \bar y)$,
+  and (A3) forces $C(\bar y, \bar y) = 0$.
+  \item The compensation function is recovered from $v$: $(C(y, y'), y) \sim (0, y')$ means
+  $C(y, y') + v(y) = v(y')$, i.e.\ $C(y, y') = v(y') - v(y)$, the same at every wealth level.
+  \item $v$ is unique up to an additive constant: if $x + w(y)$ also represents $\succsim$, Step~1
+  gives $x + v(y) + w(\bar y) = x + w(y)$, so $w = v + w(\bar y)$. Changing the reference decision
+  only shifts $v$ by a constant.
+\end{itemize}
+
+\textbf{Why the hypothesis bites.} Cobb--Douglas preferences $U = x\,y$ (with $x, y > 0$) satisfy
+(A3) and have a compensating payment at every cash level $z > 0$, but violate (A2): the
+compensation solving $(z + C)\,y = z\,y'$ is
+$C = z\,(y' - y)/y$, which grows with the cash $z$ already held. A richer person needs more cash to
+accept a worse $y$, a wealth effect, and no representation of the form $x + v(y)$ exists.
+
+\textbf{Domain caveat (condition (iii)).} The proof uses $x + v(y)$ for arbitrary $x$; if cash is
+bounded below ($x \ge -w$), Step~1 requires $x + v(y)$ to stay in the domain, which is \MR's
+condition that the decision maker can afford the payments (p.~35). The representation is then
+valid on the set where those payments are feasible.
+
+\interp This exercise is the converse of the ``why'' given in the notes: quasilinear utility
+implies no wealth effects, and no wealth effects (plus monotonicity in money) imply quasilinear
+utility. Hence $v(y)$ is a cash-equivalent \emph{value} of the decision, comparable across
+people, and the value maximization principle (item~26) and the Coase theorem rest on exactly
+these hypotheses.
+
+\verify For a quasilinear example $u = x + 2\sqrt{y}$ with $\bar y = 1$: $C(\bar y, y)$ solves
+$C + 2 = 2\sqrt{y}$, so $v(y) = 2\sqrt y - 2$, a constant shift of $2\sqrt y$, and
+$C(y, y') = 2\sqrt{y'} - 2\sqrt{y}$ is independent of $z$. For $U = xy$, $C$ depends on $z$
+(\texttt{check\_C.py}).
+
+\answer{Set $v(y) = C(\bar y, y)$. Independence of the compensation from other cash gives
+$(x, y) \sim (x + v(y), \bar y)$ for every $x$; comparing on the common decision $\bar y$ with
+``more money is better'' gives $(x, y) \succsim (x', y') \iff x + v(y) \ge x' + v(y')$. So
+$x + v(y)$ represents the preferences, with $v$ unique up to a constant and
+$C(y, y') = v(y') - v(y)$.}
+\end{exsol}

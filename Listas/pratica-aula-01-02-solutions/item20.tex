@@ -1,0 +1,79 @@
+\begin{exsol}{20}{\MR{} Food for Thought 5.1}{163--164}{Exam}{B2}
+\asked Suppose people are partly ``hard-wired'' with a taste for vengeance and a conscience, a
+preference for honesty and fairness (Frank's evolutionary argument). How would such preferences
+change the chapter's analyses of commitment and bargaining?
+
+\method Commitment and reneging, and the grab game of Table 5.1 (\MR{} pp.~133, 138--139);
+reputation (pp.~139--140); bargaining with private information and the honest-reporting
+constraints of Tables 5.2--5.3 (pp.~140--143); the ultimatum game and its experimental evidence
+(Varian 2014, pp.~582--583). Formally, the preferences add a psychic term to material payoffs,
+and we ask which constraints of the chapter it relaxes or tightens.
+
+\solution
+\textbf{1. Emotions are commitment devices.} The chapter's recurring problem is that a selfish
+player who keeps an option after the fact cannot promise or threaten credibly. A conscience makes
+\emph{promises} credible. In the grab game of Table 5.1 (p.~138) a selfish firm grabs whatever
+the other does (3 > 2 and $-1 > -2$). If grabbing costs a guilt payoff $g$, refraining becomes
+dominant when $g > 1$, the mutual-refrain outcome is an equilibrium, and the specific investment
+that opportunism ``completely destroys'' is undertaken. A taste for vengeance makes
+\emph{threats} credible. Punishing a cheater is costly ex post, which is why parents and
+governments facing hostage-takers are tempted to forgive (box, p.~135); a player who
+\emph{enjoys} retaliating no longer faces that temptation, so the threat deters, and in
+equilibrium it seldom has to be carried out. Neither device burns a fleet or builds an
+overspecialized plant (p.~139): the commitment is carried in the person.
+
+\textbf{2. Bargaining predictions change.} With selfish players a one-shot offer is pure
+commitment: the responder accepts anything positive and the proposer keeps almost all (``something
+like 99 cents'', Varian p.~582). A responder known to reject offers below a threshold $k$ receives
+$k$; vengeance is exactly the commitment to walk away that the selfish responder lacks. This is
+what experiments show: average offers of about 45 cents, usually accepted, with small offers
+rejected at a cost to the responder (Varian pp.~582--583). Proposers then behave nearly optimally
+given the rejection rates, so selfishness plus correct expectations explains proposers, and
+fairness explains responders. In alternating offers the same logic raises each player's
+effective threat point, so the predicted split moves toward the norm (often 50--50), not toward
+the more patient player. A further consequence: when people care about \emph{how} surplus is
+divided, the value maximization principle loses its clean separation between the value-creating
+decision and the transfers (\MR{} Ch.~2), because the transfer itself enters utility.
+
+\textbf{3. Honesty relaxes the private-information constraints.} The impossibility on p.~142
+comes from incentive-compatibility constraints that assume lying is free. If misreporting costs
+$\psi$, the seller's constraint becomes $p \ge 1.75 - 1.25\psi$ and the buyer's
+$p \le 1.25 + 1.25\psi$: a conscience worth $\psi \ge \$0.20$ restores efficient trade at
+$p = \$1.50$. Rents paid for honesty can be partly replaced by honesty itself.
+
+\textbf{4. But the same preferences also create costs.} (i) \emph{Disagreement.} When the
+threshold $k$ is private, a proposer must trade a bigger offer against a higher acceptance
+probability, so some offers are rejected and surplus is destroyed. This is the inefficiency of
+Tables 5.2--5.3 with fairness types in place of values. (ii) \emph{Self-serving fairness.} \MR{}
+warn that ``what is honest and fair is rarely as obvious in the rich settings of reality'' and
+that people tend to see as fair what serves their own interests (pp.~138--139). Two vengeful
+parties with different fairness standards become a strike or a feud, not a deal. (iii)
+\emph{Credibility of the preference itself.} Frank's argument works only if the traits are
+recognizable; otherwise the selfish can mimic them, and the commitment value collapses back into
+a reputation problem (pp.~139--140). Hence \MR's caution: it is ``too risky to rely on others to
+act consistently contrary to their own selfish interests unless there is something that commits
+them''.
+
+\textbf{Summary.} Such preferences enlarge what can be committed to (more investment, less
+hold-up, honest reporting, offers near equal division) but add a new source of failure,
+disagreement driven by conflicting or privately known notions of fairness.
+
+\interp For the course: commitment does not need to be contractual, and emotions, norms and
+corporate culture can carry it. An organization designer should treat them as a complement to
+explicit incentives, not a substitute, because their strength is private information and their
+content is self-serving. The ultimatum evidence is also a reminder that equilibrium predictions
+depend on the payoffs actually in players' heads.
+
+\verify The arithmetic is checked in \texttt{check\_D.py}: in Table 5.1, refraining is dominant
+iff $g > 1$; with a lying cost $\psi$, \MR's bounds become $1.75 - 1.25\psi$ and
+$1.25 + 1.25\psi$ and meet at $\psi = 0.2$, $p = 1.50$, the same price \MR{} use for the
+reversed-probability case (p.~143). The experimental magnitudes are Varian's (pp.~582--583).
+
+\answer{Fairness and vengeance act as built-in commitment devices. A conscience makes promises
+credible and protects specific investments (guilt above 1 removes grabbing in Table 5.1); a
+taste for revenge makes threats credible and gives responders bargaining power, which explains
+offers of about 45 cents instead of the SPNE near zero. Honesty relaxes incentive-compatibility
+constraints (a lying cost of \$0.20 restores efficient trade in \MR's example). The cost is that
+privately known or self-serving notions of fairness bring new disagreement, and the preferences
+help only if they are observable and cannot be mimicked.}
+\end{exsol}

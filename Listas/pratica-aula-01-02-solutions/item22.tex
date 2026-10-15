@@ -1,0 +1,94 @@
+\begin{exsol}{22}{\MR{} Analytical Problem 5.5}{165}{Exam}{B3}
+\asked Only the seller is informed: she values the good at \$0 (probability $x$) or \$10, and the
+buyer's value is the seller's plus a known premium. Show that with a \$10 premium a single price
+of \$10 supports honest reports and trade in every state; then, with a \$5 premium, decide whether
+report-contingent prices can make the seller honest while both sides are willing to trade.
+
+\method \MR's mediator and incentive-compatibility method (Ch.~5, pp.~141--143), here with
+one-sided private information: a price schedule $p(\hat s)$ depending on the seller's report
+$\hat s \in \{0, 10\}$, honesty constraints for the two seller types, and participation
+constraints for both seller types and for the buyer, who learns the state from an honest report.
+Trade probabilities below one are the screening device of \MR's incentive-efficiency
+discussion (pp.~143--145).
+
+\solution
+Write $s \in \{0, 10\}$ for the seller's value and $s + g$ for the buyer's, with $g = 10$ or
+$g = 5$. Trade is efficient in both states because $g > 0$.
+
+\textbf{(a) Premium \$10: one price of \$10 always.} Let $p(0) = p(10) = 10$ and trade always.
+\begin{itemize}
+  \item \emph{Honesty.} The report changes neither the price nor whether trade occurs, so the
+  seller cannot gain by misreporting; honest reporting is (weakly) optimal for both types.
+  \item \emph{Seller participation.} Type 0 gains $10 - 0 = 10 \ge 0$; type 10 gains
+  $10 - 10 = 0$, so she is willing to sell.
+  \item \emph{Buyer participation.} When $s = 0$ the good is worth \$10 to him and he pays \$10
+  (gain 0); when $s = 10$ it is worth \$20 (gain 10). He is willing to buy in each state, even
+  if he could infer the state, so the scheme survives ex post.
+\end{itemize}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+State & Price & Seller's gain & Buyer's gain \\
+\midrule
+$s = 0$ (prob.\ $x$) & 10 & 10 & 0 \\
+$s = 10$ (prob.\ $1-x$) & 10 & 0 & 10 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Efficient trade occurs in every state, with honest revelation. (Any constant price in
+$[10,\, 20 - 10x]$ also works if the buyer only needs a non-negative \emph{expected} gain, since
+$x(10-p) + (1-x)(20-p) = 20 - 10x - p$; \$10 is the price that also works state by state.)
+
+\textbf{(b) Premium \$5: is there an honest schedule with trade in both states?} Now the buyer
+is worth \$5 when $s = 0$ and \$15 when $s = 10$. Suppose trade always occurs at
+$p(0)$ and $p(10)$.
+\begin{enumerate}
+  \item \emph{Honesty of type 0}: $p(0) \ge p(10)$ (she sells either way, so only the price
+  matters).
+  \item \emph{Honesty of type 10}: $p(10) - 10 \ge p(0) - 10$, i.e.\ $p(10) \ge p(0)$.
+  Together: $p(0) = p(10) \equiv P$. When the report cannot change whether trade happens, it
+  cannot change the price either.
+  \item \emph{Participation of type 10}: $P \ge 10$.
+  \item \emph{Buyer's willingness to pay}: after an honest report of $0$ the buyer knows the
+  good is worth \$5 to him, so he buys only if $P \le 5$.
+\end{enumerate}
+Conditions 3 and 4 are incompatible: \textbf{no such prices exist}. More generally, trade in
+all states with honesty forces one pooled price that must lie in $[10,\, 0 + g]$, which is
+non-empty iff $g \ge 10$: the premium must be at least the gap between the seller's two values.
+That is exactly why the \$10 case works and the \$5 case fails.
+
+\textbf{What can be achieved instead.} Honesty is restored by making the claim ``\$10'' costly
+through a lower chance of trade. Let trade occur for sure at $p(0) \le 5$ after report 0, and
+with probability $q$ at $p(10) \ge 10$ after report 10. Type 0 stays honest iff
+$p(0) \ge q\,p(10)$; with $p(0) = 5$ and $p(10) = 10$ this allows any $q \le 1/2$. Type 10 does
+not mimic type 0, since selling at \$5 loses \$5; the buyer gains $5 - 5 = 0$ and
+$15 - 10 = 5$ in the two states. The best such scheme trades with probability $q = 1/2$ when
+the good is worth \$10 to the seller, and the expected loss against full efficiency is
+$(1-x)\cdot\tfrac12\cdot 5 = 2.5\,(1-x)$.
+
+\emph{Caveat on timing.} If the buyer had to commit to a single price before anything is
+revealed and judged it by his expected gain, one price $P \in [10,\, 15 - 10x]$ would do, which is
+possible iff $x \le 1/2$. Once prices depend on the report, though, the report reveals the state,
+and the buyer's willingness to trade must hold state by state, as above.
+
+\interp Private information does not need two-sided uncertainty to destroy efficient trade. With
+\emph{interdependent} values the buyer's value moves with the seller's information. The low-cost
+seller always wants to be paid like a high-cost one, so honesty pools the prices. The buyer will
+not pay the high-cost price for a good he then knows is worth little. When the gains from trade
+are large ($g \ge 10$) a single price covers everybody; when they are small, the informed party's
+informational rent cannot be paid without giving up trade, and the incentive-efficient
+arrangement rations trade with the high-value seller. This is the logic of Akerlof's lemons model,
+which \MR{} discuss under adverse selection in the same chapter, in bargaining form.
+
+\verify Each constraint is checked by substitution in \texttt{check\_D.py}: seller and buyer gains
+in the \$10 case; the condition $10 \le P \le g$, which holds iff $g \ge 10$; and $q = 1/2$ from
+$5 = q \times 10$, the buyer's gains (0 and 5) and type 10's loss ($5 - 10 < 0$) in the \$5 case;
+the interim range closes at $x = 1/2$.
+
+\answer{With a \$10 premium, a constant price of \$10 and trade always is honest (reports change
+nothing) and individually rational for both seller types and for the buyer in each state. With
+a \$5 premium, no: honesty with trade in both states forces $p(0) = p(10) = P$, the \$10 seller
+needs $P \ge 10$, and a buyer who learns the good is worth \$5 pays at most \$5. Efficient trade
+with honesty needs a premium of at least \$10. The best honest scheme trades at \$5 after report
+0 and with probability $1/2$ at \$10 after report 10.}
+\end{exsol}

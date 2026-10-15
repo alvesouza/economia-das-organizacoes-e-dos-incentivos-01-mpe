@@ -1,0 +1,73 @@
+\begin{exsol}{19}{\MG{} Ch.~1, Exercise 16}{31}{Advanced}{B3}
+\asked Use the $3 \times 3$ game of Fig.~1.37 to show that the order in which \emph{weakly}
+dominated strategies are eliminated (IDWDS) can change the result, while the order does not
+matter under strict dominance.
+
+\method Weak dominance (slide~23); IESDS (slide~29); order independence of strict deletion
+(MWG \S8.B, pp.~239--240, and Exercise~8.B.4, item~20); MWG's example of order-dependent weak
+deletion (p.~240).
+
+\solution
+Matrix from the book (p.~31):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$U$ & $2,\ 1$ & $1,\ 1$ & $0,\ 0$ \\ \cline{2-4}
+$C$ & $1,\ 2$ & $3,\ 1$ & $2,\ 1$ \\ \cline{2-4}
+$D$ & $2,\ -2$ & $1,\ -1$ & $-1,\ -1$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Strict dominance first.} Player~1: $D$ ties $U$ against $L$ and $M$; $C$ loses to $U$
+and $D$ against $L$; $U$ and $D$ lose to $C$ against $M$. Player~2, columns over rows
+$(U, C, D)$: $L = (1, 2, -2)$, $M = (1, 1, -1)$, $R = (0, 1, -1)$; $R$ ties $M$ in rows $C$ and
+$D$, and $R$ beats $L$ in row $D$. \emph{No strategy is strictly dominated}, so IESDS keeps all
+nine profiles, whatever the order. The weak relations are: $U$ weakly dominates $D$
+($2 = 2$, $1 = 1$, $0 > -1$), and $M$ weakly dominates $R$ ($1 > 0$, $1 = 1$, $-1 = -1$).
+
+\textbf{Route 1 (start with player~1).}
+\begin{enumerate}
+  \item Delete $D$ (weakly dominated by $U$).
+  \item On rows $\{U, C\}$: $L = (1, 2)$ beats $R = (0, 1)$ \emph{strictly}. Delete $R$.
+  \item On rows $\{U, C\}$: $L = (1, 2)$ vs $M = (1, 1)$: $M$ is weakly dominated by $L$. Delete $M$.
+  \item Against $L$ only: $U$ gives 2, $C$ gives 1. Delete $C$.
+\end{enumerate}
+Result: the single profile $(U, L)$, payoffs $(2, 1)$.
+
+\textbf{Route 2 (start with player~2).}
+\begin{enumerate}
+  \item Delete $R$ (weakly dominated by $M$).
+  \item On columns $\{L, M\}$: $U = (2, 1)$ and $D = (2, 1)$ are identical, so neither weakly
+  dominates the other; $C = (1, 3)$ is not ranked against them. Player~2 on rows
+  $\{U, C, D\}$: $L = (1, 2, -2)$, $M = (1, 1, -1)$, not ranked. Nothing more can be deleted.
+\end{enumerate}
+Result: $\{U, C, D\} \times \{L, M\}$, six profiles.
+
+The two orders give different predictions, $\{(U,L)\}$ versus six profiles. Deleting \emph{all}
+weakly dominated strategies of both players at once in each round ($D$ and $R$ together, then
+$M$, then $C$) also ends at $(U, L)$; the six-profile result comes from deleting $R$ alone first.
+
+\textbf{Why weak deletion is order-dependent and strict deletion is not.} Strict dominance
+survives shrinking the opponent's set: if $s_i'$ beats $s_i$ against every $\sm \in \Sm^k$, it
+still does against any subset. So a strategy that can be deleted now can still be deleted later,
+and the end result does not depend on the order (proved in item~20). Weak dominance can be
+\emph{destroyed} by deleting the opponent's strategies. $U$ weakly dominates $D$ only because of
+column $R$ ($0 > -1$). Once $R$ is deleted first, $U$ and $D$ tie everywhere and $D$ can no longer
+be removed. Its presence then keeps $M$ alive for player~2 ($-1 > -2$ in row $D$).
+
+\interp Weak deletion is a tempting shortcut, but its predictions depend on an arbitrary
+procedural choice, which is why the lecture's solution concept uses strict dominance. The
+common-knowledge justification also fails: deleting $D$ because of column $R$, and then deleting
+$R$, is self-undermining.
+
+\verify \texttt{check\_A.py} confirms that IESDS deletes nothing, replays both routes asserting
+that each deletion is a valid weak (or strict) dominance at that stage, confirms that nothing
+is weakly dominated at the end of route~2, and that simultaneous weak deletion ends at $(U,L)$.
+\texttt{check\_C.py} runs 400 random weak-deletion orders and finds both end results. The
+book's answer (pp.~31--33) agrees: route~1 gives $(U, L)$ and route~2 gives the six profiles.
+
+\answer{No strategy is strictly dominated, so IESDS keeps all nine profiles in any order.
+Weakly: deleting $D$, then $R$ (now strictly dominated), $M$, $C$ gives $(U, L)$. Deleting $R$
+first leaves $U$ and $D$ tied and stops at $\{U, C, D\} \times \{L, M\}$. The order matters for
+weak deletion because weak dominance can disappear when the opponent's strategies are removed.}
+\end{exsol}

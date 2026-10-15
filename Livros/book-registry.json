@@ -111,5 +111,93 @@
     "total_pdf_pages": 635,
     "verified": true,
     "notes": "Milgrom & Roberts (1992), main textbook, syllabus edition. The scan drops part-divider versos, so the offset falls 17 -> 14 by part: one entry per band. Ch. 16 p.540 (PDF 554) onward; out of scope."
+  },
+  "Tadelis": {
+    "file": "Steven Tadelis - Game Theory An Introduction (2013, Princeton University Press).pdf",
+    "offset": 18,
+    "scale": 1,
+    "total_pdf_pages": 417,
+    "verified": true,
+    "notes": "Tadelis (2013), the book the Lecture 1 slides follow; added 2026-10-13. Publisher e-book with a clean text layer. Offset constant through the book: printed p.3 (Ch. 1 opener) -> PDF index 21. Checked at every chapter opener (p.3, 14, 43, 59, 79, 101, 129, 151, 175, 190, 220, 241, 270, 288, 303, 318, 339, 357, 369) and at p.4, 11, 200, 389, 396; a folio scan of the whole text layer gives offset 18 on every numbered page from p.4 to p.396. Part dividers (p.41-42, 127-128, 238-240, 300-302) carry no folio."
+  },
+  "Gibbons Ch. 1": {
+    "file": "Robert Gibbons - Game Theory for Applied Economists (1992, Princeton University Press).pdf",
+    "offset": 7,
+    "scale": 1,
+    "total_pdf_pages": 272,
+    "verified": true,
+    "notes": "Gibbons (1992), added 2026-10-13. Scan with an OCR text layer that drops the blank page after each chapter, so the offset falls 7 -> 6 -> 5 -> 4: one entry per band. Ch. 1 pp.1-53 (opener p.1 at PDF index 8, no folio). Checked at p.2, 20, 29, 48, 51."
+  },
+  "Gibbons Ch. 2": {
+    "file": "Robert Gibbons - Game Theory for Applied Economists (1992, Princeton University Press).pdf",
+    "offset": 6,
+    "scale": 1,
+    "total_pdf_pages": 272,
+    "verified": true,
+    "notes": "Gibbons (1992). Ch. 2 pp.55-141 (opener p.55 at PDF index 61, no folio). Checked at p.57, 82, 102, 120, 138."
+  },
+  "Gibbons Ch. 3-4": {
+    "file": "Robert Gibbons - Game Theory for Applied Economists (1992, Princeton University Press).pdf",
+    "offset": 5,
+    "scale": 1,
+    "total_pdf_pages": 272,
+    "verified": true,
+    "notes": "Gibbons (1992). Ch. 3 pp.143-172 (opener at PDF index 148), Ch. 4 pp.173-255 (opener at PDF index 178). Checked at p.144, 169, 175, 200, 233, 253. Index from p.257 uses offset 4 (checked p.257, 267)."
+  },
+  "Munoz-Garcia Ch. 1-3": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 12,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 1 pp.1-36, Ch. 2 pp.37-84, Ch. 3 pp.85-151. Checked at p.1, 2, 20, 36, 37, 38, 84, 85, 86, 120, 151."
+  },
+  "Munoz-Garcia Ch. 4-5": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 11,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 4 pp.153-214, Ch. 5 pp.215-271. Checked at p.153, 154, 214, 215, 216, 240."
+  },
+  "Munoz-Garcia Ch. 6-7": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 10,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 6 pp.273-316, Ch. 7 pp.317-347. Checked at p.273, 274, 300, 316, 317, 318."
+  },
+  "Munoz-Garcia Ch. 8": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 9,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 8 pp.349-373. Checked at p.349, 350, 360, 373."
+  },
+  "Munoz-Garcia Ch. 9": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 8,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 9 pp.375-451. Checked at p.375, 376, 400, 451."
+  },
+  "Munoz-Garcia Ch. 10": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 7,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 10 pp.453-479. Checked at p.453, 454, 470, 479."
+  },
+  "Munoz-Garcia Ch. 11": {
+    "file": "Felix Munoz-Garcia, Daniel Toro-Gonzalez - Strategy and Game Theory Practice Exercises with Answers, 2nd ed. (2019, Springer).pdf",
+    "offset": 6,
+    "scale": 1,
+    "total_pdf_pages": 530,
+    "verified": true,
+    "notes": "Munoz-Garcia & Toro-Gonzalez, 2nd ed. (2019), added 2026-10-13. Publisher PDF with a text layer, but the blank verso before some chapter openers is missing, so the offset falls 12 -> 6 across the book: one entry per band. Ch. 11 pp.481-520, Index p.521-. Checked at p.481, 482, 500, 520, 521."
   }
 }

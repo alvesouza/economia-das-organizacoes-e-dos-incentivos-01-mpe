@@ -21,7 +21,7 @@ PDF page = (printed + 20) // 2 (see `Livros/book-registry.json`).
 | Exercise | Ch./Section | Page | Topic(s) | Level | Verified |
 |---|---|---|---|---|---|
 | 9.B.12 | 9.AA (infinite horizon) | 302–303 | Bargaining | advanced | yes |
-| 9.B.13 | 9.AA (finite horizon, Ex. 9.AA.1) | 302–303 | Bargaining | exam | yes (OCR reads "9.B.78"; sits between 9.B.12 and 9.B.14, and the Appendix A text cites "Exercises 9.B.7 and 9.B.13" for this game) |
+| 9.B.13 | 9.AA (infinite-horizon version of 9.B.7: a cost c per offer instead of discounting; many SPNE) | 302–303 | Bargaining | advanced | yes (OCR reads "9.B.78"; sits between 9.B.12 and 9.B.14, and the Appendix A text cites "Exercises 9.B.7 and 9.B.13" for this game) |
 | 16.C.2 | 16.C First Welfare Theorem | 574–575 | Efficiency and economic organization; Coordination through the market | exam | yes |
 | 16.C.3 | 16.C (FWT compatible with satiation) | 574–575 | Coordination through the market | advanced | yes |
 | 16.C.4 | 16.C (preferences over others' consumption) | 574–575 | Efficiency and economic organization | exam | yes |

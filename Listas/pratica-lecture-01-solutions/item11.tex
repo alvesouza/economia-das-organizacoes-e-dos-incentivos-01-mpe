@@ -1,0 +1,53 @@
+\begin{exsol}{11}{Tadelis Exercise 4.1}{76}{Exam}{B2}
+\asked Prove Tadelis's Proposition~4.1 (p.~61): a strict dominant-strategy equilibrium, if it
+exists, is the unique dominant-strategy equilibrium.
+
+\method Direct proof by contradiction from the definitions (Lecture~1, slides~23 and~25;
+Tadelis Defs.~4.1--4.3, pp.~60--61). ``Dominant-strategy equilibrium'' is read in the widest
+sense: a profile in which every player uses a dominant strategy, strict \emph{or} weak.
+Tadelis defines weak dominance with ``$\ge$ for all $\sm$'' (Remark, p.~63); the lecture adds
+``$>$ for some $\sm$''. The proof works under both readings because it only uses the ``$\ge$''
+part.
+
+\solution
+\textbf{Claim.} Let $s^D \in S$ be a strict dominant-strategy equilibrium of
+$G = (I, \{S_i\}, \{u_i\})$: for every $i \in I$,
+\[
+  u_i(s_i^D, \sm) > u_i(s_i', \sm) \qquad \forall s_i' \in S_i \setminus \{s_i^D\},\ \forall \sm \in \Sm. \tag{1}
+\]
+If $s^W \in S$ is a profile in which every player uses a (strictly or weakly) dominant strategy,
+then $s^W = s^D$.
+
+\textbf{Proof.} Suppose not. Then there is a player $i$ with $s_i^W \ne s_i^D$. Because $s_i^W$ is
+(at least weakly) dominant, it does at least as well as every strategy, in particular $s_i^D$:
+\[
+  u_i(s_i^W, \sm) \ge u_i(s_i^D, \sm) \qquad \forall \sm \in \Sm. \tag{2}
+\]
+Take any $\sm \in \Sm$ (the set is nonempty). Applying (1) with $s_i' = s_i^W$ gives
+$u_i(s_i^D, \sm) > u_i(s_i^W, \sm)$, which contradicts (2) at that $\sm$. Hence $s_i^W = s_i^D$
+for every $i$, that is, $s^W = s^D$. \hfill$\square$
+
+\textbf{What the proof uses.} Only the definitions; no finiteness. Two by-products:
+\begin{enumerate}[label=(\roman*)]
+  \item A player has at most one strictly dominant strategy (take $s^W_i$ strictly dominant
+  in the argument).
+  \item If the dominance were only weak in (1), the argument fails: two strategies can each be
+  ``$\ge$'' the other everywhere when they tie everywhere. That is exactly Exercise~4.2(b)
+  (item~12).
+\end{enumerate}
+The lecture's other proposition (slide~29; Tadelis Prop.~4.2, p.~68) adds that $s^D$ is also the
+unique IESDS survivor: in round~1 every $s_i' \ne s_i^D$ is strictly dominated by $s_i^D$.
+
+\interp When it exists, strict dominance gives a unique prediction and asks very little of the
+players (only their own rationality). The cost is existence: most games have no strictly dominant
+strategies (item~8).
+
+\verify \texttt{check\_C.py} draws 20\,000 random games ($2\times2$, $2\times3$, $3\times2$,
+payoffs in $\{0,\dots,4\}$). Whenever both players have a strictly dominant strategy, it checks
+that the strictly dominant strategy is the only ``$\ge$-dominant'' one for each player and the
+only IESDS survivor.
+
+\answer{If $s_i^W \ne s_i^D$ for some $i$, weak dominance of $s_i^W$ gives
+$u_i(s_i^W, \sm) \ge u_i(s_i^D, \sm)$ for all $\sm$, while strict dominance of $s_i^D$ gives the
+reverse strict inequality, a contradiction. So any dominant-strategy equilibrium equals $s^D$.}
+\end{exsol}

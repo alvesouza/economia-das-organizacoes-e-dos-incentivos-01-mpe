@@ -1,0 +1,72 @@
+\begin{exsol}{13}{MWG Exercise 8.B.1}{262}{Exam}{B2}
+\asked $I$ firms choose lobbying hours $h_i \ge 0$ at cost $w_i h_i^2$; the subsidy is worth
+$\alpha \sum_i h_i + \beta \prod_i h_i$. Show that each firm has a strictly dominant strategy if
+and only if $\beta = 0$, and find it.
+
+\method Strict dominance (MWG Def.~8.B.1, p.~237; Lecture~1, slide~23) in a game with
+continuous strategies. With a strictly concave payoff, the best reply is unique. So a strategy
+is strictly dominant exactly when it is the best reply to \emph{every} profile of the others.
+
+\solution
+We take firm~$i$'s payoff to be the value of the subsidy minus its own cost (as the MWG
+solutions manual does), with $I \ge 2$, $w_i > 0$. Write $P_{-i} = \prod_{j\ne i} h_j \ge 0$:
+\[
+  u_i(h_i, h_{-i}) = (\alpha + \beta P_{-i})\, h_i - w_i h_i^2 + \alpha \textstyle\sum_{j\ne i} h_j .
+\]
+The last term does not depend on $h_i$. Also $\partial^2 u_i/\partial h_i^2 = -2w_i < 0$.
+
+\textbf{Step 1: best reply.} Strict concavity on $[0, \infty)$ gives the unique maximizer
+\[
+  BR_i(h_{-i}) = \max\Big\{0,\ \frac{\alpha + \beta P_{-i}}{2 w_i}\Big\}.
+\]
+When positive, it solves the first-order condition $\alpha + \beta P_{-i} - 2 w_i h_i = 0$.
+
+\textbf{Step 2: dominance $\Leftrightarrow$ constant best reply.} If $h_i^*$ is strictly dominant,
+it is a best reply to every $h_{-i}$, so $BR_i$ is the constant $h_i^*$. Conversely, if
+$BR_i(h_{-i}) = h_i^*$ for all $h_{-i}$, uniqueness of the maximizer gives
+$u_i(h_i^*, h_{-i}) > u_i(h_i, h_{-i})$ for every $h_i \ne h_i^*$ and every $h_{-i}$: $h_i^*$ is
+strictly dominant. With $I \ge 2$, $P_{-i}$ takes every value in $[0,\infty)$ (set each
+$h_j = P^{1/(I-1)}$).
+
+\textbf{Step 3: when is $BR_i$ constant in $P_{-i} \in [0, \infty)$?}
+\begin{itemize}
+  \item $\beta = 0$: $BR_i = \max\{0, \alpha/(2w_i)\}$, constant. \emph{Dominant.} For $\alpha > 0$,
+  \[
+    u_i(h_i^*, h_{-i}) - u_i(h_i, h_{-i}) = w_i\,(h_i - h_i^*)^2 > 0 \quad (h_i \ne h_i^*),
+    \qquad h_i^* = \frac{\alpha}{2 w_i}.
+  \]
+  \item $\beta > 0$: $(\alpha + \beta P)/(2w_i) \to \infty$ as $P \to \infty$. Not constant: no
+  dominant strategy (more effort by others raises the return to own effort).
+  \item $\beta < 0$, $\alpha > 0$: $BR_i = \alpha/(2w_i) > 0$ at $P = 0$ but $BR_i = 0$ for
+  $P \ge \alpha/|\beta|$. Not constant.
+  \item $\beta < 0$, $\alpha \le 0$: $\alpha + \beta P \le 0$ for all $P \ge 0$, so $BR_i \equiv 0$.
+  \emph{Dominant}, although $\beta \ne 0$: for $h_i > 0$,
+  $u_i(0, h_{-i}) - u_i(h_i, h_{-i}) = -(\alpha + \beta P_{-i}) h_i + w_i h_i^2 > 0$.
+\end{itemize}
+So ``strictly dominant $\Leftrightarrow \beta = 0$'' holds whenever $\alpha > 0$, the case in
+which lobbying is productive and the dominant strategy is interior. At the corner, when
+$\alpha \le 0$ and $\beta < 0$, lobbying never pays, so $h_i = 0$ is strictly dominant for any
+such $\beta$.
+
+\interp $\beta \ne 0$ makes efforts interact: with $\beta > 0$ they are complements (others'
+hours raise my marginal return), so my best choice depends on what I expect them to do and no
+strategy is dominant. With $\beta = 0$ each firm's problem is separable: it equates its own
+marginal benefit $\alpha$ to its marginal cost $2w_i h_i$, whatever the others do. Even then the
+outcome is not efficient for the industry: each firm ignores that its hours also benefit the
+other firms' subsidy, the same wedge as in the prisoner's dilemma (slide~26).
+
+\verify \texttt{check\_B.py} derives the best reply and the second derivative with sympy, checks
+the identity $u_i(h^*) - u_i(h) = w_i(h - h^*)^2$ for $\beta = 0$, and tests nine sign
+combinations of $(\alpha, \beta)$ on values of $P_{-i}$ from 0 to $10^3$: the best reply is
+constant exactly when $\beta = 0$ or ($\beta < 0$, $\alpha \le 0$). \emph{Comparison with the MWG
+solutions manual} (p.~8-1): it agrees on the first-order condition, the ``iff $\beta = 0$'' and
+$h_i = \alpha/(2w_i)$, but it ignores the constraint $h_i \ge 0$. Its ``only if'' therefore
+misses the corner case $\alpha \le 0$, $\beta < 0$, and for $\alpha < 0$, $\beta = 0$ its formula
+gives a negative number of hours (the dominant strategy is then $h_i = 0$).
+
+\answer{Each firm's payoff is strictly concave with best reply
+$\max\{0, (\alpha + \beta\prod_{j\ne i}h_j)/(2w_i)\}$, and a strategy is strictly dominant iff
+this best reply is constant. For $\alpha > 0$ that happens iff $\beta = 0$, and the strictly
+dominant strategy is $h_i^* = \alpha/(2w_i)$. (Corner: with $\alpha \le 0$ the dominant strategy
+is $h_i = 0$, also when $\beta < 0$.)}
+\end{exsol}

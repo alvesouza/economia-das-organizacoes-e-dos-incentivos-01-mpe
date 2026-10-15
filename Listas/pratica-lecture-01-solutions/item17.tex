@@ -1,0 +1,62 @@
+\begin{exsol}{17}{Tadelis Exercise 4.3}{76}{Exam}{B4}
+\asked Discrete first-price auction: values $v_1 = 3$, $v_2 = 5$; bids in $\{0, 1, 2\}$; the
+higher bid wins and pays its bid, and ties are broken by a fair coin. (a) Write the matrix;
+(b) find strictly dominated strategies; (c) find the strategies that survive IESDS.
+
+\method Expected payoffs under the coin toss (payoffs are expected utilities, slide~18);
+dominance and IESDS (slides~23, 29).
+
+\solution
+\textbf{(a)} $u_1(b_1, b_2) = 3 - b_1$ if $b_1 > b_2$, $0$ if $b_1 < b_2$, and
+$\tfrac12(3 - b_1)$ if $b_1 = b_2$. The same rule with $v_2 = 5$ gives $u_2$.
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{$b_1 \backslash b_2$} & \multicolumn{1}{c}{$0$} & \multicolumn{1}{c}{$1$} & \multicolumn{1}{c}{$2$}\\ \cline{2-4}
+$0$ & $1.5,\ 2.5$ & $0,\ 4$ & $0,\ 3$ \\ \cline{2-4}
+$1$ & $2,\ 0$ & $1,\ 2$ & $0,\ 3$ \\ \cline{2-4}
+$2$ & $1,\ 0$ & $1,\ 0$ & $0.5,\ 1.5$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{(b) Strictly dominated strategies (full game).}
+\begin{itemize}
+  \item Player~1, over $b_2 = (0,1,2)$: $0 \mapsto (1.5, 0, 0)$, $1 \mapsto (2, 1, 0)$,
+  $2 \mapsto (1, 1, 0.5)$. Bid $0$ is beaten by bid $1$ against $b_2 = 0, 1$ but ties at $b_2 = 2$:
+  only weakly dominated. Bids $1$ and $2$ are not ranked: $1$ beats $2$ against $b_2 = 0$
+  ($2 > 1$), $2$ beats $1$ against $b_2 = 2$ ($0.5 > 0$). Bid $0$ is not dominated by $2$ either
+  ($1.5 > 1$ against $b_2 = 0$). \emph{Player~1 has no strictly dominated strategy.}
+  \item Player~2, over $b_1 = (0,1,2)$: $0 \mapsto (2.5, 0, 0)$, $1 \mapsto (4, 2, 0)$,
+  $2 \mapsto (3, 3, 1.5)$. Bid $0$ is strictly dominated by bid $2$ ($2.5 < 3$, $0 < 3$,
+  $0 < 1.5$); it is only weakly dominated by bid $1$. Bids $1$ and $2$ are not ranked.
+  \emph{Player~2's bid $0$ is strictly dominated (by $2$).}
+\end{itemize}
+
+\textbf{(c) IESDS.}
+\begin{enumerate}
+  \item Round 1: delete $b_2 = 0$. $S_1^1 = \{0,1,2\}$, $S_2^1 = \{1, 2\}$.
+  \item Round 2: player~1 over $b_2 \in \{1, 2\}$: $0 \mapsto (0, 0)$, $1 \mapsto (1, 0)$,
+  $2 \mapsto (1, 0.5)$. Bid $0$ is strictly dominated by bid $2$. Bid $1$ is only weakly dominated
+  by $2$. $S_1^2 = \{1, 2\}$.
+  \item Round 3: player~2 over $b_1 \in \{1, 2\}$: $1 \mapsto (2, 0)$, $2 \mapsto (3, 1.5)$.
+  Bid $1$ is strictly dominated by $2$. $S_2^3 = \{2\}$.
+  \item Round 4: player~1 against $b_2 = 2$: bid $1$ gives $0$, bid $2$ gives $0.5$. Delete $1$.
+  $S_1^4 = \{2\}$.
+\end{enumerate}
+$S^\infty = \{(2, 2)\}$, with expected payoffs $(0.5, 1.5)$: both bid the maximum, and each wins
+with probability $\tfrac12$.
+
+\interp Four rounds means four layers of reasoning: player~2 is rational; player~1 knows it;
+player~2 knows that player~1 knows it; and so on. The discreteness matters: with only three
+bids, the high-value bidder cannot outbid at $2$, so the auction ends in a coin toss at the top
+bid. Bidder~2 would like to bid $3$ and win for sure. In a first-price auction bidders shade
+below their values (player~1 bids $2 < 3$); contrast this with item~23, where bidding one's
+value is weakly dominant.
+
+\verify \texttt{check\_A.py} builds the matrix from the rules (exact fractions), checks every
+dominance claim in (b), and runs IESDS: removals are $b_2 = 0$, then $b_1 = 0$, then $b_2 = 1$,
+then $b_1 = 1$, leaving $(2, 2)$.
+
+\answer{(a) Matrix above. (b) Only player~2's bid $0$ is strictly dominated (by $2$); player~1
+has none (his $0$ is only weakly dominated). (c) IESDS removes $b_2 = 0$, $b_1 = 0$, $b_2 = 1$,
+$b_1 = 1$ in turn; the unique survivor is $(2, 2)$ with expected payoffs $(0.5, 1.5)$.}
+\end{exsol}

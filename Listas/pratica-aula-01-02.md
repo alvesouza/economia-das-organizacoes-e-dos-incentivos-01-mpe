@@ -84,7 +84,7 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | 25 | A2 | Cabral | §3.5 (method in §3.1) | 3.20 Productivity (applied) | 64 | Estimate TFP from firm data; the dispersion "organization matters" predicts |
 | 26 | B1 | M&R | Ch. 2, Mathematical Exercises | Q 2.3 | 53 | Prove the value maximization principle: efficient iff total value is maximized |
 | 27 | B1 | M&R | Ch. 2, Mathematical Exercises | Q 2.4 | 53 | Derive the quasilinear form from "no wealth effects" |
-| 28 | B2 | MWG | Ch. 9, Appendix A (Example 9.AA.1) | 9.B.13 | 302–303 | Finite-horizon alternating offers by backward induction; who moves last matters |
+| 28 | B2 | MWG | Ch. 9, Appendix A (Example 9.AA.1; builds on Exercise 9.B.7) | 9.B.13 | 302–303 | Alternating offers with a cost per offer instead of discounting: the finite game (9.B.7) by backward induction, then the infinite horizon, where many SPNE exist |
 | 29 | B2 | MWG | Ch. 9, Appendix A (Example 9.AA.2) | 9.B.12 | 302–303 | Infinite-horizon (Rubinstein) split with different discount factors; patience as power |
 | 30 | B3 | Cabral | §13.1 | 13.10 Asset specificity and vertical integration | 346 | Ex-post 50/50 bargaining under-rewards investment; integration as the fix (hold-up) |
 
@@ -186,7 +186,7 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | 24 | Q 5.4 | M&R | p. 165 | Bargaining with two-sided private info | Exam |
 | 25 | Q 5.5 | M&R | p. 165 | Bargaining with one-sided private info | Exam |
 | 26 | 9.B.12 | MWG | p. 302–303 | Infinite-horizon alternating offers | Advanced |
-| 27 | 9.B.13 | MWG | p. 302–303 | Finite-horizon alternating offers | Advanced |
+| 27 | 9.B.13 | MWG | p. 302–303 | Alternating offers with offer costs (infinite horizon of 9.B.7) | Advanced |
 | 28 | 32 RQ 3 | Varian | p. 628 | Contract curve vs. bargaining outcome | Foundations |
 | 29 | 35 RQ 1 | Varian | p. 687 | Property rights and externalities | Foundations |
 | 30 | 35 RQ 2 | Varian | p. 687 | Coase with quasilinear preferences | Foundations |

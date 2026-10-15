@@ -1,0 +1,127 @@
+\begin{exsol}{28}{MWG Exercise 9.B.13}{302--303}{Advanced}{B2}
+\asked Exercise 9.B.13 asks for the SPNE of the infinite-horizon version of Exercise 9.B.7.
+That exercise is the alternating-offer game of Example 9.AA.1 in which, instead of discounting,
+each offer costs its maker $c < v$ (incurred even if no agreement is reached), solved for the
+finite horizon $T$ and as $T \to \infty$. We solve 9.B.7 first, because it is the benchmark
+the infinite game is compared with.
+
+\method Backward induction on the finite game, as in MWG Example 9.AA.1 (pp.~296--297), with a
+responder who is indifferent accepting (MWG n.~16). For the infinite game we use stationary
+strategies and the Shaked--Sutton bounding argument of Example 9.AA.2 (p.~298), and show that it
+no longer pins down a unique outcome. The course notes (Part~II, ``Alternating offers'') give
+the discounted benchmark $v_1(T) = v\,[1 - (-\delta)^T]/(1+\delta) \to v/(1+\delta)$.
+
+\solution
+Payoffs are \emph{net}: a player's share of $v$ minus $c$ times the number of offers he or she
+has made. The proposer must make an offer in each period (as in Figure 9.AA.1).
+
+\textbf{(a) Finite horizon (Exercise 9.B.7).} Let $a_k$ be the continuation payoff, net of the
+current offer's cost, of the player who proposes when $k$ periods remain, and set $a_0 = 0$
+(after period $T$ there is nothing).
+\begin{itemize}
+  \item With $k$ periods left, the responder can reject and become the proposer with $k-1$
+  periods left, worth $a_{k-1}$ (her past costs are sunk). So she accepts iff offered at least
+  $a_{k-1}$, and the proposer offers exactly that:
+  \[
+    a_k = v - a_{k-1} - c, \qquad a_0 = 0 .
+  \]
+  \item Making an offer that will be rejected is worse: it yields $-c + a_{k-2}$, and
+  $a_k - (a_{k-2} - c) = v - (a_{k-1} + a_{k-2}) = c > 0$ for $k \ge 2$ (for $k = 1$ it yields
+  $-c < v - c$).
+\end{itemize}
+The recursion gives $a_1 = v - c$, $a_2 = 0$, $a_3 = v - c$, \dots, that is
+$a_k = v - c$ for odd $k$ and $a_k = 0$ for even $k$. In period $t$ the number of remaining
+periods is $k = T - t + 1$, so the unique SPNE is:
+\begin{center}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+Periods with $k$ remaining & Proposer offers the responder & Responder accepts iff offered \\
+\midrule
+$k$ odd (same parity as $T$) & $0$ (keeps $v$, net $v - c$) & at least $0$ \\
+$k$ even & $v - c$ (keeps $c$, net $0$) & at least $v - c$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Agreement is immediate. Player~1's period-1 proposal and the net payoffs are
+\[
+  T \text{ odd: } (v, 0), \quad (u_1, u_2) = (v - c,\; 0); \qquad
+  T \text{ even: } (c,\, v - c), \quad (u_1, u_2) = (0,\; v - c).
+\]
+In one formula, $u_1(T) = (v - c)\,[1 - (-1)^T]/2$, the discounted formula of
+Example 9.AA.1 evaluated at $\delta = 1$ with $v$ replaced by $v - c$. \emph{The player who makes
+the last offer gets the entire surplus net of one offer cost}; the other gets nothing.
+\textbf{As $T \to \infty$ there is no limit}: $u_1(T)$ alternates between $v - c$ and $0$.
+
+\textbf{What changes relative to Example 9.AA.1.} With discounting the last mover's advantage
+shrinks geometrically, $v_1(T) = v[1 - (-\delta)^T]/(1+\delta)$, and both parities converge to
+$v/(1+\delta)$. A fixed cost of making offers does not shrink with distance from the deadline: a
+responder's threat to reject is worth exactly the continuation $a_{k-1}$, so the parity of $T$
+decides everything at every horizon.
+
+\textbf{(b) Infinite horizon (Exercise 9.B.13). Stationary equilibria.} Consider the profile
+$\sigma(a)$, with $a \in [0, v - c]$ and $b \equiv v - c - a$: player~1, when proposing, offers
+player~2 the amount $b$, and player~2 accepts iff offered at least $b$; player~2, when proposing,
+offers player~1 the amount $a$, and player~1 accepts iff offered at least $a$.
+\begin{itemize}
+  \item \emph{Responder 2.} Rejecting makes her the proposer next period, worth $v - a - c = b$.
+  Accepting at least $b$ and rejecting less is optimal (indifferent at $b$). Symmetrically for
+  responder 1, whose rejection is worth $v - b - c = a$.
+  \item \emph{Proposer 1.} Offering $b$ yields $v - b - c = a$; offering more yields less; an
+  offer below $b$ is rejected and yields $-c + a < a$.
+  \item Infinite disagreement gives each player $-\infty$ (infinitely many offers), so a profitable
+  deviation would have to end in agreement after finitely many periods, and the one-shot checks
+  above suffice.
+\end{itemize}
+So \emph{every} $\sigma(a)$ is an SPNE, with immediate agreement and net payoffs
+\[
+  (u_1, u_2) = (a,\; v - c - a), \qquad a \in [0,\, v - c].
+\]
+Indifference only requires $a + b = v - c$, one equation in two unknowns. With discounting it
+was two independent equations, $b = \delta_2 (v - a)$ and $a = \delta_1 (v - b)$.
+
+\textbf{Why Shaked--Sutton fails here.} Let $M_i, m_i$ be the sup and inf of player~$i$'s SPNE
+payoffs as proposer. The argument of Example 9.AA.2 gives $m_1 \ge v - c - M_2$,
+$M_1 \le v - c - m_2$, and symmetrically for player~2. Substituting,
+$M_1 \le v - c - (v - c - M_1) = M_1$: the bound is an identity. With discounting the same step
+gives $M_1 \le v - \delta_2(v - \delta_1 M_1)$, a contraction with slope $\delta_1\delta_2 < 1$ and a
+unique fixed point. Here the slope is 1 and every point is a fixed point. The bounds still
+show that every SPNE gives the first proposer a payoff in $[0, v - c]$ (since
+$m_1 \ge v - c - M_2 \ge 0$), and the stationary equilibria fill that whole interval, so
+\emph{any} payoff in $[0, v-c]$ for player~1 is an SPNE outcome.
+
+\textbf{Equilibria with delay.} Non-stationary strategies also support delay when
+$c \le v/2$. In period 1 player~1 offers player~2 nothing and she rejects; from period 2 on
+$\sigma(v - c)$ is played (player~2 offers player~1 $v - c$, keeping $c$). If player~1 instead
+offers anything else in period 1 and it is rejected, $\sigma(0)$ is played from period 2. Player~2
+rejecting the equilibrium offer gets $c - c = 0$, the same as accepting nothing (a weak best
+response). After a deviant offer her rejection is worth $v - c$, so player~1 must offer her at
+least $v - c$ and keeps at most $c - c = 0$, or gets $-c$ if the offer is rejected. On the path
+player~1 gets $-c + (v - c) = v - 2c \ge 0$. Total net surplus is $v - 2c < v - c$: an extra offer
+cost is wasted, so SPNE outcomes need not even be efficient.
+
+\interp How a bargaining game is specified matters (MWG p.~299 names Exercises 9.B.7 and 9.B.13
+as the illustration). Discounting makes delay costly \emph{in proportion to what is at stake},
+which delivers a unique split that is the limit of the finite games. A fixed cost per offer
+makes the last-mover advantage absolute in finite games and leaves the infinite game
+indeterminate: any division of $v - c$, and even inefficient delay, can be sustained by
+expectations about who will concede. Bargaining power then comes from expectations and
+conventions, not from the procedure. This is a warning against reading Rubinstein's uniqueness
+as a general law of bargaining (compare \MR{} Ch.~5 on the traditional view that small-numbers
+bargaining is indeterminate).
+
+\verify \texttt{check\_D.py} runs the backward-induction recursion for $T = 1, \dots, 11$ with
+$(v, c) = (10, 3)$: $(u_1, u_2) = (7, 0)$ with offer $(10, 0)$ for odd $T$, and $(0, 7)$ with
+offer $(3, 7)$ for even $T$, matching $(v-c)[1 - (-1)^T]/2$. It checks that the two indifference
+conditions of the infinite game are the same equation, that the Shaked--Sutton map has slope 1
+here versus $\delta_1\delta_2$ with discounting, and the delay equilibrium's payoffs. The MWG
+solutions manual agrees on both parts: for 9.B.7 it gives $(v, 0)$ in period 1 when $T$ is odd and
+$(c, v - c)$ when $T$ is even, and for 9.B.13 it states that there are many SPNE and refers to
+Rubinstein (1982).
+
+\answer{Finite $T$ (9.B.7): unique SPNE with immediate agreement. Player~1 proposes $(v, 0)$
+when $T$ is odd (net payoffs $(v - c, 0)$) and $(c, v - c)$ when $T$ is even (net $(0, v - c)$),
+so the last proposer takes everything net of one offer cost and there is no limit as
+$T \to \infty$. Infinite horizon (9.B.13): no uniqueness. Each $a \in [0, v - c]$ gives a stationary
+SPNE with immediate split $(a, v - c - a)$, and for $c \le v/2$ there are SPNE with delay. The
+Shaked--Sutton contraction has slope 1 instead of $\delta_1\delta_2$.}
+\end{exsol}

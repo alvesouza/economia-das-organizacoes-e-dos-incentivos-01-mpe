@@ -2,7 +2,7 @@
 
 # Economia das Organizações e dos Incentivos — MPE Insper
 
-Main book **Milgrom & Roberts (1992)**, not yet in `Livros/` ([Livros/BOOKS.md](Livros/BOOKS.md)).
+Taught as **game theory** (10 lectures, slides follow **Tadelis 2013**); M&R (1992) = applications. Books: [Livros/BOOKS.md](Livros/BOOKS.md).
 Syllabus, topics, bibliography, structure: [rules/11_curso_programa.md](rules/11_curso_programa.md) · [Map/](Map/).
 
 <!-- GENERATED:tier0:start -->
@@ -55,9 +55,9 @@ Rationale and verification commands for each rule: `rules/core.md`
 
 ## Scope — do not extrapolate
 
-Only the 13 syllabus items (9 topics, `rules/01`–`09`). Core: M&R ch. 1–7. Formal depth:
-MWG 9.AA, 13, 14, 16. Out unless a lecture brings it: mechanism design (MWG 23), M&R
-Parts V–VII, IO models beyond coordination. **Never reproduce an exercise statement**: number + page.
+Only the 8 content lectures of the real schedule ([Map/study-guide.md](Map/study-guide.md)).
+Core: Tadelis Ch. 3–13, 15–16; M&R for applications. Formal depth: MWG 7–9, 12.D, 13.
+Out unless a lecture brings it: mechanism design (Tadelis 14, MWG 23), cheap talk, moral hazard. **Never reproduce an exercise statement**: number + page.
 
 ## Format
 

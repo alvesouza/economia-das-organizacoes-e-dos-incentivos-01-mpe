@@ -1,0 +1,56 @@
+\begin{exsol}{22}{MWG Exercise 8.B.7}{262}{Advanced}{B2}
+\asked Show that a strictly dominant strategy of the mixed extension of a game,
+$[I,\{\Delta(S_i)\}, \{u_i(\cdot)\}]$, must be a pure strategy.
+
+\method Mixed strategies and dominance in the mixed extension (MWG Def.~8.B.4, p.~240;
+Prop.~8.B.1 and Exercise~8.B.6, p.~241). Key fact: expected utility is linear in one's own
+mixing probabilities, so a mixture's payoff is a weighted average of the payoffs of the pure
+strategies it uses. Mixed strategies are the subject of Lecture~2; only this averaging property
+is needed here.
+
+\solution
+Fix player~$i$ and a mixed strategy $\sigma_i \in \Delta(S_i)$. $\sigma_i$ is \emph{strictly
+dominant} if $u_i(\sigma_i, \sigma_{-i}) > u_i(\sigma_i', \sigma_{-i})$ for every
+$\sigma_i' \ne \sigma_i$ and every $\sigma_{-i}$. In particular this must hold against every pure
+profile $\sm$ (a degenerate $\sigma_{-i}$) and every pure $\sigma_i' = s_i \ne \sigma_i$.
+
+\textbf{Proof.} Suppose $\sigma_i$ is strictly dominant but not pure: its support contains at
+least two pure strategies $s_i^1, \dots, s_i^N$ ($N \ge 2$), with $\sigma_i(s_i^n) > 0$ and
+$\sum_n \sigma_i(s_i^n) = 1$. Each $s_i^n$ is then a strategy different from $\sigma_i$. Fix any
+$\sm \in \Sm$. By linearity of expected utility,
+\[
+  u_i(\sigma_i, \sm) = \sum_{n=1}^{N} \sigma_i(s_i^n)\, u_i(s_i^n, \sm)
+  \le \max_{n} u_i(s_i^n, \sm) .
+\]
+Let $n^*$ attain the maximum. Then $u_i(\sigma_i, \sm) \le u_i(s_i^{n^*}, \sm)$, while strict
+dominance of $\sigma_i$ requires $u_i(\sigma_i, \sm) > u_i(s_i^{n^*}, \sm)$. Contradiction. Hence
+the support of $\sigma_i$ is a single pure strategy: $\sigma_i$ is pure. \hfill$\square$
+
+\textbf{Remarks.}
+\begin{itemize}
+  \item The argument needs only \emph{one} opponent profile $\sm$; it uses no finiteness of
+  $\Sm$ and works for any $I$.
+  \item It fails for \emph{weak} dominance in the ``$\ge$'' sense. If two pure strategies tie
+  against everything (as $U$ and $D$ in item~12), every mixture of them is also ``$\ge$-dominant''.
+  \item The converse direction is different: a pure strategy can be strictly \emph{dominated} by a
+  mixed strategy without being dominated by any pure one (MWG Fig.~8.B.5, pp.~240--241). Mixing can help
+  in eliminating strategies, never in creating a dominant one.
+\end{itemize}
+
+\interp A strictly dominant strategy must be the unique best action against every opponent
+profile. A mixture is never strictly better than the best of the pure strategies it mixes, so
+mixing can only be optimal when the player is indifferent among those strategies, and
+indifference is incompatible with strict dominance. This is the same reason why, in Lecture~2,
+a player mixes only among strategies that give her equal payoffs.
+
+\verify \texttt{check\_C.py} draws 20\,000 random supports (2--4 pure strategies, random payoffs
+and weights, exact fractions) and confirms that the mixture's payoff never exceeds the best
+support payoff, so it never strictly beats every pure strategy in its support. \emph{Comparison
+with the MWG solutions manual} (p.~8-4): same argument (a strict inequality against each pure
+strategy in the support, averaged with the mixing weights, contradicts linearity). It agrees.
+
+\answer{If $\sigma_i$ mixes over $N \ge 2$ pure strategies, then for any $\sm$ its payoff is a
+weighted average of theirs, so it is at most $\max_n u_i(s_i^n, \sm)$. It cannot strictly beat
+that best pure strategy, which contradicts strict dominance. Hence every strictly dominant
+strategy is pure.}
+\end{exsol}

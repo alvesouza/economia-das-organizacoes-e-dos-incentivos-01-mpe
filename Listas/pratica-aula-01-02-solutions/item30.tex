@@ -1,0 +1,107 @@
+\begin{exsol}{30}{Cabral 13.10 Asset specificity and vertical integration}{346}{Advanced}{B3}
+\asked Two firms $M$ and $R$ invest $e_M$, $e_R$ (in \$) in a joint project worth
+$v = \sqrt{e_M} + \sqrt{e_R}$ and split $v$ equally after investing. Find (a) the equilibrium
+investments, (b) the investments chosen by the merged firm, (c) total payoffs under separation
+and integration, and (d) comment in light of \S13.1, Box~13.1 and \S5.1.
+
+\method Simultaneous investment game with ex-post bargaining, solved by first-order conditions;
+joint-surplus maximization for the merged firm. Hold-up and specific assets (Cabral \S13.1,
+``Investment incentives'', pp.~338--339; \S3.4, p.~55); double marginalization and Box~13.1
+(pp.~334--336); externalities (\S5.1, pp.~94--96). Course link: the hold-up preview in the
+Aula~2 notes and \MR{} Ch.~5, investments and specific assets (pp.~134--139).
+
+\solution
+\subparagraph{(a) Vertical separation.} Investment is sunk before the split, and the split is
+fixed at 50/50 whatever was invested. Firm $M$ solves
+\[
+\max_{e_M \ge 0}\ \tfrac12\big(\sqrt{e_M} + \sqrt{e_R}\big) - e_M .
+\]
+The objective is strictly concave in $e_M$; the first-order condition is
+\[
+\frac{1}{4\sqrt{e_M}} = 1 \;\Longrightarrow\; \sqrt{e_M} = \tfrac14 \;\Longrightarrow\;
+e_M^{S} = \tfrac{1}{16}.
+\]
+$M$'s choice does not depend on $e_R$ (a dominant strategy), and by symmetry
+$e_R^{S} = \tfrac1{16}$. Then $v^S = \tfrac14 + \tfrac14 = \tfrac12$, and each firm earns
+$\tfrac12 \cdot \tfrac12 - \tfrac1{16} = \tfrac{3}{16}$.
+
+\subparagraph{(b) Vertical integration.} Firm $M\&R$ keeps all of $v$ and pays both costs:
+\[
+\max_{e_M, e_R \ge 0}\ \sqrt{e_M} + \sqrt{e_R} - e_M - e_R
+\quad\Longrightarrow\quad \frac{1}{2\sqrt{e_i}} = 1
+\quad\Longrightarrow\quad e_M^{I} = e_R^{I} = \tfrac14 .
+\]
+Then $v^I = \tfrac12 + \tfrac12 = 1$. Each investment is four times the separated level.
+
+\subparagraph{(c) Total payoffs.}
+\[
+W^{S} = v^S - e_M^S - e_R^S = \tfrac12 - \tfrac18 = \tfrac38, \qquad
+W^{I} = v^I - e_M^I - e_R^I = 1 - \tfrac12 = \tfrac12 .
+\]
+Integration raises total payoff by $\tfrac12 - \tfrac38 = \tfrac18$, a gain of one third over
+separation (a quarter of the efficient surplus is lost under separation).
+\begin{center}\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& $e_M$ & $e_R$ & $v$ & Total payoff \\
+\midrule
+Separation, 50/50 split & $1/16$ & $1/16$ & $1/2$ & $3/8$ \\
+Integration & $1/4$ & $1/4$ & $1$ & $1/2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subparagraph{(d) Comment.}
+\emph{Hold-up (\S13.1).} Each investment is specific: it creates value only inside the
+relationship, and once sunk it no longer affects how $v$ is divided. Each firm pays the full
+marginal cost of investing but receives only half the marginal value, so it equates
+$\tfrac12 \cdot \tfrac{1}{2\sqrt{e_i}}$ with $1$ instead of $\tfrac{1}{2\sqrt{e_i}}$ with $1$.
+This is the continuous version of Cabral's hold-up example (p.~338): there, an investment worth
+$8$ and costing $5$ was not made because the investor would get only $4$ in an even split
+(p.~339); here investment is made, but at a quarter of the efficient level. The margin note on
+p.~339 says this exercise is ``the case of a continuum of choices''. Integration puts both
+decisions under one owner who receives the whole return, which removes the distortion; Cabral
+adds that it creates an agency problem in its place, since the acquired unit's manager now
+follows orders with weaker incentives (pp.~338--339). Integration is worth it only if that
+agency cost is below the gain $\tfrac18$.
+
+\emph{Externalities (\S5.1).} The 50/50 split makes each firm's investment confer a positive
+externality on the other: half of the extra value goes to the partner, who did not pay for it.
+As with any positive externality (front yards, item~9), the activity is under-provided. The
+Coase remedy (bargain to the efficient level) would require contracting on $e_M$ and $e_R$
+\emph{before} they are sunk, which is exactly what is assumed impossible: investments are hard
+to specify and verify, so contracts are incomplete (p.~338). Ex-post bargaining is efficient
+given the investments; it is the ex-ante investments that are distorted.
+
+\emph{Box~13.1 and double marginalization.} Box~13.1 (p.~336) reports that integrated
+distributors and sports networks charge consumers lower prices, evidence that integration
+removes the double-marginalization externality: under separation each firm adds its own margin
+and ignores the effect on the other's profit (pp.~334--336). The hold-up problem is the
+investment counterpart of the same failure: separated firms ignore the effect of their choice on
+the partner's payoff, and integration internalizes it in both cases.
+
+\interp The exercise isolates why ownership matters even when bargaining after the fact is
+efficient: the anticipated split determines the incentive to invest beforehand. This is the core
+of the transaction-cost and property-rights theories of the firm and the Topic~6 material that
+the Aula~2 notes preview (their quadratic example gives the same $\tfrac38$ against
+$\tfrac12$). It also explains the Smart-car strain of item~13: a jointly owned venture with
+investments by both partners is a 50/50 split.
+
+\verify (1) \texttt{check\_B.py} confirms with sympy: $e_i^S = \tfrac1{16}$, payoff
+$\tfrac3{16}$ each, $W^S = \tfrac38$; $e_i^I = \tfrac14$, $W^I = \tfrac12$; difference
+$\tfrac18$, a one-third gain. (2) \emph{No split fixes it.} If $M$ receives a share $s$ and $R$
+receives $1-s$, then $e_M = s^2/4$, $e_R = (1-s)^2/4$ and
+$W(s) = \tfrac12 - \tfrac14\big[s^2 + (1-s)^2\big]$, maximized at $s=\tfrac12$ with
+$W = \tfrac38 < \tfrac12$; giving everything to one firm ($s=1$) yields only $\tfrac14$, because
+the other then stops investing. With two-sided investment, no ex-post division restores
+efficiency; joint ownership of both decisions does. (3) \emph{One-sided case:} if only $M$
+invested, giving $M$ the whole value ($s=1$) would induce the efficient $e_M = \tfrac14$, so
+ownership should go to the investor. That is the property-rights logic behind the exercise.
+
+\answer{(a) $e_M^S = e_R^S = 1/16$ (from $\tfrac{1}{4\sqrt{e_i}} = 1$), payoff $3/16$ each.
+(b) $e_M^I = e_R^I = 1/4$. (c) $W^S = 3/8 < W^I = 1/2$: integration gains $1/8$ (one third).
+(d) A 50/50 ex-post split gives each investor half the marginal value of its sunk, specific
+investment, a positive externality on the partner and a continuous hold-up problem (\S13.1,
+\S5.1). Integration internalizes it, as it internalizes double marginalization (Box~13.1),
+at the cost of new agency problems.}
+\end{exsol}

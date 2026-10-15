@@ -1,0 +1,63 @@
+\begin{exsol}{12}{Tadelis Exercise 4.2}{76}{Exam}{B2}
+\asked Using Tadelis's definition of a weakly dominant strategy equilibrium, give (a) a game
+with no such equilibrium and (b) a game with more than one.
+
+\method Definitions. Tadelis calls $s_i^W$ weakly dominant if
+$u_i(s_i^W, \sm) \ge u_i(s_i', \sm)$ for all $s_i'$ and all $\sm$, with no strictness required
+(statement of 4.2 and Remark, p.~63). The lecture's weak dominance (slide~23) also asks for a
+strict inequality at some $\sm$. Which definition is used matters for (b).
+
+\solution
+\textbf{(a) No weakly dominant strategy equilibrium.} Matching pennies (Tadelis 3.5), or the
+penalty kicks of item~1:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$H$} & \multicolumn{1}{c}{$T$}\\ \cline{2-3}
+$H$ & $1,\ -1$ & $-1,\ 1$ \\ \cline{2-3}
+$T$ & $-1,\ 1$ & $1,\ -1$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+For player~1, $H$ does worse than $T$ against $T$ ($-1 < 1$), and $T$ does worse than $H$ against
+$H$. So neither satisfies ``$\ge$ every other strategy for every $s_2$''. The same holds for
+player~2. No player has a weakly dominant strategy, so there is no weakly dominant strategy
+equilibrium. (The Battle of the Sexes, item~8, works too.)
+
+\textbf{(b) More than one.} Make one player indifferent between two strategies and give the
+other a dominant strategy:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $2,\ 3$ & $0,\ 1$ \\ \cline{2-3}
+$D$ & $2,\ 1$ & $0,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Player~1's payoffs from $U$ and $D$ coincide column by column ($2 = 2$, $0 = 0$), so each
+satisfies Tadelis's ``$\ge$'' condition against the other: both are weakly dominant. For
+player~2, $L$ strictly dominates $R$ ($3 > 1$, $1 > 0$). Hence $(U, L)$ and $(D, L)$ are both
+weakly dominant strategy equilibria. They are not equivalent: player~2 gets $3$ in one and $1$
+in the other. This is the same idea as the MWG solutions manual's example for MWG
+Exercise~8.B.2(b).
+
+\textbf{The role of the definition.} Under the lecture's definition, (b) is impossible. If
+$s_i$ and $s_i'$ were both weakly dominant, $s_i$ would weakly dominate $s_i'$, so
+$u_i(s_i, \sm) > u_i(s_i', \sm)$ for some $\sm$, while $s_i'$ weakly dominating $s_i$ requires
+$u_i(s_i', \sm) \ge u_i(s_i, \sm)$ at that same $\sm$. Contradiction. So each player has at most
+one weakly dominant strategy and there is at most one weakly dominant-strategy equilibrium. In
+general, as MWG Exercise~8.B.2(a) shows, two strategies that are both weakly dominant in the
+``$\ge$'' sense give equal payoffs against every $\sm$. Multiplicity comes only from such ties.
+
+\interp Weak dominance is a weaker requirement, so an equilibrium in weakly dominant
+strategies is easier to have (the second-price auction, item~23) but need not be unique. The
+non-uniqueness here is harmless for the indifferent player but not for the other one.
+
+\verify \texttt{check\_C.py} checks that no strategy in matching pennies is ``$\ge$-dominant'',
+that $U$ and $D$ are both ``$\ge$-dominant'' and $L$ strictly dominant in the example, that player~2
+prefers $(U,L)$, and, on 20\,000 random games, that under the lecture's definition no player ever
+has two weakly dominant strategies.
+
+\answer{(a) Matching pennies: every strategy is strictly worse than the other against some
+opponent strategy, so no weakly dominant strategy exists. (b) In the $2\times2$ game above,
+$U$ and $D$ tie for player~1 and $L$ is strictly dominant for player~2, so $(U,L)$ and $(D,L)$
+are both weakly dominant strategy equilibria. (b) needs Tadelis's ``$\ge$ only'' definition;
+under the lecture's definition it cannot happen.}
+\end{exsol}

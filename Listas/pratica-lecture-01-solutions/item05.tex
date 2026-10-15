@@ -1,0 +1,57 @@
+\begin{exsol}{5}{\MG{} Ch.~1, Exercise 13}{26}{Foundations}{B2}
+\asked For the $3 \times 2$ game of Fig.~1.33: (a) strictly dominant strategies; (b) strictly
+dominated strategies; (c) the profiles that survive IESDS, with the steps and their
+justification.
+
+\method Definitions of strict/weak dominance and dominant strategies (Lecture~1, slide~23;
+Tadelis \S4.1, pp.~59--63); IESDS as in slide~29 (Tadelis \S4.2, p.~65).
+
+\solution
+Player~1 chooses $U, M, D$; player~2 chooses $L, R$ (matrix read from the book, p.~26).
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $-10,\ 10$ & $0,\ 12$ \\ \cline{2-3}
+$M$ & $-12,\ 0$ & $2,\ 2$ \\ \cline{2-3}
+$D$ & $-9,\ 0$ & $1,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(a) Dominant strategies.} Player~1: against $L$ the best row is $D$ ($-9$), against $R$
+it is $M$ ($2$). A strictly dominant strategy would have to be the unique best row in every
+column, so none exists. Player~2: $R$ is strictly better than $L$ in rows $U$ ($12 > 10$) and
+$M$ ($2 > 0$) but equal in row $D$ ($0 = 0$). So $R$ \emph{weakly} dominates $L$ and is weakly
+dominant, but not strictly. No player has a strictly dominant strategy.
+
+\textbf{(b) Dominated strategies.} Player~1: $U$ is strictly dominated by $D$:
+$u_1(U,L) = -10 < -9 = u_1(D,L)$ and $u_1(U,R) = 0 < 1 = u_1(D,R)$. $M$ is not dominated (it
+is the best reply to $R$), and neither is $D$ (best reply to $L$). Player~2: $L$ is only weakly
+dominated (tie in row $D$), $R$ is not dominated. The only strictly dominated strategy is $U$.
+
+\textbf{(c) IESDS.}
+\begin{itemize}
+  \item Round 1: $S_1^1 = \{M, D\}$ ($U$ removed by rationality of player~1), $S_2^1 = \{L, R\}$.
+  \item Round 2: in the reduced game, player~2's payoffs are $(0, 0)$ from $L$ and $(2, 0)$ from
+  $R$ in rows $(M, D)$: still only weak dominance. Player~1's $M$ and $D$ remain best replies to
+  $R$ and $L$ respectively. Nothing else is removed.
+\end{itemize}
+\[
+  S^\infty = \{M, D\} \times \{L, R\} = \{(M,L), (M,R), (D,L), (D,R)\}.
+\]
+Why this is legitimate: a rational player~1 never plays $U$ (Lesson~1). Since rationality is
+common knowledge, player~2 knows it and reasons on the reduced game; there, nothing more can be
+ruled out by strict dominance.
+
+\interp IESDS stops at four profiles because the remaining comparisons are only weak. If we
+also deleted weakly dominated strategies, player~2 would drop $L$ and player~1 would then pick
+$M$ (2 against 1), giving $(M,R)$. That stronger prediction depends on player~2 being sure
+that player~1 never plays $D$, where the two columns tie, which is why strict elimination does
+not make it (compare item~19).
+
+\verify \texttt{check\_A.py} confirms that $U$ is strictly dominated only by $D$, that $R$
+weakly but not strictly dominates $L$ (before and after round~1), and that IESDS ends after one
+round with the four profiles above. The book's answer (pp.~26--28) agrees on (a), (b) and (c).
+
+\answer{(a) None (player~2's $R$ is only weakly dominant). (b) Only $U$, strictly dominated by
+$D$. (c) Delete $U$; nothing else is strictly dominated, so $S^\infty = \{M, D\} \times \{L, R\}$.}
+\end{exsol}

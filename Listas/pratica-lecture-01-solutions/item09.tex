@@ -1,0 +1,49 @@
+\begin{exsol}{9}{Tadelis Exercise 3.6}{58}{Exam}{B1}
+\asked Write the normal form of a price game between two zero-cost firms facing demand
+$p = 100 - q$, where the cheaper firm takes the whole market and equal prices split it.
+
+\method Normal form with continuous strategy sets and piecewise payoffs, built like Tadelis's
+Cournot example (\S3.1.2, p.~49) and the lecture's definition (slides~13--14, 18).
+
+\solution
+Inverting the demand curve, a firm that serves the market at price $p$ sells
+$D(p) = \max\{0,\, 100 - p\}$ (no one buys at $p \ge 100$). Costs are zero, so revenue is profit.
+\begin{itemize}
+  \item Players: $I = \{1, 2\}$.
+  \item Strategy sets: $S_i = [0, \infty)$, prices (one may cap them at $100$ without loss,
+  since higher prices sell nothing).
+  \item Payoffs: for $i \ne j$,
+  \[
+    u_i(p_i, p_j) =
+    \begin{cases}
+      p_i \max\{0, 100 - p_i\} & \text{if } p_i < p_j,\\[2pt]
+      \tfrac12\, p_i \max\{0, 100 - p_i\} & \text{if } p_i = p_j,\\[2pt]
+      0 & \text{if } p_i > p_j.
+    \end{cases}
+  \]
+\end{itemize}
+This triple $G = (\{1,2\}, \{[0,\infty)\}_{i}, \{u_i\}_{i})$ is the normal form. It cannot be
+drawn as a finite matrix: each player has a continuum of strategies, and the payoff jumps at
+$p_i = p_j$.
+
+\textbf{Dominance (beyond the question).} Against $p_j = 0$ every price earns $0$ (a higher
+price sells nothing; a tie at $0$ earns nothing). So no price is \emph{strictly} better than
+another against every $p_j$: no strategy is strictly dominated and IESDS has no bite. Weak
+dominance does bite. The monopoly price maximizes $p(100 - p)$ at $p^m = 50$
+($100 - 2p = 0$), and $p^m$ earns at least as much as any $p_i \ge 100$ (which always earns 0)
+or $p_i = 0$, and strictly more against $p_j > 50$. Lecture~2's Bertrand equilibrium,
+$p_1 = p_2 = 0$, will therefore use weakly dominated strategies.
+
+\interp Even a simple pricing story gives a discontinuous payoff function: undercutting by
+a cent doubles the quantity sold. That discontinuity drives the Bertrand result
+(Lecture~2). It is also why the normal form must specify the tie-breaking rule.
+
+\verify \texttt{check\_B.py} builds the payoff on an integer price grid $0, \dots, 120$,
+confirms that every price earns 0 against $p_j = 0$, that grid IESDS deletes nothing, that
+$p = 50$ weakly dominates $p = 0$ and every $p \ge 100$, and that $50$ solves the first-order
+condition (sympy).
+
+\answer{$I = \{1,2\}$, $S_i = [0, \infty)$, and $u_i(p_i, p_j) = p_i \max\{0, 100 - p_i\}$ if
+$p_i < p_j$, half of that if $p_i = p_j$, and $0$ if $p_i > p_j$. No strategy is strictly
+dominated; prices $0$ and $\ge 100$ are weakly dominated by $50$.}
+\end{exsol}

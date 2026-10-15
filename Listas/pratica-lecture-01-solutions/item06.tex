@@ -1,0 +1,55 @@
+\begin{exsol}{6}{Tadelis Exercise 4.5}{77}{Foundations}{B3}
+\asked Find the strategy profiles of the given $3 \times 3$ game that survive IESDS.
+
+\method IESDS round by round (Lecture~1, slides~28--29; Tadelis \S4.2.1, p.~65): in each round
+remove every strategy that is strictly dominated given the opponent's surviving strategies.
+
+\solution
+Matrix as printed in the book (p.~77):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$U$ & $6,\ 8$ & $2,\ 6$ & $8,\ 2$ \\ \cline{2-4}
+$M$ & $8,\ 2$ & $4,\ 4$ & $9,\ 5$ \\ \cline{2-4}
+$D$ & $8,\ 10$ & $4,\ 6$ & $6,\ 7$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Round 1} ($S^0$ = full game).
+\begin{itemize}
+  \item Player~1: $U$ is strictly dominated by $M$: $6 < 8$, $2 < 4$, $8 < 9$. $D$ is not
+  dominated by $M$ (ties $8 = 8$ and $4 = 4$), and $M$, $D$ are not dominated by $U$.
+  \item Player~2: her payoffs are $L = (8, 2, 10)$, $C = (6, 4, 6)$, $R = (2, 5, 7)$ in rows
+  $(U, M, D)$. $C$ is beaten by $L$ in rows $U, D$ but not in $M$; it beats $R$ in row $U$. No
+  column is strictly dominated.
+\end{itemize}
+$S_1^1 = \{M, D\}$, $S_2^1 = \{L, C, R\}$.
+
+\textbf{Round 2.} Player~2 now compares columns on rows $(M, D)$ only:
+$L = (2, 10)$, $C = (4, 6)$, $R = (5, 7)$. $C$ is strictly dominated by $R$ ($4 < 5$, $6 < 7$);
+$L$ and $R$ are not ranked. Player~1 on all three columns: $M = (8, 4, 9)$, $D = (8, 4, 6)$:
+$M$ is better only against $R$, so $D$ is weakly but not strictly dominated.
+$S_1^2 = \{M, D\}$, $S_2^2 = \{L, R\}$.
+
+\textbf{Round 3.} Player~1 on $(L, R)$: $M = (8, 9)$, $D = (8, 6)$, a tie against $L$, so no
+strict dominance. Player~2 on $(M, D)$: $L = (2, 10)$, $R = (5, 7)$, not ranked. The process
+stops.
+\[
+  S^\infty = \{M, D\} \times \{L, R\} = \{(M,L), (M,R), (D,L), (D,R)\}.
+\]
+
+\interp Rationality of player~1 removes $U$. Then player~2's knowledge that player~1 is rational
+removes $C$, which can be a best reply only to beliefs that put positive weight on $U$. The iterated-elimination
+equilibrium is a set of four profiles, not a point. Two of them, $(M,R)$ with payoffs $(9,5)$
+and $(D,L)$ with $(8,10)$, are profiles where each strategy is a best reply to the other (the
+pure Nash equilibria of Lecture~2). Deleting the weakly dominated $D$ as well would single out
+$(M,R)$, which is a stronger and less safe assumption (see item~19).
+
+\verify \texttt{check\_A.py} runs IESDS with the lecture's definition and finds exactly the
+rounds above (round~1: $U$; round~2: $C$; then stop), that $U$ is dominated only by $M$ and $C$
+only by $R$, and that $D$ is weakly dominated by $M$ in the final set.
+
+\answer{Round~1: delete $U$ (dominated by $M$). Round~2: delete $C$ (dominated by $R$ once $U$
+is gone). Nothing else is strictly dominated:
+$S^\infty = \{M, D\} \times \{L, R\}$, four profiles.}
+\end{exsol}

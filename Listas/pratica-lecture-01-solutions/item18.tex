@@ -1,0 +1,67 @@
+\begin{exsol}{18}{Tadelis Exercise 4.10}{78}{Exam}{B4}
+\asked Two popsicle vendors each place a stand at one of five equally spaced towers, each with
+25 customers who buy from the nearest stand. (a) Give the strategy sets and any strictly
+dominated strategies; (b) find the strategies that survive rationalizability.
+
+\method Normal form and IESDS (slides~29--33, the spatial-competition application); for (b),
+rationalizability (Tadelis \S4.3, pp.~69--75, covered in Lecture~2) and the fact that it can
+only refine IESDS. As in the slides' mini case, a customer who is equally distant from both
+stands splits evenly, and two stands at the same tower split all customers.
+
+\solution
+\textbf{(a) Strategy sets and payoffs.} $I = \{1, 2\}$, $S_1 = S_2 = \{1, 2, 3, 4, 5\}$. If
+$s_1 < s_2$, vendor~1 serves towers $1, \dots, s_1$ and half of the $s_2 - s_1 - 1$ towers between
+the stands (those nearer to him, plus half of a middle tower if there is one):
+\[
+  u_1(s_1, s_2) = 25\Big(s_1 + \frac{s_2 - s_1 - 1}{2}\Big) = \frac{25\,(s_1 + s_2 - 1)}{2},
+  \qquad u_1(s,s) = 62.5,
+\]
+and $u_1(s_1,s_2) = 125 - u_2(s_1,s_2)$, with the game symmetric. (Check: $u_1(2,3) = 50$, the
+book's example.) Vendor~1's payoffs, rows $s_1$, columns $s_2$:
+\begin{center}
+\begin{tabular}{r|ccccc}
+$s_1 \backslash s_2$ & 1 & 2 & 3 & 4 & 5 \\ \hline
+1 & 62.5 & 25 & 37.5 & 50 & 62.5 \\
+2 & 100 & 62.5 & 50 & 62.5 & 75 \\
+3 & 87.5 & 75 & 62.5 & 75 & 87.5 \\
+4 & 75 & 62.5 & 50 & 62.5 & 100 \\
+5 & 62.5 & 50 & 37.5 & 25 & 62.5
+\end{tabular}
+\end{center}
+\emph{Strictly dominated strategies:} tower~1 is strictly dominated by tower~2, row by row
+$62.5 < 100$, $25 < 62.5$, $37.5 < 50$, $50 < 62.5$, $62.5 < 75$ (it is also dominated by 3 and
+4). By symmetry, tower~5 is strictly dominated by tower~4. Towers 2, 3, 4 are not dominated:
+2 is the best reply to 1, 4 to 5, 3 to 3. The same holds for vendor~2.
+
+\textbf{IESDS.} Round~1: $S_i^1 = \{2, 3, 4\}$. Round~2: on columns $\{2,3,4\}$, row 2 gives
+$(62.5, 50, 62.5)$, row 3 gives $(75, 62.5, 75)$, row 4 gives $(62.5, 50, 62.5)$: towers 2 and 4
+are strictly dominated by 3. $S_i^2 = \{3\}$, so $S^\infty = \{(3,3)\}$ with payoffs
+$(62.5, 62.5)$.
+
+\textbf{(b) Rationalizability.} Let $R_i^k$ be the strategies left after $k$ rounds of deleting
+strategies that are never a best response (to beliefs over the opponent's remaining strategies).
+\begin{itemize}
+  \item $R^k \subseteq S^k$ for all $k$, by induction. If $R^k \subseteq S^k$ and $s_i$ is strictly
+  dominated given $S_{-i}^k$, it is strictly dominated given the smaller set $R_{-i}^k$, so it is
+  never a best response there and is deleted. Hence rationalizable strategies survive IESDS:
+  $R_i^\infty \subseteq \{3\}$.
+  \item Tower~3 is a best reply to tower~3 (62.5 vs.\ 50 for towers 2 and 4, 37.5 for 1 and 5), so
+  the pair $(3,3)$ justifies itself in every round and is never deleted.
+\end{itemize}
+The rationalizable set is $\{3\}$ for each vendor: both stands at the middle tower.
+
+\interp This is Hotelling's principle of minimum differentiation: each vendor moves toward the
+center to capture more of the other's half, until both cluster. Clustering is bad for customers.
+Total walking at $(3,3)$ is $25(2+1+0+1+2) = 150$ tower-lengths, against $25(1+0+1+0+1) = 75$ at
+$(2,4)$, which also splits the market 62.5/62.5. Same logic as the pharmacy mini case of
+slides~31--33 (graded in class, so not solved here).
+
+\verify \texttt{check\_A.py} computes the payoffs customer by customer, confirms the book's
+example and the closed form $25(s_1+s_2-1)/2$, the dominance of tower~1 by 2, 3 and 4, and the
+IESDS rounds ($\{1,5\}$, then $\{2,4\}$), leaving $(3,3)$.
+
+\answer{(a) $S_i = \{1,\dots,5\}$; tower~1 is strictly dominated by tower~2 and tower~5 by
+tower~4. (b) After deleting 1 and 5, towers 2 and 4 are strictly dominated by 3. Since
+rationalizable strategies survive IESDS and $(3,3)$ is self-justifying, only tower~3 is
+rationalizable for each vendor.}
+\end{exsol}
