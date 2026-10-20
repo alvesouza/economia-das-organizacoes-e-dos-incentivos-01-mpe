@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shirk or Work</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail on the left, verdict + tiles + two panels on the right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --band-good:rgba(47,107,79,.10); --band-warn:rgba(180,82,26,.12); --band-ref:rgba(107,122,136,.10);
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --band-good:rgba(111,182,143,.13); --band-warn:rgba(224,138,77,.15); --band-ref:rgba(143,160,175,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --band-good:rgba(111,182,143,.13); --band-warn:rgba(224,138,77,.15); --band-ref:rgba(143,160,175,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  margin:0 auto;max-width:1120px;padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow);min-width:0}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer.dilemma{border-left-color:var(--warn)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4.6vw,34px);color:var(--good);line-height:1.15;margin-top:4px;text-wrap:balance}
+.answer.dilemma .v{color:var(--warn)}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+table.mx{min-width:0;width:auto;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px}
+table.mx td,table.mx th{text-align:center;padding:6px 12px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game theory &middot; Lecture 1 &middot; Dominance and social dilemmas</p>
+  <h1>Shirk or Work</h1>
+  <p class="lede">A partnership of <i>n</i> people. Each chooses effort (E), at private cost <i>c</i>, or shirking (S).
+  Every effort adds <i>y</i> to output, and output is split equally. Your own effort raises your share by
+  <i>y/n</i> whatever the others do, so one comparison, <i>y/n</i> against <i>c</i>, decides dominance; a second one,
+  <i>y</i> against <i>c</i>, decides whether the dominant choice wastes value.</p>
+  <p class="prov">Slides: Aula/Lecture01.pdf slide 4 (partnership), slides 23&ndash;26 (dominance, DSE, Pareto). Defaults y = 6, c = 4, n = 2 reproduce Tadelis (2013) prisoner&rsquo;s dilemma, p. 48, with 4 added to every payoff. Notes: Notas/L01/L01-04-dominance &sect;4, L01-05-pareto-social-dilemmas &sect;3.</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">y</span> &middot; output per effort</span><span class="val" id="v_y"></span></div>
+      <p class="doc">What one partner&rsquo;s effort adds to total output. Step 0.6 so that c = y/n lands exactly for every n.</p>
+      <input type="range" id="y" min="0.6" max="12" step="0.6" aria-label="Output per effort y">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c</span> &middot; cost of effort</span><span class="val" id="v_c"></span></div>
+      <p class="doc">Borne entirely by the partner who exerts effort. Both lines below drop by c when you choose E.</p>
+      <input type="range" id="c" min="0" max="15" step="0.01" aria-label="Effort cost c">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">n</span> &middot; partners</span><span class="val" id="v_n"></span></div>
+      <p class="doc">How many ways output is split. More partners: a smaller private return y/n, the same social return y.</p>
+      <input type="range" id="n" min="2" max="6" step="1" aria-label="Number of partners n">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to the slides&rsquo; PD</button>
+      <button id="lmA" class="ghost" type="button">Set c = y/n</button>
+      <button id="lmB" class="ghost" type="button">Set c = y</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer" id="ans">
+      <div class="k">Dominance verdict</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Gain from effort</div><div class="v" id="t_gain"></div><div class="u">y/n &minus; c, against any s<sub>&minus;i</sub></div></div>
+      <div class="tile"><div class="k">All work</div><div class="v" id="t_allE"></div><div class="u">y &minus; c per partner</div></div>
+      <div class="tile"><div class="k">All shirk</div><div class="v" id="t_allS"></div><div class="u">per partner</div></div>
+      <div class="tile"><div class="k">Dilemma band</div><div class="v" id="t_band"></div><div class="u">y/n &lt; c &lt; y</div></div>
+      <div class="tile"><div class="k">Waste at the DSE</div><div class="v" id="t_waste"></div><div class="u">per partner, vs all work</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Your payoff, by what the others do</h2>
+          <p class="sub">Against <i>k</i> other partners exerting effort. The two lines are parallel: the gap never changes sign.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Payoff from effort and from shirking against the number of other partners who exert effort"></svg>
+        </div>
+        <div>
+          <h2>Where c sits</h2>
+          <p class="sub">The two landmarks split the cost axis into three regimes.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Cost axis with the effort-dominant region, the dilemma band and the shirk-dominant region, and the current cost"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="mxnote"></p>
+      <div class="scroll"><table class="mx" id="mx" aria-label="Your payoff against everyone else working or everyone else shirking"></table></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Output per effort</td><td>y</td><td>output added by each partner who works</td><td class="n">0.6 &ndash; 12</td><td class="n">0.6</td><td class="n">6.0</td><td>payoff units</td><td>slide 4; default from Tadelis p. 48 (+4)</td><td>both lines&rsquo; slope; both landmarks</td></tr>
+      <tr><td>Effort cost</td><td>c</td><td>private cost of effort</td><td class="n">0 &ndash; 15</td><td class="n">0.01</td><td class="n">4.00</td><td>payoff units</td><td>slide 4; Tadelis p. 48 (+4)</td><td>the E line&rsquo;s level; the marker; the verdict</td></tr>
+      <tr><td>Partners</td><td>n</td><td>number of partners sharing output</td><td class="n">2 &ndash; 6</td><td class="n">1</td><td class="n">2</td><td>&mdash;</td><td>slide 4 has n = 2; n &gt; 2 generalizes it</td><td>the k axis; the landmark c = y/n; the band</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions: with k of the other n &minus; 1 partners working, u(E) = y(k+1)/n &minus; c and u(S) = yk/n, so
+  u(E) &minus; u(S) = y/n &minus; c for every k (strict dominance, Tadelis Def. 4.1&ndash;4.2, pp. 60&ndash;61). All-E pays y &minus; c to each, all-S pays 0;
+  all-E Pareto dominates all-S iff c &lt; y (Def. 3.5, p. 57). Social dilemma: S strictly dominant and Pareto dominated, y/n &lt; c &lt; y.
+  At c = y/n, E and S pay the same against everything: neither dominates, not even weakly. At c = y, all-E and all-S tie.
+  Landmarks are exactly reachable: y moves in steps of 0.6, so y/n is a multiple of 0.01 for n = 2&hellip;6.
+  Defaults y = 6, c = 4, n = 2 give (E,E) = 2, (E,S) = &minus;1, (S,E) = 3, (S,S) = 0: the slides&rsquo; prisoner&rsquo;s dilemma (&minus;2, &minus;5, &minus;1, &minus;4) plus 4.
+  Not exposed: synergy between efforts and unequal sharing (both in Listas/lista-lecture-01.tex, Q1(a) and Q2), which change the model rather than its parameters.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+// Partnership of slide 4 with n partners: payoff = y * (number working) / n - c * (own effort).
+function report(p){
+  var y=p.y, c=p.c, n=p.n;
+  var gain = y/n - c, lo = y/n, hi = y;
+  var eps = 1e-9;
+  var dom = gain > eps ? 'E' : (gain < -eps ? 'S' : 'none');
+  var allE = y - c, allS = 0;
+  var dilemma = dom === 'S' && allE > eps;
+  var uE = [], uS = [];
+  for (var k = 0; k <= n - 1; k++){ uE.push(y*(k+1)/n - c); uS.push(y*k/n); }
+  var side = c < lo - eps ? 'below y/n' : (Math.abs(c-lo) <= eps ? 'at y/n' :
+             (c < hi - eps ? 'between y/n and y' : (Math.abs(c-hi) <= eps ? 'at y' : 'above y')));
+  return {gain:gain, dom:dom, allE:allE, allS:allS, dilemma:dilemma, lo:lo, hi:hi,
+          waste: dilemma ? allE - allS : 0, uE:uE, uS:uS, side:side};
+}
+// MODEL:END
+
+var D = {y:6, c:4, n:2};
+var KEYS = ['y','c','n'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return (x<-1e-9?'−':'') + Math.abs(x).toFixed(2); };
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=268;
+
+function niceStep(span){ var raw=span/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; }); return st; }
+
+function drawA(r){
+  var svg=$('svgA'); svg.textContent='';
+  var n=S.n, xs=[0,n-1];
+  var vals=r.uE.concat(r.uS,[0]);
+  var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals);
+  var pad=Math.max((hi-lo)*0.12,0.5); lo-=pad; hi+=pad;
+  var X=function(k){ return L+(n===1?0.5:(k/(n-1)))*(R-L-20)+10; };
+  var Y=function(v){ return B-(v-lo)/(hi-lo)*(B-T); };
+  var st=niceStep(hi-lo), v0=Math.ceil(lo/st)*st;
+  for(var v=v0; v<=hi+1e-9; v+=st){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,+v.toFixed(2),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  }
+  if(lo<0&&hi>0) svg.appendChild(el('line',{x1:L,x2:R,y1:Y(0),y2:Y(0),stroke:'var(--muted)','stroke-width':1}));
+  for(var k=0;k<n;k++) svg.appendChild(txt(X(k),B+17,String(k),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  svg.appendChild(txt((L+R)/2,B+40,'other partners exerting effort, k',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  [['uE','var(--accent)','E: effort'],['uS','var(--hi)','S: shirk']].forEach(function(q){
+    var pts=r[q[0]].map(function(v,k){ return X(k)+','+Y(v); }).join(' ');
+    svg.appendChild(el('polyline',{points:pts,fill:'none',stroke:q[1],'stroke-width':2.4}));
+    r[q[0]].forEach(function(v,k){ svg.appendChild(el('circle',{cx:X(k),cy:Y(v),r:4.5,fill:q[1]})); });
+    var last=r[q[0]][n-1];
+    svg.appendChild(txt(X(n-1)-6,Y(last)+(q[0]==='uE'?(r.gain>=0?-10:16):(r.gain>=0?16:-10)),q[2],{fill:q[1],'font-size':11.5,'font-weight':600,'text-anchor':'end'}));
+  });
+  var x0=X(0);
+  if(Math.abs(r.gain)>1e-9){
+    svg.appendChild(el('line',{x1:x0+14,x2:x0+14,y1:Y(r.uE[0]),y2:Y(r.uS[0]),stroke:r.gain>0?'var(--good)':'var(--warn)','stroke-width':2}));
+    svg.appendChild(txt(x0+20,(Y(r.uE[0])+Y(r.uS[0]))/2+4,'gap '+f2(r.gain),{fill:r.gain>0?'var(--good)':'var(--warn)','font-size':11.5,'font-weight':600,'font-family':'var(--mono)'}));
+  }
+}
+
+function drawB(r){
+  var svg=$('svgB'); svg.textContent='';
+  var xmax=Math.max(1.3*S.y, S.c*1.1, 1);
+  var X=function(v){ return L+v/xmax*(R-L); };
+  var y0=110, h=70;
+  svg.appendChild(el('rect',{x:X(0),y:y0,width:X(r.lo)-X(0),height:h,fill:'var(--band-good)'}));
+  svg.appendChild(el('rect',{x:X(r.lo),y:y0,width:X(r.hi)-X(r.lo),height:h,fill:'var(--band-warn)'}));
+  svg.appendChild(el('rect',{x:X(r.hi),y:y0,width:R-X(r.hi),height:h,fill:'var(--band-ref)'}));
+  svg.appendChild(txt((X(0)+X(r.lo))/2,y0+h+18,'E dominant',{fill:'var(--good)','font-size':11,'text-anchor':'middle','font-weight':600}));
+  svg.appendChild(txt((X(r.lo)+X(r.hi))/2,y0+h+18,'dilemma',{fill:'var(--warn)','font-size':11,'text-anchor':'middle','font-weight':600}));
+  svg.appendChild(txt((X(r.hi)+R)/2,y0+h+18,'S dominant,',{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-weight':600}));
+  svg.appendChild(txt((X(r.hi)+R)/2,y0+h+32,'all-S efficient',{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-weight':600}));
+  [[r.lo,'c = y/n = '+r.lo.toFixed(2)],[r.hi,'c = y = '+r.hi.toFixed(2)]].forEach(function(q,i){
+    svg.appendChild(el('line',{x1:X(q[0]),x2:X(q[0]),y1:y0-26-i*0,y2:y0+h,stroke:'var(--ink)','stroke-width':1.2,'stroke-dasharray':'4 3'}));
+    svg.appendChild(txt(X(q[0]),y0-32-i*18,q[1],{fill:'var(--ink)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  var st=niceStep(xmax);
+  for(var v=0; v<=xmax+1e-9; v+=st) svg.appendChild(txt(X(v),B+17,+v.toFixed(2),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  svg.appendChild(txt((L+R)/2,B+40,'effort cost c',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  var col = r.dom==='E'?'var(--good)':(r.dilemma?'var(--warn)':'var(--muted)');
+  svg.appendChild(el('line',{x1:X(S.c),x2:X(S.c),y1:y0-6,y2:B,stroke:col,'stroke-width':2.4}));
+  svg.appendChild(el('circle',{cx:X(S.c),cy:y0+h/2,r:6,fill:col,stroke:'var(--surface)','stroke-width':2}));
+  svg.appendChild(txt(Math.min(Math.max(X(S.c),L+40),R-40),B-10,'c = '+S.c.toFixed(2),{fill:col,'font-size':12,'font-weight':600,'text-anchor':'middle','font-family':'var(--mono)'}));
+}
+
+function render(){
+  $('v_y').textContent=S.y.toFixed(1);
+  $('v_c').textContent=S.c.toFixed(2);
+  $('v_n').textContent=String(S.n);
+  var r=report(S);
+  var ans=$('ans');
+  ans.className='answer'+(r.dilemma?' dilemma':'');
+  var v, note;
+  if(r.dom==='E'){ v='Effort is strictly dominant'; note='Working pays '+f2(r.gain)+' more than shirking whatever the others do, and all-work is the strict dominant-strategy equilibrium: no conflict between private and joint interest.'; }
+  else if(r.dom==='none'){ v='No dominance: E and S tie everywhere'; note='At c = y/n effort and shirking pay exactly the same against every choice of the others, so neither strategy dominates the other, not even weakly.'; }
+  else if(r.dilemma){ v='Shirking is dominant: a social dilemma'; note='Shirking pays '+f2(-r.gain)+' more whatever the others do, so everyone shirks and gets 0, yet <b>all-work would give each partner '+f2(r.allE)+'</b>. Each partner bears the whole cost c but keeps only y/n of what his effort produces.'; }
+  else { v='Shirking is dominant, and efficient'; note='Effort costs more than the whole output it creates (c &ge; y), so all-shirk is both the dominant-strategy outcome and Pareto optimal among the symmetric profiles.'; }
+  $('a_v').textContent=v; $('a_note').innerHTML=note+' The current cost sits <b>'+r.side+'</b>.';
+  $('t_gain').textContent=f2(r.gain);
+  $('t_gain').style.color=r.gain>1e-9?'var(--good)':(r.gain<-1e-9?'var(--warn)':'var(--ink)');
+  $('t_allE').textContent=f2(r.allE);
+  $('t_allS').textContent=f2(r.allS);
+  $('t_band').textContent=r.lo.toFixed(2)+' – '+r.hi.toFixed(2);
+  $('t_waste').textContent=f2(r.waste);
+  var others = S.n-1;
+  $('mxnote').innerHTML='Your payoff against the two extreme cases: all '+others+' other partner'+(others>1?'s':'')+' working, or all shirking. '+
+    (S.n===2?'With n = 2 this is the whole game.':'The intermediate cases are the dots in the left panel.');
+  $('mx').innerHTML='<tr><th></th><th>others all E</th><th>others all S</th></tr>'+
+    '<tr><th>you E</th><td>'+f2(r.uE[others])+'</td><td>'+f2(r.uE[0])+'</td></tr>'+
+    '<tr><th>you S</th><td>'+f2(r.uS[others])+'</td><td>'+f2(r.uS[0])+'</td></tr>';
+  drawA(r); drawB(r);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('lmA').addEventListener('click',function(){ load({c:Math.round(S.y/S.n*100)/100}); });
+$('lmB').addEventListener('click',function(){ load({c:Math.min(15,S.y)}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Patience Ledger</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail left, answer + tiles + two linked panels right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;margin:0 auto;max-width:1120px;padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+.ctl label.chk{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:8px}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panels>div{min-width:0}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game Theory &middot; MPE Insper &middot; Lecture 4 notes (estimated)</p>
+  <h1>The Patience Ledger</h1>
+  <p class="lede">Two players split a pie by alternating offers; every rejection costs a period of
+  discounting. Solve it by backward induction for any horizon, then let the horizon run to infinity.
+  Move the two discount factors and the number of rounds and watch who the last word favours, how
+  fast that advantage dies, and what patience alone is worth.</p>
+  <p class="prov">Tadelis (2013) Ch. 11 &sect;11.1&ndash;11.3, printed pp. 220&ndash;229, eqs. (11.1)&ndash;(11.5) &middot; Gibbons (1992) &sect;2.1.D, pp. 68&ndash;71 &middot; MWG Examples 9.AA.1&ndash;9.AA.2, pp. 296&ndash;298 &middot; notes: Notas/L04/L04-06, L04-07</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;<sub>1</sub></span> &middot; player 1&rsquo;s patience</span><span class="val" id="v_d1"></span></div>
+      <p class="doc">What one period of delay leaves of player 1&rsquo;s payoff. It sets what player 2 must offer player 1 in even rounds.</p>
+      <input type="range" id="d1" min="0" max="1" step="0.01" aria-label="Player 1 discount factor">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;<sub>2</sub></span> &middot; player 2&rsquo;s patience</span><span class="val" id="v_d2"></span></div>
+      <p class="doc">What one period of delay leaves of player 2&rsquo;s payoff. A more patient responder must be paid more to accept now.</p>
+      <input type="range" id="d2" min="0" max="1" step="0.01" aria-label="Player 2 discount factor">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">T</span> &middot; number of rounds</span><span class="val" id="v_T"></span></div>
+      <p class="doc">Hard deadline: after round T both get 0. Odd T gives player 1 the last offer, even T gives it to player 2.</p>
+      <input type="range" id="T" min="1" max="40" step="1" aria-label="Number of bargaining rounds">
+      <label class="chk"><input type="checkbox" id="inf"> No deadline (infinite horizon, Rubinstein)</label>
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">v</span> &middot; size of the pie</span><span class="val" id="v_v"></span></div>
+      <p class="doc">The surplus being divided. It scales the payoffs in dollars; the shares do not depend on it.</p>
+      <input type="range" id="v" min="1" max="100" step="1" aria-label="Size of the pie in dollars">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to defaults</button>
+      <button id="ult" class="ghost" type="button">Ultimatum, T = 1</button>
+      <button id="ord" class="ghost" type="button">&delta; = 1 first, T = 39</button>
+      <button id="pat" class="ghost" type="button">Patient pair, no deadline</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Player 1&rsquo;s equilibrium share (agreement in round 1)</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Player 1 payoff</div><div class="v" id="t_p1"></div><div class="u">dollars, round 1</div></div>
+      <div class="tile"><div class="k">Player 2 payoff</div><div class="v" id="t_p2"></div><div class="u">dollars, round 1</div></div>
+      <div class="tile"><div class="k">Rubinstein limit</div><div class="v" id="t_lim"></div><div class="u">(1&minus;&delta;<sub>2</sub>)/(1&minus;&delta;<sub>1</sub>&delta;<sub>2</sub>)</div></div>
+      <div class="tile"><div class="k">Gap to the limit</div><div class="v" id="t_gap"></div><div class="u">finite share minus limit</div></div>
+      <div class="tile"><div class="k">First-mover edge</div><div class="v" id="t_adv"></div><div class="u">share 1 &minus; share 2</div></div>
+      <div class="tile"><div class="k">Last offer by</div><div class="v" id="t_last"></div><div class="u">who moves at T</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Share against the horizon</h2>
+          <p class="sub">Player 1&rsquo;s round-1 share for every T from 1 to 40; the dashed line is the infinite-horizon share.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Player 1's share for each horizon T, with the Rubinstein limit"></svg>
+        </div>
+        <div>
+          <h2>The backward-induction ladder</h2>
+          <p class="sub">Player 1&rsquo;s share if agreement came in round t (Gibbons&rsquo; s<sub>t</sub>). Blue rounds: player 1 offers; purple: player 2 offers.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Player 1's share of the pie offered in each round of the current game"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Player 1&rsquo;s patience</td><td>&delta;<sub>1</sub></td><td>player 1&rsquo;s discount factor</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.60</td><td>per round</td><td>Tadelis p. 221 (common &delta;); value: project calibration, check_part2.py</td><td>even-round offers; every share; the limit</td></tr>
+      <tr><td>Player 2&rsquo;s patience</td><td>&delta;<sub>2</sub></td><td>player 2&rsquo;s discount factor</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.60</td><td>per round</td><td>Tadelis Ex. 11.5&ndash;11.6, pp. 236&ndash;237 (asymmetric case); same calibration</td><td>odd-round offers; every share; the limit</td></tr>
+      <tr><td>Rounds</td><td>T</td><td>hard deadline; disagreement after T pays 0</td><td class="n">1 &ndash; 40</td><td class="n">1</td><td class="n">3</td><td>rounds</td><td>Gibbons three-period model, pp. 68&ndash;70; Tadelis Fig. 11.1, p. 222</td><td>highlighted dot; ladder length; last mover</td></tr>
+      <tr><td>No deadline</td><td>T = &infin;</td><td>Rubinstein&rsquo;s infinite horizon</td><td class="n">off / on</td><td class="n">&mdash;</td><td class="n">off</td><td>&mdash;</td><td>Tadelis &sect;11.3, pp. 228&ndash;229; MWG Ex. 9.AA.2, p. 297</td><td>answer switches to the limit; stationary ladder</td></tr>
+      <tr><td>Pie</td><td>v</td><td>surplus to divide</td><td class="n">1 &ndash; 100</td><td class="n">1</td><td class="n">1</td><td>dollars</td><td>Tadelis p. 220 (normalized to 1); Gibbons &ldquo;one dollar&rdquo;, p. 68; MWG &ldquo;v dollars&rdquo;, p. 296</td><td>both payoffs in dollars</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions. Finite horizon with player 1 offering in odd rounds: s<sub>T</sub> = 1 if T is odd, 0 if even;
+  going back, s<sub>t</sub> = 1 &minus; &delta;<sub>2</sub>(1 &minus; s<sub>t+1</sub>) when player 1 offers (t odd) and s<sub>t</sub> = &delta;<sub>1</sub>s<sub>t+1</sub> when player 2 offers (t even).
+  With &delta;<sub>1</sub> = &delta;<sub>2</sub> = &delta; this gives s<sub>1</sub> = (1 + &delta;<sup>T</sup>)/(1 + &delta;) for odd T, eq. (11.1) p. 226, and (1 &minus; &delta;<sup>T</sup>)/(1 + &delta;) for even T (MWG p. 297).
+  Infinite horizon: s<sub>1</sub> = (1 &minus; &delta;<sub>2</sub>)/(1 &minus; &delta;<sub>1</sub>&delta;<sub>2</sub>), which is 1/(1 + &delta;) with equal factors, eqs. (11.4)&ndash;(11.5) p. 229; undefined when &delta;<sub>1</sub> = &delta;<sub>2</sub> = 1 (delay is free, any split is an equilibrium).
+  Agreement is immediate in every case (Proposition 11.3, p. 226). No book fixes a number for &delta;; the default 0.6 is the calibration of
+  Aula/notes-aulas-01-02/check_part2.py, whose <code>proposer_share</code> verifies this page. Defaults: T = 3 gives s<sub>1</sub> = 1 &minus; 0.6(1 &minus; 0.6) = 0.76; the limit is 0.625.
+  &ldquo;&delta; = 1 first, T = 39&rdquo; shows Tadelis&rsquo;s footnote 2, p. 227: take &delta; to 1 before T to infinity and the last mover keeps everything.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+// Player 1's share s_t if agreement comes in round t = 1..T (index 0 unused).
+function ladder(T, d1, d2){
+  var s = new Array(T + 1);
+  s[T] = (T % 2) ? 1 : 0;
+  for (var t = T - 1; t >= 1; t--){ s[t] = (t % 2) ? 1 - d2 * (1 - s[t + 1]) : d1 * s[t + 1]; }
+  return s;
+}
+// Infinite horizon share of the first proposer; null when delay is free for both.
+function rubinstein(d1, d2){ var den = 1 - d1 * d2; return den > 1e-12 ? (1 - d2) / den : null; }
+function report(p){
+  var lim = rubinstein(p.d1, p.d2);
+  var x1 = p.inf ? lim : ladder(p.T, p.d1, p.d2)[1];
+  return {
+    x1: x1, lim: lim,
+    pay1: x1 === null ? null : p.v * x1,
+    pay2: x1 === null ? null : p.v * (1 - x1),
+    gap: (p.inf || lim === null) ? null : x1 - lim,
+    adv: x1 === null ? null : 2 * x1 - 1,
+    last: p.inf ? 0 : (p.T % 2 ? 1 : 2)
+  };
+}
+// MODEL:END
+
+var D = {d1:0.6, d2:0.6, T:3, inf:false, v:1};
+var ULT = {d1:0.6, d2:0.6, T:1, inf:false, v:1};
+var ORD = {d1:1, d2:1, T:39, inf:false, v:1};
+var PAT = {d1:0.99, d2:0.99, T:3, inf:true, v:1};
+var KEYS = ['d1','d2','T','v'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f3 = function(x){ return x === null ? '—' : x.toFixed(3); };
+var usd = function(x){ return x === null ? '—' : '$' + x.toFixed(2); };
+var sgn = function(x){ return x === null ? '—' : (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(x).toFixed(3); };
+
+var NS = 'http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=44,R=404,T0=16,B=268;
+function frame(svg,xlo,xhi,xt,xlab){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-v*(B-T0); };
+  [0,0.25,0.5,0.75,1].forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,v.toFixed(2),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  xt.forEach(function(v){ svg.appendChild(txt(X(v),B+17,String(v),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'})); });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var f=frame(svg,0,41,[1,5,10,15,20,25,30,35,40],'horizon T, rounds'), X=f.X, Y=f.Y;
+  if(m.lim!==null){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(m.lim),y2:Y(m.lim),stroke:'var(--good)','stroke-width':1.6,'stroke-dasharray':'5 4'}));
+    svg.appendChild(txt(R,Y(m.lim)-6,'T = ∞: '+m.lim.toFixed(3),{fill:'var(--good)','font-size':11,'text-anchor':'end','font-weight':600}));
+  }
+  var pts=[];
+  for(var T=1;T<=40;T++){ pts.push([X(T),Y(ladder(T,S.d1,S.d2)[1])]); }
+  svg.appendChild(el('polyline',{points:pts.map(function(p){return p.join(',');}).join(' '),fill:'none',stroke:'var(--accent)','stroke-width':1,opacity:.5}));
+  pts.forEach(function(p,i){
+    var cur=!S.inf && i+1===S.T;
+    svg.appendChild(el('circle',{cx:p[0],cy:p[1],r:cur?6:2.6,fill:cur?'var(--hi)':'var(--accent)',stroke:cur?'var(--surface)':'none','stroke-width':1.5}));
+  });
+}
+
+function drawB(){
+  var svg=$('svgB'); svg.textContent='';
+  var n=S.inf?12:S.T, s;
+  if(S.inf){
+    var lim=rubinstein(S.d1,S.d2); s=[null];
+    for(var t=1;t<=n;t++){ s.push(lim===null?null:(t%2?lim:S.d1*lim)); }
+  } else { s=ladder(S.T,S.d1,S.d2); }
+  var step=n<=10?1:n<=20?2:5, xt=[1];
+  for(var k=step;k<=n;k+=step){ if(k!==1) xt.push(k); }
+  var f=frame(svg,0.3,n+0.7,xt,S.inf?'round t (first 12 of an endless game)':'round t'), X=f.X, Y=f.Y;
+  var w=Math.max(2,Math.min(26,(R-L)/(n+0.4)*0.7));
+  for(var t=1;t<=n;t++){
+    if(s[t]===null) continue;
+    var col=t%2?'var(--accent)':'var(--hi)';
+    svg.appendChild(el('rect',{x:X(t)-w/2,y:Y(s[t]),width:w,height:Math.max(0.5,B-Y(s[t])),fill:col,opacity:t===1?1:.75}));
+  }
+  if(S.inf && rubinstein(S.d1,S.d2)===null){
+    svg.appendChild(txt((L+R)/2,(T0+B)/2,'δ₁ = δ₂ = 1: no stationary split exists',{fill:'var(--warn)','font-size':12.5,'text-anchor':'middle','font-weight':600}));
+  }
+}
+
+function render(){
+  $('v_d1').textContent=S.d1.toFixed(2);
+  $('v_d2').textContent=S.d2.toFixed(2);
+  $('v_T').textContent=S.inf?'∞':String(S.T);
+  $('v_v').textContent='$'+S.v.toFixed(0);
+  $('T').disabled=S.inf;
+  var m=report(S);
+  $('a_v').textContent=m.x1===null?'indeterminate':(100*m.x1).toFixed(1)+'%';
+  var n;
+  if(m.x1===null){ n='With <b>&delta;<sub>1</sub> = &delta;<sub>2</sub> = 1 and no deadline</b>, waiting costs nothing: any split is supported, and the stationary argument of &sect;11.3 has no unique answer.'; }
+  else if(S.inf){ n='No deadline: player 1 offers player 2 exactly what player 2 could get by rejecting and proposing next round, &delta;<sub>2</sub> times player 2&rsquo;s own proposer share. '+(Math.abs(S.d1-S.d2)<1e-9?'Equal patience gives 1/(1+&delta;) = '+m.x1.toFixed(3)+'.':(S.d1>S.d2?'Player 1 is <b>more patient</b>, which raises the share above 1/(1+&delta;).':'Player 2 is <b>more patient</b>, which pulls player 1&rsquo;s share down.')); }
+  else if(S.T===1){ n='<b>Ultimatum game</b>: one round, player 2 accepts any offer, so player 1 keeps the whole pie (Proposition 11.2).'; }
+  else { n='Round '+S.T+' is the last; <b>player '+m.last+'</b> makes the take-it-or-leave-it offer there. Each step back, the proposer offers the responder the discounted value of rejecting. '+
+    (m.lim===null?'The infinite-horizon limit is undefined at &delta;<sub>1</sub> = &delta;<sub>2</sub> = 1.':'The share sits <b>'+(m.gap>0?'above':m.gap<0?'below':'on')+'</b> the infinite-horizon value '+m.lim.toFixed(3)+'.'); }
+  $('a_note').innerHTML=n;
+  $('t_p1').textContent=usd(m.pay1);
+  $('t_p2').textContent=usd(m.pay2);
+  $('t_lim').textContent=f3(m.lim);
+  $('t_gap').textContent=S.inf?'none':sgn(m.gap);
+  $('t_adv').textContent=sgn(m.adv);
+  $('t_last').textContent=m.last===0?'nobody':'player '+m.last;
+  var b;
+  if(m.adv===null){ b='No first-mover edge can be computed: the infinite game with free delay has many equilibria.'; }
+  else if(m.adv>1e-9){ b='Player 1 gets <b>'+(100*m.adv).toFixed(1)+' points more</b> than player 2.'; }
+  else if(m.adv<-1e-9){ b='Player 2 gets <b>'+(100*-m.adv).toFixed(1)+' points more</b> than player 1, the proposer.'; }
+  else { b='The pie splits <b>exactly in half</b>.'; }
+  b+=' Agreement comes in round 1, so nothing is lost to delay (Proposition 11.3); the ladder on the right is the path that is never played, and it is what sets the price.';
+  $('bridge').innerHTML=b;
+  drawA(m); drawB();
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); $('inf').checked=S.inf; render(); }
+KEYS.forEach(function(k){
+  $(k).value=D[k];
+  $(k).addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('inf').checked=D.inf;
+$('inf').addEventListener('change',function(e){ S.inf=e.target.checked; render(); });
+$('reset').addEventListener('click',function(){ load(D); });
+$('ult').addEventListener('click',function(){ load(ULT); });
+$('ord').addEventListener('click',function(){ load(ORD); });
+$('pat').addEventListener('click',function(){ load(PAT); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

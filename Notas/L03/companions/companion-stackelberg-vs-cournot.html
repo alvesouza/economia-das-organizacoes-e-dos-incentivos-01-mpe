@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The First-Mover Desk</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail on the left, answer + tiles + two linked panels on the right. Same family as the Finanças S04 companion. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px;white-space:nowrap}
+@media(max-width:520px){.tiles{grid-template-columns:repeat(2,1fr)}.tile .v{font-size:15px}}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Organizations &amp; Incentives &middot; Lecture 3 &middot; notes L03-07</p>
+  <h1>The First-Mover Desk</h1>
+  <p class="lede">The same two firms, the same demand and costs, played twice. In Cournot they choose
+  quantities without seeing each other; in Stackelberg firm 1 commits first and firm 2 sees it. Move demand
+  and the two costs and watch what the order of moves is worth to the leader, and what it costs the
+  follower.</p>
+  <p class="prov">Tadelis (2013) &sect;8.3.2, printed pp. 160&ndash;163, eqs. (8.1)&ndash;(8.2); Gibbons (1992) &sect;2.1.B, pp. 61&ndash;64. Inverse demand P = a &minus; bQ, constant marginal costs c<sub>1</sub>, c<sub>2</sub>.</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">a</span> &middot; demand intercept</span><span class="val" id="v_a"></span></div>
+      <p class="doc">The price at zero output. A larger market raises every quantity and profit in both games.</p>
+      <input type="range" id="a" min="40" max="200" step="1" aria-label="Demand intercept a">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">b</span> &middot; demand slope</span><span class="val" id="v_b"></span></div>
+      <p class="doc">How fast price falls per unit sold. Quantities scale with 1/b; prices and the profit ranking do not change.</p>
+      <input type="range" id="b" min="0.5" max="3" step="0.05" aria-label="Demand slope b">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>1</sub></span> &middot; leader&rsquo;s cost</span><span class="val" id="v_c1"></span></div>
+      <p class="doc">Firm 1&rsquo;s marginal cost. Firm 1 is the leader in Stackelberg and a simultaneous mover in Cournot.</p>
+      <input type="range" id="c1" min="0" max="60" step="0.5" aria-label="Leader marginal cost c1">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>2</sub></span> &middot; follower&rsquo;s cost</span><span class="val" id="v_c2"></span></div>
+      <p class="doc">Firm 2&rsquo;s marginal cost. High enough, and the leader&rsquo;s commitment leaves the follower nothing to sell.</p>
+      <input type="range" id="c2" min="0" max="90" step="0.5" aria-label="Follower marginal cost c2">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 160</button>
+      <button id="shut" class="ghost" type="button">Follower shut out (c<sub>2</sub> = 40)</button>
+      <button id="cheap" class="ghost" type="button">Cheaper follower (c<sub>2</sub> = 0)</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">First-mover advantage: leader&rsquo;s profit, Stackelberg minus Cournot</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">q<sub>1</sub> S / C</div><div class="v" id="t_q1"></div><div class="u">leader&rsquo;s output</div></div>
+      <div class="tile"><div class="k">q<sub>2</sub> S / C</div><div class="v" id="t_q2"></div><div class="u">follower&rsquo;s output</div></div>
+      <div class="tile"><div class="k">Price S / C</div><div class="v" id="t_p"></div><div class="u">P = a &minus; bQ</div></div>
+      <div class="tile"><div class="k">&pi;<sub>1</sub> S / C</div><div class="v" id="t_p1"></div><div class="u">leader&rsquo;s profit</div></div>
+      <div class="tile"><div class="k">&pi;<sub>2</sub> S / C</div><div class="v" id="t_p2"></div><div class="u" id="t_p2u"></div></div>
+      <div class="tile"><div class="k">Q<sup>S</sup> / Q<sup>C</sup></div><div class="v" id="t_qr"></div><div class="u">9/8 when costs are equal</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Quantity space</h2>
+          <p class="sub">Firm 2&rsquo;s reaction curve, firm 1&rsquo;s (Cournot only), the leader&rsquo;s isoprofit through its Stackelberg point.</p>
+          <svg id="svgA" viewBox="0 0 420 330" role="img" aria-label="Best-response lines, the Cournot equilibrium and the Stackelberg outcome in the q1-q2 plane"></svg>
+        </div>
+        <div>
+          <h2>The leader&rsquo;s problem</h2>
+          <p class="sub">Profit when firm 2 replies optimally to every q<sub>1</sub>, eq. (8.2). The Cournot quantity is on this curve too.</p>
+          <svg id="svgB" viewBox="0 0 420 330" role="img" aria-label="Leader's profit along the follower's reaction curve, with the Cournot and Stackelberg quantities marked"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Demand intercept</td><td>a</td><td>P = a &minus; bQ at Q = 0</td><td class="n">40 &ndash; 200</td><td class="n">1</td><td class="n">100</td><td>money / unit</td><td>Tadelis p. 160 (p = 100 &minus; q)</td><td>both reaction curves, all quantities and profits</td></tr>
+      <tr><td>Demand slope</td><td>b</td><td>price drop per unit of output</td><td class="n">0.5 &ndash; 3</td><td class="n">0.05</td><td class="n">1</td><td>money / unit&sup2;</td><td>Tadelis p. 160 (slope 1)</td><td>axis scale, quantities, profits</td></tr>
+      <tr><td>Leader&rsquo;s cost</td><td>c<sub>1</sub></td><td>firm 1&rsquo;s marginal cost</td><td class="n">0 &ndash; 60</td><td class="n">0.5</td><td class="n">10</td><td>money / unit</td><td>Tadelis p. 160 (c<sub>i</sub> = 10q<sub>i</sub>)</td><td>firm 1&rsquo;s reaction curve, the leader&rsquo;s choice</td></tr>
+      <tr><td>Follower&rsquo;s cost</td><td>c<sub>2</sub></td><td>firm 2&rsquo;s marginal cost</td><td class="n">0 &ndash; 90</td><td class="n">0.5</td><td class="n">10</td><td>money / unit</td><td>Tadelis p. 160</td><td>firm 2&rsquo;s reaction curve, the kink of the leader&rsquo;s profit</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions. Follower: R<sub>2</sub>(q<sub>1</sub>) = max{0, (a &minus; c<sub>2</sub> &minus; bq<sub>1</sub>)/(2b)}, eq. (8.1).
+  Leader: max over q<sub>1</sub> of (a &minus; b(q<sub>1</sub> + R<sub>2</sub>(q<sub>1</sub>)) &minus; c<sub>1</sub>)q<sub>1</sub>, eq. (8.2); interior answer q<sub>1</sub> = (a &minus; 2c<sub>1</sub> + c<sub>2</sub>)/(2b),
+  q<sub>2</sub> = (a + 2c<sub>1</sub> &minus; 3c<sub>2</sub>)/(4b). The leader&rsquo;s profit has a kink at q<sub>1</sub> = (a &minus; c<sub>2</sub>)/b where firm 2 stops producing;
+  the page evaluates the best point on each concave piece and keeps the larger (exact, no search grid).
+  Cournot: q<sub>i</sub> = (a &minus; 2c<sub>i</sub> + c<sub>j</sub>)/(3b), or the monopoly corner when that is negative.
+  Defaults reproduce Tadelis p. 161: Stackelberg (45, 22.5) with profits 1012.5 and 506.25; Cournot (30, 30) with 900 each.
+  Landmarks: equal costs (Q<sup>S</sup>/Q<sup>C</sup> = 9/8, Gibbons p. 63); c<sub>2</sub> = (a + 2c<sub>1</sub>)/3, where the Stackelberg follower is shut out (40 at the defaults);
+  c<sub>2</sub> = (a + c<sub>1</sub>)/2, where the Cournot follower is shut out too (55 at the defaults). Not exposed: more than one follower (Tadelis exercise 8.4, p. 170)
+  and fixed costs (exercise 8.9, p. 172).</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+function br(q, a, b, c){ return Math.max(0, (a - c - b*q)/(2*b)); }
+function prof(q1, q2, v){
+  var P = Math.max(0, v.a - v.b*(q1 + q2));
+  return {q1:q1, q2:q2, P:P, pi1:(P - v.c1)*q1, pi2:(P - v.c2)*q2};
+}
+function cournot(v){
+  var q1 = (v.a - 2*v.c1 + v.c2)/(3*v.b), q2 = (v.a - 2*v.c2 + v.c1)/(3*v.b);
+  if(q1 < 0){ q1 = 0; q2 = br(0, v.a, v.b, v.c2); }
+  else if(q2 < 0){ q2 = 0; q1 = br(0, v.a, v.b, v.c1); }
+  return prof(q1, q2, v);
+}
+function leaderProfit(q1, v){ return prof(q1, br(q1, v.a, v.b, v.c2), v).pi1; }
+function stackelberg(v){
+  var kink = Math.max(0, (v.a - v.c2)/v.b);
+  var qa = Math.min(Math.max((v.a - 2*v.c1 + v.c2)/(2*v.b), 0), kink);
+  var qb = Math.max((v.a - v.c1)/(2*v.b), kink);
+  var q1 = leaderProfit(qb, v) > leaderProfit(qa, v) ? qb : qa;
+  var r = prof(q1, br(q1, v.a, v.b, v.c2), v);
+  r.kink = kink;
+  return r;
+}
+function report(v){
+  var S = stackelberg(v), C = cournot(v);
+  var QS = S.q1 + S.q2, QC = C.q1 + C.q2;
+  return {S:S, C:C, fma:S.pi1 - C.pi1, follower:S.pi2 - C.pi2,
+    ratio: QC > 0 ? QS/QC : null, csS:v.b*QS*QS/2, csC:v.b*QC*QC/2,
+    shutS: S.q2 === 0, shutC: C.q2 === 0, tieS:(v.a + 2*v.c1)/3, tieC:(v.a + v.c1)/2};
+}
+// MODEL:END
+
+var D = {a:100, b:1, c1:10, c2:10};
+var KEYS = ['a','b','c1','c2'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f = function(x,d){ d = d===undefined?2:d; var s = Math.abs(x) < 0.5*Math.pow(10,-d) ? 0 : x; return (s<0?'−':'') + Math.abs(s).toFixed(d); };
+var sg = function(x,d){ return (x>0.005?'+':'') + f(x,d); };
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=54,R=404,T=16,B=272;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xhi,yhi,xlab,ylab){
+  var X=function(v){ return L+v/xhi*(R-L); }, Y=function(v){ return B-v/yhi*(B-T); };
+  ticks(0,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(+v.toFixed(1)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  ticks(0,xhi).forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(+v.toFixed(1)),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(el('line',{x1:L,x2:L,y1:T,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(txt(14,(T+B)/2,ylab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle',transform:'rotate(-90 14 '+((T+B)/2)+')'}));
+  return {X:X,Y:Y};
+}
+function path(pts,X,Y){ return pts.map(function(p,i){ return (i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1); }).join(' '); }
+function dot(svg,x,y,col,lab,dx,dy){
+  svg.appendChild(el('circle',{cx:x,cy:y,r:5.5,fill:col,stroke:'var(--surface)','stroke-width':1.5}));
+  if(lab){ svg.appendChild(txt(x+dx,y+dy,lab,{fill:col,'font-size':11.5,'font-weight':600,'text-anchor':dx<0?'end':'start'})); }
+}
+function clipLine(svg,pts,X,Y,xhi,yhi,attrs){
+  var ok=pts.filter(function(p){ return p[0]>=0 && p[0]<=xhi && p[1]>=0 && p[1]<=yhi; });
+  if(ok.length>1){ svg.appendChild(el('path',Object.assign({d:path(ok,X,Y),fill:'none'},attrs))); }
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var top=Math.max((S.a-Math.min(S.c1,S.c2))/S.b, 1);
+  var F=frame(svg,top,top,'leader output q₁','follower output q₂'), X=F.X, Y=F.Y;
+  var n=300, br2=[], br1=[], iso=[];
+  for(var i=0;i<=n;i++){
+    var q=top*i/n;
+    br2.push([q, br(q,S.a,S.b,S.c2)]);
+    br1.push([br(q,S.a,S.b,S.c1), q]);
+    if(q>0 && m.S.pi1>0){ iso.push([q,(S.a-S.c1-S.b*q-m.S.pi1/q)/S.b]); }
+  }
+  clipLine(svg,br1,X,Y,top,top,{stroke:'var(--muted)','stroke-width':2});
+  clipLine(svg,br2,X,Y,top,top,{stroke:'var(--accent)','stroke-width':2.6});
+  clipLine(svg,iso,X,Y,top,top,{stroke:'var(--good)','stroke-width':1.4,'stroke-dasharray':'5 4'});
+  svg.appendChild(txt(R-4,T+12,'firm 2 reaction',{fill:'var(--accent)','font-size':11,'text-anchor':'end','font-weight':600}));
+  svg.appendChild(txt(R-4,T+27,'firm 1 reaction (Cournot)',{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(R-4,T+42,'leader isoprofit at S',{fill:'var(--good)','font-size':11,'text-anchor':'end'}));
+  dot(svg,X(m.C.q1),Y(m.C.q2),'var(--hi)','C',8,-8);
+  dot(svg,X(m.S.q1),Y(m.S.q2),'var(--good)','S',8,-8);
+}
+
+function drawB(m){
+  var svg=$('svgB'); svg.textContent='';
+  var xhi=Math.max((S.a-S.c1)/S.b, m.S.q1*1.1, m.C.q1*1.1, 1);
+  var n=400, pts=[], ymax=0;
+  for(var i=0;i<=n;i++){ var q=xhi*i/n, p=leaderProfit(q,S); pts.push([q,p]); ymax=Math.max(ymax,p); }
+  ymax=Math.max(ymax*1.15, m.C.pi1*1.15, 1);
+  var F=frame(svg,xhi,ymax,'leader output q₁','leader profit'), X=F.X, Y=F.Y;
+  clipLine(svg,pts,X,Y,xhi,ymax,{stroke:'var(--accent)','stroke-width':2.6});
+  if(m.C.pi1>0){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(m.C.pi1),y2:Y(m.C.pi1),stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'4 4'}));
+    svg.appendChild(txt(L+6,Y(m.C.pi1)-6,'Cournot profit '+f(m.C.pi1,1),{fill:'var(--muted)','font-size':11}));
+  }
+  if(m.S.kink>0 && m.S.kink<xhi){
+    svg.appendChild(el('line',{x1:X(m.S.kink),x2:X(m.S.kink),y1:T,y2:B,stroke:'var(--warn)','stroke-width':1,'stroke-dasharray':'2 3'}));
+    svg.appendChild(txt(X(m.S.kink)-4,T+12,'firm 2 exits',{fill:'var(--warn)','font-size':11,'text-anchor':'end'}));
+  }
+  dot(svg,X(m.C.q1),Y(leaderProfit(m.C.q1,S)),'var(--hi)','Cournot q₁',8,16);
+  dot(svg,X(m.S.q1),Y(m.S.pi1),'var(--good)','Stackelberg q₁',8,-10);
+}
+
+function render(){
+  $('v_a').textContent=S.a.toFixed(0);
+  $('v_b').textContent=S.b.toFixed(2);
+  $('v_c1').textContent=S.c1.toFixed(1);
+  $('v_c2').textContent=S.c2.toFixed(1);
+  var m=report(S);
+  $('a_v').textContent=sg(m.fma,2);
+  var note;
+  if(m.S.q1===0 && m.C.q1===0){ note='Firm 1 cannot cover its cost at any output (c₁ ≥ a): there is <b>nothing to lead</b>, and moving first is worth 0.'; }
+  else if(Math.abs(m.fma)<0.005){ note='Moving first is worth <b>nothing</b> here: the leader&rsquo;s best point coincides with its Cournot quantity, which happens when firm 2 is out of the market in both games.'; }
+  else { note='Committing to q₁ = '+f(m.S.q1)+' instead of '+f(m.C.q1)+' raises the leader&rsquo;s profit from '+f(m.C.pi1)+' to '+f(m.S.pi1)+'. The follower '+(m.follower<0?'<b>loses '+f(-m.follower)+'</b>':'gains '+f(m.follower))+'. The leader could have played its Cournot quantity, so its advantage can never be negative.'; }
+  $('a_note').innerHTML=note;
+  $('t_q1').textContent=f(m.S.q1,1)+' / '+f(m.C.q1,1);
+  $('t_q2').textContent=f(m.S.q2,1)+' / '+f(m.C.q2,1);
+  $('t_p').textContent=f(m.S.P,1)+' / '+f(m.C.P,1);
+  $('t_p1').textContent=f(m.S.pi1,1)+' / '+f(m.C.pi1,1);
+  $('t_p2').textContent=f(m.S.pi2,1)+' / '+f(m.C.pi2,1);
+  $('t_p2u').textContent='change '+sg(m.follower,1);
+  $('t_qr').textContent=m.ratio===null?'—':m.ratio.toFixed(4);
+  var side;
+  if(Math.abs(S.c2-m.tieS)<1e-9){ side='c₂ sits <b>exactly at (a + 2c₁)/3 = '+f(m.tieS)+'</b>: the Stackelberg follower is just priced out.'; }
+  else if(S.c2<m.tieS){ side='c₂ = '+f(S.c2,1)+' is below (a + 2c₁)/3 = '+f(m.tieS)+': the follower stays in after the leader commits.'; }
+  else { side='c₂ = '+f(S.c2,1)+' is above (a + 2c₁)/3 = '+f(m.tieS)+': <b>the leader&rsquo;s commitment shuts the follower out</b>'+(m.shutC?', and it would be out of Cournot too (c₂ ≥ (a + c₁)/2 = '+f(m.tieC)+').':', although it would produce '+f(m.C.q2,1)+' in Cournot.'); }
+  $('bridge').innerHTML='Why S and not C: firm 2 sees q₁, so its reaction curve is a menu the leader picks from, and S is where the leader&rsquo;s isoprofit touches that curve. C is on the same menu and the leader passes it up. '+side;
+  drawA(m); drawB(m);
+}
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('shut').addEventListener('click',function(){ load(Object.assign({},D,{c2:40})); });
+$('cheap').addEventListener('click',function(){ load(Object.assign({},D,{c2:0})); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

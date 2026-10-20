@@ -6,7 +6,8 @@ date: 2026-10-09
 # Practice plan — Aula 1: Does Organization Matter? Ford × GM × Toyota
 
 20 items in one sequence of rising complexity: **14 existing book exercises** (Milgrom & Roberts
-1992, Cabral 2017), cited by number and page only, plus **6 tasks on the class 1 companions**
+1992, Cabral 2017), each reproduced verbatim under its tier table (transcribed from the PDF page
+images on 2026-10-20), plus **6 tasks on the class 1 companions**
 (`Aula/aula-01-companions/`). Work them in order. Notes: [[Aula/aula-01-notes|Aula 1 notes]] ·
 topic: [[rules/01_organizacoes_importam|Topic 1]] · index: [[Map/exercises-index|exercises-index]].
 
@@ -42,6 +43,44 @@ tasks are this course's own; their answers were checked numerically and are give
 | 5 | Foundations | M&R | Ch. 4, "Coordination and Business Strategy" | FFT 4.1 | 119 | When centralised planning beats prices; link to the planned economies of Ch. 1 (A) |
 | 6 | Foundations | Companion | The Valley Between Systems | C1 | — | At the defaults, read the profit after each step of all six orders; explain why every order dips (C) |
 
+### Statements
+
+#### 1. M&R FFT 1.1
+
+<!-- id: M&R FFT 1.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 1, p. 18. Reproduced verbatim.
+
+> In fast-food chains, some decisions about standards are made centrally and others are left to the individual outlet managers. Who typically makes which kinds of decisions? Why? Can you think successfully about the fast-food business by dividing the issues between coordination and motivation?
+
+#### 2. M&R FFT 1.2
+
+<!-- id: M&R FFT 1.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 2, p. 18. Reproduced verbatim.
+
+> Armies in battle have especially severe organization problems. What kinds of decisions are made centrally and which are left to commanders in the field? What principles dictate the division? Can you think successfully about the problems of military organization by dividing the issues between coordination and motivation?
+
+#### 3. Cabral 1.1
+
+<!-- id: Cabral 1.1 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 1 Exercises, Exercise 1.1 "Competition and performance", p. 11. Reproduced verbatim.
+
+> ■ **1.1. Competition and performance.** Empirical evidence from a sample of more than 600 UK firms indicates that, controlling for the quantity of inputs (that is, taking into account the quantity of inputs), firm output is increasing in the number of competitors and decreasing in market share and industry concentration.$^{22}$ How do these results relate to the ideas presented in this chapter?
+
+#### 4. Cabral 3.9
+
+<!-- id: Cabral 3.9 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.9 "Car parts", p. 62. Reproduced verbatim.
+
+> ■ **3.9. Car parts.** Two parts in an automobile taillight are the plastic exterior cover and the light bulb. Which of these parts is a car company more likely to manufacture in-house? Why?
+
+#### 5. M&R FFT 4.1
+
+<!-- id: M&R FFT 4.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 1, p. 119. Reproduced verbatim.
+
+> During World Wars I and II, even the major market economies switched to centralized forms of planning to allocate many scarce resources. Are there reasons based on efficiency to prefer such centralized planning in wartime? Are there other reasons?
+
+
 **C1 (companion task).** Open *The Valley Between Systems* at its defaults. For each of the six
 orders write the three profits after each step. Which practice does each first step add, and why
 must every first step lose money whatever the interaction values?
@@ -59,6 +98,62 @@ must every first step lose money whatever the interaction values?
 | 13 | Exam | M&R | Ch. 4, "Scale, Scope, and Core Competencies" | FFT 4.3 | 119 | Complementarities across businesses as a motive for expansion (C) |
 | 14 | Exam | Companion | The Complementarity Multiplier | C2 | — | Predict the multiplier and the sign of ∂y*/∂t for b = 1, 0, −1, then check (C) |
 | 15 | Exam | Companion | Two Coherent Systems | C3 | — | Explain why the best system switches while each system barely moves (C) |
+
+### Statements
+
+#### 7. M&R FFT 1.3
+
+<!-- id: M&R FFT 1.3 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 3, p. 18. Reproduced verbatim.
+
+> In late summer of 1991, it was revealed that beginning in February of that year, the Salomon Brothers' managing director in charge of its dealings in the markets for U.S. Treasury securities had secretly violated government rules designed to prevent any one buyer from purchasing more than a specified share of the new government debt obligations being auctioned at any one time. Moreover, senior executives at the firm had learned of these violations of the law but had failed to act on them. In the resulting scandal, four of Salomon's top executives (including Gutfreund) were asked to resign, and the future of the firm was imperiled.
+>
+> One theory was that the employee who violated the rules was motivated by his competitive, aggressive nature: He bitterly resented the government's attempt to limit his actions and was determined to show them that he was smarter and tougher than they. Another was that he was motivated by greed: He wanted to monopolize the market in these government bonds and reap the rewards. In any case, his actions, and those of the senior executives who failed to stop him and report his wrong-doing, were very costly to the firm: The stock price, which had risen by almost a half in the preceding year, fell back to where it had been before, and important customers ceased dealing with the firm.
+>
+> Does this episode mean that the incentive scheme described in the text was fundamentally flawed?
+
+#### 8. M&R FFT 2.2
+
+<!-- id: M&R FFT 2.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Food for Thought 2, p. 52. Reproduced verbatim.
+
+> For most large Japanese firms, a majority of the voting shares are owned by the company's major lenders (banks and insurance companies), its customers and suppliers, and related firms with whom it has longstanding relationships. How would this ownership structure affect the objectives that these firms seem to pursue?
+
+#### 9. M&R FFT 2.4
+
+<!-- id: M&R FFT 2.4 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Food for Thought 4, p. 52. Reproduced verbatim.
+
+> In California's fruit farms, farm workers who pick fruit are commonly organized into teams that are paid according to the number of trees that are cleanly picked. The teams themselves decide how to divide the pay among their members. What attributes of this transaction account for this arrangement?
+
+#### 10. Cabral 3.14
+
+<!-- id: Cabral 3.14 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.14 "Intel", p. 63. Reproduced verbatim.
+
+> ■ **3.14. Intel.** Explain why Intel has maintained, if not increased, its competitive advantage with respect to rivals. Indicate the explanatory power of the different causes considered in the text (impediments to imitation, causal ambiguity, strategy, history).
+
+#### 11. Cabral 3.11
+
+<!-- id: Cabral 3.11 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.11 "Smart car", p. 62. Reproduced verbatim.
+
+> ■ **3.11. Smart car.** The Smart car was created as a joint venture between Daimler-Benz AG and Swatch Group AG. Although Micro Compact Car AG (the name of the joint venture) was originally jointly owned, in November of 1998 Daimler-Benz AG took complete control by buying Swatch's share.$^{12}$ The deal put an end to a very stressed relationship between Daimler and Swatch. What does Section 3.4 suggest as to what the sources of strain might have been?
+
+#### 12. M&R FFT 4.2
+
+<!-- id: M&R FFT 4.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 2, p. 119. Reproduced verbatim.
+
+> For many years, Swiss craftsmen made the finest watches, which were powered by winding a spring by hand. The Swiss lost ground to competitors in Japan and elsewhere as more accurate, less expensive battery-powered electronic watches were perfected. What were the core competencies of watchmaking in the era of Swiss dominance and how were they changed by new technologies? What other products are made by the new watchmakers?
+
+#### 13. M&R FFT 4.3
+
+<!-- id: M&R FFT 4.3 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 3, p. 119. Reproduced verbatim.
+
+> In 1987, Sony Corporation, a leader in consumer electronics (televisions, compact disk and audio cassette players, home video recording and playback machines), purchased the CBS Record Company. In 1989, Sony purchased Columbia Pictures Entertainment, one of the giants of the movie and TV production industry. In 1990, Matsushita, the world leader in consumer electronics with its Panasonic, National, and Quasar brands, purchased MCA Corporation, which makes movies, television shows, and music recordings. Why would these companies want to expand into these particular industries?
+
 
 **C2 (companion task).** Before touching *The Complementarity Multiplier*, write down for
 $c = 2$ the multiplier $1/(1-(b/c)^2)$ and the sign of $\partial y^*/\partial t$ at $b = 1$, $0$ and
@@ -79,6 +174,25 @@ claim that local adjustment cannot track a global shift (pp. 112–113).
 | 18 | Advanced | Companion | The Valley Between Systems | C5 | — | Prove the valley cannot be removed through interactions alone; find the smallest change that removes it (C) |
 | 19 | Advanced | Companion | The Complementarity Multiplier | C6 | — | Show the staircase closes its gap by the factor (b/c)² per round; predict the round count (C) |
 | 20 | Advanced | Cabral | §3.5 (method in §3.1) | 3.20 Productivity (applied) | 64 | Estimate total factor productivity from firm data; the dispersion that "organization matters" predicts (B) |
+
+### Statements
+
+#### 16. M&R Math 4.2
+
+<!-- id: M&R Math 4.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Mathematical Exercises 2, p. 120. Reproduced verbatim.
+
+> A new product is being introduced in competition with another firm. Having the product ready for production in $t$ months will result in net profits after the introduction of $144-t^2$ if $0 \le t < 12$ but will generate no profits at all if $t \ge 12$. Three departments must be ready before production can begin, and getting ready quickly is a costly matter. Department 1 can be ready in $t$ months for a cost of $3(12-t)$, department 2 for a cost of $4(12-t)$, and department 3 for $5(12-t)$. Until all three departments are ready, production cannot begin. (1) What is the optimal date $t^*$ at which to introduce the new product, that is, the time that maximizes the net profit after product introduction minus the cost of readying the three departments? (2) What will the firm's profit be if the project is mistakenly hurried and all three departments are asked to deliver one month earlier than the optimal date? One month later? (3) What will the firm's profit be if department 1 and department 3 both are asked to be ready at the optimal time, but department 2 is asked to be ready one month earlier than the others? One month later? (4) Is the timing of product introduction in this example a *design decision*?
+
+#### 20. Cabral 3.20
+
+<!-- id: Cabral 3.20 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.20 "Productivity", p. 64. Reproduced verbatim.
+
+> ■ **3.20. Productivity.** Find firm level data on output and inputs (both quantity and prices). Use this information to estimate each firm's total factor productivity, following the method outlined in Section 3.1 (cf in particular Equation 3.2).
+
+*Referenced, not reproduced: Section 3.1, Equation 3.2, p. 39. The exercise prints no data table.*
+
 
 **C4 (companion task).** With every control except $A$ at its default, the specialized system is at
 the corner $n = 1$. Using the closed forms on the page, write both profits as functions of $A$ and

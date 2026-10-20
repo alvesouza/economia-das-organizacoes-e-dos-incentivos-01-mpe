@@ -50,6 +50,7 @@ Ch. 10 before Nov 3.
 - **After class:** `Listas/pratica-lecture-01.md` (24 items: Tadelis 3.2–3.7, 4.1–4.7, 4.10; Gibbons 1.2; MWG 8.B.1, 8.B.3–8.B.5, 8.B.7; Muñoz-Garcia Ch. 1) · worked solutions `Listas/pratica-lecture-01-solutions.pdf` · exam-style list `Listas/lista-lecture-01.tex` · quizzes `Simulados/quiz-lecture01-{1,2,3}-*.md`
 - **Formal side:** MWG §7.D (p. 228), §8.A–8.B (pp. 235–241)
 - **Applications:** Cabral §7.1 (pp. 161–163); Hotelling's linear city, Cabral §14.2 (pp. 354, 358–360); M&R's "grabbing" game as a prisoner's dilemma, Table 5.1 (pp. 138–139)
+- **Notes:** [[Notas/L01/L01-00-map|Lecture 1 notes]] (taught; figures and companions inside)
 
 ### Lecture 2 — Static games II: Nash equilibrium and mixed strategies
 #lecture/2
@@ -58,6 +59,7 @@ Ch. 10 before Nov 3.
 - **After class:** Tadelis 5.2, 5.3, 5.15 (pp. 95, 99), 6.2, 6.3 (p. 123) · Gibbons 1.3, 1.5, 1.8 (pp. 49–50) · MWG 8.C.1, 8.D.3–8.D.5 (p. 263) · Muñoz-Garcia Ch. 2 (pp. 37–84), Ch. 3 (pp. 85–151)
 - **Formal side:** MWG §8.C (p. 242), §8.D (p. 246), App. A (p. 260)
 - **Applications:** Cabral §7.1 (from p. 161)
+- **Notes:** [[Notas/L02/L02-00-map|Lecture 2 notes]] (estimated before the lecture; figures and companions inside)
 
 ## Dynamic games of complete information
 
@@ -67,6 +69,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
 - **Formal side:** MWG §7.C (p. 221), §9.A–9.B (pp. 267–281)
 - **Applications:** Cabral §7.2 (p. 167)
+- **Notes:** [[Notas/L03/L03-00-map|Lecture 3 notes]] (estimated before the lecture; figures and companions inside)
 
 ### Lecture 4 — Multistage games and bargaining
 #lecture/4
@@ -74,6 +77,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
 - **Formal side:** MWG 9.AA (p. 296)
 - **Applications and project material:** M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · `Listas/lista-aulas-01-02.tex` block 3 · [[rules/02_barganha|Topic 2]]
+- **Notes:** [[Notas/L04/L04-00-map|Lecture 4 notes]] (estimated before the lecture; figures and companions inside)
 
 ### Lecture 5 — Repeated games I: cooperation
 #lecture/5
@@ -81,6 +85,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 6 Ex. 1 (p. 274) · Tadelis Ch. 10 exercises
 - **Formal side:** MWG §12.D (p. 400), App. 12.A "Infinitely Repeated Games and the Folk Theorem" (p. 417)
 - **Applications:** Cabral §7.3 (p. 172)
+- **Notes:** [[Notas/L05/L05-00-map|Lecture 5 notes]] (estimated before the lecture; figures and companions inside)
 
 ### Lecture 6 — Repeated games II: collusion and relational contracts
 #lecture/6
@@ -88,6 +93,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 6 Ex. 2–5 (pp. 278–290), Ex. 10 (p. 310); Ch. 5 Ex. 4–5, 8 (pp. 228–239) · M&R Quantitative Exercise 4 (p. 286)
 - **Formal side:** MWG §12.D (p. 400)
 - **Applications:** Cabral Ch. 9 (from p. 217: stability of collusive agreements p. 218, price wars p. 222) · M&R efficiency wages (p. 250)
+- **Notes:** [[Notas/L06/L06-00-map|Lecture 6 notes]] (estimated before the lecture; figures and companions inside)
 
 ## Games of incomplete information
 
@@ -97,6 +103,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 7 (pp. 317–347), Ch. 8 (pp. 349–373) · MWG 13.B.1, 13.B.2
 - **Formal side:** MWG §8.E (p. 253), §13.B (pp. 437–449)
 - **Applications:** M&R adverse selection (p. 149) · Cabral §7.4 (p. 174), §6.4 auctions and negotiations (p. 140) · [[rules/07_selecao_adversa|Topic 7]]
+- **Notes:** [[Notas/L07/L07-00-map|Lecture 7 notes]] (estimated before the lecture; figures and companions inside)
 
 ### Lecture 8 — Signaling and perfect Bayesian equilibrium
 #lecture/8
@@ -104,6 +111,7 @@ Ch. 10 before Nov 3.
 - **After class:** Muñoz-Garcia Ch. 9 (pp. 375–451), Ch. 11 (pp. 481–520) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
 - **Formal side:** MWG §9.C (p. 282), §9.D (p. 292), §13.C (pp. 450–459), 13.AA (p. 467)
 - **Applications:** M&R signaling and screening (p. 154) · [[rules/07_selecao_adversa|Topic 7]]
+- **Notes:** [[Notas/L08/L08-00-map|Lecture 8 notes]] (estimated before the lecture; figures and companions inside)
 
 ## Paper and exam
 

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Credible Threat Desk</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail on the left, answer + tiles + game tree + bond schedule on the right. Same family as the Finanças S04 companion. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.grp{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 -6px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:16px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+.treewrap{overflow-x:auto}
+.treewrap svg{min-width:520px}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Organizations &amp; Incentives &middot; Lecture 3 &middot; notes L03-06</p>
+  <h1>The Credible Threat Desk</h1>
+  <p class="lede">An incumbent would like to scare an entrant off by promising a price war. The promise is
+  a Nash equilibrium and still not believable: once entry has happened, fighting pays less than sharing.
+  A bond that the incumbent forfeits if it accommodates changes its own payoff, and so changes what it will
+  do. Move the payoffs and the bond and watch backward induction decide.</p>
+  <p class="prov">Cabral (2017) &sect;7.2, printed pp. 167&ndash;171, Figures 7.7&ndash;7.9; the same game is MWG Example 9.B.1, pp. 268&ndash;269. Payoffs (entrant, incumbent).</p>
+</header>
+
+<main>
+  <div class="rail">
+    <p class="grp">Outcomes without a fight</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">M</span> &middot; monopoly profit</span><span class="val" id="v_M"></span></div>
+      <p class="doc">What the incumbent earns if the entrant stays out (entrant gets 0).</p>
+      <input type="range" id="M" min="0" max="100" step="1" aria-label="Incumbent monopoly profit">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">D<sub>E</sub></span> &middot; entrant, shared market</span><span class="val" id="v_DE"></span></div>
+      <p class="doc">The entrant&rsquo;s payoff when it enters and the incumbent accommodates.</p>
+      <input type="range" id="DE" min="-20" max="40" step="1" aria-label="Entrant payoff after accommodation">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">D<sub>I</sub></span> &middot; incumbent, shared market</span><span class="val" id="v_DI"></span></div>
+      <p class="doc">The incumbent&rsquo;s payoff when it accommodates entry, before any bond.</p>
+      <input type="range" id="DI" min="0" max="60" step="1" aria-label="Incumbent payoff after accommodation">
+    </div>
+    <p class="grp">The price war</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">F<sub>E</sub></span> &middot; entrant, price war</span><span class="val" id="v_FE"></span></div>
+      <p class="doc">The entrant&rsquo;s payoff if it enters and is fought. Below 0, a believed fight keeps it out.</p>
+      <input type="range" id="FE" min="-40" max="20" step="1" aria-label="Entrant payoff in a price war">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">F<sub>I</sub></span> &middot; incumbent, price war</span><span class="val" id="v_FI"></span></div>
+      <p class="doc">The incumbent&rsquo;s payoff from fighting. The threat is credible only if this beats accommodating.</p>
+      <input type="range" id="FI" min="-40" max="40" step="1" aria-label="Incumbent payoff in a price war">
+    </div>
+    <p class="grp">Commitment</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">B</span> &middot; bond</span><span class="val" id="v_B"></span></div>
+      <p class="doc">A penalty the incumbent pays if it accommodates after posting the bond. Writing it is free.</p>
+      <input type="range" id="B" min="0" max="80" step="1" aria-label="Bond penalty">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Cabral p. 169</button>
+      <button id="mwg" class="ghost" type="button">MWG Example 9.B.1</button>
+      <button id="edge" class="ghost" type="button">Bond at the threshold</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Value of commitment: incumbent&rsquo;s payoff with the bond option minus without</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">SPE, no bond</div><div class="v" id="t_nb"></div><div class="u" id="t_nbu"></div></div>
+      <div class="tile"><div class="k">SPE, bond posted</div><div class="v" id="t_wb"></div><div class="u" id="t_wbu"></div></div>
+      <div class="tile"><div class="k">Threat credible?</div><div class="v" id="t_cr"></div><div class="u">F<sub>I</sub> vs D<sub>I</sub>, then vs D<sub>I</sub> &minus; B</div></div>
+      <div class="tile"><div class="k">Smallest bond that works</div><div class="v" id="t_bs"></div><div class="u">B* = D<sub>I</sub> &minus; F<sub>I</sub>, strict</div></div>
+    </div>
+
+    <div class="card">
+      <h2>The game with the bond decision (Cabral Fig. 7.8)</h2>
+      <p class="sub">Green edges: what each player does in the subgame-perfect equilibrium, at every node, reached or not. Dashed orange: a threat the incumbent would not carry out.</p>
+      <div class="treewrap"><svg id="svgT" viewBox="0 0 640 330" role="img" aria-label="Game tree: incumbent chooses bond or no bond, entrant chooses in or out, incumbent accommodates or retaliates"></svg></div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+
+    <div class="card">
+      <h2>How big must the bond be?</h2>
+      <p class="sub">Incumbent&rsquo;s subgame-perfect payoff after posting a bond of size B, other payoffs held at the controls. The jump is B*.</p>
+      <svg id="svgB" viewBox="0 0 640 260" role="img" aria-label="Incumbent payoff as a function of the bond size, a step at the credibility threshold"></svg>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Monopoly profit</td><td>M</td><td>incumbent&rsquo;s payoff if no entry</td><td class="n">0 &ndash; 100</td><td class="n">1</td><td class="n">50</td><td>payoff</td><td>Fig. 7.7, p. 168</td><td>out leaves; value of commitment</td></tr>
+      <tr><td>Entrant, shared</td><td>D<sub>E</sub></td><td>entrant after accommodation</td><td class="n">&minus;20 &ndash; 40</td><td class="n">1</td><td class="n">10</td><td>payoff</td><td>Fig. 7.7, p. 168</td><td>whether entry pays when accommodated</td></tr>
+      <tr><td>Incumbent, shared</td><td>D<sub>I</sub></td><td>incumbent after accommodation</td><td class="n">0 &ndash; 60</td><td class="n">1</td><td class="n">20</td><td>payoff</td><td>Fig. 7.7, p. 168</td><td>credibility; B*</td></tr>
+      <tr><td>Entrant, war</td><td>F<sub>E</sub></td><td>entrant when fought</td><td class="n">&minus;40 &ndash; 20</td><td class="n">1</td><td class="n">&minus;10</td><td>payoff</td><td>Fig. 7.7, p. 168</td><td>whether a credible fight deters</td></tr>
+      <tr><td>Incumbent, war</td><td>F<sub>I</sub></td><td>incumbent when fighting</td><td class="n">&minus;40 &ndash; 40</td><td class="n">1</td><td class="n">10</td><td>payoff</td><td>Fig. 7.7, p. 168 (text: &minus;10)</td><td>credibility; B*</td></tr>
+      <tr><td>Bond</td><td>B</td><td>penalty for accommodating after the bond</td><td class="n">0 &ndash; 80</td><td class="n">1</td><td class="n">40</td><td>payoff</td><td>p. 169</td><td>the bond subgame; the schedule&rsquo;s marker</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Solution: backward induction (Tadelis Proposition 8.1, p. 153; with no ties it is the unique SPE). After entry the incumbent
+  retaliates iff F<sub>I</sub> &gt; D<sub>I</sub> (no bond) or F<sub>I</sub> &gt; D<sub>I</sub> &minus; B (bond). The entrant enters iff its post-entry payoff is
+  strictly above 0. The incumbent posts the bond iff that raises its own payoff strictly. Ties: the page reports them and resolves them toward
+  accommodation, entry declined, and no bond; at a tie the game has two pure SPE and the other one is named in the read-out. Defaults reproduce Cabral
+  pp. 168&ndash;170: without the bond the SPE is (enter, accommodate) with (10, 20); with B = 40 retaliation pays 10 against &minus;20, the entrant stays
+  out, the incumbent gets 50, and the value of commitment is 50 &minus; 20 = 30. Cabral&rsquo;s figure prints (&minus;10, 10) after a price war; the text of p. 168
+  gives the incumbent &minus;10 there; both are below 20 and above &minus;20, so the answer is the same. The MWG preset uses Example 9.B.1 with no bond (B = 0): out (0, 2),
+  fight (&minus;3, &minus;1), accommodate (2, 1). Not exposed: a costly bond (it would subtract from the incumbent&rsquo;s bond branch).</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+function postEntry(v, di){
+  // incumbent's choice after entry, given its accommodation payoff di
+  var tieI = v.FI === di, fight = v.FI > di;
+  var after = fight ? [v.FE, v.FI] : [v.DE, di];
+  var tieE = after[0] === 0, enter = after[0] > 0;
+  return {fight:fight, tieI:tieI, enter:enter, tieE:tieE, pay: enter ? after : [0, v.M]};
+}
+function report(v){
+  var nb = postEntry(v, v.DI), wb = postEntry(v, v.DI - v.B);
+  var buy = wb.pay[1] > nb.pay[1], tieB = wb.pay[1] === nb.pay[1];
+  var fin = buy ? wb : nb;
+  return {nb:nb, wb:wb, buy:buy, tieB:tieB, value:fin.pay[1] - nb.pay[1],
+    credibleNoBond: v.FI > v.DI, credibleBond: v.FI > v.DI - v.B,
+    Bstar: v.DI - v.FI, pay:fin.pay};
+}
+// MODEL:END
+
+var D = {M:50, DE:10, DI:20, FE:-10, FI:10, B:40};
+var MWG = {M:2, DE:2, DI:1, FE:-3, FI:-1, B:0};
+var KEYS = ['M','DE','DI','FE','FI','B'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var n = function(x){ return (x<0?'−':'') + Math.abs(x); };
+var NS='http://www.w3.org/2000/svg';
+function el(t,a){ var e=document.createElementNS(NS,t); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+
+function edge(svg,x1,y1,x2,y2,lab,state){
+  var col = state==='on' ? 'var(--good)' : state==='threat' ? 'var(--warn)' : 'var(--muted)';
+  svg.appendChild(el('line',{x1:x1,y1:y1,x2:x2,y2:y2,stroke:col,'stroke-width':state==='on'?4:state==='threat'?2.4:1.4,
+    'stroke-dasharray':state==='threat'?'6 4':'none','stroke-linecap':'round'}));
+  var mx=(x1+x2)/2, my=(y1+y2)/2, right=x2>x1;
+  svg.appendChild(txt(mx+(right?7:-7),my-4,lab,{fill:state==='off'?'var(--ink)':col,'font-size':12.5,'font-style':'italic',
+    'text-anchor':right?'start':'end','font-weight':state==='on'?600:400}));
+}
+function node(svg,x,y,who){
+  svg.appendChild(el('circle',{cx:x,cy:y,r:6,fill:'var(--ink)'}));
+  svg.appendChild(txt(x,y-11,who,{fill:'var(--ink)','font-size':13,'font-weight':600,'text-anchor':'middle'}));
+}
+function leaf(svg,x,y,p,hot){
+  var col = hot ? 'var(--good)' : 'var(--ink)';
+  svg.appendChild(txt(x,y+16,n(p[0]),{fill:col,'font-size':12.5,'text-anchor':'middle','font-family':'var(--mono)','font-weight':hot?600:400}));
+  svg.appendChild(txt(x,y+32,n(p[1]),{fill:col,'font-size':12.5,'text-anchor':'middle','font-family':'var(--mono)','font-weight':hot?600:400}));
+}
+function branch(svg,x0,sub,di,onPath){
+  // entrant node at (x0,120); out leaf left, incumbent node right
+  var xE=x0, yE=120, xO=x0-80, yO=200, xI=x0+70, yI=200, xA=x0+15, xR=x0+125, yL=280;
+  var inOn = sub.enter, actOn = sub.fight ? 'ret' : 'acc';
+  edge(svg,xE,yE,xO,yO,'out',inOn?'off':'on');
+  edge(svg,xE,yE,xI,yI,'in',inOn?'on':'off');
+  edge(svg,xI,yI,xA,yL,'acc',actOn==='acc'?'on':'off');
+  edge(svg,xI,yI,xR,yL,'ret',actOn==='ret'?'on':'threat');
+  node(svg,xE,yE,'E'); node(svg,xI,yI,'I');
+  leaf(svg,xO,yO,[0,S.M],onPath && !inOn);
+  leaf(svg,xA,yL,[S.DE,di],onPath && inOn && actOn==='acc');
+  leaf(svg,xR,yL,[S.FE,S.FI],onPath && inOn && actOn==='ret');
+}
+function drawTree(m){
+  var svg=$('svgT'); svg.textContent='';
+  edge(svg,320,40,160,120,'no bond',m.buy?'off':'on');
+  edge(svg,320,40,480,120,'bond B',m.buy?'on':'off');
+  node(svg,320,40,'I');
+  branch(svg,160,m.nb,S.DI,!m.buy);
+  branch(svg,480,m.wb,S.DI-S.B,m.buy);
+}
+function drawBond(m){
+  var svg=$('svgB'); svg.textContent='';
+  var L=58,R=620,T=18,B=200, bmax=80;
+  var vals=[]; for(var b=0;b<=bmax;b++){ vals.push(postEntry(S,S.DI-b).pay[1]); }
+  var lo=Math.min.apply(null,vals.concat([0])), hi=Math.max.apply(null,vals.concat([1]));
+  var pad=Math.max((hi-lo)*0.12,1); lo-=pad; hi+=pad;
+  var X=function(b){ return L+b/bmax*(R-L); }, Y=function(u){ return B-(u-lo)/(hi-lo)*(B-T); };
+  [lo+pad,(lo+hi)/2,hi-pad].forEach(function(u){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(u),y2:Y(u),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(u)+4,String(+u.toFixed(1)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  for(var k=0;k<=8;k++){ svg.appendChild(txt(X(10*k),B+17,String(10*k),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'})); }
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,'bond B',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  var d='';
+  for(var b2=0;b2<=bmax;b2++){ d+=(b2?'L':'M')+X(b2).toFixed(1)+' '+Y(vals[b2]).toFixed(1)+(b2<bmax?' L'+X(b2+1).toFixed(1)+' '+Y(vals[b2]).toFixed(1):''); }
+  svg.appendChild(el('path',{d:d,fill:'none',stroke:'var(--accent)','stroke-width':2.4}));
+  var nb=m.nb.pay[1];
+  svg.appendChild(el('line',{x1:L,x2:R,y1:Y(nb),y2:Y(nb),stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'4 4'}));
+  svg.appendChild(txt(R-4,Y(nb)-6,'without bond: '+n(nb),{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+  if(m.Bstar>=0 && m.Bstar<=bmax){
+    svg.appendChild(el('line',{x1:X(m.Bstar),x2:X(m.Bstar),y1:T,y2:B,stroke:'var(--warn)','stroke-width':1.2,'stroke-dasharray':'3 3'}));
+    svg.appendChild(txt(X(m.Bstar)+5,T+12,'B* = '+n(m.Bstar),{fill:'var(--warn)','font-size':11.5,'font-weight':600}));
+  }
+  svg.appendChild(el('circle',{cx:X(S.B),cy:Y(m.wb.pay[1]),r:6,fill:'var(--good)',stroke:'var(--surface)','stroke-width':1.5}));
+}
+function pathText(sub){ return (sub.enter ? 'in, '+(sub.fight?'retaliate':'accommodate') : 'out')+' → ('+n(sub.pay[0])+', '+n(sub.pay[1])+')'; }
+function render(){
+  KEYS.forEach(function(k){ $('v_'+k).textContent=n(S[k]); });
+  var m=report(S);
+  $('a_v').textContent=(m.value>0?'+':'')+n(m.value);
+  var note;
+  if(m.credibleNoBond){ note='Retaliation already pays more than accommodating ('+n(S.FI)+' > '+n(S.DI)+'), so the threat is credible on its own and <b>a bond adds nothing</b>.'; }
+  else if(m.buy){ note='Without a bond the incumbent&rsquo;s threat is empty, the entrant comes in, and the incumbent gets '+n(m.nb.pay[1])+'. Posting a bond of '+n(S.B)+' makes accommodation worth only '+n(S.DI-S.B)+', so retaliation becomes the incumbent&rsquo;s best reply, the entrant stays out, and the incumbent gets '+n(m.wb.pay[1])+'. <b>Lowering one of its own payoffs raised its equilibrium payoff.</b>'; }
+  else if(!m.credibleBond){ note='A bond of '+n(S.B)+' is too small: accommodating still pays '+n(S.DI-S.B)+' ≥ '+n(S.FI)+'. It needs <b>more than B* = '+n(m.Bstar)+'</b>.'+(m.tieB&&S.B===m.Bstar?' At B = B* the incumbent is indifferent, so there is also an SPE in which it retaliates.':''); }
+  else { note='The bond makes retaliation credible, but the entrant '+(m.wb.enter?'enters anyway because even a price war pays it '+n(S.FE)+' > 0':'would have stayed out anyway')+', so <b>the bond is not worth posting</b>.'; }
+  $('a_note').innerHTML=note;
+  $('t_nb').textContent=pathText(m.nb);
+  $('t_nbu').textContent=m.nb.tieI?'tie: incumbent indifferent':m.nb.tieE?'tie: entrant indifferent':'unique';
+  $('t_wb').textContent=pathText(m.wb);
+  $('t_wbu').textContent=m.wb.tieI?'tie at B = B*: a second SPE retaliates':m.wb.tieE?'tie: entrant indifferent':'unique';
+  $('t_cr').textContent=(m.credibleNoBond?'yes':'no')+' / '+(m.credibleBond?'yes':'no');
+  $('t_bs').textContent=m.Bstar<=0?'none needed':'B > '+n(m.Bstar);
+  $('bridge').innerHTML='The Nash equilibrium (out, retaliate) of the game without a bond uses retaliation as a threat at a node that is never reached. Subgame perfection asks what the incumbent would do <i>if</i> that node were reached: '+
+    (m.credibleNoBond?'it would retaliate, so the threat stands.':'it would accommodate ('+n(S.DI)+' > '+n(S.FI)+'), so the threat is dropped.')+
+    ' Currently B = '+n(S.B)+(m.Bstar>0?(S.B>m.Bstar?', above B* = '+n(m.Bstar)+': the bond binds.':S.B===m.Bstar?', exactly at B* = '+n(m.Bstar)+'.':', below B* = '+n(m.Bstar)+': the bond is too small.'):'.');
+  drawTree(m); drawBond(m);
+}
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('mwg').addEventListener('click',function(){ load(MWG); });
+$('edge').addEventListener('click',function(){ load(Object.assign({},D,{B:10})); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

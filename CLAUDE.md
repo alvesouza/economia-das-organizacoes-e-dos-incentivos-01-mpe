@@ -57,7 +57,7 @@ Rationale and verification commands for each rule: `rules/core.md`
 
 Only the 8 content lectures of the real schedule ([Map/study-guide.md](Map/study-guide.md)).
 Core: Tadelis Ch. 3–13, 15–16; M&R for applications. Formal depth: MWG 7–9, 12.D, 13.
-Out unless a lecture brings it: mechanism design (Tadelis 14, MWG 23), cheap talk, moral hazard. **Never reproduce an exercise statement**: number + page.
+Out unless a lecture brings it: mechanism design (Tadelis 14, MWG 23), cheap talk, moral hazard. **Book exercises in lists, plans and exams are reproduced verbatim** with a source line (`rules/00_estilo_avaliacao.md` §5).
 
 ## Format
 

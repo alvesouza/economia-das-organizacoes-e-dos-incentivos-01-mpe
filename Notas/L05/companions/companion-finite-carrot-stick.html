@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Endgame Reward</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail on the left, answer + tiles + two panels on the right; one column below 840px. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;margin:0 auto;padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  max-width:1120px;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+table.game{min-width:0;width:auto;font-family:var(--mono);font-size:12.5px;margin-top:8px}
+table.game td,table.game th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game theory &middot; Lecture 5 &middot; Finitely repeated games</p>
+  <h1>The Endgame Reward</h1>
+  <p class="lede">Tadelis&rsquo;s stage game has two Nash equilibria: a good one, (R, r), and a bad one, (F, f).
+  Repeat it <i>T</i> times. The players cooperate on (M, m), which is not an equilibrium of the stage game,
+  for as many rounds as they can, then play (R, r) to the end as the reward; anyone who deviates sends play
+  to (F, f) for the rest of the game. Move the horizon, the patience and the payoffs to see how many early
+  rounds of cooperation survive as a subgame-perfect equilibrium.</p>
+  <p class="prov">Tadelis (2013) &sect;10.1, two-stage example and fn. 2, p. 191; Prop. 10.1, p. 192; one-stage deviation principle, Thm 9.1, p. 185 &middot; Gibbons (1992) &sect;2.3.A, Figs. 2.3.3&ndash;2.3.4, pp. 84&ndash;86</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;</span> &middot; discount factor</span><span class="val" id="v_d"></span></div>
+      <p class="doc">Weight on the next round. The reward and the punishment arrive later, so they only bite if &delta; is high enough.</p>
+      <input type="range" id="d" min="0" max="0.99" step="0.01" aria-label="Discount factor delta">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">T</span> &middot; number of rounds</span><span class="val" id="v_T"></span></div>
+      <p class="doc">How many times the stage game is played. T = 2 is the book&rsquo;s example; longer games leave room for longer reward phases.</p>
+      <input type="range" id="T" min="2" max="20" step="1" aria-label="Number of rounds T">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">b</span> &middot; temptation</span><span class="val" id="v_b"></span></div>
+      <p class="doc">Payoff from playing F against m (book: 5). The gain from cheating in a cooperative round is b &minus; 4.</p>
+      <input type="range" id="b" min="4.25" max="8" step="0.25" aria-label="Temptation payoff b">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">r</span> &middot; carrot</span><span class="val" id="v_r"></span></div>
+      <p class="doc">Each player&rsquo;s payoff in the good stage equilibrium (R, r) (book: 3). It is the reward for having cooperated.</p>
+      <input type="range" id="r" min="0.5" max="4" step="0.1" aria-label="Carrot payoff r">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">p</span> &middot; stick</span><span class="val" id="v_p"></span></div>
+      <p class="doc">Each player&rsquo;s payoff in the bad stage equilibrium (F, f) (book: 1). The punishment for a deviation.</p>
+      <input type="range" id="p" min="0.1" max="3" step="0.1" aria-label="Stick payoff p">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 191</button>
+      <button id="ten" class="ghost" type="button">T = 10, &delta; = 0.4</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Rounds of (M, m) in the subgame-perfect equilibrium</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Reward rounds</div><div class="v" id="t_k"></div><div class="u">(R, r) at the end</div></div>
+      <div class="tile"><div class="k">One reward round needs</div><div class="v" id="t_d1"></div><div class="u">(b &minus; 4)/(r &minus; p)</div></div>
+      <div class="tile"><div class="k">Long-game floor</div><div class="v" id="t_dinf"></div><div class="u">(b&minus;4)/(b&minus;4+r&minus;p)</div></div>
+      <div class="tile"><div class="k">Slack, last (M, m) round</div><div class="v" id="t_slack"></div><div class="u">loss &minus; gain</div></div>
+      <div class="tile"><div class="k">PV of the path</div><div class="v" id="t_pv"></div><div class="u">each player</div></div>
+      <div class="tile"><div class="k">PV of (R, r) every round</div><div class="v" id="t_pvr"></div><div class="u">no cooperation</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Round by round</h2>
+          <p class="sub">Bars: what a deviator loses from the next round on, discounted to the round of the deviation. Line: the one-round gain b &minus; 4. Green rounds play (M, m), blue rounds (R, r).</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Continuation loss from deviating in each cooperative round against the one-round gain"></svg>
+        </div>
+        <div>
+          <h2>Patience buys rounds</h2>
+          <p class="sub">Most rounds of (M, m) against &delta;, for the current T and payoffs. The dot is the current &delta;.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Number of cooperative rounds against the discount factor"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The stage game (player 1, player 2)</p>
+  <div class="scroll"><table class="game">
+    <thead><tr><th></th><th>m</th><th>f</th><th>r</th></tr></thead>
+    <tbody>
+      <tr><th>M</th><td>4, 4</td><td>&minus;1, b</td><td>0, 0</td></tr>
+      <tr><th>F</th><td>b, &minus;1</td><td>p, p</td><td>0, 0</td></tr>
+      <tr><th>R</th><td>0, 0</td><td>0, 0</td><td>r, r</td></tr>
+    </tbody>
+  </table></div>
+  <p class="eyebrow" style="margin-top:22px">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Discount factor</td><td>&delta;</td><td>weight on the next round</td><td class="n">0 &ndash; 0.99</td><td class="n">0.01</td><td class="n">0.50</td><td>&mdash;</td><td>Def. 10.1, p. 190</td><td>bar heights; the answer; the dot on the step curve</td></tr>
+      <tr><td>Rounds</td><td>T</td><td>length of the finitely repeated game G(T, &delta;)</td><td class="n">2 &ndash; 20</td><td class="n">1</td><td class="n">2</td><td>rounds</td><td>p. 191 (T = 2)</td><td>number of bars; the step curve&rsquo;s ceiling</td></tr>
+      <tr><td>Temptation</td><td>b</td><td>payoff to F against m</td><td class="n">4.25 &ndash; 8</td><td class="n">0.25</td><td class="n">5</td><td>payoff units</td><td>p. 191</td><td>the gain line; both thresholds</td></tr>
+      <tr><td>Carrot</td><td>r</td><td>payoff in the good equilibrium (R, r)</td><td class="n">0.5 &ndash; 4</td><td class="n">0.1</td><td class="n">3</td><td>payoff units</td><td>p. 191</td><td>bars; thresholds; PVs</td></tr>
+      <tr><td>Stick</td><td>p</td><td>payoff in the bad equilibrium (F, f)</td><td class="n">0.1 &ndash; 3</td><td class="n">0.1</td><td class="n">1</td><td>payoff units</td><td>p. 191</td><td>bars; thresholds</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Strategy profile: play (M, m) in rounds 1&hellip;n and (R, r) in rounds n+1&hellip;T; after any deviation play (F, f) to the end.
+  Rounds with (R, r) or (F, f) prescribe a stage Nash equilibrium, so no one-stage deviation pays there. In a cooperative round t &le; n
+  the deviation F earns b now and p afterwards, so the profile is an SPE iff, for every t &le; n,
+  b &minus; 4 &le; &Sigma;<sub>s=t+1</sub><sup>T</sup> &delta;<sup>s&minus;t</sup>(u<sub>s</sub> &minus; p), with u<sub>s</sub> = 4 for s &le; n and r for s &gt; n
+  (one-stage deviation principle, Thm 9.1, p. 185). The page reports the largest such n. With k reward rounds the last cooperative round needs
+  b &minus; 4 &le; (r &minus; p)&delta;(1 &minus; &delta;<sup>k</sup>)/(1 &minus; &delta;): k = 1 gives &delta; &ge; (b&minus;4)/(r&minus;p), which is Tadelis&rsquo;s
+  &delta; &ge; 1/2 (fn. 2, p. 191); letting k grow gives the floor &delta; &gt; (b&minus;4)/(b&minus;4+r&minus;p) = 1/3, below which no finite game
+  sustains any (M, m). The payoff 4 on (M, m) and the off-diagonal &minus;1 and 0 are fixed at the book&rsquo;s values; the T-round extension with a
+  k-round reward phase is the notes&rsquo; construction, not the book&rsquo;s. If r &le; p the &ldquo;carrot&rdquo; is no better than the stick and
+  nothing beyond stage equilibria survives (Prop. 10.1&rsquo;s logic). This page belongs to the Lecture 5 notes L05-01 and L05-02.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+var A_COOP = 4;
+function lossAt(s, t, n){
+  var L = 0;
+  for(var u=t+1; u<=s.T; u++){ L += Math.pow(s.d, u-t) * ((u<=n ? A_COOP : s.r) - s.p); }
+  return L;
+}
+function report(s){
+  var gain = s.b - A_COOP, best = 0, n, t, ok;
+  for(n=0; n<s.T; n++){
+    ok = true;
+    for(t=1; t<=n; t++){ if(gain > lossAt(s, t, n) + 1e-12){ ok = false; break; } }
+    if(ok) best = n;
+  }
+  var carrot = s.r > s.p;
+  var losses = [];
+  for(t=1; t<=best; t++) losses.push(lossAt(s, t, best));
+  var pv = 0, pvr = 0;
+  for(t=1; t<=s.T; t++){ pv += Math.pow(s.d, t-1) * (t<=best ? A_COOP : s.r); pvr += Math.pow(s.d, t-1) * s.r; }
+  return {n: best, k: s.T - best, gain: gain, carrot: carrot,
+    d1: carrot ? gain/(s.r - s.p) : null,
+    dInf: carrot ? gain/(gain + s.r - s.p) : null,
+    slack: best > 0 ? lossAt(s, best, best) - gain : null,
+    losses: losses, pv: pv, pvr: pvr};
+}
+// MODEL:END
+
+var D = {d:0.5, T:2, b:5, r:3, p:1};
+var TEN = {d:0.4, T:10, b:5, r:3, p:1};
+var KEYS = ['d','T','b','r','p'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return (x<0?'−':'') + Math.abs(x).toFixed(2); };
+var f3 = function(x){ return (x<0?'−':'') + Math.abs(x).toFixed(3); };
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=50,R_=404,T_=16,B=258;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function yaxis(svg,ylo,yhi,ylab){
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T_); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R_,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R_,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  var yl=txt(14,(T_+B)/2,ylab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'});
+  yl.setAttribute('transform','rotate(-90 14 '+((T_+B)/2)+')'); svg.appendChild(yl);
+  return Y;
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var mx=Math.max(m.gain*1.4, 1);
+  m.losses.forEach(function(v){ mx=Math.max(mx,v*1.1); });
+  var Y=yaxis(svg,0,mx,'payoff units');
+  var w=(R_-L)/S.T;
+  for(var t=1;t<=S.T;t++){
+    var x0=L+(t-1)*w, coop=t<=m.n;
+    svg.appendChild(el('rect',{x:x0+1,y:B+6,width:w-2,height:12,fill:coop?'var(--good)':'var(--accent)',opacity:0.85}));
+    if(S.T<=12 || t%2===1){ svg.appendChild(txt(x0+w/2,B+32,String(t),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'})); }
+    if(coop){
+      var v=m.losses[t-1];
+      svg.appendChild(el('rect',{x:x0+w*0.18,y:Y(v),width:w*0.64,height:B-Y(v),fill:'var(--good)','fill-opacity':0.35,stroke:'var(--good)','stroke-width':1}));
+    }
+  }
+  svg.appendChild(el('line',{x1:L,x2:R_,y1:Y(m.gain),y2:Y(m.gain),stroke:'var(--warn)','stroke-width':2.2}));
+  svg.appendChild(txt(R_-4,Y(m.gain)-6,'gain b − 4 = '+m.gain.toFixed(2),{fill:'var(--warn)','font-size':11.5,'font-weight':600,'text-anchor':'end'}));
+  svg.appendChild(txt((L+R_)/2,B+50,'round t   (green: (M, m) · blue: (R, r))',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+}
+
+function drawB(m){
+  var svg=$('svgB'); svg.textContent='';
+  var Y=yaxis(svg,0,S.T,'rounds of (M, m)');
+  var X=function(v){ return L+v/0.99*(R_-L); };
+  [0,0.2,0.4,0.6,0.8].forEach(function(v){ svg.appendChild(txt(X(v),B+17,v.toFixed(1),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'})); });
+  svg.appendChild(txt((L+R_)/2,B+40,'discount factor δ',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  var pts=[], prev=null;
+  for(var i=0;i<=198;i++){
+    var dv=i*0.005, n=report(Object.assign({},S,{d:dv})).n;
+    if(prev!==null && n!==prev) pts.push(X(dv)+','+Y(prev));
+    pts.push(X(dv)+','+Y(n)); prev=n;
+  }
+  svg.appendChild(el('polyline',{points:pts.join(' '),fill:'none',stroke:'var(--accent)','stroke-width':2.4}));
+  if(m.carrot){
+    if(m.d1<0.99){ svg.appendChild(el('line',{x1:X(m.d1),x2:X(m.d1),y1:T_,y2:B,stroke:'var(--good)','stroke-width':1.2,'stroke-dasharray':'4 4'}));
+      svg.appendChild(txt(X(m.d1)+4,T_+28,'one reward round',{fill:'var(--good)','font-size':11}));}
+    if(m.dInf<0.99){ svg.appendChild(el('line',{x1:X(m.dInf),x2:X(m.dInf),y1:T_,y2:B,stroke:'var(--warn)','stroke-width':1.2,'stroke-dasharray':'2 3'}));
+      svg.appendChild(txt(X(m.dInf)-4,T_+12,'floor',{fill:'var(--warn)','font-size':11,'text-anchor':'end'}));}
+  }
+  svg.appendChild(el('circle',{cx:X(S.d),cy:Y(m.n),r:5.5,fill:'var(--hi)',stroke:'var(--surface)','stroke-width':1.5}));
+}
+
+function render(){
+  $('v_d').textContent=S.d.toFixed(2); $('v_T').textContent=String(S.T);
+  $('v_b').textContent=S.b.toFixed(2); $('v_r').textContent=S.r.toFixed(1); $('v_p').textContent=S.p.toFixed(1);
+  var m=report(S);
+  $('a_v').textContent=m.n+' of '+S.T;
+  $('t_k').textContent=String(m.k);
+  $('t_d1').textContent=m.carrot?(m.d1>=1?'impossible':'δ ≥ '+f3(m.d1)):'no carrot';
+  $('t_dinf').textContent=m.carrot?(m.dInf>=1?'—':'δ > '+f3(m.dInf)):'no carrot';
+  $('t_slack').textContent=m.slack===null?'none':f3(m.slack);
+  $('t_pv').textContent=f2(m.pv); $('t_pvr').textContent=f2(m.pvr);
+  var s;
+  if(!m.carrot){
+    s='<b>No carrot:</b> r = '+S.r.toFixed(1)+' is not above p = '+S.p.toFixed(1)+', so switching to (F, f) punishes nobody and every round must be a stage equilibrium.';
+  } else if(m.n===0){
+    s='<b>No round of (M, m) survives.</b> Even rewarding cooperation with (R, r) in every remaining round does not cover the gain of '+m.gain.toFixed(2)+' at &delta; = '+S.d.toFixed(2)+'.';
+  } else {
+    s='Cooperation holds for <b>'+m.n+' round'+(m.n>1?'s':'')+'</b>, followed by '+m.k+' round'+(m.k>1?'s':'')+' of (R, r). The tightest check is the last cooperative round, where the deviator still loses '+f3(m.losses[m.n-1])+' against a gain of '+m.gain.toFixed(2)+'.';
+  }
+  $('a_note').innerHTML=s;
+  $('bridge').innerHTML='Cooperation can only be supported in a finitely repeated game because the stage game has <b>two</b> Nash equilibria: '+
+    'the last rounds must be stage equilibria, and the gap r &minus; p between them is the whole incentive. When the two equilibria pay the same (r = p) there is nothing to promise and nothing but stage play survives, the logic of Prop. 10.1. '+
+    'The early rounds are the safe ones: they have the most future at stake.';
+  drawA(m); drawB(m);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('ten').addEventListener('click',function(){ load(TEN); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

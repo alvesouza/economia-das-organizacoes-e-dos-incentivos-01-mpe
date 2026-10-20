@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cartel Patience Dial</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail left, answer + tiles + two linked panels right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;margin:0 auto;max-width:1120px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:28px 48px;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px;position:relative}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg label{flex:1;display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:5px;padding:6px 9px;font-size:13px;cursor:pointer}
+.seg input{accent-color:var(--accent)}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer.bad{border-left-color:var(--warn)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer.bad .v{color:var(--warn)}
+.answer .note{font-size:13.5px;margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px;min-width:0}
+@media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:72ch}
+.theme{position:absolute;top:0;right:0}
+header .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game theory &middot; Lecture 6 &middot; Repeated games II</p>
+  <h1>The Cartel Patience Dial</h1>
+  <p class="lede">A cartel survives only if each member values the stream of collusive profit more than
+  one period of cheating followed by the punishment. Choose how firms compete, how many there are and how
+  patient they are, and read the critical discount factor, the profits behind it, and what the cartel can
+  still sustain when patience falls short.</p>
+  <p class="prov">Tadelis (2013) &sect;10.4, pp. 201&ndash;203, eq. (10.5); Gibbons (1992) &sect;2.3.C, pp. 102&ndash;104, eq. (2.3.2) and q*(&delta;); Cabral (2017) &sect;9.1, eqs. (9.1)&ndash;(9.4), p. 219, and p. 227; MWG &sect;12.D, Props. 12.D.1&ndash;12.D.2, pp. 401&ndash;403</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm">How firms compete</span></div>
+      <p class="doc">Quantities (Cournot: punishment is Cournot profit) or prices (Bertrand: punishment is zero profit).</p>
+      <div class="seg" role="radiogroup" aria-label="Mode of competition">
+        <label><input type="radio" name="mode" id="m_c" value="cournot"> Cournot</label>
+        <label><input type="radio" name="mode" id="m_b" value="bertrand"> Bertrand</label>
+      </div>
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">n</span> &middot; number of firms</span><span class="val" id="v_n"></span></div>
+      <p class="doc">More firms shrink each share of the monopoly profit while the cheater's prize barely falls.</p>
+      <input type="range" id="n" min="2" max="12" step="1" aria-label="Number of firms">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;</span> &middot; discount factor</span><span class="val" id="v_d"></span></div>
+      <p class="doc">How much next period counts: patience, the chance the market continues, how often prices reset.</p>
+      <input type="range" id="d" min="0" max="0.999" step="0.001" aria-label="Discount factor">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">a</span> &middot; demand intercept</span><span class="val" id="v_a"></span></div>
+      <p class="doc">Inverse demand P = a &minus; Q. Scales every profit; the cutoff does not move.</p>
+      <input type="range" id="a" min="60" max="200" step="1" aria-label="Demand intercept a">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c</span> &middot; marginal cost</span><span class="val" id="v_c"></span></div>
+      <p class="doc">Constant unit cost, the same for every firm. Sets the price floor and the margin a &minus; c.</p>
+      <input type="range" id="c" min="0" max="50" step="1" aria-label="Marginal cost c">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 201</button>
+      <button id="snap" class="ghost" type="button">Snap &delta; to &delta;*</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer" id="ans">
+      <div class="k">Critical discount factor &delta;*</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Collusive share</div><div class="v" id="t_sh"></div><div class="u">profit per firm per period</div></div>
+      <div class="tile"><div class="k">Best deviation</div><div class="v" id="t_dv"></div><div class="u" id="t_dvq"></div></div>
+      <div class="tile"><div class="k">Punishment</div><div class="v" id="t_pn"></div><div class="u" id="t_pnu"></div></div>
+      <div class="tile"><div class="k">Monopoly price</div><div class="v" id="t_pm"></div><div class="u">(a + c)/2</div></div>
+      <div class="tile"><div class="k">Sustained price</div><div class="v" id="t_ps"></div><div class="u" id="t_psu"></div></div>
+      <div class="tile"><div class="k">Conform &minus; deviate</div><div class="v" id="t_gap"></div><div class="u" id="t_gapu"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Cutoff by number of firms</h2>
+          <p class="sub">&delta;* for both modes; the dashed line is your &delta;. Points above it cannot collude.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Critical discount factor against number of firms for Bertrand and Cournot"></svg>
+        </div>
+        <div>
+          <h2>Conform or deviate</h2>
+          <p class="sub">Average payoff per period against &delta;: the flat share, the falling deviation line, and the best profit the cartel can sustain.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Average payoff of conforming and deviating against the discount factor"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Mode</td><td>&mdash;</td><td>Cournot (quantities) or Bertrand (prices) stage game</td><td class="n">2 options</td><td class="n">&mdash;</td><td>Cournot</td><td>&mdash;</td><td>Tadelis &sect;10.4; Cabral &sect;9.1</td><td>&delta;*, every profit, panel B</td></tr>
+      <tr><td>Firms</td><td>n</td><td>number of symmetric firms</td><td class="n">2 &ndash; 12</td><td class="n">1</td><td class="n">2</td><td>firms</td><td>Tadelis p. 201; Cabral p. 227</td><td>&delta;*, shares, highlighted point in A</td></tr>
+      <tr><td>Discount factor</td><td>&delta;</td><td>weight on next period</td><td class="n">0 &ndash; 0.999</td><td class="n">0.001</td><td class="n">0.500</td><td>&mdash;</td><td>Gibbons p. 104 (&delta; = 1/2)</td><td>verdict, sustained output and price, markers</td></tr>
+      <tr><td>Intercept</td><td>a</td><td>P = a &minus; Q</td><td class="n">60 &ndash; 200</td><td class="n">1</td><td class="n">100</td><td>money / unit</td><td>Tadelis p. 201</td><td>profit levels, prices</td></tr>
+      <tr><td>Marginal cost</td><td>c</td><td>constant unit cost</td><td class="n">0 &ndash; 50</td><td class="n">1</td><td class="n">10</td><td>money / unit</td><td>Tadelis p. 201</td><td>profit levels, prices</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions, with A = a &minus; c. <b>Cournot:</b> collusive share A&sup2;/(4n); best deviation q<sub>d</sub> = (n+1)A/(4n), profit q<sub>d</sub>&sup2;;
+  punishment A&sup2;/(n+1)&sup2;; &delta;* = (n+1)&sup2;/(n&sup2;+6n+1) (9/17 for n = 2, Gibbons p. 103); below &delta;* the most collusive symmetric output is the smaller root of
+  (a &minus; nq &minus; c)q = (1&minus;&delta;)(A &minus; (n&minus;1)q)&sup2;/4 + &delta;A&sup2;/(n+1)&sup2;, which for n = 2 is Gibbons's q* = (9&minus;5&delta;)A/(3(9&minus;&delta;)) (p. 104).
+  <b>Bertrand:</b> share A&sup2;/(4n), deviation takes the whole monopoly profit A&sup2;/4 (Cabral (9.3)), punishment 0; &delta;* = 1 &minus; 1/n; below it every SPE prices at cost (MWG Prop. 12.D.2).
+  Both: &delta;* = (v<sup>d</sup> &minus; v<sup>c</sup>)/(v<sup>d</sup> &minus; v<sup>p</sup>), Tadelis (10.5). Defaults are Tadelis's market (p = 100 &minus; q, c = 10) at Gibbons's &delta; = 1/2:
+  &delta;* = 0.529, q* = 22.94 per firm, price 54.12. Tadelis's own 22/23 split is asymmetric and is worked in note L06-02, not on this page.
+  Notes behind the page: L06-02 (Cournot), L06-03 (Bertrand and n).</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+function report(s){
+  var A = s.a - s.c, n = s.n, d = s.d, pm = (s.a + s.c)/2, piM = A*A/4, share = piM/n;
+  var r = {mode:s.mode, share:share, pm:pm};
+  if(s.mode === 'cournot'){
+    var qd = (n+1)*A/(4*n), qN = A/(n+1);
+    r.qd = qd; r.dev = qd*qd; r.pun = qN*qN; r.qN = qN;
+    r.dstar = (n+1)*(n+1)/(n*n + 6*n + 1);
+    var c2 = -n - (1-d)*(n-1)*(n-1)/4, c0 = -(1-d)*A*A/4 - d*r.pun;
+    r.qsus = Math.max(A/(2*n), (c0/c2)/qN);
+    r.psus = s.a - n*r.qsus;
+    r.pisus = (r.psus - s.c)*r.qsus;
+  } else {
+    r.qd = null; r.dev = piM; r.pun = 0;
+    r.dstar = 1 - 1/n;
+    var ok = d >= r.dstar - 1e-12;
+    r.qsus = null; r.psus = ok ? pm : s.c; r.pisus = ok ? share : 0;
+  }
+  r.sustainable = d >= r.dstar - 1e-12;
+  r.devAvg = (1-d)*r.dev + d*r.pun;
+  r.gap = r.share - r.devAvg;
+  return r;
+}
+function dstarOf(mode, n){ return mode === 'cournot' ? (n+1)*(n+1)/(n*n+6*n+1) : 1 - 1/n; }
+// MODEL:END
+
+var D = {mode:'cournot', n:2, d:0.5, a:100, c:10};
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return (x<0?'−':'') + Math.abs(x).toFixed(2); };
+var NS = 'http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=54,R=404,T=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xlo,xhi,ylo,yhi,xlab,xt,yfmt){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,yfmt(v),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  xt.forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+function poly(svg,pts,col,w,dash){
+  var a={points:pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' '),fill:'none',stroke:col,'stroke-width':w};
+  if(dash){ a['stroke-dasharray']=dash; }
+  svg.appendChild(el('polyline',a));
+}
+function dot(svg,x,y,col,r,hollow){ svg.appendChild(el('circle',{cx:x,cy:y,r:r,fill:hollow?'var(--surface)':col,stroke:col,'stroke-width':2})); }
+
+function drawA(r){
+  var svg=$('svgA'); svg.textContent='';
+  var ns=[2,3,4,5,6,7,8,9,10,11,12];
+  var f=frame(svg,1.5,12.5,0.4,1,'number of firms n',ns,function(v){return v.toFixed(1);});
+  [['bertrand','var(--accent)'],['cournot','var(--hi)']].forEach(function(m){
+    var pts=ns.map(function(n){ return [f.X(n),f.Y(dstarOf(m[0],n))]; });
+    poly(svg,pts,m[1],m[0]===S.mode?2.6:1.4);
+    pts.forEach(function(p,i){ dot(svg,p[0],p[1],m[1],ns[i]===S.n&&m[0]===S.mode?6:3,false); });
+  });
+  var yd=f.Y(Math.max(0.4,Math.min(1,S.d)));
+  svg.appendChild(el('line',{x1:L,x2:R,y1:yd,y2:yd,stroke:r.sustainable?'var(--good)':'var(--warn)','stroke-width':1.6,'stroke-dasharray':'5 4'}));
+  svg.appendChild(txt(R-4,yd-6,S.d<0.4?'δ = '+S.d.toFixed(3)+' (below frame)':'your δ = '+S.d.toFixed(3),{fill:r.sustainable?'var(--good)':'var(--warn)','font-size':11,'text-anchor':'end','font-weight':600}));
+  svg.appendChild(txt(L+6,T+12,'Bertrand 1 − 1/n',{fill:'var(--accent)','font-size':11,'font-weight':600}));
+  svg.appendChild(txt(L+6,T+27,'Cournot (n+1)²/(n²+6n+1)',{fill:'var(--hi)','font-size':11,'font-weight':600}));
+}
+
+function drawB(r){
+  var svg=$('svgB'); svg.textContent='';
+  var yhi=r.dev*1.08, ylo=Math.max(0,r.pun-(r.dev-r.pun)*0.15);
+  if(S.mode==='bertrand'){ ylo=0; }
+  var f=frame(svg,0,1,ylo,yhi,'discount factor δ',[0,0.2,0.4,0.6,0.8,1],function(v){return String(+v.toFixed(2));});
+  var grid=[]; for(var i=0;i<=200;i++){ grid.push(i/200); }
+  poly(svg,[[f.X(0),f.Y(r.share)],[f.X(1),f.Y(r.share)]],'var(--accent)',2.4);
+  poly(svg,[[f.X(0),f.Y(r.dev)],[f.X(1),f.Y(r.pun)]],'var(--warn)',1.8,'6 4');
+  var sus=grid.map(function(dd){ var q=report(Object.assign({},S,{d:dd})); return [f.X(dd),f.Y(q.pisus)]; });
+  poly(svg,sus,'var(--good)',2);
+  svg.appendChild(el('line',{x1:f.X(r.dstar),x2:f.X(r.dstar),y1:T,y2:B,stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'2 3'}));
+  dot(svg,f.X(r.dstar),f.Y(r.share),'var(--good)',5,false);
+  svg.appendChild(txt(f.X(r.dstar)+6,f.Y(r.share)-8,'δ* = '+r.dstar.toFixed(3),{fill:'var(--good)','font-size':11.5,'font-weight':600}));
+  dot(svg,f.X(S.d),f.Y(r.pisus),'var(--hi)',5,true);
+  svg.appendChild(txt(R-4,f.Y(r.share)+15,'collusive share',{fill:'var(--accent)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(L+6,f.Y(r.dev)+14,'deviate: (1−δ)vᵈ + δvᵖ',{fill:'var(--warn)','font-size':11}));
+  svg.appendChild(txt(L+6,B-8,'best sustained profit',{fill:'var(--good)','font-size':11}));
+}
+
+function render(){
+  $('v_n').textContent=S.n; $('v_d').textContent=S.d.toFixed(3);
+  $('v_a').textContent=S.a; $('v_c').textContent=S.c;
+  $('m_c').checked=S.mode==='cournot'; $('m_b').checked=S.mode==='bertrand';
+  var r=report(S);
+  $('a_v').textContent=r.dstar.toFixed(3);
+  $('ans').className='answer'+(r.sustainable?'':' bad');
+  var note;
+  if(r.sustainable){
+    note='At δ = '+S.d.toFixed(3)+' the monopoly split <b style="color:var(--good)">is sustainable</b>: each firm earns '+f2(r.share)+' a period at the monopoly price '+f2(r.pm)+'.';
+  } else if(S.mode==='cournot'){
+    note='At δ = '+S.d.toFixed(3)+' the monopoly split <b>is not sustainable</b>. Grim trigger still supports '+f2(r.qsus)+' per firm (Cournot '+f2(r.qN)+'), price '+f2(r.psus)+', profit '+f2(r.pisus)+' per firm.';
+  } else {
+    note='At δ = '+S.d.toFixed(3)+' <b>no price above cost is sustainable</b>: in Bertrand the condition does not depend on the price, so the cartel has no partial fallback and prices at c = '+S.c+'.';
+  }
+  $('a_note').innerHTML=note;
+  $('t_sh').textContent=f2(r.share);
+  $('t_dv').textContent=f2(r.dev);
+  $('t_dvq').textContent=S.mode==='cournot'?'q_d = '+f2(r.qd)+', one period':'undercut, take the market';
+  $('t_pn').textContent=f2(r.pun);
+  $('t_pnu').textContent=S.mode==='cournot'?'Cournot profit forever':'price = cost forever';
+  $('t_pm').textContent=f2(r.pm);
+  $('t_ps').textContent=f2(r.psus);
+  $('t_psu').textContent=r.sustainable?'monopoly price':(S.mode==='cournot'?'partial collusion':'competitive');
+  $('t_gap').textContent=(r.gap>=0?'+':'')+f2(r.gap);
+  $('t_gapu').textContent=Math.abs(r.gap)<1e-9?'indifferent: at the cutoff':(r.gap>0?'conforming pays':'deviating pays');
+  drawA(r); drawB(r);
+}
+function load(P){ Object.assign(S,P); ['n','d','a','c'].forEach(function(k){ $(k).value=S[k]; }); render(); }
+['n','d','a','c'].forEach(function(k){
+  $(k).value=D[k];
+  $(k).addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+[$('m_c'),$('m_b')].forEach(function(x){ x.addEventListener('change',function(e){ S.mode=e.target.value; render(); }); });
+$('reset').addEventListener('click',function(){ load(D); });
+$('snap').addEventListener('click',function(){ S.d=dstarOf(S.mode,S.n); $('d').value=S.d; render(); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

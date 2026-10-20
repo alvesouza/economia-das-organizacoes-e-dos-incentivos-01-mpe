@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Education Signal</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding:0 16px;padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.grp{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 -6px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Economics of Organizations &middot; Lecture 8 (estimated) &middot; Signaling</p>
+  <h1>The Education Signal</h1>
+  <p class="lede">Two kinds of worker, one observable choice. Education adds nothing to output here; it
+  works as a signal only because it costs the low type more per unit. Move the productivities, the prior
+  and the two cost rates, and watch how much education the high type must burn to be believed, which
+  pooling outcomes survive, and whether the high type is better off for being able to signal at all.</p>
+  <p class="prov">Milgrom &amp; Roberts (1992) Ch. 5, &ldquo;Signaling&rdquo;, pp. 154&ndash;156 (the $50/$20, 30%, $10/$20 example);
+  Gibbons (1992) &sect;4.2.B, pp. 190&ndash;205; MWG &sect;13.C, pp. 450&ndash;459, Fig. 13.C.8; Tadelis (2013) &sect;16.3, pp. 332&ndash;335. Belongs to Notas/L08 (estimated before the lecture).</p>
+</header>
+
+<main>
+  <div class="rail">
+    <p class="grp">Types</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&theta;<sub>L</sub></span> &middot; low productivity</span><span class="val" id="v_tL"></span></div>
+      <p class="doc">Output of a low-ability worker; the wage anyone gets when believed to be low.</p>
+      <input type="range" id="tL" min="0" max="28" step="1" aria-label="Low productivity, dollars per hour">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&theta;<sub>H</sub></span> &middot; high productivity</span><span class="val" id="v_tH"></span></div>
+      <p class="doc">Output of a high-ability worker; the gap &theta;<sub>H</sub> &minus; &theta;<sub>L</sub> is the prize for being believed.</p>
+      <input type="range" id="tH" min="30" max="100" step="1" aria-label="High productivity, dollars per hour">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">p</span> &middot; prior share of high types</span><span class="val" id="v_p"></span></div>
+      <p class="doc">Pr{&theta; = &theta;<sub>H</sub>}. It sets the pooled wage; it does not move the separating outcome.</p>
+      <input type="range" id="p" min="0.01" max="0.99" step="0.01" aria-label="Prior probability of the high type">
+    </div>
+    <p class="grp">Cost of education</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>L</sub></span> &middot; low type&rsquo;s cost per unit</span><span class="val" id="v_cL"></span></div>
+      <p class="doc">How much a unit of education hurts a low type. Higher c<sub>L</sub> makes mimicry dearer, so less signal is needed.</p>
+      <input type="range" id="cL" min="1" max="40" step="1" aria-label="Low type's cost per unit of education">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>H</sub></span> &middot; high type&rsquo;s cost per unit</span><span class="val" id="v_cH"></span></div>
+      <p class="doc">How much a unit hurts a high type. Signaling needs c<sub>H</sub> &lt; c<sub>L</sub> (single crossing); at or above c<sub>L</sub> nothing separates.</p>
+      <input type="range" id="cH" min="1" max="40" step="1" aria-label="High type's cost per unit of education">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to M&amp;R p. 155</button>
+      <button id="land" class="ghost" type="button">Landmark: p = p*</button>
+      <button id="flat" class="ghost" type="button">Landmark: c<sub>H</sub> = c<sub>L</sub></button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Least-cost separating education for the high type</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Separating e<sub>H</sub></div><div class="v" id="t_sep"></div><div class="u">[(&theta;<sub>H</sub>&minus;&theta;<sub>L</sub>)/c<sub>L</sub>, (&theta;<sub>H</sub>&minus;&theta;<sub>L</sub>)/c<sub>H</sub>]</div></div>
+      <div class="tile"><div class="k">Pooled wage</div><div class="v" id="t_wbar"></div><div class="u">p&theta;<sub>H</sub> + (1&minus;p)&theta;<sub>L</sub>, $/hour</div></div>
+      <div class="tile"><div class="k">Pooling e<sub>p</sub> up to</div><div class="v" id="t_ep"></div><div class="u">units, off-path belief &ldquo;low&rdquo;</div></div>
+      <div class="tile"><div class="k">H nets, signaling</div><div class="v" id="t_hl"></div><div class="u">&theta;<sub>H</sub> &minus; c<sub>H</sub>e*, $/hour</div></div>
+      <div class="tile"><div class="k">H gain vs no signal</div><div class="v" id="t_hg"></div><div class="u">against the pooled wage</div></div>
+      <div class="tile"><div class="k">Burned per worker</div><div class="v" id="t_burn"></div><div class="u">p&middot;c<sub>H</sub>&middot;e*, $/hour</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Wage against education</h2>
+          <p class="sub">Each type&rsquo;s indifference line through (0, &theta;<sub>L</sub>). Where they cross &theta;<sub>H</sub> bounds the separating set; the pooled wage bounds pooling.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Education-wage plane with the two indifference lines, the separating interval and the pooling interval"></svg>
+        </div>
+        <div>
+          <h2>Who gains, against the prior</h2>
+          <p class="sub">Net pay under least-cost separation (flat in p) and with no signal at all (the pooled wage).</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="High and low types' net pay under separation and under pooling as the prior varies"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="crit"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Low productivity</td><td>&theta;<sub>L</sub></td><td>output and wage of a known low type</td><td class="n">0 &ndash; 28</td><td class="n">1</td><td class="n">20</td><td>$ / hour</td><td>M&amp;R p. 155</td><td>both indifference lines&rsquo; intercept; every interval</td></tr>
+      <tr><td>High productivity</td><td>&theta;<sub>H</sub></td><td>output and wage of a known high type</td><td class="n">30 &ndash; 100</td><td class="n">1</td><td class="n">50</td><td>$ / hour</td><td>M&amp;R p. 155</td><td>the &theta;<sub>H</sub> line; the separating interval; the pooled wage</td></tr>
+      <tr><td>Prior</td><td>p</td><td>Pr{high type} (MWG&rsquo;s &lambda;, Gibbons&rsquo;s q)</td><td class="n">0.01 &ndash; 0.99</td><td class="n">0.01</td><td class="n">0.30</td><td>&mdash;</td><td>M&amp;R p. 155 (&ldquo;30 percent&rdquo;)</td><td>pooled wage; pooling interval; the marker in the right panel</td></tr>
+      <tr><td>Low type&rsquo;s cost</td><td>c<sub>L</sub></td><td>cost of one unit of education to a low type</td><td class="n">1 &ndash; 40</td><td class="n">1</td><td class="n">20</td><td>$ / hour per unit</td><td>M&amp;R p. 156</td><td>L&rsquo;s line slope; lower separating bound e* ; p*</td></tr>
+      <tr><td>High type&rsquo;s cost</td><td>c<sub>H</sub></td><td>cost of one unit of education to a high type</td><td class="n">1 &ndash; 40</td><td class="n">1</td><td class="n">10</td><td>$ / hour per unit</td><td>M&amp;R p. 156</td><td>H&rsquo;s line slope; upper separating bound; H&rsquo;s net pay; p*</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Model (M&amp;R pp. 155&ndash;156; Gibbons &sect;4.2.B with y(&theta;, e) = &theta; and c(&theta;, e) = c<sub>&theta;</sub>e): competitive firms pay expected productivity,
+  w(e) = &mu;(e)&theta;<sub>H</sub> + (1 &minus; &mu;(e))&theta;<sub>L</sub> (Gibbons 4.2.1). Separating: L chooses 0 (MWG Lemma 13.C.2); H&rsquo;s e<sub>H</sub> must satisfy
+  &theta;<sub>L</sub> &ge; &theta;<sub>H</sub> &minus; c<sub>L</sub>e<sub>H</sub> (L will not mimic) and &theta;<sub>H</sub> &minus; c<sub>H</sub>e<sub>H</sub> &ge; &theta;<sub>L</sub> (H prefers to signal), so
+  e<sub>H</sub> &isin; [(&theta;<sub>H</sub>&minus;&theta;<sub>L</sub>)/c<sub>L</sub>, (&theta;<sub>H</sub>&minus;&theta;<sub>L</sub>)/c<sub>H</sub>]. Pooling at e<sub>p</sub> with the belief &ldquo;any other e means low&rdquo; needs
+  w&#772; &minus; c<sub>t</sub>e<sub>p</sub> &ge; &theta;<sub>L</sub> for both types: e<sub>p</sub> &le; p(&theta;<sub>H</sub>&minus;&theta;<sub>L</sub>)/max(c<sub>H</sub>, c<sub>L</sub>). H prefers the separating world to no signal at all iff
+  p &lt; p* = 1 &minus; c<sub>H</sub>/c<sub>L</sub> (MWG Fig. 13.C.8, p. 456). The intuitive criterion (Tadelis Def. 16.1, p. 333; Gibbons Signaling Requirement 6, p. 239) keeps only the
+  least-cost separating outcome when c<sub>H</sub> &lt; c<sub>L</sub>. The cost is linear (M&amp;R&rsquo;s per-unit costs), so indifference curves are straight lines; the plan&rsquo;s c = e/&theta; is the special case
+  c<sub>&theta;</sub> = 1/&theta;. Defaults reproduce M&amp;R: separating e<sub>H</sub> &isin; [1.5, 3] (&ldquo;E<sub>H</sub> a little bit more than 1.5&rdquo;), pooled wage $29,
+  H nets $35 &gt; $29. Landmarks: p* is exactly reachable at the defaults (0.50); c<sub>H</sub> = c<sub>L</sub> is reachable for every c<sub>L</sub>. All values are closed form; nothing is numerical.</p>
+</footer>
+
+<script>
+var D = {tL:20, tH:50, p:0.30, cL:20, cH:10};
+var KEYS = ['tL','tH','p','cL','cH'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return x.toFixed(2); };
+var money = function(x){ return (x<0?'−$':'$') + Math.abs(x).toFixed(2); };
+
+// MODEL:BEGIN
+// Two-type Spence model with unproductive education and linear cost c_t * e (M&R pp. 155-156).
+function model(s){
+  var d = s.tH - s.tL;                       // prize for being believed high
+  var sc = s.cH < s.cL;                      // strict single crossing
+  var lo = d / s.cL, hi = d / s.cH;          // L will not mimic above lo; H still signals below hi
+  var wbar = s.p * s.tH + (1 - s.p) * s.tL;  // pooled wage, Gibbons (4.2.2)
+  var epMax = s.p * d / Math.max(s.cH, s.cL);
+  var r = {d:d, sc:sc, knife:s.cH === s.cL, wbar:wbar, epMax:epMax, Lloss:wbar - s.tL,
+           sepLo:null, sepHi:null, eStar:null, Hlcs:null, Hgain:null, pStar:null, burned:null, side:null};
+  if (sc) {
+    r.sepLo = lo; r.sepHi = hi; r.eStar = lo;
+    r.Hlcs = s.tH - s.cH * lo;
+    r.Hgain = r.Hlcs - wbar;                 // H's least-cost separating pay minus the no-signal wage
+    r.pStar = 1 - s.cH / s.cL;
+    r.burned = s.p * s.cH * lo;              // expected education cost per worker (L spends nothing)
+    r.side = Math.abs(s.p - r.pStar) < 1e-9 ? 'at' : (s.p < r.pStar ? 'below' : 'above');
+  }
+  return r;
+}
+// MODEL:END
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xlo,xhi,ylo,yhi,xlab,xfmt,yfmt){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,yfmt(v),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  ticks(xlo,xhi).forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,xfmt(v),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(el('line',{x1:L,x2:L,y1:T,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+function dot(svg,x,y,col,lab,dx,dy,hollow){
+  svg.appendChild(el('circle',{cx:x,cy:y,r:hollow?4.5:5,fill:hollow?'var(--surface)':col,stroke:col,'stroke-width':2}));
+  if(lab){ svg.appendChild(txt(x+dx,y+dy,lab,{fill:col,'font-size':11.5,'font-weight':600,'text-anchor':dx<0?'end':'start'})); }
+}
+function hline(svg,f,x0,x1,y,col,dash,w){
+  svg.appendChild(el('line',{x1:f.X(x0),x2:f.X(x1),y1:f.Y(y),y2:f.Y(y),stroke:col,'stroke-width':w||1.2,'stroke-dasharray':dash||''}));
+}
+function band(svg,f,x0,x1,y,col){
+  svg.appendChild(el('line',{x1:f.X(x0),x2:f.X(x1),y1:f.Y(y),y2:f.Y(y),stroke:col,'stroke-width':8,'stroke-opacity':.5}));
+}
+// a straight line w = a + b e, clipped to the frame
+function ray(svg,f,a,b,xhi,yhi,col){
+  var xe = b>0 ? Math.min(xhi,(yhi-a)/b) : xhi;
+  svg.appendChild(el('line',{x1:f.X(0),y1:f.Y(a),x2:f.X(xe),y2:f.Y(a+b*xe),stroke:col,'stroke-width':2.2}));
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var core = m.sc ? Math.max(m.sepLo*2.2, m.epMax*1.6) : Math.max(m.d/S.cL*1.6, m.epMax*1.6);
+  var xhi = Math.max(0.5, core);
+  var yhi = Math.ceil(S.tH*1.15/10)*10, ylo = 0;
+  var f=frame(svg,0,xhi,ylo,yhi,'education e, units',function(v){return String(+v.toFixed(2));},function(v){return '$'+v;});
+  hline(svg,f,0,xhi,S.tH,'var(--muted)','3 3');
+  hline(svg,f,0,xhi,S.tL,'var(--muted)','3 3');
+  hline(svg,f,0,xhi,m.wbar,'var(--hi)','2 3');
+  svg.appendChild(txt(R,f.Y(S.tH)-5,'θH',{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(R,f.Y(S.tL)-5,'θL',{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(R,f.Y(m.wbar)-5,'pooled w̄',{fill:'var(--hi)','font-size':11,'text-anchor':'end'}));
+  ray(svg,f,S.tL,S.cL,xhi,yhi,'var(--warn)');
+  ray(svg,f,S.tL,S.cH,xhi,yhi,'var(--accent)');
+  band(svg,f,0,Math.min(m.epMax,xhi),m.wbar,'var(--hi)');
+  if(m.sc){
+    band(svg,f,m.sepLo,Math.min(m.sepHi,xhi),S.tH,'var(--good)');
+    if(m.sepHi>xhi){ svg.appendChild(txt(R-4,f.Y(S.tH)+16,'→ up to '+f2(m.sepHi),{fill:'var(--good)','font-size':11,'text-anchor':'end'})); }
+    dot(svg,f.X(m.sepLo),f.Y(S.tH),'var(--good)','e* = '+f2(m.sepLo),8,-9);
+  }
+  dot(svg,f.X(0),f.Y(S.tL),'var(--warn)','',0,0);
+  svg.appendChild(txt(f.X(xhi*0.03),T+12,'L: w = θL + cL·e',{fill:'var(--warn)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(txt(f.X(xhi*0.03),T+28,'H: w = θL + cH·e',{fill:'var(--accent)','font-size':11.5,'font-weight':600}));
+}
+
+function drawB(m){
+  var svg=$('svgB'); svg.textContent='';
+  var ylo = Math.max(0, Math.floor((S.tL-5)/10)*10), yhi = Math.ceil((S.tH+5)/10)*10;
+  var f=frame(svg,0,1,ylo,yhi,'prior p = Pr{high}',function(v){return String(+v.toFixed(2));},function(v){return '$'+v;});
+  svg.appendChild(el('line',{x1:f.X(0),y1:f.Y(S.tL),x2:f.X(1),y2:f.Y(S.tH),stroke:'var(--accent)','stroke-width':2.2}));
+  hline(svg,f,0,1,S.tL,'var(--warn)','',2.2);
+  svg.appendChild(txt(f.X(0.98),f.Y(S.tL)+15,'L, separating',{fill:'var(--warn)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(f.X(0.62),f.Y(S.tL+0.62*m.d)-8,'no signal: w̄(p)',{fill:'var(--accent)','font-size':11,'text-anchor':'end'}));
+  if(m.sc){
+    hline(svg,f,0,1,m.Hlcs,'var(--good)','',2.2);
+    svg.appendChild(txt(f.X(0.02),f.Y(m.Hlcs)-6,'H, least-cost separating',{fill:'var(--good)','font-size':11}));
+    svg.appendChild(el('line',{x1:f.X(m.pStar),x2:f.X(m.pStar),y1:T,y2:B,stroke:'var(--hi)','stroke-width':1.2,'stroke-dasharray':'4 3'}));
+    svg.appendChild(txt(f.X(m.pStar)+4,B-6,'p* = '+f2(m.pStar),{fill:'var(--hi)','font-size':11}));
+  }
+  dot(svg,f.X(S.p),f.Y(m.wbar),'var(--accent)','',0,0);
+}
+
+function render(){
+  $('v_tL').textContent='$'+S.tL;
+  $('v_tH').textContent='$'+S.tH;
+  $('v_p').textContent=f2(S.p);
+  $('v_cL').textContent='$'+S.cL;
+  $('v_cH').textContent='$'+S.cH;
+  var m=model(S);
+  if(m.sc){
+    $('a_v').textContent='e* = '+f2(m.eStar);
+    var side = m.side==='below' ? 'The high type is <b>better off</b> than with no signal at all (p below p* = '+f2(m.pStar)+').'
+             : m.side==='above' ? 'Yet the high type is <b>worse off</b> than with no signal at all: p is above p* = '+f2(m.pStar)+', so the pooled wage beats what is left after paying for the signal.'
+             : 'The high type is <b>exactly indifferent</b> between signaling and a world with no signal (p = p*).';
+    $('a_note').innerHTML='The low type stops mimicking once education costs him the whole prize: c<sub>L</sub>e = &theta;<sub>H</sub> &minus; &theta;<sub>L</sub> = $'+m.d+
+      '. The high type then nets '+money(m.Hlcs)+' against a pooled wage of '+money(m.wbar)+'. '+side;
+    $('t_sep').textContent='['+f2(m.sepLo)+', '+f2(m.sepHi)+']';
+    $('t_hl').textContent=money(m.Hlcs);
+    $('t_hg').textContent=(m.Hgain>=0?'+':'−')+'$'+Math.abs(m.Hgain).toFixed(2);
+    $('t_burn').textContent=money(m.burned);
+    $('crit').innerHTML='<b>Intuitive criterion:</b> only the least-cost separating outcome e<sub>H</sub> = '+f2(m.eStar)+' survives. Any e<sub>H</sub> above it is broken by a deviation into ('+f2(m.eStar)+', e<sub>H</sub>), which the low type would not take even at wage &theta;<sub>H</sub>; every pooling outcome is broken the same way (Tadelis p. 334; Gibbons pp. 239&ndash;244).';
+  } else {
+    $('a_v').textContent='none';
+    $('a_note').innerHTML=(m.knife ? 'With c<sub>H</sub> = c<sub>L</sub> the two indifference lines coincide: <b>single crossing fails</b>, and separation survives only as a knife-edge at e = '+f2(m.d/S.cL)+' where both types are exactly indifferent.'
+      : 'With c<sub>H</sub> &gt; c<sub>L</sub> education is <b>cheaper for the low type</b>: any e the high type would buy to be believed, the low type buys too. No separating equilibrium exists.')+
+      ' Only pooling remains, at e<sub>p</sub> up to '+f2(m.epMax)+'.';
+    $('t_sep').textContent='—';
+    $('t_hl').textContent='—';
+    $('t_hg').textContent='—';
+    $('t_burn').textContent='—';
+    $('crit').innerHTML='<b>Single crossing fails</b> (c<sub>H</sub> &ge; c<sub>L</sub>): the signal has nothing to sort on. M&amp;R p. 156: &ldquo;If C<sub>H</sub> &le; C<sub>L</sub>, these inequalities cannot both be satisfied.&rdquo;';
+  }
+  $('t_wbar').textContent=money(m.wbar);
+  $('t_ep').textContent='[0, '+f2(m.epMax)+']';
+  drawA(m); drawB(m);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k);
+  inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('land').addEventListener('click',function(){ if(S.cH<S.cL){ load({p:Math.round((1-S.cH/S.cL)*100)/100}); } });
+$('flat').addEventListener('click',function(){ load({cH:S.cL}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

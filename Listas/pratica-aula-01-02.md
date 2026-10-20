@@ -5,8 +5,8 @@ date: 2026-10-13
 
 # Practice plan — Aula 1 (Does Organization Matter?) + Aula 2 (Bargaining)
 
-30 existing book exercises, cited by number and page only, worked in one sequence of rising
-complexity: **12 for Aula 1** (the book items of [[Listas/pratica-aula-01|the Aula 1 plan]]) and
+30 existing book exercises, each reproduced verbatim under its tier table (transcribed from the
+PDF page images on 2026-10-20), worked in one sequence of rising complexity: **12 for Aula 1** (the book items of [[Listas/pratica-aula-01|the Aula 1 plan]]) and
 **18 for Bargaining**. Sources: Milgrom & Roberts (1992), Cabral (2017), Varian (2014, with
 Calculus), MWG (1995). No answers in M&R, Cabral or MWG; Varian's are in its Answers appendix.
 Topics: [[rules/01_organizacoes_importam|Topic 1]] · [[rules/02_barganha|Topic 2]] · index:
@@ -58,6 +58,79 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | 9 | B1 | Cabral | §5.1 | 5.1 Front yards | 117 | A two-sided externality; whether neighbours can bargain to the efficient level |
 | 10 | B2 | Cabral | §7.2 | 7.6 Hernan Cortez | 180 | Commitment: removing your own options to change the other side's choice |
 
+### Statements
+
+#### 1. M&R FFT 1.1
+
+<!-- id: M&R FFT 1.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 1, p. 18. Reproduced verbatim.
+
+> In fast-food chains, some decisions about standards are made centrally and others are left to the individual outlet managers. Who typically makes which kinds of decisions? Why? Can you think successfully about the fast-food business by dividing the issues between coordination and motivation?
+
+#### 2. M&R FFT 1.2
+
+<!-- id: M&R FFT 1.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 2, p. 18. Reproduced verbatim.
+
+> Armies in battle have especially severe organization problems. What kinds of decisions are made centrally and which are left to commanders in the field? What principles dictate the division? Can you think successfully about the problems of military organization by dividing the issues between coordination and motivation?
+
+#### 3. Cabral 1.1
+
+<!-- id: Cabral 1.1 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 1 Exercises, Exercise 1.1 "Competition and performance", p. 11. Reproduced verbatim.
+
+> ■ **1.1. Competition and performance.** Empirical evidence from a sample of more than 600 UK firms indicates that, controlling for the quantity of inputs (that is, taking into account the quantity of inputs), firm output is increasing in the number of competitors and decreasing in market share and industry concentration.$^{22}$ How do these results relate to the ideas presented in this chapter?
+
+#### 4. Cabral 3.9
+
+<!-- id: Cabral 3.9 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.9 "Car parts", p. 62. Reproduced verbatim.
+
+> ■ **3.9. Car parts.** Two parts in an automobile taillight are the plastic exterior cover and the light bulb. Which of these parts is a car company more likely to manufacture in-house? Why?
+
+#### 5. M&R FFT 4.1
+
+<!-- id: M&R FFT 4.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 1, p. 119. Reproduced verbatim.
+
+> During World Wars I and II, even the major market economies switched to centralized forms of planning to allocate many scarce resources. Are there reasons based on efficiency to prefer such centralized planning in wartime? Are there other reasons?
+
+#### 6. Varian 32 RQ 3
+
+<!-- id: Varian 32 RQ 3 -->
+**Source.** Varian (2014), *Intermediate Microeconomics with Calculus*, Ch. 32 Review Questions, Question 3, p. 628. Reproduced verbatim.
+
+> 3\. True or false? If we know the contract curve, then we know the outcome of any trading.
+
+#### 7. Varian 35 RQ 1
+
+<!-- id: Varian 35 RQ 1 -->
+**Source.** Varian (2014), *Intermediate Microeconomics with Calculus*, Ch. 35 Review Questions, Question 1, p. 687. Reproduced verbatim.
+
+> 1\. True or false? An explicit delineation of property rights usually eliminates the problem of externalities.
+
+#### 8. Varian 35 RQ 2
+
+<!-- id: Varian 35 RQ 2 -->
+**Source.** Varian (2014), *Intermediate Microeconomics with Calculus*, Ch. 35 Review Questions, Question 2, p. 687. Reproduced verbatim.
+
+> 2\. True or false? The distributional consequences of the delineation of property rights are eliminated when preferences are quasilinear.
+
+#### 9. Cabral 5.1
+
+<!-- id: Cabral 5.1 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 5 Exercises, Exercise 5.1 "Front yards", p. 117. Reproduced verbatim.
+
+> ■ **5.1. Front yards.** Front yards, if well tended, generate positive externalities for a house's neighbors. Do you think this is an important externality? Is the market solution inefficient?
+
+#### 10. Cabral 7.6
+
+<!-- id: Cabral 7.6 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 7 Exercises, Exercise 7.6 "Hernan Cortéz", p. 180. Reproduced verbatim.
+
+> ■ **7.6. Hernan Cortéz.** In a message to the king of Spain upon arriving in Mexico, Spanish navigator and explorer Hernan Cortéz reports that, "under the pretext that [our] ships were not navigable, I had them sunk; thus all hope of leaving was lost and I could act more securely." Discuss the strategic value of this action knowing the Spanish colonists were faced with potential resistance from the Mexican natives.
+
+
 ## Tier 2 — Exam level
 
 | # | Block | Source | Ch./Sec. | Exercise | Page | What it trains |
@@ -76,6 +149,106 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | 22 | B3 | M&R | Ch. 5, Analytical Problems | Q 5.5 | 165 | One-sided private values: when honest revelation and trade at all states are compatible |
 | 23 | B3 | M&R | Ch. 2, Food for Thought | FFT 2.5 | 52 | Asset specificity and the arrangements it calls for; investment in bargaining position |
 
+### Statements
+
+#### 11. M&R FFT 1.3
+
+<!-- id: M&R FFT 1.3 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 1, Food for Thought 3, p. 18. Reproduced verbatim.
+
+> In late summer of 1991, it was revealed that beginning in February of that year, the Salomon Brothers' managing director in charge of its dealings in the markets for U.S. Treasury securities had secretly violated government rules designed to prevent any one buyer from purchasing more than a specified share of the new government debt obligations being auctioned at any one time. Moreover, senior executives at the firm had learned of these violations of the law but had failed to act on them. In the resulting scandal, four of Salomon's top executives (including Gutfreund) were asked to resign, and the future of the firm was imperiled.
+>
+> One theory was that the employee who violated the rules was motivated by his competitive, aggressive nature: He bitterly resented the government's attempt to limit his actions and was determined to show them that he was smarter and tougher than they. Another was that he was motivated by greed: He wanted to monopolize the market in these government bonds and reap the rewards. In any case, his actions, and those of the senior executives who failed to stop him and report his wrong-doing, were very costly to the firm: The stock price, which had risen by almost a half in the preceding year, fell back to where it had been before, and important customers ceased dealing with the firm.
+>
+> Does this episode mean that the incentive scheme described in the text was fundamentally flawed?
+
+#### 12. Cabral 3.14
+
+<!-- id: Cabral 3.14 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.14 "Intel", p. 63. Reproduced verbatim.
+
+> ■ **3.14. Intel.** Explain why Intel has maintained, if not increased, its competitive advantage with respect to rivals. Indicate the explanatory power of the different causes considered in the text (impediments to imitation, causal ambiguity, strategy, history).
+
+#### 13. Cabral 3.11
+
+<!-- id: Cabral 3.11 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.11 "Smart car", p. 62. Reproduced verbatim.
+
+> ■ **3.11. Smart car.** The Smart car was created as a joint venture between Daimler-Benz AG and Swatch Group AG. Although Micro Compact Car AG (the name of the joint venture) was originally jointly owned, in November of 1998 Daimler-Benz AG took complete control by buying Swatch's share.$^{12}$ The deal put an end to a very stressed relationship between Daimler and Swatch. What does Section 3.4 suggest as to what the sources of strain might have been?
+
+#### 14. M&R FFT 4.2
+
+<!-- id: M&R FFT 4.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 2, p. 119. Reproduced verbatim.
+
+> For many years, Swiss craftsmen made the finest watches, which were powered by winding a spring by hand. The Swiss lost ground to competitors in Japan and elsewhere as more accurate, less expensive battery-powered electronic watches were perfected. What were the core competencies of watchmaking in the era of Swiss dominance and how were they changed by new technologies? What other products are made by the new watchmakers?
+
+#### 15. M&R FFT 4.3
+
+<!-- id: M&R FFT 4.3 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Food for Thought 3, p. 119. Reproduced verbatim.
+
+> In 1987, Sony Corporation, a leader in consumer electronics (televisions, compact disk and audio cassette players, home video recording and playback machines), purchased the CBS Record Company. In 1989, Sony purchased Columbia Pictures Entertainment, one of the giants of the movie and TV production industry. In 1990, Matsushita, the world leader in consumer electronics with its Panasonic, National, and Quasar brands, purchased MCA Corporation, which makes movies, television shows, and music recordings. Why would these companies want to expand into these particular industries?
+
+#### 16. M&R Q 2.1
+
+<!-- id: M&R Q 2.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Mathematical Exercises 1, p. 53. Reproduced verbatim.
+
+> Suppose four families share a common stretch of beach and they are considering a program of improvements, including a stairway and a play structure for children. The value of spending $y$ in total for the improvements is $5y-\frac{1}{2}y^2$ for families #1 and #2, $7y-\frac{1}{2}y^2$ for family #3, and $4y-y^2$ for family #4. What is the efficient level of expenditure on beach improvements?
+
+#### 17. M&R Q 2.2
+
+<!-- id: M&R Q 2.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Mathematical Exercises 2, p. 53. Reproduced verbatim.
+
+> Continuing with the situation hypothesized in problem 1, show that if the cost of the improvements is to be shared equally, then family #4 will be unwilling to bear its share of the cost. What is the largest improvement that all the families would agree to if the cost of improvement must be shared equally? Demonstrate that the resulting expenditure is inefficiently low by finding an alternative level of expenditure and pattern of cost sharing that the families unanimously prefer.
+
+#### 18. M&R FFT 5.2
+
+<!-- id: M&R FFT 5.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 5, Food for Thought 2, p. 164. Reproduced verbatim.
+
+> In common parlance, we often speak of "signaling intentions." For example, a firm might cut prices to signal its intent to compete fiercely to defend a market against a competitor's expansion. The idea is to deter the competitor, who would not want to challenge the first firm if it will react aggressively. The difficulty is that if the competitor does sink costs in expanding, the first firm may not find it worthwhile to fight. There is thus an issue of credibility of the signal. This problem arises whenever the signaler still has an option after the fact about what actions it will take. What means are available to give credibility to signals of intent?
+
+#### 19. Cabral 7.14
+
+<!-- id: Cabral 7.14 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 7 Exercises, Exercise 7.14 "Centipede", p. 182. Reproduced verbatim.
+
+> ■ **7.14. Centipede.** Consider the game in Figure 7.13.$^{6}$ Show, by backward induction, that rational players choose $d$ at every node of the game, yielding a payoff of 2 for Player 1 and 0 for Player 2. Is this equilibrium reasonable? What are the rationality assumptions implicit in it?
+>
+> ![Figure 7.13 — The centipede game (Cabral 2017, p. 182)](figures/cabral-7.14.png)
+
+#### 20. M&R FFT 5.1
+
+<!-- id: M&R FFT 5.1 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 5, Food for Thought 1, pp. 163–164. Reproduced verbatim.
+
+> We are all familiar with the experience of feeling anger when we have been cheated or otherwise mistreated, and many of us have gone out of our ways to exact retribution for such injustices, even when we expect never to see the malefactor again and we do not expect anyone else to be aware of our punishing the transgression. Apparently, we have a taste for vengeance. Most of us also seem to have a conscience, a preference for behaving honestly and fairly. Indeed, Robert Frank [*Passions Within Reason: The Role of the Emotions* (New York: W.W. Norton, 1988)] has suggested that early humans who had such preferences would have had an evolutionary advantage, so that such preferences should have become widespread as people who were biologically "hard-wired" with these traits were more successful in competing to reproduce. What effect would the possibility that people might have such preferences have on the analyses in this chapter of commitment and bargaining?
+
+#### 21. M&R Q 5.4
+
+<!-- id: M&R Q 5.4 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 5, Analytical Problems 4, p. 165. Reproduced verbatim.
+
+> A used-car salesperson and a potential buyer negotiate over the price of an old car. The seller believes that the buyer values the car at \$500 with probability $x$ and at \$1,000 with probability $(1-x)$. The buyer believes that the car is worth \$250 to the salesperson with probability $(1-x)$ and \$750 with probability $x$. Under what circumstances should trade occur? How does the probability of efficient trade depend on the value of $x$? If a mediator who wants to maximize the expected gains from trade specifies that trade should occur at a price of $p$ when the seller claims a value of \$250 and the buyer claims a value of \$1,000, derive two conditions on $p$ that ensure that both parties will report honestly. Solve for the value of $x$ that makes both incentive constraints exactly hold as equalities. Note that for lower values of $x$, trade is more likely to be efficient but it cannot always be attained. Explain why.
+
+#### 22. M&R Q 5.5
+
+<!-- id: M&R Q 5.5 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 5, Analytical Problems 5, p. 165. Reproduced verbatim.
+
+> A seller values a good at either \$0 with probability $x$ or \$10 with probability $(1-x)$. The buyer does not know what the good is worth, but knows that he values the good at \$10 more than the seller does. Thus, it is certainly efficient for trade to occur, no matter what the seller's actual valuation of the good. Show that it is compatible with individual incentives for trade always to occur at a price of \$10, no matter what value the seller announces. Suppose now instead that the good is worth only \$5 more to the buyer than the seller. Is it possible to find prices (as functions of the seller's claimed value) so that the seller will honestly report her true value and both sides will be willing to trade at these prices? Why or why not?
+
+#### 23. M&R FFT 2.5
+
+<!-- id: M&R FFT 2.5 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Food for Thought 5, p. 52. Reproduced verbatim.
+
+> Cable television companies lay cables to individual households in the communities they serve to carry the television signal. How specific is this investment? What kind of arrangements would you expect the cable companies to make with local communities about the pricing and taxation of cable services?
+
+
 ## Tier 3 — Advanced
 
 | # | Block | Source | Ch./Sec. | Exercise | Page | What it trains |
@@ -87,6 +260,73 @@ Aula 1 gets 40%, Bargaining 60% (the 12/18 split you chose).
 | 28 | B2 | MWG | Ch. 9, Appendix A (Example 9.AA.1; builds on Exercise 9.B.7) | 9.B.13 | 302–303 | Alternating offers with a cost per offer instead of discounting: the finite game (9.B.7) by backward induction, then the infinite horizon, where many SPNE exist |
 | 29 | B2 | MWG | Ch. 9, Appendix A (Example 9.AA.2) | 9.B.12 | 302–303 | Infinite-horizon (Rubinstein) split with different discount factors; patience as power |
 | 30 | B3 | Cabral | §13.1 | 13.10 Asset specificity and vertical integration | 346 | Ex-post 50/50 bargaining under-rewards investment; integration as the fix (hold-up) |
+
+### Statements
+
+#### 24. M&R Math 4.2
+
+<!-- id: M&R Math 4.2 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 4, Mathematical Exercises 2, p. 120. Reproduced verbatim.
+
+> A new product is being introduced in competition with another firm. Having the product ready for production in $t$ months will result in net profits after the introduction of $144-t^2$ if $0 \le t < 12$ but will generate no profits at all if $t \ge 12$. Three departments must be ready before production can begin, and getting ready quickly is a costly matter. Department 1 can be ready in $t$ months for a cost of $3(12-t)$, department 2 for a cost of $4(12-t)$, and department 3 for $5(12-t)$. Until all three departments are ready, production cannot begin. (1) What is the optimal date $t^*$ at which to introduce the new product, that is, the time that maximizes the net profit after product introduction minus the cost of readying the three departments? (2) What will the firm's profit be if the project is mistakenly hurried and all three departments are asked to deliver one month earlier than the optimal date? One month later? (3) What will the firm's profit be if department 1 and department 3 both are asked to be ready at the optimal time, but department 2 is asked to be ready one month earlier than the others? One month later? (4) Is the timing of product introduction in this example a *design decision*?
+
+#### 25. Cabral 3.20
+
+<!-- id: Cabral 3.20 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 3 Exercises, Exercise 3.20 "Productivity", p. 64. Reproduced verbatim.
+
+> ■ **3.20. Productivity.** Find firm level data on output and inputs (both quantity and prices). Use this information to estimate each firm's total factor productivity, following the method outlined in Section 3.1 (cf in particular Equation 3.2).
+
+*Referenced, not reproduced: Section 3.1, Equation 3.2, p. 39. The exercise prints no data table.*
+
+#### 26. M&R Q 2.3
+
+<!-- id: M&R Q 2.3 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Mathematical Exercises 3, p. 53. Reproduced verbatim.
+
+> (Mathematical proof of the value maximization principle.) Suppose that there are $N$ individuals. Person $n$'s utility when outcome $y$ occurs and he or she receives cash compensation of $x_n$ is given by the utility function $x_n + v_n(y)$. Suppose that decision $y$ generates net profits $P(y)$, which may be a positive number if we think of $y$ as representing an investment or a negative number if we think of $y$ as representing some public good, such as parks or roads, at a total cost of $-P(y)$. The profits are divided among the individuals with individual $n$ receiving $x_n$ (or paying $-x_n$). The payments must add up to the amount available, that is, $P(y) = x_1 + \cdots + x_N$. Prove that an allocation $(y, x_1, \ldots, x_N)$ is efficient if and only if $y$ maximizes the total value $P(y) + v_1(y) + \cdots + v_N(y)$. [*Hint:* There are two things to prove. First, you must show that if an allocation does maximize the total value, then there cannot be an allocation that Pareto dominates it. Second, if the allocation does not maximize the sum, then you must show that there is another allocation that dominates it. To show the latter, take any $y$ with a higher total value and show that the $x_n$s can be chosen so that the gain in total wealth is divided equally among the participants.]
+
+#### 27. M&R Q 2.4
+
+<!-- id: M&R Q 2.4 -->
+**Source.** Milgrom & Roberts (1992), *Economics, Organization and Management*, Ch. 2, Mathematical Exercises 4, p. 53. Reproduced verbatim.
+
+> (Characterizing a utility function when there are no wealth effects.) Suppose that a decision maker's preferences are such that for any two decisions $y$ and $y'$, there is an amount of cash compensation or a cash payment such that $y$ combined with cash compensation of $C(y,y')$ would be just as good, from the decision maker's perspective, as $y'$ with a zero-cash compensation. Further suppose that this amount $C(y,y')$ does not depend on the level of other cash payments made to or by the decision maker. Finally, suppose that the decision maker prefers more money to less. Fix any possible decision $\bar{y}$ and define $v(y) = C(\bar{y},y)$. Show that with this definition, the utility function $x + v(y)$ represents the decision maker's preferences; that is, the decision maker will prefer an allocation $(x,y)$ to another allocation $(x',y')$ if and only if $x + v(y) > x' + v(y')$. [*Hint:* Argue first that the decision maker is indifferent about having $(x,y)$ or $(x+v(y),\bar{y})$. Therefore, for any utility function that represents the decision maker's preferences, $U(x,y) = U(x+v(y),\bar{y})$ and, similarly, $U(x',y') = U(x'+v(y'),\bar{y})$.]
+
+#### 28. MWG 9.B.13 (with 9.B.7, which it builds on)
+
+<!-- id: MWG 9.B.7 -->
+**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 9 Exercises, Exercise 9.B.7^B, p. 302. Reproduced verbatim.
+
+> Consider the finite horizon bilateral bargaining game in Appendix A (Example 9.AA.1); but instead of assuming that players discount future payoffs, assume that it costs $c < v$ to make an offer. (Only the player making an offer incurs this cost, and players who have made offers incur this cost even if no agreement is ultimately reached.) What is the (unique) SPNE of this alternative model? What happens as $T$ approaches $\infty$?
+
+<!-- id: MWG 9.B.13 -->
+**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 9 Exercises, Exercise 9.B.13^B, p. 303. Reproduced verbatim.
+
+> What are the subgame perfect Nash equilibria of the infinite horizon version of Exercise 9.B.7?
+
+#### 29. MWG 9.B.12
+
+<!-- id: MWG 9.B.12 -->
+**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 9 Exercises, Exercise 9.B.12^C, p. 303. Reproduced verbatim.
+
+> Consider the infinite horizon bilateral bargaining model of Appendix A (Example 9.AA.2). Suppose the discount factors $\delta_1$ and $\delta_2$ of the two players differ. Now what is the (unique) subgame perfect Nash equilibrium?
+
+#### 30. Cabral 13.10
+
+<!-- id: Cabral 13.10 -->
+**Source.** Cabral (2017), *Introduction to Industrial Organization*, 2nd ed., Ch. 13 Exercises, Exercise 13.10 "Asset specificity and vertical integration", p. 346. Reproduced verbatim.
+
+> ■ **13.10. Asset specificity and vertical integration.** The value created by the collaboration between firms $M$ and $R$ is given by $v = \sqrt{e_M} + \sqrt{e_R}$, where $e_M$ and $e_R$ are investments (in \$) by firms $M$ and $R$. After investment levels have been chosen, $M$ and $R$ negotiate the division of $v$, each firm keeping 50%.
+>
+> (a) Determine the equilibrium values of $e_i$ $(i = M, R)$.
+>
+> (b) Suppose that Firm $M$ and $R$ merge. Determine Firm $M\&R$'s optimal choices of $e_i$.
+>
+> (c) Compare total payoff under vertical separation and under vertical integration.
+>
+> (d) Comment on your answer to the previous question in light of the discussion in Section 13.1, Box 13.1, and Section 5.1.
+
 
 **Optional extras.**
 - The six Aula 1 companion tasks C1–C6 in [[Listas/pratica-aula-01|the Aula 1 plan]] (with checked answers) deepen block A3. Do C1–C3 after item 15 and C4–C6 after item 24.

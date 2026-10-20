@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The MBA Game</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding:0 16px;padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.grp{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 -6px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+
+.eqt{min-width:0}
+.eqt td.ok{color:var(--good);font-weight:600}
+.eqt td.bad{color:var(--warn);font-weight:600}
+.eqt td.none{color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;background:var(--c)}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Economics of Organizations &middot; Lecture 8 (estimated) &middot; Perfect Bayesian equilibrium</p>
+  <h1>The MBA Game</h1>
+  <p class="lede">Tadelis&rsquo;s two-type signaling game: a worker who knows his skill chooses an MBA (D) or not (U);
+  an employer who sees only the degree assigns him to management (M) or blue-collar work (B). Move the prior,
+  the two study costs and the two wages; the page finds <b>every</b> pure-strategy perfect Bayesian equilibrium,
+  the beliefs that hold each one up, and which survive the intuitive criterion.</p>
+  <p class="prov">Tadelis (2013) &sect;16.1 &ldquo;Education Signaling: The MBA Game&rdquo;, pp. 319&ndash;323 (Fig. 16.1; c<sub>H</sub> = 2, c<sub>L</sub> = 5, w<sub>M</sub> = 10, w<sub>B</sub> = 6, p = 1/4);
+  Requirements 15.1&ndash;15.4 and Def. 15.3, pp. 308&ndash;310; Def. 16.1, p. 333. Belongs to Notas/L08 (estimated before the lecture).</p>
+</header>
+
+<main>
+  <div class="rail">
+    <p class="grp">Information</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">p</span> &middot; prior Pr{H}</span><span class="val" id="v_p"></span></div>
+      <p class="doc">Share of high-skill workers. It is the employer&rsquo;s belief after a message both types send.</p>
+      <input type="range" id="p" min="0" max="1" step="0.005" aria-label="Prior probability of the high-skill type">
+    </div>
+    <p class="grp">Worker</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>H</sub></span> &middot; MBA cost, high skill</span><span class="val" id="v_cH"></span></div>
+      <p class="doc">What the degree costs a high-skill worker. Separation needs c<sub>H</sub> &le; w<sub>M</sub> &minus; w<sub>B</sub>.</p>
+      <input type="range" id="cH" min="0" max="12" step="0.5" aria-label="MBA cost for the high-skill type">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>L</sub></span> &middot; MBA cost, low skill</span><span class="val" id="v_cL"></span></div>
+      <p class="doc">What the degree costs a low-skill worker. Separation needs c<sub>L</sub> &ge; w<sub>M</sub> &minus; w<sub>B</sub>.</p>
+      <input type="range" id="cL" min="0" max="12" step="0.5" aria-label="MBA cost for the low-skill type">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">w<sub>M</sub></span> &middot; manager wage</span><span class="val" id="v_wM"></span></div>
+      <p class="doc">Paid to whoever is assigned M; the worker&rsquo;s prize for being believed.</p>
+      <input type="range" id="wM" min="0" max="16" step="0.5" aria-label="Manager wage">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">w<sub>B</sub></span> &middot; blue-collar wage</span><span class="val" id="v_wB"></span></div>
+      <p class="doc">Paid in job B. Only the gap w<sub>M</sub> &minus; w<sub>B</sub> decides who studies; the level moves the payoffs.</p>
+      <input type="range" id="wB" min="0" max="16" step="0.5" aria-label="Blue-collar wage">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 321</button>
+      <button id="land" class="ghost" type="button">Landmark: p = 3/8</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Pure-strategy perfect Bayesian equilibria</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Belief threshold &mu;*</div><div class="v" id="t_th"></div><div class="u">M iff &mu; &ge; 3/8 (fixed by profits)</div></div>
+      <div class="tile"><div class="k">Wage gap</div><div class="v" id="t_gap"></div><div class="u">w<sub>M</sub> &minus; w<sub>B</sub></div></div>
+      <div class="tile"><div class="k">Separating (DU, BM)?</div><div class="v" id="t_sep"></div><div class="u">c<sub>H</sub> &le; gap &le; c<sub>L</sub></div></div>
+      <div class="tile"><div class="k">Pooling on U answered by</div><div class="v" id="t_pool"></div><div class="u">&mu;<sub>U</sub> = p vs 3/8</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Employer&rsquo;s profit against the belief</h2>
+      <p class="sub">At any information set the employer assigns M when 10&mu; &ge; 5&mu; + 3(1 &minus; &mu;). Dots are beliefs pinned by Bayes&rsquo; rule on the path; bars are the off-path beliefs that hold an equilibrium up.</p>
+      <svg id="svgA" viewBox="0 0 640 320" role="img" aria-label="Employer's expected profit from M and from B against the belief, with each equilibrium's beliefs marked"></svg>
+      <div class="legend"><span style="--c:var(--good)">separating</span><span style="--c:var(--accent)">pooling, survives the criterion</span><span style="--c:var(--warn)">fails the intuitive criterion</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Every candidate, checked</h2>
+      <p class="sub">Worker strategy a<sub>H</sub>a<sub>L</sub>; employer strategy a<sub>U</sub>a<sub>D</sub>. Requirements 15.1&ndash;15.4: beliefs exist, Bayes on the path, anything off it, best responses everywhere.</p>
+      <div class="scroll"><table class="eqt"><thead><tr><th>Worker</th><th>Kind</th><th>Employer</th><th>&mu;<sub>U</sub></th><th>&mu;<sub>D</sub></th><th>Intuitive criterion</th></tr></thead><tbody id="eqrows"></tbody></table></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Prior</td><td>p</td><td>Pr{&theta; = H}</td><td class="n">0 &ndash; 1</td><td class="n">0.005</td><td class="n">0.250</td><td>&mdash;</td><td>Tadelis p. 321 (p = 1/4)</td><td>&mu;<sub>U</sub> in pooling; which job pooling on U gets; the pooling dots</td></tr>
+      <tr><td>High type&rsquo;s cost</td><td>c<sub>H</sub></td><td>private cost of the MBA, high skill</td><td class="n">0 &ndash; 12</td><td class="n">0.5</td><td class="n">2</td><td>payoff units</td><td>Tadelis p. 320</td><td>whether H will study; the separating row</td></tr>
+      <tr><td>Low type&rsquo;s cost</td><td>c<sub>L</sub></td><td>private cost of the MBA, low skill</td><td class="n">0 &ndash; 12</td><td class="n">0.5</td><td class="n">5</td><td>payoff units</td><td>Tadelis p. 320</td><td>whether L would mimic; separating and criterion verdicts</td></tr>
+      <tr><td>Manager wage</td><td>w<sub>M</sub></td><td>wage in job M</td><td class="n">0 &ndash; 16</td><td class="n">0.5</td><td class="n">10</td><td>payoff units</td><td>Tadelis p. 320</td><td>the wage gap; every worker payoff</td></tr>
+      <tr><td>Blue-collar wage</td><td>w<sub>B</sub></td><td>wage in job B</td><td class="n">0 &ndash; 16</td><td class="n">0.5</td><td class="n">6</td><td>payoff units</td><td>Tadelis p. 320</td><td>the wage gap; every worker payoff</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Model (Tadelis &sect;16.1, pp. 319&ndash;323): worker&rsquo;s payoff w<sub>job</sub> &minus; c<sub>&theta;</sub>&middot;1[D]; employer&rsquo;s profit from the table on p. 320
+  (H: M 10, B 5; L: M 0, B 3), held fixed, so the employer&rsquo;s threshold &mu;* = 3/8 never moves. Beliefs &mu;<sub>U</sub>, &mu;<sub>D</sub> = Pr{H | message} follow (16.1)&ndash;(16.2) on the path;
+  off the path any &mu; in the interval that makes the employer&rsquo;s action a best response is allowed (Requirement 15.3). Ties count as best responses (weak inequalities).
+  Intuitive criterion as Tadelis Def. 16.1 (p. 333) for two types: drop each type for whom the unused message is equilibrium-dominated, then ask whether a remaining type gains for sure.
+  Defaults reproduce the book: separating (DU, BM) with &mu;<sub>U</sub> = 0, &mu;<sub>D</sub> = 1, and pooling (UU, BB) with &mu;<sub>U</sub> = 1/4 and any &mu;<sub>D</sub> &isin; [0, 3/8]; the pooling one fails the criterion (p. 334).
+  Landmarks: p = 3/8 is exactly reachable (step 0.005); c<sub>H</sub> or c<sub>L</sub> = w<sub>M</sub> &minus; w<sub>B</sub> is reachable on the 0.5 grid. Every value is closed form; nothing is numerical.</p>
+</footer>
+
+<script>
+var D = {p:0.25, cH:2, cL:5, wM:10, wB:6};
+var KEYS = ['p','cH','cL','wM','wB'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+
+// MODEL:BEGIN
+// Tadelis Sec. 16.1: employer's net profit by (type, job), p. 320.
+var PROF = {H:{M:10, B:5}, L:{M:0, B:3}};
+var EPS = 1e-12;
+function u1(s, t, m, a){ return (a === 'M' ? s.wM : s.wB) - (m === 'D' ? (t === 'H' ? s.cH : s.cL) : 0); }
+// Beliefs mu = Pr(H) at which job a is a weak best response; [lo, hi] or null.
+function brInterval(a){
+  var b = a === 'M' ? 'B' : 'M';
+  var d1 = PROF.H[a] - PROF.H[b], d2 = PROF.L[a] - PROF.L[b];
+  var slope = d1 - d2, c = d2, lo = 0, hi = 1;
+  if (slope === 0) { if (c < 0) return null; }
+  else if (slope > 0) lo = Math.max(lo, -c / slope);
+  else hi = Math.min(hi, -c / slope);
+  return lo <= hi + EPS ? [lo, hi] : null;
+}
+function intuitiveFails(s, snd, rsp){
+  var types = ['H', 'L'], acts = ['M', 'B'];
+  var star = {H: u1(s, 'H', snd.H, rsp[snd.H]), L: u1(s, 'L', snd.L, rsp[snd.L])};
+  return ['U', 'D'].some(function(m){
+    if (snd.H === m || snd.L === m) return false;                 // only unused messages
+    var anyBr = acts.filter(function(a){ return brInterval(a) !== null; });
+    var keep = types.filter(function(t){
+      return Math.max.apply(null, anyBr.map(function(a){ return u1(s, t, m, a); })) >= star[t] - EPS;
+    });
+    if (keep.length === 0 || keep.length === 2) return false;
+    var mu = keep[0] === 'H' ? 1 : 0;
+    var br = acts.filter(function(a){ var iv = brInterval(a); return iv && iv[0] - EPS <= mu && mu <= iv[1] + EPS; });
+    return keep.some(function(t){
+      return Math.min.apply(null, br.map(function(a){ return u1(s, t, m, a); })) > star[t] + EPS;
+    });
+  });
+}
+function report(s){
+  var eqs = [], msgs = ['U', 'D'];
+  ['UU', 'UD', 'DU', 'DD'].forEach(function(sm){
+    var snd = {H: sm[0], L: sm[1]};
+    ['MM', 'MB', 'BM', 'BB'].forEach(function(ra){
+      var rsp = {U: ra[0], D: ra[1]}, bel = {}, ok = true;
+      msgs.forEach(function(m){
+        if (!ok) return;
+        var iv = brInterval(rsp[m]);
+        var den = s.p * (snd.H === m ? 1 : 0) + (1 - s.p) * (snd.L === m ? 1 : 0);
+        if (den === 0) { ok = iv !== null; bel[m] = iv; }                         // off path
+        else {
+          var mu = s.p * (snd.H === m ? 1 : 0) / den;                              // Bayes, (16.1)-(16.2)
+          ok = iv !== null && iv[0] - EPS <= mu && mu <= iv[1] + EPS; bel[m] = mu;
+        }
+      });
+      if (!ok) return;
+      var ic = ['H', 'L'].every(function(t){
+        var own = u1(s, t, snd[t], rsp[snd[t]]);
+        return msgs.every(function(m){ return own >= u1(s, t, m, rsp[m]) - EPS; });
+      });
+      if (!ic) return;
+      eqs.push({sender: sm, receiver: ra, muU: bel.U, muD: bel.D,
+                kind: sm[0] === sm[1] ? 'pooling' : 'separating',
+                intuitive: !intuitiveFails(s, snd, rsp)});
+    });
+  });
+  return {eqs: eqs, threshold: brInterval('M')[0]};
+}
+// MODEL:END
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=50,R=620,T=16,B=268;
+function fmtMu(b){ if (b === undefined) return '—'; if (Array.isArray(b)) return '['+b[0].toFixed(3)+', '+b[1].toFixed(3)+'] off path'; return b.toFixed(3); }
+function colour(e){ return !e.intuitive ? 'var(--warn)' : (e.kind === 'separating' ? 'var(--good)' : 'var(--accent)'); }
+
+function draw(rep){
+  var svg=$('svgA'); svg.textContent='';
+  var X=function(v){ return L+v*(R-L); }, Y=function(v){ return B-v/11*(B-T); };
+  [0,2,4,6,8,10].forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(v),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  [0,0.25,0.5,0.75,1].forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(v),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,'employer’s belief μ = Pr{H | message}',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(el('line',{x1:X(0),y1:Y(0),x2:X(1),y2:Y(10),stroke:'var(--accent)','stroke-width':2.4}));
+  svg.appendChild(el('line',{x1:X(0),y1:Y(3),x2:X(1),y2:Y(5),stroke:'var(--muted)','stroke-width':2.4}));
+  svg.appendChild(txt(X(0.97),Y(10)+16,'M: 10μ',{fill:'var(--accent)','font-size':12,'font-weight':600,'text-anchor':'end'}));
+  svg.appendChild(txt(X(0.97),Y(5)+16,'B: 5μ + 3(1−μ)',{fill:'var(--muted)','font-size':12,'font-weight':600,'text-anchor':'end'}));
+  var th=rep.threshold;
+  svg.appendChild(el('line',{x1:X(th),x2:X(th),y1:T,y2:B,stroke:'var(--hi)','stroke-width':1.2,'stroke-dasharray':'4 3'}));
+  svg.appendChild(txt(X(th)+5,T+12,'μ* = 3/8',{fill:'var(--hi)','font-size':11.5}));
+  svg.appendChild(el('line',{x1:X(S.p),x2:X(S.p),y1:B-6,y2:B,stroke:'var(--ink)','stroke-width':2}));
+  svg.appendChild(txt(X(S.p),B-10,'prior',{fill:'var(--ink)','font-size':10.5,'text-anchor':'middle'}));
+  var lane = 0;
+  rep.eqs.forEach(function(e){
+    var col = colour(e);
+    [['U', e.muU], ['D', e.muD]].forEach(function(pair){
+      var m = pair[0], b = pair[1], a = m === 'U' ? e.receiver[0] : e.receiver[1];
+      var val = function(mu){ return a === 'M' ? 10*mu : 3 + 2*mu; };
+      if (Array.isArray(b)) {
+        var y = T + 30 + 14*lane;
+        svg.appendChild(el('line',{x1:X(b[0]),x2:X(b[1]),y1:y,y2:y,stroke:col,'stroke-width':6,'stroke-opacity':.55}));
+        svg.appendChild(txt(X(b[1])+6,y+4,e.sender+','+e.receiver+': μ'+m+' (off path) → '+a,{fill:col,'font-size':11}));
+        lane++;
+      } else {
+        svg.appendChild(el('circle',{cx:X(b),cy:Y(val(b)),r:5.5,fill:col,stroke:'var(--surface)','stroke-width':1.5}));
+        svg.appendChild(txt(X(b)+(b>0.8?-8:8),Y(val(b))-8,e.sender+','+e.receiver+': μ'+m+' → '+a,{fill:col,'font-size':11,'font-weight':600,'text-anchor':b>0.8?'end':'start'}));
+      }
+    });
+  });
+}
+
+function render(){
+  $('v_p').textContent=S.p.toFixed(3);
+  $('v_cH').textContent=S.cH.toFixed(1);
+  $('v_cL').textContent=S.cL.toFixed(1);
+  $('v_wM').textContent=S.wM.toFixed(1);
+  $('v_wB').textContent=S.wB.toFixed(1);
+  var rep=report(S), n=rep.eqs.length;
+  var keep=rep.eqs.filter(function(e){ return e.intuitive; });
+  $('a_v').textContent = n + (n===1?' equilibrium':' equilibria') + ' · ' + keep.length + ' survive';
+  var names = function(list){ return list.map(function(e){ return '('+e.sender+', '+e.receiver+')'; }).join(', ') || 'none'; };
+  $('a_note').innerHTML = 'PBE: <b>'+names(rep.eqs)+'</b>. Surviving the intuitive criterion: '+names(keep)+'. '+
+    (n===0 ? 'No pure-strategy PBE at these values: only mixed (hybrid) equilibria remain, which this page does not compute.' : '');
+  var gap=S.wM-S.wB;
+  $('t_th').textContent=rep.threshold.toFixed(3);
+  $('t_gap').textContent=gap.toFixed(1);
+  $('t_sep').textContent=rep.eqs.some(function(e){ return e.sender==='DU' && e.receiver==='BM'; }) ? 'yes' : 'no';
+  $('t_pool').textContent = S.p > rep.threshold + 1e-12 ? 'M' : (S.p < rep.threshold - 1e-12 ? 'B' : 'M or B (tie)');
+  var rows='';
+  ['UU','UD','DU','DD'].forEach(function(sm){
+    var es=rep.eqs.filter(function(e){ return e.sender===sm; });
+    var kind = sm[0]===sm[1] ? 'pooling' : 'separating';
+    if(es.length===0){ rows+='<tr><td class="n">'+sm+'</td><td>'+kind+'</td><td class="none" colspan="4">no PBE with this worker strategy</td></tr>'; return; }
+    es.forEach(function(e){
+      rows+='<tr><td class="n">'+sm+'</td><td>'+kind+'</td><td class="n">'+e.receiver+'</td><td class="n">'+fmtMu(e.muU)+'</td><td class="n">'+fmtMu(e.muD)+'</td>'+
+        '<td class="'+(e.intuitive?'ok':'bad')+'">'+(e.intuitive?'survives':'fails')+'</td></tr>';
+    });
+  });
+  $('eqrows').innerHTML=rows;
+  draw(rep);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k);
+  inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('land').addEventListener('click',function(){ load({p:0.375}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

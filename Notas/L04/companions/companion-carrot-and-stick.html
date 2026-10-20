@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Carrot and the Stick</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail left, answer + tiles + two linked panels right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;margin:0 auto;max-width:1120px;padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+.ctl label.chk{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:8px}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panels>div{min-width:0}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game Theory &middot; MPE Insper &middot; Lecture 4 notes (estimated)</p>
+  <h1>The Carrot and the Stick</h1>
+  <p class="lede">A Prisoner&rsquo;s Dilemma today, a Revenge Game tomorrow. The second game has two
+  equilibria, a friendly one and a gang war, and the players can make tomorrow&rsquo;s equilibrium depend
+  on today&rsquo;s outcome. Move the discount factor, the temptation and the size of the stick and watch
+  which first-stage outcomes a subgame-perfect equilibrium can sustain.</p>
+  <p class="prov">Tadelis (2013) Ch. 9 &sect;9.1&ndash;9.4, Prisoner-Revenge Game, printed pp. 176&ndash;184; thresholds &delta; &ge; 1/3 (p. 183) and &delta; &ge; 2/3 (p. 184) &middot; notes: Notas/L04/L04-02</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;</span> &middot; discount factor</span><span class="val" id="v_d"></span></div>
+      <p class="doc">How much stage 2 counts, seen from stage 1. It scales both the carrot and the stick.</p>
+      <input type="range" id="d" min="0" max="1" step="0.01" aria-label="Discount factor">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">T</span> &middot; temptation</span><span class="val" id="v_Tm"></span></div>
+      <p class="doc">Payoff from finking against a mum partner (Tadelis: 5). Its excess over 4 is the gain from breaking (M, m).</p>
+      <input type="range" id="Tm" min="4.1" max="10" step="0.1" aria-label="Temptation payoff">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">S</span> &middot; sucker payoff</span><span class="val" id="v_Sk"></span></div>
+      <p class="doc">Payoff from mum against a finking partner (Tadelis: &minus;1). 1 &minus; S is player 2&rsquo;s gain from breaking (F, m).</p>
+      <input type="range" id="Sk" min="-5" max="0.9" step="0.1" aria-label="Sucker payoff">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">s</span> &middot; the stick, (G, g) payoff</span><span class="val" id="v_st"></span></div>
+      <p class="doc">Each player&rsquo;s payoff in the gang equilibrium (Tadelis: &minus;3). The carrot (L, l) pays 0, so the punishment is 0 &minus; s. Above &minus;4 it stays an equilibrium.</p>
+      <input type="range" id="st" min="-4" max="0" step="0.1" aria-label="Stick payoff in the gang equilibrium">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis</button>
+      <button id="third" class="ghost" type="button">&delta; = 1/3 exactly</button>
+      <button id="twothirds" class="ghost" type="button">&delta; = 2/3 exactly</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Smallest <span style="text-transform:none">&delta;</span> that sustains (M, m) in stage 1</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">(M, m): stay</div><div class="v" id="t_s1"></div><div class="u">4 + &delta;&middot;0</div></div>
+      <div class="tile"><div class="k">(M, m): fink</div><div class="v" id="t_f1"></div><div class="u">T + &delta;s</div></div>
+      <div class="tile"><div class="k">(F, m) needs &delta; &ge;</div><div class="v" id="t_d2"></div><div class="u">(1 &minus; S)/(0 &minus; s)</div></div>
+      <div class="tile"><div class="k">(F, m): stay</div><div class="v" id="t_s2"></div><div class="u">S + &delta;&middot;0, player 2</div></div>
+      <div class="tile"><div class="k">(F, m): fink</div><div class="v" id="t_f2"></div><div class="u">1 + &delta;s, player 2</div></div>
+      <div class="tile"><div class="k">Sustainable now</div><div class="v" id="t_n"></div><div class="u">stage-1 outcomes of 4</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Target (M, m): player 1</h2>
+          <p class="sub">Stay with mum and get the carrot, or fink now and get the stick tomorrow.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Player 1's discounted payoff from staying and from finking, against delta"></svg>
+        </div>
+        <div>
+          <h2>Target (F, m): player 2</h2>
+          <p class="sub">Player 1 finks by dominance; player 2 must accept the sucker payoff today.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Player 2's discounted payoff from staying and from finking, against delta"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Discount factor</td><td>&delta;</td><td>weight of stage 2 in v<sub>i</sub> = v<sub>i1</sub> + &delta;v<sub>i2</sub></td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.50</td><td>&mdash;</td><td>&sect;9.2, p. 177; 0.50 is illustrative (between the book&rsquo;s 1/3 and 2/3)</td><td>the current-&delta; marker; every stay/fink value; the verdicts</td></tr>
+      <tr><td>Temptation</td><td>T</td><td>u<sub>1</sub>(F, m)</td><td class="n">4.1 &ndash; 10</td><td class="n">0.1</td><td class="n">5.0</td><td>payoff units</td><td>PD matrix, p. 176</td><td>fink line in the left panel; &delta;* for (M, m)</td></tr>
+      <tr><td>Sucker payoff</td><td>S</td><td>u<sub>2</sub>(F, m) = u<sub>1</sub>(M, f)</td><td class="n">&minus;5 &ndash; 0.9</td><td class="n">0.1</td><td class="n">&minus;1.0</td><td>payoff units</td><td>PD matrix, p. 176</td><td>stay line in the right panel; &delta;* for (F, m)</td></tr>
+      <tr><td>Stick</td><td>s</td><td>payoff of each in (G, g)</td><td class="n">&minus;4 &ndash; 0</td><td class="n">0.1</td><td class="n">&minus;3.0</td><td>payoff units</td><td>Revenge Game, p. 177</td><td>slope of both fink lines; both thresholds</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Held fixed at Tadelis&rsquo;s values: mutual mum R = 4, mutual fink P = 1, the friendly equilibrium (L, l) = (0, 0), and the
+  off-diagonal Revenge payoffs (&minus;4, &minus;1), so (L, l) stays an equilibrium and (G, g) stays one while s &ge; &minus;4.
+  Strategies: play the target in stage 1; play (L, l) after the target outcome and (G, g) after anything else (p. 182).
+  (M, m) is sustained iff 4 &ge; T + &delta;s, i.e. &delta; &ge; (T &minus; 4)/(0 &minus; s); with the book&rsquo;s numbers 4 &ge; 5 &minus; 3&delta;, &delta; &ge; 1/3 (p. 183).
+  (F, m) is sustained iff S &ge; 1 + &delta;s, i.e. &delta; &ge; (1 &minus; S)/(0 &minus; s); with the book&rsquo;s numbers &minus;1 &ge; 1 &minus; 3&delta;, &delta; &ge; 2/3 (p. 184); (M, f) is the mirror image.
+  (F, f) followed by any stage-2 equilibrium is always sustained (Proposition 9.1, p. 180). With s = 0 the stick equals the carrot and nothing
+  but (F, f) survives (requirement 1, p. 183).</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+// Tadelis's fixed payoffs: R = 4 (mum, mum), P = 1 (fink, fink), carrot (L,l) = 0.
+function report(p){
+  var R = 4, P = 1, carrot = 0, pun = carrot - p.st;
+  var gMm = p.Tm - R, gFm = P - p.Sk;
+  var stay1 = R + p.d * carrot, dev1 = p.Tm + p.d * p.st;
+  var stay2 = p.Sk + p.d * carrot, dev2 = P + p.d * p.st;
+  var okMm = stay1 >= dev1 - 1e-12, okFm = stay2 >= dev2 - 1e-12;
+  return {
+    dMm: pun > 0 ? gMm / pun : null, dFm: pun > 0 ? gFm / pun : null,
+    stay1: stay1, dev1: dev1, stay2: stay2, dev2: dev2,
+    okMm: okMm, okFm: okFm,
+    count: 1 + (okMm ? 1 : 0) + (okFm ? 2 : 0)
+  };
+}
+// MODEL:END
+
+var D = {d:0.5, Tm:5, Sk:-1, st:-3};
+var KEYS = ['d','Tm','Sk','st'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var num = function(x,k){ return (x < 0 ? '−' : '') + Math.abs(x).toFixed(k === undefined ? 2 : k); };
+var thr = function(x){ return x === null ? 'never' : x > 1 ? num(x,3) + ' > 1' : num(x,3); };
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=44,R=404,T0=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function panel(id, stay, dev0, slope, dstar, labStay, labDev){
+  var svg=$(id); svg.textContent='';
+  var vals=[stay, dev0, dev0+slope];
+  var lo=Math.floor(Math.min.apply(null,vals))-1, hi=Math.ceil(Math.max.apply(null,vals))+1;
+  var X=function(v){ return L+v*(R-L); }, Y=function(v){ return B-(v-lo)/(hi-lo)*(B-T0); };
+  ticks(lo,hi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,num(v,0),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  [0,0.2,0.4,0.6,0.8,1].forEach(function(v){ svg.appendChild(txt(X(v),B+17,v.toFixed(1),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'})); });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,'discount factor δ',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(el('line',{x1:X(0),y1:Y(stay),x2:X(1),y2:Y(stay),stroke:'var(--good)','stroke-width':2.4}));
+  svg.appendChild(el('line',{x1:X(0),y1:Y(dev0),x2:X(1),y2:Y(dev0+slope),stroke:'var(--warn)','stroke-width':2.4}));
+  svg.appendChild(txt(X(1)-4,Y(stay)+16,labStay,{fill:'var(--good)','font-size':11.5,'font-weight':600,'text-anchor':'end'}));
+  svg.appendChild(txt(X(0)+6,Y(dev0)-7,labDev,{fill:'var(--warn)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(el('line',{x1:X(S.d),x2:X(S.d),y1:T0,y2:B,stroke:'var(--accent)','stroke-width':1.2,'stroke-dasharray':'4 4'}));
+  if(dstar!==null && dstar<=1){
+    svg.appendChild(el('circle',{cx:X(dstar),cy:Y(stay),r:5.5,fill:'var(--hi)'}));
+    svg.appendChild(txt(X(dstar)+(dstar>0.75?-8:8),Y(stay)-12,'δ* = '+dstar.toFixed(3),{fill:'var(--hi)','font-size':11.5,'font-weight':600,'text-anchor':dstar>0.75?'end':'start','font-family':'var(--mono)'}));
+  }
+}
+
+function render(){
+  $('v_d').textContent=S.d.toFixed(3);
+  $('v_Tm').textContent=S.Tm.toFixed(1);
+  $('v_Sk').textContent=num(S.Sk,1);
+  $('v_st').textContent=num(S.st,1);
+  var m=report(S);
+  $('a_v').textContent=thr(m.dMm);
+  var n;
+  if(m.dMm===null){ n='The stick pays the same as the carrot: <b>no punishment exists</b>, so no &delta; makes mum a best response.'; }
+  else if(m.dMm>1){ n='The temptation exceeds even an undiscounted punishment: <b>(M, m) cannot be sustained</b> for any &delta; &le; 1.'; }
+  else { n='At &delta; = '+S.d.toFixed(3)+' player 1 '+(m.okMm?'<b>stays with mum</b>: '+num(m.stay1)+' &ge; '+num(m.dev1)+'.':'<b>finks</b>: '+num(m.dev1)+' &gt; '+num(m.stay1)+'.')+
+    ' The gain from finking, '+num(S.Tm-4,1)+', is weighed against &delta; times the gap between the carrot and the stick, '+num(-S.st,1)+'.'; }
+  $('a_note').innerHTML=n;
+  $('t_s1').textContent=num(m.stay1);
+  $('t_f1').textContent=num(m.dev1);
+  $('t_d2').textContent=thr(m.dFm);
+  $('t_s2').textContent=num(m.stay2);
+  $('t_f2').textContent=num(m.dev2);
+  $('t_n').textContent=m.count+' of 4';
+  var list=['(F, f)'];
+  if(m.okMm) list.push('(M, m)');
+  if(m.okFm) list.push('(F, m)','(M, f)');
+  $('bridge').innerHTML='Sustainable first-stage outcomes at this &delta;: <b>'+list.join(', ')+'</b>. (F, f) needs no linkage: it is the stage-1 equilibrium, followed by either Revenge equilibrium (Proposition 9.1). '+
+    'Every other outcome needs the stick to differ from the carrot and &delta; large enough; the right panel needs more patience than the left because breaking (F, m) gains 1 &minus; S = '+num(1-S.Sk,1)+' against '+num(S.Tm-4,1)+'.';
+  panel('svgA', m.stay1, S.Tm, S.st, m.dMm, 'stay: 4', 'fink: T + δs');
+  panel('svgB', m.stay2, 1, S.st, m.dFm, 'stay: S', 'fink: 1 + δs');
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  $(k).value=D[k];
+  $(k).addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('third').addEventListener('click',function(){ load({d:1/3}); });
+$('twothirds').addEventListener('click',function(){ load({d:2/3}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bid Shading Desk</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding:0 16px;padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Organizations &amp; Incentives &middot; Lecture 7 (estimated) &middot; Auctions</p>
+  <h1>The Bid Shading Desk</h1>
+  <p class="lede">One bidder with value &theta; faces <i>n</i>&nbsp;&minus;&nbsp;1 rivals whose values are
+  independent and uniform on [0,&nbsp;1]. In a second-price auction the best bid is &theta; whatever the
+  rivals do; in a first-price auction it is shaded to (<i>n</i>&nbsp;&minus;&nbsp;1)&theta;/<i>n</i>. Move
+  your own bid and watch each format punish the deviation; move <i>n</i> and watch the shading shrink
+  while the seller&rsquo;s expected revenue stays the same in both formats.</p>
+  <p class="prov">Tadelis (2013) &sect;13.1.1&ndash;13.1.4, printed pp. 272&ndash;282, Prop. 13.1, eqs. (13.1)&ndash;(13.10); Gibbons (1992) &sect;3.2.B, pp. 155&ndash;158. Reserve price 0, risk-neutral bidders.</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">n</span> &middot; number of bidders</span><span class="val" id="v_n"></span></div>
+      <p class="doc">More rivals means a lower chance of winning with any given bid, so each bidder shades less.</p>
+      <input type="range" id="n" min="2" max="10" step="1" aria-label="Number of bidders">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&theta;</span> &middot; your value</span><span class="val" id="v_th"></span></div>
+      <p class="doc">Your private valuation (your type). Rivals know only that it is uniform on [0, 1].</p>
+      <input type="range" id="th" min="0" max="1" step="0.01" aria-label="Your value theta">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">b</span> &middot; your bid</span><span class="val" id="v_b"></span></div>
+      <p class="doc">A deviation to test: rivals keep their equilibrium strategies, you bid b. The right panel shows what it earns in each format.</p>
+      <input type="range" id="b" min="0" max="1" step="0.01" aria-label="Your bid b">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset (Gibbons, n = 2)</button>
+      <button id="snapF" class="ghost" type="button">b = first-price optimum</button>
+      <button id="snapS" class="ghost" type="button">b = &theta;</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">First-price equilibrium bid (<i>n</i>&minus;1)&theta;/<i>n</i></div>
+      <div class="v" id="a_v"></div>
+      <div class="note">Second-price bid: <b id="a_s"></b> (weakly dominant). <span id="a_txt"></span></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Shading &theta; &minus; s(&theta;)</div><div class="v" id="t_sh"></div><div class="u">= &theta;/n</div></div>
+      <div class="tile"><div class="k">Pr(win) at equilibrium</div><div class="v" id="t_pw"></div><div class="u">&theta;<sup>n&minus;1</sup>, both formats</div></div>
+      <div class="tile"><div class="k">Expected payment</div><div class="v" id="t_pay"></div><div class="u">of type &theta;, both formats</div></div>
+      <div class="tile"><div class="k">Expected surplus</div><div class="v" id="t_su"></div><div class="u">&theta;<sup>n</sup>/n, both formats</div></div>
+      <div class="tile"><div class="k">Seller&rsquo;s revenue</div><div class="v" id="t_rev"></div><div class="u">(n&minus;1)/(n+1), both</div></div>
+      <div class="tile"><div class="k">Your b: first price</div><div class="v" id="t_uf"></div><div class="u" id="t_lf"></div></div>
+      <div class="tile"><div class="k">Your b: second price</div><div class="v" id="t_us"></div><div class="u" id="t_ls"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Equilibrium bid functions</h2>
+          <p class="sub">Bid against value. Second price bids on the 45&deg; line; first price shades by the factor (n&minus;1)/n.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Bid functions of the first-price and second-price auctions with your value marked"></svg>
+        </div>
+        <div>
+          <h2>What your bid earns</h2>
+          <p class="sub">Expected payoff of bid b given rivals&rsquo; equilibrium strategies. Peaks are the best replies.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Expected payoff against own bid in the first-price and second-price auctions"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Bidders</td><td>n</td><td>number of risk-neutral bidders, values i.i.d. U[0,1]</td><td class="n">2 &ndash; 10</td><td class="n">1</td><td class="n">2</td><td>&mdash;</td><td>Gibbons &sect;3.2.B, p. 155 (n = 2); Tadelis eq. (13.8), p. 279</td><td>first-price line slope; both payoff curves; revenue</td></tr>
+      <tr><td>Value</td><td>&theta;</td><td>your private valuation (type)</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.80</td><td>money</td><td>illustrative (the books keep &theta; general)</td><td>your point on both bid lines; the payoff curves and their peaks</td></tr>
+      <tr><td>Your bid</td><td>b</td><td>a unilateral deviation; rivals stay in equilibrium</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.40</td><td>money</td><td>Tadelis eq. (13.2), p. 277</td><td>the marker on the payoff panel; the two &ldquo;your b&rdquo; tiles</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions: first-price bid s(&theta;) = (n&minus;1)&theta;/n (13.8); second-price bid &theta; (Prop. 13.1).
+  First-price payoff of bid b when rivals bid s(&middot;): [min(1, bn/(n&minus;1))]<sup>n&minus;1</sup>(&theta; &minus; b) (13.2).
+  Second-price payoff of bid b when rivals bid their values: &theta;b<sup>n&minus;1</sup> &minus; (n&minus;1)b<sup>n</sup>/n, i.e.
+  E[(&theta; &minus; m)&middot;1{m &lt; b}] with m the highest of n&minus;1 uniform values.
+  Expected payment of type &theta;: &theta;<sup>n&minus;1</sup>&middot;(n&minus;1)&theta;/n in both formats; seller&rsquo;s revenue
+  (n&minus;1)/(n+1) in both (&sect;13.1.4, pp. 279&ndash;282). Defaults: n = 2 reproduces Gibbons&rsquo;s b = v/2; &theta; = 0.80 gives
+  b* = 0.40, Pr(win) = 0.80, expected payoff 0.32, revenue 1/3. The &ldquo;b =&rdquo; buttons set b exactly (the slider shows the nearest
+  0.01). Not exposed: a reserve price (Tadelis exercises 13.3&ndash;13.4, pp. 285&ndash;286) and non-uniform distributions, which
+  leave the linear closed form. Notes: Notas/L07/L07-06, L07-07, L07-08.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN  (pure functions; extracted and checked by check_companions.py)
+function fpaU(p, x){ return Math.pow(Math.min(1, x * p.n / (p.n - 1)), p.n - 1) * (p.th - x); }
+function spaU(p, x){ var y = Math.min(x, 1); return p.th * Math.pow(y, p.n - 1) - (p.n - 1) * Math.pow(y, p.n) / p.n; }
+function report(p){
+  var fb = (p.n - 1) * p.th / p.n;
+  var pwin = Math.pow(p.th, p.n - 1);
+  return {fpaBid: fb, spaBid: p.th, shade: p.th - fb, pwin: pwin, pay: pwin * fb,
+    surplus: Math.pow(p.th, p.n) / p.n, rev: (p.n - 1) / (p.n + 1),
+    uF: fpaU(p, p.b), uS: spaU(p, p.b), lossF: fpaU(p, fb) - fpaU(p, p.b), lossS: spaU(p, p.th) - spaU(p, p.b)};
+}
+// MODEL:END
+
+var D = {n:2, th:0.8, b:0.4};
+var KEYS = ['n','th','b'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return (x < -5e-5 ? '−' : '') + Math.abs(x).toFixed(2); };
+var f3 = function(x){ return (x < -5e-5 ? '−' : '') + Math.abs(x).toFixed(3); };
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xlo,xhi,ylo,yhi,xlab){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(+v.toFixed(3)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  ticks(xlo,xhi).forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  if(ylo<0){ svg.appendChild(el('line',{x1:L,x2:R,y1:Y(0),y2:Y(0),stroke:'var(--muted)','stroke-width':1})); }
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+function path(f,X,Y,lo,hi,N){
+  var d='';
+  for(var i=0;i<=N;i++){ var x=lo+(hi-lo)*i/N; d+=(i?'L':'M')+X(x).toFixed(2)+' '+Y(f(x)).toFixed(2); }
+  return d;
+}
+function dot(svg,x,y,col,lab,dx,dy,hollow){
+  svg.appendChild(el('circle',{cx:x,cy:y,r:hollow?4.5:5,fill:hollow?'var(--surface)':col,stroke:col,'stroke-width':2}));
+  if(lab){ svg.appendChild(txt(x+dx,y+dy,lab,{fill:col,'font-size':11.5,'font-weight':600,'text-anchor':dx<0?'end':'start'})); }
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var f=frame(svg,0,1,0,1,'value θ'), X=f.X, Y=f.Y;
+  svg.appendChild(el('path',{d:path(function(x){return x;},X,Y,0,1,2),stroke:'var(--hi)','stroke-width':2.2,fill:'none','stroke-dasharray':'6 4'}));
+  svg.appendChild(el('path',{d:path(function(x){return (S.n-1)*x/S.n;},X,Y,0,1,2),stroke:'var(--accent)','stroke-width':2.6,fill:'none'}));
+  svg.appendChild(txt(X(0.97),Y(0.97)-8,'second price',{fill:'var(--hi)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(X(0.97),Y((S.n-1)*0.97/S.n)+16,'first price',{fill:'var(--accent)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(el('line',{x1:X(S.th),x2:X(S.th),y1:Y(m.fpaBid),y2:Y(S.th),stroke:'var(--warn)','stroke-width':2}));
+  dot(svg,X(S.th),Y(S.th),'var(--hi)','',0,0);
+  dot(svg,X(S.th),Y(m.fpaBid),'var(--good)','s(θ) = '+m.fpaBid.toFixed(3),8,16);
+  if(m.shade>0.004){ svg.appendChild(txt(X(S.th)-6,(Y(m.fpaBid)+Y(S.th))/2+4,'shade '+m.shade.toFixed(3),{fill:'var(--warn)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'})); }
+}
+
+function drawB(m){
+  var svg=$('svgB'); svg.textContent='';
+  var N=400, vals=[];
+  for(var i=0;i<=N;i++){ var x=i/N; vals.push(fpaU(S,x), spaU(S,x)); }
+  var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals);
+  var pad=Math.max((hi-lo)*0.08,0.01); lo=Math.min(0,lo-pad); hi=hi+pad;
+  var f=frame(svg,0,1,lo,hi,'own bid b'), X=f.X, Y=f.Y;
+  svg.appendChild(el('path',{d:path(function(x){return spaU(S,x);},X,Y,0,1,N),stroke:'var(--hi)','stroke-width':2.2,fill:'none','stroke-dasharray':'6 4'}));
+  svg.appendChild(el('path',{d:path(function(x){return fpaU(S,x);},X,Y,0,1,N),stroke:'var(--accent)','stroke-width':2.6,fill:'none'}));
+  svg.appendChild(el('line',{x1:X(S.b),x2:X(S.b),y1:T,y2:B,stroke:'var(--warn)','stroke-width':1.2,'stroke-dasharray':'3 3'}));
+  dot(svg,X(m.fpaBid),Y(fpaU(S,m.fpaBid)),'var(--good)','FPA best',8,-8);
+  dot(svg,X(S.th),Y(spaU(S,S.th)),'var(--good)','SPA best',8,16,true);
+  dot(svg,X(S.b),Y(m.uF),'var(--accent)','',0,0);
+  dot(svg,X(S.b),Y(m.uS),'var(--hi)','',0,0,true);
+  svg.appendChild(txt(X(S.b)+(S.b>0.7?-6:6),T+12,'your b',{fill:'var(--warn)','font-size':11,'text-anchor':S.b>0.7?'end':'start'}));
+}
+
+function render(){
+  $('v_n').textContent=String(S.n);
+  $('v_th').textContent=S.th.toFixed(2);
+  $('v_b').textContent=S.b.toFixed(3);
+  var m=report(S);
+  $('a_v').textContent=m.fpaBid.toFixed(3);
+  $('a_s').textContent=S.th.toFixed(3);
+  var t;
+  if(S.th<0.005){ t='A zero-value bidder bids zero in both formats and never gains: the lowest type&rsquo;s payoff is 0, one of the conditions of revenue equivalence.'; }
+  else { t='The first-price bidder gives up '+(100/S.n).toFixed(1)+'% of the value in exchange for the margin; with <i>n</i> = '+S.n+' the factor is '+(S.n-1)+'/'+S.n+'.'; }
+  $('a_txt').innerHTML=t;
+  $('t_sh').textContent=m.shade.toFixed(3);
+  $('t_pw').textContent=m.pwin.toFixed(3);
+  $('t_pay').textContent=m.pay.toFixed(4);
+  $('t_su').textContent=m.surplus.toFixed(4);
+  $('t_rev').textContent=m.rev.toFixed(4);
+  $('t_uf').textContent=f3(m.uF);
+  $('t_us').textContent=f3(m.uS);
+  $('t_lf').textContent=m.lossF<5e-6?'at the optimum':'loses '+m.lossF.toFixed(4)+' vs optimum';
+  $('t_ls').textContent=m.lossS<5e-6?'at the optimum':'loses '+m.lossS.toFixed(4)+' vs optimum';
+  var v;
+  if(Math.abs(S.b-S.th)<5e-4 && S.th>0.005){ v='You bid your value. In the second-price auction this is the best reply to <i>anything</i> (Prop. 13.1). In the first-price auction it guarantees a payoff of exactly 0 (Claim 13.1): you pay your value whenever you win.'; }
+  else if(S.b<m.fpaBid-5e-4){ v='You bid <b>below</b> the first-price optimum: the margin rises but the chance of winning falls faster. In the second-price auction under-bidding only loses auctions you would have won at a price below θ (region M of Fig. 13.1).'; }
+  else if(S.b>S.th+5e-4){ v='You bid <b>above your value</b>: in both formats you now sometimes win at a price above θ. In the first-price auction every win loses money.'; }
+  else if(S.b>m.fpaBid+5e-4){ v='You bid between the first-price optimum and your value: in the first-price auction the extra wins cost more margin than they bring; in the second-price auction the higher bid only changes who wins, never the price, so it moves you toward θ.'; }
+  else { v='You play the first-price equilibrium bid. Against rivals who do the same, no other bid does better: margin × probability of winning peaks here.'; }
+  $('bridge').innerHTML=v;
+  drawA(m); drawB(m);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k);
+  inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('snapF').addEventListener('click',function(){ load({b:(S.n-1)*S.th/S.n}); });
+$('snapS').addEventListener('click',function(){ load({b:S.th}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

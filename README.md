@@ -42,6 +42,7 @@ quizzes, `Listas/*aulas-01-02*`) are kept as application background.
 | `Leituras/` | Chapter extracts and TTS narrations |
 | `Map/` | Obsidian cross-reference maps |
 | `NotebookLM/` | Prompts (`slides/`, `audio/`, `video/`) and `sources/` ready for bulk upload |
+| `Notas/` | Study notes per lecture (`/notes`): `LNN/` map, section notes, figures, companions; index `Notas/00-index.md` |
 | `Notebooks/` | Jupyter projects; created by the first `/lab-init` |
 | `Videos/` | `/explainer` videos; created on first use |
 | `rules/` | Topic rules (`00`–`11`) + Efficient Token governance packs |
@@ -71,6 +72,7 @@ quizzes, `Listas/*aulas-01-02*`) are kept as application background.
 | `/lab-data <series>` | Fetch and cache data series with a provenance registry; `--offline` never touches the network |
 | `/explainer signaling` | 3blue1brown-style narrated video (Manim + Speechify), compiled to a 1080p `.mp4` with subtitles |
 | `/manim-kit <project>` | Drive the shared Manim drawing layer from `../Video explainer` |
+| `/notes 2` | Study notes for a lecture under `Notas/LNN/`: map, one note per section, formulas, pitfalls, Python, figures; asks once whether to build companions. `--reconcile` updates an estimated unit once its slides arrive |
 | `/companion <model>` | Interactive page for one model; only when asked, and asks in detail first |
 | `/study-pack`, `/book-solutions`, `/tex-convert` | Study PDF from a remediation file; N&S-style solutions; book → LaTeX |
 

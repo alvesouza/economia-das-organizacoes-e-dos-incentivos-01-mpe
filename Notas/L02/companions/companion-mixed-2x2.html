@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mixing Square</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding:0 16px;padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+.grp{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 -4px}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(24px,5vw,34px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.15;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer ul{margin:8px 0 0;padding-left:18px;font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11.5px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+.mx{border-collapse:collapse;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;margin:6px 0 0}
+.mx td,.mx th{border:1px solid var(--line);padding:6px 12px;text-align:center}
+.mx th{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:600}
+.mx td.ne{background:color-mix(in srgb,var(--good) 18%,var(--surface))}
+.mx .b1{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px}
+.mx .b2{color:var(--hi);text-decoration:overline;text-decoration-thickness:2px}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table.ct{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+table.ct th,table.ct td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.ct th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Economics of Organizations and Incentives &middot; Lecture 2 (estimated) &middot; Tadelis Ch. 6</p>
+  <h1>The Mixing Square</h1>
+  <p class="lede">Any 2&times;2 game, reduced to the four numbers that decide every best response: how much each
+  player gains from their first strategy over their second, against each of the rival&rsquo;s strategies. Move them
+  and watch the two best-response correspondences in the (q, p) square re-form; every crossing is a Nash
+  equilibrium, pure or mixed. The two belief sliders show the indifference condition at work: a player mixes only
+  when the rival&rsquo;s mix makes the two pure strategies pay the same.</p>
+  <p class="prov">Tadelis (2013) &sect;6.2.1&ndash;6.2.3, printed pp. 108&ndash;114 (default = the game of &sect;6.2.3, p. 113; Fig. 6.4, p. 114); Prop. 6.1, p. 108; Gibbons (1992) &sect;1.3.B, pp. 40&ndash;44, Figs. 1.3.8&ndash;1.3.12</p>
+</header>
+
+<main>
+  <div class="rail">
+    <p class="grp">Player 1 (rows)</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&alpha;<sub>1</sub></span> &middot; row-1 gain vs column 1</span><span class="val" id="v_a1"></span></div>
+      <p class="doc">v<sub>1</sub>(row 1, col 1) &minus; v<sub>1</sub>(row 2, col 1): what player 1 gains from row 1 when player 2 plays column 1.</p>
+      <input type="range" id="a1" min="-6" max="6" step="0.5" aria-label="Player 1 gain from row 1 over row 2 against column 1">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&beta;<sub>1</sub></span> &middot; row-1 gain vs column 2</span><span class="val" id="v_b1"></span></div>
+      <p class="doc">v<sub>1</sub>(row 1, col 2) &minus; v<sub>1</sub>(row 2, col 2). Same signs for &alpha;<sub>1</sub> and &beta;<sub>1</sub> = a dominant row; opposite signs = player 1 can be made indifferent.</p>
+      <input type="range" id="b1" min="-6" max="6" step="0.5" aria-label="Player 1 gain from row 1 over row 2 against column 2">
+    </div>
+    <p class="grp">Player 2 (columns)</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&alpha;<sub>2</sub></span> &middot; col-1 gain vs row 1</span><span class="val" id="v_a2"></span></div>
+      <p class="doc">v<sub>2</sub>(row 1, col 1) &minus; v<sub>2</sub>(row 1, col 2): what player 2 gains from column 1 when player 1 plays row 1.</p>
+      <input type="range" id="a2" min="-6" max="6" step="0.5" aria-label="Player 2 gain from column 1 over column 2 against row 1">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&beta;<sub>2</sub></span> &middot; col-1 gain vs row 2</span><span class="val" id="v_b2"></span></div>
+      <p class="doc">v<sub>2</sub>(row 2, col 1) &minus; v<sub>2</sub>(row 2, col 2).</p>
+      <input type="range" id="b2" min="-6" max="6" step="0.5" aria-label="Player 2 gain from column 1 over column 2 against row 2">
+    </div>
+    <p class="grp">Beliefs (probes)</p>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">q</span> &middot; belief about player 2</span><span class="val" id="v_q"></span></div>
+      <p class="doc">Probability player 1 assigns to column 1. Read player 1&rsquo;s gain from row 1 at this belief, and the best reply it implies.</p>
+      <input type="range" id="q" min="0" max="1" step="0.01" aria-label="Belief q, probability of column 1">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">p</span> &middot; belief about player 1</span><span class="val" id="v_p"></span></div>
+      <p class="doc">Probability player 2 assigns to row 1. Read player 2&rsquo;s gain from column 1 at this belief.</p>
+      <input type="range" id="p" min="0" max="1" step="0.01" aria-label="Belief p, probability of row 1">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis &sect;6.2.3</button>
+      <button id="snap" class="ghost" type="button">Beliefs to indifference</button>
+    </div>
+    <div class="btns">
+      <button class="ghost" data-preset="mp" type="button">Matching Pennies</button>
+      <button class="ghost" data-preset="bos" type="button">Battle of the Sexes</button>
+      <button class="ghost" data-preset="stag" type="button">Stag Hunt</button>
+      <button class="ghost" data-preset="pd" type="button">Prisoner&rsquo;s Dilemma</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Nash equilibria of this game</div>
+      <div class="v" id="a_v"></div>
+      <ul id="a_list"></ul>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">q&#770; that makes player 1 indifferent</div><div class="v" id="t_qs"></div><div class="u">&beta;<sub>1</sub>/(&beta;<sub>1</sub> &minus; &alpha;<sub>1</sub>)</div></div>
+      <div class="tile"><div class="k">p&#770; that makes player 2 indifferent</div><div class="v" id="t_ps"></div><div class="u">&beta;<sub>2</sub>/(&beta;<sub>2</sub> &minus; &alpha;<sub>2</sub>)</div></div>
+      <div class="tile"><div class="k">Player 1&rsquo;s gain at q</div><div class="v" id="t_g1"></div><div class="u" id="t_g1w"></div></div>
+      <div class="tile"><div class="k">Player 2&rsquo;s gain at p</div><div class="v" id="t_g2"></div><div class="u" id="t_g2w"></div></div>
+      <div class="tile"><div class="k">Player 1&rsquo;s case (Gibbons)</div><div class="v" id="t_c1"></div><div class="u" id="t_c1w"></div></div>
+      <div class="tile"><div class="k">Player 2&rsquo;s case (Gibbons)</div><div class="v" id="t_c2"></div><div class="u" id="t_c2w"></div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Best-response correspondences</h2>
+          <p class="sub">p = Pr(row 1) up, q = Pr(column 1) across, as in Tadelis Fig. 6.4. Crossings are the equilibria.</p>
+          <svg id="svgA" viewBox="0 0 400 380" role="img" aria-label="Unit square with player 1's and player 2's best-response correspondences and the Nash equilibria"></svg>
+        </div>
+        <div>
+          <h2>The indifference lines</h2>
+          <p class="sub">Each player&rsquo;s gain from the first strategy as the rival&rsquo;s mix varies. Zero is indifference.</p>
+          <svg id="svgB" viewBox="0 0 400 380" role="img" aria-label="Player 1's gain from row 1 as a function of q and player 2's gain from column 1 as a function of p"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="mxnote"></p>
+      <div class="scroll"><table class="mx" id="mx"></table></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table class="ct">
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Row-1 gain vs col 1</td><td>&alpha;<sub>1</sub></td><td>v<sub>1</sub>(M,C) &minus; v<sub>1</sub>(D,C)</td><td class="n">&minus;6 &ndash; 6</td><td class="n">0.5</td><td class="n">&minus;4</td><td>payoff</td><td>Tadelis &sect;6.2.3, p. 113: 0 &minus; 4</td><td>BR<sub>1</sub>, q&#770;, the solid line on the right</td></tr>
+      <tr><td>Row-1 gain vs col 2</td><td>&beta;<sub>1</sub></td><td>v<sub>1</sub>(M,R) &minus; v<sub>1</sub>(D,R)</td><td class="n">&minus;6 &ndash; 6</td><td class="n">0.5</td><td class="n">3</td><td>payoff</td><td>p. 113: 3 &minus; 0</td><td>BR<sub>1</sub>, q&#770;</td></tr>
+      <tr><td>Col-1 gain vs row 1</td><td>&alpha;<sub>2</sub></td><td>v<sub>2</sub>(M,C) &minus; v<sub>2</sub>(M,R)</td><td class="n">&minus;6 &ndash; 6</td><td class="n">0.5</td><td class="n">&minus;5</td><td>payoff</td><td>p. 113: 0 &minus; 5</td><td>BR<sub>2</sub>, p&#770;, the dashed line on the right</td></tr>
+      <tr><td>Col-1 gain vs row 2</td><td>&beta;<sub>2</sub></td><td>v<sub>2</sub>(D,C) &minus; v<sub>2</sub>(D,R)</td><td class="n">&minus;6 &ndash; 6</td><td class="n">0.5</td><td class="n">1</td><td>payoff</td><td>p. 113: 4 &minus; 3</td><td>BR<sub>2</sub>, p&#770;</td></tr>
+      <tr><td>Belief about player 2</td><td>q</td><td>Pr(column 1) held by player 1</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.30</td><td>probability</td><td>Def. 6.4, p. 105</td><td>vertical probe; player 1&rsquo;s gain tile</td></tr>
+      <tr><td>Belief about player 1</td><td>p</td><td>Pr(row 1) held by player 2</td><td class="n">0 &ndash; 1</td><td class="n">0.01</td><td class="n">0.50</td><td>probability</td><td>Def. 6.4, p. 105</td><td>horizontal probe; player 2&rsquo;s gain tile</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Why four numbers are enough: adding a constant to player 1&rsquo;s payoffs in one column (or to player 2&rsquo;s in one row)
+  changes no best response, so the page plays the normalized game in the matrix above, whose best responses and equilibria
+  are exactly those of the original. Expressions: player 1&rsquo;s gain from row 1 at belief q is q&alpha;<sub>1</sub> + (1&minus;q)&beta;<sub>1</sub>;
+  player 2&rsquo;s gain from column 1 at belief p is p&alpha;<sub>2</sub> + (1&minus;p)&beta;<sub>2</sub>; a player best-responds with the first
+  strategy when the gain is positive, the second when negative, and any mix when it is zero (Prop. 6.1, p. 108). Equilibria are found
+  exactly, piece by piece of the square, with no grid search. Defaults reproduce Tadelis &sect;6.2.3: (M, R), (D, C) and the mixed
+  equilibrium p = 1/6, q = 3/7. Presets: Matching Pennies, p. 108 (&alpha;<sub>1</sub>=2, &beta;<sub>1</sub>=&minus;2, &alpha;<sub>2</sub>=&minus;2, &beta;<sub>2</sub>=2);
+  Battle of the Sexes, p. 69 (2, &minus;1, 1, &minus;2: mixed at p = 2/3, q = 1/3); Stag Hunt, p. 84 (2, &minus;3, 2, &minus;3: mixed at 3/5);
+  Prisoner&rsquo;s Dilemma in the Lecture 1 payoffs, Tadelis p. 48 (&minus;1 throughout: (F, F) only). Notes: Lecture 2 notes
+  L02-07 (mixed strategies) and L02-09 (existence).</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+var EPS = 1e-12;
+// Player 1's gain from row 1 over row 2 when player 2 puts probability q on column 1.
+function gain1(s, q){ return q*s.a1 + (1-q)*s.b1; }
+// Player 2's gain from column 1 over column 2 when player 1 puts probability p on row 1.
+function gain2(s, p){ return p*s.a2 + (1-p)*s.b2; }
+// Best reply to a gain: probability on the first strategy, as a closed interval [lo, hi].
+function brSet(g){ return g > EPS ? [1,1] : (g < -EPS ? [0,0] : [0,1]); }
+// Root in (0,1) of x*a + (1-x)*b = 0; 'all' if identically zero; null if none inside.
+function indiff(a, b){
+  if (Math.abs(a) <= EPS && Math.abs(b) <= EPS) return 'all';
+  if (Math.abs(a - b) <= EPS) return null;
+  var x = b / (b - a);
+  return (x > EPS && x < 1 - EPS) ? x : null;
+}
+// Split [0,1] into points and open intervals on which the gain keeps its sign.
+function pieces(root){
+  var cuts = [0, 1];
+  if (typeof root === 'number') cuts = [0, root, 1];
+  var out = [];
+  for (var i = 0; i < cuts.length; i++){
+    out.push({lo:cuts[i], hi:cuts[i], pt:true, rep:cuts[i]});
+    if (i < cuts.length - 1) out.push({lo:cuts[i], hi:cuts[i+1], pt:false, rep:(cuts[i]+cuts[i+1])/2});
+  }
+  return out;
+}
+// Intersect a piece (point or open interval) with a closed interval [lo, hi].
+function cut(pc, set){
+  if (pc.pt) return (pc.lo >= set[0] - EPS && pc.lo <= set[1] + EPS) ? [pc.lo, pc.lo] : null;
+  var L = Math.max(pc.lo, set[0]), H = Math.min(pc.hi, set[1]);
+  if (H - L > EPS) return [L, H];
+  if (Math.abs(H - L) <= EPS && L > pc.lo + EPS && L < pc.hi - EPS) return [L, L];
+  return null;
+}
+// Every Nash equilibrium (p, q) of the 2x2 game, exactly: points and segments.
+function solve(s){
+  var qs = indiff(s.a1, s.b1), ps = indiff(s.a2, s.b2);
+  var Q = pieces(qs), P = pieces(ps), rects = [];
+  Q.forEach(function(qp){
+    var br1 = brSet(gain1(s, qp.rep));
+    P.forEach(function(pp){
+      var br2 = brSet(gain2(s, pp.rep));
+      var pr = cut(pp, br1), qr = cut(qp, br2);
+      if (pr && qr) rects.push({p0:pr[0], p1:pr[1], q0:qr[0], q1:qr[1]});
+    });
+  });
+  var segs = rects.filter(function(r){ return r.p1 - r.p0 > EPS || r.q1 - r.q0 > EPS; });
+  var pts = rects.filter(function(r){ return !(r.p1 - r.p0 > EPS || r.q1 - r.q0 > EPS); })
+    .filter(function(r){ return !segs.some(function(g){
+      return r.p0 >= g.p0 - EPS && r.p0 <= g.p1 + EPS && r.q0 >= g.q0 - EPS && r.q0 <= g.q1 + EPS; }); })
+    .map(function(r){ return {p:r.p0, q:r.q0,
+      pure:(Math.abs(r.p0) <= EPS || Math.abs(r.p0 - 1) <= EPS) && (Math.abs(r.q0) <= EPS || Math.abs(r.q0 - 1) <= EPS)}; });
+  return {qs:qs, ps:ps, pts:pts, segs:segs,
+    nPure:pts.filter(function(x){ return x.pure; }).length,
+    nMixed:pts.filter(function(x){ return !x.pure; }).length};
+}
+// Gibbons pp. 41-43: the four main cases (and the weak ones) for one player.
+function gcase(a, b){
+  if (a > EPS && b > EPS) return 'i';
+  if (a < -EPS && b < -EPS) return 'ii';
+  if (a > EPS && b < -EPS) return 'iii';
+  if (a < -EPS && b > EPS) return 'iv';
+  if (Math.abs(a) <= EPS && Math.abs(b) <= EPS) return 'tie';
+  return 'weak';
+}
+function report(s){
+  var r = solve(s);
+  return {qs:r.qs, ps:r.ps, nPure:r.nPure, nMixed:r.nMixed, nSegs:r.segs.length,
+    pts:r.pts.map(function(x){ return [x.p, x.q]; }),
+    g1:gain1(s, s.q), g2:gain2(s, s.p), c1:gcase(s.a1, s.b1), c2:gcase(s.a2, s.b2)};
+}
+// MODEL:END
+
+var D = {a1:-4, b1:3, a2:-5, b2:1, q:0.30, p:0.50, r:['M','D'], c:['C','R']};
+var PRE = {
+  mp:{a1:2, b1:-2, a2:-2, b2:2, r:['H','T'], c:['H','T']},
+  bos:{a1:2, b1:-1, a2:1, b2:-2, r:['O','F'], c:['O','F']},
+  stag:{a1:2, b1:-3, a2:2, b2:-3, r:['S','H'], c:['S','H']},
+  pd:{a1:-1, b1:-1, a2:-1, b2:-1, r:['M','F'], c:['M','F']}
+};
+var KEYS = ['a1','b1','a2','b2','q','p'];
+var S = JSON.parse(JSON.stringify(D));
+var $ = function(id){ return document.getElementById(id); };
+var sg = function(x,d){ return (x>0?'+':x<0?'−':'') + Math.abs(x).toFixed(d===undefined?2:d); };
+function frac(x){
+  for (var den = 1; den <= 60; den++){
+    var num = Math.round(x*den);
+    if (Math.abs(num/den - x) < 1e-9) return den === 1 ? String(num) : num + '/' + den;
+  }
+  return x.toFixed(3);
+}
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=56,R=380,T=18,B=322;
+var X=function(v){ return L+v*(R-L); }, Y=function(v){ return B-v*(B-T); };
+
+function axes(svg, xlab, ylab, ylo, yhi){
+  var Yv=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  [0,0.25,0.5,0.75,1].forEach(function(v){
+    svg.appendChild(el('line',{x1:X(v),x2:X(v),y1:T,y2:B,stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(X(v),B+17,String(v),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  var st=(yhi-ylo)/4;
+  for (var k=0;k<=4;k++){ var v=ylo+k*st;
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Yv(v),y2:Yv(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Yv(v)+4,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  }
+  svg.appendChild(el('rect',{x:L,y:T,width:R-L,height:B-T,fill:'none',stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(txt(14,(T+B)/2,ylab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle',transform:'rotate(-90 14 '+((T+B)/2)+')'}));
+  return Yv;
+}
+function seg(svg,x1,y1,x2,y2,col,w,dash){ var a={x1:x1,y1:y1,x2:x2,y2:y2,stroke:col,'stroke-width':w,'stroke-linecap':'round'}; if(dash) a['stroke-dasharray']=dash; svg.appendChild(el('line',a)); }
+
+function drawA(r){
+  var svg=$('svgA'); svg.textContent='';
+  axes(svg,'q = Pr(player 2 plays '+S.c[0]+')','p = Pr(player 1 plays '+S.r[0]+')',0,1);
+  // BR1: p as a correspondence of q
+  if (r.qs === 'all') svg.appendChild(el('rect',{x:L,y:T,width:R-L,height:B-T,fill:'var(--accent)',opacity:.12}));
+  pieces(r.qs).forEach(function(pc){
+    var br=brSet(gain1(S,pc.rep));
+    if (pc.pt){ if (br[0]!==br[1]) seg(svg,X(pc.lo),Y(0),X(pc.lo),Y(1),'var(--accent)',3); }
+    else if (br[0]===br[1]) seg(svg,X(pc.lo),Y(br[0]),X(pc.hi),Y(br[0]),'var(--accent)',3);
+  });
+  // BR2: q as a correspondence of p (dashed)
+  if (r.ps === 'all') svg.appendChild(el('rect',{x:L,y:T,width:R-L,height:B-T,fill:'var(--hi)',opacity:.12}));
+  pieces(r.ps).forEach(function(pc){
+    var br=brSet(gain2(S,pc.rep));
+    if (pc.pt){ if (br[0]!==br[1]) seg(svg,X(0),Y(pc.lo),X(1),Y(pc.lo),'var(--hi)',3,'7 5'); }
+    else if (br[0]===br[1]) seg(svg,X(br[0]),Y(pc.lo),X(br[0]),Y(pc.hi),'var(--hi)',3,'7 5');
+  });
+  // probes
+  seg(svg,X(S.q),T,X(S.q),B,'var(--muted)',1,'2 3');
+  seg(svg,L,Y(S.p),R,Y(S.p),'var(--muted)',1,'2 3');
+  // equilibria
+  r.segs.forEach(function(g){ seg(svg,X(g.q0),Y(g.p0),X(g.q1),Y(g.p1),'var(--good)',7); });
+  r.pts.forEach(function(x){
+    svg.appendChild(el('circle',{cx:X(x.q),cy:Y(x.p),r:7,fill:'var(--good)',stroke:'var(--surface)','stroke-width':2}));
+  });
+  svg.appendChild(txt(R-4,T+14,'BR₁ solid · BR₂ dashed',{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+}
+function drawB(r){
+  var svg=$('svgB'); svg.textContent='';
+  var Yv=axes(svg,"rival's probability on their first strategy (q for BR₁, p for BR₂)",'gain from first strategy',-6,6);
+  seg(svg,L,Yv(0),R,Yv(0),'var(--ink)',1.2);
+  seg(svg,X(0),Yv(S.b1),X(1),Yv(S.a1),'var(--accent)',2.6);
+  seg(svg,X(0),Yv(S.b2),X(1),Yv(S.a2),'var(--hi)',2.6,'7 5');
+  if (typeof r.qs==='number') svg.appendChild(el('circle',{cx:X(r.qs),cy:Yv(0),r:5,fill:'var(--accent)'}));
+  if (typeof r.ps==='number') svg.appendChild(el('circle',{cx:X(r.ps),cy:Yv(0),r:5,fill:'var(--hi)'}));
+  svg.appendChild(el('circle',{cx:X(S.q),cy:Yv(gain1(S,S.q)),r:4.5,fill:'var(--surface)',stroke:'var(--accent)','stroke-width':2}));
+  svg.appendChild(el('circle',{cx:X(S.p),cy:Yv(gain2(S,S.p)),r:4.5,fill:'var(--surface)',stroke:'var(--hi)','stroke-width':2}));
+  svg.appendChild(txt(L+6,T+14,'player 1: qα₁+(1−q)β₁',{fill:'var(--accent)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(txt(L+6,T+30,'player 2: pα₂+(1−p)β₂',{fill:'var(--hi)','font-size':11.5,'font-weight':600}));
+}
+function name(x){ return (x.p>0.5?S.r[0]:S.r[1])+', '+(x.q>0.5?S.c[0]:S.c[1]); }
+var CASEW = {i:'row 1 strictly dominant', ii:'row 2 strictly dominant', iii:'row 1 iff q > q̂', iv:'row 1 iff q < q̂',
+  tie:'indifferent everywhere', weak:'a weakly dominant row'};
+function render(){
+  KEYS.forEach(function(k){
+    var v=S[k], onGrid=Math.abs(v*100-Math.round(v*100))<1e-9;
+    $('v_'+k).textContent = (k==='q'||k==='p') ? (onGrid ? v.toFixed(2) : frac(v)+' ≈ '+v.toFixed(3)) : sg(v,1);
+  });
+  var r=solve(S);
+  if (r.segs.length){
+    $('a_v').textContent='a continuum of equilibria';
+  } else {
+    var n=r.pts.length;
+    $('a_v').textContent=n+(n===1?' equilibrium':' equilibria')+': '+r.nPure+' pure, '+r.nMixed+' mixed';
+  }
+  var li=[];
+  r.pts.forEach(function(x){
+    li.push(x.pure ? '('+name(x)+') — pure: p = '+frac(x.p)+', q = '+frac(x.q)
+      : 'mixed — p = σ₁('+S.r[0]+') = '+frac(x.p)+', q = σ₂('+S.c[0]+') = '+frac(x.q));
+  });
+  r.segs.forEach(function(g){ li.push('segment — p ∈ ['+frac(g.p0)+', '+frac(g.p1)+'], q ∈ ['+frac(g.q0)+', '+frac(g.q1)+']'); });
+  $('a_list').innerHTML=li.map(function(s){ return '<li>'+s+'</li>'; }).join('');
+  var note='';
+  if (r.nMixed && !r.segs.length) note='In the mixed equilibrium each player&rsquo;s mix is pinned by the <b>other</b> player&rsquo;s indifference: q&#770; comes from player 1&rsquo;s payoffs, p&#770; from player 2&rsquo;s (Prop. 6.1).';
+  else if (r.segs.length) note='A gain is zero against a pure strategy, so a whole edge of the square is a best reply: <b>weak dominance</b> produces a continuum, a non-generic case (Gibbons p. 43).';
+  else if (r.nPure===1) note='One crossing at a corner: at least one player has a <b>strictly dominant</b> strategy, so there is nothing to mix.';
+  $('a_note').innerHTML=note;
+  $('t_qs').textContent = r.qs==='all' ? 'any q' : (r.qs===null ? 'none in (0,1)' : frac(r.qs));
+  $('t_ps').textContent = r.ps==='all' ? 'any p' : (r.ps===null ? 'none in (0,1)' : frac(r.ps));
+  var g1=gain1(S,S.q), g2=gain2(S,S.p);
+  $('t_g1').textContent=sg(g1,2);
+  $('t_g1w').textContent = g1>EPS ? S.r[0]+' strictly better: BR₁ = '+S.r[0] : (g1<-EPS ? S.r[1]+' strictly better: BR₁ = '+S.r[1] : 'indifferent: any mix is a best reply');
+  $('t_g2').textContent=sg(g2,2);
+  $('t_g2w').textContent = g2>EPS ? S.c[0]+' strictly better: BR₂ = '+S.c[0] : (g2<-EPS ? S.c[1]+' strictly better: BR₂ = '+S.c[1] : 'indifferent: any mix is a best reply');
+  var c1=gcase(S.a1,S.b1), c2=gcase(S.a2,S.b2);
+  $('t_c1').textContent = (c1==='tie'||c1==='weak') ? 'boundary' : '('+c1+')';
+  $('t_c1w').textContent = CASEW[c1].replace('row 1',S.r[0]).replace('row 2',S.r[1]);
+  $('t_c2').textContent = (c2==='tie'||c2==='weak') ? 'boundary' : '('+c2+')';
+  $('t_c2w').textContent = CASEW[c2].replace('row 1',S.c[0]).replace('row 2',S.c[1]).replace(/q/g,'p');
+  // the normalized matrix, with best-reply marks
+  var u1=[[S.a1,S.b1],[0,0]], u2=[[S.a2,0],[S.b2,0]];
+  var h='<tr><th></th><th>'+S.c[0]+'</th><th>'+S.c[1]+'</th></tr>';
+  for (var i=0;i<2;i++){
+    h+='<tr><th>'+S.r[i]+'</th>';
+    for (var j=0;j<2;j++){
+      var b1=u1[i][j]>=u1[1-i][j]-EPS, b2=u2[i][j]>=u2[i][1-j]-EPS;
+      h+='<td class="'+(b1&&b2?'ne':'')+'"><span class="'+(b1?'b1':'')+'">'+sg(u1[i][j],1).replace('+','')+'</span>, <span class="'+(b2?'b2':'')+'">'+sg(u2[i][j],1).replace('+','')+'</span></td>';
+    }
+    h+='</tr>';
+  }
+  $('mx').innerHTML=h;
+  $('mxnote').innerHTML='The normalized game being played (player 1&rsquo;s payoff from '+S.r[1]+' and player 2&rsquo;s from '+S.c[1]+' set to 0). Underlined: player 1&rsquo;s pure best reply to the column; overlined: player 2&rsquo;s to the row; shaded: a <b>pure</b> Nash equilibrium (Tadelis&rsquo;s underline method, pp. 81&ndash;82).';
+  drawA(r); drawB(r);
+}
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(JSON.parse(JSON.stringify(D))); });
+$('snap').addEventListener('click',function(){
+  var r=solve(S), P={};
+  if (typeof r.qs==='number') P.q=r.qs;
+  if (typeof r.ps==='number') P.p=r.ps;
+  Object.assign(S,P); $('q').value=S.q; $('p').value=S.p; render();
+});
+document.querySelectorAll('[data-preset]').forEach(function(b){
+  b.addEventListener('click',function(){ load(JSON.parse(JSON.stringify(PRE[b.getAttribute('data-preset')]))); });
+});
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

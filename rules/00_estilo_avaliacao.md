@@ -90,6 +90,28 @@ Aula numbers follow the draft class plan (`Map/study-guide.md`); update them whe
   diagram, the Edgeworth box, the bargaining frontier, the incentive–insurance trade-off). The
   rubric scores **labelled axes, named curves and the equilibrium point** separately from the
   verbal conclusion.
+- **Equations, notation and layout (every solution).**
+  1. Number every equation a later step uses (`\label`/`\eqref`, or `(1)`, `(2)`... in
+     Markdown) and name the source at each step: "Using (2) and (4)...", "Substituting (7)
+     into (5)...", "Dividing (3) by $p$...". Equations of the statement keep the statement's
+     numbers. *Why:* a step that does not say where its terms come from cannot be checked
+     line by line; the reader has to reverse-engineer it.
+  2. Open each solution with a **Notation** list: every variable and parameter, what it
+     means, and its admissible range. Define any new symbol on the line where it first
+     appears. *Why:* the same letter means different things across topics ($\sigma$ is a
+     mixed strategy in Tadelis Ch. 6 and a standard deviation in the risk-sharing models).
+  3. One operation per displayed line. Use display equations, not long inline chains, with a
+     short sentence between displays saying what was done. *Why:* clustered math hides the
+     step where an error happens.
+  4. Show every substitution as its own line: write the receiving equation with the substituted
+     expression in place, in parentheses, before simplifying. With (1) $A=B+C$ and (2) $B=2A$,
+     "substituting (2) into (1)" gives $A=(2A)+C$ on one line, and only the next line gives
+     $C=-A$. *Why:* jumping from the cited equations straight to the result hides the one line a
+     reader needs to check the substitution, and sign and exponent errors live there.
+     Plugging in numbers is a substitution too: show the numbers in place, then the result,
+     e.g. $VA_B=(1000)-(600)$, then $=400$. The displayed arithmetic must reproduce the printed
+     result: carry enough decimals that the shown operation gives the stated value (not
+     $-0.6365-(-0.6460)$ printed as $0.00946$), and keep any check script asserting that value.
 
 ## 5. Use of the bibliography (mandatory)
 
@@ -98,7 +120,7 @@ Anchor content and references in the course books, through `Map/` and `rules/` w
 - **Milgrom & Roberts (1992)**: the **floor** (chapter/section in every question).
   In `Livros/` (sections and printed pages: `Map/books-index.md`). Cite `Ref: M&R Ch. N,
   "<section>", p. NNN`; never invent a section number. Its *Food for Thought* items are the
-  model for discursive questions (cite by number and page, never reproduce).
+  model for discursive questions.
 - **Mas-Colell, Whinston & Green (1995)**: formal depth: 9.AA (bargaining), 13.B–D (adverse
   selection, signaling, screening), 14.B–D (principal–agent), 16.C (First Welfare Theorem).
 - **Varian, *Intermediate Microeconomics with Calculus* (2014)**: intuition and intermediate-level
@@ -109,7 +131,16 @@ Anchor content and references in the course books, through `Map/` and `rules/` w
 - **Giambiagi & Garcia (2010)**: Brazilian and 2008-crisis context: Cap. 7 (incentives),
   Quadro 8.1 (S&L), Cap. 16 (Sadia). Essays only, no exercises.
 
-Write **original** questions from the concepts; never copy or paraphrase a book exercise.
+**Book questions used in a list, mock exam or practice plan.** Reproduce the question's text
+verbatim, every sub-item, table and number, never only its number and page. Open it with an
+explicit source line before the text: author (year), title, exercise number and name, page, and
+"reproduced verbatim". Mark anything added or changed ("Added parts (not in the book)", "numbers
+changed", "items (a)-(c) only"). Take the text from the PDF, not from the `.md` conversion,
+which garbles spacing, tables and glyphs. When the source has no exercise (an article section),
+say so in the source line and write the statement as your own. *Why:* a list that says
+"Tadelis 4.5, p. 77" cannot be worked without the book open, and the source line keeps the
+reproduced text attributed.
+Questions you create stay original: do not disguise a book exercise as your own.
 Use `Map/` for topic weights and for pages in the `Ref:` lines.
 
 ## 6. LaTeX conventions

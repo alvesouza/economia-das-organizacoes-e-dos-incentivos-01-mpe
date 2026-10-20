@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The No-Shirking Wage</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail left, answer + tiles + two linked panels right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;margin:0 auto;max-width:1120px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:28px 48px;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px;position:relative}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer.bad{border-left-color:var(--warn)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer.bad .v{color:var(--warn)}
+.answer .note{font-size:13.5px;margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px;min-width:0}
+@media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:72ch}
+.theme{position:absolute;top:0;right:0}
+header .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game theory &middot; Lecture 6 &middot; Relational contracts</p>
+  <h1>The No-Shirking Wage</h1>
+  <p class="lede">The firm cannot see effort, only output, and its one sanction is to stop employing the worker.
+  Effort is then bought with a rent: a wage high enough that the job is worth more than the gain from
+  shirking. Move patience, the chance that shirking goes unnoticed and the effort cost, and read the lowest
+  wage that keeps the worker honest, and whether the job produces enough to pay it.</p>
+  <p class="prov">Gibbons (1992) &sect;2.3.D, pp. 107&ndash;111, eqs. (2.3.5) and (2.3.7); calibration from Milgrom &amp; Roberts (1992) Ch. 8, pp. 251&ndash;252 (USD 40,000 outside wage, USD 1,000 gain, 5% detection)</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&delta;</span> &middot; discount factor</span><span class="val" id="v_d"></span></div>
+      <p class="doc">How much the worker values next period's job. M&amp;R's multiplier N equals &delta;/(1&minus;&delta;).</p>
+      <input type="range" id="d" min="0.01" max="0.99" step="0.01" aria-label="Discount factor">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">p</span> &middot; shirking goes unnoticed</span><span class="val" id="v_p"></span></div>
+      <p class="doc">Probability a shirker still produces high output. Detection is 1 &minus; p; p = 0 is perfect monitoring.</p>
+      <input type="range" id="p" min="0" max="0.99" step="0.01" aria-label="Probability that shirking goes unnoticed">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">e</span> &middot; effort cost</span><span class="val" id="v_e"></span></div>
+      <p class="doc">Disutility of effort per period: what the worker gains by shirking.</p>
+      <input type="range" id="e" min="0" max="10" step="0.1" aria-label="Effort cost, thousands of dollars per year">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">w<sub>0</sub></span> &middot; outside wage</span><span class="val" id="v_w0"></span></div>
+      <p class="doc">Self-employment income, with no effort cost. The worker's fallback after being fired.</p>
+      <input type="range" id="w0" min="0" max="80" step="0.5" aria-label="Outside wage, thousands of dollars per year">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">y</span> &middot; output with effort</span><span class="val" id="v_y"></span></div>
+      <p class="doc">What an honest worker produces. The firm pays w* only if y covers it.</p>
+      <input type="range" id="y" min="0" max="120" step="0.5" aria-label="Output, thousands of dollars per year">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to M&amp;R p. 251</button>
+      <button id="n2" class="ghost" type="button">M&amp;R N = 2</button>
+      <button id="snap" class="ghost" type="button">Snap &delta; to firm's &delta;<sub>min</sub></button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer" id="ans">
+      <div class="k">Lowest wage that deters shirking, w*</div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Rent (premium)</div><div class="v" id="t_rent"></div><div class="u">w* &minus; w<sub>0</sub> &minus; e</div></div>
+      <div class="tile"><div class="k">Detection</div><div class="v" id="t_det"></div><div class="u">1 &minus; p per shirked period</div></div>
+      <div class="tile"><div class="k">M&amp;R multiplier N</div><div class="v" id="t_N"></div><div class="u">&delta;/(1 &minus; &delta;)</div></div>
+      <div class="tile"><div class="k">Firm's margin</div><div class="v" id="t_firm"></div><div class="u">y &minus; w* per period</div></div>
+      <div class="tile"><div class="k">Firm needs &delta; &ge;</div><div class="v" id="t_dmin"></div><div class="u" id="t_dminu"></div></div>
+      <div class="tile"><div class="k">Worker's value at w*</div><div class="v" id="t_v"></div><div class="u">average per period, effort = shirk</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Patience and the wage</h2>
+          <p class="sub">w* against &delta;. Where the curve is below y, the firm will pay it.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Minimum no-shirking wage against the discount factor"></svg>
+        </div>
+        <div>
+          <h2>Effort or shirk</h2>
+          <p class="sub">Worker's average payoff per period at each wage: they cross at w*.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Worker's average payoff from effort and from shirking against the wage"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="assume"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Discount factor</td><td>&delta;</td><td>weight on next period</td><td class="n">0.01 &ndash; 0.99</td><td class="n">0.01</td><td class="n">0.50</td><td>&mdash;</td><td>M&amp;R N = 1 (p. 251), as N = &delta;/(1&minus;&delta;)</td><td>w*, rent, marker in A, slope of shirk line in B</td></tr>
+      <tr><td>Shirking unnoticed</td><td>p</td><td>P(high output | shirk)</td><td class="n">0 &ndash; 0.99</td><td class="n">0.01</td><td class="n">0.95</td><td>&mdash;</td><td>M&amp;R detection .05, p. 251</td><td>w*, curve in A, shirk line in B</td></tr>
+      <tr><td>Effort cost</td><td>e</td><td>disutility of effort</td><td class="n">0 &ndash; 10</td><td class="n">0.1</td><td class="n">1.0</td><td>USD 000 / yr</td><td>M&amp;R gain g = 1,000, p. 251</td><td>w*, floor, effort line in B</td></tr>
+      <tr><td>Outside wage</td><td>w<sub>0</sub></td><td>self-employment income</td><td class="n">0 &ndash; 80</td><td class="n">0.5</td><td class="n">39.0</td><td>USD 000 / yr</td><td>M&amp;R w&#772; = 40 = w<sub>0</sub> + e, p. 251</td><td>everything shifts</td></tr>
+      <tr><td>Output</td><td>y</td><td>output with effort</td><td class="n">0 &ndash; 120</td><td class="n">0.5</td><td class="n">41.0</td><td>USD 000 / yr</td><td>page calibration: neither book gives y; 41 satisfies Gibbons's y &minus; e &gt; w<sub>0</sub> &gt; py (p. 108)</td><td>y line in A, firm's margin, &delta;<sub>min</sub></td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Expressions (Gibbons pp. 109&ndash;110): V<sub>e</sub> = (w &minus; e)/(1 &minus; &delta;); V<sub>s</sub> = [(1&minus;&delta;)w + &delta;(1&minus;p)w<sub>0</sub>] / [(1&minus;&delta;p)(1&minus;&delta;)];
+  effort iff V<sub>e</sub> &ge; V<sub>s</sub> &hArr; w &ge; w* = w<sub>0</sub> + e + (1&minus;&delta;)e/(&delta;(1&minus;p)) (2.3.5). Panel B plots (1&minus;&delta;)V<sub>e</sub> and (1&minus;&delta;)V<sub>s</sub>.
+  Firm pays iff y &ge; w* (2.3.7); combined, &delta; &ge; e/(e + (1&minus;p)(y &minus; e &minus; w<sub>0</sub>)). M&amp;R's efficiency wage w&#772; + g/(Np) (p. 252) is the same number with
+  g = e, detection 1 &minus; p, N = &delta;/(1&minus;&delta;) and w&#772; = w<sub>0</sub> + e: defaults give w* = 60 (USD 60,000, N = 1) and the &ldquo;N = 2&rdquo; button gives 50.
+  The firm's test (2.3.7) is Gibbons's under his assumption w<sub>0</sub> &gt; py; the strip under the panels says when the controls leave it. Notes behind the page: L06-07.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+function report(s){
+  var prem = (1 - s.d)*s.e/(s.d*(1 - s.p));
+  var w = s.w0 + s.e + prem;
+  var S = s.y - s.e - s.w0;
+  var dmin = s.e === 0 ? (S >= 0 ? 0 : null) : (S > 0 ? s.e/(s.e + (1 - s.p)*S) : null);
+  return {wstar:w, premium:prem, detect:1 - s.p, N:s.d/(1 - s.d), firm:s.y - w,
+    firmPays: s.y - w >= -1e-9, dmin:dmin, surplus:S,
+    efficient: S > 0, shirkWorse: s.w0 > s.p*s.y,
+    avgValue: w - s.e};
+}
+function effortAvg(w, s){ return w - s.e; }
+function shirkAvg(w, s){ return ((1 - s.d)*w + s.d*(1 - s.p)*s.w0)/(1 - s.d*s.p); }
+// MODEL:END
+
+var D = {d:0.5, p:0.95, e:1, w0:39, y:41};
+var KEYS = ['d','p','e','w0','y'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var f2 = function(x){ return (x<0?'−':'') + Math.abs(x).toFixed(2); };
+var NS = 'http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xlo,xhi,ylo,yhi,xlab){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  ticks(xlo,xhi).forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+function poly(svg,pts,col,w,dash,clip){
+  var a={points:pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' '),fill:'none',stroke:col,'stroke-width':w};
+  if(dash){ a['stroke-dasharray']=dash; }
+  if(clip){ a['clip-path']='url(#'+clip+')'; }
+  svg.appendChild(el('polyline',a));
+}
+function dot(svg,x,y,col,hollow){ svg.appendChild(el('circle',{cx:x,cy:y,r:5,fill:hollow?'var(--surface)':col,stroke:col,'stroke-width':2})); }
+function hline(svg,f,v,col,lab,dash){
+  svg.appendChild(el('line',{x1:L,x2:R,y1:f.Y(v),y2:f.Y(v),stroke:col,'stroke-width':1.4,'stroke-dasharray':dash||''}));
+  svg.appendChild(txt(R-4,f.Y(v)-5,lab,{fill:col,'font-size':11,'text-anchor':'end','font-weight':600}));
+}
+
+function drawA(r){
+  var svg=$('svgA'); svg.textContent='';
+  var floor=S.w0+S.e;
+  var top=Math.max(S.y, floor, Math.min(r.wstar, 2*floor+10));
+  var yhi=top*1.15+1, lo=Math.min(floor,S.y), ylo=Math.max(0, lo-(yhi-lo)*0.12);
+  var f=frame(svg,0,1,ylo,yhi,'discount factor δ');
+  var defs=el('defs',{}), cp=el('clipPath',{id:'clipA'});
+  cp.appendChild(el('rect',{x:L,y:T,width:R-L,height:B-T})); defs.appendChild(cp); svg.appendChild(defs);
+  var pts=[]; for(var i=0;i<=400;i++){ var dd=0.01+0.98*i/400; pts.push([f.X(dd),f.Y(report(Object.assign({},S,{d:dd})).wstar)]); }
+  hline(svg,f,floor,'var(--muted)','w₀ + e = '+f2(floor),'2 3');
+  hline(svg,f,S.y,'var(--hi)','y = '+f2(S.y),'6 4');
+  poly(svg,pts,'var(--accent)',2.4,'', 'clipA');
+  if(r.dmin!==null && r.dmin>0.01 && r.dmin<0.99){
+    svg.appendChild(el('line',{x1:f.X(r.dmin),x2:f.X(r.dmin),y1:T,y2:B,stroke:'var(--good)','stroke-width':1,'stroke-dasharray':'2 3'}));
+    svg.appendChild(txt(f.X(r.dmin)-4,B-8,'δmin '+r.dmin.toFixed(3),{fill:'var(--good)','font-size':11,'text-anchor':'end','font-weight':600}));
+  }
+  if(r.wstar<=yhi){ dot(svg,f.X(S.d),f.Y(r.wstar),r.firmPays?'var(--good)':'var(--warn)',false); }
+  else { svg.appendChild(txt(f.X(S.d),T+12,'↑ w* = '+f2(r.wstar)+' above frame',{fill:'var(--warn)','font-size':11,'text-anchor':S.d>0.6?'end':'start','font-weight':600})); }
+}
+
+function drawB(r){
+  var svg=$('svgB'); svg.textContent='';
+  var xlo=S.w0, xhi=Math.max(r.wstar, S.y, S.w0+1)*1.25+1;
+  var e1=effortAvg(xlo,S), e2=effortAvg(xhi,S), s1=shirkAvg(xlo,S), s2=shirkAvg(xhi,S);
+  var ylo=Math.min(e1,s1,e2,s2), yhi=Math.max(e1,s1,e2,s2); var pad=(yhi-ylo)*0.08+0.5;
+  var f=frame(svg,xlo,xhi,ylo-pad,yhi+pad,'wage w (USD 000 per year)');
+  poly(svg,[[f.X(xlo),f.Y(e1)],[f.X(xhi),f.Y(e2)]],'var(--good)',2.4);
+  poly(svg,[[f.X(xlo),f.Y(s1)],[f.X(xhi),f.Y(s2)]],'var(--warn)',2,'6 4');
+  svg.appendChild(el('line',{x1:f.X(r.wstar),x2:f.X(r.wstar),y1:T,y2:B,stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'2 3'}));
+  dot(svg,f.X(r.wstar),f.Y(r.avgValue),'var(--accent)',false);
+  svg.appendChild(txt(f.X(r.wstar)+7,f.Y(r.avgValue)+16,'w* = '+f2(r.wstar),{fill:'var(--accent)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(txt(f.X(xhi)-4,f.Y(e2)-7,'effort: w − e',{fill:'var(--good)','font-size':11,'text-anchor':'end'}));
+  svg.appendChild(txt(f.X(xhi)-4,f.Y(s2)+15,'shirk',{fill:'var(--warn)','font-size':11,'text-anchor':'end'}));
+}
+
+function render(){
+  $('v_d').textContent=S.d.toFixed(3).replace(/0$/,''); $('v_p').textContent=S.p.toFixed(2);
+  $('v_e').textContent=S.e.toFixed(1); $('v_w0').textContent=S.w0.toFixed(1); $('v_y').textContent=S.y.toFixed(1);
+  var r=report(S);
+  $('a_v').textContent=f2(r.wstar);
+  $('ans').className='answer'+(r.firmPays?'':' bad');
+  var note='USD '+Math.round(r.wstar*1000).toLocaleString('en-US')+' a year: the outside wage '+f2(S.w0)+', the effort cost '+f2(S.e)+' and a rent of '+f2(r.premium)+'. ';
+  if(r.firmPays){ note+='The job produces y = '+f2(S.y)+', so the firm pays it and the <b style="color:var(--good)">relationship survives</b>.'; }
+  else if(r.efficient){ note+='The job produces only y = '+f2(S.y)+': <b>the firm will not pay</b>, although employment with effort is efficient (y &minus; e &gt; w<sub>0</sub>). More patience fixes it'+(r.dmin!==null?' from δ = '+r.dmin.toFixed(3)+'.':'.'); }
+  else { note+='<b>The job is not worth having</b>: y &minus; e &le; w<sub>0</sub>, so no &delta; makes it pay.'; }
+  $('a_note').innerHTML=note;
+  $('t_rent').textContent=f2(r.premium);
+  $('t_det').textContent=(100*r.detect).toFixed(0)+'%';
+  $('t_N').textContent=f2(r.N);
+  $('t_firm').textContent=(r.firm>=0?'+':'')+f2(r.firm);
+  $('t_dmin').textContent=r.dmin===null?'none':r.dmin.toFixed(3);
+  $('t_dminu').textContent=r.dmin===null?'no δ < 1 works':(S.d>=r.dmin-1e-9?'met at current δ':'not met at current δ');
+  $('t_v').textContent=f2(r.avgValue);
+  var a=[];
+  a.push(r.efficient?'y − e > w₀ holds (employment with effort is efficient).':'<b>y − e > w₀ fails</b>: employment with effort is not efficient.');
+  a.push(r.shirkWorse?'w₀ > py holds, so after a breakdown the worker is self-employed, as Gibbons assumes.':'<b>w₀ > py fails</b>: a firm would rather hire a shirker at w₀, so the punishment phase differs from Gibbons\'s and the firm test (2.3.7) understates what the firm gives up.');
+  $('assume').innerHTML='Gibbons\'s assumptions (p. 108): '+a.join(' ');
+  drawA(r); drawB(r);
+}
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  $(k).value=D[k];
+  $(k).addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('n2').addEventListener('click',function(){ load(Object.assign({},D,{d:2/3})); });
+$('snap').addEventListener('click',function(){ var r=report(S); if(r.dmin!==null){ S.d=Math.min(0.99,Math.max(0.01,r.dmin)); $('d').value=S.d; render(); } });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

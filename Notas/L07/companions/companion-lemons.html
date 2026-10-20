@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lemons Ladder</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;padding:0 16px;padding-block:28px 48px;
+  max-width:1120px;margin:0 auto;-webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);
+  border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(30px,6vw,42px);
+  font-variant-numeric:tabular-nums;color:var(--good);line-height:1.1;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;
+  font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);
+  border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Organizations &amp; Incentives &middot; Lecture 7 (estimated) &middot; Adverse selection</p>
+  <h1>The Lemons Ladder</h1>
+  <p class="lede">A seller knows the quality of what she sells; the buyer knows only that each of <i>K</i>
+  qualities is equally likely. Every quality is worth &Delta; more to the buyer than to the seller, so with
+  full information every unit would trade. With one price for all, only sellers whose value is below the
+  price accept &mdash; and the buyer pays for the <i>average</i> of that pool. Move the premium and the spread
+  and watch how far up the ladder trade can climb before the market unravels.</p>
+  <p class="prov">Tadelis (2013) &sect;12.3, printed pp. 258&ndash;261, Prop. 12.1 (values 10/20/30 and 14/24/34, prob. 1/3); the K-type, spread-s generalization is this page&rsquo;s, solved by the same argument.</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">v<sub>1</sub></span> &middot; lowest seller value</span><span class="val" id="v_v1"></span></div>
+      <p class="doc">What the worst quality is worth to its owner. It shifts every price, and changes nothing else.</p>
+      <input type="range" id="v1" min="0" max="50" step="1" aria-label="Lowest seller value">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">s</span> &middot; quality spread</span><span class="val" id="v_s"></span></div>
+      <p class="doc">The gap in seller value between adjacent qualities: how much the seller knows that the buyer does not.</p>
+      <input type="range" id="s" min="1" max="30" step="1" aria-label="Spread between adjacent qualities">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">K</span> &middot; number of qualities</span><span class="val" id="v_K"></span></div>
+      <p class="doc">Qualities v<sub>1</sub>, v<sub>1</sub>+s, &hellip;, v<sub>1</sub>+(K&minus;1)s, each with probability 1/K.</p>
+      <input type="range" id="K" min="2" max="8" step="1" aria-label="Number of qualities">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">&Delta;</span> &middot; buyer premium</span><span class="val" id="v_d"></span></div>
+      <p class="doc">How much more every quality is worth to the buyer: the gain from trade on each unit.</p>
+      <input type="range" id="d" min="0" max="105" step="0.5" aria-label="Buyer premium Delta">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 258</button>
+      <button id="full" class="ghost" type="button">&Delta; for full trade</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k">Highest quality that can trade in a Bayesian Nash equilibrium</div>
+      <div class="v" id="a_v"></div>
+      <div class="note"><span id="a_txt"></span></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Share of units traded</div><div class="v" id="t_sh"></div><div class="u">at most, of K</div></div>
+      <div class="tile"><div class="k">BNE price range</div><div class="v" id="t_pr"></div><div class="u">supporting that trade set</div></div>
+      <div class="tile"><div class="k">Buyer&rsquo;s best offer</div><div class="v" id="t_of"></div><div class="u" id="t_ofu"></div></div>
+      <div class="tile"><div class="k">Gains, max-trade BNE</div><div class="v" id="t_g"></div><div class="u" id="t_gu"></div></div>
+      <div class="tile"><div class="k">&Delta; for next quality</div><div class="v" id="t_dn"></div><div class="u">s&middot;k/2</div></div>
+      <div class="tile"><div class="k">&Delta; for full trade</div><div class="v" id="t_df"></div><div class="u">s(K&minus;1)/2</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>What a price buys</h2>
+          <p class="sub">Buyer&rsquo;s expected value of the sellers who accept price p (step) against the price itself (45&deg; line). Trade is possible where the step is on or above the line.</p>
+          <svg id="svgA" viewBox="0 0 420 320" role="img" aria-label="Buyer's expected value of the accepting pool against the price, with the 45-degree line and the equilibrium price band"></svg>
+        </div>
+        <div>
+          <h2>The quality ladder</h2>
+          <p class="sub">Each quality: seller value (tick) and buyer value (bar). Green qualities can trade; orange ones are driven out.</p>
+          <svg id="svgB" viewBox="0 0 420 320" role="img" aria-label="Seller and buyer value of each quality, coloured by whether it can trade"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="bridge"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Lowest seller value</td><td>v<sub>1</sub></td><td>owner&rsquo;s value of the worst quality</td><td class="n">0 &ndash; 50</td><td class="n">1</td><td class="n">10</td><td>money</td><td>Tadelis p. 258 (v<sub>1</sub>(L) = 10)</td><td>every price and bar; not the trade set</td></tr>
+      <tr><td>Spread</td><td>s</td><td>seller-value gap between adjacent qualities</td><td class="n">1 &ndash; 30</td><td class="n">1</td><td class="n">10</td><td>money</td><td>Tadelis p. 258 (10, 20, 30)</td><td>the step heights; the trade set; the thresholds</td></tr>
+      <tr><td>Qualities</td><td>K</td><td>number of equally likely qualities</td><td class="n">2 &ndash; 8</td><td class="n">1</td><td class="n">3</td><td>&mdash;</td><td>Tadelis p. 258 (L, M, H)</td><td>the ladder; the share traded; Δ for full trade</td></tr>
+      <tr><td>Buyer premium</td><td>&Delta;</td><td>buyer value minus seller value, every quality</td><td class="n">0 &ndash; 105</td><td class="n">0.5</td><td class="n">4</td><td>money</td><td>Tadelis p. 259 (14, 24, 34)</td><td>the step level; the trade set; the price band</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Model: quality k = 1, &hellip;, K with probability 1/K; seller value v<sub>k</sub> = v<sub>1</sub> + (k&minus;1)s; buyer value
+  v<sub>k</sub> + &Delta;. The buyer offers one price p; a seller of quality k accepts iff p &ge; v<sub>k</sub>. Qualities 1..k can trade in a
+  Bayesian Nash equilibrium iff the buyer does not lose on that pool at the price that brings in quality k:
+  mean(v<sub>1</sub>..v<sub>k</sub>) + &Delta; &ge; v<sub>k</sub>, i.e. &Delta; &ge; s(k&minus;1)/2 (equality included: the buyer is then indifferent).
+  The equilibrium prices for that set are [v<sub>k</sub>, mean + &Delta;]. Buyer&rsquo;s best offer: the v<sub>k</sub> maximizing (k/K)(&Delta; &minus; s(k&minus;1)/2).
+  Gains realized: &Delta;&middot;k/K per unit offered (full information: &Delta;). Defaults reproduce Prop. 12.1: only L trades, at any p in [10, 14];
+  the pool {L, M} is worth 19 &lt; 20 and the whole market 24 &lt; 30 (p. 260). The level v<sub>1</sub> never changes the trade set &mdash; only the
+  spread relative to the premium does. &Delta; reaches 105 = 30&middot;7/2 so full trade is reachable at every (s, K). Not exposed: unequal probabilities and a multiplicative premium (MWG Example 13.B.1, p. 442), drawn in
+  figure L07-lemons-unravelling. Notes: Notas/L07/L07-05.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN  (pure functions; extracted and checked by check_companions.py)
+function sellerValue(p, k){ return p.v1 + (k - 1) * p.s; }
+function poolValue(p, x){
+  // buyer's expected value of the sellers who accept price x; null below the lowest quality
+  var sum = 0, c = 0;
+  for (var k = 1; k <= p.K; k++){ if (sellerValue(p, k) <= x + 1e-9){ sum += sellerValue(p, k) + p.d; c++; } }
+  return c ? sum / c : null;
+}
+function report(p){
+  var kmax = 1;
+  for (var k = 1; k <= p.K; k++){ if (p.d >= p.s * (k - 1) / 2 - 1e-9) kmax = k; }
+  var mean = p.v1 + p.s * (kmax - 1) / 2;
+  var best = 1, bestU = -Infinity;
+  for (var j = 1; j <= kmax; j++){
+    var u = (j / p.K) * (p.d - p.s * (j - 1) / 2);
+    if (u > bestU + 1e-12){ bestU = u; best = j; }
+  }
+  return {kmax: kmax, share: kmax / p.K, pLo: sellerValue(p, kmax), pHi: mean + p.d,
+    offer: sellerValue(p, best), kBest: best, buyerU: bestU,
+    gainsEq: p.d * kmax / p.K, gainsFull: p.d, lost: p.d * (p.K - kmax) / p.K,
+    dNext: kmax < p.K ? p.s * kmax / 2 : null, dFull: p.s * (p.K - 1) / 2};
+}
+// MODEL:END
+
+var D = {v1:10, s:10, K:3, d:4};
+var KEYS = ['v1','s','K','d'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var nm = function(k){ return S.K === 3 ? ['L','M','H'][k-1] : 'q' + k; };
+var f1 = function(x){ return (+x.toFixed(2)).toString(); };
+
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var o=Object.assign({x:x,y:y},a); var t=el('text',o); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=268;
+function ticks(lo,hi){
+  var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[], v=Math.ceil(lo/st-1e-9)*st;
+  for(;v<=hi+1e-9;v+=st){ out.push(Math.round(v/st)*st); }
+  return out;
+}
+function frame(svg,xlo,xhi,ylo,yhi,xlab,xt){
+  var X=function(v){ return L+(v-xlo)/(xhi-xlo)*(R-L); };
+  var Y=function(v){ return B-(v-ylo)/(yhi-ylo)*(B-T); };
+  ticks(ylo,yhi).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  if(xt){ ticks(xlo,xhi).forEach(function(v){
+    svg.appendChild(txt(X(v),B+17,String(+v.toFixed(2)),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  }); }
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,xlab,{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  return {X:X,Y:Y};
+}
+
+function drawA(m){
+  var svg=$('svgA'); svg.textContent='';
+  var vK=sellerValue(S,S.K);
+  var xlo=Math.max(0,S.v1-S.s), xhi=vK+S.s;
+  var ylo=xlo, yhi=Math.max(xhi, vK+S.d+S.s*0.2);
+  var f=frame(svg,xlo,xhi,ylo,yhi,'price offered p',true), X=f.X, Y=f.Y;
+  // equilibrium price band
+  svg.appendChild(el('rect',{x:X(m.pLo),y:T,width:Math.max(1.5,X(m.pHi)-X(m.pLo)),height:B-T,fill:'var(--good)',opacity:0.16}));
+  for(var k=1;k<=S.K;k++){
+    var xv=X(sellerValue(S,k));
+    svg.appendChild(el('line',{x1:xv,x2:xv,y1:T,y2:B,stroke:'var(--muted)','stroke-width':0.8,'stroke-dasharray':'2 3'}));
+    svg.appendChild(txt(xv+3,T+11,nm(k),{fill:'var(--muted)','font-size':11}));
+  }
+  svg.appendChild(el('line',{x1:X(xlo),y1:Y(xlo),x2:X(xhi),y2:Y(xhi),stroke:'var(--muted)','stroke-width':1.6,'stroke-dasharray':'6 4'}));
+  var d='';
+  for(var j=1;j<=S.K;j++){
+    var x0=sellerValue(S,j), x1=j<S.K?sellerValue(S,j+1):xhi, y=poolValue(S,x0);
+    d+=(j===1?'M':'L')+X(x0).toFixed(2)+' '+Y(y).toFixed(2)+'L'+X(x1).toFixed(2)+' '+Y(y).toFixed(2);
+  }
+  svg.appendChild(el('path',{d:d,stroke:'var(--accent)','stroke-width':2.6,fill:'none'}));
+  svg.appendChild(txt(X(xhi)-4,Y(xhi)+16,'price = 45°',{fill:'var(--muted)','font-size':11,'text-anchor':'end'}));
+}
+
+function drawB(m){
+  var svg=$('svgB'); svg.textContent='';
+  var vK=sellerValue(S,S.K);
+  var ylo=0, yhi=vK+S.d+Math.max(2,S.s*0.3);
+  var f=frame(svg,0.5,S.K+0.5,ylo,yhi,'quality',false), X=f.X, Y=f.Y;
+  var w=Math.min(34,(R-L)/S.K*0.5);
+  for(var k=1;k<=S.K;k++){
+    var ok=k<=m.kmax, col=ok?'var(--good)':'var(--warn)', xc=X(k), sv=sellerValue(S,k), bv=sv+S.d;
+    svg.appendChild(el('rect',{x:xc-w/2,y:Y(bv),width:w,height:Y(0)-Y(bv),fill:col,opacity:0.75}));
+    svg.appendChild(el('line',{x1:xc-w/2-5,x2:xc+w/2+5,y1:Y(sv),y2:Y(sv),stroke:'var(--ink)','stroke-width':2.4}));
+    svg.appendChild(txt(xc,B+17,nm(k),{fill:'var(--ink)','font-size':11.5,'text-anchor':'middle','font-weight':600}));
+    svg.appendChild(txt(xc,Y(bv)-5,ok?'trades':'out',{fill:col,'font-size':10.5,'text-anchor':'middle','font-weight':600}));
+  }
+  svg.appendChild(txt(R,T+10,'tick = seller value · bar = buyer value',{fill:'var(--muted)','font-size':10.5,'text-anchor':'end'}));
+}
+
+function render(){
+  $('v_v1').textContent=String(S.v1);
+  $('v_s').textContent=String(S.s);
+  $('v_K').textContent=String(S.K);
+  $('v_d').textContent=S.d.toFixed(1);
+  var m=report(S);
+  $('a_v').textContent=nm(m.kmax)+'  ('+m.kmax+' of '+S.K+')';
+  var t;
+  if(m.kmax===S.K){ t='<b>No unravelling:</b> the premium covers the spread, so even the top quality can trade &mdash; the buyer&rsquo;s value of the whole pool, '+f1(m.pHi)+', reaches the top seller&rsquo;s '+f1(m.pLo)+'.'; }
+  else if(m.kmax===1){ t='<b>The market unravels to the bottom.</b> Any price that attracts quality '+nm(2)+' brings a pool worth only '+f1(poolValue(S,sellerValue(S,2)))+' to the buyer, below the '+f1(sellerValue(S,2))+' that '+nm(2)+' demands. Only '+nm(1)+' trades (Prop. 12.1).'; }
+  else { t='<b>Partial unravelling:</b> qualities above '+nm(m.kmax)+' are driven out. Bringing in '+nm(m.kmax+1)+' would need a price of '+f1(sellerValue(S,m.kmax+1))+' for a pool worth '+f1(poolValue(S,sellerValue(S,m.kmax+1)))+'.'; }
+  $('a_txt').innerHTML=t;
+  $('t_sh').textContent=(100*m.share).toFixed(1)+'%';
+  $('t_pr').textContent='['+f1(m.pLo)+', '+f1(m.pHi)+']';
+  $('t_of').textContent=f1(m.offer);
+  $('t_ofu').textContent='buys '+nm(1)+(m.kBest>1?'–'+nm(m.kBest):'')+'; surplus '+m.buyerU.toFixed(3);
+  $('t_g').textContent=m.gainsEq.toFixed(2);
+  $('t_gu').textContent='of '+m.gainsFull.toFixed(2)+' (full info)';
+  $('t_dn').textContent=m.dNext===null?'—':f1(m.dNext);
+  $('t_df').textContent=f1(m.dFull);
+  var v='Adverse selection: at any single price the sellers who accept are those whose quality is <b>below</b> the price, so the buyer pays for the average of the bottom of the ladder. ';
+  if(m.kmax<S.K){ v+='Every unit is worth Δ = '+S.d.toFixed(1)+' more to the buyer, yet a share '+(100*(1-m.share)).toFixed(1)+'% of the gains from trade, '+m.lost.toFixed(2)+' per unit, is lost.'; }
+  else { v+='Here the pool average plus Δ still covers the top seller&rsquo;s value, so asymmetric information costs nothing in the best equilibrium.'; }
+  v+=' Raise v<sub>1</sub>: the prices move, the trade set does not.';
+  $('bridge').innerHTML=v;
+  drawA(m); drawB(m);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k);
+  inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('full').addEventListener('click',function(){ load({d:S.s*(S.K-1)/2}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'
+    || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>

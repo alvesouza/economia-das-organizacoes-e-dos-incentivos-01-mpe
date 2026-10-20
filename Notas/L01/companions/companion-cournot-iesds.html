@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Cournot Squeeze</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: control rail on the left, answer + tiles + two panels on the right; same family as the Finanças companions. */
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --ink:#14202c; --muted:#6b7a88;
+  --line:#d3dae1; --accent:#1f5f8b; --warn:#b4521a; --good:#2f6b4f; --hi:#8a5fb4; --grid:#dfe5ea;
+  --fill-warn:rgba(180,82,26,.07);
+  --shadow:0 1px 2px rgba(20,32,44,.06),0 8px 24px rgba(20,32,44,.05);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --fill-warn:rgba(224,138,77,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0f161d; --surface:#17212b; --ink:#dde5ec; --muted:#8fa0af; --line:#2a3846;
+  --accent:#63a8d4; --warn:#e08a4d; --good:#6fb68f; --hi:#b592d8; --grid:#243240;
+  --fill-warn:rgba(224,138,77,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  margin:0 auto;max-width:1120px;padding-block:28px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 4px;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+.lede{margin:12px 0 0;max-width:62ch}
+.prov{margin:10px 0 0;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+main{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+@media(max-width:840px){main{grid-template-columns:1fr}}
+.rail{display:flex;flex-direction:column;gap:14px}
+.ctl{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 13px;box-shadow:var(--shadow)}
+.ctl .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ctl .nm{font-weight:600;font-size:13.5px}
+.ctl .sym{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.ctl .val{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent)}
+.ctl .doc{font-size:12px;color:var(--muted);margin:3px 0 8px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+input[type=range]:focus-visible,button:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+button{font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:9px 14px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow);min-width:0}
+.card p.sub{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:980px){.panels{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.answer .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.answer .v{font-family:var(--mono);font-weight:600;font-size:clamp(22px,4.4vw,32px);font-variant-numeric:tabular-nums;color:var(--good);line-height:1.15;margin-top:2px}
+.answer .note{font-size:13.5px;color:var(--ink);margin-top:8px;max-width:66ch}
+.answer .note b{color:var(--warn)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tile{background:var(--surface);padding:10px 12px}
+.tile .k{font-size:11px;color:var(--muted);letter-spacing:.06em;font-weight:600}
+.tile .v{font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .u{font-size:11px;color:var(--muted)}
+.verdict{font-size:13.5px;padding:10px 12px;border-radius:5px;background:var(--surface);border:1px dashed var(--line);margin:10px 0 0}
+.verdict b{color:var(--warn)}
+footer{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;width:100%;min-width:660px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.foot{font-size:12px;color:var(--muted);margin-top:14px;max-width:70ch}
+.hd{position:relative}
+.theme{position:absolute;top:0;right:0}
+.hd .eyebrow{padding-right:84px}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <button class="ghost theme" id="themeBtn" type="button">Theme</button>
+  <p class="eyebrow">Game theory &middot; Lecture 1 &middot; Iterated elimination</p>
+  <h1>The Cournot Squeeze</h1>
+  <p class="lede">Two firms choose quantities against linear demand <i>p = a &minus; bq</i>. Round 1 of iterated elimination
+  removes everything above each firm&rsquo;s monopoly output; every later round uses the rival&rsquo;s surviving interval to cut
+  one end of your own. Step through the rounds and watch the rectangle of surviving profiles close in on the Cournot point.</p>
+  <p class="prov">Tadelis (2013) &sect;4.2.2, pp. 65&ndash;67: p = 100 &minus; q, c<sub>i</sub>(q<sub>i</sub>) = 10q<sub>i</sub>, eq. (4.2) q<sub>1</sub> = (90 &minus; q<sub>2</sub>)/2, Figure 4.1; profits p. 68. Slides: Aula/Lecture01.pdf slides 4, 28&ndash;29. Note: Notas/L01/L01-07-cournot-iesds.</p>
+</header>
+
+<main>
+  <div class="rail">
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">a</span> &middot; demand intercept</span><span class="val" id="v_a"></span></div>
+      <p class="doc">The price at zero output. A bigger market raises every bound and the Cournot point.</p>
+      <input type="range" id="a" min="20" max="200" step="1" aria-label="Demand intercept a">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">b</span> &middot; demand slope</span><span class="val" id="v_b"></span></div>
+      <p class="doc">How fast price falls per unit sold. Every quantity scales with 1/b.</p>
+      <input type="range" id="b" min="0.5" max="5" step="0.1" aria-label="Demand slope b">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>1</sub></span> &middot; firm 1 marginal cost</span><span class="val" id="v_c1"></span></div>
+      <p class="doc">Raises firm 1&rsquo;s cost: its interval shifts down, firm 2&rsquo;s up. At c<sub>1</sub> &ge; (a + c<sub>2</sub>)/2 firm 1 is squeezed out.</p>
+      <input type="range" id="c1" min="0" max="60" step="0.5" aria-label="Firm 1 marginal cost">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">c<sub>2</sub></span> &middot; firm 2 marginal cost</span><span class="val" id="v_c2"></span></div>
+      <p class="doc">The same for firm 2.</p>
+      <input type="range" id="c2" min="0" max="60" step="0.5" aria-label="Firm 2 marginal cost">
+    </div>
+    <div class="ctl">
+      <div class="top"><span class="nm"><span class="sym">k</span> &middot; rounds of elimination</span><span class="val" id="v_k"></span></div>
+      <p class="doc">How many levels of &ldquo;I know that you know that &hellip; is rational&rdquo; the firms use.</p>
+      <input type="range" id="k" min="0" max="12" step="1" aria-label="Rounds of elimination k">
+    </div>
+    <div class="btns">
+      <button id="reset" type="button">Reset to Tadelis p. 65</button>
+      <button id="exit" class="ghost" type="button">Set c<sub>1</sub> = (a + c<sub>2</sub>)/2</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="answer">
+      <div class="k" id="a_k"></div>
+      <div class="v" id="a_v"></div>
+      <div class="note" id="a_note"></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Firm 2 survives</div><div class="v" id="t_s2"></div><div class="u">S<sub>2</sub><sup>k</sup></div></div>
+      <div class="tile"><div class="k">Cournot point</div><div class="v" id="t_ne"></div><div class="u">(q<sub>1</sub>*, q<sub>2</sub>*)</div></div>
+      <div class="tile"><div class="k">Price</div><div class="v" id="t_p"></div><div class="u">at the Cournot point</div></div>
+      <div class="tile"><div class="k">Profits</div><div class="v" id="t_pi"></div><div class="u">firm 1, firm 2</div></div>
+      <div class="tile"><div class="k">Monopoly outputs</div><div class="v" id="t_m"></div><div class="u">round-1 upper bounds</div></div>
+      <div class="tile"><div class="k">Rounds to 1%</div><div class="v" id="t_r"></div><div class="u">widths &lt; 1% of max monopoly output</div></div>
+    </div>
+
+    <div class="card">
+      <div class="panels">
+        <div>
+          <h2>Surviving profiles</h2>
+          <p class="sub">Best responses q<sub>i</sub> = max(0, (a &minus; c<sub>i</sub> &minus; bq<sub>j</sub>)/2b) and the rectangle S<sub>1</sub><sup>k</sup> &times; S<sub>2</sub><sup>k</sup>.</p>
+          <svg id="svgA" viewBox="0 0 420 340" role="img" aria-label="Quantity plane with both best-response lines, the rectangles of surviving profiles and the Cournot point"></svg>
+        </div>
+        <div>
+          <h2>Firm 1&rsquo;s interval by round</h2>
+          <p class="sub">Each bar is S<sub>1</sub><sup>k</sup>; the dashed line is q<sub>1</sub>*. The current round is solid.</p>
+          <svg id="svgB" viewBox="0 0 420 340" role="img" aria-label="Firm 1 surviving interval as a bar for each round, converging to the Cournot quantity"></svg>
+        </div>
+      </div>
+      <p class="verdict" id="why"></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="eyebrow">The control contract</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Control</th><th>Symbol</th><th>What it is</th><th>Range</th><th>Step</th><th>Default</th><th>Unit</th><th>Source</th><th>What visibly moves</th></tr></thead>
+    <tbody>
+      <tr><td>Demand intercept</td><td>a</td><td>p = a &minus; bq at q = 0</td><td class="n">20 &ndash; 200</td><td class="n">1</td><td class="n">100</td><td>price units</td><td>Tadelis p. 65</td><td>both BR lines; every bound; q*</td></tr>
+      <tr><td>Demand slope</td><td>b</td><td>price drop per unit of output</td><td class="n">0.5 &ndash; 5</td><td class="n">0.1</td><td class="n">1.0</td><td>price per unit</td><td>Tadelis p. 65</td><td>the scale of every quantity</td></tr>
+      <tr><td>Firm 1 cost</td><td>c<sub>1</sub></td><td>constant marginal cost</td><td class="n">0 &ndash; 60</td><td class="n">0.5</td><td class="n">10</td><td>price units</td><td>Tadelis p. 65</td><td>firm 1&rsquo;s BR line; asymmetry; exit</td></tr>
+      <tr><td>Firm 2 cost</td><td>c<sub>2</sub></td><td>constant marginal cost</td><td class="n">0 &ndash; 60</td><td class="n">0.5</td><td class="n">10</td><td>price units</td><td>Tadelis p. 65</td><td>firm 2&rsquo;s BR line</td></tr>
+      <tr><td>Rounds</td><td>k</td><td>rounds of IESDS performed</td><td class="n">0 &ndash; 12</td><td class="n">1</td><td class="n">3</td><td>rounds</td><td>Tadelis p. 66: round 3 = [22.5, 33.75]</td><td>the rectangle; the highlighted bar; the answer</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Recursion (slide 29 applied as in Tadelis pp. 66&ndash;67): S<sub>i</sub><sup>0</sup> = [0, &infin;); S<sub>i</sub><sup>k</sup> = [BR<sub>i</sub>(U<sub>j</sub><sup>k&minus;1</sup>), BR<sub>i</sub>(L<sub>j</sub><sup>k&minus;1</sup>)],
+  with BR<sub>i</sub>(&infin;) = 0, BR<sub>i</sub>(q) = max(0, (a &minus; c<sub>i</sub> &minus; bq)/2b). Quantities below BR(U) and above BR(L) are strictly dominated because
+  v<sub>i</sub>(x) &minus; v<sub>i</sub>(z) = (x &minus; z)(a &minus; c<sub>i</sub> &minus; b(x + z + q<sub>j</sub>)). Cournot point q<sub>i</sub>* = (a &minus; 2c<sub>i</sub> + c<sub>j</sub>)/3b,
+  p* = (a + c<sub>1</sub> + c<sub>2</sub>)/3, profit (a &minus; 2c<sub>i</sub> + c<sub>j</sub>)&sup2;/9b; if a &minus; 2c<sub>i</sub> + c<sub>j</sub> &le; 0, firm i produces 0 and the rival its monopoly output (a &minus; c<sub>j</sub>)/2b.
+  Defaults reproduce Tadelis: rounds 1&ndash;3 give [0, 45], [22.5, 45], [22.5, 33.75]; q* = 30, p* = 40, profit 900 each.
+  The exit landmark c<sub>1</sub> = (a + c<sub>2</sub>)/2 is on the 0.5 grid whenever a and c<sub>2</sub> are integers (55 at the defaults); its button sets it exactly.
+  Not exposed: more than two firms (IESDS then stops after one round, note L01-07 &sect;6) and nonlinear costs.</p>
+</footer>
+
+<script>
+// MODEL:BEGIN
+// Linear Cournot duopoly, p = a - bq, constant marginal costs; IESDS as an interval recursion.
+function br(p, i, qj){
+  var ci = i === 0 ? p.c1 : p.c2;
+  if (qj === Infinity) return 0;
+  return Math.max(0, (p.a - ci - p.b*qj) / (2*p.b));
+}
+function report(p){
+  var Lo = [0, 0], Up = [Infinity, Infinity], hist = [];
+  for (var r = 1; r <= 40; r++){
+    var nL = [br(p, 0, Up[1]), br(p, 1, Up[0])];
+    var nU = [br(p, 0, Lo[1]), br(p, 1, Lo[0])];
+    Lo = nL; Up = nU; hist.push({L: Lo.slice(), U: Up.slice()});
+  }
+  var m = [Math.max(0,(p.a-p.c1)/(2*p.b)), Math.max(0,(p.a-p.c2)/(2*p.b))];
+  var r1 = (p.a - 2*p.c1 + p.c2)/(3*p.b), r2 = (p.a - 2*p.c2 + p.c1)/(3*p.b), q;
+  if (r1 <= 0) q = [0, m[1]];
+  else if (r2 <= 0) q = [m[0], 0];
+  else q = [r1, r2];
+  var price = Math.max(0, p.a - p.b*(q[0]+q[1]));
+  var prof = [(price - p.c1)*q[0], (price - p.c2)*q[1]];
+  var k = p.k, cur = k === 0 ? {L:[0,0], U:[Infinity, Infinity]} : hist[k-1];
+  var scale = Math.max(m[0], m[1]), need = null;
+  for (var j = 0; j < hist.length; j++){
+    var w = Math.max(hist[j].U[0]-hist[j].L[0], hist[j].U[1]-hist[j].L[1]);
+    if (scale === 0 || w <= 0.01*scale){ need = j + 1; break; }
+  }
+  return {L: cur.L, U: cur.U, hist: hist, q: q, price: price, profit: prof, m: m,
+          out: [r1 <= 0, r2 <= 0], need: need};
+}
+// MODEL:END
+
+var D = {a:100, b:1, c1:10, c2:10, k:3};
+var KEYS = ['a','b','c1','c2','k'];
+var S = Object.assign({}, D);
+var $ = function(id){ return document.getElementById(id); };
+var g = function(x,d){ if(x===Infinity) return '∞'; var s=(+x.toFixed(d===undefined?3:d)).toString(); return s; };
+var iv = function(l,u){ return '['+g(l)+', '+g(u)+(u===Infinity?')':']'); };
+var NS='http://www.w3.org/2000/svg';
+function el(n,a){ var e=document.createElementNS(NS,n); for(var k in a){ e.setAttribute(k,a[k]); } return e; }
+function txt(x,y,s,a){ var t=el('text',Object.assign({x:x,y:y},a)); t.textContent=s; return t; }
+var L=50,R=404,T=16,B=288;
+function ticks(lo,hi){ var raw=(hi-lo)/5, p=Math.pow(10,Math.floor(Math.log10(raw))), st=p;
+  [1,2,2.5,5,10].some(function(k){ st=k*p; return k*p>=raw; });
+  var out=[]; for(var v=Math.ceil(lo/st-1e-9)*st; v<=hi+1e-9; v+=st) out.push(Math.round(v/st)*st); return out; }
+
+function drawA(r){
+  var svg=$('svgA'); svg.textContent='';
+  var top=Math.max(r.m[0], r.m[1], 1)*1.15;
+  var X=function(v){ return L+v/top*(R-L); }, Y=function(v){ return B-v/top*(B-T); };
+  ticks(0,top).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,g(v,2),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+    svg.appendChild(txt(X(v),B+17,g(v,2),{fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(el('line',{x1:L,x2:L,y1:T,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(txt((L+R)/2,B+40,'q₁ (firm 1)',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(txt(14,(T+B)/2,'q₂',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  var cl=function(v){ return Math.min(v, top); };
+  // previous rounds, faint
+  for(var j=0;j<S.k-1 && j<r.hist.length;j++){
+    var h=r.hist[j];
+    svg.appendChild(el('rect',{x:X(h.L[0]),y:Y(cl(h.U[1])),width:Math.max(X(cl(h.U[0]))-X(h.L[0]),0.5),height:Math.max(Y(h.L[1])-Y(cl(h.U[1])),0.5),fill:'none',stroke:'var(--warn)','stroke-width':1,opacity:.35}));
+  }
+  var U0=cl(r.U[0]), U1=cl(r.U[1]);
+  svg.appendChild(el('rect',{x:X(r.L[0]),y:Y(U1),width:Math.max(X(U0)-X(r.L[0]),1.5),height:Math.max(Y(r.L[1])-Y(U1),1.5),fill:'var(--fill-warn)',stroke:'var(--warn)','stroke-width':2}));
+  // best responses: firm 1's as q1 = BR1(q2), firm 2's as q2 = BR2(q1)
+  var p1=[], p2=[];
+  for(var i=0;i<=200;i++){ var t=top*i/200; p1.push(X(br(S,0,t))+','+Y(t)); p2.push(X(t)+','+Y(br(S,1,t))); }
+  svg.appendChild(el('polyline',{points:p1.join(' '),fill:'none',stroke:'var(--accent)','stroke-width':2.2}));
+  svg.appendChild(el('polyline',{points:p2.join(' '),fill:'none',stroke:'var(--hi)','stroke-width':2.2}));
+  svg.appendChild(txt(X(br(S,0,top*0.05))+6,Y(top*0.05)-6,'BR₁',{fill:'var(--accent)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(txt(X(top*0.04),Y(br(S,1,top*0.04))-8,'BR₂',{fill:'var(--hi)','font-size':11.5,'font-weight':600}));
+  svg.appendChild(el('circle',{cx:X(r.q[0]),cy:Y(r.q[1]),r:6,fill:'var(--good)',stroke:'var(--surface)','stroke-width':2}));
+  svg.appendChild(txt(X(r.q[0])+9,Y(r.q[1])-9,'('+g(r.q[0],2)+', '+g(r.q[1],2)+')',{fill:'var(--good)','font-size':11.5,'font-weight':600,'font-family':'var(--mono)'}));
+}
+
+function drawB(r){
+  var svg=$('svgB'); svg.textContent='';
+  var N=12, top=Math.max(r.m[0],r.m[1],1)*1.1;
+  var X=function(k){ return L+(k-0.5)/N*(R-L); }, Y=function(v){ return B-v/top*(B-T); };
+  ticks(0,top).forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),stroke:'var(--grid)','stroke-width':1}));
+    svg.appendChild(txt(L-7,Y(v)+4,g(v,2),{fill:'var(--muted)','font-size':11,'text-anchor':'end','font-family':'var(--mono)'}));
+  });
+  svg.appendChild(el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--line)','stroke-width':1.5}));
+  svg.appendChild(el('line',{x1:L,x2:R,y1:Y(r.q[0]),y2:Y(r.q[0]),stroke:'var(--good)','stroke-width':1.4,'stroke-dasharray':'5 4'}));
+  for(var k=1;k<=N;k++){
+    var h=r.hist[k-1], on=k===S.k, past=k<S.k;
+    var y1=Y(h.U[0]), y2=Y(h.L[0]);
+    svg.appendChild(el('rect',{x:X(k)-8,y:y1,width:16,height:Math.max(y2-y1,2),fill:'var(--warn)',opacity:on?1:(past?.45:.15)}));
+    svg.appendChild(txt(X(k),B+17,String(k),{fill:on?'var(--ink)':'var(--muted)','font-size':11,'font-weight':on?700:400,'text-anchor':'middle','font-family':'var(--mono)'}));
+  }
+  svg.appendChild(txt((L+R)/2,B+40,'round k',{fill:'var(--muted)','font-size':11.5,'text-anchor':'middle'}));
+  svg.appendChild(txt(R-2,Y(r.q[0])-6,'q₁* = '+g(r.q[0],3),{fill:'var(--good)','font-size':11.5,'font-weight':600,'text-anchor':'end','font-family':'var(--mono)'}));
+}
+
+function render(){
+  $('v_a').textContent=String(S.a); $('v_b').textContent=S.b.toFixed(1);
+  $('v_c1').textContent=S.c1.toFixed(1); $('v_c2').textContent=S.c2.toFixed(1); $('v_k').textContent=String(S.k);
+  var r=report(S);
+  $('a_k').textContent='Firm 1 after '+S.k+' round'+(S.k===1?'':'s');
+  $('a_v').textContent='S₁ = '+iv(r.L[0],r.U[0]);
+  var w=r.U[0]-r.L[0], note;
+  if(S.k===0) note='No elimination yet: any quantity is possible. Round 1 needs only rationality and removes everything above the monopoly output.';
+  else note='Width '+g(w,4)+'; the Cournot quantity '+g(r.q[0],3)+' lies inside every surviving interval. '+
+    (S.k>=2?'This round used '+(S.k-1)+' level'+(S.k>2?'s':'')+' of knowledge of the rival&rsquo;s rationality.':'This round used rationality only.');
+  if(r.out[0]) note+=' <b>Firm 1 is squeezed out</b>: a &minus; 2c₁ + c₂ &le; 0, so its interval collapses to 0 and firm 2 produces its monopoly output.';
+  else if(r.out[1]) note+=' <b>Firm 2 is squeezed out</b>: a &minus; 2c₂ + c₁ &le; 0.';
+  $('a_note').innerHTML=note;
+  $('t_s2').textContent=iv(r.L[1],r.U[1]);
+  $('t_ne').textContent='('+g(r.q[0],2)+', '+g(r.q[1],2)+')';
+  $('t_p').textContent=g(r.price,2);
+  $('t_pi').textContent=g(r.profit[0],1)+', '+g(r.profit[1],1);
+  $('t_m').textContent=g(r.m[0],2)+', '+g(r.m[1],2);
+  $('t_r').textContent=r.need===null?'> 40':String(r.need);
+  $('why').innerHTML='Each round, the <b>upper</b> end of the rival&rsquo;s interval fixes your new <b>lower</b> bound and vice versa, because quantities below BR(U) and above BR(L) are strictly dominated. '+
+    'Each best response halves the distance to the Cournot point and flips its side, so the widths halve every round and never reach zero in finitely many rounds.';
+  drawA(r); drawB(r);
+}
+
+function load(P){ Object.assign(S,P); KEYS.forEach(function(k){ $(k).value=S[k]; }); render(); }
+KEYS.forEach(function(k){
+  var inp=$(k); inp.value=D[k];
+  inp.addEventListener('input',function(e){ S[k]=parseFloat(e.target.value); render(); });
+});
+$('reset').addEventListener('click',function(){ load(D); });
+$('exit').addEventListener('click',function(){ load({c1:Math.min(60,(S.a+S.c2)/2)}); });
+$('themeBtn').addEventListener('click',function(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark' || (!r.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+render();
+</script>
+</body>
+</html>
