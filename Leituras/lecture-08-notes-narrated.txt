@@ -1,0 +1,871 @@
+Lecture 8. Signaling and perfect Bayesian equilibrium. A listening version of the Lecture 8 notes.
+
+How to listen.
+
+This is the full text of the Lecture 8 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every example, every number and every derivation in the written notes is here, with the mathematics spoken in words.
+
+First, a warning about status. This unit is estimated. It was written before the lecture, which is on Tuesday, November 24, 2026, and there are no slides yet. The notes were built from the study guide and from the books it assigns: Tadelis, Game Theory, An Introduction, 2013, chapters 15 and 16, printed pages 303 to 338, which is the spine; Gibbons, Game Theory for Applied Economists, 1992, sections 4.1 and 4.2, printed pages 175 to 210, and section 4.4, pages 233 to 244; and Milgrom and Roberts, Economics, Organization, and Management, 1992, chapter 5, the pages on signaling, 154 to 157. Mas-Colell, Whinston and Green, which the script calls M W G, appears only as the formal, graduate layer: sections 9.C and 9.D, section 13.C and appendix 13.AA. It is named, not examinable, unless the lecture brings it. When the slides arrive the notes will be reconciled with them, and the weight of each part may change. The lecture may, for example, skip sequential equilibrium or the algebra of limit pricing.
+
+Page numbers are the books' printed page numbers. When the script says "M and R", it means Milgrom and Roberts.
+
+The script has three layers, as the notes do. U is intuition: Gibbons's prose and examples, Milgrom and Roberts's Spence story, Tadelis's "speech" on page 333. C is the course, the examinable layer: Tadelis chapters 15 and 16, with definitions 15.1 to 15.5, requirements 15.1 to 15.4, proposition 15.1, the MBA game, limit pricing and definition 16.1; plus Gibbons's signaling requirements and Spence's separating and pooling sets. G is graduate: M W G's weak perfect Bayesian equilibrium, consistency, forward induction, the lemmas and the welfare figure of section 13.C, and the dominance refinements of appendix 13.AA.
+
+Two scope notes, which the script repeats where they come up. Cheap talk, meaning costless messages, is out of this course's scope: Tadelis chapter 18, Gibbons section 4.3.A and Muñoz-Garcia chapter 10. And screening as a design problem, meaning mechanism design, is out as well: Tadelis chapter 14, M W G section 13.D, and Muñoz-Garcia chapter 9 exercise 8. Moral hazard and reputation games, Tadelis chapter 17, are also outside.
+
+The script has eighteen parts after this introduction, numbered zero to seventeen. Part zero states the one claim of the lecture. Parts one, two and three are Tadelis chapter 15: why subgame perfection fails, beliefs and perfect Bayesian equilibrium, and sequential equilibrium. Parts four to eight are chapter 16 and Gibbons section 4.2: signaling games, the MBA game, Spence's job market, limit pricing, and the intuitive criterion. Then come the support parts, nine to seventeen: common mistakes, a spoken formula sheet, every number to have memorized, the computation described in words, the figures and the two interactive companions described in words, the reading route and exercises, a True or False self-test, a glossary, and the whole lecture in five lines.
+
+Part zero. The one claim.
+
+Hold this sentence for the whole lecture. Subgame perfection goes blind once types are private: the uninformed player always moves inside an information set, so the only proper subgame is the whole game.
+
+Perfect Bayesian equilibrium restores sequential rationality by adding beliefs. Beliefs are pinned by Bayes' rule on the equilibrium path and are free off it, and the concept asks for a best reply at every information set.
+
+In signaling games the informed player's costly action can reveal his type, but only if it costs the types differently. The free off-path beliefs then support whole continua of pooling and separating equilibria.
+
+The intuitive criterion reads a deviation as coming from whoever could gain by it, and in every two-type game of this lecture it leaves only the least-cost separating equilibrium.
+
+The one result to hold, said as a definition. A perfect Bayesian equilibrium is a pair: a strategy profile, sigma star, and a system of beliefs, mu. Mu is given by Bayes' rule applied to sigma star and the prior on the path; mu is free off the path; and sigma star is sequentially rational given mu at every information set.
+
+Everything in the lecture is a consequence of where beliefs are free. Free off-path beliefs kill non-credible threats that no belief can justify, as in the entry game. They sustain pooling equilibria by punishing deviations with pessimistic inferences, as in the MBA game, in Spence and in limit pricing. And they are disciplined back by refinements: consistency, in part three, and the intuitive criterion, in part eight.
+
+And one condition for any signal to work: single crossing. The action must cost the type that wants to be recognized less at the margin. In the MBA game it reads: the high type's cost, c H, is at most the wage premium, w M minus w B, which is at most the low type's cost, c L. In Spence it reads: the marginal cost of education is higher for the low type than for the high type at every education level.
+
+Part one. Why subgame perfection has no bite once types are private.
+
+This part covers Tadelis section 15.1, "The Problem with Subgame Perfection", printed pages 303 to 307, and Gibbons section 4.1, pages 175 to 177.
+
+The claim. Subgame perfection removes non-credible threats by asking for a Nash equilibrium in every proper subgame. Add one move by Nature that the second mover cannot see, and the second mover's decision nodes are tied together in one information set. The only proper subgame is then the whole game, so subgame perfection collapses into Bayesian Nash equilibrium and the incredible threat survives. Sequential rationality has to be imposed at information sets, and that needs beliefs, which is part two.
+
+One point one. The benchmark: entry with complete information. This is Tadelis figure 15.1, pages 303 to 304, the intuition layer.
+
+An entrant, player 1, chooses Out, O, or Enter, E. After entry the incumbent, player 2, chooses Fight, F, or Accommodate, A. Payoffs are listed entrant first, incumbent second. Out gives 0 and 2. Enter and Fight gives minus 1 and minus 1. Enter and Accommodate gives 1 and 1.
+
+In the normal form, the row Out gives 0 and 2 against either column, Fight or Accommodate. The row Enter gives minus 1 and minus 1 against Fight, and 1 and 1 against Accommodate.
+
+The Nash equilibria. First, Out with Fight. Given Fight, Out, worth 0, beats Enter, worth minus 1. Given Out, the incumbent is indifferent, 2 equals 2, so Fight is a best response. Second, Enter with Accommodate. Given Accommodate, Enter, worth 1, beats Out, worth 0; given Enter, Accommodate, worth 1, beats Fight, worth minus 1. Two pure equilibria.
+
+Backward induction, from Lecture 3. After entry the incumbent compares 1 with minus 1 and accommodates. Anticipating this, the entrant compares 1 with 0 and enters. So the unique subgame-perfect equilibrium is Enter with Accommodate. The equilibrium Out with Fight rests on a threat the incumbent would never carry out.
+
+One point two. Add a type: the entry game with incomplete information. This is Tadelis figure 15.2, pages 304 to 305, the course layer.
+
+The timing, from page 304, in three steps. First, Nature draws the entrant's type, theta 1, which is either W, weak, or C, competitive. The probability that the type is competitive is p. The entrant learns its type; the incumbent knows only p. Second, the entrant chooses Enter or Out, and the incumbent observes the choice. Third, after entry the incumbent chooses Accommodate or Fight without knowing the type.
+
+The payoffs, entrant first. For the competitive type, which has probability p: Out gives 0 and 2; Enter then Fight gives minus 1 and minus 1; Enter then Accommodate gives 1 and 1. For the weak type, which has probability 1 minus p: Out gives 0 and 2; Enter then Fight gives minus 2 and 0; Enter then Accommodate gives minus 1 and 1.
+
+The notes draw this tree. Nature chooses competitive with probability p or weak with probability 1 minus p. Each entrant type chooses Out or Enter. After Enter, the incumbent's two nodes, called x 3 for the competitive entrant and x 4 for the weak one, are joined by a dashed line: one information set. The figure highlights the path where the competitive type enters and is accommodated and the weak type stays out. A second panel plots the incumbent's expected payoff after entry against its belief, mu of x 3. Accommodate is flat at 1. Fight falls from 0, at belief zero, to minus 1, at belief one.
+
+The dashed line is the whole difficulty. After entry the incumbent does not know whether it is at x 3, facing a competitive entrant, or at x 4, facing a weak one. In the right panel, however, the belief does not matter. Accommodate pays 1 against either type, while Fight pays minus 1 or 0, so every belief makes Accommodate the best reply. That is exactly why the threat to fight is not credible.
+
+Strategies are type-contingent. A strategy for the entrant is a plan for each type: what the competitive type does, then what the weak type does, each Out or Enter. So the entrant has four strategies: Out-Out, Out-Enter, Enter-Out, and Enter-Enter. Out-Enter means "out if competitive, enter if weak". The incumbent has two strategies, Fight and Accommodate, at its one information set after entry.
+
+The Bayesian normal form, cell by cell, page 305. Each cell averages over Nature. Take Out-Enter against Accommodate. With probability p the type is competitive, plays Out, and payoffs are 0 and 2. With probability 1 minus p the type is weak, plays Enter, the incumbent accommodates, and payoffs are minus 1 and 1. So the entrant's expected payoff is p times 0 plus 1 minus p times minus 1, which is p minus 1. The incumbent's is p times 2 plus 1 minus p times 1, which is 1 plus p.
+
+Here is the first misprint. The book prints the incumbent's payoff in this cell as 1 minus p, on page 305. At p equal to one half its own matrix shows three halves, which is 1 plus p. So 1 plus p is the correct value.
+
+Now Enter-Enter against Fight. Both types enter and are fought. The entrant gets p times minus 1 plus 1 minus p times minus 2, which is p minus 2. The incumbent gets p times minus 1 plus 1 minus p times 0, which is minus p.
+
+At p equal to one half, page 306, the matrix reads as follows, entrant first. Row Out-Out: 0 and 2 against Fight, 0 and 2 against Accommodate. Row Out-Enter: minus 1 and 1 against Fight; minus one half and three halves against Accommodate. Row Enter-Out: minus one half and one half against Fight; one half and three halves against Accommodate. Row Enter-Enter: minus three halves and minus one half against Fight; 0 and 1 against Accommodate.
+
+Check two cells. Enter-Out against Fight: the competitive type enters and is fought, the weak type stays out. The entrant gets one half times minus 1 plus one half times 0, which is minus one half. The incumbent gets one half times minus 1 plus one half times 2, which is one half. Enter-Enter against Accommodate: the entrant gets one half times 1 plus one half times minus 1, which is 0; the incumbent gets one half times 1 plus one half times 1, which is 1.
+
+The pure Bayesian Nash equilibria. Player 1's best responses: against Fight the column reads 0, minus 1, minus one half, minus three halves, so the maximum is 0 at Out-Out. Against Accommodate the column reads 0, minus one half, one half, 0, so the maximum is at Enter-Out. Player 2's best responses, row by row: at Out-Out it is a tie, 2 equals 2, so both; at Out-Enter, Accommodate, three halves beats 1; at Enter-Out, Accommodate, three halves beats one half; at Enter-Enter, Accommodate, 1 beats minus one half. The mutual best responses are two: Out-Out with Fight, and Enter-Out with Accommodate, page 306.
+
+The two Bayesian Nash equilibria mirror the two Nash equilibria of the complete-information game. Out-Out with Fight is the threat that keeps everyone out. Enter-Out with Accommodate is accommodation, under which the competitive type enters, because 1 beats 0, and the weak type stays out, because 0 beats minus 1.
+
+Footnote 1, page 306. Out-Enter is strictly dominated by Out-Out, and Enter-Enter by Enter-Out: the weak type always loses by entering, minus 2 or minus 1 against 0. There is also a continuum of mixed Bayesian Nash equilibria in which the incumbent fights with probability phi at least one half and the entrant plays Out-Out. The competitive type then gets phi times minus 1 plus 1 minus phi times 1, which is 1 minus 2 phi, at most zero, from entering. So staying out is a best response exactly when phi is at least one half.
+
+One point three. Why subgame perfection cannot remove Out-Out with Fight. Page 306, course layer.
+
+Out-Out with Fight has the same flaw as Out with Fight in the benchmark: if the incumbent finds itself after entry, Accommodate is a strict best reply. Yet the equilibrium survives. Subgame-perfect equilibrium requires a Nash equilibrium in every proper subgame. A proper subgame must start at a singleton information set and must cut no information set. The incumbent's nodes x 3 and x 4 form one information set, and the entrant's nodes hang from Nature's move, so the only proper subgame is the whole game, and both Bayesian Nash equilibria survive as subgame perfect.
+
+Compare three concepts on whether they remove Out-Out with Fight. Nash, or Bayesian Nash, does not: Fight is never played on the path, so it costs the incumbent nothing. Subgame perfection does not either: no proper subgame begins after entry. Perfect Bayesian equilibrium does, because it asks for a best reply at the information set, given a belief.
+
+The structural point, page 307. With incomplete information, every move of the uninformed player is made inside an information set that pools the informed player's types. So this failure, in Tadelis's words, "will carry over to all games of incomplete information."
+
+One point four. The same failure without Nature. Gibbons figure 4.1.1, pages 175 to 177, intuition layer.
+
+The problem is not Nature as such. It is non-singleton information sets. In Gibbons's game player 1 chooses L, M or R. R ends the game with payoffs 1 and 3. After L or M, player 2 knows only that R was not chosen, and picks L prime or R prime. The normal form, figure 4.1.2: row L gives 2 and 1 against L prime, 0 and 0 against R prime. Row M gives 0 and 2 against L prime, 0 and 1 against R prime. Row R gives 1 and 3 against either.
+
+The pure Nash equilibria are L with L prime, and R with R prime. The game has no proper subgames, so both are subgame perfect. But give player 2 a belief p, the probability of the node after L. Then the expected payoff of R prime is p times 0 plus 1 minus p times 1, which is 1 minus p. The expected payoff of L prime is p times 1 plus 1 minus p times 2, which is 2 minus p. Two minus p beats 1 minus p for every p. So R prime is never a best reply at the information set, and R with R prime is killed by Gibbons's requirements 1 and 2 alone, page 177. The same move, a belief at every information set and optimality given it, is what part two formalizes.
+
+Checklist for part one. You should be able to write the entry game's Bayesian normal form at a general p and at one half, cell by cell, and find its two pure Bayesian Nash equilibria. You should be able to say why both are subgame perfect: no proper subgame starts after entry. You should be able to show, by the expected payoffs 1 against minus mu, that no belief supports fighting. And you should be able to make the same argument in Gibbons's game without Nature.
+
+Part two. Beliefs at every information set, Bayes' rule where it applies, best replies everywhere.
+
+This part covers Tadelis section 15.2, "Perfect Bayesian Equilibrium", pages 307 to 312, with definitions 15.1 to 15.3, requirements 15.1 to 15.4, proposition 15.1, the remark and figure 15.3; Gibbons section 4.1, pages 177 to 182; and M W G section 9.C, pages 282 to 285, as the graduate layer.
+
+The claim. A perfect Bayesian equilibrium is a strategy profile plus a belief system. Beliefs are pinned by Bayes' rule wherever the equilibrium reaches an information set and are free where it does not. Given the beliefs, every player best-responds at every information set, reached or not. The freedom off the path is the concept's power, because it kills threats no belief can justify, and its weakness, because it can support almost anything. Parts three and eight deal with that weakness.
+
+Two point one. On and off the equilibrium path. Definition 15.1, page 307.
+
+Definition 15.1. Let sigma star be a Bayesian Nash equilibrium profile. An information set is on the equilibrium path if, given sigma star and the type distribution, it is reached with positive probability; and it is off the equilibrium path if it is reached with probability zero.
+
+The definition needs a candidate profile first. In the entry game: if the entrant plays Enter-Out, the incumbent's information set after entry is on the path, reached with probability p times 1 plus 1 minus p times 0, which is p, positive. If the entrant plays Out-Out, it is off the path, reached with probability p times 0 plus 1 minus p times 0, which is zero. The informed player's strategy decides which of the uninformed player's information sets are reached, page 308.
+
+Two point two. A system of beliefs. Definition 15.2 and requirement 15.1, page 308.
+
+Definition 15.2. A system of beliefs, mu, assigns to every information set a probability distribution over its decision nodes: each mu of x is between zero and one, and the beliefs over the nodes of each information set sum to one.
+
+Requirement 15.1. Every player has a well-defined belief over where he is in each of his information sets.
+
+In the entry game the entrant's information sets are singletons, so its beliefs are trivial. The incumbent holds mu of x 3, the probability of the competitive type given entry, and 1 minus mu of x 3, the probability of the weak type given entry.
+
+Two point three. Bayes' rule on the path. Requirement 15.2, page 309.
+
+Let the competitive type enter with probability sigma C and the weak type with probability sigma W. Pure strategies are the cases where each sigma is zero or one. Write the event "competitive and entered" and apply the definition of conditional probability, in three steps. The belief mu of x 3 is the probability of competitive given entry. That equals the probability of "competitive and entered", over the probability of entry. The numerator is the probability of competitive times the probability of entry given competitive. The denominator adds the same product for the weak type. So the belief is p times sigma C, over p times sigma C plus 1 minus p times sigma W.
+
+Five cases. With Enter-Out, sigma C is 1 and sigma W is 0, and the belief is p over p, which is 1. With Out-Enter, sigma C is 0 and sigma W is 1, and the belief is 0. With Enter-Enter, both are 1, and the belief is p: pooling teaches nothing. With Out-Out, both are 0, and the belief is zero over zero: undefined. And with a behavioural mix, sigma C one half, sigma W one quarter and p one third, the belief is one sixth over one sixth plus one sixth, which is one half.
+
+Requirement 15.2. Given a Bayesian Nash equilibrium profile sigma star, beliefs at every information set on the equilibrium path are consistent with Bayes' rule.
+
+Two constraints enter the formula, pages 308 to 309: an exogenous one, Nature's prior p, and an endogenous one, the conjectured strategy sigma. Beliefs are "correct" in the same sense in which Nash equilibrium makes beliefs about strategies correct.
+
+Two point four. Off the path anything goes; then best-respond. Requirements 15.3 and 15.4, page 310.
+
+Requirement 15.3. At information sets off the equilibrium path, any belief can be assigned, since Bayes' rule does not apply.
+
+Requirement 15.4. Given their beliefs, players' strategies are sequentially rational. At every information set h of player i, player i's expected payoff from his equilibrium strategy, given the others' equilibrium strategies, his type, the information set h and the beliefs mu, is at least the expected payoff from any other strategy s i in his strategy set.
+
+Definition 15.3. A Bayesian Nash equilibrium profile sigma star together with a system of beliefs mu is a perfect Bayesian equilibrium if they satisfy requirements 15.1 to 15.4.
+
+Two point five. Worked: the entry game, settled. Pages 310 to 311.
+
+Candidate one: Out-Out with Fight. The information set after entry is off the path, so by requirement 15.3 any belief mu between zero and one is allowed. Requirement 15.4 asks whether Fight is a best reply to some belief. The expected payoff of Accommodate is mu times 1 plus 1 minus mu times 1, which is 1. The expected payoff of Fight is mu times minus 1 plus 1 minus mu times 0, which is minus mu. One beats minus mu for every mu between zero and one, and the gap is at least 1. No belief supports Fight, so Out-Out with Fight is not a perfect Bayesian equilibrium.
+
+Candidate two: Enter-Out with Accommodate. Every information set is reached, and Bayes gives mu of x 3 equal to 1, because only the competitive type enters. Check each information set. The incumbent after entry, with belief 1, is told to accommodate, which pays 1; fighting would pay minus 1. The competitive entrant is told to enter, which pays 1 given accommodation; staying out pays 0. The weak entrant is told to stay out, which pays 0; entering would pay minus 1 given accommodation. All the comparisons are strict. So Enter-Out with Accommodate, with mu of x 3 equal to 1, is the unique pure perfect Bayesian equilibrium.
+
+What did the work was not Bayes' rule, because the belief was unrestricted. It was the requirement to have a belief and to best-respond to it at an unreached information set.
+
+Two point six. Proposition 15.1: when every information set is reached. Page 311.
+
+Proposition 15.1. If a profile sigma star, possibly mixed, is a Bayesian Nash equilibrium of a Bayesian game and induces every information set to be reached with positive probability, then sigma star, together with the belief system derived from sigma star and the type distribution by Bayes' rule, is a perfect Bayesian equilibrium of the game.
+
+The proof, every step. Suppose not: sigma star is a Bayesian Nash equilibrium, all information sets are reached, but the pair of sigma star and mu is not a perfect Bayesian equilibrium.
+
+Step one. Requirements 15.1 to 15.3 hold by construction: every information set has a belief, and each belief is given by Bayes' rule because each set is on the path, its probability is positive, so the denominator is positive.
+
+Step two. So requirement 15.4 must fail: some player i at some information set h is not best responding to the belief at h.
+
+Step three. Because h is reached with positive probability, player i could switch to the better action at h and raise his ex-ante expected payoff by the probability of h times the gain at h, which is positive.
+
+Step four. That is a profitable deviation from sigma star in the Bayesian game, contradicting that sigma star is a Bayesian Nash equilibrium. End of proof.
+
+The lesson. Off-path information sets are the only place where Bayesian Nash and perfect Bayesian equilibrium can differ. A Bayesian Nash equilibrium's only licence to play badly is at information sets it never reaches, because there a bad action costs nothing ex ante. Perfect Bayesian equilibrium withdraws that licence.
+
+How to use it, page 311. First, find the Bayesian Nash equilibria, as in the matrix of part one. Second, for each, compute beliefs on the path by Bayes' rule. Third, if nothing is off the path, proposition 15.1 finishes the job. Otherwise, fourth, look for an off-path belief that makes the prescribed off-path action a best reply. In signaling games one usually works directly: guess a sender strategy, derive beliefs, derive the receiver's best replies, pick supporting off-path beliefs, and check the sender's incentive constraints. That method is part four.
+
+Two point seven. Graduate layer: "weak" perfect Bayesian equilibrium, and Bayes' rule "where possible" off the path. The remark and figure 15.3, pages 311 to 312.
+
+Requirement 15.3 puts no restriction off the path, which is why some texts call Tadelis's concept weak perfect Bayesian equilibrium, M W G definition 9.C.3, page 285. A stronger version asks for Bayes' rule "where possible" even off the path.
+
+Figure 15.3. Player 1 chooses L, leading to player 2, or R, leading to player 3. Players 2 and 3 each choose between two actions, A or B for player 2, C or D for player 3. Player 4 then moves at two information sets, one after player 2's move and one after player 3's, not seeing which action was taken. Let the profile have player 1 play L, player 2 play A with probability sigma A, and player 3 play C with probability sigma C.
+
+Player 4's information set after player 2 is on the path, and Bayes' rule gives a belief on A equal to sigma A. The one after player 3 is off the path, because player 1 never plays R, and requirement 15.3 allows anything. But if player 4 finds himself there, only player 1 has deviated. There is no reason to think player 3 deviated too, so the natural belief on C is sigma C.
+
+Gibbons builds this into his definition. His requirement 4, page 180, reads: "At information sets off the equilibrium path, beliefs are determined by Bayes' rule and the players' equilibrium strategies where possible". He shows with figure 4.1.4, pages 180 to 181, why it matters. There the strategies A, L, L prime, with belief p equal to zero, satisfy his requirements 1 to 3 and form a Nash equilibrium, but not a subgame-perfect one: player 3's belief contradicts player 2's strategy L. Requirement 4 forces p equal to 1, after which player 3 must play R prime.
+
+The correspondence between the two books, pages 177 to 180 of Gibbons and 308 to 310 of Tadelis. Gibbons's requirement 1, a belief at every information set, is Tadelis's requirement 15.1 with definition 15.2. Gibbons's requirement 2, sequential rationality given beliefs, is Tadelis's 15.4. Gibbons's requirement 3, Bayes' rule on the path, is Tadelis's 15.2. Gibbons's requirement 4, Bayes' rule off the path where possible, has no Tadelis counterpart: Tadelis's 15.3 is weaker.
+
+In a two-stage signaling game the distinction is moot. The receiver's off-path information sets follow messages that no type sends, so Bayes' rule is never "possible" there. Gibbons notes that requirement 4 is vacuous in signaling games, page 186. Everything examinable in parts four to eight is the same under both definitions.
+
+On the M W G side, named only: definition 9.C.1, page 283, is the belief system; definition 9.C.2, page 284, is sequential rationality, stated with the expected utility conditional on the information set, the beliefs and the strategies; definition 9.C.3, page 285, is the weak perfect Bayesian equilibrium. Not examinable beyond what Tadelis states.
+
+Checklist for part two. You should be able to state definitions 15.1 to 15.3 and requirements 15.1 to 15.4. You should be able to derive Bayes' rule at the incumbent's information set, p sigma C over p sigma C plus 1 minus p sigma W, and say when it is undefined. You should be able to settle the entry game: Out-Out with Fight fails because 1 beats minus mu at every belief, and Enter-Out with Accommodate with belief 1 is the unique pure perfect Bayesian equilibrium. You should be able to prove proposition 15.1 in four steps. And you should be able to say why Gibbons's requirement 4 adds nothing in a signaling game.
+
+Part three. Sequential equilibrium: discipline the beliefs nobody should be able to choose.
+
+This part covers Tadelis section 15.3, "Sequential Equilibrium", pages 312 to 313, with figure 15.4 and definitions 15.4 and 15.5, and the summary in section 15.4, page 314; Gibbons section 4.1, footnote 1, page 179; and M W G section 9.C, pages 290 to 291, definition 9.C.4 and proposition 9.C.2.
+
+The claim. Requirement 15.3 lets off-path beliefs be anything, and some games then have perfect Bayesian equilibria that rest on beliefs no sequence of slightly mistaken plays could ever generate. Kreps and Wilson's consistency asks that beliefs be the limit of Bayes' rule applied to totally mixed strategies converging to the equilibrium. A sequential equilibrium is a consistent perfect Bayesian equilibrium. It is the first refinement. The intuitive criterion, in part eight, is the one signaling games need.
+
+Three point one. A game with an unreasonable perfect Bayesian equilibrium. Figure 15.4, pages 312 to 313.
+
+Nature picks one of two nodes with probability one half each. Player 1 does not observe the draw. He chooses U, which ends the game with payoffs 1 and 0, or D. After D, player 2 moves at an information set made of two nodes, x 1 and x 2, one per draw, and chooses L or R. The payoffs after D, player 1 first: at x 1, L gives 2 and 2, R gives 0 and 3. At x 2, L gives 2 and 2, R gives 0 and 0.
+
+Player 2 holds a belief mu, the probability of x 1. The expected payoff of L is 2 mu plus 2 times 1 minus mu, which is 2. The expected payoff of R is 3 mu plus 0 times 1 minus mu, which is 3 mu. So R is a best reply if and only if 3 mu is at least 2, that is, mu at least two thirds.
+
+The first perfect Bayesian equilibrium: D with L, and mu equal to one half. D is played, so the information set is on the path, and Bayes' rule gives mu of x 1 equal to one half times the probability of D, over one half times the probability of D plus one half times the probability of D, which is one half. Player 1 cannot condition on Nature, so the probability of D is the same at both nodes. Then 3 times one half is three halves, less than 2, so L is the best reply. Given L, player 1 compares D, worth 2, with U, worth 1, and plays D. It checks.
+
+The second perfect Bayesian equilibrium: U with R, and mu above two thirds. U is played, the information set is off the path, and requirement 15.3 allows any belief. Pick a belief on x 1 above two thirds; then 3 mu exceeds 2 and R is a best reply. Given R, player 1 compares U, worth 1, with D, worth 0, and plays U. It checks too.
+
+But this second equilibrium is absurd. Whatever made player 1 play D by mistake, he could not have made it depend on a draw he never saw, so the two nodes must stay equally likely. Yet nothing in requirements 15.1 to 15.4 says so.
+
+Three point two. Consistency and sequential equilibrium. Definitions 15.4 and 15.5, page 313.
+
+Definition 15.4. A profile sigma star together with a belief system mu star is consistent if there is a sequence of non-degenerate, that is, totally mixed, strategy profiles, sigma k for k from 1 to infinity, and the sequence of beliefs mu k derived from each sigma k by Bayes' rule, such that the pair sigma k, mu k converges to the pair sigma star, mu star as k goes to infinity.
+
+Definition 15.5. A profile sigma star with beliefs mu star is a sequential equilibrium if it is a consistent perfect Bayesian equilibrium.
+
+Applying it to figure 15.4. In any totally mixed profile sigma k, player 1 plays D with some probability epsilon k between zero and one, the same at both nodes. So for every k, the belief on x 1 is one half epsilon k, over one half epsilon k plus one half epsilon k, which is one half. Hence its limit is one half. With epsilon equal to 0.1, the belief is 0.05 over 0.10, one half. With epsilon 0.001, it is 0.0005 over 0.001, one half. With epsilon ten to the minus six, one half again.
+
+The only consistent belief is one half, which is less than two thirds, and under it R is not a best reply. So U with R is not a sequential equilibrium. D with L, with mu one half, is the unique one.
+
+Consistency turns "off-path beliefs are free" into "off-path beliefs are what trembles would teach you." The trembles must be the players' own. Here there is one tremble, by a player who cannot see Nature's draw, which therefore cannot shift the odds between the two nodes.
+
+Three point three. Where the concepts sit.
+
+Every sequential equilibrium is a perfect Bayesian equilibrium, by definition 15.5. The converse fails: figure 15.4's U with R is the counterexample.
+
+Compare three concepts in figure 15.4. Bayesian Nash requires no beliefs and kills nothing. Perfect Bayesian equilibrium in Tadelis's "weak" sense requires Bayes' rule on the path and leaves anything off it, so it kills nothing: U with R survives. Sequential equilibrium requires beliefs that are limits of Bayes' rule from trembles, which pins the off-path belief to one half, and so it kills U with R.
+
+Tadelis's practical verdict, page 313. Sequential equilibrium "is a bit harder to apply", so applications use perfect Bayesian equilibrium. And even sequential equilibrium can admit unreasonable outcomes, which motivates the signaling-specific refinement of part eight.
+
+Three point four. The formal side, M W G section 9.C, graduate layer, named only.
+
+M W G definition 9.C.4, page 290: a sequential equilibrium is sequentially rational, in the sense of definition 9.C.2, and consistent in the Kreps–Wilson sense. That is the same as Tadelis's definitions 15.4 and 15.5.
+
+M W G proposition 9.C.2, page 291: "In every sequential equilibrium of an extensive form game, the equilibrium strategy profile constitutes a subgame perfect Nash equilibrium". Weak perfect Bayesian equilibrium does not guarantee this, as Gibbons's figure 4.1.4 showed in part two.
+
+Existence, Gibbons footnote 1, page 179. Kreps and Wilson show that every finite game has a sequential equilibrium, and hence a perfect Bayesian equilibrium.
+
+M W G section 9.D, "Reasonable Beliefs and Forward Induction", page 292, opens the programme of further restrictions on off-path beliefs that chapter 13's appendix A applies to signaling. It is the bridge to part eight. Named only.
+
+Checklist for part three. You should be able to solve figure 15.4 for both perfect Bayesian equilibria, with the threshold two thirds. You should be able to state consistency and show that every tremble gives the belief one half. And you should be able to say why every sequential equilibrium is a perfect Bayesian equilibrium but not conversely.
+
+Part four. Signaling games: who moves, what is learned, and the method.
+
+This part covers the opening of Tadelis chapter 16, pages 318 to 319, with the four components, pooling, separating, and the remark on hybrid equilibria; Gibbons section 4.2.A, pages 183 to 190, with signaling requirements 1, 2R, 2S and 3 and figures 4.2.1 and 4.2.2 worked; Gibbons section 4.2.C, pages 205 to 207, Myers and Majluf; and section 4.2.D, pages 208 to 210, monetary policy, named.
+
+The claim. A signaling game is the simplest dynamic game of incomplete information. An informed Sender moves first; an uninformed Receiver sees the move and responds. Its perfect Bayesian equilibria come in three kinds. Pooling: the message says nothing, and the posterior equals the prior. Separating: the message reveals the type. Hybrid: it reveals some. Every candidate is checked the same way: guess the Sender's strategy, apply Bayes' rule on the path, find the Receiver's best replies, choose off-path beliefs that keep the Sender in line, and check the Sender's incentive constraints.
+
+Four point one. Why signals have to be costly. Pages 318 to 319, intuition layer.
+
+A strong entrant would like to tell the incumbent: "I am strong, don't waste money fighting me". But a weak entrant would like to say the same thing, so saying it proves nothing. A signal works only if it is an action that costs the types differently. That is Spence's 1973 insight: education can raise wages without raising productivity, purely because it is cheaper for the able to acquire. Costless messages are cheap talk, Tadelis chapter 18, and cheap talk is out of this course's scope.
+
+Tadelis's four components, page 318. First, Nature draws player 1's type, which player 2 does not know but cares about: common values. Second, player 1 has a rich action set: at least as many actions as types, and each action costs each type differently. Third, player 1 moves first, and player 2 responds after observing player 1's choice. Fourth, player 2 updates his belief from player 1's choice, given his belief about player 1's strategy, and best-responds to the updated belief.
+
+Four point two. The formal game and the requirements. Gibbons pages 183 to 188, course layer.
+
+There are types t 1 to t I, each with prior probability p of t i, positive. Messages m 1 to m J. Actions a 1 to a K. A pure strategy for the Sender is a function from types to messages, m of t i. For the Receiver, a function from messages to actions, a of m j. With two types, two messages and two actions, each side has four pure strategies, page 186. For the Sender: strategy 1, both types send m 1, which is pooling. Strategy 2, type t 1 sends m 1 and t 2 sends m 2, separating. Strategy 3, t 1 sends m 2 and t 2 sends m 1, separating. Strategy 4, both send m 2, pooling.
+
+The Sender's information sets are singletons, so requirement 1 bites only on the Receiver.
+
+Signaling requirement 1. After any message m j the Receiver has a belief over types, mu of t i given m j, non-negative and summing to one over the types.
+
+Requirement 2R. For each message m j, the Receiver's action a star of m j maximizes the sum over types of the belief mu of t i given m j times the Receiver's utility from type t i, message m j and action a k.
+
+Requirement 2S. For each type t i, the Sender's message m star of t i maximizes the Sender's utility given its type, the message and the Receiver's reply a star to that message.
+
+Requirement 3. If some type sends m j in equilibrium, the belief after m j follows Bayes' rule. Let T j be the set of types that send m j, assumed non-empty. Then for each type in T j, the belief is its prior over the sum of the priors of the types in T j.
+
+The definition, page 188. A pure-strategy perfect Bayesian equilibrium of a signaling game is a Sender strategy, a Receiver strategy and a belief system satisfying requirements 1, 2R, 2S and 3.
+
+These are Tadelis's requirements 15.1 to 15.4, specialized. Requirement 4, Bayes "where possible" off the path, is vacuous here, because an unused message is reached by no strategy, page 186.
+
+What each kind implies for beliefs, Tadelis pages 318 to 319. In a pooling equilibrium, on-path beliefs equal the prior; at every unused message the belief is free but must support the Receiver's reply; and what holds the equilibrium together is the Receiver's reply to the unused message, which deters deviations. In a separating equilibrium, on-path beliefs are 0 or 1, full revelation; there are off-path beliefs only if there are more messages than types; and what holds it together is each type's incentive compatibility, no type wanting to mimic another. In a hybrid, or semi-separating, equilibrium, beliefs lie strictly between the prior and 0 or 1, and a mixing type must be indifferent.
+
+Four point three. Worked: all four candidates in Gibbons's figure 4.2.2, pages 188 to 190.
+
+Two equally likely types, t 1 and t 2. Messages L and R. Actions u and d. Payoffs, Sender first. For type t 1: L then u gives 1 and 3; L then d gives 4 and 0; R then u gives 2 and 1; R then d gives 0 and 0. For type t 2: L then u gives 2 and 4; L then d gives 0 and 1; R then u gives 1 and 0; R then d gives 1 and 2.
+
+The Receiver's beliefs: p is the probability of t 1 after L, q the probability of t 1 after R. Two facts are used throughout. After L, u pays 3 p plus 4 times 1 minus p, which is 4 minus p, and d pays 0 times p plus 1 times 1 minus p, which is 1 minus p. Four minus p beats 1 minus p, so the reply to L is u for every p. After R, u pays 1 times q plus 0, which is q, and d pays 0 plus 2 times 1 minus q, which is 2 minus 2 q. So d is a best reply if and only if q is at most two thirds.
+
+Candidate 1: pooling on L, both types send L. Bayes gives p equal to 0.5. The reply to L is u, so t 1 earns 1 and t 2 earns 2. Keep them from R: if the reply to R were u, t 1 would get 2, more than 1, a deviation. So the reply to R must be d; then t 1 gets 0, less than 1, and t 2 gets 1, less than 2. And d needs q at most two thirds. So: both types send L, the Receiver plays u after L and d after R, p is 0.5, and q is at most two thirds. That is a pooling perfect Bayesian equilibrium.
+
+Candidate 2: pooling on R, both send R. Bayes gives q equal to 0.5, which is at most two thirds, so the reply to R is d, and t 1 earns 0. But after L the reply is u at any p, which gives t 1 a payoff of 1, more than 0. No such equilibrium.
+
+Candidate 3: separating, t 1 sends L and t 2 sends R. Bayes gives p equal to 1 and q equal to 0. The replies are u after L and d after R, and both types earn 1. But t 2, deviating to L, is met by u and earns 2, more than 1. No such equilibrium.
+
+Candidate 4: separating, t 1 sends R and t 2 sends L. Bayes gives p equal to 0 and q equal to 1. The replies are u after L, always, and u after R, because q equal to 1 exceeds two thirds. Both types earn 2. Deviations: t 1 switching to L gets 1, less than 2; t 2 switching to R gets 1, less than 2. So t 1 sends R, t 2 sends L, the Receiver plays u after both, with p equal to 0 and q equal to 1. That is a separating perfect Bayesian equilibrium.
+
+The method, every time, in five steps. One, fix the Sender's strategy. Two, apply Bayes' rule on every used message. Three, find the Receiver's best reply to those beliefs. Four, for unused messages, pick the reply that best deters deviation and check that some belief supports it. Five, check every type's incentive constraint against every other message.
+
+Whether the pooling equilibrium of candidate 1 survives the intuitive criterion is settled in part eight.
+
+Four point four. Hybrid equilibria. Tadelis's remark, page 319; Gibbons pages 186 and 202 to 205.
+
+In a hybrid, or semi-separating, equilibrium, one type plays a pure message and the other randomizes. If t 1 always sends m and t 2 sends it with probability pi, the belief on t 1 after m is the prior of t 1, over the prior of t 1 plus the prior of t 2 times pi. For pi strictly between zero and one, this lies strictly between the prior of t 1 and 1. The message is informative but not conclusive. The mixing type must be indifferent, which pins pi; this is worked numerically for Spence in part six. Tadelis defers the general treatment to chapter 17, on reputation, which is beyond this lecture.
+
+Four point five. Two more applications in Gibbons section 4.2, pages 205 to 210, intuition layer.
+
+Corporate investment and capital structure, Myers and Majluf, section 4.2.C. An entrepreneur's existing firm earns pi, either L or H, with H greater than L greater than zero, and the probability of L is p. He needs an investment I to fund a project returning R, greater than I times 1 plus r, and he offers an equity stake s. The investor accepts if and only if s times the quantity q L plus 1 minus q times H plus R is at least I times 1 plus r. That is equation 4.2.11, where q is the probability of L given s. The type pi prefers to go ahead if and only if s is at most R over pi plus R, equation 4.2.12. Pooling needs I times 1 plus r, over p L plus 1 minus p times H plus R, to be at most R over H plus R. That is equation 4.2.13.
+
+In pooling the high type subsidizes the low type through the larger pooled stake. When 4.2.13 fails there is a separating equilibrium in which the low type is financed at a stake of I times 1 plus r over L plus R, and the high type forgoes a profitable project. In Gibbons's words on page 207: "financing terms that are attractive to the high-profit type are even more attractive to the low-profit type". The signal space, equity stakes, cannot sort, which pushes firms toward debt or internal funds.
+
+Monetary policy, section 4.2.D. A two-period version of the policy game, with the central bank's distaste for inflation private. First-period inflation is the message; employers' second-period expectation is the reply. The separating constraint makes the strong type choose lower inflation than under complete information: over-signaling, like the over-investment in education in part six. Named only; the repeated-game background is Lecture 5.
+
+Four point six. Classifying the entry game, Tadelis page 319.
+
+Out-Out with Fight is pooling, both types stay out, and it is not a perfect Bayesian equilibrium, because Fight is never a best reply. Enter-Out with Accommodate is separating, entry reveals the competitive type and staying out reveals the weak type, and it is a perfect Bayesian equilibrium with belief 1 after entry.
+
+Checklist for part four. You should be able to list Tadelis's four components and say why a signal must cost the types differently. You should be able to state signaling requirements 1, 2R, 2S and 3. You should be able to solve all four candidates of Gibbons's figure 4.2.2 and find the pooling equilibrium on L, with q at most two thirds, and the separating one where t 1 sends R. And you should be able to write the hybrid belief and say where it lies.
+
+Part five. The MBA game: one separating and one pooling equilibrium, held up by beliefs.
+
+This part covers Tadelis section 16.1, "Education Signaling: The MBA Game", pages 319 to 323, with figure 16.1, equations 16.1 and 16.2, the four-by-four matrix at p equal to one quarter on page 322, and footnote 2.
+
+The claim. In Tadelis's MBA game the degree adds nothing to productivity. Yet there is a separating equilibrium in which only the high-skill worker studies and is made a manager, because the degree costs him 2 and his low-skill twin 5, and the manager's premium is 4. There is also a pooling equilibrium in which nobody studies and everybody is put in blue-collar work, held up only by the employer's off-path belief that an MBA signals low skill with probability at least five eighths. One threshold, three eighths, settles every information set.
+
+Five point one. The game, pages 319 to 321, in four steps.
+
+First, Nature draws the worker's skill, H or L, with the probability of H equal to p, positive. The worker learns it. Second, the worker chooses an MBA, D, or not, U. The private cost is 2 for the high type and 5 for the low type, if he studies, and 0 otherwise. Third, the employer sees D or U, not the skill, and assigns the worker to manager, M, with wage 10, or blue-collar, B, with wage 6. Fourth, the employer's net profit, given that the degree adds nothing to productivity: a high-skill worker earns the employer 10 as manager and 5 as blue-collar; a low-skill worker earns 0 as manager and 3 as blue-collar.
+
+The worker's payoff is the wage minus the cost. All eight terminal payoffs, worker first, as in figure 16.1. High type without degree: manager gives 10 and 10; blue-collar gives 6 and 5. High type with degree: manager gives 10 minus 2, which is 8, and 10; blue-collar gives 6 minus 2, which is 4, and 5. Low type without degree: manager gives 10 and 0; blue-collar gives 6 and 3. Low type with degree: manager gives 10 minus 5, which is 5, and 0; blue-collar gives 6 minus 5, which is 1, and 3.
+
+The notes redraw the tree. Nature sits in the middle and draws H at the top with probability p, or L at the bottom. Each type chooses U to the left or D to the right. The employer's two information sets, I U and I D, join the two types' nodes vertically, with dashed lines. Highlighted are the high type studying and being made manager, and the low type not studying and being put in blue-collar work: the separating equilibrium, D-U with B-M. At each dashed set the employer knows the message, not the type. Only the highlighted branches are played, but the employer's replies at both sets are part of its strategy, which is what lets a reply after an unused message do the work in the pooling equilibrium.
+
+Five point two. Beliefs by Bayes' rule, equations 16.1 and 16.2, page 321.
+
+Let type H choose U with probability sigma H and type L with probability sigma L. Write mu U for the probability of H given U, and mu D for the probability of H given D. Equation 16.1: mu U equals p sigma H, over p sigma H plus 1 minus p times sigma L. Equation 16.2: mu D equals p times 1 minus sigma H, over p times 1 minus sigma H plus 1 minus p times 1 minus sigma L.
+
+Three cases. If both sigmas are 1, both choose U: mu U is p, and equation 16.2 is zero over zero, so mu D is free. If both sigmas are 0, both choose D: mu D is p, and mu U is free. If sigma H is 0 and sigma L is 1, the strategy D-U: mu U is 0 over 0 plus 1 minus p, which is 0, and mu D is p over p plus 0, which is 1. That is footnote 2, page 322.
+
+Five point three. The employer's best reply at any information set, page 323.
+
+At belief mu, the expected profit from M is 10 mu plus 0 times 1 minus mu, which is 10 mu. From B it is 5 mu plus 3 times 1 minus mu, which is 3 plus 2 mu. So M is optimal if and only if 10 mu is at least 3 plus 2 mu, if and only if 8 mu is at least 3, if and only if mu is at least mu star, equal to three eighths.
+
+The notes plot the two lines against mu. The M line, 10 mu, rises from 0 to 10. The B line, 3 plus 2 mu, rises from 3 to 5. They cross at three eighths. The region where mu D is at most three eighths is shaded: the beliefs that support the pooling equilibrium. Dots mark mu U equal to 0 and mu D equal to 1 for the separating equilibrium, and mu U equal to one quarter for the pooling one. Everything the employer does in any equilibrium is a reading of this one picture: where the belief at I U and at I D falls relative to three eighths. The prior, one quarter, sits left of the threshold, which is why pooling on U gets B, not M, at the book's numbers.
+
+Five point four. The Bayesian normal form at p equal to one quarter, page 322.
+
+Worker strategies list the high type's action, then the low type's. Employer strategies list the response to U, then to D. One cell in full: U-D against M-B. With probability one quarter, type H plays U and gets M: payoffs 10 and 10. With probability three quarters, type L plays D and gets B: payoffs 6 minus 5 and 3, that is, 1 and 3. So the expected payoffs are one quarter of 10 and 10 plus three quarters of 1 and 3: 2.5 plus 0.75, which is 3.25, for the worker, and 2.5 plus 2.25, which is 4.75, for the employer.
+
+The full matrix, worker first, columns in the order M-M, M-B, B-M, B-B. Row U-U: 10 and 2.5; 10 and 2.5; 6 and 3.5; 6 and 3.5. Row U-D: 6.25 and 2.5; 3.25 and 4.75; 5.25 and 1.25; 2.25 and 3.5. Row D-U: 9.5 and 2.5; 8.5 and 1.25; 6.5 and 4.75; 5.5 and 3.5. Row D-D: 5.75 and 2.5; 1.75 and 3.5; 5.75 and 2.5; 1.75 and 3.5.
+
+A misprint. The cell D-U against B-B is one quarter of 6 minus 2, plus three quarters of 6, which is 1 plus 4.5, which is 5.5. The book prints 4.5. It changes no best response: column B-B's maximum is U-U's 6 either way.
+
+Best responses. The worker, by column: against M-M, U-U, worth 10; against M-B, U-U, worth 10; against B-M, D-U, worth 6.5; against B-B, U-U, worth 6. The employer, by row: against U-U, B-M or B-B, worth 3.5; against U-D, M-B, worth 4.75; against D-U, B-M, worth 4.75; against D-D, M-B or B-B, worth 3.5. The mutual best responses: U-U with B-B, and D-U with B-M. These are the two pure Bayesian Nash equilibria, page 322. U-U with B-M fails: against B-M the worker prefers D-U, 6.5 against 6.
+
+Five point five. Which Bayesian Nash equilibria are perfect Bayesian, pages 322 to 323.
+
+First, D-U with B-M, separating. Both messages are used, so by proposition 15.1 the Bayesian Nash equilibrium with Bayes beliefs, mu U equal to 0 and mu D equal to 1, is a perfect Bayesian equilibrium. Checking every information set anyway. The employer at I U, with belief 0, below three eighths, plays B for 3 rather than M for 0. The employer at I D, with belief 1, plays M for 10 rather than B for 5. The high worker studies for 10 minus 2, which is 8, rather than not studying and getting B, which is 6; this holds because his cost, 2, is below the wage premium, 10 minus 6, which is 4. The low worker does not study, for 6, rather than studying and being promoted for 10 minus 5, which is 5; this holds because his cost, 5, exceeds the premium, 4.
+
+The two incentive-compatibility constraints are the whole story: c H at most w M minus w B, at most c L. In numbers, 2 at most 4 at most 5. The premium must be worth the degree to the high type and not worth it to the low type. This is the discrete version of Spence's single-crossing condition, part six.
+
+Second, U-U with B-B, pooling. I U is on the path: mu U equals p, one quarter, below three eighths, so B is a best reply. I D is off the path, because nobody studies. Mu D is free, but B there must be a best reply: 5 mu D plus 3 times 1 minus mu D at least 10 mu D, if and only if 3 is at least 8 mu D, if and only if mu D is at most three eighths. The worker: U gives 6 to both types; D, met with B, gives 6 minus 2, which is 4, to H, and 6 minus 5, which is 1, to L. Nobody deviates. So U-U with B-B, with mu U one quarter and mu D anywhere from zero to three eighths, is a pooling perfect Bayesian equilibrium.
+
+The pooling equilibrium lives on a belief. If an MBA were read as "high skill with probability above three eighths", the employer would promote, and the high type would study, 8 against 6. The belief that sustains it, an MBA means probably low skill, is exactly what the intuitive criterion calls unreasonable, in part eight.
+
+Comparing the two equilibria. Separating, D-U with B-M: beliefs 0 and 1; worker payoffs 8 for H and 6 for L; employer's expected profit one quarter of 10 plus three quarters of 3, which is 4.75. Pooling, U-U with B-B: beliefs one quarter on the path and at most three eighths off it; worker payoffs 6 and 6; employer's expected profit one quarter of 5 plus three quarters of 3, which is 3.5.
+
+Five point six. Worked extension: what the prior changes. Same model; this part is derived in the notes, not in the book.
+
+The book fixes p at one quarter. Varying p, with everything else at the book's values, three things happen. The separating equilibrium D-U with B-M uses beliefs 0 and 1 and the constraints 2 at most 4 at most 5: it does not depend on p at all. Pooling on U gets the reply the prior dictates: B if p is below three eighths, M if p is above three eighths, both at exactly three eighths. With M after U, both types earn 10 and no one gains from D, which gives at most 10 minus 2, which is 8; so U-U with M-M and U-U with M-B are perfect Bayesian equilibria for any mu D that supports the reply after D. Pooling on D never works at the book's numbers. After D the reply is M or B. If M, type L earns 5 and would switch to U unless U is met with B and 6 is less than 5, which is impossible. If B, both earn less than the 6 that U guarantees.
+
+The pure perfect Bayesian equilibria by prior, with the book's costs and wages. For p below three eighths, for example one quarter: D-U with B-M; and U-U with B-B, with mu D at most three eighths. For p equal to three eighths: D-U with B-M; U-U with B-B; U-U with M-M; and U-U with M-B. For p above three eighths: D-U with B-M; U-U with M-M, with mu D at least three eighths; and U-U with M-B, with mu D at most three eighths.
+
+Checklist for part five. You should be able to write the eight terminal payoffs, derive equations 16.1 and 16.2, and derive the threshold three eighths. You should be able to compute any cell of the sixteen-cell matrix and name the misprint. You should be able to show the separating equilibrium rests on 2 at most 4 at most 5, and the pooling one on mu D at most three eighths. And you should be able to say what happens as the prior crosses three eighths.
+
+Part six. Spence's job market: how much education it takes to be believed.
+
+This part covers Gibbons section 4.2.B, "Job-Market Signaling", pages 190 to 205, with equations 4.2.1 to 4.2.10 and figures 4.2.3 to 4.2.9; Milgrom and Roberts chapter 5, "Signaling", pages 154 to 156, with their example of 50 and 20 dollars an hour, 30 per cent high types, and education costs of 10 and 20; and M W G section 13.C, pages 450 to 459, with lemmas 13.C.1 and 13.C.2 and figure 13.C.8 on page 456.
+
+The claim. When education costs the able less at the margin, which is single crossing, a high-ability worker can separate by acquiring education the low type will not copy. Competitive firms then pay each type its productivity, the low type gets no education, and the high type gets more than he would under full information: at least enough that mimicking costs the low type the whole wage premium. With M and R's numbers, separation needs high-type education between 1.5 and 3, the least-cost level is 1.5, and the education is pure social waste. Whether the high type gains from being able to signal depends on the prior. At 30 per cent high types he does, 35 against 29; above 50 per cent he would be better off if signaling were impossible.
+
+Six point one. The model, Gibbons pages 190 to 194, course layer.
+
+In three steps. First, Nature draws ability, eta, high or low, with the probability of high equal to q. These notes write p, as Tadelis does; M W G writes lambda. Second, the worker learns his ability and chooses education e, at least zero. Third, two firms observe e, not ability, and simultaneously offer wages; the worker takes the higher.
+
+Payoffs. The worker gets the wage minus the cost of education, c of eta and e. The employing firm gets output, y of eta and e, minus the wage. The other firm gets zero. High ability is more productive, and education does not reduce output, Gibbons footnote 5. Spence's stark case, from 1973: output depends on ability only. Education is unproductive.
+
+The crucial assumption, single crossing, page 192: the marginal cost of education is higher for the low type than for the high type, at every education level. So the low type's indifference curves in the plane of education and wage are steeper, figure 4.2.3: to stay as well off after one more unit of education, he needs a larger raise.
+
+Competition pins the wage to the belief, equation 4.2.1, page 193. With firms sharing a belief, mu of H given e, after any education level, on or off the path, Bertrand-style competition drives expected profit to zero. The wage at e is the belief times the high type's output at e, plus one minus the belief times the low type's output at e. Equation 4.2.1 replaces signaling requirement 2R in this two-receiver game.
+
+The benchmark. Under complete information the wage equals the worker's own output, and type eta chooses its full-information education, e star of eta, which maximizes output minus cost, and earns w star of eta, its output at that education, figure 4.2.4. With unproductive education, full-information education is zero.
+
+No envy against envy, pages 194 to 196. If the low type's full-information payoff exceeds what he would get by taking the high type's full-information education and wage, then he would not copy the high type even if copying paid the high type's wage, figure 4.2.5. The full-information outcome then separates by itself. The interesting case, and the only one with unproductive education, is envy, figure 4.2.6: the low type would copy, so the high type must do more.
+
+Six point two. Separating equilibria. Gibbons pages 199 to 202; M W G lemmas 13.C.1 and 13.C.2, pages 453 to 454.
+
+In a separating equilibrium beliefs are 0 or 1 on the path, so by equation 4.2.1 each type is paid its own productivity. That is M W G lemma 13.C.1. The low type is then paid his low output whatever he does on the path, so he picks his full-information education: with unproductive education, zero. That is M W G lemma 13.C.2: any positive education would cost him and earn nothing.
+
+The high type picks a level e s such that the low type will not mimic. The low type's separating payoff, his full-information wage minus the cost of his full-information education, must be at least his payoff from mimicking, which is the high type's output at e s minus the low type's cost of e s.
+
+The off-path beliefs that support it, page 200: "high if and only if education is at least e s". The wage schedule is then the low output for any e below e s, and the high output for any e at or above e s. Under this schedule the low type's best choice below e s is his full-information education. At or above e s his best is e s itself, because his curves are steeper, and he is indifferent at the least-cost level, which is resolved in favour of his full-information choice. The high type's best is e s, because his flatter indifference curve through e s and the high wage lies above the low wage schedule for every e below e s.
+
+The high type over-invests: in the envy case e s exceeds his full-information education. In Gibbons's words on page 200: "the high-ability worker must choose e s greater than e star of H … because the low-ability worker will mimic any value of e between e star of H and e s". And any e at least e s, but small enough that the high type still prefers it to being thought low, is also a separating equilibrium, page 202. A continuum.
+
+Six point three. Worked: Milgrom and Roberts's numbers, pages 155 to 156.
+
+High productivity, theta H, is 50 dollars an hour; low, theta L, is 20 dollars. Thirty per cent are high. Education is unproductive. The cost per unit of education is 10 dollars for the high type, c H, and 20 dollars for the low type, c L. So cost is linear, c theta times e, and single crossing is simply c H less than c L. The low type chooses zero education.
+
+M and R's two self-selection constraints. First, the low type must not mimic: 50 minus c L times E H at most 20, that is, 50 minus 20 E H at most 20, that is, E H at least 50 minus 20, over 20, which is 1.5. Second, the high type must prefer to signal: 50 minus c H times E H at least 20, that is, 50 minus 10 E H at least 20, that is, E H at most 50 minus 20, over 10, which is 3.
+
+So the separating interval for E H runs from theta H minus theta L over c L, to theta H minus theta L over c H: from 1.5 to 3.
+
+M and R's check with E H equal to 2, page 156. Mimicking nets the low type 50 minus 20 times 2, which is 10 dollars, less than 20. The high type nets 50 minus 10 times 2, which is 30 dollars, more than 20. Both constraints hold. The least-cost choice is, in their words, "a little bit more than 1.5".
+
+If c H were at least c L, then, in M and R's words, "these inequalities cannot both be satisfied", page 156. The interval is empty, because any education the high type would buy to be believed, the low type buys too. The signal works only because it hurts the low type more.
+
+The pooling wage. With no signal, both types earn expected productivity: 0.3 times 50 plus 0.7 times 20, which is 29 dollars, page 155.
+
+The notes draw this in the plane of education and wage. The low type's indifference line through his separating point is w equals 20 plus 20 e; the high type's is w equals 20 plus 10 e. Both start at education 0 and wage 20. They reach the wage-50 line at e equal to 1.5 and e equal to 3, bounding the separating interval. The pooled-wage line at 29 carries a pooling interval from 0 to 0.45. The least-cost separating point, 1.5 and 50, is marked. Linear costs make the indifference curves straight lines, so the picture is exact. The steeper line is the low type's, the flatter one the high type's: single crossing is simply "the low type's line is steeper". Every high-type education on the segment from 1.5 to 3 is a separating equilibrium, and the point at 1.5 is the cheapest one.
+
+Six point four. Pooling equilibria, Gibbons pages 196 to 199.
+
+Both types choose the same education, e p. Bayes' rule gives the prior on the path, so the pooled wage is q times the high output at e p plus 1 minus q times the low output at e p, equation 4.2.2. The harshest supporting off-path belief is "low for any education other than e p", equation 4.2.3. So the wage off the path is the low output, equation 4.2.4, and each type compares e p with its best education against the low wage schedule, which is the low type's full-information choice, equation 4.2.5. Gibbons stresses on page 197: "Although this belief may seem strange, nothing in the definition of perfect Bayesian equilibrium rules it out."
+
+With M and R's numbers: the pooled wage is 29, and the off-path wage is 20 at zero education. Type theta pools if and only if 29 minus c theta times e p is at least 20. For the low type, e p is at most 9 over 20, which is 0.45. For the high type, e p is at most 9 over 10, which is 0.9. So the pooling set runs from 0 to 0.45. In general, e p is at most q times theta H minus theta L, over the larger of the two costs. Another continuum, and pooling at a positive e p burns education for no information at all.
+
+Six point five. Who gains from signaling. M W G pages 456 to 457 and figure 13.C.8; M and R page 156.
+
+Compare the least-cost separating outcome with a world where signaling is impossible, where everyone is paid the pooled wage at zero education. The low type gets 20 with separation and 29 without signaling: he is always worse off, since the pooled wage exceeds his productivity whenever the share of high types is positive. The high type gets theta H minus c H times theta H minus theta L over c L, which is 50 minus 10 times 1.5, which is 35, against 29 without signaling: better off here, and in general if and only if the prior is below a cut-off, q star. Firms make zero profit either way and are indifferent.
+
+The cut-off, in three steps. The high type gains if and only if theta H minus c H over c L times theta H minus theta L is at least q theta H plus 1 minus q times theta L. That is, if and only if 1 minus q, times theta H minus theta L, is at least c H over c L times theta H minus theta L. That is, if and only if q is at most q star, equal to 1 minus c H over c L, which with these numbers is 1 minus 10 over 20, which is 0.5.
+
+The notes plot net pay against the prior. The high type's least-cost separating pay is flat at 35; the low type's separating pay is flat at 20; the no-signal wage, 20 plus 30 p, rises from 20 to 50 and crosses 35 at p star equal to 0.5. The region above 0.5, where the high type is worse off with signaling, is shaded, and M and R's point, p equal to 0.3 with wage 29, is marked.
+
+The flat line is the striking fact: the separating equilibrium does not depend on the prior at all. In M W G's words, "the set of separating equilibria is completely unaffected by the fraction lambda". As high types become common, the pooled wage approaches theta H, and the education they burn to avoid being mistaken for "the handful of bad workers" becomes pure loss.
+
+Efficiency, M and R page 156. Education here has no productive value, so in their words "the expenditure on education in this example is a pure social waste!" The expected waste per worker in the least-cost separating equilibrium is q times c H times e s: 0.3 times 10 times 1.5, which is 4 dollars and 50 cents per hour.
+
+Six point six. Hybrid equilibria. Gibbons pages 202 to 205.
+
+The high type chooses an education level e h; the low type randomizes, choosing e h with probability pi and his full-information education with probability 1 minus pi.
+
+The belief after e h, equation 4.2.8, by Bayes' rule: q over q plus 1 minus q times pi. Call it r. The low type must be indifferent, equation 4.2.9: his full-information payoff equals the wage at e h minus his cost of e h. The wage, equation 4.2.10, is r times the high output at e h plus 1 minus r times the low output at e h. Solve 4.2.10 for r, then 4.2.8 for pi: pi equals q times 1 minus r, over r times 1 minus q.
+
+With M and R's numbers and e h equal to 1. Indifference gives a wage of 20 plus 20 times 1, which is 40. Then 40 equals 50 r plus 20 times 1 minus r, so r is 20 over 30, two thirds. And pi is 0.3 times one third, over two thirds times 0.7: 0.1 over 0.4667, which is 0.214.
+
+A hybrid needs r between q and 1. The condition r at least q gives e h at least q times theta H minus theta L over c L, which is 0.45, the pooling bound, where pi tends to 1. The condition r at most 1 gives e h at most 1.5, the least-cost separating level, where pi tends to 0. So hybrids connect the pooling and separating families: in Gibbons's words, "the separating equilibrium … is the limit of the hybrid equilibria", page 204.
+
+Three points on the path. At e h equal to 0.45: wage 29, r 0.30, pi 1, pooling. At e h equal to 1: wage 40, r 0.667, pi 0.214. At e h equal to 1.5: wage 50, r 1, pi 0, separating.
+
+Six point seven. Graduate layer: M W G section 13.C in one paragraph, pages 450 to 459.
+
+M W G's version has theta H greater than theta L greater than zero, lambda the probability of theta H, and a cost of education c of e and theta that rises with education, at an increasing rate, falls with ability, and whose marginal cost falls with ability. Utility is the wage minus the cost. The concept is perfect Bayesian equilibrium with the firms' common belief mu of e, which here is equivalent to sequential equilibrium. Lemma 13.C.1: separating wages equal productivities. Lemma 13.C.2: the low type's education is zero. A continuum of separating and of pooling equilibria follows, exactly as above. Signaling can Pareto-dominate, or be Pareto-dominated by, no signaling, figure 13.C.8. The refinement that selects the least-cost level is in part eight. M W G exercise 13.C.4, with a continuum of types and cost e squared over theta, is beyond the two-type case. Not examinable unless the lecture brings it.
+
+One scope reminder here. Milgrom and Roberts set signaling beside screening, where the uninformed party offers a menu. Screening as a design problem is mechanism design, and it is out of this course's scope.
+
+Checklist for part six. You should be able to state single crossing and equation 4.2.1. You should be able to derive the separating interval from the two self-selection constraints, 1.5 to 3, and the pooling interval, 0 to 0.45. You should be able to derive p star equal to 1 minus c H over c L, and say why the low type always loses. You should be able to compute the expected waste, 4 dollars 50. And you should be able to solve the hybrid at e h equal to 1.
+
+Part seven. Limit pricing: an incumbent over-produces to prove it is cheap.
+
+This part covers Tadelis section 16.2, "Limit Pricing and Entry Deterrence", pages 323 to 332: section 16.2.1 on separating equilibria, with steps 1 to 5, claims 16.1 and 16.2 and footnote 4; and section 16.2.2 on pooling equilibria, with the two incentive constraints and footnote 5.
+
+The claim. Bain's limit pricing, charging a low price now to keep entrants out, survives a formal model, by Milgrom and Roberts in 1982, simplified by Tadelis, as a signal. A low-cost incumbent produces more than its monopoly output in period 1, so that a high-cost incumbent would not find it worth copying. Separating equilibria need the low type's first-period output between 2.62 and 3.32, while its monopoly output is 2. Pooling equilibria need the pooled output between 1.49 and 1.92. Both are continua, until the intuitive criterion of part eight leaves only 2.62.
+
+Seven point one. The game, pages 323 to 324.
+
+Two periods, inverse demand P equals 5 minus q in each. The incumbent, firm 1, has marginal cost 1 or 2, low or high, each with probability one half, known only to itself. The entrant, firm 2, has marginal cost 2 and a fixed entry cost of one half.
+
+In four steps. First, Nature draws the incumbent's cost. Second, firm 1 produces its first-period output as a monopolist, at price 5 minus that output. Third, firm 2 observes the output, not the cost, and enters or not. Fourth, with no entry firm 1 is a monopolist again in period 2; with entry, there is a Cournot duopoly with price 5 minus both outputs.
+
+Notation. The script says "type theta's output in period t". Mu of the first-period output is the entrant's belief that the incumbent is high cost. No entry is coded as an entrant output of zero, footnote 3. There is no discounting.
+
+Seven point two. The building blocks, steps 1 and 2, pages 324 to 325.
+
+Step 1, monopoly. Maximize 5 minus q minus c, times q. The first-order condition is 5 minus 2 q minus c equals zero, so q is 5 minus c over 2. For the low type, cost 1: output 2, price 3, profit 3 minus 1 times 2, which is 4. For the high type, cost 2: output 1.5, price 3.5, profit 3.5 minus 2 times 1.5, which is 2.25.
+
+Step 2, Cournot with known cost. The first-order conditions are 5 minus 2 q 1 minus q 2 minus c 1 equals zero, and 5 minus q 1 minus 2 q 2 minus 2 equals zero. They give firm 1's best reply, 5 minus q 2 minus c 1, over 2, and firm 2's best reply, 3 minus q 1, over 2.
+
+Known high cost. Firm 1's reply is 3 minus q 2 over 2, firm 2's is 3 minus q 1 over 2, so both produce 1 and the price is 3. Firm 1 earns 3 minus 2 times 1, which is 1. Firm 2 earns 3 minus 2 times 1, minus one half, which is one half, positive: entry pays.
+
+Known low cost. Firm 1's reply is 4 minus q 2 over 2; firm 2's is 3 minus q 1 over 2. Substitute: q 1 equals 4 minus 3 minus q 1 over 2, all over 2; so 4 q 1 equals 8 minus 3 plus q 1; so q 1 is five thirds, and q 2 is two thirds. The price is eight thirds. Firm 1 earns eight thirds minus 1, times five thirds, which is twenty-five ninths. Firm 2 earns eight thirds minus 2, times two thirds, minus one half: four ninths minus one half, which is minus one eighteenth, negative: entry does not pay.
+
+So the entrant wants in only against the high-cost type. A low-cost incumbent wants to be recognized, and a high-cost incumbent wants to be mistaken for low cost.
+
+Seven point three. Separating equilibria, section 16.2.1, pages 325 to 330.
+
+Claim 16.1. In any separating equilibrium, after the low type's output the entrant believes the cost is 1, stays out, and the low type produces 2 in period 2. After the high type's output it believes the cost is 2, enters, and both produce 1 in period 2.
+
+Claim 16.2. In any separating equilibrium the high type produces 1.5, its monopoly output, in period 1. The proof: the high type is going to face entry and Cournot profit 1 anyway. If it produced anything but 1.5 in period 1, switching to 1.5 would raise period-1 profit and could not lower period-2 profit. After the switch the entrant either keeps believing high cost, the same Cournot game, or believes less, which only helps firm 1. End of proof.
+
+Step 4, off-path beliefs. Make every deviation as unattractive as possible: believe high cost after any output other than the low type's equilibrium output. So the belief is 0 at the low type's output and 1 otherwise, and the entrant enters, producing 1, after anything but the low type's output.
+
+Step 5. What can the low type's first-period output be? Two incentive constraints.
+
+First try: the low type's monopoly output, 2. The high type's equilibrium payoff is 2.25 plus 1, which is 3.25. If the high type mimics by producing 2, it earns 5 minus 2 minus 2, times 2, which is 2, in period 1, then no entry and monopoly profit 2.25. Total 4.25, more than 3.25, page 328. The high type mimics, so 2 is not separating. The sacrifice in period 1, from 2.25 to 2, is small next to the gain in period 2, from 1 to 2.25.
+
+The high type's constraint, that it must not mimic, gives a lower bound. Five minus q minus 2, times q, plus 2.25, must be at most 3.25. That is, 3 minus q times q at most 1; that is, q squared minus 3 q plus 1 at least zero; that is, q at least 3 plus root 5, over 2, which is 2.618. The other branch, q at most 3 minus root 5 over 2, which is 0.382, also stops the high type from mimicking, but it violates the low type's own constraint, which needs q at least 0.677.
+
+The low type's constraint, that it must not deviate, gives an upper bound. Any deviation triggers entry with the entrant producing 1. The low type's best deviation is its monopoly output, 2, with profit 4, followed by its best reply to an entrant output of 1: maximize 5 minus q minus 1 minus 1, times q, at q equal to 1.5, with profit 2.25. So the best deviation is worth 4 plus 2.25, which is 6.25. The constraint: 5 minus q minus 1, times q, plus 4, at least 6.25. That is, 4 minus q times q at least 2.25; that is, q squared minus 4 q plus 2.25 at most zero; that is, q between 2 minus the square root of 1.75 and 2 plus the square root of 1.75: between 0.677 and 3.323.
+
+The conclusion, page 329. A continuum of separating equilibria: the high type produces 1.5 in period 1; the low type produces 2 in period 2; the high type produces 1 in period 2; beliefs and entry as in step 4; and the low type's first-period output lies between 2.62 and 3.32.
+
+The notes draw this in two panels of two-period profit against first-period output. Left: the high type's profit from producing q and deterring entry, 3 minus q times q plus 2.25, peaks at 4.5 and falls below its best entry payoff, 3.25, at q equal to 2.618. The low type's profit, 4 minus q times q plus 4, stays above its best deviation, 6.25, up to q equal to 3.323. The band from 2.62 to 3.32 is shaded as the separating set. Read the left panel from the right edge leftward: the low type would happily produce as much as 3.32 to be believed, but the high type would mimic anything below 2.62, and the band in between is the separating set. The right panel is the same with the Bayesian Cournot continuation profits, thirteen twelfths squared and nineteen twelfths squared: the high type stays above 3.25 between 1.083 and 1.917, the low type above 6.25 between 1.493 and 2.507, and their intersection, 1.49 to 1.92, is shaded as the pooling set. It is narrower because both types must stay put at the same output.
+
+The signal is credible because it is expensive for the type that would fake it. Page 329: "for a signal to be credible, it must be the case that no other type would want to use the signal." Here the low type's price, 5 minus 2.62, which is 2.38, is still above its marginal cost, 1. With a growing market, or more periods of deterrence, the required output rises until the price falls below marginal cost: Bain's predatory limit pricing, pages 329 to 330. Discounting the second period can change the first-try verdict, footnote 4, and Tadelis exercise 16.2, page 335.
+
+Seven point four. Pooling equilibria, section 16.2.2, pages 330 to 332.
+
+Both types produce the same pooled output, so the entrant learns nothing: its belief is one half. If it enters, period 2 is a Cournot game with incomplete information, from Lecture 7. Three best replies. The low type: 4 minus the entrant's output, over 2. The high type: 3 minus the entrant's output, over 2. The entrant: 3 minus one half of the sum of the two types' outputs, over 2.
+
+Solve. The sum of the two types' outputs is 7 minus twice the entrant's output, over 2. So the entrant's output is 3 minus a quarter of 7 minus twice its output, all over 2. Multiplying out: 8 times the entrant's output equals 12 minus 7 plus twice the entrant's output, so the entrant's output is five sixths. Then the low type produces 4 minus five sixths, over 2, which is nineteen twelfths, and the high type 3 minus five sixths, over 2, which is thirteen twelfths.
+
+Profits. The high type earns 5 minus thirteen twelfths minus five sixths minus 2, times thirteen twelfths, which is thirteen twelfths squared, 1.174. The low type earns nineteen twelfths squared, 2.507. The entrant earns five sixths times 3 minus five sixths minus sixteen twelfths, minus one half: five sixths times five sixths minus one half, which is twenty-five thirty-sixths minus eighteen thirty-sixths, which is seven thirty-sixths, positive.
+
+Another misprint. The book prints seven eighteenths on page 331; the arithmetic gives seven thirty-sixths. Either way it is positive, so the entrant enters after the pooled output.
+
+Off the path: believe high cost, belief 1, after any output other than the pooled one, so deviations meet entry with the entrant producing 1. The best deviations are worth 3.25 for the high type and 6.25 for the low type, as before.
+
+The high type's constraint: 3 minus q-bar, times q-bar, plus thirteen twelfths squared, at least 3.25. That is, q-bar squared minus 3 q-bar plus 299 over 144 at most zero. The discriminant is 9 minus 1196 over 144, which is 100 over 144, so the square root is ten twelfths, and q-bar lies between 3 minus five sixths over 2 and 3 plus five sixths over 2: between 1.083 and 1.917.
+
+The low type's constraint: 4 minus q-bar, times q-bar, plus nineteen twelfths squared, at least 6.25. That is, q-bar squared minus 4 q-bar plus 539 over 144 at most zero. The discriminant is 16 minus 2156 over 144, which is 148 over 144, with square root the square root of 148 over 12, which is 1.014. So q-bar lies between 1.493 and 2.507.
+
+The conclusion, page 332. A continuum of pooling equilibria: after the pooled output, the low type produces nineteen twelfths, the high type thirteen twelfths, and the entrant five sixths, and the entrant produces 1 after any other output; beliefs one half on the path and 1 off it; and the pooled first-period output lies between 1.493 and 1.917.
+
+Footnote 5, page 332. Each interval is symmetric around that type's monopoly output, 1.5 for the high type and 2 for the low type, because each type's best deviation is its monopoly output.
+
+Pooling deters nothing: the entrant enters anyway. So in pooling the "limit price" buys nothing. Tadelis calls pooling "somewhat artificial", page 332, and section 16.3 makes that precise.
+
+Seven point five. Political incumbents, page 332, intuition layer. Epstein and Zemsky, 1995: strong incumbents raise large campaign war chests as a signal of strength to deter challengers. The same entry-deterrence logic, with money instead of output.
+
+Checklist for part seven. You should be able to compute both monopoly outputs and profits and both complete-information Cournot outcomes, including the entrant's minus one eighteenth. You should be able to show why the monopoly output 2 fails, 4.25 against 3.25, and derive the separating bounds 2.62 and 3.32. You should be able to solve the Bayesian Cournot game, nineteen twelfths, thirteen twelfths and five sixths, find the entrant's seven thirty-sixths, and derive the pooling bounds 1.493 and 1.917.
+
+Part eight. The intuitive criterion: read a deviation as coming from whoever could gain by it.
+
+This part covers Tadelis section 16.3, "Refinements of Perfect Bayesian Equilibrium in Signaling Games", pages 332 to 335, with the speech, definition 16.1 and the MBA and limit-pricing applications, and the summary in section 16.4, page 335; Gibbons section 4.4, pages 233 to 244, with signaling requirements 5 and 6, "Beer and Quiche", figure 4.4.3 on pages 237 to 239, and Spence on pages 239 to 244; M W G appendix 13.AA, pages 467 to 471; and M W G section 9.D, page 292.
+
+The claim. Perfect Bayesian equilibrium lets off-path beliefs be anything, so signaling games have continua of equilibria. Cho and Kreps's intuitive criterion disciplines those beliefs. If an unused message could never help some type relative to its equilibrium payoff, the message is equilibrium-dominated for that type, and the Receiver should not attribute it to that type. And if, so attributed, the message makes another type strictly better off for sure, the equilibrium is broken. In the two-type games of this lecture it removes every pooling equilibrium and every separating equilibrium but the least-cost one. MBA: D-U with B-M. Spence: high-type education 1.5. Limit pricing: 2.62.
+
+Eight point one. The speech, page 333, intuition layer.
+
+In the MBA pooling equilibrium, U-U with B-B, both types get 6. A high type deviates to the degree and says: "I am an H type. To convince you I am going to deviate and choose D. If you believe me, and put me in the M job instead of a B job, I will get 8 instead of 6. The reason you should believe me is that if I were an L type who chose D and you were to promote me then I would get 5 instead of 6. Therefore you should believe me … because no L type in his right mind would do what I am about to do."
+
+The employer can make the deduction alone, page 333: if only one type can benefit from the deviation and the others can only lose, update toward that type. This is forward induction, reading the past move as rational, as opposed to backward induction, which assumes future moves are rational, Gibbons page 239.
+
+Eight point two. The definition, and the MBA pooling equilibrium fails it. Pages 333 to 334.
+
+Types form a finite set, capital Theta. The Sender's action is a 1, the Receiver's a 2. For a subset of types, Theta hat, and an action a 1, define the Receiver's best replies to a 1 under some belief concentrated on Theta hat: the union, over all beliefs that put probability one on Theta hat, of the actions a 2 that maximize the Receiver's expected payoff under that belief. Write v 1 star of theta for type theta's payoff in the equilibrium.
+
+Definition 16.1. An equilibrium fails the intuitive criterion if there exist an action a 1, a set of types Theta prime, and a type theta prime not in Theta prime, such that two conditions hold. Condition 1: for every type in Theta prime, its equilibrium payoff is strictly greater than the maximum, over the Receiver's best replies to a 1 under any belief on all types, of its payoff from a 1. Condition 2: type theta prime's equilibrium payoff is strictly less than the minimum, over the Receiver's best replies to a 1 under beliefs concentrated on the types outside Theta prime, of its payoff from a 1.
+
+A misprint. The book prints v 2 inside the minimum in condition 2. It must be the Sender's payoff, v 1, as the explanation on pages 333 to 334 makes clear.
+
+In words. Condition 1: every type in Theta prime does strictly worse with a 1 than in equilibrium, whatever the Receiver believes. The action is equilibrium-dominated for Theta prime. Condition 2: type theta prime does strictly better with a 1 than in equilibrium, whatever the Receiver does, as long as it believes the sender is not in Theta prime.
+
+The four-step test, with two types, applied to the MBA pooling equilibrium U-U with B-B and the off-path action D. Step 1, equilibrium payoffs: 6 for H and 6 for L. Step 2, the best payoff from D under any belief, where both M and B are possible replies: for H, the larger of 10 minus 2 and 6 minus 2, which is 8; for L, the larger of 10 minus 5 and 6 minus 5, which is 5. Step 3, who is equilibrium-dominated: L, because 5 is less than 6, so Theta prime is the set containing L. H, with 8 at least 6, is kept. Step 4, the belief on the kept types only, mu D equal to 1, gives the reply M; does a kept type gain for sure? H gets 8, more than 6. So the equilibrium fails.
+
+The separating equilibrium D-U with B-M passes trivially. Both messages are used, so there is no off-path action to deviate to, and no type can gain "by convincing player 2 that he is truly that type", page 334. So the criterion selects D-U with B-M.
+
+Eight point three. Limit pricing, pages 334 to 335.
+
+The entrant's best replies to any first-period output: at the belief "high cost" it enters producing 1; at "low cost" it stays out; at intermediate beliefs it enters with smaller quantities, down to a level, q underbar, below five sixths, at which entry just breaks even. So the set of best replies under any belief is zero together with the interval from q underbar to 1, for every first-period output.
+
+Pooling fails. Take the action "produce 3", the excluded set "the high type", and the gaining type "the low type". Condition 1: the high type's pooling payoff is at least 3.25, its incentive constraint, while producing 3 gives it at most 5 minus 3 minus 2, times 3, plus 2.25, which is 0 plus 2.25, which is 2.25, less than 3.25, even with no entry. Equilibrium-dominated. Condition 2: the low type, believed to be low, faces no entry, and earns 5 minus 3 minus 1, times 3, plus 4, which is 3 plus 4, which is 7. Its best pooling payoff is 4 plus nineteen twelfths squared, 4 plus 2.507, which is 6.507. Seven exceeds 6.507. That is inequality 16.3: 5 minus 3 minus 1, times 3, plus 4, equals 7, which is greater than 4 plus nineteen twelfths squared. So every pooling equilibrium fails.
+
+Only the best separating equilibrium survives, page 335. Of the separating equilibria between 2.62 and 3.32, only 2.62 passes. For any low-type output above 2.62, an output just above 2.62 is one the high type would never choose, since it gives the high type less than 3.25 even with no entry, which is what 2.62 means, and one the low type, if believed, strictly prefers, because it is closer to its monopoly output, 2. Tadelis leaves the formal check to exercise 16.7, page 338.
+
+Tadelis's summary, page 335: "Refinements such as the intuitive criterion help pin down equilibria, often resulting in the least-cost separating equilibrium."
+
+Eight point four. Worked: Gibbons's examples.
+
+Beer and Quiche, Gibbons pages 237 to 239, figure 4.4.3. The Sender is wimpy with probability 0.1 or surly with probability 0.9. The message is Beer or Quiche for breakfast. The Receiver chooses to duel or not. The Sender's payoffs: his preferred breakfast, Quiche for the wimpy type and Beer for the surly type, is worth 1, and avoiding a duel is worth 2. The Receiver gets plus 1 from dueling a wimpy type, minus 1 from dueling a surly type, and 0 from not dueling.
+
+Pooling on Quiche, with the Receiver not dueling after Quiche and dueling after Beer. After Quiche the belief is the prior: dueling pays 0.1 times 1 plus 0.9 times minus 1, which is minus 0.8, less than zero, so the Receiver does not duel. Equilibrium payoffs: wimpy, 1 plus 2, which is 3; surly, 0 plus 2, which is 2. After the unused Beer, dueling needs q, the probability of wimpy given Beer, with q times 1 plus 1 minus q times minus 1 at least zero, that is, q at least one half. Then Beer gives the wimpy type 0 and the surly type 1: no deviation. So it is a perfect Bayesian equilibrium for any q at least one half, page 238.
+
+It even passes Gibbons's signaling requirement 5, no strictly dominated message. Beer is not dominated for the wimpy type, since its best payoff from Beer, 2, exceeds its worst from Quiche, 1. But look at equilibrium dominance. The wimpy type's equilibrium payoff is 3, and its best payoff from Beer, not dueled, is 2: so Beer is equilibrium-dominated for it, 2 less than 3. The surly type's equilibrium payoff is 2, and its best from Beer, not dueled, is 3: not equilibrium-dominated. Remove the wimpy type: q is 0, so the Receiver does not duel after Beer, and the surly type gets 3, more than 2. The pooling-on-Quiche equilibrium fails the intuitive criterion, page 239. The surly type's "speech" is believable. The same game, with the Receiver's payoffs shifted, is Tadelis exercise 16.8, page 338; the notes work only the pooling-on-Quiche case that Gibbons works in his text.
+
+Equilibrium dominance against dominance, Gibbons page 239. A message is dominated for a type if another message's worst payoff beats its best payoff: that is requirement 5. It is equilibrium-dominated if the type's equilibrium payoff beats its best payoff: that is requirement 6, which is the intuitive criterion. Dominated implies equilibrium-dominated, so requirement 6 is stronger.
+
+A check on Gibbons's figure 4.2.2, derived in the notes. Part four found the pooling equilibrium where both types send L, the Receiver plays u after L and d after R, p is 0.5 and q at most two thirds, with payoffs 1 for t 1 and 2 for t 2. The unused message is R. Type t 1 gets at most the larger of 2 and 0, which is 2, at least 1: kept. Type t 2 gets at most the larger of 1 and 1, which is 1, less than 2: equilibrium-dominated. Believing t 1, q equal to 1, the Receiver plays u after R, since 1 beats 0, and t 1 gets 2, more than 1. This pooling equilibrium fails too. The separating one, where t 1 sends R and t 2 sends L with u after both, uses both messages and passes.
+
+Eight point five. Spence: only the least-cost separating equilibrium survives. Gibbons pages 239 to 244; M W G pages 468 to 471.
+
+With M and R's numbers from part six, both kinds of equilibrium are broken the same way: find an education level that the low type would refuse even at wage theta H, but that the high type would take if paid theta H.
+
+Separating at a high-type education above 1.5, for example 2. Equilibrium payoffs: the low type 20, the high type 50 minus 20, which is 30. Take any education between 1.5 and 2. The low type's best from it is 50 minus 20 e, which is less than 50 minus 30, which is 20: equilibrium-dominated. The high type, believed high, gets 50 minus 10 e, which is more than 50 minus 20, which is 30. Broken. At exactly 1.5 there is no such gap: the interval from 1.5 to 1.5 is empty.
+
+Pooling at e p, with wage 29. The low type's equilibrium payoff is 29 minus 20 e p; the high type's is 29 minus 10 e p. A deviation e breaks the equilibrium if 50 minus 20 e is less than the low type's equilibrium payoff, so the low type is excluded, and 50 minus 10 e is more than the high type's, so the high type gains. That is, e lies strictly between 50 minus the low type's payoff over 20 and 50 minus the high type's payoff over 10: between twenty-one twentieths plus e p and twenty-one tenths plus e p. This interval is never empty, because c H is less than c L and theta H exceeds the pooled wage. At e p equal to 0.3 it runs from 1.35 to 2.4.
+
+The notes draw it. The pooling point is education 0.3 and wage 29. The low type's equilibrium indifference line, w equals 23 plus 20 e, reaches the wage-50 line at e prime equal to 1.35. The high type's line, w equals 26 plus 10 e, reaches it at e double prime equal to 2.4. The segment between them on the 50 line marks deviations the low type would never make even if paid 50 but the high type gains from if believed. The gap opens because the two equilibrium indifference lines through the pooling point have different slopes: single crossing again.
+
+Any pooling point has such a gap, so no pooling equilibrium survives, and the only survivor is the separating equilibrium in which the low type is exactly indifferent to mimicking: high-type education equal to theta H minus theta L over c L, which is 1.5. In the words of Gibbons's figure 4.4.4: "just enough education to make the low-ability worker indifferent about mimicking". The Education Signal companion reports this survivor as its headline number.
+
+Eight point six. Graduate layer: M W G appendix 13.AA, pages 467 to 471, and forward induction.
+
+M W G builds the refinement in four steps, pages 468 to 471, each a test on an action a for a type theta. Equation 13.AA.1, strict dominance: some other action's minimum payoff over all responses beats a's maximum payoff over all responses; it removes nothing in the education model. Equation 13.AA.2: the same, but only over equilibrium responses to the action; it removes every separating equilibrium but the best, and the pooling equilibria that the high type likes less than the best separating outcome. Equation 13.AA.3, equilibrium dominance: the type's equilibrium payoff exceeds its maximum payoff from a over equilibrium responses; it also removes every pooling equilibrium, figure 13.AA.2, page 470. Equation 13.AA.4, the intuitive criterion: some type's minimum payoff from a exceeds its equilibrium payoff once equilibrium-dominated types are excluded; it leaves "the best separating equilibrium".
+
+With two types, the intuitive criterion and the reasonable-beliefs refinement based on 13.AA.3 coincide, page 471. M W G's example 13.AA.1, with three types, shows an equilibrium that passes the intuitive criterion but fails the reasonable-beliefs test: named only. The general idea of disciplining off-path beliefs by the deviator's rationality is M W G's forward induction, section 9.D, page 292. Cho and Kreps also show that every signaling game in this class has an equilibrium satisfying the criterion, Gibbons page 239.
+
+Checklist for part eight. You should be able to state definition 16.1 with the misprint corrected, and run the four-step test on the MBA pooling equilibrium. You should be able to break limit-pricing pooling at an output of 3, with 7 against 6.507, and say why only 2.62 survives. You should be able to solve Beer and Quiche's pooling on Quiche and show it fails. You should be able to distinguish dominance from equilibrium dominance. And you should be able to find the breaking interval for Spence pooling, 1.35 to 2.4 at e p equal to 0.3, and say why only 1.5 survives.
+
+Part nine. Common mistakes.
+
+This part covers Part I of the pitfalls note: ten confusions this material produces, each with its counterexample.
+
+Mistake one. The error is to say that a perfect Bayesian equilibrium is a strategy profile. The correction is that it is a profile and a belief system. Stating U-U with B-B alone is not a perfect Bayesian equilibrium of the MBA game. U-U with B-B with mu U one quarter and mu D equal to 0.9 is not one, because at 0.9, above three eighths, the employer would promote after an MBA. The beliefs are part of the answer: "mu D at most three eighths" is what makes it an equilibrium.
+
+Mistake two. The error is to think that off the path beliefs must be the prior. The correction: off the path Bayes' rule is zero over zero and requirement 15.3 allows any belief. On the path in a pooling equilibrium the belief equals the prior; at an unused message it is free. Confusing the two makes one wrongly "derive" mu D equal to p, one quarter, in the MBA pooling equilibrium. It happens to support B, but mu D equal to 0.3 would too, and mu D equal to 0.5 would not.
+
+Mistake three. The error is to think subgame perfection already handles credibility. The correction: not with private types. In the entry game with types, the incumbent's nodes after entry form one information set, and the only proper subgame is the whole game, so the non-credible Out-Out with Fight is subgame perfect. Only a belief at the information set kills it.
+
+Mistake four. The error is to think that separating means the high type does what it would do under full information. The correction: in the envy case it over-invests. With unproductive education, full information gives the high type zero education; separation needs at least 1.5, with M and R's numbers. The low type is the one who keeps his full-information choice, zero, M W G lemma 13.C.2.
+
+Mistake five. The error is to say that education raises wages, so it must raise productivity. The correction: that is false in the pure Spence model. Output is theta whatever the education, yet wages rise with education in a separating equilibrium, because education reveals theta. The course's style guide for assessments uses exactly this trap.
+
+Mistake six. The error is to think that signaling makes the able better off. The correction: not necessarily. The low type is always worse off, 20 against 29. The high type is better off only if p is at most p star, 1 minus c H over c L. With M and R's costs and 70 per cent high types, the pooled wage, 20 plus 30 times 0.7, which is 41, beats the 35 a high type nets after signaling.
+
+Mistake seven. The error is to think any cost difference makes a signal work. The correction: what matters is the marginal cost, and its ranking. If c H is at least c L, the separating interval, from the wage gap over c L to the wage gap over c H, is empty: any education the high type would buy, the low type buys too, M and R page 156. In the MBA game, separation needs c H at most w M minus w B at most c L. With c L equal to 3, less than 4, the low type mimics and only pooling survives.
+
+Mistake eight. The error is to confuse signaling with screening. The correction: the difference is who moves first. In signaling, the informed party acts, through education, output or advertising, and the uninformed party infers. In screening, the uninformed party offers a menu and the informed party self-selects, M and R pages 154 and 156 to 157; for example, a policy with a deductible against one without. The self-selection constraints look alike; the timing and the solution concept differ. And screening is a design problem, which is mechanism design, out of this course's scope.
+
+Mistake nine. The error is to think the intuitive criterion picks the equilibrium the Sender likes best. The correction: it picks the one that survives a credible-deviation test. In the two-type games here that is the least-cost separating equilibrium, but it need not be the high type's favourite: at a prior above p star, the high type prefers the pooling outcome the criterion eliminates.
+
+Mistake ten. The error is to think that the off-path message tells you nothing in a pooling equilibrium, so it can be ignored. The correction: the reply to the unused message is the equilibrium's enforcement device. In Gibbons's figure 4.2.2, pooling on L requires the reply d after R; with u after R, type t 1 deviates, 2 against 1. Writing the Receiver's strategy for used messages only gives an incomplete strategy.
+
+Part ten. A spoken formula sheet.
+
+This part covers the formulas note. Use it for active recall: pause after each name, say the statement yourself, then hear it.
+
+Tadelis, numbered results.
+
+Definition 15.1, page 307. An information set is on the path of a Bayesian Nash equilibrium if it is reached with positive probability, and off the path otherwise.
+
+Definition 15.2, page 308. A system of beliefs is a probability distribution over the nodes of every information set, summing to one at each set.
+
+Requirement 15.1, page 308. Every player has a belief at each of his information sets.
+
+Requirement 15.2, page 309. On the path, beliefs follow Bayes' rule.
+
+Requirement 15.3, page 310. Off the path, any belief is allowed.
+
+Requirement 15.4, page 310. Sequential rationality: at every information set, the equilibrium strategy's expected payoff, given the information set and the beliefs, is at least that of any other strategy.
+
+Definition 15.3, page 310. A perfect Bayesian equilibrium is a Bayesian Nash equilibrium together with beliefs satisfying requirements 15.1 to 15.4.
+
+Proposition 15.1, page 311. A Bayesian Nash equilibrium that reaches every information set, with Bayes beliefs, is a perfect Bayesian equilibrium.
+
+Definition 15.4, page 313. Consistency: the equilibrium and its beliefs are the limit of totally mixed profiles and the Bayes beliefs they generate.
+
+Definition 15.5, page 313. A sequential equilibrium is a consistent perfect Bayesian equilibrium.
+
+Equations 16.1 and 16.2, page 321. Mu U equals p sigma H over p sigma H plus 1 minus p sigma L. Mu D equals p times 1 minus sigma H, over p times 1 minus sigma H plus 1 minus p times 1 minus sigma L.
+
+Claims 16.1 and 16.2, page 326. In separating limit pricing, there is entry if and only if the incumbent is believed high cost; and the high type produces 1.5.
+
+Definition 16.1, page 333. An equilibrium fails the intuitive criterion if some action is equilibrium-dominated for a set of types, and, believed not to come from that set, gives some other type more for sure.
+
+Inequality 16.3, page 334. Five minus 3 minus 1, times 3, plus 4, equals 7, which exceeds 4 plus nineteen twelfths squared: the low type's deviation breaks limit-pricing pooling.
+
+Gibbons.
+
+Requirements 1 to 4, pages 177 to 180: a belief at each information set; sequential rationality; Bayes' rule on the path; Bayes' rule where possible off it.
+
+Signaling requirements 1, 2R, 2S and 3, pages 187 to 188: a Receiver belief; a Receiver best reply; a Sender best reply; Bayes' rule on used messages.
+
+Single crossing, page 192: the low type's marginal cost of education exceeds the high type's.
+
+Equation 4.2.1, page 193: the wage equals the belief on high times high output, plus one minus the belief times low output.
+
+Equation 4.2.2, page 196: the pooled wage is q times high output at e p plus 1 minus q times low output at e p.
+
+Equations 4.2.8 to 4.2.10, pages 202 to 203, the hybrid: r equals q over q plus 1 minus q times pi; the low type is indifferent; the wage is r times high output plus 1 minus r times low output; hence pi equals q times 1 minus r over r times 1 minus q.
+
+Equations 4.2.11 to 4.2.13, page 206, Myers and Majluf: the investor accepts if and only if s times q L plus 1 minus q times H plus R is at least I times 1 plus r; the type goes ahead if and only if s is at most R over pi plus R; pooling holds if and only if I times 1 plus r, over p L plus 1 minus p times H plus R, is at most R over H plus R.
+
+Signaling requirements 5 and 6, pages 237 and 239: no belief on a type for which the message is dominated, requirement 5, or equilibrium-dominated, requirement 6, which is the intuitive criterion.
+
+Unnumbered but examinable.
+
+The MBA employer's threshold: M if and only if 10 mu at least 3 plus 2 mu, if and only if mu at least three eighths.
+
+MBA separation: c H at most w M minus w B at most c L; 2 at most 4 at most 5.
+
+The Spence separating set with linear cost: high-type education from theta H minus theta L over c L to theta H minus theta L over c H, with low-type education zero.
+
+Least-cost separation: e star equals theta H minus theta L over c L, where the low type is exactly indifferent to mimicking.
+
+The Spence pooling set, with the belief "low" off the path: e p from zero to p times theta H minus theta L, over the larger of c H and c L.
+
+The high type prefers signaling to no signaling if and only if p is at most p star, equal to 1 minus c H over c L.
+
+Expected signaling waste: p times c H times e star per worker.
+
+The intuitive criterion in Spence: pooling at e p is broken by any e strictly between theta H minus the low type's equilibrium payoff over c L, and theta H minus the high type's equilibrium payoff over c H.
+
+Part eleven. Every number to have memorized.
+
+This part covers the "numbers and cases" table of the map and the "every number" section of the formulas note.
+
+The entry game, Tadelis pages 304 to 311. Payoffs: Out gives 0 and 2; the competitive type fought gives minus 1 and minus 1, accommodated 1 and 1; the weak type fought gives minus 2 and 0, accommodated minus 1 and 1. The cell Out-Enter with Accommodate at a general p gives p minus 1 and 1 plus p, where the book prints 1 minus p for the second. The cell Enter-Enter with Fight gives p minus 2 and minus p. The pure Bayesian Nash equilibria at one half are Out-Out with Fight and Enter-Out with Accommodate. After entry, accommodating pays 1 and fighting pays minus mu, for every mu. The unique perfect Bayesian equilibrium is Enter-Out with Accommodate, with belief 1. The mixed Bayesian Nash equilibria have Out-Out with the probability of fighting at least one half.
+
+Gibbons figure 4.1.1: L prime pays 2 minus p, R prime pays 1 minus p, so R with R prime dies. Tadelis figure 15.4: R is optimal if and only if 3 mu is at least 2, mu at least two thirds; the consistent belief is one half, so the unique sequential equilibrium is D with L.
+
+Gibbons figure 4.2.2: after L, u at every p, since 4 minus p beats 1 minus p; after R, d if and only if q is at most two thirds. The equilibria: pooling on L with u then d, p 0.5, q at most two thirds; and separating with t 1 sending R and t 2 sending L, u after both, p 0 and q 1. The intuitive criterion kills the pooling one.
+
+The MBA game, Tadelis pages 319 to 323 and 333 to 334. Costs 2 and 5; wages 10 and 6; prior one quarter. Employer profits: high type 10 as manager and 5 as blue-collar; low type 0 and 3. The cell U-D with M-B is 3.25 and 4.75. The cell D-U with B-B is 5.5 and 3.5, where the book prints 4.5. The pure Bayesian Nash equilibria are U-U with B-B and D-U with B-M. Separating: D-U with B-M, beliefs 0 and 1, payoffs 8 for H and 6 for L. Pooling: U-U with B-B, mu U one quarter, mu D from zero to three eighths, payoffs 6 and 6. The intuitive criterion kills pooling: L's best from D is 5, less than 6, and H, believed, gets 8, more than 6.
+
+Spence with M and R's numbers, pages 155 to 156. Productivities 50 and 20 dollars, 30 per cent high, costs 10 and 20 dollars. Pooled wage: 0.3 times 50 plus 0.7 times 20, which is 29 dollars. Separating education from 1.5 to 3; M and R's check at 2: the low type nets 10 dollars, less than 20, and the high type 30, more than 20. The least-cost level is 1.5, and the high type nets 35 dollars there. Pooling education from 0 to 0.45. P star is 0.5. Waste per worker: 0.3 times 10 times 1.5, which is 4 dollars 50. The hybrid at e h equal to 1: wage 40, r two thirds, pi 0.214; hybrids exist for e h from 0.45 to 1.5. The intuitive criterion at e p equal to 0.3: breaking deviations between 1.35 and 2.4.
+
+Limit pricing, Tadelis pages 323 to 335. Demand P equals 5 minus q; incumbent costs 1 or 2, entrant cost 2; entry cost one half; prior one half. Monopoly: the low type produces 2 and earns 4; the high type produces 1.5 and earns 2.25. Cournot with known high cost: both produce 1, price 3, the incumbent earns 1, the entrant one half. Cournot with known low cost: the incumbent produces five thirds and the entrant two thirds, price eight thirds, the incumbent earns twenty-five ninths, the entrant minus one eighteenth. The high type's separating payoff is 3.25, and mimicking at 2 gives 4.25. The low type's best deviation is 4 plus 2.25, which is 6.25. The separating interval runs from 3 plus root 5 over 2 to 2 plus root 1.75: from 2.62 to 3.32. After pooling, Bayesian Cournot gives nineteen twelfths, thirteen twelfths and five sixths, and the entrant earns seven thirty-sixths, where the book prints seven eighteenths. The two pooling constraints give 1.083 to 1.917 and 1.493 to 2.507, so pooling runs from 1.493 to 1.917. The intuitive criterion breaks pooling at 3, and only 2.62 survives.
+
+Beer and Quiche, Gibbons pages 237 to 239. Prior wimpy 0.1, surly 0.9. Pooling on Quiche: no duel after Quiche; duel after Beer if and only if q is at least one half; payoffs 3 for the wimpy type and 2 for the surly type. The intuitive criterion: Beer is equilibrium-dominated for the wimpy type, 2 less than 3, but not for the surly type, so q is zero and the surly type gets 3, more than 2: it fails.
+
+Part twelve. The computation, described in words.
+
+This part covers the Python note. It is never read as code. Every routine is checked by assertions against the books' own numbers, the blocks run in order because they share names, and the last line prints that all checks pass. It uses Python and numpy only. Nothing in the project's earlier check scripts covered Bayesian updating or signaling, so the routines are new. Two things the code found in the book: the cell D-U with B-B on page 322 should read 5.5, not 4.5, and the entrant's pooled-entry profit on page 331 is seven thirty-sixths, not seven eighteenths. Neither changes a conclusion.
+
+Routine one, Bayes' rule at an information set. Inputs: the prior over types and, for each type, the probability it sends the message. Multiply each prior by its sending probability, sum to get the denominator, and divide. If the denominator is zero, return "none": that is the off-path case of requirement 15.3. Checks: in the entry game Enter-Out gives belief 1 on the competitive type; Out-Out returns "none"; and a behavioural mix matches the closed-form formula. The trap: never divide by a zero denominator; an undefined belief is information, not an error.
+
+Routine two, the entry game. Store the six terminal payoffs, average them over Nature to build the Bayesian normal form, and check three rows of the matrix on page 306. A small routine lists all pure Nash equilibria of a matrix game by checking that neither player has a profitable deviation in its row or column; it must find exactly Out-Out with Fight and Enter-Out with Accommodate. A last check confirms that accommodating beats fighting at every belief on a grid of one hundred and one points.
+
+Routine three, an exhaustive pure-equilibrium solver for two-type signaling games. A helper finds, for a message and a reply, the interval of beliefs at which that reply is a best response: each comparison with another reply is linear in the belief, so the set is an interval, possibly empty. The solver then loops over every Sender strategy and every Receiver strategy. For each message it computes Bayes' rule. If the message is used, the belief must lie in the reply's interval. If it is unused, the interval must simply be non-empty, and it is recorded as the supporting off-path beliefs. Finally every type must weakly prefer its message to every other. Tested on Gibbons's figure 4.2.2, it must find exactly the two equilibria of pages 188 to 190, and the off-path interval for the pooling one must be zero to two thirds. The trap: an off-path reply is admissible only if some belief supports it.
+
+Routine four, the MBA game. Build the payoffs from the wages, costs and profits, compute all sixteen cells at p one quarter and check them against the table, including the corrected 5.5; check that the pure Nash equilibria are U-U with B-B and D-U with B-M; and run the solver, which must return the separating one with beliefs 0 and 1, and the pooling one with belief one quarter on the path and the interval zero to three eighths off it.
+
+Routine five, the intuitive criterion for two types. For each unused message, list the replies that are best under some belief; exclude a type whose best payoff from the message, over those replies, is below its equilibrium payoff; if the kept types form a non-empty proper subset, put the belief on the kept type only, find the best replies to that belief, and declare failure if some kept type gains for sure, even at its worst such reply. Checks: the MBA pooling equilibrium fails and the separating one passes; Gibbons's figure 4.2.2 pooling equilibrium fails; and in Beer and Quiche, pooling on Quiche needs the belief on wimpy after Beer to be at least one half, and it fails. The full equilibrium set of Beer and Quiche, Tadelis exercise 16.8, is left as practice.
+
+Routine six, Spence with linear costs, and the hybrid. Inputs: the two productivities, the prior and the two cost rates, with an assertion that single crossing holds, c H less than c L. It returns the separating interval, the pooled wage, the largest pooling education, the high type's least-cost separating payoff and p star. With M and R's numbers it must give 1.5 to 3, 29, 0.45, 35 and 0.5, and confirm M and R's check at 2. The hybrid routine takes an education level, sets the wage from the low type's indifference, solves for the belief r and then for pi; at 1 it must give 40, two thirds and 0.2143; at 1.5, pi is zero, pure separation; at 0.45, pi is one, pooling.
+
+Routine seven, limit pricing. Monopoly output and profit for each cost; the complete-information Cournot game solved as a two-equation linear system, checked against 1 and 1, and against five thirds and two thirds with the entrant's minus one eighteenth; the best deviation payoffs, 3.25 and 6.25; the separating bounds from the two quadratics, rounding to 2.62 and 3.32; the failure of the monopoly output 2, 4.25 against 3.25; the Bayesian Cournot game as a three-equation linear system, giving nineteen twelfths, thirteen twelfths and five sixths, with the entrant's profit seven thirty-sixths; the roots of the two pooling quadratics, and their intersection, 1.493 to 1.917; and the intuitive-criterion inequality at 3.
+
+Routine eight, sequential equilibrium. For trembles of one tenth, one thousandth and one millionth, Bayes' rule at figure 15.4's information set must give one half every time, because player 1 cannot condition on Nature. At one half, 3 mu is less than 2, so R is not sequentially rational, while beliefs such as 0.7 or 0.9 would make it so.
+
+Part thirteen. The figures and the interactive companions, described in words.
+
+This part covers the figures and companions listed in the map. The figures are built by one script in the figures folder, which ends with assertions on the plotted numbers.
+
+Seven figures. The entry game: figure 15.2's tree with the separating equilibrium highlighted, and the incumbent's payoff from accommodating and fighting against its belief; it belongs to part one. The MBA tree: figure 16.1 redrawn with the separating equilibrium; part five. The MBA beliefs: the employer's profit from M and B against the belief, the threshold three eighths, and each equilibrium's beliefs; part five. Spence separating: the plane of education and wage with M and R's numbers, the indifference lines, the separating interval 1.5 to 3 and the pooling interval 0 to 0.45; part six. Spence welfare: the high and low types' net pay with and without signaling against the prior, with p star at 0.5; part six. Limit pricing: every incentive constraint of section 16.2 as a parabola against its deviation payoff; part seven. And the intuitive criterion: why pooling at 0.3 fails, the deviation band from 1.35 to 2.4; part eight.
+
+Two interactive companions. The first, The Education Signal, is Spence with linear costs, with M and R's defaults from pages 155 to 156. Controls move theta L, theta H, the prior, and the two cost rates. The page shows the separating interval, the least-cost education level, which is its headline answer, the pooling interval, the high type's gain from signaling, and p star. Single crossing can be switched off: push c H up to c L and separation vanishes.
+
+The second, The MBA Game, is Tadelis section 16.1 with page 321's defaults: the prior, both study costs and both wages. The page enumerates every pure perfect Bayesian equilibrium, shows the supporting beliefs on the employer's profit-against-belief chart, and applies the intuitive criterion in the last column of its table. Move the prior across three eighths and pooling on U switches from B to M. Push c L below the wage premium and the separating equilibrium disappears, because the low type would mimic; and then the pooling equilibrium survives the intuitive criterion, because the degree is no longer equilibrium-dominated for the low type. Beer and Quiche was the other candidate for a companion, but it is Tadelis exercise 16.8, so the book's own example was used instead.
+
+A separate check script compares the companions against Python at the default values, at all-low and all-high settings and at landmarks, sweeps every control, and checks the syntax.
+
+Part fourteen. Reading route and exercises.
+
+This part gives addresses only. Exercise statements are not read aloud; look them up by number and page. The written practice list for this lecture reproduces them.
+
+Before class, the study guide assigns Tadelis chapter 15, pages 303 to 317, and chapter 16, pages 318 to 338; and Gibbons section 4.1, from page 175, and section 4.2, pages 183 to 210, with job-market signaling from page 190. For the refinements, Gibbons section 4.4, pages 233 to 244. The formal side is M W G section 9.C, from page 282, section 9.D, page 292, section 13.C, pages 450 to 459, and appendix 13.AA, from page 467. The application is Milgrom and Roberts on signaling and screening, from page 154, and the course's topic 7 rules pack on adverse selection and signaling.
+
+After class, the study guide assigns Muñoz-Garcia and Toro-Gonzalez, chapter 9, pages 375 to 451, and chapter 11, pages 481 to 520, skipping cheap talk, which is out of scope; and M W G exercises 13.C.1 and 13.C.5, then 13.C.2 and 13.C.4.
+
+Exercises by part, as the notes list them.
+
+For part one, the failure of subgame perfection: Tadelis exercise 15.1, page 314; Gibbons problem 4.1, page 245; Muñoz-Garcia chapter 9 exercise 1, page 376.
+
+For part two, beliefs and perfect Bayesian equilibrium: Tadelis exercises 15.1 and 15.2, page 314, 15.3, page 315, and 15.4 and 15.5, page 316; Gibbons problems 4.1 and 4.2, page 245; Muñoz-Garcia chapter 9 exercise 1, page 376.
+
+For part three, sequential equilibrium: Tadelis exercise 15.6, "Selten's Horse", page 317.
+
+For part four, signaling games: Gibbons problems 4.3, page 246, 4.4, page 247, and 4.5 and 4.6, page 249; Muñoz-Garcia chapter 9 exercises 1, page 376, 5, page 422, and 7, page 437; chapter 11 exercises 1, page 482, and 3, page 497.
+
+For part five, the MBA game: Tadelis exercises 16.4, "School Choice", page 336, and 16.5, "Drug Ads", page 337; Muñoz-Garcia chapter 9 exercises 2, page 385, 3, page 394, and 4, page 406; M W G exercise 13.C.5, pages 474 to 475.
+
+For part six, Spence: Milgrom and Roberts chapter 5, quantitative question 5.2, page 164, which extends the example; Gibbons problem 4.7, page 249; M W G exercises 13.C.1, 13.C.2 and 13.C.4, pages 474 to 475; Muñoz-Garcia chapter 11 exercise 4, page 500. The project's earlier practice list for Aulas 1 and 2 already has Milgrom and Roberts Food for Thought 5.2, page 164, on the credibility of signals of intent, with a worked solution.
+
+For part seven, limit pricing: Tadelis exercises 16.1, 16.2 and 16.3, page 335, and 16.7, page 338; Muñoz-Garcia chapter 9 exercise 6, page 432; chapter 11 exercises 5, page 505, and 6, page 510.
+
+For part eight, the intuitive criterion: Tadelis exercises 16.7 and 16.8, page 338; Muñoz-Garcia chapter 9 exercise 9, page 447, and chapter 11 exercise 4, page 500; M W G exercise 13.AA.1, page 476, which is graduate level.
+
+Out of scope, and not to be practised for this course: Muñoz-Garcia chapter 9 exercise 8 and M W G section 13.D, which are screening as a design problem, and Muñoz-Garcia chapter 10, which is cheap talk.
+
+Where this lecture sits in the course. Lecture 1, dominance and iterated elimination: the deviation logic of the intuitive criterion is a dominance argument restricted to equilibrium payoffs. Lecture 2, Nash equilibrium and mixed strategies: best responses to beliefs, and the Cournot best replies reused in limit pricing. Lecture 3, backward induction and subgame perfection: the concept that fails here and that perfect Bayesian equilibrium extends to information sets. Lecture 4, multistage games and bargaining: Milgrom and Roberts chapter 5 takes bargaining under private information, pages 140 to 149, straight into adverse selection and signaling, pages 149 to 157. Lecture 5, repeated games: the monetary-policy signaling game builds on its policy game. Lecture 6, collusion and relational contracts: reputation as a signal over time, Tadelis chapter 17, as background. Lecture 7, Bayesian games, adverse selection and auctions: Bayesian Nash equilibrium is the input to perfect Bayesian equilibrium, and the lemons problem is what a signal escapes. Lecture 8 adds beliefs, perfect Bayesian equilibrium, signaling and refinements.
+
+Part fifteen. Self-test: twenty-six True or False items.
+
+This part covers Part II of the pitfalls note. Scoring follows the course's style: the score is the larger of zero and the number correct minus half the number wrong, times the item value; blanks are not wrong. Each item is marked easy, medium or hard. After each statement, pause, decide true or false, then hear the answer.
+
+Block A. Beliefs and perfect Bayesian equilibrium.
+
+Item 1, easy. In a perfect Bayesian equilibrium, beliefs at every information set must follow Bayes' rule. Pause. False. Only on the equilibrium path, requirement 15.2. Off the path Bayes' rule gives zero over zero and requirement 15.3 allows any belief, which is precisely what lets pooling equilibria exist.
+
+Item 2, easy. If a Bayesian Nash equilibrium reaches every information set with positive probability, it is a perfect Bayesian equilibrium once beliefs are computed by Bayes' rule. Pause. True. Proposition 15.1: any failure of sequential rationality at a reached information set would be a profitable ex-ante deviation, contradicting Bayesian Nash equilibrium.
+
+Item 3, medium. In the entry game with a weak and a competitive entrant, the Bayesian Nash equilibrium in which both types stay out is subgame perfect but not a perfect Bayesian equilibrium. Pause. True. The only proper subgame is the whole game, so Out-Out with Fight is subgame perfect; but after entry accommodating yields 1 and fighting yields minus mu, at most zero, so no belief makes fighting a best reply.
+
+Item 4, easy. A strategy that is never played on the equilibrium path cannot affect whether a profile is a perfect Bayesian equilibrium. Pause. False. Off-path actions must be sequentially rational given some belief, and they deter deviations: the employer's blue-collar assignment after an unused MBA is what sustains the MBA pooling equilibrium.
+
+Item 5, medium. Every sequential equilibrium is a perfect Bayesian equilibrium, but some perfect Bayesian equilibria are not sequential equilibria. Pause. True. Sequential equilibrium adds consistency, definition 15.5. In Tadelis's figure 15.4, U with R is a perfect Bayesian equilibrium with a belief above two thirds, but trembles force the belief to one half, under which R is not optimal.
+
+Item 6, hard. Consistency requires off-path beliefs to equal the prior distribution of Nature's moves. Pause. False. It requires them to be limits of Bayes' rule under totally mixed strategies. They equal the prior in figure 15.4 only because player 1 cannot condition on Nature. In general the trembles of players who do observe Nature can shift the odds.
+
+Block B. Signaling games.
+
+Item 7, easy. In a pooling equilibrium of a signaling game, the Receiver's belief after the equilibrium message equals the prior. Pause. True. All types send it, so Bayes' rule gives the prior: the message carries no information.
+
+Item 8, medium. In a separating equilibrium with two types and two messages, the Receiver's beliefs are unrestricted at some information set. Pause. False. Both messages are used, so both beliefs are pinned, at 0 and 1. Free beliefs arise in separating equilibria only when there are more messages than types.
+
+Item 9, easy. In Tadelis's MBA game at the book's numbers, the employer promotes a worker after an MBA whenever its belief that he is high-skill is at least three eighths. Pause. True. Ten mu is at least 5 mu plus 3 times 1 minus mu if and only if 8 mu is at least 3.
+
+Item 10, medium. The MBA game's separating equilibrium exists for every prior between zero and one, holding costs and wages at the book's values. Pause. True. It uses beliefs 0 and 1 and the constraints 2 at most 4 at most 5, none of which involves p.
+
+Item 11, medium. In the MBA game, the pooling equilibrium in which no one studies would still exist if the employer believed that an MBA holder is high-skill with probability 0.5. Pause. False. At 0.5, above three eighths, the employer promotes after an MBA; the high type then gets 10 minus 2, which is 8, more than 6, from studying, and deviates.
+
+Item 12, easy. For a costly action to work as a signal, it must be cheaper for the type that wants to be identified. Pause. True. Otherwise the other type mimics; M and R, page 156, show that if the high type's cost is not below the low type's, the self-selection inequalities cannot both hold. Formally this is single crossing.
+
+Block C. Spence.
+
+Item 13, easy. In Spence's model with unproductive education, a separating equilibrium raises wages with education and therefore raises output with education. Pause. False. Output is theta regardless of education; wages differ because education reveals theta.
+
+Item 14, easy. With theta H equal to 50, theta L equal to 20, c H equal to 10 and c L equal to 20, any high-type education between 1.5 and 3 supports a separating equilibrium. Pause. True. The low type will not mimic if and only if 50 minus 20 e H is at most 20, that is, e H at least 1.5. The high type prefers signaling if and only if 50 minus 10 e H is at least 20, that is, e H at most 3.
+
+Item 15, easy. In those separating equilibria the low-ability worker chooses a strictly positive amount of education. Pause. False. He is paid theta L whatever he does, so any positive education is a pure loss: his education is zero, M W G lemma 13.C.2.
+
+Item 16, medium. A higher share of high-ability workers raises the least-cost separating education level. Pause. False. The least-cost level, theta H minus theta L over c L, does not involve the prior: the separating set is independent of p, M W G page 456. The prior moves only the pooled wage and the comparisons with p star.
+
+Item 17, medium. With M and R's numbers and 70 per cent high-ability workers, high-ability workers are worse off in the least-cost separating equilibrium than if signaling were impossible. Pause. True. Signaling nets them 50 minus 10 times 1.5, which is 35. No signaling pays everyone 0.7 times 50 plus 0.3 times 20, which is 41, more than 35. Here p, 0.7, exceeds p star, 0.5.
+
+Item 18, easy. In the separating equilibria of the Spence model, the expenditure on education is socially wasted when education is unproductive. Pause. True. It changes no output, only who is paid what; M and R call it "a pure social waste", page 156.
+
+Item 19, medium. In a hybrid equilibrium in which the low type randomizes, the belief after the high type's education level lies strictly between the prior and 1. Pause. True. The belief is q over q plus 1 minus q times pi, and with pi strictly between zero and one it lies strictly between q and 1, Gibbons equation 4.2.8.
+
+Block D. Limit pricing and refinements.
+
+Item 20, medium. In Tadelis's limit-pricing game, the low-cost incumbent can separate by producing its monopoly output of 2 in the first period. Pause. False. The high-cost type would mimic: 2 plus 2.25, which is 4.25, exceeds 3.25. Separation needs at least 2.62.
+
+Item 21, hard. In the separating equilibria of the limit-pricing game, the low-cost incumbent's first-period price is below its marginal cost. Pause. False. With output between 2.62 and 3.32, the price, 5 minus the output, lies between 1.68 and 2.38, above the marginal cost of 1. Below-cost pricing needs a growing market or more deterrence periods, pages 329 to 330.
+
+Item 22, medium. In the pooling equilibria of the limit-pricing game, the entrant stays out. Pause. False. With belief one half, the Bayesian Cournot game gives the entrant seven thirty-sixths, positive, so it enters. Pooling buys the incumbent no deterrence.
+
+Item 23, easy. The intuitive criterion eliminates the MBA game's pooling equilibrium because the low type could never gain by getting an MBA, whatever the employer then believes. Pause. True. The low type's best payoff from the degree is 10 minus 5, which is 5, less than 6. Excluding the low type, the employer promotes after the degree, and the high type gets 8, more than 6.
+
+Item 24, hard. A message that is equilibrium-dominated for a type is necessarily dominated for that type. Pause. False. The converse holds: dominated implies equilibrium-dominated. In Beer and Quiche, Beer is equilibrium-dominated for the wimpy type, 2 less than 3, but not dominated, since its best payoff from Beer, 2, exceeds its worst from Quiche, 1. Gibbons page 239.
+
+Item 25, medium. In the two-type Spence model with single crossing, every pooling equilibrium fails the intuitive criterion. Pause. True. Between theta H minus the low type's equilibrium payoff over c L, and theta H minus the high type's over c H, there is always an education level the low type would refuse even at theta H and the high type would take if believed. Gibbons pages 239 to 244; M W G page 471.
+
+Item 26, medium. The intuitive criterion selects, among the separating equilibria of the limit-pricing game, the one with the largest first-period output. Pause. False. It selects the least-cost one, 2.62: the smallest output that still deters mimicry, page 335.
+
+Part sixteen. Glossary.
+
+Information set: the set of nodes a player cannot tell apart when it is his turn to move.
+
+Proper subgame: a part of the tree that starts at a singleton information set and cuts no information set.
+
+On and off the equilibrium path: an information set is on the path if the equilibrium reaches it with positive probability, and off it otherwise.
+
+System of beliefs: a probability distribution over the nodes of every information set.
+
+Bayes' rule: the posterior of a type after a message equals its prior times the probability it sends the message, divided by the total probability of the message.
+
+Sequential rationality: playing a best reply, given beliefs, at every information set, reached or not.
+
+Perfect Bayesian equilibrium: a strategy profile and a belief system such that beliefs follow Bayes' rule on the path, are free off it, and strategies are sequentially rational.
+
+Weak perfect Bayesian equilibrium: M W G's name for the version with no restriction on off-path beliefs, which is Tadelis's definition.
+
+Consistency: beliefs that are limits of Bayes' rule along totally mixed strategy profiles converging to the equilibrium.
+
+Sequential equilibrium: a consistent perfect Bayesian equilibrium, due to Kreps and Wilson.
+
+Signaling game: a game in which an informed Sender moves first and an uninformed Receiver responds after seeing the move.
+
+Pooling equilibrium: all types send the same message, so the posterior equals the prior.
+
+Separating equilibrium: each type sends a different message, so the message reveals the type.
+
+Hybrid, or semi-separating, equilibrium: one type randomizes, so the message is informative but not conclusive.
+
+Single crossing: the type that wants to be recognized has the lower marginal cost of the signal.
+
+Least-cost separating equilibrium: the separating equilibrium in which the high type signals just enough to make the low type indifferent to mimicking.
+
+Envy case: the case in which the low type would copy the high type's full-information choice, so the high type must over-invest to separate.
+
+Limit pricing: producing more, at a lower price, than a monopolist would, to deter entry; here, as a signal of low cost.
+
+Equilibrium-dominated message: a message whose best possible payoff for a type is below that type's equilibrium payoff.
+
+Intuitive criterion: Cho and Kreps's test that removes an equilibrium if some unused message is equilibrium-dominated for some types and, believed to come from the others, makes one of them strictly better off for sure.
+
+Forward induction: reading a past deviation as a rational move, as opposed to backward induction, which assumes future moves are rational.
+
+Screening: the uninformed party offers a menu and the informed self-select; as a design problem it is mechanism design, out of this course's scope.
+
+Cheap talk: costless messages; out of this course's scope.
+
+Part seventeen. The whole lecture in five lines.
+
+One. With private types the uninformed player moves inside information sets, so the only proper subgame is the whole game and subgame perfection cannot remove a non-credible threat.
+
+Two. Perfect Bayesian equilibrium adds beliefs: Bayes' rule on the path, anything off it, and a best reply at every information set; that alone kills the entry threat, since accommodating pays 1 and fighting minus mu.
+
+Three. A signal works only if it costs the types differently, single crossing: 2 at most 4 at most 5 in the MBA game, education from 1.5 to 3 in Spence.
+
+Four. Free off-path beliefs support continua of pooling and separating equilibria, held up by pessimistic inferences, and separation is costly: the high type over-invests, the low type always loses, and the high type gains only below p star.
+
+Five. The intuitive criterion reads a deviation as coming from the type that could gain, and leaves only the least-cost separating equilibrium: D-U with B-M, education 1.5, and output 2.62.

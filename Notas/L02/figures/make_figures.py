@@ -252,9 +252,9 @@ def hotelling():
 def mixed_2x2():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(11, 4.6))
     q = np.linspace(0, 1, 301)
-    vm, vd = 3 * (1 - q), 4 * q                    # v1(M,q), v1(D,q)
-    a1.plot(q, vm, color=C["main"], label="$v_1(M,q)=3(1-q)$")
-    a1.plot(q, vd, color=C["hi"], label="$v_1(D,q)=4q$")
+    vm, vd = 3 * (1 - q), 4 * q                    # u1(M,q), u1(D,q)
+    a1.plot(q, vm, color=C["main"], label="$u_1(M,q)=3(1-q)$")
+    a1.plot(q, vd, color=C["hi"], label="$u_1(D,q)=4q$")
     a1.plot(q, np.maximum(vm, vd), color=C["ink"], lw=5, alpha=0.12, label="upper envelope = best reply")
     qs = Fr(3, 7)
     a1.plot(float(qs), 12 / 7, "o", color=C["good"], ms=8)
@@ -299,6 +299,38 @@ def mixed_dominance():
     save(fig, "L02-mixed-dominance")
 
 
+# ------------------------------------------------------------------ 8. Battle of the Sexes, mixed
+# Aula/Lecture02.pdf slides 47-50 (Tadelis p. 69 payoffs): O/F, (2,1) (0,0) / (0,0) (1,2).
+# p = Pr(Alex plays O), q = Pr(Chris plays O).
+def battle_of_sexes():
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(11, 4.6))
+    q = np.linspace(0, 1, 301)
+    uo, uf = 2 * q, 1 - q                          # u_A(O,q), u_A(F,q), slide 47
+    a1.plot(q, uo, color=C["main"], label="$u_A(O,q)=2q$")
+    a1.plot(q, uf, color=C["hi"], label="$u_A(F,q)=1-q$")
+    a1.plot(q, np.maximum(uo, uf), color=C["ink"], lw=5, alpha=0.12, label="upper envelope = best reply")
+    qs = Fr(1, 3)
+    a1.plot(float(qs), 2 / 3, "o", color=C["good"], ms=8)
+    a1.annotate("$q=1/3$: Alex indifferent, payoff $2/3$", (float(qs), 2 / 3), xytext=(16, -34),
+                textcoords="offset points", color=C["good"])
+    a1.set(xlabel="$q$ = Pr(Chris plays O)", ylabel="Alex's expected payoff", xlim=(0, 1), ylim=(0, 2.2),
+           title="Alex mixes only at $q=1/3$ (slides 47-48)")
+    a1.legend(loc="upper left")
+    a2.plot([0, 1 / 3, 1 / 3, 1], [0, 0, 1, 1], color=C["main"], lw=2.4, label="$BR_A(q)$ (Alex)")
+    a2.plot([0, 0, 1, 1], [0, 2 / 3, 2 / 3, 1], color=C["hi"], lw=2.4, ls="--", label="$BR_C(p)$ (Chris)")
+    for (qq, pp, lab, off) in [(0, 0, "(F, F): $(p,q)=(0,0)$", (8, 8)),
+                               (1, 1, "(O, O): $(p,q)=(1,1)$", (-130, -18)),
+                               (1 / 3, 2 / 3, "mixed: $(p,q)=(2/3,\\,1/3)$", (8, 8))]:
+        a2.plot(qq, pp, "o", color=C["good"], ms=9, zorder=5)
+        a2.annotate(lab, (qq, pp), xytext=off, textcoords="offset points", color=C["good"])
+    a2.set(xlabel="$q$ = Pr(Chris plays O)", ylabel="$p$ = Pr(Alex plays O)", xlim=(-0.03, 1.03),
+           ylim=(-0.03, 1.03), title="Three crossings, three NE (slide 50)")
+    a2.set_aspect("equal")
+    a2.legend(loc="center right")
+    save(fig, "L02-bos-mixed")
+    return qs
+
+
 if __name__ == "__main__":
     apply()
     b1, b2, ne = underline_method()
@@ -308,6 +340,7 @@ if __name__ == "__main__":
     vbr, vne = hotelling()
     qs = mixed_2x2()
     mixed_dominance()
+    qb = battle_of_sexes()
 
     # p. 82: player 1 best-responds at (D,L), (M,C), (M,R); player 2 at (D,C), (M,C), (U,R)
     R, Cn = G581["rows"], G581["cols"]
@@ -340,4 +373,7 @@ if __name__ == "__main__":
     qq = np.linspace(0, 1, 3001)
     beats = qq[2 > np.maximum(3 * qq, 3 * (1 - qq))]
     assert abs(beats.min() - 1 / 3) < 1e-3 and abs(beats.max() - 2 / 3) < 1e-3
+    # slides 47-50: q = 1/3 makes Alex indifferent (2q = 1 - q); p = 2/3 makes Chris indifferent (p = 2 - 2p)
+    pb = Fr(2, 3)
+    assert 2 * qb == 1 - qb and pb == 2 - 2 * pb and 2 * qb == pb == Fr(2, 3)
     print("L02 figures written; all checks pass")

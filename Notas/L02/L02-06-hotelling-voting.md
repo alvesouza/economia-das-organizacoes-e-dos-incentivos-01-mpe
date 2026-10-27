@@ -1,7 +1,7 @@
 ---
 tags: [notes, lecture-02, hotelling, median-voter, electoral-competition, spatial-competition]
-date: 2026-10-16
-status: estimated
+date: 2026-10-25
+status: taught
 source: "Tadelis (2013) §5.2.5, printed pp. 93–95 (101 citizens, Fig. 5.4, the best-response correspondence p. 94, footnotes 9–11, Remark on the continuum p. 95); Gibbons (1992) problem 1.8 p. 50 (named only)"
 ---
 
@@ -13,6 +13,9 @@ source: "Tadelis (2013) §5.2.5, printed pp. 93–95 (101 citizens, Fig. 5.4, th
 > median citizen, $a_1=a_2=0$**. This is Hotelling's (1929) insight and the seed of the median voter theorem, and
 > it is Lecture 1's pharmacy case solved with best responses instead of dominance.
 >
+> **Not covered in class.** The Lecture 2 slides (`Aula/Lecture02.pdf`) do not teach Hotelling voting (slide 3 only recalls Lecture 1's pharmacies and says that with prices the chains would move apart, a problem-set question). This note is kept
+> as reading and practice; it is examinable only if a problem set brings it.
+
 > Prev: [[L02-05-commons]] · Next: [[L02-07-mixed-strategies]] · Map: [[L02-00-map]]
 
 ---

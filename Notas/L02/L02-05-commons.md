@@ -1,7 +1,7 @@
 ---
 tags: [notes, lecture-02, tragedy-of-the-commons, externality, pareto, strategic-substitutes]
-date: 2026-10-16
-status: estimated
+date: 2026-10-25
+status: taught
 source: "Tadelis (2013) §5.2.2, printed pp. 84–87 (eq. 5.1, Fig. 5.1, footnotes 3–5); Gibbons (1992) §1.2.D pp. 27–29 (eqs. 1.2.4–1.2.7, footnote 12)"
 ---
 
@@ -12,6 +12,9 @@ source: "Tadelis (2013) §5.2.2, printed pp. 84–87 (eq. 5.1, Fig. 5.1, footnot
 > takes $K/3$ where $K/4$ would make **both** better off; in Gibbons's village too many goats graze because the
 > equilibrium condition weighs the harm by $G^*/n$ instead of $G^{**}$. **Nash equilibrium is not Pareto optimal.**
 >
+> **Not covered in class.** The Lecture 2 slides (`Aula/Lecture02.pdf`) do not teach the tragedy of the commons. This note is kept
+> as reading and practice; it is examinable only if a problem set brings it.
+
 > Prev: [[L02-04-bertrand]] · Next: [[L02-06-hotelling-voting]] · Map: [[L02-00-map]]
 
 ---
@@ -30,13 +33,13 @@ fish stocks, parking meters.
 $n$ players; each chooses $k_i\ge0$ of a common stock $K$ of clean air; the benefit from own use is $\ln k_i$ and every
 player also enjoys what is left:
 
-$$v_i(k_i,k_{-i})=\ln k_i+\ln\Bigl(K-\sum_{j=1}^n k_j\Bigr)\qquad\text{(eq. 5.1)}$$
+$$u_i(k_i,k_{-i})=\ln k_i+\ln\Bigl(K-\sum_{j=1}^n k_j\Bigr)\qquad\text{(eq. 5.1)}$$
 
 (assuming $\sum_jk_j<K$, footnote 3).
 
 **Best response.** Given $k_{-i}$,
 
-$$\frac{\partial v_i}{\partial k_i}=\frac1{k_i}-\frac1{K-\sum_jk_j}=0\iff K-k_i-\sum_{j\ne i}k_j=k_i
+$$\frac{\partial u_i}{\partial k_i}=\frac1{k_i}-\frac1{K-\sum_jk_j}=0\iff K-k_i-\sum_{j\ne i}k_j=k_i
 \iff\boxed{\;BR_i(k_{-i})=\frac{K-\sum_{j\neq i}k_j}{2}\;}$$
 
 The second derivative $-1/k_i^2-1/(K-\sum k_j)^2<0$ confirms a maximum. Slope $-1/2$ in each rival's use: strategic
@@ -51,7 +54,7 @@ $k_1=\bigl(K-(K-k_1)/2\bigr)/2=K/4+k_1/4$, so $\tfrac34k_1=K/4$ and
 $$k_1^*=k_2^*=\frac K3 .$$
 
 **The Pareto benchmark (p. 86).** Maximize the "world's payoff"
-$w=\sum_iv_i=\ln k_1+\ln k_2+2\ln(K-k_1-k_2)$:
+$w=\sum_iu_i=\ln k_1+\ln k_2+2\ln(K-k_1-k_2)$:
 
 $$\frac{\partial w}{\partial k_1}=\frac1{k_1}-\frac{2}{K-k_1-k_2}=0,\qquad \frac{\partial w}{\partial k_2}=\frac1{k_2}-\frac{2}{K-k_1-k_2}=0 .$$
 
@@ -65,7 +68,7 @@ $$k_1=k_2=\frac K4 .$$
 
 **Both gain (footnote 5, p. 87).** Each player's payoff at $K/4$ minus at $K/3$:
 
-$$\Delta v_i=\Bigl[\ln\tfrac K4+\ln\tfrac K2\Bigr]-\Bigl[\ln\tfrac K3+\ln\tfrac K3\Bigr]=2\ln3-\ln2-\ln4=\ln\tfrac98\approx0.118>0 .$$
+$$\Delta u_i=\Bigl[\ln\tfrac K4+\ln\tfrac K2\Bigr]-\Bigl[\ln\tfrac K3+\ln\tfrac K3\Bigr]=2\ln3-\ln2-\ln4=\ln\tfrac98\approx0.118>0 .$$
 
 The printed footnote gives $0.051$; that is the same expression in **base-10** logarithms
 ($2\log_{10}3-\log_{10}8=0.0512$). With the natural logarithm of eq. (5.1) the gain is $0.118$. The sign, which is

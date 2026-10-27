@@ -1,0 +1,1223 @@
+Lecture 3. Dynamic games: backward induction and subgame perfection. A listening version of the lecture 3 notes.
+
+How to listen.
+
+This is the full text of the lecture 3 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every definition, every example, every number and every derivation from the written notes is here, with the mathematics spoken in words.
+
+One warning before anything else. This unit is estimated. The notes were built on 16 October 2026 from the course study guide, before the lecture was given and before any slides existed. Where a unit would normally cite the slides, this one cites the books instead: mainly Tadelis, Game Theory: An Introduction, published by Princeton University Press in 2013, which is the book the course slides follow, and Gibbons, Game Theory for Applied Economists, Princeton, 1992. When the slides for lecture 3 arrive, the notes will be reconciled with them, and anything the slides do differently wins.
+
+The script has sixteen parts, numbered zero to fifteen. Part zero is the map: the one claim of the lecture, the one result to hold, and the cases to have memorized. Parts one to three describe a dynamic game: the extensive form, strategies, and the normal form of a tree with the threats that hold some of its equilibria up. These follow Tadelis chapter 7. Parts four and five are the refinement: sequential rationality and backward induction, then subgame-perfect equilibrium. These follow Tadelis chapter 8, sections 8.1 and 8.2. Parts six, seven and eight are the applications: credible threats and the value of commitment in an entry game, from Cabral; Stackelberg competition; and time-inconsistent preferences, a game against your own future self. After that come the support parts: common mistakes, a spoken formula sheet, the computer routines described in words, the reading route and exercises, a self-test of twenty-six true or false items, a glossary, and the whole lecture in five lines.
+
+Some conventions. Page numbers are the books' printed page numbers. When no book is named, the page is in Tadelis. "M W G" means Mas-Colell, Whinston and Green, Microeconomic Theory, 1995. "Cabral" means Introduction to Industrial Organization, second edition, 2017. "Muñoz-Garcia" means Muñoz-Garcia and Toro-González, Strategy and Game Theory: Practice Exercises with Answers, second edition, 2019. "N E" means Nash equilibrium, and "S P E" means subgame-perfect equilibrium; the script will usually say the words in full. "B o S" is the Battle of the Sexes, the coordination game from lecture 2.
+
+The notes work in three layers. The U layer is intuition: the sequential Battle of the Sexes story, Gibbons's "noncredible threats", the Centipede evidence, and Cabral's entry and commitment stories. The C layer is the course, and it is examinable: Tadelis definitions 7.1 to 7.8 and 8.1 to 8.3, Proposition 8.1, the examples of section 8.3 worked in full, Gibbons's distinction between an outcome and an equilibrium, and Cabral section 7.2's numbers. The G layer is formal: M W G section 7.C, the formal tree and perfect recall, and section 9.B, with Definitions 9.B.1 and 9.B.2 and Propositions 9.B.1 to 9.B.3. The G layer is named, not examinable, unless the lecture brings it. The script says so out loud each time it comes up.
+
+The script also corrects three numbers printed in the books. Each correction is flagged when it comes up, and each was checked by computer.
+
+Part zero. The map of the lecture.
+
+This part covers the map note, L03 zero zero, which draws on Tadelis chapter 7, pages 129 to 150, and chapter 8, pages 151 to 174; Gibbons section 2.1.A, page 57, section 2.1.B, pages 61 to 64, section 2.2.A, page 71, and section 2.4, pages 115 to 129; M W G section 7.C, page 221, and sections 9.A to 9.B, pages 267 to 281; and Cabral section 7.2, pages 167 to 171.
+
+Here is the one claim of the lecture, in five steps.
+
+First. When a player can see earlier moves, a strategy becomes a complete contingent plan, and a game gains nodes that equilibrium play never visits.
+
+Second. Nash equilibrium does not check what players would do at those nodes, so it admits threats nobody would carry out.
+
+Third. Subgame perfection requires a Nash equilibrium in every subgame, reached or not. Under perfect information, that is just backward induction.
+
+Fourth. The economics is credibility. A threat counts only if carrying it out is optimal when the moment comes.
+
+Fifth. A player can gain by committing: by moving first, as the Stackelberg leader does, or by making one of its own payoffs worse, as a firm that posts a bond does.
+
+The one result to hold is this. The set of subgame-perfect equilibria is contained in the set of Nash equilibria. And in finite games of perfect information, the subgame-perfect equilibria are exactly the profiles found by backward induction.
+
+Said in words: every subgame-perfect equilibrium is a Nash equilibrium; a Nash equilibrium is subgame perfect only if its plans are optimal at every node, including the nodes it never reaches. Under perfect information that test is backward induction, which Tadelis states as a Fact on page 158. Otherwise, solve the last subgames, replace them by their equilibrium payoffs, and repeat, branching when a subgame has several equilibria.
+
+Now the cases to have memorized. There are six.
+
+One. The sequential Battle of the Sexes. It has three pure Nash equilibria: O with oo, O with of, and F with ff. Only O with of is subgame perfect. Pages 145 and 157.
+
+Two. The voluntary Battle of the Sexes. Three Nash equilibria: Y O with o, N O with f, and N F with f. Two are subgame perfect: Y O with o, and N F with f. Page 158.
+
+Three. Mutually assured destruction. Six pure Nash equilibria. Two are subgame perfect: I R with N r, and E D with B d. Pages 164 and 166.
+
+Four. The Centipede game. Backward induction gives the outcome one, one, not three, three. Page 159.
+
+Five. Cabral's entry game. Two Nash equilibria: enter with accommodate, and stay out with retaliate. Only enter with accommodate is subgame perfect. With a bond of 40, the entrant stays out, and the value of commitment to the incumbent is 30. Pages 168 to 170.
+
+Six. Stackelberg with inverse demand p equal to 100 minus q and unit cost 10. There is a continuum of Nash equilibria: every point of the follower's reaction curve, q 2 equal to 90 minus q 1, all over 2, is a Nash outcome. The subgame-perfect equilibrium is the leader producing 45 and the follower playing the function 90 minus q 1, over 2. Profits are 1012.5 for the leader and 506.25 for the follower, against 900 each in Cournot. Pages 161 to 163.
+
+The notes come with seven figures, built by a script in the figures folder that ends with a check per figure. They show: the same Battle of the Sexes tree with two information structures, where player 2 has four strategies in one and two in the other; the two by four matrix of the sequential Battle of the Sexes, with the three Nash equilibria boxed and the subgame-perfect one shaded; the Centipede solved step by step; the two proper subgames of the voluntary Battle of the Sexes and the two reduced games; Cabral's entry game with the non-credible threat and the bond; the Stackelberg and Cournot reaction curves with the leader's isoprofit curves; and self 1's objective in the hyperbolic discounting example with four consumption plans. Each figure is described in words where it belongs.
+
+There are also two interactive companion pages. The First-Mover Desk lets you move the demand intercept a, the slope b, and the two unit costs c 1 and c 2; it shows the leader and follower quantities, prices and profits in both Stackelberg and Cournot, with the first-mover advantage as the answer, which is plus 112.5 at Tadelis's numbers, and the follower's shut-out thresholds as landmarks. The Credible Threat Desk takes the six payoffs of Cabral's entry game with a bond; the tree recolours with the subgame-perfect equilibrium, the value of commitment is the answer, 30 at Cabral's numbers, and a second panel shows the jump at the threshold bond. Both pages are checked by a script that compares Python with the pages' own JavaScript.
+
+Scope. Examinable: Tadelis chapters 7 and 8, the definitions, Proposition 8.1 and the section 8.3 examples; Gibbons's outcome versus equilibrium distinction; Cabral section 7.2's entry and commitment argument; Stackelberg versus Cournot with linear demand. Named only, not examinable: M W G's formal tree and perfect recall in section 7.C, Propositions 9.B.2 and 9.B.3, and the absent-minded driver. Left for later lectures: multistage games with simultaneous stages in depth, and bargaining, in lecture 4; infinite horizons and repeated games in lecture 5; beliefs at information sets and perfect Bayesian equilibrium in lecture 8. Out of the course altogether, by the course's scope rules: mechanism design, cheap talk and moral hazard.
+
+Where this lecture sits in the course. Lecture 1 taught dominance and iterated elimination; backward induction is iterated deletion of non-optimal moves, node by node. Lecture 2 taught Nash equilibrium and mixed strategies, the solution concept refined here, and the tool for the equilibria of each subgame. Lecture 3 is the extensive form, backward induction, subgame perfection, credibility and Stackelberg. Lecture 4, multistage games and bargaining, solves Rubinstein bargaining by subgame perfection in an infinite horizon. Lecture 5, repeated games: finite repetition unravels by backward induction, while infinite repetition sustains cooperation as a subgame-perfect equilibrium. Lecture 6, collusion and relational contracts: credible punishments, and commitment without courts. Lecture 7, Bayesian games: Nature's move and information sets become types. Lecture 8, signaling and perfect Bayesian equilibrium: subgame perfection is too weak when information sets are not singletons, so beliefs are added.
+
+Recap of part zero. One claim: Nash equilibrium cannot see threats at unreached nodes; subgame perfection can; commitment is the economic use of that fact. One result: subgame-perfect equilibria are Nash equilibria, and under finite perfect information they are what backward induction gives.
+
+Part one. The extensive form: who moves when, and who knows what.
+
+This part covers note L03 zero one, drawing on Tadelis's chapter 7 introduction and section 7.1, pages 129 to 137, with Definitions 7.1 to 7.3 and Figures 7.1 to 7.6; Gibbons section 2.4.A, pages 115 to 122; and M W G section 7.C, pages 221 to 225.
+
+The claim. A normal form lists strategies and payoffs. It cannot say when a player moves or what she has seen. The extensive form adds both, and the second is the one that matters. A game is sequential because a later mover observes an earlier move, not because the moves happen at different clock times. Information sets are the device that records what a player knows.
+
+One point one. Why the normal form is not enough. This is intuition.
+
+Tadelis opens chapter 7, on page 129, with the Battle of the Sexes from lecture 2, changed in one detail. Recall the payoffs, with Alex listed first and Chris second. If both go to the opera, O, Alex gets 2 and Chris gets 1. If both go to the football, F, Alex gets 1 and Chris gets 2. If they go to different places, both get 0.
+
+Now the change. Alex finishes work at 3 p.m., goes to a venue, and phones Chris at 4:45: "I am here." Chris now knows where Alex is.
+
+Two steps of reasoning follow. First: Chris's payoff from joining Alex is 1 if Alex is at the opera, or 2 if Alex is at the football; from going elsewhere it is 0. So a rational Chris goes where Alex is, whatever that is. Second: Alex knows this, by common knowledge of rationality. Going to the opera gives Alex 2; going to the football gives Alex 1. So Alex goes to the opera.
+
+The simultaneous game had two pure equilibria and a mixed one, with no way to choose among them. The sequential version has one prediction: O followed by o, the one Alex likes. That is a first-mover advantage.
+
+But moving first is not always an advantage. In Matching Pennies, the player who shows the coin first loses for sure. That is on page 130. What decides is the structure of payoffs, and the extensive form is what lets us compute it.
+
+One point two. The seven elements of an extensive-form game, Tadelis section 7.1, pages 130 to 131. This is course material.
+
+Here they are, each with whether the normal form already had it.
+
+Element one: the set of players. The normal form has it.
+
+Element two: the players' payoffs over outcomes. The normal form has it.
+
+Element three: the order of moves. The normal form does not have it.
+
+Element four: the actions available when a player moves. The normal form has it only partly, as action sets.
+
+Element five: what a player knows when she moves. The normal form does not have it.
+
+Element six: the probability distributions over exogenous events, the moves of Nature. The normal form does not have it.
+
+Element seven: the structure in elements one to six is common knowledge. The normal form has it; this is complete information.
+
+Gibbons states the same list in four items: the players; when each moves, what each can do, and what each knows; and the payoffs. That definition is on his pages 115 to 116.
+
+Element five is the one that separates "Chris moves after Alex and knows what Alex did" from "Chris moves after Alex but does not know what Alex did". That is page 131. The second is the simultaneous game, whatever the clock says.
+
+One point three. Game trees, Definition 7.1, page 133.
+
+The definition. A game tree is a set of nodes x in a set X, with a precedence relation: x precedes x prime. Every node has only one predecessor. The relation is transitive, asymmetric and incomplete. The root, x zero, precedes every other node. Nodes that precede no other node are terminal nodes, forming a set Z inside X, and the payoff functions, v i, map terminal nodes to real numbers. Every non-terminal node is assigned either to a player, written i of x, with an action set A i of x, or to Nature.
+
+What each clause buys. Four things.
+
+One predecessor per node: there is a unique path from the root to every terminal node, so an outcome is a path. That is used again in part three.
+
+Transitive and asymmetric: the tree has no cycles, so play only moves forward.
+
+Incomplete: two nodes on different branches are not ordered. Neither comes before the other.
+
+Payoffs on terminal nodes only: payoffs depend on the whole path, not on single moves.
+
+Worked example: the trust game, Figure 7.1, page 132. Player 1 trusts, T, or does not, N. Not trusting ends the game with payoffs 0 and 0. After trust, player 2 cooperates, C, giving 1 and 1, or defects, D, giving minus 1 to player 1 and 2 to player 2. So there are three terminal nodes: z 1, reached by N, with payoffs 0 and 0; z 2, reached by T then C, with 1 and 1; and z 3, reached by T then D, with minus 1 and 2.
+
+Solve it from what player 2 would do. After trust, defecting pays player 2 a 2 against 1 from cooperating, so player 2 defects. Anticipating minus 1, player 1 does not trust, and gets 0. Both would prefer trust followed by cooperation, with 1 each. It is not reached. This is the logic of part four already at work.
+
+Tadelis's drawing convention, followed in every figure of the notes: play flows top to bottom, and payoffs are a vertical list with player 1 on top.
+
+One point four. Information sets, Definition 7.2, page 135.
+
+The definition. Every player i has a collection of information sets, h i in a collection H i, that partition the nodes at which i moves, with three properties. First: if an information set is a single node x, the player knows she is at x. Second: if two different nodes x and x prime are both in the same information set, the player does not know whether she is at x or at x prime. Third: if two different nodes are in the same information set, they have the same set of actions.
+
+Property three is a consistency requirement, not an assumption about the world. If two nodes offered different actions, the player could tell them apart by looking at her menu, and they could not be in one information set. Tadelis says this on page 135, and Gibbons makes the same point on page 119.
+
+Information sets are drawn either as an ellipse around the nodes or as a dashed line joining them; Figure 7.4, page 135. The figures in the notes use the dashed line.
+
+The figure for this section shows two game trees with identical moves and payoffs, the Battle of the Sexes. On the left, player 1 chooses O or F, and player 2 then chooses o or f at two separate nodes. On the right, the same tree, with a dashed line joining player 2's two nodes into one information set, h 2. Below each tree is player 2's strategy set: four plans on the left, two on the right. The source is Tadelis Figures 7.7 and 7.8, page 138, with payoffs from page 129.
+
+The two trees are identical except for one dashed line, and the dashed line changes everything that follows. On the left, player 2 can condition on O versus F, so she has 2 times 2, that is 4, plans. On the right she cannot, so she has 2, and the game is the simultaneous Battle of the Sexes of lecture 2.
+
+One point five. Perfect versus imperfect information, Definition 7.3, page 136.
+
+The definition. A game of complete information in which every information set is a singleton and there are no moves of Nature is a game of perfect information. A game in which some information set contains several nodes, or in which Nature moves, is a game of imperfect information.
+
+Five examples. The trust game, Figure 7.1: all information sets are singletons, no Nature, so perfect information. The sequential Battle of the Sexes, Figure 7.2: all singletons, no Nature, perfect. The simultaneous Battle of the Sexes, Figure 7.4: player 2's two nodes form one information set, so imperfect. Rock, paper, scissors, Figure 7.5: player 2's three nodes are in one set, imperfect. The card game, Figure 7.6: player 1's two nodes are in one set, and Nature moves, so imperfect.
+
+Every simultaneous-move game is a game of imperfect information. That is page 136. "Complete" information, meaning everyone knows the payoffs, and "perfect" information, meaning everyone sees every earlier move, are different properties. Lecture 3 is complete information throughout, perfect or imperfect.
+
+One point five point one. Worked: the card game, Figure 7.6, pages 136 to 137.
+
+Nature draws a king, K, or an ace, A, each with probability one half. Player 1 does not see it, and calls, C, or folds, F. If she folds, player 1 pays 1 to player 2. If she calls, player 1 pays 2 on a king and receives 2 on an ace.
+
+Player 1's expected payoffs. Calling gives minus 2 with a king and plus 2 with an ace, so one half times minus 2 plus one half times 2, which is 0. Folding gives minus 1 either way, so minus 1. Player 1 calls.
+
+The game can be drawn with Nature first, with player 1's two nodes in one information set, or with player 1 first and Nature after. Both trees carry the same information, so they are the same game. That is page 137. Player 2 has no move, so this is a single-person decision problem in game clothing.
+
+Two kinds of uncertainty, one device. Not knowing Nature's draw, which is exogenous uncertainty, and not knowing another player's move, which is endogenous uncertainty, are both represented as not knowing where you are in the tree. In both cases the player needs a belief about which node she is at; page 137. That belief is the object of lecture 8.
+
+One point six. The formal version, M W G section 7.C, pages 221 to 225. This is the G layer: named, not examinable beyond the definitions already given.
+
+M W G build the same object in their own notation: nodes, a predecessor function, a map from nodes to information sets, H of x, and payoffs at terminal nodes. Their Matching Pennies Version B, in which player 2 sees player 1's coin, Example 7.C.1, and Version C, in which she does not, Example 7.C.3, are the pair of trees in the figure just described, with different payoffs. M W G also define perfect recall formally: a player never forgets a move she made or saw. Tadelis states it in words as Definition 7.7, on page 142, and it comes up in part two.
+
+Recap of part one. An extensive form adds the order of moves, what each player knows, and Nature. A tree has a unique path to every terminal node. Information sets record what a player cannot distinguish, and nodes in one set must offer the same actions. Perfect information means singleton information sets and no Nature; every simultaneous game is imperfect.
+
+Checklist for part one. You should be able to draw a game tree from a verbal description: players, order, actions, information sets, Nature and payoffs. You should be able to say whether a game has perfect or imperfect information, and why every simultaneous game is imperfect. You should be able to state why property three of Definition 7.2 is a consistency requirement. And you should be able to compute the card game's expected payoffs: 0 from calling, minus 1 from folding.
+
+Part two. A strategy is a complete plan: pure, mixed and behavioral.
+
+This part covers note L03 zero two, drawing on Tadelis sections 7.2.1 and 7.2.2, pages 137 to 142, with Definitions 7.4 to 7.7 and Figures 7.7, 7.9 and 7.10, the absent-minded driver; and Gibbons section 2.4.A, pages 117 to 118.
+
+The claim. Once a player can condition on what she has seen, a strategy stops being an action and becomes a complete contingent plan: one action at every information set, including the ones the plan itself makes unreachable. Counting them is a product rule. Randomizing can happen over whole plans, which is a mixed strategy, or node by node, which is a behavioral strategy, and with perfect recall the two are equivalent. That is Kuhn's theorem.
+
+Two point one. Pure strategies, Definition 7.4, page 139.
+
+In words, from page 138: a pure strategy in an extensive-form game is a complete plan of play that describes which pure action player i will choose at each of his information sets.
+
+Formally. Let H i be the information sets of player i, A i of h i the actions at information set h i, and A i the union of all those action sets. A pure strategy is a mapping s i from H i into A i, such that s i of h i belongs to A i of h i for every information set h i. The set of all such maps is S i.
+
+Worked: the sequential Battle of the Sexes, Figure 7.7, page 138. Player 1 has one information set, so her strategies are O and F. Player 2 has two information sets: one after O, the node x 1, and one after F, the node x 2. At each she chooses o or f. Write a strategy as two letters, "a b", read as "play a after O, play b after F". There are four.
+
+o o: opera after O, and opera after F. Always opera.
+
+o f: opera after O, football after F. Follow player 1.
+
+f o: football after O, opera after F. Do the opposite.
+
+f f: football after either. Always football.
+
+So player 2's strategy set is o o, o f, f o, f f; page 139.
+
+Two actions became four strategies because there are two information sets. In the simultaneous version, with one information set, player 2's strategies are just o and f: the same two actions, two strategies.
+
+Two point one point one. Counting, page 139. If player i has k information sets with m 1, m 2, up to m k actions, then the number of pure strategies is the product, m 1 times m 2 times and so on up to m k. A strategy picks one action independently at each information set, and the choices multiply.
+
+Five counts. Player 2 in the sequential Battle of the Sexes: two sets with 2 actions each, so 2 times 2, which is 4. Player 2 in the simultaneous Battle of the Sexes: one set with 2 actions, so 2. Tadelis's example on page 139: three sets with 2, 3 and 4 actions, so 2 times 3 times 4, which is 24. Player 1 in the voluntary Battle of the Sexes, Figure 8.4: at the root she chooses Y or N, and at her second node O or F, so 2 times 2, which is 4: Y O, Y F, N O and N F. Each player in the mutually assured destruction game, Figure 8.11: two sets with 2 actions each, so 4.
+
+The key point. A strategy specifies actions at information sets the strategy itself never reaches. In the voluntary Battle of the Sexes, N O and N F are different strategies, even though N ends the game before O or F could be played. That is Tadelis page 158, and M W G page 274, footnote 4. This is not pedantry: it is exactly what lets subgame perfection, in part five, test whether a plan is still rational at nodes that are not reached.
+
+Why the plan must be complete. Gibbons, pages 117 to 118: for player j to compute a best response to i's strategy, j may need to know how i would act in every contingency, not only the ones expected to arise. A strategy that left some contingency blank could not be tested against deviations that lead there.
+
+Two point two. Mixed strategies, Definition 7.5, page 139. A mixed strategy for player i is a probability distribution over his pure strategies.
+
+The player draws one complete plan before the game, and then follows it. For player 2 in the sequential Battle of the Sexes, a mixed strategy is four probabilities, p o o, p o f, p f o and p f f, each at least zero and summing to 1.
+
+The interpretation has a drawback: the randomization is once and for all, so the player cannot "cross the bridge when he gets there". Page 140.
+
+Two point three. Behavioral strategies, Definition 7.6, page 140. A behavioral strategy specifies, for each information set, an independent probability distribution over the actions at that set. It is written sigma i, a map from the information sets into distributions over actions, where sigma i of an action is the probability that player i plays that action at that information set.
+
+The library analogy, from Luce and Raiffa, page 140. A pure strategy is an instruction manual with one page per information set. The set of pure strategies is the library of manuals. A mixed strategy: pick a manual at random, then obey it. A behavioral strategy: one manual whose pages say "toss a coin here".
+
+Two point three point one. Worked: from mixed to behavioral, page 141. Given the four probabilities p o o, p o f, p f o and p f f, the probability of each action conditional on reaching each information set is the total weight of the plans that prescribe it there.
+
+The probability of o after O is p o o plus p o f. The probability of f after O is p f o plus p f f. The probability of o after F is p o o plus p f o. The probability of f after F is p o f plus p f f.
+
+Each pair sums to 1 because the four p's do. Setting the behavioral probability of each action equal to these conditional probabilities gives a behavioral strategy with the same distribution over outcomes. So every mixed strategy has a behavioral equivalent.
+
+Two point three point two. Worked: from behavioral to mixed, and why it is not unique, pages 141 to 142. Figure 7.9's behavioral strategy plays o after O with probability one third, and o after F with probability one half. A mixed strategy reproduces it if and only if four equations hold. p o o plus p o f equals one third. p f o plus p f f equals two thirds. p o o plus p f o equals one half. p o f plus p f f equals one half.
+
+Because the four p's sum to 1, the second equation follows from the first, and the fourth from the third; that is footnote 4 on page 142. So there are three independent equations in four unknowns: a one-parameter family of solutions.
+
+Check the book's two solutions. The first is one third, zero, one sixth, one half. Its sum is two sixths plus zero plus one sixth plus three sixths, which is 1. p o o plus p o f is one third, correct. p o o plus p f o is one third plus one sixth, which is one half, correct. The second is one sixth, one sixth, one third, one third. Its sum is one sixth plus one sixth plus two sixths plus two sixths, which is 1. p o o plus p o f is one sixth plus one sixth, one third, correct. p o o plus p f o is one sixth plus one third, one half, correct.
+
+The general solution. Pick p o o equal to a number t between zero and one third. Then p o f is one third minus t, p f o is one half minus t, and p f f is 1 minus t minus one third plus t minus one half plus t, which simplifies to one sixth plus t. The book's two solutions are t equal to one third and t equal to one sixth.
+
+Two point four. Perfect recall and Kuhn's equivalence, Definition 7.7, page 142. A game of perfect recall is one in which no player ever forgets information that he previously knew, including his own earlier moves.
+
+Kuhn, 1953, as stated on page 142: in games of perfect recall, mixed and behavioral strategies are equivalent. Given the opponents' strategies, the same distribution over outcomes can be generated by either.
+
+Everything in this course assumes perfect recall, so from here on a mixed strategy in an extensive form can be read as a behavioral one, which is how part five states Definition 8.3.
+
+Two point four point one. What breaks without perfect recall: the absent-minded driver, the Remark on pages 142 to 143. This is intuition only, and it is named, not examinable.
+
+A driver passes two identical exits and cannot tell which one he is at. Exit 1 pays 0, exit 2 pays 4, and missing both pays 1. He has one information set containing both intersections, so any plan is "exit with probability p whenever at an intersection".
+
+His value from p is: 0 times p, plus 4 times p times 1 minus p, plus 1 times 1 minus p squared. Expand it: 4 p minus 4 p squared, plus 1 minus 2 p plus p squared. That is minus 3 p squared, plus 2 p, plus 1.
+
+The derivative is minus 6 p plus 2. Setting it to zero gives p star equal to one third. The value there is minus one third plus two thirds plus 1, which is four thirds.
+
+No pure plan does as well: p equal to zero gives 1, and p equal to 1 gives 0. With imperfect recall, randomizing at the node can beat every pure plan, which never happens to a single decision maker with perfect recall.
+
+At the intersection, the driver's payoff from p is: q times the bracket 4 p times 1 minus p, plus 1 minus p squared; plus 1 minus q times the bracket 4 p plus 1 minus p. Here q is his belief that he is at exit 1. This coincides with the planning problem only at q equal to 1, so the plan and the in-the-moment choice disagree. Again: named only, not examinable.
+
+Recap of part two. A strategy is a map from information sets to actions; the count is the product of the numbers of actions at each information set; a strategy names actions even where its own earlier moves rule play out. Mixed strategies randomize over whole plans; behavioral strategies randomize node by node; mixed to behavioral is always possible and unique; behavioral to mixed needs perfect recall and is not unique.
+
+Checklist for part two. You should be able to write each player's pure-strategy set and count it as a product. You should be able to convert a mixed strategy into its behavioral equivalent by conditioning, and find the family of mixed strategies behind a behavioral one. You should be able to state Kuhn's equivalence and the condition it needs, perfect recall.
+
+Part three. Back to the matrix: Nash equilibria of a tree, and the threats that hold them up.
+
+This part covers note L03 zero three, drawing on Tadelis sections 7.2.3 to 7.3, pages 143 to 146, with the normal form of the sequential Battle of the Sexes, the Remark and Figure 7.12, Definition 7.8 and Figure 7.13; and Gibbons sections 2.4.A and 2.4.B, pages 117 to 119 and 126 to 128, with Figures 2.4.1, 2.4.2 and 2.4.5.
+
+The claim. Every extensive form has a unique normal form, and Nash equilibrium only needs the normal form, so finding all Nash equilibria of a tree is a matrix exercise. The matrix also shows the problem. A Nash equilibrium only asks for best responses on the path of play, so it can be held up by what a player promises to do at a node that is never reached, even when that promise is against her own interest there.
+
+Three point one. From tree to matrix, section 7.2.3, pages 143 to 144. Rows are player 1's pure strategies, columns are player 2's, and each cell is the payoff at the terminal node that the pair of plans reaches.
+
+Worked: the sequential Battle of the Sexes. Player 1 has O and F; player 2 has o o, o f, f o and f f. If player 1 plays O, only the first letter of player 2's plan is used; if F, only the second.
+
+Row O. Against o o: 2 and 1. Against o f: 2 and 1. Against f o: 0 and 0. Against f f: 0 and 0. The reason: o o and o f both answer O with o, giving 2 and 1; f o and f f answer with f, giving 0 and 0.
+
+Row F. Against o o: 0 and 0. Against o f: 1 and 2. Against f o: 0 and 0. Against f f: 1 and 2. The reason: o o and f o answer F with o, giving 0 and 0; o f and f f answer with f, giving 1 and 2.
+
+Each terminal payoff appears twice, because for a given row, two of player 2's plans differ only at the node that row does not reach. Page 144.
+
+Uniqueness runs one way only. Every extensive form has one normal form; one normal form can come from several trees. That is the Remark on page 144. Take the two by two matrix with rows N and E and columns C and D. Row N gives 0, 0 against both columns. Row E gives 1, 1 against C and minus 1, 2 against D. This matrix represents both a perfect-information tree, where player 2 moves only after E, and an imperfect-information tree, where player 2 moves after both N and E without seeing which. That is Figure 7.12. The normal form throws away the order of moves and the information, which is exactly what chapter 8 will need back.
+
+Three point two. The Nash equilibria, section 7.3, page 145. Mark best responses in each column for player 1, and in each row for player 2, which is lecture 2's method.
+
+Player 1's best replies, column by column. Against o o: O, since 2 beats 0. Against o f: O, since 2 beats 1. Against f o: O or F, both give 0. Against f f: F, since 1 beats 0.
+
+Player 2's best replies, row by row. Against O: o o and o f, both give 1. Against F: o f and f f, both give 2.
+
+A cell is a Nash equilibrium when both marks meet. That gives three: O with o o, O with o f, and F with f f. Page 145.
+
+F with f o fails: player 2's best replies to F are o f and f f, not f o. O with f o fails for the same reason in row O.
+
+The figure here shows the two by four payoff matrix, rows O and F, columns o o, o f, f o and f f. Three cells are boxed as Nash equilibria: O with o o, O with o f, and F with f f. The cell O with o f is shaded as the unique subgame-perfect equilibrium. Source: Tadelis's matrix on page 143, the equilibria on page 145, and the subgame-perfect equilibrium on page 157.
+
+Two equilibria, O with o o and O with o f, produce the same outcome: both at the opera, with payoffs 2 and 1. They differ only in what player 2 plans after F, a node neither reaches. The third, F with f f, produces a different outcome, 1 and 2, and it is the one player 1 dislikes.
+
+Three point three. Paths of play, Definition 7.8, page 146. Because each node has one predecessor, every outcome corresponds to a unique path from the root.
+
+The definition. Let sigma star be a Nash equilibrium profile of behavioral strategies. An information set is on the equilibrium path if, given sigma star, it is reached with positive probability, and off the equilibrium path if it is never reached.
+
+Apply it to the three equilibria.
+
+O with o o. The path is O then o. The node after O, x 1, is on the path. The node after F, x 2, is off the path, and there player 2 plans o. Nothing is needed to hold player 1 on the path: O is best for her anyway.
+
+O with o f. The path is O then o. x 1 is on, x 2 is off, and there player 2 plans f. Again nothing is needed.
+
+F with f f. The path is F then f. x 1 is off the path, and there player 2 plans f. x 2 is on. What holds player 1 on the path is the plan f at x 1: if player 1 switched to O, she would get 0.
+
+So in F with f f, player 1 stays at F only because of what player 2 says she would do at a node that is never reached. Page 146. Player 2's plan off the path works as a threat: "if you go to the opera, I go to the football."
+
+Three point three point one. Why the threat is suspect. Suppose player 1 did play O. At x 1, player 2 compares o, worth 1, with f, worth 0. She would play o. The plan f f commits her to the worse action at x 1, and it costs her nothing only because x 1 is never reached. Nash equilibrium checks best replies to the strategies, computed from the root, so a suboptimal action at an unreached node costs nothing and passes the test. Page 146. The same logic underlies the incredible threat in the Stackelberg game, in part seven, and in the entry game, in part six.
+
+The normal form treats every choice as made once and for all at the start, so beliefs about off-path play are never put to the test. Page 146. That is the weakness chapter 8 repairs.
+
+Three point four. Worked: Gibbons's version, Figures 2.4.1, 2.4.2 and 2.4.5, pages 116 to 128.
+
+Player 1 chooses L or R; player 2 sees it and chooses L prime or R prime. After L: L prime gives 3 and 1, R prime gives 1 and 2. After R: L prime gives 2 and 1, R prime gives 0 and 0.
+
+Player 2's four strategies are written as a pair: the action after L, then the action after R. The normal form, Gibbons Figure 2.4.2, is this. Row L: against L prime L prime, 3 and 1; against L prime R prime, 3 and 1; against R prime L prime, 1 and 2; against R prime R prime, 1 and 2. Row R: against L prime L prime, 2 and 1; against L prime R prime, 0 and 0; against R prime L prime, 2 and 1; against R prime R prime, 0 and 0.
+
+Best replies. Player 2 against L wants R prime first, since 2 beats 1, so R prime L prime or R prime R prime. Against R she wants L prime second, since 1 beats 0, so L prime L prime or R prime L prime. Player 1 against R prime L prime: L gives 1, R gives 2, so R. Against R prime R prime: L gives 1, R gives 0, so L.
+
+So the Nash equilibria are: R with R prime L prime, and L with R prime R prime. Gibbons page 126.
+
+In L with R prime R prime, player 2 threatens R prime after R, which would give her 0 instead of 1 from L prime. The threat is not credible, and L with R prime R prime is not subgame perfect. Gibbons page 128. The tree is solved in part four.
+
+Recap of part three. Build the matrix by reading, for each pair of plans, the terminal node they reach; each payoff repeats because plans differ at unreached nodes. Find the Nash equilibria by marking best replies. Then look at which information sets are off the path: an equilibrium can be held up by a plan at an unreached node that the player would never carry out.
+
+Checklist for part three. You should be able to build the normal form of a tree and find all its pure Nash equilibria. You should be able to identify the on-path and off-path information sets of each equilibrium, and name the threat that supports it. You should be able to explain why one normal form can come from several trees.
+
+Part four. Sequential rationality and backward induction.
+
+This part covers note L03 zero four, drawing on Tadelis's chapter 8 introduction and section 8.1, pages 151 to 153, with Figure 8.1, Definition 8.1, Proposition 8.1 and Corollary 8.1; section 8.3.1, pages 159 to 160, the Centipede game, Figure 8.8; Gibbons section 2.1.A, pages 57 to 61; and M W G section 9.B, pages 268 to 281, Proposition 9.B.1.
+
+The claim. Ask every player to play a best response at every information set, reached or not. That is sequential rationality. In a finite game of perfect information it is enforced by solving the tree from the end, and the procedure always delivers an answer, unique when no player is ever indifferent. That is Zermelo's theorem, Tadelis's Proposition 8.1. The answer can be bleak: in the Centipede game it throws away a payoff both players would prefer.
+
+Four point one. A coordination game with a silly equilibrium, Figure 8.1, page 151. This is intuition.
+
+Player 1 exits, E, with 0 and 0, or proceeds, P. After P, player 2 exits, small e, with 0 and 0, or proceeds, small p, with 1 and 1. In the matrix: row E gives 0, 0 against both columns; row P gives 0, 0 against e and 1, 1 against p.
+
+There are two Nash equilibria: P with p, and E with e. In E with e, player 1 exits because player 2 "would exit". But if player 2 were ever asked, p gives her 1 against 0 from e. Nash equilibrium puts no restriction on beliefs off the path, so it lets E with e through. Pages 151 to 152.
+
+Four point two. The definition and the procedure, section 8.1, pages 152 to 153.
+
+Definition 8.1. Given strategies sigma minus i of i's opponents, player i is sequentially rational if and only if i is playing a best response to sigma minus i in each of his information sets.
+
+Backward induction, page 153. Call "level 1" the nodes that immediately precede terminal nodes. At each, let the mover pick the action with her highest payoff. Call "level 2" the nodes that precede level-1 nodes. Let the mover pick her best action given the level-1 choices. Continue up to the root. The game is finite, so the procedure ends; at every node the mover best-responds to what comes after, so the result is sequentially rational everywhere.
+
+Proposition 8.1, Zermelo's Theorem. Any finite game of perfect information has a backward induction solution that is sequentially rational. Furthermore, if no two terminal nodes prescribe the same payoffs to any player, then the backward induction solution is unique.
+
+Corollary 8.1. Any finite game of perfect information has at least one sequentially rational Nash equilibrium in pure strategies. If no two terminal nodes prescribe the same payoffs to any player, the game has a unique sequentially rational Nash equilibrium.
+
+Three hypotheses, and what fails without each.
+
+Finite. Without it, there may be no last nodes to start from. Rubinstein bargaining and repeated games are the examples, in lectures 4 and 5.
+
+Perfect information. Without it, at a non-singleton information set the mover's best action depends on a belief about where she is, which the procedure does not supply. Page 154, and part five.
+
+No ties, for uniqueness. Without it, an indifferent mover can pick either action, and each choice can change earlier players' choices. Footnote 1, page 153.
+
+History, from the Remark on page 153. Zermelo, in 1913, showed that in games like chess a player can guarantee at least a draw; neither backward induction nor strategies appear in his paper. M W G state the same result as Proposition 9.B.1, in section 9.B: every finite game of perfect information has a pure-strategy Nash equilibrium that can be derived by backward induction, unique if no player has the same payoffs at two terminal nodes.
+
+Four point two point one. Worked: the sequential Battle of the Sexes, page 152. Three steps.
+
+Step 1, at x 1, after O, player 2 compares o, worth 1, with f, worth 0. She chooses o.
+
+Step 1 again, at x 2, after F, player 2 compares o, worth 0, with f, worth 2. She chooses f.
+
+Step 2, at the root, player 1 compares O, which leads to 2 and 1, with F, which leads to 1 and 2. That is 2 against 1, so she chooses O.
+
+Result: player 1 plays O, player 2 plays o f. O with o f is the only one of the three Nash equilibria of part three that survives. Page 152. O with o o dies because o at x 2 is not a best response there. F with f f dies because f at x 1 is not.
+
+Backward induction predicts play off the path as well as on it: "if player 1 chooses F then player 2 will choose f". Page 152. That off-path prediction is part of the answer.
+
+Four point three. Worked: Gibbons's games, section 2.1.A, pages 57 to 61, and section 2.4.B, page 126.
+
+Two stages, Gibbons pages 57 to 58. Player 1 picks a 1. Player 2 sees it and maximizes u 2 of a 1 and a 2 over a 2, with solution R 2 of a 1. Player 1 anticipates this and maximizes u 1 of a 1 and R 2 of a 1 over a 1, with solution a 1 star. The pair a 1 star and R 2 of a 1 star is the backwards-induction outcome. In Gibbons's words, it "does not involve noncredible threats: player 1 gives no credence to threats by player 2 to respond in ways that will not be in 2's self-interest when the second stage arrives". Page 58.
+
+Gibbons's Figure 2.4.1 solved, page 126, using the payoffs from part three. After L, player 2 prefers R prime, since 2 beats 1. After R, she prefers L prime, since 1 beats 0. Player 1 compares L, which then gives her 1, with R, which then gives her 2, and plays R. The outcome is R then L prime; the equilibrium is R with the plan R prime L prime.
+
+Three moves, with player 1 moving twice, pages 59 to 60. L ends the game with 2 and 0. After R, player 2 plays L prime, giving 1 and 1, or R prime. After R prime, player 1 plays L double prime, giving 3 and 0, or R double prime, giving 0 and 2.
+
+Step 3, player 1 at stage 3: L double prime gives 3, R double prime gives 0. She picks L double prime. Step 2, player 2: L prime gives 1, R prime followed by L double prime gives 0. She picks L prime. Step 1, player 1: L gives 2, R followed by L prime gives 1. She picks L.
+
+The game ends at once, at 2 and 0. Gibbons's point, pages 60 to 61: the argument depends on what player 2 would believe after player 1 has played R, a move backward induction says will not happen. If player 1 played R, it cannot be common knowledge that both are rational. Yet there are reasons for R consistent with player 1 being rational: for instance, player 1 doubts that player 2 is rational and hopes for R prime. Backward induction assumes deviations are explained that way. Where it is more plausible that a deviator is simply irrational, it loses appeal.
+
+Four point four. Worked: the Centipede Game, section 8.3.1, Figure 8.8, pages 159 to 160.
+
+Players alternate. Each can stop, N for player 1 and small n for player 2, or continue, C for player 1 and small c for player 2. At node 1, player 1 moves; stopping gives 1 and 1. At node 2, player 2 moves; stopping gives 0 and 3. At node 3, player 1 moves; stopping gives 2 and 2. At node 4, player 2 moves; stopping gives 1 and 4, and continuing ends the game at 3 and 3.
+
+Backward induction, four steps.
+
+Step 1, node 4: player 2 compares stopping, worth 4, with continuing, worth 3. She stops. The value carried back is 1 and 4.
+
+Step 2, node 3: player 1 compares stopping, worth 2, with continuing, worth 1. She stops. The value carried back is 2 and 2.
+
+Step 3, node 2: player 2 compares stopping, worth 3, with continuing, worth 2. She stops. The value carried back is 0 and 3.
+
+Step 4, node 1: player 1 compares stopping, worth 1, with continuing, worth 0. She stops. The value is 1 and 1.
+
+The figure shows a horizontal centipede tree with four decision nodes alternating between the players. Each node has a downward stop edge, to payoffs 1 and 1, 0 and 3, 2 and 2, and 1 and 4, and a rightward continue edge, ending at 3 and 3. All stop edges are highlighted as chosen; all continue edges are dashed as rejected. Step numbers run from 4 at the first node to 1 at the last. Read it right to left: each step compares one stop payoff with the value that the next step has already carried back, and stopping wins every time by exactly 1. Source: Tadelis Figure 8.8, page 159.
+
+The sum of payoffs rises by 1 at every continuation, so the structure can be stretched to make the end as attractive as one likes; the unique backward induction outcome stays 1 and 1. Pages 159 to 160.
+
+Evidence, from the Remark on page 160. In the lab, people mostly do not stop at once: McKelvey and Palfrey, 1992. Two explanations: players care about each other's payoffs, or rationality is not common knowledge. Palacios-Huerta and Volij, in 2009, ran it with chess players: 69 per cent stopped immediately, and grandmasters always did, which supports the second explanation.
+
+Four point five. M W G's framing, section 9.B, Examples 9.B.2 and 9.B.5. This is the G layer: not examinable beyond the statement of Proposition 9.B.1.
+
+M W G motivate the same procedure with the principle of sequential rationality: "a player's strategy should specify optimal actions at every point in the game tree". Page 269. They solve a three-player perfect-information game by successive reduction, Example 9.B.2. Their Example 9.B.5 is a 100-stage centipede.
+
+Recap of part four. Sequential rationality asks for a best response at every information set. Backward induction enforces it in finite games of perfect information, from the last nodes up. Zermelo's theorem guarantees a pure solution, unique without payoff ties. The Centipede and the trust game show that the answer can be inefficient.
+
+Checklist for part four. You should be able to solve a finite perfect-information game by backward induction and write the full plan, off the path included. You should be able to state Zermelo's theorem, Proposition 8.1, and say what each hypothesis buys. You should be able to run the Centipede backward and explain the lab evidence and its two readings.
+
+Part five. Subgame-perfect equilibrium: backward induction for any tree.
+
+This part covers note L03 zero five, drawing on Tadelis section 8.2, pages 153 to 158, with Definitions 8.2 and 8.3, Figures 8.2 to 8.7, the voluntary Battle of the Sexes and the card game, and the Fact on page 158; section 8.3.3, pages 163 to 166, mutually assured destruction, Figures 8.11 and 8.12; Gibbons sections 2.2.A, pages 71 to 73, and 2.4.B, pages 122 to 129; and M W G section 9.B, pages 268 to 281, Definitions 9.B.1 and 9.B.2 and Propositions 9.B.2 and 9.B.3.
+
+The claim. Backward induction stalls at a non-singleton information set, because the mover's best action depends on a belief the procedure does not supply. The fix is to cut the tree only where it can be cut cleanly, at proper subgames, and to require a Nash equilibrium in every one of them. That is subgame perfection, due to Selten. It refines Nash, coincides with backward induction under perfect information, and can still leave several equilibria when a subgame has several equilibria of its own, as mutually assured destruction shows.
+
+Five point one. Where backward induction gets stuck, Figure 8.2, page 154. This is intuition.
+
+The voluntary Battle of the Sexes. Player 1 chooses N, and both get 1.5, or Y. After Y the two play the simultaneous Battle of the Sexes. Player 2's two nodes sit in one information set. To start backward induction we would need player 2's best action at that set, and it depends on whether she thinks player 1 chose O or F: a belief, which backward induction does not provide. Page 154.
+
+The second obstacle is games with no last node, infinite horizons, in Tadelis chapters 10 and 11, which have no terminal nodes to start from. Subgame perfection handles both.
+
+Five point two. Proper subgames, Definition 8.2, pages 154 to 155.
+
+The definition. A proper subgame G of an extensive-form game Gamma consists of a single node and all its successors in Gamma, with the property that if a node x is in G and x prime is in the same information set as x, then x prime is in G. The subgame is itself a game tree, with information sets and payoffs inherited from Gamma.
+
+Two tests for whether a subgame can start at a node x. Test one: x is a singleton information set; otherwise the subgame would have no unique root. Test two: no information set straddles the cut; every information set that contains a successor of x lies entirely among the successors of x.
+
+Five games.
+
+Perfect information, Figure 8.3, page 155. Every decision node is a candidate, and there is one proper subgame per decision node, because all information sets are singletons.
+
+The simultaneous Battle of the Sexes. Only the root qualifies, so the only proper subgame is the whole game, because player 2's nodes share an information set.
+
+The voluntary Battle of the Sexes, Figure 8.4. The candidates are the root, x 0, and player 1's second node, x 1; player 2's nodes x 2 and x 3 are not. There are two proper subgames: the whole game, and the one starting at x 1. The reason: x 2 and x 3 are in one set, so neither can be a root. Page 156.
+
+The card game, Figure 8.5, page 156. The nodes x 1 and x 2 fail test two. The only proper subgame is the whole game. The subgame at x 1 would contain x 3, and so, by the definition, x 4, which is in the same information set as x 3; but x 1 does not precede x 4.
+
+Mutually assured destruction, Figure 8.11. The root, player 2's node, and player 1's war-stage node all qualify, giving three proper subgames. The war stage is simultaneous but starts at a singleton. Page 165.
+
+A difference in conventions. Gibbons's definition, pages 122 to 123, adds a parenthetical that the whole game is not counted as a subgame; he notes this is "only a matter of style". Tadelis, and M W G in Definition 9.B.1, count the whole game as a subgame. The notes follow Tadelis.
+
+Why the second test. Within a subgame, a player's best response should depend only on what others do inside it; page 156. Gibbons's reason, pages 123 to 124: test two guarantees that the history up to x is common knowledge among everyone who moves later in the subgame, so the subgame can be analysed on its own and the analysis is relevant to the original game.
+
+Five point three. The equilibrium, Definition 8.3, page 157.
+
+Definition 8.3, Selten, 1975. Let Gamma be an n-player extensive-form game. A behavioral strategy profile sigma star, made of sigma 1 star through sigma n star, is a subgame-perfect Nash equilibrium if for every proper subgame G of Gamma, the restriction of sigma star to G is a Nash equilibrium in G.
+
+Five consequences, each in one line.
+
+Every subgame-perfect equilibrium is a Nash equilibrium, because the whole game is a proper subgame.
+
+Not every Nash equilibrium is subgame perfect: for example F with f f, and O with o o, in the sequential Battle of the Sexes. Page 157.
+
+If the only proper subgame is the whole game, the subgame-perfect equilibria are the Nash equilibria, since there is nothing else to check. That is M W G Exercise 9.B.2, part a, and it covers the card game and every simultaneous game.
+
+The Fact on page 158: in finite games of perfect information, the subgame-perfect equilibria are the profiles that survive backward induction. Every node roots a subgame, and a Nash equilibrium of a one-mover subgame is that mover's best action.
+
+At least one subgame-perfect equilibrium exists in finite games; the Summary on page 169. Gibbons page 124: each finite subgame has a Nash equilibrium, by Nash's theorem, and the reduction described next builds one.
+
+Subgame perfection requires best responses off the equilibrium path as well as on it. In Tadelis's words, the restriction must be a Nash equilibrium "in every proper subgame, including those that are not reached in equilibrium". Page 157.
+
+The sequential Battle of the Sexes, pages 157 to 158. The subgames at x 1 and x 2 have one player each, so their only Nash equilibria are o at x 1 and f at x 2. Of the three Nash equilibria, only O with o f has those restrictions.
+
+Five point four. The method: solve the last subgames, replace, repeat. Gibbons's footnote 20, page 124, and M W G Proposition 9.B.3 give the procedure in five steps.
+
+One. Find the smallest subgames, those containing no other subgame.
+
+Two. Find a Nash equilibrium of each, pure or mixed.
+
+Three. Replace each such subgame by a terminal node carrying that equilibrium's payoffs.
+
+Four. Repeat on the reduced game until the root.
+
+Five. If a subgame has several equilibria, branch: run the rest once for each.
+
+M W G Proposition 9.B.3 is the justification, and it is G layer, named only. Part one of it: in any subgame-perfect equilibrium that plays a given equilibrium in a subgame S, the moves outside S form a subgame-perfect equilibrium of the reduced game. Part two: any subgame-perfect equilibrium of the reduced game, completed by that equilibrium inside S, is a subgame-perfect equilibrium of the whole game.
+
+Five point four point one. Worked: the voluntary Battle of the Sexes, pages 158 to 159.
+
+Strategies. Player 1 has Y O, Y F, N O and N F. N O and N F differ only at x 1, which N never reaches. Player 2 has o and f.
+
+The normal form. Row Y O: against o, 2 and 1; against f, 0 and 0. Row Y F: against o, 0 and 0; against f, 1 and 2. Row N O: 1.5 and 1.5 against both. Row N F: 1.5 and 1.5 against both.
+
+Nash equilibria. In column o, player 1's best reply is Y O, since 2 beats 1.5, which beats 0; and in row Y O, player 2 plays o, since 1 beats 0. So Y O with o. In column f, player 1's best replies are N O and N F, since 1.5 beats 1, which beats 0; in rows N O and N F, player 2 is indifferent, so f is a best reply. So N O with f, and N F with f. In row Y F, player 2 plays f, but then player 1 prefers N, so it is not an equilibrium.
+
+The Nash equilibria are: Y O with o, N O with f, and N F with f. Page 158.
+
+Subgame perfection. The subgame at x 1 is the simultaneous Battle of the Sexes, whose pure equilibria are O with o, and F with f, plus one mixed equilibrium, which is left to Tadelis exercise 8.1, page 170. Branch on the two pure ones.
+
+Branch one: the subgame plays O with o. The payoffs carried up are 2 and 1. At x 0, player 1 compares Y, worth 2, with N, worth 1.5, and picks Y. The subgame-perfect equilibrium is Y O with o.
+
+Branch two: the subgame plays F with f. The payoffs carried up are 1 and 2. At x 0, player 1 compares Y, worth 1, with N, worth 1.5, and picks N. The subgame-perfect equilibrium is N F with f.
+
+So the subgame-perfect equilibria are Y O with o, and N F with f. Page 158.
+
+N O with f is a Nash equilibrium but not subgame perfect. Restricted to the subgame at x 1, it is O with f, which is not an equilibrium of the simultaneous Battle of the Sexes: player 2 would switch to o. It survives the Nash test only because x 1 is never reached.
+
+The figure for this example has three panels. On the left, the voluntary Battle of the Sexes tree: player 1 chooses Y or N at the root; N ends at 1.5 and 1.5; after Y comes a simultaneous Battle of the Sexes, with player 2's two nodes joined by a dashed information-set line, and a box marks the subgame starting at player 1's second node. In the middle, the reduced game if the subgame plays O with o: Y gives 2 and 1 and is chosen over N. On the right, the reduced game if the subgame plays F with f: Y gives 1 and 2, and N is chosen. Source: Tadelis Figures 8.4 and 8.7, pages 155 and 159. The box is the only place a subgame can start below the root; the dashed line inside it is why neither of player 2's nodes can start one. Player 1's choice flips between the two reduced games because 1.5 sits between the two payoffs 2 and 1.
+
+Five point four point two. Worked: mutually assured destruction, section 8.3.3, Figure 8.11, pages 163 to 166.
+
+Player 1, the United States, ignores, I, with payoffs 0 and 0, or escalates, E. After E, player 2, the U S S R, backs down, B, giving 10 and minus 10, or goes nuclear, N. After N, they play a simultaneous war stage: each chooses retreat, capital R for player 1 and small r for player 2, or Doomsday, capital D and small d.
+
+The war stage payoffs. Both retreat: minus 5 each. Every other combination, that is, if either or both choose Doomsday: minus 100 each.
+
+Strategies: player 1 has I R, I D, E R and E D. Player 2 has B r, B d, N r and N d. The pure Nash equilibria of the whole game, page 164, are six: I R with N r; I R with N d; I D with N r; I D with N d; E D with B r; and E D with B d.
+
+Step 1, the war stage. Both retreating is an equilibrium: neither gains by switching, since minus 5 beats minus 100. Both choosing Doomsday is also an equilibrium: either player switching alone still gets minus 100, so there is no strict gain. Two pure Nash equilibria: the first, both retreat, with minus 5 each; the second, both Doomsday, with minus 100 each. Page 165.
+
+Step 2, branch on the war stage, Figure 8.12, pages 165 to 166.
+
+Case one: the war stage plays both retreat, worth minus 5 each. Player 2 compares going nuclear, worth minus 5, with backing down, worth minus 10, and goes nuclear. Player 1 compares escalating, worth minus 5, with ignoring, worth 0, and ignores. The subgame-perfect equilibrium is I R with N r.
+
+Case two: the war stage plays both Doomsday, worth minus 100 each. Player 2 compares backing down, worth minus 10, with going nuclear, worth minus 100, and backs down. Player 1 compares escalating, worth 10, with ignoring, worth 0, and escalates. The subgame-perfect equilibrium is E D with B d.
+
+So the subgame-perfect equilibria are I R with N r, and E D with B d. Page 166.
+
+Why the other four Nash equilibria fail, each in the first subgame where its restriction is not a Nash equilibrium.
+
+I R with N d plays R with d in the war stage. Player 2 switches to r, since minus 5 beats minus 100.
+
+I D with N r plays D with r. Player 1 switches to R, since minus 5 beats minus 100.
+
+E D with B r plays D with r. Again player 1 switches to R.
+
+I D with N d plays D with d in the war stage, which is an equilibrium there. But at player 2's node, backing down gives minus 10, which beats minus 100 from going nuclear followed by D with d.
+
+In both subgame-perfect equilibria the war stage is off the path, and still it decides everything. Page 166. What the players expect to happen in a subgame nobody reaches fixes who escalates and who backs down. The escalation equilibrium, E D with B d, works because both expect Doomsday if war comes.
+
+The mixed equilibrium of the war stage and the subgame-perfect equilibrium built on it are Tadelis exercise 8.2, page 170.
+
+Five point five. Two-stage games with simultaneous moves, Gibbons section 2.2.A, pages 71 to 73.
+
+Gibbons's class. Players 1 and 2 move simultaneously. Players 3 and 4 observe a 1 and a 2, and then move simultaneously. Assume each second-stage game has a unique Nash equilibrium, written a 3 star of a 1 and a 2, and a 4 star of a 1 and a 2. Then the first stage is the simultaneous game in which player i's payoff is u i evaluated at a 1, a 2, and those two second-stage replies. If its Nash equilibrium, a 1 star and a 2 star, is unique, the subgame-perfect outcome is a 1 star, a 2 star, and the second-stage replies evaluated at a 1 star and a 2 star.
+
+Outcome versus equilibrium, Gibbons pages 125 to 126. The outcome names the moves on the path. The equilibrium names complete strategies: a 1 star, a 2 star, and the reply functions a 3 star and a 4 star, which give a reply for every first-stage pair. In the two-stage perfect-information game, the outcome is a 1 star and R 2 of a 1 star; the subgame-perfect equilibrium is a 1 star and the whole function R 2. Writing the outcome when an equilibrium is asked for is the most common error on this topic. Part nine comes back to it.
+
+This class is the template for the multistage games of lecture 4: bank runs, tariffs and tournaments are Gibbons's sections 2.2.B to 2.2.D.
+
+Recap of part five. A proper subgame starts at a singleton and cuts no information set. A subgame-perfect equilibrium is a Nash equilibrium in every proper subgame. It equals backward induction under perfect information, it equals Nash when the only subgame is the whole game, and it is found by solving the smallest subgames, replacing them by their equilibrium payoffs, and branching on multiple equilibria.
+
+Checklist for part five. You should be able to list the proper subgames of a tree and justify each one with the two tests. You should be able to find all pure subgame-perfect equilibria by branching, as in the voluntary Battle of the Sexes and mutually assured destruction. You should be able to say, for each Nash equilibrium that is not subgame perfect, in which subgame its restriction fails. And you should be able to write a subgame-perfect equilibrium as complete strategies, not as an outcome.
+
+Part six. Credible threats, entry deterrence and the value of commitment.
+
+This part covers note L03 zero six, drawing on Cabral section 7.2, pages 167 to 171: the sequential-entry game, Figure 7.7; the value of credible commitment, Figures 7.8 and 7.9; short run and long run, Figure 7.10; M W G Example 9.B.1, pages 268 to 269, and Example 9.B.3 in section 9.B; and Gibbons pages 127 to 128.
+
+The claim. An incumbent's threat to fight an entrant can hold up a Nash equilibrium and still be empty, because once entry has happened, fighting pays the incumbent less than sharing. Subgame perfection deletes that equilibrium. The incumbent's remedy is to change its own payoffs before the entrant moves, so that fighting becomes its best reply: a credible commitment. Cabral's numbers put the value of that commitment at 30, and it is earned by making one of the incumbent's own payoffs worse.
+
+Six point one. The sequential-entry game, Cabral Figure 7.7, page 168.
+
+A monopolized industry. Player 1, the entrant, chooses e, enter, or e bar, stay out. If it enters, player 2, the incumbent, chooses r, retaliate, which means a price war, or r bar, accommodate. Payoffs are listed entrant first, incumbent second.
+
+If the entrant stays out: 0 for the entrant, 50 for the incumbent.
+
+If it enters and the incumbent accommodates: 10 for the entrant, 20 for the incumbent.
+
+If it enters and the incumbent retaliates: minus 10 for the entrant, 10 for the incumbent.
+
+A source detail, and the first of the book corrections. Cabral's Figure 7.7 prints the price-war payoffs as minus 10 and 10, that is, 10 for the incumbent. But the text on page 168 says the incumbent "would get minus 10" there. Every conclusion below holds for either value, since both are below 20, so the incumbent prefers to accommodate, and above minus 20, the bonded case of section six point three. The companion page lets you check both.
+
+Six point one point one. Nash equilibria, page 168. In matrix form: if the entrant enters, accommodation gives 10 and 20, retaliation gives minus 10 and 10. If it stays out, both columns give 0 and 50.
+
+First candidate: enter, with accommodate. Given entry, the incumbent gets 20 from accommodating against 10 from retaliating. Given accommodation, the entrant gets 10 from entering against 0. It is a Nash equilibrium.
+
+Second candidate: stay out, with retaliate. Given retaliation, the entrant gets 0 from staying out against minus 10 from entering. Given that the entrant stays out, the incumbent gets 50 whatever it plans, so retaliating is a best reply, "though not the only one". It is a Nash equilibrium too.
+
+Six point one point two. Only one survives, page 169. The second equilibrium rests on the incumbent's plan to retaliate at a node that staying out never reaches. Is the threat credible? If the entrant did enter, the incumbent would compare 10 from retaliating with 20 from accommodating, and accommodate.
+
+Backward induction in two steps. Step 1, the incumbent after entry: accommodating gives 20, retaliating 10; it accommodates. Step 2, the entrant: entering, then accommodation, gives 10; staying out gives 0; it enters.
+
+So the subgame-perfect equilibrium is enter, with accommodate, with payoffs 10 and 20.
+
+For a tree this simple, subgame perfection and backward induction coincide, page 169, as the Fact in part five says.
+
+Six point one point three. The same game in M W G, Example 9.B.1, pages 268 to 269. This is G layer, named only.
+
+M W G's predation game has: out, giving 0 to the entrant and 2 to the incumbent; in and fight, giving minus 3 and minus 1; in and accommodate, giving 2 and 1. It has the same two Nash equilibria: out, with fight if in; and in, with accommodate if in. Their diagnosis is the clearest statement of the problem. Quoting page 269: "When the entrant plays 'out,' actions at decision nodes that are unreached by play of the equilibrium strategies do not affect firm I's payoff. As a result, firm I can plan to do absolutely anything at this decision node. But what firm I's strategy says it will do at the unreached node can actually insure that firm E, taking firm I's strategy as given, wants to play 'out.'"
+
+Their Example 9.B.3, also in section 9.B, replaces the post-entry move by a simultaneous fight or accommodate game between both firms. It has three pure Nash equilibria, and solving the post-entry subgame first, where both accommodate, leaves a unique subgame-perfect equilibrium in which the entrant enters. Again, G layer.
+
+Six point two. Why "threat" is the right word, and why it fails. This is intuition.
+
+Gibbons, pages 127 to 128, on the equilibrium L with R prime R prime of his Figure 2.4.1, from part three: "one might say that player 2 is threatening to play R prime if player 1 plays R. If this threat works, then 2 is not given the opportunity to carry out the threat. The threat should not work, however, because it is not credible."
+
+Three terms. A threat is a plan to act against your own interest if the other side does something; the other side believes it in a Nash equilibrium. A credible threat is a plan that is your best reply when the moment comes; the other side believes it in a subgame-perfect equilibrium. A non-credible threat is a plan you would abandon when the moment comes; the other side ignores it.
+
+The rule. A threat is credible only if carrying it out is optimal at the node where it would be carried out. Saying it louder, or saying it first, changes nothing; only changing the payoffs at that node does.
+
+Six point three. The value of credible commitment, Cabral pages 169 to 170, Figure 7.8.
+
+Suppose the incumbent can first sign an enforceable, non-renegotiable contract, a bond: if the entrant enters and the incumbent does not retaliate, the incumbent pays a penalty of 40. Its accommodation payoff drops from 20 to 20 minus 40, which is minus 20. Everything else is unchanged. The game now starts with the incumbent choosing bond, b, or no bond, b bar.
+
+Solve the two subgames.
+
+With no bond, which is Figure 7.7: after entry, the incumbent compares accommodating, 20, with retaliating, 10, and accommodates. The entrant compares entering, 10, with staying out, 0, and enters. The incumbent's payoff is 20.
+
+With the bond: after entry, the incumbent compares accommodating, minus 20, with retaliating, 10, and retaliates. The entrant compares entering, minus 10, with staying out, 0, and stays out. The incumbent's payoff is 50.
+
+At the root, the incumbent compares 50 with 20 and posts the bond.
+
+The value of commitment is 50 minus 20, which is 30. Page 170.
+
+The figure shows both trees. On the left, the entry game: the entrant chooses out or in; out ends at 0 and 50; after in, the incumbent's accommodate edge is highlighted, leading to 10 and 20, and the retaliate edge, leading to minus 10 and 10, is dashed as a non-credible threat. On the right, the incumbent first chooses bond or no bond. In the no-bond branch the entrant enters and the incumbent accommodates. In the bond branch, where accommodation pays minus 20, the incumbent would retaliate and the entrant stays out, giving 0 and 50; the bond edge is highlighted. Green marks the subgame-perfect choices at every node; dashed orange marks the non-credible threat. Source: Cabral Figures 7.7 and 7.8, pages 168 to 170, with the bond of 40 from page 169.
+
+In the right-hand tree, the two subgames differ in a single number: 20 versus minus 20 in the incumbent's accommodation payoff. That one number flips the incumbent's post-entry choice, which flips the entrant's choice, which moves the incumbent from 20 to 50.
+
+In Cabral's words, page 170: "A credible commitment may have significant strategic value." The bond makes the incumbent worse off at one terminal node and better off in equilibrium, because the node it worsens is the one the threat needed it to avoid.
+
+Six point three point one. How big must the bond be? Retaliation becomes the incumbent's strict best reply after a bond B when 10, the retaliation payoff, is greater than 20 minus B, the accommodation payoff. That holds if and only if B is greater than B star, which is 20 minus 10, which is 10.
+
+In general, with the incumbent's duopoly payoff D sub I and its fight payoff F sub I, the threshold is B star equal to D sub I minus F sub I.
+
+Walk through five bond sizes.
+
+A bond of 0: accommodation pays 20; the incumbent accommodates; the entrant enters; the incumbent gets 20.
+
+A bond of 5: accommodation pays 15; the incumbent still accommodates; the entrant enters; the incumbent gets 15, which is worse than no bond, so it would not be posted.
+
+A bond of 10: accommodation pays 10; the incumbent is indifferent, so there are two subgame-perfect equilibria; the entrant enters or stays out; the incumbent gets 10 or 50.
+
+A bond of 11: accommodation pays 9; the incumbent retaliates; the entrant stays out; the incumbent gets 50.
+
+A bond of 40, Cabral's value: accommodation pays minus 20; the incumbent retaliates; the entrant stays out; the incumbent gets 50.
+
+A bond below B star is worse than none: it lowers the accommodation payoff without changing behaviour. With the text's value of minus 10 for retaliation, B star is 20 minus minus 10, which is 30, and Cabral's 40 still clears it.
+
+The interactive companion, the Credible Threat Desk, lets you move the bond through B star and watch the incumbent's subgame-perfect payoff jump from 20 to 50. Move the incumbent's war payoff above its accommodation payoff, and the bond becomes worthless, because the threat is credible on its own. Push the entrant's war payoff above 0, and no threat deters it.
+
+Six point three point two. Two ways to model commitment, pages 170 to 171. Cabral's methodological point: if a player is credibly committed to an action, model it either by changing its payoffs, the bond of Figure 7.8, or by changing the order of moves, letting it choose retaliate or accommodate before the entrant moves, Figure 7.9. Solving Figure 7.9 backward gives the same answer as Figure 7.8. What a commitment does, in game-theoretic terms, is turn a later move into an earlier one. The Stackelberg leader of part seven is exactly this: a firm whose quantity is fixed before its rival moves.
+
+Six point three point three. Short-run and long-run variables, page 171, Figure 7.10. When firms choose both a long-run variable, such as capacity, plant or product position, and a short-run one, such as price, model the long-run choice in the first stage and the short-run choice in the second. Short-run variables are chosen given the long-run ones. The two-stage game is then solved by subgame perfection, the second stage first. Cabral uses this timing for capacity and price, entry and output, and product positioning and price, in his chapters 8, 10 and 14.
+
+Six point four. The organizational reading. Three settings.
+
+Incumbent against entrant. The non-credible threat is "we will start a price war". The commitment that fixes it: sunk capacity, a bond, or a reputation at stake in other markets.
+
+Seller against shopper. The non-credible threat is "the price will be fair once you are here"; after the trip is sunk, the seller takes everything. The commitment that fixes it: a price posted in advance. That is Tadelis exercise 8.13, pages 173 to 174.
+
+Lender against debtor. The non-credible threat is "we will sue if you default", when suing costs more than it recovers. The commitment that fixes it: a cheap, enforceable legal system. That is Tadelis exercise 8.7, page 171.
+
+The broader theme, commitment as a source of value and renegotiation as its enemy, returns with relational contracts in lecture 6. Cabral's footnote n, on page 169, already flags that most real contracts are renegotiable, which is what makes the bond assumption strong.
+
+Recap of part six. In the entry game, the price-war threat holds up a Nash equilibrium but is not credible, so subgame perfection removes it. A non-renegotiable bond that lowers the incumbent's accommodation payoff below its fight payoff makes the threat credible, keeps the entrant out, and raises the incumbent from 20 to 50: a value of 30. The bond must exceed B star, the accommodation payoff minus the fight payoff; a smaller bond only hurts.
+
+Checklist for part six. You should be able to find both Nash equilibria of the entry game and say why only one is subgame perfect. You should be able to value a commitment, here 30, and derive the threshold bond, 10 with the figure's numbers and 30 with the text's. You should be able to explain the two ways of modelling commitment, by payoffs or by order of moves.
+
+Part seven. Stackelberg competition: the leader's quantity is a commitment.
+
+This part covers note L03 zero seven, drawing on Tadelis section 8.3.2, pages 160 to 163, with equations 8.1 and 8.2, Figures 8.9 and 8.10 and the Remark on page 163; Gibbons section 2.1.B, pages 61 to 64; and Cabral section 7.2, pages 170 to 171, on commitment.
+
+The claim. Make Cournot sequential: firm 1 chooses q 1, firm 2 sees it and replies. Backward induction turns firm 2's best-response function into a menu, from which firm 1 picks its favourite point: q 1 equal to 45, q 2 equal to 22.5, with profits 1012.5 and 506.25 against Cournot's 900 each. The leader could have produced its Cournot quantity and chose not to, so it gains; the follower loses; total output rises and price falls. And the outcome is not an equilibrium: the subgame-perfect equilibrium must specify firm 2's reply to every q 1.
+
+Seven point one. The game, pages 160 to 161.
+
+Tadelis's Cournot example: inverse demand p equal to 100 minus q, where q is q 1 plus q 2, and costs c i of q i equal to 10 times q i. In the simultaneous game of lecture 2, each firm maximizes, over its own quantity q i, the expression 100 minus q i minus q j, times q i, minus 10 q i. The first-order condition is 100 minus 2 q i minus q j minus 10 equals zero, so the best response is q i equal to 90 minus q j, all over 2.
+
+Change one detail: firm 1 chooses q 1 first, and firm 2 observes it and then chooses q 2.
+
+Compare the two games on three dimensions. Firm 2's information: in Cournot, Figure 8.10, it has one information set containing every q 1; in Stackelberg, Figure 8.9, it has a separate information set for each q 1, a continuum of them. Proper subgames: in Cournot, only the whole game; in Stackelberg, the whole game and one per q 1. Type: Cournot is imperfect information; Stackelberg is perfect information.
+
+Seven point two. Backward induction, every step, pages 160 to 161.
+
+Step 1, the follower. At the information set where it has seen q 1, firm 2 maximizes 100 minus q 1 minus q 2, times q 2, minus 10 q 2. The first-order condition is 100 minus q 1 minus 2 q 2 minus 10 equals zero. So q 2 of q 1 equals 90 minus q 1, all over 2. That is equation 8.1.
+
+The formula is Cournot's best response, but its meaning changed. There it answered a belief about q 1; here it answers an observed q 1. Page 161, and Gibbons page 62.
+
+Step 2, the leader. Firm 1 knows, by common knowledge of rationality, that firm 2 will follow equation 8.1, so it substitutes it in. It maximizes, over q 1, the bracket 100 minus q 1 minus the fraction 90 minus q 1 over 2, all times q 1, minus 10 q 1. That is equation 8.2.
+
+Simplify the price: 100 minus q 1 minus 45 plus q 1 over 2 is 55 minus q 1 over 2. So the objective is 55 minus q 1 over 2, times q 1, minus 10 q 1, which is 45 q 1 minus q 1 squared over 2. Its derivative is 45 minus q 1; setting it to zero gives q 1 equal to 45. Tadelis writes the condition unsimplified: 100 minus 2 q 1 minus 45 plus q 1 minus 10 equals zero.
+
+Step 3, the numbers, Stackelberg against Cournot.
+
+Leader's quantity: 45 in Stackelberg, 30 in Cournot, a change of plus 15.
+
+Follower's quantity: 90 minus 45, over 2, which is 22.5, against 30, a change of minus 7.5.
+
+Total quantity: 67.5 against 60, a change of plus 7.5, which is nine eighths of 60.
+
+Price: 100 minus 67.5, which is 32.5, against 40, a change of minus 7.5.
+
+Leader's profit: 32.5 minus 10, times 45, which is 1012.5, against 900: a change of plus 112.5.
+
+Follower's profit: 32.5 minus 10, times 22.5, which is 506.25, against 900: a change of minus 393.75.
+
+Industry profit: 1518.75 against 1800, a change of minus 281.25.
+
+Consumer surplus, total quantity squared over 2: 2278.125 against 1800, a change of plus 478.125.
+
+Tadelis, page 161: "When two firms are competing by setting quantities, if one firm can somehow commit to move first, it will enjoy a first-mover advantage."
+
+The figure has two panels. On the left, the plane with q 1 on one axis and q 2 on the other, showing firm 2's best-response line, q 2 equal to 90 minus q 1 over 2; firm 1's best-response line; the Cournot point, 30 and 30, where they cross; the Stackelberg point, 45 and 22.5, on firm 2's line; and two dashed leader isoprofit curves: 900 through the Cournot point, and 1012.5 tangent to firm 2's line at the Stackelberg point. On the right, the leader's profit along firm 2's reaction curve: a hump peaking at q 1 equal to 45 with profit 1012.5, with the Cournot quantity 30 and profit 900 marked lower on the same hump. Source: Tadelis equations 8.1 and 8.2, numbers on page 161. On the left, firm 1's isoprofit curves are hump-shaped and lower curves mean higher profit; the Stackelberg point is where the lowest isoprofit firm 1 can reach just touches firm 2's line. The Cournot point also lies on firm 2's line, so it is on the menu; on the right it sits on the same hump at 900, below the peak.
+
+Seven point two point one. Why the leader must gain, the follower must lose, and the total must fall. Gibbons's argument, page 63, needs no algebra. Four steps.
+
+One, the leader gains. In the Stackelberg game, firm 1 could choose its Cournot quantity, and firm 2 would reply with its Cournot quantity, because q 2 of 30 is 30. Firm 1 gets 900 that way and chooses something else, so it gets at least 900.
+
+Two, price falls. Aggregate output rises from two thirds of a minus c to three quarters of a minus c.
+
+Three, industry profit falls. Below the monopoly output, more output means less joint profit.
+
+Four, the follower loses. Joint profit fell and the leader's share rose, so the follower's fell.
+
+Seven point two point two. The general linear case, Gibbons pages 62 to 63. With inverse demand P of Q equal to a minus Q and marginal cost c, the follower's reply is R 2 of q 1 equal to a minus q 1 minus c, all over 2, for q 1 below a minus c. The leader maximizes q 1 times the bracket a minus q 1 minus R 2 of q 1 minus c, which equals q 1 times a minus q 1 minus c, over 2. So the leader produces q 1 star equal to a minus c, over 2; the follower produces R 2 of q 1 star equal to a minus c, over 4; and total Stackelberg output, three quarters of a minus c, exceeds Cournot output, two thirds of a minus c.
+
+Check it at a equal to 100 and c equal to 10: 45, 22.5, 67.5 and 60. Correct.
+
+With a slope b and different costs c 1 and c 2, which is the companion's model, the same steps give: the leader's quantity is a minus 2 c 1 plus c 2, all over 2 b; the follower's is a plus 2 c 1 minus 3 c 2, all over 4 b; and the follower is shut out when c 2 is at least a plus 2 c 1, over 3. Cournot gives each firm i the quantity a minus 2 c i plus c j, all over 3 b.
+
+The companion, the First-Mover Desk: move a, b, c 1 and c 2 and read the first-mover advantage live. Raise c 2 past a plus 2 c 1 over 3, which is 40 at the defaults, to watch the leader's commitment shut the follower out while Cournot still lets it in; and past a plus c 1 over 2, which is 55, where both games become monopoly and the advantage is 0.
+
+Seven point three. An equilibrium is not an outcome, page 161.
+
+Tadelis: "Writing down q 1, q 2 equal to 45, 22.5 is not identifying a Nash equilibrium because q 1 equal to 45 is not a best response to q 2 equal to 22.5."
+
+Check it. If firm 2 produced 22.5 regardless, firm 1's best response would be 90 minus 22.5, over 2, which is 33.75, not 45. The pair of numbers is the outcome. The equilibrium is: q 1 equal to 45, together with the function q 2 of q 1 equal to 90 minus q 1, over 2. A number for the leader, and a function for the follower: one action at each of its continuum of information sets. This is Gibbons's distinction from part five: the outcome is a 1 star and R 2 of a 1 star; the equilibrium is a 1 star and the function R 2.
+
+Seven point four. Nash equilibria that are not subgame perfect, pages 162 to 163.
+
+Cournot's outcome is a Nash equilibrium of the Stackelberg game. Take q 1 equal to 30, and the constant strategy for firm 2 that produces 30 whatever q 1 is. Three checks.
+
+Is firm 2's plan a best reply on the path? q 2 of 30 should be 90 minus 30, over 2, which is 30. Yes.
+
+Is firm 1's q 1 equal to 30 a best reply to "30 whatever you do"? Maximizing 100 minus q 1 minus 30 minus 10, times q 1, gives q 1 equal to 30. Yes.
+
+Is firm 2's plan a best reply off the path? At q 1 equal to 45 it plays 30, but the best reply is 90 minus 45, over 2, which is 22.5. No.
+
+So it is a Nash equilibrium and not subgame perfect. As Tadelis puts it on page 163, "mutual best responses on the equilibrium path is all that Nash equilibrium requires". The only sequentially rational strategy for firm 2 is q 2 of q 1 equal to 90 minus q 1, over 2, which makes 45 together with that function the unique subgame-perfect equilibrium.
+
+A continuum of Nash equilibria, from the Remark on page 163. Firm 2 threatens to flood the market unless firm 1 produces exactly 20. Its strategy: produce 35 if q 1 equals 20, and produce 100 if q 1 is anything else.
+
+Against it, q 1 equal to 20 earns 100 minus 20 minus 35 minus 10, times 20, which is 700, a positive number. Any other q 1 faces a price equal to the larger of zero and 100 minus q 1 minus 100, which is zero, and so earns minus 10 times q 1, which is at most zero. So q 1 equal to 20 is a best reply. And 35 is firm 2's best reply to 20, since 90 minus 20, over 2, is 35. Replacing 20 by any target q 1 hat between 0 and 90, and 35 by 90 minus q 1 hat, over 2, gives a Nash equilibrium for each target. Every point of firm 2's reaction curve is a Nash outcome; one is subgame perfect. The flooding threat is the textbook non-credible threat: having seen a q 1 other than 20, producing 100 would drive the price to 0 and lose firm 2 money.
+
+A source detail, and the second book correction. The printed text on page 163 says "q 2 equal to 40 is a best response to q 1 equal to 20". With equation 8.1 the best response is 90 minus 20, over 2, which is 35, and 35 is also the value in the displayed strategy. The notes use 35, and the computer check confirms it.
+
+Seven point five. More information can hurt, Gibbons page 63. This is intuition.
+
+In single-person decisions, more information never hurts. Here firm 2 knows q 1, and firm 1 knows that firm 2 knows it, and firm 2 ends up worse off than in Cournot.
+
+Gibbons's check. Let firm 1 move first, but let firm 2 not observe q 1. If firm 2 believed q 1 was a minus c, over 2, it would reply a minus c, over 4. But firm 1's best response to a minus c over 4 is a minus c minus a minus c over 4, all over 2, which is three eighths of a minus c, not a half. So that belief is inconsistent. The unique Nash equilibrium of the unobserved game is Cournot, a minus c over 3 each. Moving first is worth nothing unless the move is observed. That is the lesson of part one, information and not clock time, with a price tag.
+
+Seven point six. The organizational reading. The Stackelberg leader is a firm whose capacity, plant or contract is sunk before rivals choose: a commitment in the sense of part six, implemented by moving first rather than by a bond. Gibbons's example is General Motors' leadership role in the United States car industry, page 61. The same structure, a leader that sets a variable and a follower that best-responds, is Leontief's monopoly union, Gibbons section 2.1.C, pages 64 to 68. The union sets the wage, the firm picks employment on its labour demand curve, and the outcome is inefficient, which lecture 4 takes up as bargaining.
+
+Recap of part seven. Stackelberg is Cournot with an observed first move. The follower's reply becomes the leader's menu; the leader picks 45, the follower replies 22.5; the leader gains 112.5 over Cournot, the follower loses 393.75, output rises and price falls. The subgame-perfect equilibrium is a number and a function. The Cournot pair and every point on the follower's reaction curve are Nash outcomes held up by non-credible threats. Unobserved, moving first is worth nothing.
+
+Checklist for part seven. You should be able to solve Stackelberg by backward induction, in Tadelis's numbers and in the general linear case. You should be able to compare it with Cournot and explain Gibbons's four-step argument without algebra. You should be able to exhibit a Nash equilibrium of the Stackelberg game that is not subgame perfect, and say exactly where its plan fails. And you should be able to explain why an unobserved first move gives back Cournot.
+
+Part eight. Time-inconsistent preferences: a game against your future self.
+
+This part covers note L03 zero eight, drawing on Tadelis section 8.3.4, pages 166 to 169, equations 8.3 to 8.9, and the sophisticated three-period example with beta equal to one half and delta equal to 1.
+
+The claim. With exponential discounting, a plan made today is the plan you will want to follow tomorrow. With present bias, called hyperbolic or beta-delta discounting, it is not. A sophisticated decision maker treats her future self as another player and solves the problem by backward induction: a subgame-perfect equilibrium of a game with one person in it. This part also corrects a calculus slip in the book's worked example: with log utility the first-period choice is K over 2, not two thirds of K.
+
+Eight point one. Exponential discounting is time consistent, pages 166 to 167.
+
+A consumption stream x 1 through x T is worth, in period 1: u of x 1, plus delta times u of x 2, and so on, up to delta to the power T minus 1 times u of x T. In short, the sum over t from 1 to T of delta to the power t minus 1, times u of x t. That is equation 8.3.
+
+Take u equal to the natural log, a budget K over three periods, and x 1 equal to K minus x 2 minus x 3. The problem is to maximize, over x 2 and x 3, the log of K minus x 2 minus x 3, plus delta times the log of x 2, plus delta squared times the log of x 3.
+
+The first-order conditions are: minus 1 over K minus x 2 minus x 3, plus delta over x 2, equals zero; and minus 1 over K minus x 2 minus x 3, plus delta squared over x 3, equals zero. So x 2 equals delta times x 1, and x 3 equals delta squared times x 1. With x 1 plus x 2 plus x 3 equal to K, the solution is: x 1 equals K over 1 plus delta plus delta squared; x 2 equals delta K over the same denominator; x 3 equals delta squared K over the same denominator. Those are equations 8.4 to 8.6.
+
+Will period-2 self follow the plan? After consuming x 1, she has K 2 equal to K minus x 1, which is delta plus delta squared, times K, over 1 plus delta plus delta squared. That is equation 8.7. She maximizes the log of x 2 plus delta times the log of K 2 minus x 2. So 1 over x 2 equals delta over K 2 minus x 2, and x 2 equals K 2 over 1 plus delta. That is equation 8.8.
+
+Substitute equation 8.7: x 2 equals delta plus delta squared, times K, over 1 plus delta plus delta squared, all times 1 over 1 plus delta. The factor 1 plus delta cancels, leaving delta K over 1 plus delta plus delta squared: the same as equation 8.5. Exponential discounting is time consistent. Page 167.
+
+Eight point two. Present bias breaks it, pages 167 to 168.
+
+Hyperbolic, or beta-delta, discounting weights the present by 1 and gives every future period an extra factor beta, between 0 and 1. The value in period 1 is: the log of x 1, plus beta delta times the log of x 2, plus beta delta squared times the log of x 3. That is equation 8.9.
+
+Between today and tomorrow the discount is beta delta; between two future dates it is delta. Period-1 self wants to treat periods 2 and 3 alike, with relative weight delta. When period 2 arrives, period-2 self discounts period 3 by beta delta and wants more for herself. Plans get revised.
+
+A sophisticated player 1 knows this and plays a game against "player 2", her period-2 self. Take delta equal to 1 and beta equal to one half.
+
+Eight point two point one. Backward induction: period-2 self, page 168. With budget K 2, she maximizes the log of x 2 plus one half times the log of K 2 minus x 2. The first-order condition is 1 over x 2 minus one half over K 2 minus x 2 equals zero. So K 2 minus x 2 equals one half of x 2, and x 2 of K 2 is two thirds of K 2, while x 3 of K 2 is one third of K 2.
+
+This is player 2's strategy: a reply for each of the continuum of subgames indexed by K 2.
+
+Eight point two point two. Period-1 self, page 169, and a correction. Player 1 substitutes the reply, with K 2 equal to K minus x 1. Her value is: the log of x 1, plus one half the log of two thirds of K minus x 1, plus one half the log of one third of K minus x 1.
+
+The constants two thirds and one third sit inside logarithms, so they drop out of the derivative: the derivative of the log of c times K minus x 1, with respect to x 1, is minus 1 over K minus x 1, for any positive constant c. Hence the derivative of her value is: 1 over x 1, minus one half over K minus x 1, minus one half over K minus x 1. That is 1 over x 1 minus 1 over K minus x 1. Setting it to zero gives x 1 equal to K over 2. Then x 2 is two thirds of K over 2, which is K over 3, and x 3 is K over 6.
+
+The third book correction. The book prints the first-order condition as 1 over x 1, minus two thirds times one half over K minus x 1, minus one third times one half over K minus x 1, equals zero. That multiplies each term by the constant inside the logarithm, and concludes that x 1 is two thirds of K, on page 169. That is not the derivative of the objective printed one line above it. A grid search of the objective, in the Python note, peaks at x 1 equal to one half of K, and the value at K over 2 is higher than the value at two thirds of K. If you are examined on this example, state the objective and differentiate it; do not reproduce the printed number.
+
+The figure has two panels, for the sophisticated three-period problem with beta one half, delta 1 and log utility. On the left, self 1's payoff as a function of x 1 over K: a concave curve peaking at x 1 equal to K over 2, with the printed value two thirds of K marked lower on the curve. On the right, grouped bars of x 1, x 2 and x 3 as shares of K for four plans. Exponential with delta equal to 1: one third each. Self 1's ideal under commitment: one half, one quarter, one quarter. The correct sophisticated equilibrium: one half, one third, one sixth. And the printed one: two thirds, two ninths, one ninth. Source: Tadelis section 8.3.4, equations 8.4 to 8.9, pages 166 to 169, with the corrected optimum computed in the notes.
+
+The right panel separates the two effects. Self 1's own ideal plan, what she would lock in if she could, is one half, one quarter, one quarter: present bias alone already moves consumption to period 1. The sophisticated equilibrium keeps x 1 at one half but splits the rest two thirds to one third instead of half and half, because period-2 self grabs more than self 1 wants her to.
+
+Eight point two point three. What survives of the book's story. Three claims from page 169.
+
+Claim one: player 2 overconsumes relative to player 1's wishes. With the correct derivative, yes: x 2 is K over 3, against the K over 4 player 1 would choose for her.
+
+Claim two: player 1 overconsumes to leave player 2 less. Not with log utility: x 1 is K over 2 either way. With log utility, the ratio of x 2 to x 3 chosen by self 2 does not change self 1's marginal value of the remaining budget, so self 1 has no reason to shrink it.
+
+Claim three: the result differs from the exponential benchmark of K over 3 each. Yes, but because of beta, not because of the game.
+
+The structure is the lesson, not the number. A time-inconsistent decision maker who anticipates her future choices is solving for a subgame-perfect equilibrium, and she would pay to commit. Exercise 8.16 asks how much; the notes do not solve it. Naive players, who do not anticipate, and sophisticated ones, who do, are distinguished in the behavioural literature: Laibson, 1997, on savings, and O'Donoghue and Rabin, 1999, on procrastination. Page 169.
+
+Recap of part eight. Exponential discounting is time consistent: the plan and the later choice agree. Beta-delta discounting is not, so a sophisticated player solves backward against her future self. With beta one half and delta 1, self 2 consumes two thirds of what is left, and self 1 consumes K over 2, not the printed two thirds of K.
+
+Checklist for part eight. You should be able to derive equations 8.4 to 8.8 and show time consistency. You should be able to solve the sophisticated three-period problem by backward induction and get one half, one third, one sixth. You should be able to say what survives of the book's story, and why self 1 would pay to commit.
+
+Part nine. Common mistakes.
+
+This part covers the first half of the pitfalls note, L03 ten: ten confusions this material produces. Each is said as "the error is", then "the correction is".
+
+Mistake one. An outcome is not an equilibrium. The error is answering "the subgame-perfect equilibrium is 45 and 22.5", or "it is O with o". The correction: in Stackelberg, q 1 equal to 45 is not a best response to a constant q 2 of 22.5, since the best response is 33.75, so the pair is not even a Nash equilibrium of anything. The subgame-perfect equilibrium is 45 together with the function q 2 of q 1 equal to 90 minus q 1, over 2. In the Battle of the Sexes it is O with o f. Parts seven and five.
+
+Mistake two. A strategy is not an action. The error is giving player 2 in the sequential Battle of the Sexes the strategy set o and f. The correction: she has two information sets, so her strategies are o o, o f, f o and f f. The plan must name an action at every information set, including ones the plan makes unreachable, as N O versus N F shows. Part two.
+
+Mistake three. "Sequential" is about information, not time. The error is treating a later mover as a follower even when she cannot see the earlier move. The correction: in Gibbons's unobserved Stackelberg game, firm 1 moves first, firm 2 does not see q 1, and the unique equilibrium is Cournot. Parts seven and one.
+
+Mistake four. Complete is not the same as perfect information. The error is saying "complete information, so backward induction applies". The correction: the voluntary Battle of the Sexes has complete information and a non-singleton information set; backward induction cannot start, and subgame perfection can. Part five.
+
+Mistake five. Every Nash equilibrium of a tree is reasonable. The error is reporting F with f f, or stay out with retaliate, as predictions. The correction: they rest on actions that are not optimal at the node where they would be taken. Nash equilibrium never tests those nodes; subgame perfection does. Part three.
+
+Mistake six. Subgame perfection always gives a unique answer. The error is saying it eliminates multiplicity. The correction: mutually assured destruction has two pure subgame-perfect equilibria, because the war-stage subgame has two Nash equilibria; the voluntary Battle of the Sexes also has two. Uniqueness needs perfect information and no payoff ties, Proposition 8.1. Part five.
+
+Mistake seven. Any node with a singleton information set starts a subgame. The error is listing the card game's x 1 as a subgame root. The correction: the subgame at x 1 would contain x 3, and hence x 4, which x 1 does not precede; it cuts an information set. Part five.
+
+Mistake eight. Committing is free, or moving first always helps. The error is saying "the first mover always wins", or "a bond can only cost the incumbent". The corrections: in Matching Pennies the first mover loses, page 130; a bond below B star, the accommodation payoff minus the fight payoff, lowers the incumbent's payoff and changes nothing; a bond above it raises the incumbent's equilibrium payoff by lowering one of its own terminal payoffs. Part six.
+
+Mistake nine. Backward induction always finds the efficient outcome. The error is expecting rational players to reach the high-payoff end of a game. The correction: the Centipede ends at 1 and 1 instead of 3 and 3; the trust game ends at 0 and 0 instead of 1 and 1. Part four.
+
+Mistake ten. Copying the book's slips. Two printed numbers in chapter 8 do not follow from the book's own equations. The on-path reply in the flooding remark is 90 minus 20, over 2, which is 35, not 40, on page 163. And the sophisticated first-period choice in section 8.3.4 is x 1 equal to K over 2, not two thirds of K, on page 169. Parts seven and eight. And one from Cabral: Figure 7.7 prints 10 for the incumbent's price-war payoff, while the text says minus 10; the conclusions are the same either way.
+
+Part ten. The spoken formula sheet.
+
+This part covers the formulas note, L03 zero nine. Use it for active recall: when you hear a name, pause, say the statement or the number yourself, then listen to the answer.
+
+Ten point zero. The exam specification, mapped. The lecture has no slides yet, so the specification is the study guide's block for lecture 3, Tadelis chapters 7 and 8, Gibbons sections 2.1.A, 2.2.A and 2.4, the formal side in M W G sections 7.C and 9.A to 9.B, and applications in Cabral section 7.2, read against the course's learning goal from the lecture 1 slides, page 7: "solve games of every major type, choosing the appropriate tools according to when each agent moves and what each agent knows". There are thirteen things you should be able to do.
+
+One. Draw a game tree from a verbal description: players, order, actions, information sets, Nature, payoffs. Part one.
+
+Two. Say whether a game has perfect or imperfect information, and why every simultaneous game is imperfect. Part one.
+
+Three. Write each player's pure-strategy set and count it as the product of the numbers of actions at each information set. Part two.
+
+Four. Distinguish mixed from behavioral strategies, and state Kuhn's equivalence under perfect recall. Part two.
+
+Five. Build the normal form of a tree and find all pure Nash equilibria. Part three.
+
+Six. Identify on-path and off-path information sets, and the threat that supports a Nash equilibrium. Part three.
+
+Seven. Solve a finite perfect-information game by backward induction; state Zermelo's theorem, Proposition 8.1, and when the solution is unique. Part four.
+
+Eight. List the proper subgames of a tree and justify each. Part five.
+
+Nine. Find all pure subgame-perfect equilibria, branching when a subgame has several equilibria, as in the voluntary Battle of the Sexes and mutually assured destruction. Part five.
+
+Ten. Write a subgame-perfect equilibrium as complete strategies, not as an outcome. Parts five and seven.
+
+Eleven. Explain why a threat is or is not credible, and value a commitment. Part six.
+
+Twelve. Solve Stackelberg, compare it with Cournot, and exhibit a Nash equilibrium that is not subgame perfect. Part seven.
+
+Thirteen. Treat a time-inconsistent decision maker as a game against her future self. Part eight.
+
+Ten point one. Definitions and results. Pause after each name.
+
+The seven elements, pages 130 to 131. Answer: players; payoffs; order of moves; actions when moving; knowledge when moving; Nature's distributions; and common knowledge of the first six.
+
+Definition 7.1, page 133, the game tree. Answer: nodes with a precedence relation that is transitive, asymmetric and incomplete; one predecessor per node; a root that precedes everything; terminal nodes; payoffs defined on terminal nodes.
+
+Definition 7.2, page 135, information sets. Answer: they partition a player's nodes; nodes in the same set cannot be told apart; so they must have the same actions.
+
+Definition 7.3, page 136, perfect information. Answer: all information sets are singletons, and there are no moves of Nature.
+
+Definition 7.4, page 139, pure strategy. Answer: a map from the player's information sets to actions, choosing an available action at each set.
+
+The count, page 139. Answer: the number of pure strategies is m 1 times m 2 times and so on up to m k, the product of the numbers of actions at the k information sets.
+
+Definition 7.5, page 139, mixed strategy. Answer: a probability distribution over pure strategies.
+
+Definition 7.6, page 140, behavioral strategy. Answer: an independent probability distribution over the actions at each information set.
+
+Mixed to behavioral, page 141. Answer: the probability of action a at information set h is the sum of the probabilities of all the pure strategies that play a at h.
+
+Definition 7.7, page 142, perfect recall, and Kuhn, 1953. Answer: no player forgets what she knew, including her own moves; under perfect recall, mixed and behavioral strategies are equivalent.
+
+The normal form of a tree, pages 143 to 144. Answer: it is unique; the converse fails, since one matrix can come from several trees, Figure 7.12.
+
+Definition 7.8, page 146, on and off the equilibrium path. Answer: an information set is on the path if it is reached with positive probability, and off the path if it is reached with probability zero.
+
+Definition 8.1, page 152, sequential rationality. Answer: a best response at each information set.
+
+Proposition 8.1, Zermelo, page 153. Answer: a finite game of perfect information has a sequentially rational backward-induction solution; it is unique if no player has equal payoffs at two terminal nodes.
+
+Corollary 8.1, page 153. Answer: such a game has a sequentially rational Nash equilibrium in pure strategies, unique under the same condition.
+
+M W G Proposition 9.B.1. Answer: Zermelo again: finite perfect-information games have a pure Nash equilibrium derivable by backward induction. Named, G layer.
+
+Definition 8.2, pages 154 to 155, proper subgame. Answer: one node, all its successors, and no broken information sets.
+
+Definition 8.3, page 157, subgame-perfect equilibrium. Answer: the restriction of the profile to every proper subgame is a Nash equilibrium there.
+
+The Fact, page 158. Answer: in finite games of perfect information, the subgame-perfect equilibria are the profiles that survive backward induction.
+
+M W G Definitions 9.B.1 and 9.B.2 and Propositions 9.B.2 and 9.B.3. Answer: subgame; subgame-perfect Nash equilibrium; existence and uniqueness under perfect information; and the replace-a-subgame reduction. G layer, named only.
+
+Gibbons's outcome versus equilibrium, pages 125 to 126. Answer: the outcome is a 1 star and R 2 of a 1 star; the subgame-perfect equilibrium is a 1 star and the whole function R 2.
+
+Equation 8.1, page 160. Answer: q 2 of q 1 equals 90 minus q 1, over 2.
+
+Equation 8.2, page 161. Answer: the leader maximizes, over q 1, the bracket 100 minus q 1 minus 90 minus q 1 over 2, times q 1, minus 10 q 1.
+
+Gibbons's general case, pages 62 to 63. Answer: the leader produces a minus c over 2; the follower a minus c over 4; total Stackelberg output, three quarters of a minus c, exceeds Cournot's two thirds of a minus c.
+
+The asymmetric case with slope b. Answer: the leader produces a minus 2 c 1 plus c 2, over 2 b; the follower a plus 2 c 1 minus 3 c 2, over 4 b; the follower is out if and only if c 2 is at least a plus 2 c 1, over 3; and Cournot gives a minus 2 c i plus c j, over 3 b.
+
+The credibility threshold. Answer: a bond B makes retaliation credible if and only if the fight payoff F sub I exceeds D sub I minus B, that is, if and only if B exceeds B star equal to D sub I minus F sub I.
+
+Equation 8.3, page 166. Answer: the value is the sum over t of delta to the power t minus 1 times u of x t.
+
+Equations 8.4 to 8.6, page 167. Answer: with log utility, x t equals delta to the power t minus 1 times K, over 1 plus delta plus delta squared, and the plan is time consistent.
+
+Equation 8.9, page 168. Answer: the log of x 1, plus beta delta times the log of x 2, plus beta delta squared times the log of x 3.
+
+Ten point two. Every number and worked case. Pause after each case name and say its numbers.
+
+The sequential Battle of the Sexes, Figures 7.7 and 8.6, pages 138 to 158. Player 1 has O and F; player 2 has o o, o f, f o and f f. Row O of the normal form reads 2 and 1, 2 and 1, 0 and 0, 0 and 0; row F reads 0 and 0, 1 and 2, 0 and 0, 1 and 2. The Nash equilibria are O with o o, O with o f, and F with f f. The subgame-perfect equilibrium is O with o f, with outcome 2 and 1. The simultaneous version has the Nash equilibria O with o, F with f, and a mixed one with O played with probability two thirds and o with probability one third. Page 145.
+
+Behavioral and mixed, pages 140 to 142. The behavioral strategy with o after O at one third, and o after F at one half, is produced by one third, zero, one sixth, one half, or by one sixth, one sixth, one third, one third. In general: t, one third minus t, one half minus t, one sixth plus t, with t between zero and one third.
+
+The absent-minded driver, page 142. Named only. The value is minus 3 p squared plus 2 p plus 1; the best p is one third; the best value is four thirds.
+
+Gibbons's Figure 2.4.1 and the three-move game, pages 59 to 60 and 116 to 128. The Nash equilibria are R with R prime L prime, and L with R prime R prime; the subgame-perfect equilibrium is R with R prime L prime, with outcome 2 and 1. In the three-move game, backward induction picks L double prime, then L prime, then L; the outcome is 2 and 0.
+
+The Centipede, Figure 8.8, page 159. Stop payoffs 1 and 1, 0 and 3, 2 and 2, 1 and 4; end payoff 3 and 3. The unique backward-induction outcome is 1 and 1.
+
+The voluntary Battle of the Sexes, Figures 8.2 to 8.7, pages 154 to 159. Two proper subgames. Nash equilibria: Y O with o, N O with f, N F with f. Subgame-perfect: Y O with o, and N F with f.
+
+The card game, Figure 8.5, page 156. The only proper subgame is the whole game. In the Figure 7.6 version, calling is worth 0 in expectation and folding minus 1.
+
+Mutually assured destruction, Figure 8.11, pages 163 to 166. The war stage has two Nash equilibria: both retreat, minus 5 each; both Doomsday, minus 100 each. Six pure Nash equilibria in the whole game. Subgame-perfect: I R with N r, and E D with B d.
+
+Entry and commitment, Cabral pages 168 to 170, and M W G pages 268 to 269. Cabral: out gives 0 and 50, accommodate gives 10 and 20, retaliate gives minus 10 and 10, with the text giving the incumbent minus 10 instead. Nash equilibria: enter with accommodate, and stay out with retaliate. Subgame-perfect: enter with accommodate. With a bond of 40, accommodation falls to minus 20, the incumbent would retaliate, the entrant stays out, and the incumbent gets 50. The value of commitment is 30. The threshold bond is 10, or 30 with the text's value. M W G Example 9.B.1: out gives 0 and 2, fight gives minus 3 and minus 1, accommodate gives 2 and 1; the subgame-perfect equilibrium is in, with accommodate.
+
+Stackelberg against Cournot, pages 160 to 163. Stackelberg: q 1 is 45, q 2 is 22.5, price 32.5, profits 1012.5 and 506.25. Cournot: 30 and 30, price 40, profits 900 and 900. The first-mover advantage is plus 112.5; the follower loses 393.75; Stackelberg output is nine eighths of Cournot output. Nash but not subgame perfect: 30 with the constant plan q 2 always 30; and the flood strategy with target 20 and on-path reply 35, printed as 40 on page 163. With q 1 unobserved: Cournot again, Gibbons pages 63 to 64.
+
+Hyperbolic discounting, pages 166 to 169. With delta 1 and beta one half: self 2 consumes two thirds of K 2 and leaves one third. Self 1, corrected, consumes K over 2, so the plan is one half, one third, one sixth of K; the printed value is two thirds of K. Self 1's committed ideal is one half, one quarter, one quarter of K. The exponential benchmark is one third each.
+
+Part eleven. Implementation: the computer routines, described in words.
+
+This part covers the Python note, L03 eleven. Nothing here is read as code. Every routine is followed, in the written note, by checks that must pass against the books' own numbers. It uses the Python standard library only. The blocks run in order as one script, and all of them were run together before the note was written.
+
+Reuse first. The project's existing checkers cover normal-form games and bargaining shares; neither represents a game tree, so the tree solver is new. Bargaining by backward induction is reused, not rebuilt, in lecture 4.
+
+The design. A tree is a nested structure with three kinds of node: a terminal node, holding one payoff per player, player 1 first; a decision node, holding the player who moves, a label for her information set, and her moves, each leading to a child node; and a Nature node, holding a probability and a child for each draw. Nodes that share an information-set label form one information set, which is how imperfect information is encoded. Everything else, the strategies, the normal form, the Nash equilibria, the subgames and the subgame-perfect equilibria, is computed from that one object by brute force, which is exact and fast for textbook-sized trees.
+
+Routine one, walking the tree. It visits every node and records its path, the sequence of actions from the root.
+
+Routine two, information sets. It collects, for each label, the player, her actions and the paths of the member nodes, and it stops with an error if two nodes in one set offer different actions: that is property three of Definition 7.2 enforced by the computer.
+
+Routine three, pure strategies. It builds every map from the player's information sets to actions, as the product of the action lists, which is Definition 7.4. A companion routine counts them as the product of the numbers of actions, the rule on page 139.
+
+Routine four, payoff of a profile. Starting at a node, it follows each player's planned action at each decision node, and at a Nature node it takes the probability-weighted average of the children's payoffs.
+
+Routine five, Nash equilibria. It runs through every pure-strategy profile and keeps those where no player gains by switching unilaterally to another of her pure strategies, with payoffs measured from the root.
+
+Routine six, subgame roots. It keeps a node as a root if it is not a terminal node, if its information set is a singleton, and if every information set containing any of its successors lies entirely inside its subtree: the two tests of Definition 8.2.
+
+Routine seven, subgame-perfect equilibria. It keeps the pure profiles that pass the Nash test from the root of every proper subgame, the whole game included. Because payoffs are measured from the subgame's root, only the actions inside the subgame matter, which is exactly "the restriction is a Nash equilibrium of the subgame". The ceiling: it finds pure-strategy subgame-perfect equilibria only, so the mixed ones of exercises 8.1 and 8.2 are outside its reach; support enumeration per subgame would be the upgrade if ever needed.
+
+Routine eight, backward induction. For finite perfect-information games without Nature, it solves each child first, then lets the mover pick the child with her highest payoff, building the plan as it goes. Ties go to the first-listed action. The one trap: it refuses a tree with Nature or with a shared information set, because there backward induction is not defined.
+
+The checks on perfect-information games. For the sequential Battle of the Sexes: player 2 has 4 strategies, against 2 in the simultaneous version; the Nash equilibria are F with f f, O with o f and O with o o, page 145; the only subgame-perfect equilibrium is O with o f, page 157; backward induction returns payoffs 2 and 1 with plan o at x 1, f at x 2 and O at the root; the simultaneous version has Nash equilibria F with f and O with o, and only one subgame, the whole game. For Gibbons's Figure 2.4.1: Nash equilibria L with R prime R prime, and R with R prime L prime; the only subgame-perfect one is R with R prime L prime. For Gibbons's three-move game: payoffs 2 and 0, with plan L double prime, L prime, L. For the Centipede: payoffs 1 and 1, every mover stops, and there is exactly one subgame-perfect equilibrium.
+
+The checks on imperfect information and applications. The voluntary Battle of the Sexes: Nash equilibria N F with f, N O with f, Y O with o, page 158; subgame-perfect N F with f and Y O with o; and exactly two subgames, at the root and after Y. The card game: the only subgame root is the root. Mutually assured destruction: the six Nash equilibria of page 164, and the two subgame-perfect equilibria E D with B d and I R with N r, page 166. Cabral's entry game is built by a small function with six payoff parameters and a bond, which returns the game without the bond and the game with it: Nash equilibria in with accommodate and out with fight, page 168; subgame-perfect in with accommodate, page 169; backward induction gives 10 and 20 without the bond and 0 and 50 with it, a difference of 30 for the incumbent, page 170; and with the text's minus 10 instead of the figure's 10, the bonded answer is still 0 and 50. M W G Example 9.B.1: Nash equilibria in with accommodate and out with fight; subgame-perfect in with accommodate.
+
+Routine nine, mixed to behavioral. It takes player 2's four mixed probabilities and returns the probability of o after O and of o after F, by adding the weights of the plans that prescribe o there. Check: both of the book's mixtures, page 142, sum to 1 and give one third and one half.
+
+Routine ten, the absent-minded driver. It evaluates minus 3 p squared plus 2 p plus 1 on a grid of 3001 points and confirms that the best p is one third, with value four thirds. Named only.
+
+Routine eleven, best response. Against a rival quantity, with inverse demand a minus b times total quantity and unit cost c, it returns the larger of zero and a minus c minus b times the rival's quantity, all over 2 b. With a equal to 100, b equal to 1 and c equal to 10, this is equation 8.1.
+
+Routine twelve, profits. It computes the price, floored at zero, and each firm's profit.
+
+Routine thirteen, Cournot. It computes the interior equilibrium, a minus 2 c i plus c j over 3 b for each firm, and if one quantity would be negative it sets that firm to zero and lets the other play its monopoly best response.
+
+Routine fourteen, Stackelberg. The leader maximizes its profit along the follower's best-response function, which has a kink at the leader quantity a minus c 2, over b, where the follower exits. Each side of the kink is concave, so the routine compares the best point on the piece where the follower is active with the best point on the piece where it is shut out, and keeps the better one. This is exact, and the companion page uses the same expression, checked against a brute-force grid search.
+
+The Stackelberg checks. At Tadelis's numbers: 45 and 22.5, profits 1012.5 and 506.25; Cournot 30 and 30, profits 900 each; the first-mover advantage is 112.5 and the follower's change is minus 393.75; the price falls from 40 to 32.5. For Gibbons's general case, at three pairs of a and c, 100 and 10, 50 and 5, 12 and 3: the leader produces a minus c over 2, the follower a minus c over 4, total output three quarters of a minus c against Cournot's two thirds, the leader gains, the follower loses, and industry profit falls. For the unobserved case: the best response to the best response to a minus c over 2 is three eighths of a minus c.
+
+Routine fifteen, Nash but not subgame perfect. It defines the leader's profit against any follower strategy, given as a function of q 1. Against the constant plan "always 30", a grid search over q 1 from 0 to 100 in quarter steps finds 30 as the leader's best reply; 30 is the follower's best reply on the path; but at q 1 equal to 45 the constant plan is not the best reply. Then the flooding strategy: best-respond to the target, flood with 100 otherwise. The check confirms the on-path reply to 20 is 35, where page 163 prints 40, and that for targets 5, 20, 45, 60 and 85, the leader's best reply is the target itself: a continuum of Nash outcomes.
+
+Routine sixteen, hyperbolic discounting. It evaluates self 1's payoff, the log of x 1 plus one half the log of two thirds of the remaining budget plus one half the log of one third of it, on a fine grid of 19,999 points. The checks: the maximum is at x 1 equal to one half of K, and the value at one half beats the value at two thirds, which is the correction of page 169. A second grid search finds self 1's own committed ideal, one half, one quarter, one quarter.
+
+The figures and companions have their own scripts: a figure script that ends with a check per figure, and a companion check that compares the Python with the pages' JavaScript.
+
+Part twelve. Reading route and exercises.
+
+This part gives addresses only. No exercise statement is read aloud.
+
+The reading route, in order. Tadelis chapter 7, pages 129 to 150, then chapter 8, pages 151 to 174. Gibbons section 2.1.A, page 57; section 2.1.B, pages 61 to 64; section 2.1.C, pages 64 to 68, for the monopoly union; section 2.2.A, pages 71 to 73; and section 2.4, pages 115 to 129. Cabral section 7.2, pages 167 to 171. For the formal side, which is named only: M W G section 7.C, pages 221 to 225, and section 9.B, pages 268 to 281. For exercise pointers: Muñoz-Garcia chapter 4, pages 153 to 214.
+
+The exercise pool. Tadelis exercises 7.1 to 7.10, pages 147 to 150, and 8.1 to 8.16, pages 170 to 174. Muñoz-Garcia chapter 4, exercises 1 to 20, pages 154 to 207. Of those, exercises 16 and 17 are bargaining, for lecture 4, and exercise 21 is moral hazard, which is out of scope.
+
+By part of this script.
+
+For part one, the extensive form: Tadelis 7.2, page 147; 7.3, pages 147 to 148; 7.9, pages 149 to 150; Muñoz-Garcia chapter 4, exercise 3, page 160, and exercise 4, page 163.
+
+For part two, strategies: Tadelis 7.1, page 147; 7.2 part c, page 147; 7.4 part c, page 148; 7.5 part b, page 148; 7.10, page 150.
+
+For part three, normal form and paths: Tadelis 7.2 part d, page 147; 7.4 part d, page 148; 7.5 part c, page 148; 7.6, pages 148 to 149; 7.7, page 149; 7.8, page 149; Muñoz-Garcia chapter 4, exercise 4, page 163, exercise 5, page 166, and exercise 6, page 169.
+
+For part four, backward induction: Tadelis 7.4, page 148; 7.5, page 148; 8.11 part b, pages 172 to 173; Muñoz-Garcia chapter 4, exercise 9, page 176, exercise 19, page 202, and exercise 20, page 204. And the project's practice list for classes 1 and 2, item 19: Cabral exercise 7.14, the Centipede, page 182.
+
+For part five, subgame perfection: Tadelis 8.1, 8.2, 8.3 and 8.5, all on page 170, and 8.10, page 172; Muñoz-Garcia chapter 4, exercise 4, page 163, and exercise 6, page 169.
+
+For part six, credibility and commitment: Tadelis 7.6, pages 148 to 149; 8.7, page 171; 8.8, pages 171 to 172; 8.9, page 172; 8.13, pages 173 to 174; Muñoz-Garcia chapter 4, exercise 2, page 156. And the practice list for classes 1 and 2, the items on Cabral section 7.2, pages 167 to 174, marked "Exam".
+
+For part seven, Stackelberg: Tadelis 8.4, page 170; 8.6, pages 170 to 171; 8.9, page 172; Muñoz-Garcia chapter 4, exercises 11, page 180; 12, page 185; 13, page 189; 14, page 192; and 15, page 195.
+
+For part eight, time inconsistency: Tadelis 8.14, 8.15 and 8.16, page 174.
+
+Part thirteen. Self-test.
+
+This part covers the second half of the pitfalls note: twenty-six original true or false items, in the style of the course's exams. Scoring as in the exam: the larger of zero and the number correct minus half the number wrong, times the item value; blanks do not count as wrong. After each statement, pause, decide true or false and say why, then listen to the answer.
+
+Item one. A game in which player 2 moves one hour after player 1, but without observing player 1's choice, is strategically equivalent to the simultaneous-move game with the same payoffs.
+
+Pause.
+
+True. What defines a sequential game is what the later mover knows, element five, page 131. With one information set containing all of player 1's choices, the tree is the simultaneous game's tree.
+
+Item two. A game of complete information is necessarily a game of perfect information.
+
+Pause.
+
+False. Complete information means payoffs are common knowledge; perfect information also requires singleton information sets and no Nature, Definition 7.3. Any simultaneous game is a counterexample.
+
+Item three. A player with three information sets, having 2, 2 and 3 actions respectively, has 7 pure strategies.
+
+Pause.
+
+False. Strategies multiply, they do not add: 2 times 2 times 3 is 12.
+
+Item four. In the sequential Battle of the Sexes, the strategies o o and o f of player 2 always produce the same outcome.
+
+Pause.
+
+False. They coincide only when player 1 plays O. After F, o o leads to 0 and 0, and o f to 1 and 2.
+
+Item five. Every mixed strategy in an extensive-form game can be replicated by a behavioral strategy, and in a game of perfect recall the converse also holds.
+
+Pause.
+
+True. Mixed to behavioral works by conditioning, page 141; behavioral to mixed under perfect recall is Kuhn's theorem, page 142.
+
+Item six. The behavioral strategy that replicates a given mixed strategy may correspond to several mixed strategies, but the mixed strategy that replicates a given behavioral strategy is unique.
+
+Pause.
+
+False. It is the other way round. Many mixed strategies map to the same behavioral one; Figure 7.9's example has a one-parameter family. Conditioning a mixed strategy gives exactly one behavioral strategy.
+
+Item seven. In a Nash equilibrium of an extensive-form game, a player's action at an information set that is off the equilibrium path does not affect her own equilibrium payoff.
+
+Pause.
+
+True. Off-path sets are reached with probability zero given the profile, so her payoff is the same whatever she plans there. That is why Nash cannot discipline those plans.
+
+Item eight. In a Nash equilibrium, a player's action at an off-path information set cannot affect the other players' choices.
+
+Pause.
+
+False. It can, and that is the whole problem: player 2's f at x 1 is what keeps player 1 at F in F with f f.
+
+Item nine. Every subgame-perfect equilibrium is a Nash equilibrium.
+
+Pause.
+
+True. The whole game is a proper subgame, so the restriction to it, the profile itself, is a Nash equilibrium.
+
+Item ten. Every finite game of perfect information has a subgame-perfect equilibrium in pure strategies.
+
+Pause.
+
+True. Backward induction constructs one: Proposition 8.1, Corollary 8.1, and the Fact on page 158.
+
+Item eleven. If a finite game of perfect information has two terminal nodes giving player 1 the same payoff, it has more than one subgame-perfect equilibrium.
+
+Pause.
+
+False. Uniqueness may fail but need not: if the tie is never the deciding comparison at any node, the solution is still unique. The proposition gives a sufficient condition for uniqueness, not a necessary one.
+
+Item twelve. In a game whose only proper subgame is the whole game, every Nash equilibrium is subgame perfect.
+
+Pause.
+
+True. Definition 8.3 then only requires a Nash equilibrium of the whole game; M W G Exercise 9.B.2, part a.
+
+Item thirteen. A node that is a singleton information set always starts a proper subgame.
+
+Pause.
+
+False. It must also not cut any later information set. The card game's x 1 and x 2 are singletons and start no subgame.
+
+Item fourteen. In the voluntary Battle of the Sexes, N O with f is not a Nash equilibrium because O is never played.
+
+Pause.
+
+False. It is a Nash equilibrium: player 1 gets 1.5 against f whatever she plans after Y. It fails subgame perfection because O with f is not an equilibrium of the subgame at x 1.
+
+Item fifteen. In the mutually assured destruction game the war stage is off the path in every subgame-perfect equilibrium, so the war-stage payoffs do not affect which equilibria are subgame perfect.
+
+Pause.
+
+False. The war stage is off the path in both subgame-perfect equilibria, but which of its equilibria is expected decides whether player 2 backs down and whether player 1 escalates.
+
+Item sixteen. In the entry game of Cabral Figure 7.7, stay out with retaliate is a Nash equilibrium.
+
+Pause.
+
+True. Against retaliation the entrant prefers 0 to minus 10; against staying out the incumbent gets 50 whatever it plans, so retaliating is a best reply. It is not subgame perfect.
+
+Item seventeen. A bond that lowers the incumbent's payoff from accommodating can never raise its equilibrium payoff.
+
+Pause.
+
+False. In Cabral's example it raises it from 20 to 50: the lower payoff sits at a node the bond makes unreachable, and it makes retaliation credible.
+
+Item eighteen. In Cabral's entry game, any positive bond makes the incumbent better off.
+
+Pause.
+
+False. Only a bond above B star, which is 10, changes the incumbent's post-entry choice. A smaller bond only lowers its accommodation payoff, which is then its equilibrium payoff.
+
+Item nineteen. In the Stackelberg game with p equal to 100 minus q and unit cost 10, the leader's profit exceeds its Cournot profit, the follower's is lower, and industry profit is lower than in Cournot.
+
+Pause.
+
+True. 1012.5 is more than 900; 506.25 is less than 900; and 1518.75 is less than 1800.
+
+Item twenty. The pair q 1 equal to 45 and q 2 equal to 22.5 is a subgame-perfect equilibrium of the Stackelberg game.
+
+Pause.
+
+False. It is the subgame-perfect outcome. The equilibrium specifies firm 2's quantity after every q 1: 45, together with the function 90 minus q 1, over 2.
+
+Item twenty-one. The Cournot quantities, 30 and 30, can be the outcome of a Nash equilibrium of the Stackelberg game.
+
+Pause.
+
+True. q 1 equal to 30, with firm 2 always producing 30, is a Nash equilibrium, page 162. It is not subgame perfect, because 30 is not firm 2's best reply to other values of q 1.
+
+Item twenty-two. If firm 1 still moves first but firm 2 cannot observe q 1, firm 2 earns more than in the Stackelberg game.
+
+Pause.
+
+True. Without observation the unique Nash equilibrium is Cournot, Gibbons pages 63 to 64, where firm 2 earns 900 instead of 506.25. Knowing q 1, and being known to know it, hurts firm 2.
+
+Item twenty-three. In the Stackelberg game, total output is higher and price lower than in Cournot.
+
+Pause.
+
+True. Three quarters of a minus c exceeds two thirds of a minus c, and 32.5 is below 40.
+
+Item twenty-four. A player with exponential discounting and log utility revises her consumption plan when the second period arrives.
+
+Pause.
+
+False. Exponential discounting is time consistent: the period-2 choice, equation 8.8, equals the planned one, equation 8.5.
+
+Item twenty-five. A sophisticated hyperbolic discounter solves her consumption problem by backward induction against her future selves.
+
+Pause.
+
+True. She treats period-2 self as a player who best-responds to the remaining budget, and chooses period-1 consumption given that reply: a subgame-perfect equilibrium, pages 168 to 169.
+
+Item twenty-six. Backward induction predicts that the Centipede game ends at the first node, and laboratory subjects typically behave this way.
+
+Pause.
+
+False. The first half is true. Most lab subjects continue for some time, McKelvey and Palfrey, 1992, though chess players mostly stop at once, Palacios-Huerta and Volij, 2009, page 160.
+
+Part fourteen. Glossary.
+
+Extensive form: a description of a game that adds the order of moves, what each player knows when she moves, and Nature's moves to the players and payoffs.
+
+Game tree: a set of nodes ordered by precedence, each with one predecessor, from a root to terminal nodes that carry the payoffs.
+
+Terminal node: a node that precedes no other; an outcome, and the place where payoffs are defined.
+
+Information set: a set of a player's nodes that she cannot tell apart, and that therefore offer the same actions.
+
+Perfect information: every information set is a single node and Nature never moves.
+
+Imperfect information: some information set has several nodes, or Nature moves; every simultaneous game is one.
+
+Complete information: the game itself, players, actions and payoffs, is common knowledge.
+
+Pure strategy: a complete contingent plan, naming one action at every information set of the player, reachable or not.
+
+Mixed strategy: a probability distribution over whole pure strategies, drawn once before play.
+
+Behavioral strategy: an independent randomization over actions at each information set.
+
+Perfect recall: no player ever forgets what she knew, including her own moves.
+
+Kuhn's theorem: under perfect recall, mixed and behavioral strategies generate the same outcome distributions.
+
+Equilibrium path: the information sets reached with positive probability when the equilibrium is played.
+
+Threat: a plan, often at an off-path node, that influences others' choices.
+
+Credible threat: a threat that is the player's best reply at the node where it would be carried out.
+
+Sequential rationality: playing a best response at every information set, reached or not.
+
+Backward induction: solving a finite perfect-information game from the last decision nodes up to the root.
+
+Zermelo's theorem: every finite game of perfect information has a backward induction solution in pure strategies, unique if no player has equal payoffs at two terminal nodes.
+
+Proper subgame: a node that is a singleton information set, with all its successors, cutting no information set.
+
+Subgame-perfect equilibrium: a strategy profile whose restriction to every proper subgame is a Nash equilibrium of that subgame.
+
+Outcome: the sequence of moves actually played; not the same as the equilibrium, which lists complete strategies.
+
+Commitment: an action that changes one's own payoffs or the order of moves before others choose, so that a threat becomes credible.
+
+Value of commitment: the gain in equilibrium payoff from being able to commit; 30 in Cabral's entry game.
+
+Stackelberg game: quantity competition in which the leader's quantity is observed by the follower before it chooses.
+
+First-mover advantage: the gain from moving first and being observed; plus 112.5 for the Stackelberg leader at Tadelis's numbers.
+
+Time consistency: a plan made today is still optimal when the later date arrives; exponential discounting has it.
+
+Present bias, or beta-delta discounting: every future period gets an extra discount factor beta, so plans are revised as time passes.
+
+Sophisticated decision maker: one who anticipates her future selves' choices and solves backward against them.
+
+Part fifteen. The whole lecture in five lines.
+
+One. A game is sequential because a later mover sees an earlier move, and then a strategy is a complete plan, one action at every information set, even the ones the plan never reaches.
+
+Two. Nash equilibrium checks best replies only on the path, so it admits threats at unreached nodes that nobody would carry out, like player 2's football after the opera, or the incumbent's price war.
+
+Three. Subgame perfection demands a Nash equilibrium in every proper subgame; under finite perfect information it is backward induction, and otherwise you solve the last subgames, replace them by their payoffs, and branch when a subgame has several equilibria.
+
+Four. A threat is credible only if it is optimal when the moment comes, so a player gains by committing: the incumbent's bond is worth 30, and the Stackelberg leader's observed quantity is worth 112.5, while an unobserved first move is worth nothing.
+
+Five. Write equilibria as complete strategies, not outcomes, and differentiate the book's objectives yourself: the flooding reply is 35, not 40, and the sophisticated first-period choice is K over 2, not two thirds of K.

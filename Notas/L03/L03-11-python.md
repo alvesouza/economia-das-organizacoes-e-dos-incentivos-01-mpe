@@ -422,7 +422,7 @@ assert all(isclose(u, w, abs_tol=2e-3) for u, w in zip(best, (0.5, 0.25)))
 ```
 
 The second assert is the correction of [[L03-08-time-inconsistency]] §2.2: the book's printed
-$x_1=	frac23K$ is not the maximum of the objective it prints.
+$x_1=\tfrac23K$ is not the maximum of the objective it prints.
 
 ---
 

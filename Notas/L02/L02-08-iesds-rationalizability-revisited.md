@@ -1,7 +1,7 @@
 ---
 tags: [notes, lecture-02, mixed-dominance, iesds, rationalizability, never-best-response]
-date: 2026-10-16
-status: estimated
+date: 2026-10-25
+status: taught
 source: "Tadelis (2013) §6.3, printed pp. 114–117 (Defs. 6.7–6.8; the 3×3 game pp. 115–116; Fact p. 116; Prop. 6.2 p. 116); Gibbons (1992) §1.3.A pp. 31–33 (Figs. 1.3.1–1.3.2); Cabral (2017) §7.1 footnote f p. 162; MWG §8.C pp. 243–245 (G)"
 ---
 
@@ -13,6 +13,9 @@ source: "Tadelis (2013) §6.3, printed pp. 114–117 (Defs. 6.7–6.8; the 3×3 
 > reduces it to the 2×2 game of §6.2.3. **In two-player games, "strictly dominated" and "never a best response" are
 > the same thing** (Prop. 6.2), so IESDS and rationalizability coincide.
 >
+> **Not covered in class.** The Lecture 2 slides (`Aula/Lecture02.pdf`) do not teach dominance by mixed strategies or Prop. 6.2; slide 11 defines rationalizability with pure beliefs only. This note is kept
+> as reading and practice; it is examinable only if a problem set brings it.
+
 > Prev: [[L02-07-mixed-strategies]] · Next: [[L02-09-existence]] · Map: [[L02-00-map]]
 
 ---
@@ -20,7 +23,7 @@ source: "Tadelis (2013) §6.3, printed pp. 114–117 (Defs. 6.7–6.8; the 3×3 
 ## 1 · C — the two definitions (p. 114)
 
 **Definition 6.7.** $s_i$ is **strictly dominated by $\sigma_i\in\Delta S_i$** if
-$$v_i(\sigma_i,s_{-i})>v_i(s_i,s_{-i})\qquad\forall s_{-i}\in S_{-i}.$$
+$$u_i(\sigma_i,s_{-i})>u_i(s_i,s_{-i})\qquad\forall s_{-i}\in S_{-i}.$$
 
 **Definition 6.8.** $\sigma_i$ is **never a best response** if there is no belief $\sigma_{-i}\in\Delta S_{-i}$ with
 $\sigma_i\in BR_i(\sigma_{-i})$.
@@ -76,7 +79,7 @@ removes nothing.
 
 **Round 1: L is dominated by $\sigma_2=(0,\tfrac12,\tfrac12)$.**
 
-| Row | $v_2(L)$ | $v_2(\tfrac12C+\tfrac12R)$ | |
+| Row | $u_2(L)$ | $u_2(\tfrac12C+\tfrac12R)$ | |
 |---|---|---|---|
 | U | 1 | $\tfrac12(4)+\tfrac12(0)=2$ | $2>1$ |
 | M | 2 | $\tfrac12(0)+\tfrac12(5)=2.5$ | $2.5>2$ |
@@ -86,7 +89,7 @@ Remove L.
 
 **Round 2: in the reduced game (columns C, R), U is dominated by $\sigma_1=(0,\tfrac12,\tfrac12)$.**
 
-| Column | $v_1(U)$ | $v_1(\tfrac12M+\tfrac12D)$ | |
+| Column | $u_1(U)$ | $u_1(\tfrac12M+\tfrac12D)$ | |
 |---|---|---|---|
 | C | 1 | $\tfrac12(0)+\tfrac12(4)=2$ | $2>1$ |
 | R | 1 | $\tfrac12(3)+\tfrac12(0)=1.5$ | $1.5>1$ |

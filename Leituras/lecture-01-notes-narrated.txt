@@ -1,0 +1,1057 @@
+Lecture 1. Static games, part one: dominance and iterated elimination. A listening version of the Lecture 1 notes.
+
+How to listen.
+
+This is the full text of the Lecture 1 notes for Economia das Organizações e dos Incentivos, the game theory course of the MPE at Insper, rewritten to be heard rather than read. Nothing has been cut. Every definition, every proof, every worked game and every number from the written notes is here, with the mathematics spoken in words and every table turned into sentences.
+
+The lecture has been taught. It was given on Tuesday, October 13, 2026, from the slide file Lecture01, slides 1 to 34. The notes follow the slides' order and notation, and cite the numbering of the main textbook.
+
+The script has eighteen parts, numbered zero to seventeen. Part zero states the claim of the lecture and where it sits in the course. Parts one, two and three are about representing a game: the normal form, then information and strategies, then what a solution concept must deliver. Parts four and five are about dominance: the definitions and the dominant-strategy equilibrium, then Pareto optimality and social dilemmas. Parts six, seven and eight are about iterated elimination: the procedure itself, the Cournot duopoly solved by it, and the pharmacy mini case on a seven-block avenue. After that come the support parts: common mistakes, a spoken formula sheet, every number in the lecture, the computation and figures described in words, the interactive companions described in words, the reading route and exercises, a True or False self-test, a glossary, and the whole lecture in five lines.
+
+Four conventions.
+
+First, the books. "Tadelis" means Steven Tadelis, Game Theory: An Introduction, 2013, the book the slides follow. "Gibbons" means Robert Gibbons, Game Theory for Applied Economists, 1992. "M W G" means Mas-Colell, Whinston and Green, Microeconomic Theory. "Cabral" means Luís Cabral, Introduction to Industrial Organization, 2017. "M and R" means Milgrom and Roberts, Economics, Organization, and Management, 1992. Page numbers are the books' printed page numbers.
+
+Second, the layers. Each section of the notes has up to three layers. The U layer is intuition: Tadelis's stories, Gibbons, the slides' examples. The C layer is the course, and it is examinable: the slides' definitions and propositions with Tadelis's numbering, and the worked games. The G layer is formal, from M W G sections 7 D and 8 B. It is named or sketched, and it is not examinable. The script says so out loud each time it enters the G layer.
+
+Third, notation. A player's payoff is "u i". "s minus i" means the list of strategies of everyone except player i. A profile is a list of strategies, one per player, and the script reads it as, for example, "the profile F, F".
+
+Fourth, scope. The course is game theory along Tadelis, chapters 3 to 13, 15 and 16, with Milgrom and Roberts for applications. Mechanism design, cheap talk and moral hazard are outside the course. In this lecture the second-price auction appears only as an example of dominance, never as mechanism design, and the script repeats that where the auction appears. Several ideas this lecture touches belong to the next lecture: best responses, rationalizability, Nash equilibrium, mixed strategies and dominance by mixtures. The script flags each of them as next lecture, not here.
+
+Part zero. The claim of the lecture, and the one result to hold.
+
+This part covers the map of the notes. The sources are the slides, Tadelis chapter 3, pages 43 to 58, and sections 4.1 and 4.2, pages 59 to 69; Gibbons sections 1.1 A and 1.1 B, pages 2 to 7; M W G section 7 D, page 228, and sections 8 A and 8 B, pages 235 to 241; Cabral section 7.1, pages 161 to 163, and section 14.2, pages 354 and 358 to 360; and Milgrom and Roberts, Table 5.1, pages 138 and 139.
+
+The claim, in one breath. A game is a decision problem in which payoffs depend on everyone's choices, written down as the triple: the set of players I, the strategy sets S i, and the payoff functions u i. Rationality alone removes strictly dominated strategies. When every player has a strictly dominant strategy, the result is a unique, robust prediction, and it can still be Pareto dominated: the prisoner's dilemma, the shirking partnership. Common knowledge of rationality lets the removal be iterated. Iterated elimination solves games with no dominant strategies, such as Tadelis's matrix 4.1, the Cournot duopoly and the pharmacy avenue, using one level of "I know that you know" per round. And it stays silent where nothing is ever dominated.
+
+The notes come in three blocks. Block one, representing a game, covers slides 2 to 19. It has three notes: the normal form and its notation across four books, with the grade game, the partnership, Cournot with its 625 against 648, and the second-price auction; then static games, common knowledge level by level, strategies as contingent plans, and why dominance is ordinal; then solution concepts, the four maintained assumptions, and the criteria of existence, uniqueness and invariance. Block two, dominance, covers slides 23 to 27: the definitions and their quantifier, Proposition 4.1 proved, the prisoner's dilemma, the partnership's gain y over n minus c, Example 3, truthful bidding as weakly but not strictly dominant, and then Pareto optimality with the dilemma band. Block three, iterated elimination, covers slides 28 to 33: the recursion and matrix 4.1 round by round, Proposition 4.2 proved, Cournot solved by elimination, and the pharmacy mini case. Then three support notes: the formula sheet, the pitfalls, and the Python note.
+
+The one result to hold is a chain of three arrows. Say it slowly. If every player has a strictly dominant strategy, then, by Proposition 4.1, there is a unique dominant-strategy equilibrium. That equilibrium, by Proposition 4.2, is the unique survivor of iterated elimination, after a single round. And, by Lesson 2, it does not follow that it is Pareto optimal.
+
+Each arrow adds nothing the one before did not assume. And each reverse arrow fails. Iterated elimination can pick a unique profile with no dominant strategy anywhere, as in matrix 4.1. And a unique dominant-strategy equilibrium can waste value, as in the prisoner's dilemma.
+
+Six cases to have memorized, with their numbers and verdicts.
+
+One, the prisoner's dilemma of slide 24. Payoffs minus 2, minus 2 when both stay mum; minus 5 and minus 1 when player 1 stays mum and player 2 finks; minus 1 and minus 5 the other way round; minus 4, minus 4 when both fink. Verdict: fink is dominant, and the profile fink, fink is Pareto dominated by mum, mum.
+
+Two, matrix 4.1, slide 27. C is strictly dominated by R; then M and D are dominated by U; then R is dominated by L. The survivor is U, L, with payoffs 4 and 3, after three rounds.
+
+Three, the partnership of slide 4. The gain from effort is y over n minus c; if all exert effort, each gets y minus c. There is a dilemma if and only if y over n is less than c and c is less than y.
+
+Four, Cournot, Tadelis page 65. The surviving intervals go from 0 to 45, then 22.5 to 45, then 22.5 to 33.75, and so on. The limit is each firm producing 30, with profit 900, against 1000 if each produced 20.
+
+Five, the pharmacy avenue, slides 32 and 33. Elimination removes blocks 1 and 7, then 2 and 6, then 3 and 5. The survivor is both chains on block 4. Customers walk 12 blocks in total, against an optimum of 6.
+
+Six, the mafia prisoner's dilemma, Tadelis page 62. With a sanction z on finking, mum is dominant if and only if z is greater than 1.
+
+What is examinable. The slides' content, summarized on the wrap-up slide, slide 34, at the level of Tadelis chapter 3 and sections 4.1 and 4.2: definitions with their quantifiers, Propositions 4.1 and 4.2 with proofs, running dominance and iterated elimination on matrices and on Cournot and location games, and Pareto comparisons. Named only, the G layer: M W G's proof of order independence, which is their Exercise 8 B 4; weak iterated deletion; elimination with infinite strategy sets; and Cournot with three firms. Next lecture, not here: best responses, rationalizability, which is Tadelis section 4.3, Nash equilibrium, mixed strategies, and dominance by mixtures, which is M W G Definition 8 B 4 and Proposition 8 B 1. Out of course scope: mechanism design, with the second-price auction appearing only as a dominance example, cheap talk, and moral hazard.
+
+Where this lecture sits in the course. Lecture 1 is the normal form, dominance and iterated elimination. Lecture 2 sharpens iterated elimination with best responses and Nash equilibrium, adds mixed strategies, and does Hotelling voting. Lecture 3 is the extensive form, where strategies as contingent plans pay off, and backward induction. Lecture 4 is multistage games and bargaining. Lecture 5 repeats the prisoner's dilemma, and finds cooperation that the one-shot dominance argument rules out. Lecture 6 makes self-enforcing the Cournot collusion of this lecture, 20 each against 30, and the mafia enforcer. Lecture 7 is incomplete information, with the second-price auction in Bayesian form. Lecture 8 is signaling and perfect Bayesian equilibrium.
+
+Recap of part zero. One chain: strictly dominant for all, then a unique dominant-strategy equilibrium, then the unique survivor of iterated elimination, and no guarantee of Pareto optimality. Six cases carry the numbers: the prisoner's dilemma, matrix 4.1, the partnership, Cournot, the pharmacy avenue, and the mafia.
+
+Part one. What a game is, and how to write one down.
+
+This part covers note one: slides 2 to 4, 10 to 14, and 19; Tadelis, the opening of chapter 3 and sections 3.1 and 3.2, pages 43 to 52, with Definitions 3.2 to 3.4, the prisoner's dilemma on page 48, Cournot in section 3.1.2 on page 49, and voting on pages 49 and 50; Tadelis section 4.1.1, page 59, for the notation of everyone else; Gibbons section 1.1 A, pages 2 to 4; and M W G section 7 D, page 228.
+
+The claim. A game is a decision problem in which my payoff depends on your choice and yours on mine, so each player must reason about the others' reasoning. The normal form, the triple of players, strategy sets and payoff functions, is the minimum bookkeeping for that: who plays, what each can do, and how every profile of choices is valued by every player. An outcome table, of grades, prison years or prices, is not yet a game. It becomes one only when the outcomes are turned into payoffs.
+
+One point one. The U layer: why decision theory is not enough.
+
+Tadelis opens chapter 3 with the student's own problem, on pages 43 and 44. You choose how hard to study, but grades are set on a curve, so your outcome depends on how hard everyone else studies. Treating your classmates as random noise would be inconsistent: they optimize too, and they are guessing what you will do.
+
+The slides put the same idea in three ingredients, on slide 2. First, a model: abstract from behaviour to expose the logic of strategic choice. That is not new relative to Micro One. Second, rationality: choices follow preferences, represented by a utility function, which is methodological individualism. Also not new. Third, interdependence: player i's payoff depends on the actions of all players. That one is new.
+
+Slide 3 states the consequence. Strategic reasoning is reasoning about reasoning. My best action depends on what I expect you to do, and what you do depends on what you expect me to do. Game theory formalizes the interaction between preferences and expectations.
+
+Tadelis splits a static game into two steps, on page 44. Step one: each player chooses an action simultaneously and independently, which means without observing the others' choices, not necessarily at the same instant. Step two: payoffs are distributed as a function of the profile of actions. Gibbons makes the same point on page 4: the prisoners need not decide at the same moment, only without knowing the other's choice.
+
+One point two. The C layer: the normal form.
+
+Slide 13 defines a normal-form game as a triple. The first element, capital I, is the set of players, the numbers 1, 2, up to n. The second, S i, is the set of pure strategies of player i. The third, u i, is player i's payoff function: it takes a profile, one strategy from each of S 1 through S n, and returns a real number.
+
+Tadelis, Definition 3.3, on page 47, says the same thing in his own letters: a finite set of players N, from 1 to n; a collection of pure-strategy sets S 1 to S n; and payoff functions v 1 to v n, each mapping S 1 times and so on up to S n into the real numbers. Definition 3.2, on page 46: a pure strategy is a deterministic plan of action, and a profile is a list s equal to s 1 through s n, with each s i in S i.
+
+The four books use four notations. Walk through them by object. For the players, the slides write capital I, Tadelis writes capital N, Gibbons simply numbers them 1 to n, and M W G write capital I. For the payoff, the slides, Gibbons and M W G all write u i; Tadelis writes v i. For the game as a whole, the slides write angle brackets around I, the S i, and the u i. Tadelis writes angle brackets around N, the S i for i from 1 to n, and the v i for i from 1 to n. Gibbons writes curly braces around S 1 to S n, a semicolon, then u 1 to u n. M W G write capital Gamma with subscript N, equal to square brackets around I, the S i, and the functions u i. The notes use the slides' notation, capital I and u i, and cite Tadelis's numbering.
+
+One point two point one. The notation for everyone else, slide 14 and Tadelis page 59.
+
+Capital S is the product of all the strategy sets, S 1 times S 2 and so on up to S n, and a profile s, the list s 1 through s n, is an element of it. Then s minus i is the same list with player i's entry removed: s 1 up to s i minus 1, then s i plus 1 up to s n. It lives in capital S minus i, the product over every player j other than i of the sets S j. And the full profile can be written as the pair s i, s minus i.
+
+That pair is a reordering for reading, not a new object. It lists the same profile with player i's entry pulled out in front. This matters because every dominance statement in this lecture is a statement "for all s minus i in S minus i". So the number of elements of S minus i, which is the product over the other players of the number of strategies each has, is the number of inequalities you must check.
+
+One point two point two. Finite two-player games are matrices, Tadelis section 3.2, pages 50 to 52.
+
+Definition 3.4, on page 51: a finite game has finitely many players and finitely many strategies for each. A two-player finite game is a bimatrix. Rows are player 1's strategies, columns are player 2's, and the cell in row r and column c holds two numbers, u 1 of r and c, then u 2 of r and c. Player 1's payoff always comes first, as on slide 11 and in Gibbons page 3. Cournot, with a continuum of quantities, and Tadelis's three-player voting game, on pages 49 and 50, are normal-form games that are not single matrices.
+
+One point three. Worked: the grade game, slides 10 to 12 and 19.
+
+Each student writes alpha or beta on a sheet, without seeing the partner's sheet. The outcome matrix lists grades, You first, then Pair. If both write alpha, both get B minus. If You write alpha and Pair writes beta, You get an A and Pair gets a C. If You write beta and Pair writes alpha, You get a C and Pair gets an A. If both write beta, both get B plus.
+
+The question on slide 11 is the point: how does each person value their own grade, and the other's? Until that is fixed, there is no game.
+
+Slide 12 proposes one set of payoffs, for a selfish student: an A is worth 3, a B plus is worth 1, a B minus is worth 0, and a C is worth minus 1. The payoff matrix becomes: both alpha, 0 and 0; You alpha and Pair beta, 3 for You and minus 1 for Pair; You beta and Pair alpha, minus 1 for You and 3 for Pair; both beta, 1 and 1.
+
+Example 2, slide 19, writes this game out formally. The players are 1 and 2, You and Pair. Each has the strategy set alpha, beta. Player 1's payoffs: u 1 of alpha, alpha is 0; u 1 of alpha, beta is 3; u 1 of beta, alpha is minus 1; u 1 of beta, beta is 1. And player 2's payoff at any profile s 1, s 2 equals u 1 of s 2, s 1, because the game is symmetric. Four profiles, two payoff numbers each: the eight entries of the bimatrix are the whole of the payoff functions.
+
+The notes' figure shows the two tables side by side: the outcome matrix of grades, and the payoff matrix with the cell alpha, alpha outlined in green and the cell beta, beta shaded purple. Only the right-hand table, the payoffs, can be solved.
+
+On the payoff table, alpha beats beta for You whatever Pair writes: 0 is greater than minus 1, and 3 is greater than 1. So the selfish student writes alpha. By symmetry so does Pair, and both get B minus, although both prefer B plus. That is the prisoner's dilemma of part four and part five. Change the payoffs, for example a student who also values the pair's grade, and the same outcome table becomes a different game with a different prediction. Tadelis's altruistic prisoner's dilemma, on page 53, makes the same point with prison years; it is in part five.
+
+One point four. Worked: the three examples of slide 4, in normal form.
+
+One point four point one. The partnership, with two partners.
+
+The players are 1 and 2, and each chooses E, effort, or S, shirk. Output is y times the number of partners who exert effort, split equally. Effort costs the partner who exerts it c, which is positive. With k efforts, each partner receives y times k over 2.
+
+So the four cells are as follows. Both exert effort: each gets y minus c. Partner 1 works and partner 2 shirks: partner 1 gets y over 2 minus c, and partner 2 gets y over 2. Partner 1 shirks and partner 2 works: partner 1 gets y over 2, partner 2 gets y over 2 minus c. Both shirk: 0 and 0.
+
+Every cell is half of output, minus own cost. For example, at E, S, output is y, so partner 1 gets y over 2 minus c and partner 2 gets y over 2. The game is solved in part four.
+
+One point four point two. The Cournot duopoly, Tadelis section 3.1.2, page 49.
+
+Two identical firms. Each has cost c i of q i equal to q i squared. Inverse demand is p equals 100 minus q, where q is the sum q 1 plus q 2. In normal form: the players are 1 and 2; each strategy set is all quantities from 0 to infinity; and for i different from j, the payoff v i of s i and s j has two pieces. When s i plus s j is less than 100, it is 100 minus s i minus s j, times s i, minus s i squared. When s i plus s j is 100 or more, it is just minus s i squared. The second piece is there because price cannot fall below zero.
+
+The competitive benchmark, from Tadelis page 49, footnote 4. Set marginal cost, 2 q i, equal to price. That gives each firm's supply, q i equals p over 2, so market supply is q equals p. Then p equals 100 minus p gives p equals 50, each firm produces 25, and profit is 50 times 25 minus 25 squared, which is 625.
+
+Cournot's objection: a firm that sees its effect on price does better. If firm 1 cuts to 24, total output is 49, price is 51, and firm 1's payoff is 51 times 24 minus 24 squared, which is 1224 minus 576, which is 648. And 648 is greater than 625.
+
+So price-taking is not a rational prediction once each firm knows it moves the price. What a firm should produce depends on the rival's quantity, and that is the strategic problem. Tadelis solves the linear-cost version by iterated elimination in section 4.2.2, and that is part seven of this script.
+
+One point four point three. The second-price auction, slide 4.
+
+There are n buyers, at least two, with values v 1 to v n. The values are part of the payoffs, hence common knowledge in this lecture. Each buyer's strategy set is all bids from 0 to infinity. Let m i be the highest bid among the other bidders. Then buyer i's payoff has three cases. If her bid is above m i, she wins and gets v i minus m i. If her bid equals m i, she ties, and gets v i minus m i divided by the number of bidders tied at that bid. If her bid is below m i, she gets 0.
+
+The price is the second-highest bid. So the winner's own bid sets whether she wins, never what she pays. That separation is why bidding one's value is weakly dominant, which part four shows. A scope reminder: the auction is used in this course only as an example of dominance; mechanism design is outside the course.
+
+One point five. The G layer, not examinable: M W G's normal form, section 7 D, page 228.
+
+M W G build the normal form from the extensive form. A strategy is a complete contingent plan, a function from a player's information sets to actions, and the normal form, capital Gamma sub N, records only what each profile of plans yields. This is the key fact of slide 15, that every dynamic game has a normal form, and it is used from Lecture 3 on. It is named here and not examinable beyond the slides' statement.
+
+Recap of part one. A game needs interdependence: payoffs that depend on everyone's choices. The normal form lists players, strategy sets and payoff functions, and s minus i is the shorthand for everyone else, which sets the count of inequalities in every dominance check. An outcome table becomes a game only once outcomes are turned into payoffs, as the grade game shows. The partnership, Cournot and the second-price auction all fit the same triple.
+
+Checklist for part one. You should be able to write the triple for a verbal story, fill in a bimatrix, and write piecewise payoffs for continuous strategies, as for Cournot and the auction. You should be able to state the competitive benchmark of the quadratic Cournot game, 25 each with profit 625, and the deviation to 24 that earns 648. And you should be able to say why the second-price rule separates whether you win from what you pay.
+
+Part two. Static against dynamic, complete information, and what a strategy is.
+
+This part covers note two: slides 15 to 18; Tadelis chapter 3, pages 44 to 47, on static games and games of complete information, with Definition 3.1 on page 45 and Definition 3.2 on page 46; Gibbons section 1.1 A, page 4, and section 1.1 B, page 7; and M W G section 7 D, page 228.
+
+The claim. Three words in the lecture title carry assumptions that the solution concepts will lean on. Static means no one observes anyone else's choice before choosing. Complete information means the game itself, the players, the actions and how outcomes map to payoffs, is common knowledge: everyone knows it, everyone knows that everyone knows it, and so on without end. And a strategy is a complete contingent plan, which is why even long dynamic interactions can be written as one simultaneous choice of strategies.
+
+Two point one. Static against dynamic, slide 15.
+
+Compare the two in three dimensions. First, what a player sees before choosing. In a static game, written in normal form, nothing of the others' choices. In a dynamic game, some earlier moves. Second, the defining test. A game is static when choices are made without observing the others' choices, and timing is irrelevant: that is Tadelis page 44 and Gibbons page 4. A game is dynamic when someone conditions on an observed move. Third, the natural representation. Static games are written as a matrix, the normal form. Dynamic games are written as a game tree, the extensive form, which is Lecture 3.
+
+Tadelis's example, on page 44. You study two days before the exam; I study the day before. If I do not learn how much you studied, moving later gives me no informational advantage, and the game is static.
+
+The key fact of slide 15: any situation, static or dynamic, can be represented as a normal-form game by suitably defining strategies. The trick is section two point three below.
+
+Two point two. Complete information and common knowledge, slide 16.
+
+In a game of complete information, the game being played is common knowledge. All players know who is playing, which actions each has, and how outcomes translate into payoffs. Tadelis, on page 45, lists four components that must be common knowledge: all players' possible actions; all possible outcomes; how each action profile maps into an outcome; and every player's preferences over outcomes.
+
+Definition 3.1, Tadelis page 45 and slide 16. An event E is common knowledge if, one, everyone knows E; two, everyone knows that everyone knows E; and so on, without end.
+
+Two point two point one. Worked: the levels, written out.
+
+Let K of E mean "everyone knows E". Define level one, K one of E, as K of E. Define each next level by applying K again: K at level m plus one of E is K of K at level m of E. Then E is common knowledge if and only if K at level m of E holds for every m from 1 upwards.
+
+Two situations from Tadelis page 45. First, walking in the rain together, the event "it is raining". Level one holds, since each knows it. Level two holds as well, because each sees the other getting wet. And so on up: it is common knowledge. Second, a professor announces an exam, and you may have been daydreaming. Level one holds for me: I know it. But level two fails, since I am not sure you know it. So it is not common knowledge; it fails at level two.
+
+Mutual knowledge, level one, is not common knowledge. The gap matters immediately: each round of iterated elimination, in part six, uses one more level of knowledge of rationality. Gibbons states the same requirement for iterated elimination in words, on page 7.
+
+Common knowledge is a strong assumption; in Tadelis's words on page 45, it is "by no means innocuous". Lecture 7 drops part of it, by letting payoffs be private information.
+
+Two point three. A strategy is a complete contingent plan, slide 17.
+
+A strategy prescribes what to do in every contingency that may arise. Slide 17's image is the chess player who decides in advance a move for every board position. Tadelis's image, on page 46, is a candidate going to a meeting: if they ask question one, I give answer one; if they ask question two, I give answer two; and so on. M W G, in section 7 D, say that the fact that a strategy is a complete contingent plan "cannot be overemphasized".
+
+In a static game each player has a single, unconditional decision, so strategies coincide with actions. Tadelis notes on page 47 that the change of focus "may seem redundant". The distinction pays off as soon as someone observes something.
+
+Two point three point one. Worked: counting strategies when Pair can see your sheet.
+
+Take the grade game of part one, but let Pair read your letter before writing. This is a dynamic version, and an original example of the notes.
+
+You still have one decision, so your strategy set is still alpha and beta. Pair now has two contingencies, "you wrote alpha" and "you wrote beta", with two actions in each. So a strategy for Pair is a pair of replies: first the reply to alpha, then the reply to beta. Pair's strategies are alpha-alpha, alpha-beta, beta-alpha and beta-beta. That is 2 squared, which is 4.
+
+With the slide-12 payoffs, the normal form is a 2 by 4 matrix. Read it row by row.
+
+If You write alpha: against alpha-alpha, Pair replies alpha, and the payoffs are 0 and 0. Against alpha-beta, Pair also replies alpha to alpha: 0 and 0. Against beta-alpha, Pair replies beta: 3 for You and minus 1 for Pair. Against beta-beta: again 3 and minus 1.
+
+If You write beta: against alpha-alpha, Pair replies alpha: minus 1 for You and 3 for Pair. Against alpha-beta, Pair replies beta: 1 and 1. Against beta-alpha, Pair replies alpha: minus 1 and 3. Against beta-beta, Pair replies beta: 1 and 1.
+
+Take one column cell by cell. Against alpha-beta, the copying reply, alpha to alpha and beta to beta, your alpha meets alpha, giving 0 and 0, and your beta meets beta, giving 1 and 1. The dynamic game is now a static choice of plans, which is exactly slide 15's key fact. Solving it properly needs backward induction, which is Lecture 3.
+
+Count, then draw. With m contingencies and a actions in each, a player has a to the power m pure strategies. Forgetting a contingency, which here means writing Pair's strategies as just alpha and beta, is the most common modelling error with sequential moves.
+
+Two point four. What a payoff is, slide 18.
+
+The payoff u i maps profiles into real numbers: it is player i's utility over outcomes, which are strategy profiles, and it represents i's preferences over outcomes. Stronger conditions, the expected-utility axioms, enter only "in some lectures": when players randomize, in Lecture 2.
+
+Two point four point one. Worked: why dominance only needs the ranking.
+
+The claim first: dominance never uses how big the payoff gaps are, only their signs. Now the four steps.
+
+Step one. Let f be any strictly increasing function from the real numbers to the real numbers, and replace player i's payoff u i by f applied to u i.
+
+Step two. For any two strategies s i and s i prime and any s minus i, u i of s i prime and s minus i is greater than u i of s i and s minus i, if and only if f of the first is greater than f of the second. That is what strictly increasing means.
+
+Step three. Every comparison in the definitions of part four has exactly this form: one player, two of her strategies, a fixed s minus i.
+
+Step four. So strict and weak dominance, the dominant-strategy equilibrium, and iterated elimination are all unchanged by any strictly increasing transformation of each player's payoffs.
+
+That is why the grade game only needs the order, A above B plus above B minus above C, plus how much you care about the pair. And it is why the numbers 3, 1, 0 and minus 1 on slide 12 are one choice among many with the same predictions. Cardinal payoffs matter only once expectations over mixed strategies appear.
+
+Recap of part two. Static means unobserved, not simultaneous. Complete information means the game is common knowledge, and common knowledge is an infinite tower of "everyone knows", not just level one. A strategy is a complete contingent plan, so a player with m contingencies and a actions in each has a to the power m strategies. And dominance is ordinal: any strictly increasing transformation of payoffs leaves it unchanged.
+
+Checklist for part two. You should be able to define static and dynamic games by the observation test. You should be able to state Definition 3.1 and say at which level the exam announcement fails. You should be able to count Pair's four strategies and build the 2 by 4 matrix. And you should be able to prove, in four steps, that dominance survives any strictly increasing transformation.
+
+Part three. What a solution concept must deliver.
+
+This part covers note three: slides 21 and 22; Tadelis section 3.3, pages 52 to 56, with the solution concept and equilibrium on page 54, the assumptions in section 3.3.1 on pages 54 and 55, the criteria in section 3.3.2 on pages 55 and 56, and the Battle of the Sexes on page 54; Tadelis section 4.1.3, page 62, on invariance of strict dominance, and section 4.2.3, pages 67 and 68; and Cabral section 7.1, page 163, Figure 7.3.
+
+The claim. A solution concept is a rule that maps every game into a set of profiles, its equilibria, which are the theory's prediction. It is judged on three criteria that pull against each other. Existence: does it say something in most games? Uniqueness: does it say something sharp? Invariance: does the answer survive a tiny change in payoffs? "Anything can happen" always exists and is useless. "Everyone plays a dominant strategy" is sharp and robust, but rarely exists. Every concept in the course is a different point on that frontier.
+
+Three point one. Solution concept and equilibrium, slide 21.
+
+A solution concept is a method for analysing games that singles out their most reasonable outcomes. That is slide 21; Tadelis, on page 54, says it restricts "the set of all possible outcomes to those that are more reasonable than others". An equilibrium is a strategy profile selected by a solution concept: the prediction. And to be useful, a theory must apply to a wide range of strategic situations.
+
+A caveat from Tadelis page 61: an equilibrium is a profile of strategies, never a profile of payoffs. In the prisoner's dilemma, fink, fink is the equilibrium; minus 4, minus 4 are the equilibrium payoffs.
+
+Three point one point one. The four maintained assumptions, Tadelis section 3.3.1, pages 54 and 55.
+
+Assumption one: players are rational. Each player chooses a strategy to maximize his payoff given his beliefs. It is first used by strict dominance, in part four.
+
+Assumption two: players are intelligent. Each player knows the whole game. It is also first used by strict dominance, because a player must be able to see that a strategy is dominated.
+
+Assumption three: common knowledge. Rationality and intelligence are common knowledge. It is first used by iterated elimination, in part six.
+
+Assumption four: self-enforcement. A prediction must be one each player is happy to follow on his own. Every concept uses it; it is what makes the theory noncooperative.
+
+Self-enforcement is why a third-party enforcer, a mafia code or a contract, has to be modelled as part of the game rather than assumed. That is Tadelis page 55, and the mafia example is in part five.
+
+Three point two. The three criteria, slide 22, Tadelis section 3.3.2, pages 55 and 56.
+
+Existence asks how often the concept applies. A concept that passes trivially but is useless: "anything can happen". A concept that is sharp but often fails: "players choose what they think the opponent chooses", which is undefined when the players' action sets differ, page 55.
+
+Uniqueness asks how much the concept restricts behaviour. Strict dominance is the sharp-but-failing case: it is unique when it exists, by Proposition 4.1, but it often does not exist.
+
+Invariance asks whether the concept is robust to payoff changes of size at most a small epsilon. Weak dominance is the case that fails, as section three point three point two shows.
+
+Why uniqueness is hard, slide 22 and page 56. Each player's best action depends on the others' actions, so several combinations of strategies can support each other. The canonical case is the Battle of the Sexes, Tadelis page 54. Alex chooses rows, Chris chooses columns, and each picks O or F. If both choose O, the payoffs are 2 for Alex and 1 for Chris. If they choose differently, either way, both get 0. If both choose F, Alex gets 1 and Chris gets 2.
+
+No strategy is always best for either player: O is best against O, F is best against F. So the always-best rule offers no guidance at all. That is a failure of existence for strict dominance, Tadelis page 62. And iterated elimination can only say "anything can happen" here, page 68.
+
+What counts as a small change, page 56. Adding a player or a strategy is not small; only the payoff functions may move. Formally: if every payoff of every player moves by at most a small positive epsilon, the prediction should not change.
+
+Three point three. Worked: invariance, checked with numbers.
+
+Three point three point one. Strict dominance passes, Tadelis section 4.1.3, page 62.
+
+In the prisoner's dilemma, fink strictly dominates mum for player 1, with two margins. Against mum: v 1 of F, M minus v 1 of M, M equals minus 1 minus minus 2, which is 1. Against fink: v 1 of F, F minus v 1 of M, F equals minus 4 minus minus 5, which is also 1.
+
+Now perturb every payoff by some delta whose absolute value is at most epsilon. Each margin is a difference of two perturbed payoffs, so it moves by at most 2 epsilon. The perturbed margin is therefore at least 1 minus 2 epsilon, which is positive whenever epsilon is less than one half.
+
+The same holds for player 2, so fink, fink remains the strict dominant-strategy equilibrium. Tadelis's own perturbation, on page 56, turns 5 years into 5.01 for one player and 4.99 for the other: an epsilon of 0.01. In general: if g, a positive number, is the smallest strict margin, any perturbation with epsilon less than g over 2 keeps every strict inequality. That is the argument behind Tadelis's sentence on page 62: "because the inequality is strict, we can find a small enough value epsilon greater than zero".
+
+Three point three point two. Weak dominance fails.
+
+Take player 1's payoffs only; player 2's do not matter here. Row U pays 1 against L and 1 against R. Row D pays 1 against L and 0 against R. So U weakly dominates D: 1 is at least 1, and 1 is strictly greater than 0.
+
+Now raise u 1 of D, L by any positive epsilon over 2. Then u 1 of D, L is 1 plus epsilon over 2, which is greater than 1, which is u 1 of U, L. So U no longer weakly dominates D, however small epsilon is. A tie is not robust; a strict inequality is. This counterexample is the one used in the exam-style list for Lecture 1, question 1 part c, and checked in the list's Python checker.
+
+Three point four. The lecture's concepts on the scorecard.
+
+Three concepts, judged on five lines.
+
+The strict dominant-strategy equilibrium, from part four. It needs rationality, assumptions one and two. Existence: rare; it fails in the Battle of the Sexes. Uniqueness: yes, by Proposition 4.1. Invariance: yes. Pareto optimal: not necessarily, as the prisoner's dilemma shows.
+
+Iterated elimination of strictly dominated strategies, from part six. It needs, in addition, common knowledge of rationality, assumption three. Existence: always, in finite games. Uniqueness: often fails; in the Battle of the Sexes nothing is removed. Invariance: yes, because every step rests on strict inequalities. Pareto optimal: not necessarily, as matrix 4.1 and Cournot show.
+
+Nash equilibrium, which is Lecture 2, next lecture, not here. It needs, in addition, correct beliefs. Existence: in pure strategies, not always; in mixed strategies, always, in finite games. Uniqueness: often fails. Pareto optimal: not necessarily.
+
+Robustness to the assumptions themselves, Cabral page 163, Figure 7.3. When a player's best choice hinges on the other player being rational, a tiny doubt about that rationality can overturn it if the downside is large; Cabral's downside is minus 100. The more rounds of "I know that you know" a prediction uses, the more fragile it is in practice.
+
+Recap of part three. A solution concept selects profiles; an equilibrium is a profile of strategies, never of payoffs. Four assumptions are maintained: rational, intelligent, common knowledge, self-enforcement. Concepts trade off existence, uniqueness and invariance. Strict dominance is invariant with a margin of g over 2; weak dominance breaks under any perturbation, however small.
+
+Checklist for part three. You should be able to define a solution concept and an equilibrium. You should be able to list the four assumptions and say which concept first uses each. You should be able to show, with numbers, why strict dominance survives perturbations smaller than half the smallest margin, and why the weak-dominance tie breaks. And you should be able to say why the Battle of the Sexes defeats both strict dominance and iterated elimination.
+
+Part four. Dominance and the dominant-strategy equilibrium.
+
+This part covers note four: slides 4, 23 to 25, and 27; Tadelis section 4.1, pages 59 to 63, with Definition 4.1 and Claim 4.1 on page 60, the advertising game on page 60, Definitions 4.2 and 4.3, Proposition 4.1 and the caveat on page 61, and the weak-dominance remark on page 63; the prisoner's dilemma on page 52; Gibbons section 1.1 B, pages 4 and 5; M W G section 8 B, pages 236 to 238, Definitions 8 B 1 to 8 B 3; and Cabral section 7.1, pages 161 and 162.
+
+The claim. If one strategy pays more than another against every possible choice of the others, a rational player never uses the worse one. That is Lesson 1. When every player has a strategy that beats all his others in this way, the profile of those strategies is the strict dominant-strategy equilibrium. It needs only rationality, it is unique, by Proposition 4.1, and it is robust. Its weakness is existence: most games have no dominant strategies. Weak dominance, which allows ties, is useful, as in truthful bidding in a second-price auction, but it is neither robust nor a consequence of rationality alone.
+
+Four point one. The definitions, slide 23.
+
+Take two strategies of player i, s i and s i prime. Three definitions follow.
+
+First, s i is strictly dominated by s i prime if u i of s i and s minus i is less than u i of s i prime and s minus i, for all s minus i in S minus i. This is slide 23 and Tadelis Definition 4.1, on page 60, where it is written as s i prime "strictly dominates" s i; it is also M W G Definition 8 B 2.
+
+Second, s i is weakly dominated by s i prime if u i of s i and s minus i is less than or equal to u i of s i prime and s minus i for all s minus i, with strict inequality for at least one s minus i. This is slide 23 and M W G Definition 8 B 3, on page 238.
+
+Third, a strategy is strictly dominant, or weakly dominant, if it strictly, or weakly, dominates every other strategy of that player. This is slide 23, Tadelis Definition 4.2 on page 61, and M W G Definition 8 B 1.
+
+Claim 4.1, Tadelis page 60: a rational player will never play a strictly dominated strategy. If he did, the dominating strategy would give him more whatever the others do, so he could not be maximizing under any belief. This is Lesson 1, on slide 25.
+
+The quantifier is the definition. "Strictly dominated" means: there is one fixed alternative s i prime that does better against every s minus i. One fixed alternative, against everything. It is not "for each s minus i, some alternative does better". Cabral, on page 162, warns about exactly this, and section four point seven point one below shows the counterexample.
+
+Four point one point one. How many inequalities.
+
+To show that s i prime strictly dominates s i, you need as many strict inequalities as there are elements of S minus i. To show that a strategy is strictly dominant, you need the number of player i's strategies minus one, times the number of elements of S minus i. In a 3 by 3 game, a dominance claim between two rows is 3 inequalities; a dominant-row claim is 6.
+
+Four point two. The dominant-strategy equilibrium, slide 25.
+
+Definition 4.3, Tadelis page 61 and slide 25. A profile s D is a strict dominant-strategy equilibrium if, for every player i, s i D is a strictly dominant strategy.
+
+Proposition 4.1, Tadelis page 61 and slide 25. If a game has a strict dominant-strategy equilibrium s D, then s D is its unique dominant-strategy equilibrium.
+
+The proof, in four steps.
+
+Step one. Suppose some other profile s prime, different from s D, were also a strict dominant-strategy equilibrium. Then s i prime differs from s i D for at least one player i.
+
+Step two. Because s i D is strictly dominant and s i prime is a different strategy, u i of s i D and s minus i is greater than u i of s i prime and s minus i, for all s minus i.
+
+Step three. But for s i prime to be strictly dominant, we would need u i of s i prime and s minus i to be greater than u i of s i D and s minus i, for all s minus i: the opposite inequality at every s minus i.
+
+Step four. Both cannot hold. That is a contradiction, so s prime must equal s D. End of proof.
+
+Tadelis leaves this proof as his exercise 4.1, on page 76.
+
+Four point three. Worked: the prisoner's dilemma, slide 24 and Tadelis page 52.
+
+Each prisoner chooses M, mum, or F, fink. If both stay mum, each gets minus 2. If player 1 stays mum and player 2 finks, player 1 gets minus 5 and player 2 gets minus 1. If player 1 finks and player 2 stays mum, player 1 gets minus 1 and player 2 gets minus 5. If both fink, each gets minus 4.
+
+Check player 1, fink against mum, column by column. This is the lawyer's argument, Tadelis page 53. If player 2 stays mum, fink gives minus 1 and mum gives minus 2; minus 1 is greater than minus 2, so fink is better. If player 2 finks, fink gives minus 4 and mum gives minus 5; minus 4 is greater than minus 5, so fink is better again.
+
+So fink strictly dominates mum, and with only two strategies, fink is strictly dominant. By symmetry the same holds for player 2, and fink, fink is the unique strict dominant-strategy equilibrium, with payoffs minus 4 and minus 4.
+
+Gibbons's version, on page 3, uses months in jail: minus 1, minus 9, 0 and minus 6. What makes a game a prisoner's dilemma is only an ordering of four payoffs: T above R above P above S, which stand for temptation, reward, punishment and sucker, Gibbons pages 4 and 5. Here they are minus 1, above minus 2, above minus 4, above minus 5. The grade game of slide 12 has the same structure, 3 above 1 above 0 above minus 1, and alpha is strictly dominant for both players, as part one showed.
+
+Four point four. Worked: the partnership, slide 4.
+
+From the matrix of part one, compare effort with shirking for partner 1, against each choice of partner 2.
+
+If partner 2 works: u 1 of E, E minus u 1 of S, E is y minus c, minus y over 2, which is y over 2 minus c. If partner 2 shirks: u 1 of E, S minus u 1 of S, S is y over 2 minus c, minus 0, which is again y over 2 minus c.
+
+The gain from effort does not depend on what the other partner does. Hence three cases.
+
+If c is less than y over 2, effort is strictly dominant for both, and E, E is the strict dominant-strategy equilibrium. If c is greater than y over 2, shirking is strictly dominant for both, and S, S is the strict dominant-strategy equilibrium. If c equals y over 2, effort and shirking pay the same against everything, so neither dominates the other, not even weakly.
+
+With n partners, and output y per effort split n ways, the gain is y over n minus c, for the same reason: my effort raises my share by y over n whatever the others do. Whether the dominant choice is good for the partnership is a separate question, answered in part five.
+
+The notes link the interactive companion "Shirk or Work" here: move c, y and n, and watch the two payoff lines stay parallel. The gap between them, y over n minus c, is the whole dominance verdict. Part thirteen describes it.
+
+Four point five. Worked: Example 3, slide 27, and the advertising game.
+
+Slide 27 is Tadelis's matrix 4.1, on page 64. The question: does any player have a dominant strategy, and are there dominated strategies?
+
+The game. Player 1 has rows U, M and D; player 2 has columns L, C and R. Row U: against L, 4 and 3; against C, 5 and 1; against R, 6 and 2. Row M: against L, 2 and 1; against C, 8 and 4; against R, 3 and 6. Row D: against L, 3 and 0; against C, 9 and 6; against R, 2 and 8.
+
+Player 1 first, comparing rows column by column. U against M: at L, 4 beats 2; at C, 5 loses to 8; at R, 6 beats 3. No dominance. U against D: at L, 4 beats 3; at C, 5 loses to 9; at R, 6 beats 2. No dominance. M against D: at L, 2 loses to 3; at C, 8 loses to 9; at R, 3 beats 2. No dominance. No row dominates another, so player 1 has no dominated and no dominant strategy.
+
+Player 2 next, comparing columns row by row. R against C: at U, 2 beats 1; at M, 6 beats 4; at D, 8 beats 6. So C is strictly dominated by R. L against R: at U, 3 beats 2; at M, 1 loses to 6; at D, 0 loses to 8. No dominance. L against C: at U, 3 beats 1; at M, 1 loses to 4; at D, 0 loses to 6. No dominance.
+
+So player 2 has one dominated strategy, C, and no dominant one, because L and R each win somewhere. No dominant-strategy equilibrium exists. Yet removing C is where iterated elimination starts, in part six.
+
+Tadelis's advertising game, on page 60, with strategies L, M and H for each player. L is strictly dominated by M for each player: 8 beats 6, 4 beats 2, and 1 beats 0. But neither M nor H is dominated: M is best against M, and H is best against H. Rationality alone removes L and stops there.
+
+Four point six. Worked: weak dominance in the second-price auction, slide 4.
+
+A scope reminder before the algebra: the auction is a dominance example only; mechanism design is outside the course.
+
+Bidder i, with value v, compares bidding v with any other bid b, for every possible highest rival bid m. The payoffs come from part one; k, at least 2, is the number of bidders tied.
+
+First, an underbid: b less than v. Walk through five ranges of m. When m is below b, both bids win and pay m, so both give v minus m: equal. When m equals b, bidding v wins and gives v minus m, which is positive, while bidding b ties and gives v minus m over k: bidding v is strictly better. When m is between b and v, bidding v wins, with v minus m positive, while bidding b loses and gives 0: bidding v is strictly better. When m equals v, bidding v ties and gives 0, and bidding b loses and gives 0: equal. When m is above v, both lose and give 0: equal.
+
+Second, an overbid: b greater than v. Again five ranges. When m is below v, both win and give v minus m: equal. When m equals v, bidding v ties and gives 0, and bidding b wins and gives v minus m, which is 0: equal. When m is between v and b, bidding v loses and gives 0, while bidding b wins and gives v minus m, which is negative: bidding v is strictly better. When m equals b, bidding v loses and gives 0, while bidding b ties and gives v minus m over k, which is negative: bidding v is strictly better. When m is above b, both lose: equal.
+
+So bidding v is never worse and sometimes strictly better. It weakly dominates every other bid; it is weakly dominant. It is not strictly dominant, and no bid is strictly dominated: against an m below both bids, all bids tie.
+
+The notes' figure has two panels, each plotting payoff against the highest rival bid. Truthful bidding is drawn in green; an underbid at 0.6 times v and an overbid at 1.4 times v are dashed orange. The curves coincide everywhere except in the shaded interval between the two bids, where truthful bidding is strictly better. Bids are in units of v, and the numbers are illustrative.
+
+The shaded band is the only place the bid matters. There, the underbidder loses an auction worth winning, and the overbidder wins one worth losing, paying an m above v. Everywhere else the price is set by someone else's bid, which is the whole logic of the second-price rule.
+
+Four point seven. Weak against strict, and a definitional trap.
+
+Compare them on four questions. First, does it follow from rationality alone? Strict: yes, by Claim 4.1. Weak: no. A player sure that the others play an s minus i where the two strategies tie can rationally use the weakly dominated one; that is M W G page 238. Second, is it invariant to small payoff changes? Strict: yes. Weak: no, as part three showed. Third, is iterated elimination order-independent? Strict: yes. Weak: no, as part six shows. Fourth, is the dominant-strategy equilibrium unique? Strict: yes, by Proposition 4.1. Weak: it depends on the definition, as follows.
+
+The trap. Tadelis's remark on page 63 defines "weakly dominated" with less than or equal for all s minus i and no strictness requirement at all, and says a weakly dominant equilibrium "need not be unique"; that is his exercise 4.2. With the slides' definition, which is M W G Definition 8 B 3, requiring a strict inequality for at least one s minus i, a player has at most one weakly dominant strategy. Here is why. If s and s prime both weakly dominated each other, then u i of s would be at least u i of s prime everywhere, and u i of s prime at least u i of s everywhere. So they would be equal everywhere, and neither could be strictly better anywhere. On an exam, state which definition you use.
+
+Four point seven point one. Never the best reply, yet not dominated, Cabral page 162.
+
+Player 1's payoffs, original numbers in the spirit of Cabral's modified Figure 7.2. Three rows against two columns, L and R. Row T pays 3 against L and 0 against R. Row M pays 1 and 1. Row B pays 0 against L and 3 against R.
+
+Against L, T beats M, 3 to 1. Against R, B beats M, 3 to 1. So for each column some row beats M. But no single row does it against both: T fails at R, 0 against 1, and B fails at L, 0 against 1. So M is not strictly dominated by any pure strategy. It is dominated by the 50-50 mix of T and B, which pays 1.5, more than 1, in both columns. That is dominance by mixed strategies: next lecture, not here.
+
+The notes add two pointers, both for Lecture 2: that strictly dominated strategies are never best responses, Tadelis Proposition 4.3, page 70; and dominance by mixed strategies, M W G Proposition 8 B 1, page 241.
+
+Recap of part four. Strict dominance is one fixed alternative winning against every profile of the others; rationality removes strictly dominated strategies. When everyone has a strictly dominant strategy, the profile is the strict dominant-strategy equilibrium, unique by Proposition 4.1. The prisoner's dilemma and the grade game have one; matrix 4.1 has none. In the partnership, the gain from effort, y over n minus c, is the same against everything, so it decides dominance alone. Truthful bidding in the second-price auction is weakly, not strictly, dominant. Weak dominance does not follow from rationality, is not robust, and its uniqueness depends on the definition.
+
+Checklist for part four. You should be able to state the three definitions with the right quantifier, and count the inequalities a claim needs. You should be able to prove Proposition 4.1 in four steps. You should be able to check every pair of rows and columns in matrix 4.1 and conclude that only C is dominated. You should be able to walk the ten ranges of the auction comparison. And you should be able to show why M, in the T, M, B example, is never best yet not dominated by a pure strategy.
+
+Part five. Pareto optimality, and why rational play can waste value.
+
+This part covers note five: slides 4, 24 and 26; Tadelis section 3.3.3, pages 56 and 57, with Definition 3.5 and footnote 8 on page 57; the altruistic prisoner's dilemma on page 53; section 4.1.3, pages 62 and 63, with the mafia-modified prisoner's dilemma; section 4.2.3, page 68; Gibbons section 1.1 B, pages 4 and 5; Cabral section 7.1, page 161, Figure 7.1; and Milgrom and Roberts chapter 5, Table 5.1, pages 138 and 139.
+
+The claim. Pareto optimality judges outcomes: can someone gain without anyone losing? Dominance and equilibrium predict behaviour: what will self-interested players do? The two can disagree. In the prisoner's dilemma every player has a strictly dominant strategy, and the resulting profile is Pareto dominated. That is Lesson 2. The disagreement has a precise source, each player ignoring the effect of his choice on the others, and a precise remedy: change the game, with a contract, a sanction or ownership, because no amount of reasoning inside the game removes it.
+
+Five point one. The definition, slide 26 and Tadelis Definition 3.5, page 57.
+
+A profile s Pareto dominates a profile s prime if u i of s is at least u i of s prime for every player i, and strictly greater for at least one player. A profile is Pareto optimal if no other profile Pareto dominates it.
+
+Lesson 2, slide 26: individually rational choices can lead to socially undesirable outcomes.
+
+Two clarifications from Tadelis page 57. First, Pareto optimal is not "fair" or "symmetric". In the prisoner's dilemma, mum, fink and fink, mum are Pareto optimal too: no other profile makes the sucker better off without hurting the finker. Second, the criterion is incomplete. It cannot rank 5 and 5 against 6 and 60, in the sense of equity of Tadelis's footnote 8; it only rules out waste. It says nothing about which Pareto optimal profile is best.
+
+Five point two. Worked: the prisoner's dilemma, every profile compared.
+
+Payoffs from Tadelis page 48: mum, mum gives minus 2 and minus 2; mum, fink gives minus 5 and minus 1; fink, mum gives minus 1 and minus 5; fink, fink gives minus 4 and minus 4.
+
+Fink, fink is dominated by mum, mum, because minus 2 is greater than minus 4 for both players. It is not Pareto optimal.
+
+Mum, mum is not dominated. The only profiles that help one player, mum, fink and fink, mum, each hurt the other, who drops to minus 5, below minus 2. It is Pareto optimal.
+
+Mum, fink is not dominated: anything better for player 1 gives player 2 less than minus 1. It is Pareto optimal. And fink, mum is Pareto optimal by symmetry.
+
+The notes' figure plots the prisoner's dilemma in payoff space. Fink, fink sits at minus 4, minus 4, in orange, with a green arrow to mum, mum at minus 2, minus 2. The three Pareto-optimal profiles are in blue, joined by a dashed line. The shaded square is the set of profiles that would Pareto dominate fink, fink. The unique dominant-strategy equilibrium lies strictly inside the set of profiles that would make both players better off.
+
+The equilibrium is the only profile that is not Pareto optimal. The figure shows why the dilemma is structural: moving from fink, fink to mum, mum requires both players to switch, and each switch alone is a move to a sucker payoff.
+
+The grade game of slide 12 is the same. Alpha, alpha, worth 0 and 0, is the strict dominant-strategy equilibrium, and it is Pareto dominated by beta, beta, worth 1 and 1. Cabral's Figure 7.1, on page 161, reads the same structure as pricing. Both firms prefer high, high, worth 5 and 5, to low, low, worth 4 and 4. Yet low is dominant: 6 beats 5, and 4 beats 3.
+
+Five point three. Worked: the partnership's dilemma band.
+
+With n partners, slide 4 generalized, part four gave the private gain from effort as y over n minus c, the same against every profile of the others. Now compare the two symmetric profiles. If all exert effort, each gets n times y over n, minus c, which is y minus c. If all shirk, each gets 0.
+
+Three conditions follow. If c is greater than y over n, shirking is strictly dominant, and all-shirk is the strict dominant-strategy equilibrium. If c is less than y, all-effort gives each partner y minus c, which is positive, so all-effort Pareto dominates all-shirk. And when y over n is less than c and c is less than y, both hold at once: that is the social dilemma, where the dominant-strategy outcome is Pareto dominated. Hold that band: y over n, less than c, less than y.
+
+Why the band exists. Effort produces y at cost c, so the partnership gains whenever y exceeds c. But the partner who bears the whole cost receives only y over n of the product; the other n minus 1 times y over n goes to partners who did nothing for it. The private return understates the social return by the factor n, and the band from y over n to y is exactly where that gap changes the sign of the decision. The band widens with n. That is the free-rider problem of team production.
+
+The notes' figure plots the payoff difference against the effort cost c, for y equal to 6. Three solid lines, y over n minus c for n equal to 2, 3 and 6, cross zero at c equal to 3, 2 and 1. A dashed line, y minus c, crosses zero at 6. The band from 3 to 6 is shaded as the dilemma for two partners, and a square marks c equal to 4. Between the two zeros, shirking is dominant and wasteful. The square, with c equal to 4 and n equal to 2, is Tadelis's prisoner's dilemma from page 48 with 4 added to every payoff.
+
+Check that. At y equal to 6, c equal to 4 and n equal to 2, the matrix is: E, E gives 2 and 2; E, S gives minus 1 and 3; S, E gives 3 and minus 1; S, S gives 0 and 0. That is the slides' prisoner's dilemma shifted up by 4. So the partnership is a prisoner's dilemma whenever it is in the band. Adding partners at fixed y moves the zero of the private line left, to y over n, while the social zero stays at y: the band only grows.
+
+The companion "Shirk or Work" is linked here too: set n and drag c across the two landmarks, c equal to y over n and c equal to y. The verdict switches from "effort dominant" to "dilemma" to "shirking dominant and efficient".
+
+Five point four. Worked: changing the game.
+
+First, the altruistic prisoner's dilemma, Tadelis page 53. Suppose each year in prison costs the prisoner 1 and costs his partner one half. Recompute the four cells. Mum, mum: each loses 2 for his own two years and 1 for his partner's, so minus 3 and minus 3. Mum, fink: player 1 loses 5 for his own years and one half for his partner's one year, so minus 5 and a half; player 2 loses 1 for his own year and 5 halves for his partner's five, so minus 3 and a half. Fink, mum is the mirror image: minus 3 and a half for player 1 and minus 5 and a half for player 2. Fink, fink: each loses 4 and then 2 more, so minus 6 and minus 6.
+
+Now mum is strictly dominant: minus 3 beats minus 3 and a half, and minus 5 and a half beats minus 6. Cooperation follows, because the payoffs changed. In Tadelis's words on page 53: "garbage in, garbage out".
+
+Second, the mafia-modified prisoner's dilemma, Tadelis pages 62 and 63. A sanction z falls on every finker. The cells: mum, mum, minus 2 and minus 2; mum, fink, minus 5 for player 1 and minus 1 minus z for player 2; fink, mum, minus 1 minus z for player 1 and minus 5 for player 2; fink, fink, minus 4 minus z for both.
+
+For player 1, mum beats fink against mum if and only if minus 2 is greater than minus 1 minus z, which holds if and only if z is greater than 1. Mum beats fink against fink if and only if minus 5 is greater than minus 4 minus z, which again holds if and only if z is greater than 1. So any sanction greater than 1 makes mum strictly dominant, and mum, mum becomes the Pareto-optimal dominant-strategy equilibrium. If players believe the code is enforced, it is never used. Whether the enforcer will actually punish is a question about his own incentives: repeated games, Lectures 5 and 6.
+
+Third, Milgrom and Roberts, Table 5.1, pages 138 and 139: grabbing in a joint venture. Each firm invests 2 in a cospecialized asset. The gross return is 8. Grabbing costs 3, and takes everything if the other firm does not grab. Write firm A as the row player; note that Milgrom and Roberts print A on the columns.
+
+The four cells. Both grab: each gets 4 minus 2 minus 3, which is minus 1. A grabs and B does not: A gets 8 minus 2 minus 3, which is 3, and B gets 0 minus 2, which is minus 2. A does not grab and B grabs: minus 2 for A and 3 for B. Neither grabs: each gets 4 minus 2, which is 2.
+
+Grab is strictly dominant: 3 beats 2, and minus 1 beats minus 2. So grab, grab, worth minus 1 each, is the dominant-strategy equilibrium, Pareto dominated by 2 each. Milgrom and Roberts add a twist on page 139: the firms do not have to play. Anticipating minus 1 each, they compare investing, worth minus 1, with not investing, worth 0, and they do not invest. That is the hold-up problem: opportunism that cannot be contracted away destroys the investment itself. The remedies they list are common ownership, reputation, and costly commitment.
+
+Five point five. Pareto and the other solution concepts.
+
+Three games, three predictions that waste value. The prisoner's dilemma: the prediction is fink, fink, with payoffs minus 4 and minus 4, Pareto dominated by mum, mum; Tadelis page 62. Matrix 4.1: iterated elimination predicts U, L, with payoffs 4 and 3, Pareto dominated by M, C, worth 8 and 4, and by D, C, worth 9 and 6; Tadelis page 68. Cournot with demand p equal to 100 minus q and unit cost 10: iterated elimination predicts 30 each, with profit 900, Pareto dominated for the firms by 20 each, with profit 1000; Tadelis page 68.
+
+The failure of Pareto optimality is not a failure of the solution concept, Tadelis page 62. It is a correct prediction that the players, left to their own devices and unable to make binding agreements, waste value. It points to where institutions pay.
+
+Recap of part five. Pareto judges outcomes; dominance predicts behaviour; and they can disagree, which is Lesson 2. In the prisoner's dilemma, the equilibrium is the only profile that is not Pareto optimal. In the partnership, the dilemma band is y over n less than c less than y, and it widens with n. Changing the payoffs, through altruism, a sanction greater than 1, or ownership, changes the prediction; reasoning inside the game does not.
+
+Checklist for part five. You should be able to state Definition 3.5 and find the Pareto set of any 2 by 2 game. You should be able to derive the band y over n less than c less than y, and explain why it widens with n. You should be able to recompute the altruistic and mafia matrices and find the threshold z greater than 1. And you should be able to tell the Milgrom and Roberts grabbing story through to the investment that never happens.
+
+Part six. Iterated elimination of strictly dominated strategies.
+
+This part covers note six: slides 27 to 29; Tadelis section 4.2, pages 63 to 69, with section 4.2.1 and matrix 4.1 on pages 63 to 65, the algorithm and Definition 4.4 on page 65, section 4.2.3 on pages 67 and 68, and Proposition 4.2 on page 68; Gibbons section 1.1 B, pages 5 to 7, Figures 1.1.1 to 1.1.4; M W G section 8 B, pages 238 to 240, with Example 8 B 3, Figure 8 B 3 and the order of deletion; and Cabral section 7.1, page 163.
+
+The name is long, so the script expands it once: iterated elimination of strictly dominated strategies, written I E S D S in the notes. The script mostly says "iterated elimination".
+
+The claim. Rationality removes strictly dominated strategies. Common knowledge of rationality lets every player remove the others' dominated strategies too, look at the smaller game, and remove what has become dominated there, again and again. Each round costs one more level of "I know that you know that". The procedure always exists in finite games, its result does not depend on the order of removal, it contains any strict dominant-strategy equilibrium as its unique survivor, by Proposition 4.2, and it often leaves many profiles standing.
+
+Six point one. The U layer: the idea, slide 28 and Tadelis section 4.2.1, pages 63 and 64.
+
+Four steps. One: a rational player never plays a strictly dominated strategy; that is Claim 4.1. Two: if all players know this, each can ignore the others' strictly dominated strategies, so everyone is effectively playing a smaller game. Three: in the smaller game, strategies that were not dominated before may be dominated now, and the others can reason the same way. Four: this works because rationality is common knowledge, slide 28. Repeat until nothing more can be removed.
+
+Six point two. The C layer: the procedure, formally, slide 29.
+
+Start with S i at round zero equal to S i, the full strategy set. For each round k from 1 upwards, and each player i, define S i at round k as follows. It is the set of strategies s i in S i at round k minus 1 for which there is no s i prime, also in S i at round k minus 1, such that u i of s i prime and s minus i is greater than u i of s i and s minus i for all s minus i in S minus i at round k minus 1. Finally, S i at infinity is the intersection of S i at round k over all k from 1 upwards.
+
+Read the quantifiers. The dominator s i prime must itself still be available, in the previous round's set. And the inequality is required only against the opponents' surviving profiles, the previous round's S minus i. That restriction is where knowledge of the others' rationality enters. Every player is pruned simultaneously in each round.
+
+Tadelis gives the same thing as an algorithm, on page 65. Set S i at zero equal to S i, and k equal to 0. If some strategy in the current sets is strictly dominated, remove every such strategy for every player, increase k by one, and repeat. Otherwise stop: the remaining strategies are the prediction.
+
+Definition 4.4, Tadelis page 65 and slide 29. Any profile that survives iterated elimination is an iterated-elimination equilibrium.
+
+Proposition 4.2, Tadelis page 68 and slide 29. If s star is a strict dominant-strategy equilibrium, then s star is the unique profile that survives iterated elimination.
+
+The proof, in three steps. Step one: for each player i, s i star strictly dominates every other strategy in S i against all of S minus i, which is the starting set. Step two: so in round 1, every strategy other than s i star is removed, and s i star is not, because nothing dominates it: it strictly beats everything. Hence each player's round-1 set is just s i star. Step three: a single strategy has nothing left to remove, so the surviving set is the single profile s star. End of proof.
+
+One round needs only rationality; every later round needs one more level of knowledge. That is why Proposition 4.2's survivor is as robust as the dominant-strategy equilibrium itself, while a prediction reached after many rounds is only as credible as a long chain of mutual knowledge.
+
+Six point three. Worked: Example 3 continued, matrix 4.1, round by round.
+
+The game of slide 27, Tadelis matrix 4.1, page 64. Part four found no dominated strategy for player 1 and one for player 2.
+
+Round 1. It needs only that player 2 is rational. C is strictly dominated by R for player 2: 2 beats 1 at U, 6 beats 4 at M, 8 beats 6 at D. Nothing is dominated for player 1. So after round 1, player 1 keeps U, M and D, and player 2 keeps L and R.
+
+The reduced game, three rows by two columns. Row U: 4 and 3 against L, 6 and 2 against R. Row M: 2 and 1 against L, 3 and 6 against R. Row D: 3 and 0 against L, 2 and 8 against R.
+
+Round 2. It needs that player 1 is rational and knows that player 2 is rational. Against L and R only: U against M, 4 beats 2 and 6 beats 3; U against D, 4 beats 3 and 6 beats 2. So M and D are both strictly dominated by U. Neither was dominated in the full game, because column C, where they paid 8 and 9, was still possible. After round 2, player 1 keeps only U, and player 2 keeps L and R.
+
+Round 3. It needs that player 2 is rational, knows that player 1 is rational, and knows that player 1 knows that player 2 is rational. Against U only: u 2 of U, L is 3, greater than u 2 of U, R, which is 2. So R is dominated by L. After round 3, player 1 keeps U and player 2 keeps L.
+
+Round 4: nothing is left to remove. The survivor is the single profile U, L, with payoffs 4 and 3, Tadelis page 65.
+
+The notes' figure shows four copies of the 3 by 3 matrix. Round 0 is the full game. Round 1 strikes column C. Round 2 strikes rows M and D. Round 3 strikes column R and outlines the cell U, L in green. Each round strikes what the previous rounds made dominated.
+
+Read the second panel against the third. M and D survive round 1 only because column C protects them, and they fall the moment C is gone. Elimination is cumulative: later rounds are possible only because earlier ones happened. Note also that the survivor, 4 and 3, is Pareto dominated by M, C and by D, C, as part five said.
+
+Six point four. Worked: Gibbons's Figure 1.1.1, pages 5 to 7.
+
+Player 1 has Up and Down; player 2 has Left, Middle and Right. Row Up: 1 and 0 against Left, 1 and 2 against Middle, 0 and 1 against Right. Row Down: 0 and 3 against Left, 0 and 1 against Middle, 2 and 0 against Right.
+
+Round 1 removes Right, for player 2: Middle beats Right, 2 against 1 at Up and 1 against 0 at Down. Knowledge used: player 2 is rational.
+
+Round 2 removes Down, for player 1: against Left and Middle only, Up beats Down, 1 against 0 and 1 against 0. Knowledge used: player 1 is rational and knows player 2 is rational.
+
+Round 3 removes Left, for player 2: against Up only, Middle beats Left, 2 against 0. Knowledge used: player 2 knows that player 1 knows that player 2 is rational.
+
+The survivor is Up, Middle. In the full game, Up and Down are not ranked, since Up wins at Left and Down wins at Right. Down falls only once Right is gone.
+
+Six point five. The C layer: evaluating iterated elimination, Tadelis section 4.2.3, pages 67 and 68.
+
+Five criteria. Existence: always, in finite games. The procedure can always be run; each player's surviving set stays nonempty, because a strategy that is best against some fixed s minus i is never strictly dominated; and it stops after at most the sum, over players, of the number of strategies minus one, rounds. Uniqueness: often fails. In the Battle of the Sexes nothing is dominated and "anything can happen", page 68; and Gibbons's Figure 1.1.4, page 7, is a 3 by 3 game with no dominated strategy at all. Invariance: holds, because every removal rests on strict inequalities, as part three showed. Pareto: not guaranteed, as in the prisoner's dilemma, matrix 4.1 and Cournot. Assumptions: heavy. It needs common knowledge of rationality; that is Gibbons's first "drawback", page 7, and Tadelis says players must be "extremely intelligent", page 68.
+
+Iterated elimination is weaker than the dominant-strategy equilibrium in what it predicts, and stronger in where it applies. It predicts exactly the dominant-strategy equilibrium when one exists, by Proposition 4.2. It predicts something sharp in games with no dominant strategies, such as matrix 4.1 and Cournot. And it predicts nothing in games like the Battle of the Sexes.
+
+Six point six. The G layer, not examinable: the order of deletion, M W G pages 239 and 240.
+
+Strict elimination: order does not matter. M W G, pages 239 and 240: "If at any given point several strategies, of one or several players, are strictly dominated, then we can eliminate them all at once or in any sequence without changing the set of strategies that we ultimately end up with." The proof is M W G Exercise 8 B 4, page 262. The reason: if s i prime beats s i against a set of opponent profiles, it still beats it against any subset. So a strategy dominated now stays dominated after other removals, as long as a dominator survives. In a finite game that is guaranteed, because a removed dominator was itself beaten by a survivor, and strict dominance is transitive.
+
+Weak elimination: order matters. M W G Figure 8 B 3, page 238. Player 1 has rows U, M and D; player 2 has columns L and R. Row U: 5 and 1 against L, 4 and 0 against R. Row M: 6 and 0 against L, 3 and 1 against R. Row D: 6 and 4 against L, 4 and 4 against R.
+
+D weakly dominates U: 6 beats 5, and 4 ties with 4. D also weakly dominates M: 6 ties with 6, and 4 beats 3.
+
+Order one: remove U first. The rows left are M and D. Now player 2 compares on those rows: R beats L, 1 against 0 at M, and 4 ties 4 at D, so L goes. At R, D's 4 beats M's 3, so M goes. The prediction is D, R.
+
+Order two: remove M first. The rows left are U and D. Player 2: L beats R, 1 against 0 at U, and 4 ties 4 at D, so R goes. At L, D's 6 beats U's 5, so U goes. The prediction is D, L.
+
+A third order: remove U and then M before touching player 2. That leaves D against both L and R, where L and R tie at 4 for player 2, and nothing more can go.
+
+Three orders, three different predictions, and player 2's payoff differs only through which of his ties was broken first. M W G's diagnosis, on page 240: weak elimination assumes a player assigns positive probability to every rival strategy, but iterated deletion assumes the deleted ones are never played. The slides' iterated elimination uses strict dominance only.
+
+Infinite strategy sets, also the G layer. Take the strategies from 0 up to but not including 1, with payoff u of s equal to s. Every s is strictly dominated by s plus 1 over 2, so nothing survives round 1. Existence needs finiteness, or compactness and continuity. Cournot, in part seven, survives because profit is continuous and strategies can be bounded.
+
+Recap of part six. Iterated elimination removes strictly dominated strategies round after round, each round testing only against the others' survivors, with one more level of knowledge of rationality per round. A strict dominant-strategy equilibrium is the unique survivor, after one round, by Proposition 4.2. Matrix 4.1 ends at U, L after three rounds; Gibbons's Figure 1.1.1 ends at Up, Middle. In finite games it always exists, is order-independent and invariant, but it is often not unique. Weak elimination depends on the order.
+
+Checklist for part six. You should be able to write the recursion and point to the two places the quantifiers restrict to survivors. You should be able to prove Proposition 4.2. You should be able to run matrix 4.1 and Gibbons's Figure 1.1.1 round by round, naming the dominator, the inequalities and the knowledge each round needs. And you should be able to say why the order does not matter for strict elimination but does for weak.
+
+Part seven. The Cournot duopoly solved by iterated elimination.
+
+This part covers note seven: slide 4, the Cournot duopoly as a normal-form game; Tadelis section 4.2.2, pages 65 to 67, with equation 4.2, Figure 4.1 and footnote 3; section 4.2.3, page 68, profits 900 against 1000; M W G section 8 B, Exercise 8 B 5, page 262, named; and Gibbons section 1.1 B, page 7, and section 1.2 A, named for Lecture 2.
+
+The claim. With linear demand and constant marginal cost, a quantity above the monopoly output is strictly dominated, in round 1. Once rivals are known to stay below it, quantities that are too low become dominated, in round 2. And so on. The surviving interval halves every round, alternately from above and from below, and shrinks to the single point where each firm produces 30, in Tadelis's example. That is a sharp prediction from dominance alone, in a game with a continuum of strategies and no dominant strategy. And the prediction is not Pareto optimal for the firms: each would earn more if both produced less.
+
+Seven point one. The game, Tadelis page 65.
+
+Two firms, each with cost 10 times its quantity. Inverse demand is p equals 100 minus q, with q equal to q 1 plus q 2. Firm 1's payoff is revenue, 100 minus q 1 minus q 2, times q 1, minus cost, 10 times q 1. That simplifies to 90 q 1, minus q 1 squared, minus q 1 times q 2.
+
+The best response. For a given q 2, firm 1's payoff is concave in q 1. The first-order condition is 90 minus 2 q 1 minus q 2 equal to zero, which gives q 1 equal to 90 minus q 2, all over 2. That is Tadelis's equation 4.2, and symmetrically for firm 2. If q 2 is 90 or more, the best response is to produce 0.
+
+Seven point two. Worked: round 1, everything above 45 is strictly dominated.
+
+Since q 2 is never negative, equation 4.2 never exceeds 45. Tadelis shows the dominance directly, on page 66.
+
+Firm 1's payoff at 45 is 100 minus 45 minus q 2, times 45, minus 450, which is 2025 minus 45 q 2.
+
+The difference between producing 45 and producing any q 1 is 2025 minus 45 q 2, minus 90 q 1, plus q 1 q 2, plus q 1 squared.
+
+Group the terms; the book leaves this factorization as "easy to check", in footnote 3. The first group, q 1 squared minus 90 q 1 plus 2025, is q 1 minus 45, squared. The second group, q 1 q 2 minus 45 q 2, is q 2 times q 1 minus 45. Together, the difference is q 1 minus 45, times the quantity q 1 minus 45 plus q 2.
+
+For any q 1 above 45 and any q 2 at least 0, both factors are positive. So every quantity above 45 is strictly dominated by 45. The same holds for firm 2. After round 1, each firm's quantity is between 0 and 45.
+
+Seven point three. Worked: the general step, and round 2.
+
+The lemma that every round uses. Compare two own quantities, x and z, for firm i facing rival quantity q j. The payoff difference is 90 times x minus z, minus x squared minus z squared, minus q j times x minus z. Factor out x minus z: the difference is x minus z, times the quantity 90 minus x minus z minus q j.
+
+Case one: the rival is known to produce at most some upper bound U. Let x be 90 minus U, over 2, the best reply to U. For any z below x and any q j at most U, the second factor, 90 minus x minus z minus q j, is greater than 90 minus 2 x minus U, which is zero. Both factors are positive, so x strictly beats z. Quantities below the best reply to U are dominated.
+
+Case two: the rival is known to produce at least some lower bound L. Let x be 90 minus L, over 2. For any z above x and any q j at least L, the second factor is less than 90 minus 2 x minus L, which is zero; and x minus z is negative too. The product of two negatives is positive, so x again strictly beats z. Quantities above the best reply to L are dominated.
+
+Round 2. Rivals are between 0 and 45, so the lower bound L is 0 and the upper bound U is 45. The new lower bound is the best reply to 45, which is 90 minus 45 over 2, or 22.5. The upper bound stays at the best reply to 0, which is 45. The surviving interval runs from 22.5 to 45.
+
+Round 3. Rivals are between 22.5 and 45. The lower bound is the best reply to 45, still 22.5. The upper bound is the best reply to 22.5, which is 90 minus 22.5 over 2, or 33.75. The surviving interval runs from 22.5 to 33.75, Tadelis page 66.
+
+Seven point four. Worked: the whole sequence and its limit.
+
+The recursion: the new lower bound is the best reply to the old upper bound, and the new upper bound is the best reply to the old lower bound. It starts from a lower bound of 0 and no upper bound; the best reply to anything is at most 45.
+
+Six rounds, with the lower end, the upper end, the width, and which endpoint moved. Round 1: from 0 to 45, width 45; the upper end moved. Round 2: from 22.5 to 45, width 22.5; the lower end moved. Round 3: from 22.5 to 33.75, width 11.25; the upper end moved. Round 4: from 28.125 to 33.75, width 5.625; the lower end moved. Round 5: from 28.125 to 30.9375, width 2.8125; the upper end moved. Round 6: from 29.53125 to 30.9375, width 1.40625; the lower end moved.
+
+Why it halves. Measure from 30. The best reply to q, minus 30, is 90 minus q over 2, minus 30, which equals minus one half of q minus 30. So each application of the best response halves the distance to 30 and flips its side. The endpoint updated at round k is therefore 30 plus 15 times minus one half to the power k minus 1: that gives 45, 22.5, 33.75, 28.125, and so on. And the width at round k is 45 divided by 2 to the power k minus 1.
+
+The limit, Tadelis page 67. Suppose the process stopped at an interval from q min to q max. By symmetry, q min would equal 90 minus q max, over 2, and q max would equal 90 minus q min, over 2. Subtract the two: q max minus q min equals q max minus q min, over 2. That forces q max equal to q min, call it q. Then q equals 90 minus q, over 2, which gives q equal to 30. The width is positive after every finite round; the prediction is the intersection of all the rounds' sets, which is the single point 30.
+
+The notes' figure has two panels. On the left, the two best-response lines in the plane of q 1 and q 2, with nested squares, the surviving sets of both firms for rounds 1 to 6, converging on the point 30, 30. On the right, the surviving interval at rounds 1 to 8 as vertical bars around a dashed line at 30, labelled 45, 22.5, 33.75 and 28.125. The left panel is Tadelis's Figure 4.1 drawn for both firms at once: the upper end of one round's interval sets the lower end of the next through the best-response line. The right panel makes the halving visible: after 6 rounds both firms are within 1.5 units of 30.
+
+Profits, Tadelis page 68. At 30 each, price is 40, and each firm earns 40 minus 10, times 30, which is 900. If both produced 20, price would be 60, and each would earn 50 times 20, which is 1000. The joint optimum maximizes 90 minus q, times q, at q equal to 45, which is 22.5 each, with price 55 and profit 45 times 22.5, which is 1012.5 each. So iterated elimination is not Pareto optimal for the firms. Collusion and its enforcement are Lecture 6.
+
+Seven point five. The C layer: general linear Cournot, with asymmetric costs.
+
+Demand is p equals a minus b q, and the firms' unit costs c 1 and c 2 are both below a. Firm i's best response is the larger of 0 and a minus c i minus b q j, all over 2 b. Round 1 removes quantities above m i, equal to a minus c i over 2 b, the monopoly output. And the intervals converge to the intersection of the best responses.
+
+Solve for that intersection. The two conditions are 2 b q 1 equals a minus c 1 minus b q 2, and 2 b q 2 equals a minus c 2 minus b q 1. Double the first and substitute the second: 4 b q 1 equals 2 a minus 2 c 1, minus the quantity a minus c 2 minus b q 1. That simplifies to 3 b q 1 equals a minus 2 c 1 plus c 2.
+
+So the Cournot point is: q i star equals a minus 2 c i plus c j, all over 3 b. The price is p star equals a plus c 1 plus c 2, over 3. And profit is v i star equals a minus 2 c i plus c j, squared, over 9 b.
+
+Check with Tadelis's numbers: q star is 100 minus 20 plus 10, over 3, which is 30; p star is 40; and v star is 90 squared over 9, which is 900. It checks.
+
+Four comparative statics for q 1 star. A larger market, a up, raises it by 1 over 3 b. Its own cost, c 1 up, lowers it by 2 over 3 b: own cost carries twice the weight. The rival's cost, c 2 up, raises it by 1 over 3 b: a weaker rival, so I expand. And steeper demand, b up, shrinks both quantities, which are proportional to 1 over b.
+
+Exit. If a minus 2 c 1 plus c 2 is zero or negative, which means c 1 is at least a plus c 2, over 2, firm 1's interval collapses to 0, and firm 2 produces its monopoly output, a minus c 2 over 2 b. With strict inequality, firm 1 is eliminated after finitely many rounds. That is checked in the exam-style list's checker, question 4.
+
+The companion "The Cournot Squeeze" is linked here: set a, b, c 1 and c 2 and step through the rounds k; the nested rectangles close in on the Cournot point. Raise c 1 past a plus c 2, over 2, and watch firm 1 squeezed out. Part thirteen describes it.
+
+Seven point six. The G layer, not examinable: three or more firms, where elimination stops after one round.
+
+Gibbons warns, on page 7, that with three or more Cournot firms iterated elimination removes almost nothing; M W G Exercise 8 B 5, page 262, asks for the argument. The sketch, with identical firms. Round 1 leaves each quantity between 0 and m, where m is a minus c over 2 b. Firm i now faces the sum of the others' quantities, which ranges from 0 to 2 m. Its best reply, m minus half that sum, sweeps all of the interval from 0 to m as the sum ranges from 0 to 2 m. A quantity that is the unique best reply to some surviving total of the others cannot be strictly dominated, so nothing more is removed, and the prediction is the whole cube, 0 to m for each of the three firms. With two firms, the rival alone can never push the total to 2 m, which is what makes the interval shrink. The sharper tool for n firms is Nash equilibrium: Lecture 2, Gibbons section 1.2 A. Next lecture, not here.
+
+Recap of part seven. In Tadelis's Cournot game, round 1 removes everything above 45 by the factorization q 1 minus 45, times q 1 minus 45 plus q 2. Each later round applies the best reply to the other bound, halving the distance to 30 and flipping its side, so the width is 45 over 2 to the k minus 1. The limit is 30 each, with profit 900, against 1000 at 20 each and 1012.5 at the joint optimum. In general, q i star is a minus 2 c i plus c j over 3 b, and a firm exits when its cost reaches a plus c j over 2.
+
+Checklist for part seven. You should be able to derive the best response, equation 4.2, and the round-1 factorization. You should be able to prove the general step in both directions. You should be able to list the intervals for the first four rounds, and derive the limit of 30. You should be able to derive the asymmetric closed form, its comparative statics and the exit condition. And you should be able to say why three firms stall.
+
+Part eight. Spatial competition: where to open the pharmacy.
+
+This part covers note eight: slides 31 to 33, the mini case of two pharmacy chains on a seven-block avenue; Cabral section 14.2, pages 354 and 358 to 360, the Hotelling model, equations 14.3 to 14.5, and location effects on page 360; and Tadelis section 5.2.5, page 93, named for Lecture 2.
+
+A spoiler warning. This part solves the in-class mini case, handed in on October 13. To practise first, work the unsolved mini-case preparation file in the Listas folder, which has different streets and the same skills, and Tadelis exercise 4.10, page 78.
+
+The claim. On a line of equally populated blocks, a store at the edge is strictly dominated by the block next to it, because moving inward keeps every customer it had and wins some of the rival's. Common knowledge of rationality peels the avenue from both ends, one layer per round, until both chains sit on the middle block: the clustering of rival pharmacies on the same street. The prediction doubles the customers' total walking relative to the best pair of locations. And it rests on fixed, equal prices: once prices are chosen too, being next to the rival invites a price war and firms spread out, Cabral section 14.2.
+
+Eight point one. The setup, slide 32.
+
+Two chains, A and B, each open one store on a 7-block avenue. There is one customer per block. Both choose a block simultaneously. Prices and products are identical. Each customer buys from the nearest store, and splits evenly when equidistant. Each chain maximizes its number of customers. The motivation, slide 31: rival pharmacies opening right next to each other in Brasília.
+
+Eight point two. Worked: question a, the normal form.
+
+The players are A and B, and each strategy set is the blocks 1 to 7. Since every customer buys from someone, u A plus u B is 7 in every cell: a constant-sum game.
+
+Take the case where A is to the left of B, s A less than s B. Block j goes to A when j minus s A is less than s B minus j, that is, when j is less than the midpoint, s A plus s B over 2. Now count.
+
+Blocks 1 up to s A are all closer to A: that is s A customers.
+
+If s A plus s B is odd, the midpoint is not a block. The blocks from s A plus 1 up to s A plus s B minus 1 over 2 also go to A: that is s B minus s A minus 1, over 2, more customers. The total is s A plus s B minus s A minus 1 over 2, which simplifies to s A plus s B minus 1, over 2.
+
+If s A plus s B is even, the midpoint block is equidistant and splits. A gets the blocks from s A plus 1 up to the midpoint minus 1, plus half of the midpoint block. That is s A, plus the midpoint minus 1 minus s A, plus one half, which again simplifies to s A plus s B minus 1, over 2. The same formula.
+
+So u A of s A and s B is: s A plus s B minus 1, over 2, when A is to the left; 7 halves, which is 3.5, when they are on the same block; and 7 minus s A plus s B minus 1 over 2, when A is to the right. The third line is 7 minus B's share, with the roles swapped. On the same block, every customer is equidistant and splits.
+
+Example: u A of 2 and 5 is 2 plus 5 minus 1, over 2, which is 3. A gets blocks 1, 2 and 3; block 4 is closer to block 5, at distance 1 against 2.
+
+The notes' figure has two panels. On the left, a heat map of u A for the 7 by 7 game, with the values printed; row 1 is outlined in orange and row 2 in green. On the right, the elimination rounds on the blocks: all seven at the start, then without 1 and 7, then without 2 and 6, then only block 4, in green. Row 2 beats row 1 cell by cell, and elimination removes the two outermost surviving blocks each round.
+
+Eight point three. Worked: question b, block 1 is strictly dominated by block 2.
+
+Compare the two outlined rows of the heat map against every location of B, from block 1 to block 7.
+
+Block 1 earns: 3.5, 1, 1.5, 2, 2.5, 3, 3.5. Block 2 earns: 6, 3.5, 2, 2.5, 3, 3.5, 4. The differences are: plus 2.5, plus 2.5, then plus 0.5 five times, for B at blocks 3 through 7.
+
+Seven strict inequalities, all positive: block 1 is strictly dominated by block 2, and by symmetry block 7 is strictly dominated by block 6. When B is at block 3 or beyond, the gain is always one half: moving from 1 to 2 shifts the midpoint half a block toward B.
+
+Is any block strictly dominant? No. A dominant block would have to be the best reply to every location of B. Against B at block 1, the unique best reply is block 2, earning 6; block 4 gives only 5. Against B at block 7, the best reply is block 6. No block is best against both, so none is dominant, and the game has no dominant-strategy equilibrium.
+
+Eight point four. Worked: question c, iterated elimination, round by round.
+
+Round 1. All seven blocks survive before it. Each chain removes 1 and 7: block 2 beats block 1, by the comparison above, and block 6 beats block 7. Nothing else goes: block 2 is the best reply to a rival at block 1, so nothing dominates block 2. Knowledge needed: rationality.
+
+Round 2. Blocks 2 to 6 survive before it. Each chain removes 2 and 6. Block 3 beats block 2 against B anywhere from 2 to 6: 5 against 3.5 when B is at 2, 3.5 against 2 when B is at 3, and then by 0.5 when B is at 4, 5 or 6. Knowledge needed: each knows the other is rational.
+
+Round 3. Blocks 3, 4 and 5 survive before it. Each chain removes 3 and 5. Block 4 beats block 3 against B at 3, 4 or 5: 4 against 3.5, 3.5 against 3, and 4 against 3.5. Knowledge needed: second-order knowledge of rationality.
+
+Round 4. Only block 4 is left, and nothing more can be removed.
+
+The survivor is both chains on block 4, splitting the avenue, 3.5 customers each. Round 2 needs the round-1 removals: in the full game, block 2 is the unique best reply to a rival at block 1, so block 3 does not dominate block 2 until block 1 is gone.
+
+The median wins. Each round, a chain moves one block toward the centre, because the rival is known not to be outside it. The survivor is the block with half the customers on each side: the same logic as Hotelling's and the median voter's, which is Lecture 2, Tadelis section 5.2.5, page 93.
+
+Eight point five. Worked: question d, total walking.
+
+Total distance walked is the sum, over the seven blocks, of each customer's distance to the nearer store. At 4, 4, it is 3 plus 2 plus 1 plus 0 plus 1 plus 2 plus 3, which is 12.
+
+Splitting the avenue does better. With stores at 2 and 5: blocks 1 to 3 walk 1 plus 0 plus 1, which is 2, and blocks 4 to 7 walk 1 plus 0 plus 1 plus 2, which is 4; the total is 6. The minimum over all pairs is 6, reached at 2 and 5, at 2 and 6, and at 3 and 6. In each case, each store sits at a median of the customers it serves.
+
+Compare the two profiles. At the elimination outcome, 4 and 4, customers walk 12 and the chains get 3.5 customers each. At 2 and 5, customers walk 6 and the chains get 3 and 4.
+
+Iterated elimination doubles the walking. The chains do not care: the game is constant-sum, so every profile is Pareto optimal for the chains, since u A plus u B is always 7 and no profile makes one better off without hurting the other. The inefficiency falls entirely on customers, who are not players.
+
+Eight point six. The C layer: question e, what drives the prediction, Cabral section 14.2.
+
+Five assumptions, and what happens if each is dropped. First, prices fixed and equal. This is the main one. With price competition, clustering makes the products identical and invites Bertrand pricing at cost. Second, inelastic demand, everyone buys. If dropped, far customers may not buy, and spreading out gains them. Third, two firms with one store each. A third firm breaks the clean peeling; iterated elimination bites much less. Fourth, discrete blocks with uniform customers. In general, the survivor is the median of the customer distribution, not the geometric middle. Fifth, simultaneous choice. A leader would move differently, which is Lecture 3.
+
+Cabral's Hotelling model, pages 358 and 359. Two firms sit at the two ends of the interval from 0 to 1. Consumers are spread uniformly; the transport cost is t per unit of distance; marginal cost is c. The indifferent consumer, at distance x from firm 1, solves t x plus p 1 equals t times 1 minus x, plus p 2. So firm i's demand is one half, plus p j minus p i over 2 t: that is equation 14.3. Profit maximization gives the best response, p i equals c plus t plus p j, over 2: equation 14.4. With equal costs, the equilibrium price is p equals c plus t: equation 14.5. The margin equals the differentiation parameter t. With t equal to zero, this is Bertrand, price at cost.
+
+Location with prices, page 360. Moving toward the centre has two effects. A direct effect: more demand at given prices, which is positive. And a strategic effect: the rival cuts its price, which is negative. When price competition is weak, for example when prices are set nationally, firms cluster near the centre; Cabral's example is European bank branches. When price competition is intense, with identical products and local prices, firms locate far apart; Cabral's example is the two ice-cream vendors on a beach.
+
+The pharmacies of slide 31 fit the first case. The chains price largely at the chain level, so the direct effect dominates, and they open side by side.
+
+Recap of part eight. On the 7-block avenue, u A is s A plus s B minus 1 over 2 when A is to the left. Block 1 is strictly dominated by block 2, no block is dominant, and elimination peels the avenue in three rounds to both chains on block 4. Customers then walk 12 instead of the minimum 6, but every profile is Pareto optimal for the chains, because the game is constant-sum. The result needs fixed prices; with price competition, Hotelling's p equals c plus t, and the strategic effect can push firms apart.
+
+Checklist for part eight. You should be able to derive the payoff formula in both the odd and even cases. You should be able to show that block 2 beats block 1 against all seven locations, and that no block is dominant. You should be able to run the three rounds with their dominators and knowledge levels. You should be able to compute the walking totals, 12 and 6. And you should be able to state the Hotelling demand, best response and price, and the direct and strategic effects of location.
+
+Part nine. Common mistakes.
+
+This part covers Part One of the pitfalls note: the eleven confusions this lecture produces. Each is said as the error, then the correction.
+
+Mistake one. The error is: "for each s minus i, something beats it" means dominated. The correction is: dominance needs one alternative that wins against every s minus i. The counterexample: rows T, paying 3 and 0, M, paying 1 and 1, and B, paying 0 and 3, against L and R. For each column some row beats M, yet neither T nor B beats it in both columns. M is not dominated by a pure strategy. That is part four, section four point seven point one.
+
+Mistake two. The error is: treating weak dominance like strict dominance. The correction is: weak dominance allows ties. It does not follow from rationality alone, it is not robust to small payoff changes, and its iterated version depends on the order; M W G Figure 8 B 3 ends at three different places, as part six showed. Truthful bidding in a second-price auction is weakly, not strictly, dominant.
+
+Mistake three. The error is: "the equilibrium is minus 4, minus 4". The correction is: the equilibrium is the profile fink, fink, with payoffs minus 4 and minus 4. An equilibrium is a profile of strategies, Tadelis page 61.
+
+Mistake four. The error is: confusing Pareto optimal with equilibrium, or with fair. The correction is: in the prisoner's dilemma, the equilibrium fink, fink is the only profile that is not Pareto optimal, while mum, fink and fink, mum are Pareto optimal although grossly unequal, Tadelis page 57. Pareto optimality says "no waste", not "best" and not "equal".
+
+Mistake five. The error is: mutual knowledge is enough. The correction is: "everyone knows E" is only level one, and round k of iterated elimination needs level k minus 1 of knowledge of rationality. The exam announcement heard by a daydreaming student fails at level two, Tadelis page 45.
+
+Mistake six. The error is: a strategy is just an action, even when someone observes something. The correction is: if Pair sees your letter before writing, Pair has 2 squared, which is 4, strategies, not 2. Writing the matrix with 2 columns throws away the contingent plans.
+
+Mistake seven. The error is: if a strategy is dominant, the dominant-strategy outcome is good. The correction is: in the partnership, shirking is dominant whenever c is greater than y over n, but it is also efficient only when c is at least y. The dilemma is the band between them.
+
+Mistake eight. The error is: checking dominance once and stopping. The correction is: in matrix 4.1, M and D are not dominated in the original game; they become dominated only after C is removed. Checking once misses rounds 2 and 3.
+
+Mistake nine. The error is: in Cournot, iterated elimination reaches the point 30 after some round. The correction is: after any finite number of rounds the interval has width 45 over 2 to the k minus 1, which is positive; the prediction of 30 is the intersection of all rounds. And with three firms the interval stops shrinking after round 1.
+
+Mistake ten. The error is: the middle-block prediction holds in general. The correction is: it is a result about locations at given, equal prices. With price competition, clustering invites a price war and firms may spread out, Cabral page 360.
+
+Mistake eleven. The error is: "weakly dominant equilibria need not be unique" is simply true. The correction is: it depends on the definition. It is true with Tadelis's remark on page 63, with less than or equal everywhere and no strictness required. It is false with the slides' definition, strict somewhere, under which each player has at most one weakly dominant strategy.
+
+Part ten. The spoken formula sheet.
+
+This part covers the formula-sheet note. Use it for active recall. After each number, pause the audio, say the item yourself, then play on to hear it.
+
+First, the exam specification, mapped. The wrap-up slide, slide 34, lists what the lecture covered, and the course learning goals, on slide 7, ask you to recognize, solve, and model. Nine items.
+
+Item one, normal-form games: write the triple for a verbal story, fill a bimatrix, and write piecewise payoffs for continuous strategies. That is part one.
+
+Item two, static against dynamic, and complete against incomplete information: define each, state common knowledge, and count contingent-plan strategies. That is part two.
+
+Item three, solution concepts, slides 21 and 22: define equilibrium, and judge a concept by existence, uniqueness and invariance. That is part three.
+
+Item four, dominant and dominated strategies: apply the strict and weak definitions with the right quantifier, and find all dominated strategies. That is part four.
+
+Item five, the dominant-strategy equilibrium: find it or show it does not exist, and prove Proposition 4.1. That is part four.
+
+Item six, Pareto optimality: find the Pareto set, explain why a dominant-strategy equilibrium can be Pareto dominated, and derive the partnership band, y over n less than c less than y. That is part five.
+
+Item seven, iterated elimination: run it round by round with the dominator and the knowledge level of each round, and state and prove Proposition 4.2. That is part six.
+
+Item eight, iterated elimination in continuous games: bound best responses, and find the Cournot intervals and their limit. That is part seven.
+
+Item nine, spatial competition: location payoffs on a line, peeling by iterated elimination, the welfare comparison, and the role of prices. That is part eight.
+
+Now the definitions and results, numbered for recall.
+
+Formula one, the normal form, slide 13 and Tadelis Definition 3.3, page 47. The game is the triple of the player set I, the strategy sets S i, and the payoff functions u i, where each u i maps S 1 times and so on up to S n into the real numbers.
+
+Formula two, a pure strategy, Definition 3.2, page 46. A deterministic plan of action; a profile is the list s 1 through s n.
+
+Formula three, the others' profile, slide 14 and page 59. s minus i lies in S minus i, the product over all j other than i of S j, and the full profile is the pair s i, s minus i.
+
+Formula four, a finite game, Definition 3.4, page 51. Finitely many players and strategies; with two players, the game is a bimatrix.
+
+Formula five, common knowledge, Definition 3.1, page 45, and slide 16. Everyone knows E, everyone knows that everyone knows E, and so on without end.
+
+Formula six, a strategy, slide 17. A complete contingent plan; with a actions at each of m contingencies, there are a to the power m strategies.
+
+Formula seven, ordinal invariance. Dominance, the dominant-strategy equilibrium and iterated elimination are unchanged by strictly increasing transformations of each player's payoff.
+
+Formula eight, solution concept and equilibrium, slide 21 and page 54. A rule selecting reasonable profiles; an equilibrium is a selected profile of strategies.
+
+Formula nine, the criteria, slide 22 and pages 55 and 56. Existence, uniqueness, and invariance to payoff changes of at most epsilon.
+
+Formula ten, strict invariance. If g is the smallest strict margin, perturbations with epsilon less than g over 2 keep every strict inequality.
+
+Formula eleven, strictly dominated, slide 23 and Definition 4.1, page 60. u i of s i and s minus i is less than u i of s i prime and s minus i, for all s minus i.
+
+Formula twelve, weakly dominated, slide 23 and M W G Definition 8 B 3. Less than or equal for all s minus i, and strictly less for at least one.
+
+Formula thirteen, strictly or weakly dominant, Definition 4.2, page 61. It strictly, or weakly, dominates every other strategy of the player.
+
+Formula fourteen, Claim 4.1, page 60, which is Lesson 1. A rational player never plays a strictly dominated strategy.
+
+Formula fifteen, the strict dominant-strategy equilibrium, Definition 4.3, page 61, and slide 25. Every player's strategy in the profile is strictly dominant.
+
+Formula sixteen, Proposition 4.1, page 61, slide 25. A strict dominant-strategy equilibrium is the unique dominant-strategy equilibrium.
+
+Formula seventeen, uniqueness of a weakly dominant strategy. Under the slides' definition a player has at most one; under Tadelis's remark on page 63, not necessarily.
+
+Formula eighteen, Pareto dominance, Definition 3.5, page 57, and slide 26. s Pareto dominates s prime when u i of s is at least u i of s prime for every i, and strictly greater for some i. Pareto optimal means not Pareto dominated.
+
+Formula nineteen, Lesson 2, slide 26. Individually rational choices can lead to socially undesirable outcomes.
+
+Formula twenty, iterated elimination, slide 29. S i at round zero is S i. S i at round k is the set of strategies in the previous round's set for which no strategy in the previous round's set does strictly better against every s minus i in the previous round's S minus i. And S i at infinity is the intersection over all rounds.
+
+Formula twenty-one, the iterated-elimination equilibrium, Definition 4.4, page 65. Any profile that survives iterated elimination.
+
+Formula twenty-two, Proposition 4.2, page 68, slide 29. A strict dominant-strategy equilibrium is the unique survivor of iterated elimination, after one round.
+
+Formula twenty-three, order independence, M W G pages 239 and 240. For strict elimination, the end set does not depend on the order; for weak elimination, it can.
+
+Formula twenty-four, knowledge per round. Round 1 needs rationality; round k needs knowledge of rationality of order k minus 1.
+
+Now the model formulas.
+
+Formula twenty-five, the partnership with n partners. Each partner's payoff is y times the number of partners exerting effort, over n, minus c if he exerts effort. The gain from effort, u of E minus u of S, is y over n minus c, for every s minus i.
+
+Formula twenty-six, the partnership dilemma. Shirking is dominant and all-effort is Pareto better if and only if y over n is less than c and c is less than y.
+
+Formula twenty-seven, the mafia-modified prisoner's dilemma. Mum is strictly dominant if and only if z is greater than 1.
+
+Formula twenty-eight, the second-price auction. Bidder i's payoff is v i minus the highest rival bid if i wins; bidding v i is weakly dominant.
+
+Formula twenty-nine, Cournot with demand p equal to a minus b q and costs c i. The best response is the larger of 0 and a minus c i minus b q j, over 2 b. The surviving set at round k runs from the best reply to the rival's previous upper bound, up to the best reply to the rival's previous lower bound.
+
+Formula thirty, the Cournot dominance step. v i of x and q j, minus v i of z and q j, equals x minus z, times the quantity a minus c i minus b times x plus z plus q j.
+
+Formula thirty-one, the Cournot point. q i star is a minus 2 c i plus c j, over 3 b; p star is a plus c 1 plus c 2, over 3; v i star is a minus 2 c i plus c j, squared, over 9 b. Firm i exits if c i is at least a plus c j, over 2.
+
+Formula thirty-two, location on 7 blocks. u A is s A plus s B minus 1, over 2, when s A is less than s B; 7 halves when they are equal; and 7 minus s A plus s B minus 1 over 2, when s A is greater than s B.
+
+Formula thirty-three, Hotelling, Cabral equations 14.3 to 14.5. Demand q i is one half plus p j minus p i over 2 t; the best response p i is c plus t plus p j, over 2; and the equilibrium price is c plus t.
+
+Part eleven. Every number in the lecture.
+
+This part covers section two of the formula sheet and the numbers table of the map. Same drill: pause after each heading and recall the numbers.
+
+The grade game, slides 10 to 12. Grades: alpha, alpha gives B minus to both; alpha, beta gives A to You and C to Pair; beta, beta gives B plus to both. Payoffs: 0 and 0; 3 and minus 1; minus 1 and 3; 1 and 1. Alpha is strictly dominant, because 0 beats minus 1 and 3 beats 1. The dominant-strategy equilibrium is alpha, alpha, Pareto dominated by beta, beta.
+
+The prisoner's dilemma, slide 24 and Tadelis page 48. Mum, mum: minus 2, minus 2. Mum, fink: minus 5, minus 1. Fink, mum: minus 1, minus 5. Fink, fink: minus 4, minus 4. Fink is strictly dominant, with margins 1 and 1. The dominant-strategy equilibrium is fink, fink, and the Pareto set is mum, mum, mum, fink, and fink, mum. The altruistic version, page 53: minus 3 and minus 3; minus 5 and a half and minus 3 and a half; minus 3 and a half and minus 5 and a half; minus 6 and minus 6; mum is dominant. The mafia version: z greater than 1.
+
+Matrix 4.1, slide 27 and Tadelis page 64. Rows U, M, D; columns L, C, R. Row U: 4 and 3, 5 and 1, 6 and 2. Row M: 2 and 1, 8 and 4, 3 and 6. Row D: 3 and 0, 9 and 6, 2 and 8. No dominant strategy; C is dominated by R. Elimination removes C in round 1, M and D in round 2, R in round 3, leaving U, L, with payoffs 4 and 3, Pareto dominated by 8 and 4 and by 9 and 6. The Pareto set is D, C and D, R.
+
+Cournot, Tadelis pages 49 and 65 to 68. With quadratic costs, page 49: competitive output 25 each, price 50, profit 625; producing 24 instead gives 648. With linear costs, demand 100 minus q and unit cost 10: the best response is 90 minus q j, over 2. The intervals are 0 to 45, 22.5 to 45, 22.5 to 33.75, 28.125 to 33.75, and so on; the width is 45 over 2 to the k minus 1; the limit is 30, with price 40 and profit 900. At 20 each, profit is 1000. At the joint optimum, 22.5 each, profit is 1012.5.
+
+The pharmacy avenue, slides 32 and 33. Block 1 earns 3.5, 1, 1.5, 2, 2.5, 3, 3.5 against B at blocks 1 to 7; block 2 earns 6, 3.5, 2, 2.5, 3, 3.5, 4. So block 1 is dominated by block 2. No block is dominant. Elimination removes 1 and 7, then 2 and 6, then 3 and 5, leaving both at block 4, 3.5 customers each. Walking: 12 at 4, 4; minimum 6, at 2 and 5, 2 and 6, or 3 and 6.
+
+Other book examples. The advertising game, Tadelis page 60: L is dominated by M, with 8 beating 6, 4 beating 2, and 1 beating 0; M and H are undominated. The Battle of the Sexes, Tadelis page 54: 2 and 1, 0 and 0, 0 and 0, 1 and 2; nothing is dominated. Gibbons's Figure 1.1.1, pages 5 to 7: Right, Down and Left are removed, leaving Up, Middle. M W G's Figure 8 B 3, page 238: weak elimination ends at D, R, at D, L, or at D against both L and R, depending on the order. Milgrom and Roberts Table 5.1, page 138: minus 1 and minus 1, 3 and minus 2, minus 2 and 3, 2 and 2; grabbing is dominant, and there is no investment. Cabral Figure 7.1, page 161: 5 and 5 against 4 and 4; the low price is dominant, with 6 beating 5 and 4 beating 3. And the partnership default of the companion: y equal to 6, c equal to 4, n equal to 2, giving 2 and 2, minus 1 and 3, 3 and minus 1, 0 and 0, which is the prisoner's dilemma plus 4.
+
+Part twelve. The computation and the figures, described in words.
+
+This part covers the Python note and the figure script. Nothing is read as code. Each routine is named, with its inputs, its steps, and its check.
+
+The approach first. The note lists every routine the lecture needs, each followed by checks against the slides' and the books' own numbers. It is Python only, with numpy optional, and its blocks run top to bottom from the repository root as one script.
+
+Reuse comes first. The exam-style list's checker, the file lista-lecture-01-check in the Listas folder, already implements and tests iterated elimination, the Cournot interval recursion, the location game and the second-price payoff. Importing it would run its 1,500-draw symbolic checks, so the note loads only its function definitions. New code covers what that file does not have: single-step dominance tests, Pareto sets, and the walking distance. The figure script and the companion checker use the same loader.
+
+Routine zero, the loader. Parse the checker file, keep only its function definitions, execute those alone, and collect them by name. Then confirm that the routines for iterated elimination, the Cournot recursion, the line game, the second-price payoff and the weak-elimination outcomes are all present. The trap it avoids: importing the file whole would set off its long randomized checks.
+
+Routine one, games as payoff matrices. A two-player finite game is a pair of matrices, one per player, rows indexed by player 1's strategies. The note stores the prisoner's dilemma, the grade game and matrix 4.1 this way, and builds the 2 by 2 partnership from y and c as half of output minus own cost, with player 2's matrix the transpose of player 1's, because the game is symmetric. It also checks Tadelis's quadratic Cournot: 625 at 25 each, and 648 for the firm that cuts to 24.
+
+Routine two, dominance, the dominant-strategy equilibrium, and Pareto. Take each player's own payoffs as rows, one row per strategy. One row dominates another strictly when every entry is larger, or weakly when every entry is at least as large and one is larger. From that test, the note lists each player's dominated strategies with their dominators, finds a dominant strategy if one exists, pairs the two into a dominant-strategy equilibrium or reports none, and finds the Pareto optimal profiles as those no other cell weakly dominates in the payoff pair. The checks: fink, fink in the prisoner's dilemma, with every profile except fink, fink Pareto optimal; alpha, alpha in the grade game, with beta, beta Pareto optimal; in matrix 4.1, no dominant-strategy equilibrium, nothing dominated for player 1, only C dominated, by R, for player 2, and D, C and D, R as the Pareto set; L dominated by M in the advertising game; the T, M, B example with nothing dominated; and the unique weakly dominant strategy under the slides' definition, with identical rows giving none.
+
+Routine three, iterated elimination. Reusing the checker's round-by-round routine, the note confirms that matrix 4.1 removes C, then M and D, then R; that the prisoner's dilemma ends at fink, fink after a single round, which is Proposition 4.2; that Gibbons's Figure 1.1.1 ends at Up, Middle; and that nothing is removed in the Battle of the Sexes or in Gibbons's Figure 1.1.4. For weak elimination, the note writes a small recursive search over every one-at-a-time order of removal, because the checker's version is hard-wired to 3 by 3 games. On M W G's Figure 8 B 3 it finds exactly the three end states, D, R, then D, L, then D against both L and R; strict elimination on the same game removes nothing.
+
+Routine four, the partnership and changing the game. Given y, c and n, compute the gain y over n minus c, call the dominant strategy effort, shirk or none by its sign, and flag a dilemma when shirking is dominant and y minus c is positive. The checks: 6, 4 and 2 is a dilemma; 6, 2 and 2 has effort dominant; 6, 7 and 2 has shirking dominant and efficient; 6, 3 and 2 has no dominance at all. The partnership at 6 and 4, minus 4 on every payoff, is exactly the prisoner's dilemma, and the checker's n-partner condition with no synergy reproduces the band. The mafia game gives mum, mum at z equal to 1.01, fink, fink at 0.99, and no dominant-strategy equilibrium at exactly 1. The Milgrom and Roberts grabbing game gives grab, grab, with don't, don't Pareto optimal. The note adds that the partnership's effort plays the role of mum, cooperate, and shirking plays the role of fink, defect.
+
+Routine five, Cournot by iterated elimination. Reusing the checker's interval recursion in exact fractions, with demand 100, slope 1 and costs 10 and 10 over 12 rounds, the note checks the first four intervals, 0 to 45, 22.5 to 45, 22.5 to 33.75 and 28.125 to 33.75; checks that every width is 45 over a power of 2; and checks that 30 is still strictly inside the last interval, so the process never reaches a point in finite rounds. A closed-form routine returns 30 and 30, price 40 and profits 900 and 900. The profit function confirms 1000 at 20 each and 1012.5 at 22.5 each, and confirms the round-1 factorization on a whole grid of quantities. Finally, with firm 1's cost at 60 and firm 2's at 10, firm 1 is driven to zero and firm 2 sits at its monopoly output, 45.
+
+Routine six, the second-price auction. With values 5 and 3 and a grid of rival bids from 0 to 10 in halves, plus 12, compute bidder 1's payoff for truthful bidding and for every other bid on the grid. The checks: truthful bidding weakly dominates every other bid, and never strictly.
+
+Routine seven, the pharmacy avenue. Build the 7-block game with the checker's line routine, check it cell by cell against the closed-form payoff, check that block 2 beats block 1 against all seven locations and that no block is dominant, and run elimination to confirm removal of 1 and 7, then 2 and 6, then 3 and 5, ending at block 4. The walking distance routine sums each customer's distance to the nearer store; it confirms 12 at 4, 4, a minimum of 6, and exactly three minimizing pairs: 2 and 5, 2 and 6, 3 and 6. The script ends by printing that all checks pass.
+
+The figures. A single script in the figures folder of the notes builds all seven figures, and ends with checks on the plotted numbers. They are: the grade game, outcome table against payoff table; the prisoner's dilemma in payoff space; the partnership bands; truthful bidding against under- and overbidding; matrix 4.1 in four rounds; the Cournot nested squares and interval bars; and the pharmacy heat map with its peeling rounds. Each was described in words in the part where it appears.
+
+Part thirteen. The interactive companions, described in words.
+
+Lecture 1 has two interactive pages, in the companions folder of the Lecture 1 notes. You cannot see them in an audio file, so here is what each does and what to try.
+
+Companion one, Shirk or Work. Three sliders: y, the output per effort, which moves in steps of 0.6 so that c equal to y over n lands exactly for every n; c, the cost of effort, borne entirely by the partner who exerts it; and n, the number of partners, from 2 to 6. They move the two parallel payoff lines and the cost axis, with its landmarks at c equal to y over n and c equal to y. The read-outs are the dominance verdict, the gain y over n minus c, all-work against all-shirk, the dilemma band, and the waste. Three buttons: "Reset to the slides' PD", which restores y equal to 6, c equal to 4 and n equal to 2, the slides' prisoner's dilemma plus 4; one that sets c equal to y over n; and one that sets c equal to y. What to try: set n, then drag c across the two landmarks and watch the verdict switch from "effort dominant" to "dilemma" to "shirking dominant and efficient".
+
+Companion two, The Cournot Squeeze. Sliders for a, b, c 1 and c 2, and for the round k, from 0 to 12, which is how many levels of "I know that you know that the other is rational" the firms use. They move the best responses, the surviving rectangle and the interval bars. The read-outs are both firms' surviving sets at round k, the Cournot point, the price, the profits, and the number of rounds needed to get within 1 per cent. Two buttons: "Reset to Tadelis p. 65", and one that sets c 1 equal to a plus c 2, over 2. What to try: step k up from 0 and watch the rectangle close on 30, 30; then press the exit button, or raise c 1 past that threshold, and watch firm 1 squeezed out.
+
+Both pages are checked by a companion checker: Node runs each page's model, and Python recomputes it, reusing the exam-style list's checker.
+
+Part fourteen. Reading route and exercises.
+
+This part gives addresses only. Exercise statements are not read here; open the book.
+
+The reading route, in the order the notes use it. First, the slides, Lecture01, the spine, order and notation of every note. Second, Tadelis chapter 3, pages 43 to 58, and sections 4.1 and 4.2, pages 59 to 69: the course layer everywhere, and the examples, the prisoner's dilemma, Cournot, the Battle of the Sexes, the advertising game, matrix 4.1, and the altruistic and mafia prisoner's dilemmas. Third, Gibbons sections 1.1 A and 1.1 B, pages 2 to 7: the normal form, the prisoner's dilemma with T above R above P above S, and Figures 1.1.1 to 1.1.4. Fourth, M W G section 7 D and sections 8 A and 8 B, pages 228 and 235 to 241: the formal layer, Definitions 8 B 1 to 8 B 3, Figure 8 B 3, and the order of deletion. Fifth, Cabral section 7.1, pages 161 to 163, for Figure 7.1, the prisoner's dilemma as pricing, the "for each against one" warning, and Figure 7.3; and section 14.2, pages 354 and 358 to 360, for Hotelling. Sixth, Milgrom and Roberts Table 5.1, pages 138 and 139: grabbing as a prisoner's dilemma, and hold-up.
+
+The exercises, by address, grouped by part.
+
+For part one, the normal form: Tadelis exercises 3.2, 3.4, 3.6 and 3.7, page 58; and Muñoz-Garcia chapter 1, exercise 2, page 4, and exercise 5, page 8. These are items 1 to 4 and 9 and 10 of the Lecture 1 practice plan.
+
+For part two, trees to matrices: Muñoz-Garcia chapter 1, exercise 2, page 4, and exercise 5, page 8, items 3 and 4 of the practice plan.
+
+For part three, solution concepts: Tadelis exercises 4.1 and 4.2, page 76, items 11 and 12 of the practice plan; and the exam-style list, question 1 part c.
+
+For part four, dominance: Muñoz-Garcia chapter 1, exercise 13, page 26; Tadelis exercises 4.1 and 4.2, page 76, and 4.4, pages 76 and 77; and M W G exercises 8 B 1, 8 B 3 and 8 B 7, page 262. These are items 5, 11 to 13, and 22 to 24 of the practice plan; also the exam-style list, question 1 parts b and c.
+
+For part five, Pareto: the exam-style list, question 1 part a, a partnership with synergy, question 1 part d, Pareto with n players, and question 2, continuous effort; and M W G exercise 8 B 1, page 262, item 13 of the practice plan.
+
+For part six, iterated elimination: Tadelis exercise 4.5, page 77; Gibbons exercise 1.2, page 48; Muñoz-Garcia chapter 1, exercise 9, page 17, exercise 12, page 23, and exercise 16, page 31; and M W G exercise 8 B 4, page 262. These are items 6 to 8, 14, and 19 and 20 of the practice plan; also the exam-style list, question 3.
+
+For part seven, Cournot: Tadelis exercise 4.6, page 77, and M W G exercise 8 B 5, page 262, items 15 and 21 of the practice plan; and the exam-style list, question 4, asymmetric costs.
+
+For part eight, spatial competition: Tadelis exercise 4.10, page 78, item 18 of the practice plan; and the exam-style list, questions 5 and 6, with weighted towns, a ring road, general n, and a continuum. And, before the solution, the unsolved mini-case preparation file.
+
+Related project material. The practice plan for Lecture 1 lists 24 book exercises by number and page, with worked solutions in a separate file. The exam-style list for Lecture 1 has its answer key and its Python checker. And there are three quizzes in the Simulados folder, dated October 13, 2026: one on the normal form, one on dominance and Pareto, and one on iterated elimination.
+
+Part fifteen. Self-test.
+
+This part covers Part Two of the pitfalls note: twenty-two original True or False items. Scoring, as in the course, is the larger of zero and the number correct minus half the number wrong, so a guess has a cost. After each statement, pause the audio and decide true or false. Then play on for the verdict and the reason.
+
+Question 1. In a static game the players must choose at the same instant. Pause now.
+False. "Simultaneous" means without observing the others' choices; timing is irrelevant, Tadelis page 44 and Gibbons page 4. Studying two days apart is static if neither sees the other's effort.
+
+Question 2. Complete information requires that the payoff functions be common knowledge, not merely known by everyone. Pause now.
+True. Tadelis requires the four components, payoffs included, to be common knowledge, page 45. Mutual knowledge would not support reasoning about the others' reasoning.
+
+Question 3. If s i is strictly dominated, then s i is not a best response to any s minus i in S minus i. Pause now.
+True. If s i prime beats s i at every s minus i, then at any given s minus i the strategy s i is not optimal. That is Tadelis Proposition 4.3, page 70.
+
+Question 4. If for every s minus i some strategy of player i pays more than s i, then s i is strictly dominated. Pause now.
+False. The quantifiers are in the wrong order: dominance needs one s i prime against all s minus i. With rows 3 and 0, 1 and 1, and 0 and 3, M is beaten in each column by a different row, and by no single row.
+
+Question 5. A game can have two different strict dominant-strategy equilibria. Pause now.
+False. Proposition 4.1: two strictly dominant strategies for the same player would each have to beat the other everywhere.
+
+Question 6. Replacing every payoff u i by e to the power u i can change which strategies survive iterated elimination. Pause now.
+False. The exponential is strictly increasing, so every inequality between two of player i's payoffs at a fixed s minus i is preserved. Dominance is ordinal.
+
+Question 7. In the prisoner's dilemma of the slides, mum, fink is Pareto optimal. Pause now.
+True. Only mum, fink gives player 2 as much as minus 1, so no other profile keeps player 2 at least as well off; nothing Pareto dominates it, Tadelis page 57.
+
+Question 8. A strict dominant-strategy equilibrium is always Pareto optimal. Pause now.
+False. The prisoner's dilemma's fink, fink is Pareto dominated by mum, mum. That is Lesson 2.
+
+Question 9. In the n-partner game, effort is strictly dominant if and only if c is less than y. Pause now.
+False. Effort is dominant if and only if c is less than y over n. The condition c less than y is the one for all-effort to Pareto dominate all-shirk.
+
+Question 10. Raising n at fixed y and c can turn effort from dominant into a social dilemma. Pause now.
+True. The threshold y over n falls with n while y does not. For example, with y equal to 6 and c equal to 2.5: effort is dominant at n equal to 2, since 3 is greater than 2.5; at n equal to 3 there is a dilemma, since 2 is less than 2.5, which is less than 6.
+
+Question 11. Bidding one's value in a second-price auction is a strictly dominant strategy. Pause now.
+False. It is weakly dominant. Against a highest rival bid below both one's value and the alternative bid, the two bids pay the same.
+
+Question 12. In a finite game, the set that survives iterated elimination does not depend on the order in which strictly dominated strategies are removed. Pause now.
+True. M W G pages 239 and 240, Exercise 8 B 4: a strategy dominated against a set of profiles stays dominated against any subset.
+
+Question 13. In a finite game, iterated elimination can eliminate every strategy of some player. Pause now.
+False. In a finite game, a strategy that is best against some fixed surviving s minus i cannot be strictly dominated, so each surviving set stays nonempty. With infinite sets it can happen: the strategies from 0 up to but not including 1, with payoff equal to s.
+
+Question 14. The second round of iterated elimination in matrix 4.1 requires player 1 to know that player 2 is rational. Pause now.
+True. Round 2 removes M and D because column C is gone, which player 1 can use only if he knows player 2 is rational.
+
+Question 15. If iterated elimination leaves a unique profile, that profile is a strict dominant-strategy equilibrium. Pause now.
+False. Matrix 4.1 has a unique survivor, U, L, but no dominant strategy for either player.
+
+Question 16. In Tadelis's Cournot game, after three rounds of iterated elimination each firm's surviving set is the interval from 22.5 to 33.75. Pause now.
+True. The sets go from 0 to 45, then 22.5 to 45, then 22.5 to 33.75, Tadelis page 66.
+
+Question 17. In that game, iterated elimination selects 30 for each firm after finitely many rounds. Pause now.
+False. The width is 45 over 2 to the k minus 1, which is positive after every finite round; 30 is the limit.
+
+Question 18. In linear Cournot with an interior solution, a higher rival cost c 2 raises firm 1's predicted quantity. Pause now.
+True. q 1 star is a minus 2 c 1 plus c 2, over 3 b, so its derivative with respect to c 2 is 1 over 3 b, which is positive. A weaker rival produces less, and firm 1's best response to less is more.
+
+Question 19. On the 7-block avenue, block 4 is a strictly dominant location. Pause now.
+False. Against a rival at block 1, block 2 pays 6 and block 4 only 5; no block is a best reply to every location.
+
+Question 20. The iterated-elimination outcome on the avenue minimizes customers' total walking distance. Pause now.
+False. Both at block 4 gives total walking of 12; stores at 2 and 5 give 6.
+
+Question 21. In the location game, every profile is Pareto optimal for the two chains. Pause now.
+True. The game is constant-sum, with u A plus u B equal to 7, so any gain for one chain is a loss for the other.
+
+Question 22. A mafia sanction z on finking makes mum, mum the strict dominant-strategy equilibrium for any positive z. Pause now.
+False. Mum beats fink for each player if and only if z is greater than 1, Tadelis pages 62 and 63. With z between 0 and 1, fink stays at least as good; at exactly z equal to 1, the two tie, so fink is weakly as good.
+
+Part sixteen. Glossary.
+
+One sentence per term.
+
+Game: a decision problem in which each player's payoff depends on the choices of all players.
+
+Normal form: the triple of players, strategy sets and payoff functions that records how every profile of strategies is valued by every player.
+
+Profile: a list of strategies, one for each player.
+
+s minus i: the strategies of every player except player i.
+
+Bimatrix: the table form of a finite two-player game, with player 1's payoff first in each cell.
+
+Static game: a game in which each player chooses without observing the others' choices, whatever the timing.
+
+Dynamic game: a game in which some player conditions on an observed earlier move.
+
+Complete information: the game itself, players, actions, outcomes and preferences, is common knowledge.
+
+Common knowledge: everyone knows it, everyone knows that everyone knows it, and so on without end.
+
+Mutual knowledge: everyone knows it, which is only the first level of common knowledge.
+
+Strategy: a complete contingent plan, prescribing an action in every contingency that may arise.
+
+Pure strategy: a deterministic plan of action.
+
+Ordinal invariance: the property that dominance and iterated elimination are unchanged by strictly increasing transformations of payoffs.
+
+Solution concept: a rule that selects the most reasonable profiles of a game.
+
+Equilibrium: a profile of strategies selected by a solution concept, never a profile of payoffs.
+
+Self-enforcement: the requirement that each player be happy to follow the prediction on his own.
+
+Existence, uniqueness, invariance: the three criteria for a solution concept: how often it applies, how sharply it predicts, and whether it survives small payoff changes.
+
+Strictly dominated strategy: a strategy that some single other strategy beats against every profile of the others.
+
+Weakly dominated strategy: a strategy that some other strategy does at least as well as against every profile of the others, and strictly better against at least one.
+
+Dominant strategy: a strategy that dominates every other strategy of the same player.
+
+Strict dominant-strategy equilibrium: a profile in which every player's strategy is strictly dominant.
+
+Lesson 1: a rational player never plays a strictly dominated strategy.
+
+Lesson 2: individually rational choices can lead to socially undesirable outcomes.
+
+Pareto dominance: one profile Pareto dominates another when no player is worse off and at least one is strictly better off.
+
+Pareto optimal: a profile that no other profile Pareto dominates.
+
+Prisoner's dilemma: a game whose payoffs are ordered temptation above reward above punishment above sucker, so defection is dominant and mutual defection is Pareto dominated.
+
+Social dilemma: a game in which the dominant-strategy outcome is Pareto dominated, as in the partnership band y over n less than c less than y.
+
+Free-rider problem: the gap between the private return y over n and the social return y of effort in a team, which grows with team size.
+
+Hold-up: opportunism that cannot be contracted away and destroys the investment it would exploit.
+
+Iterated elimination of strictly dominated strategies: the procedure that removes strictly dominated strategies round after round, each round testing only against the others' surviving strategies.
+
+Iterated-elimination equilibrium: any profile that survives iterated elimination.
+
+Order independence: the property that strict iterated elimination ends at the same set whatever the order of removal, which fails for weak elimination.
+
+Best response: the strategy that maximizes a player's payoff against a given choice of the others, used here to bound the Cournot intervals and studied fully in Lecture 2.
+
+Cournot duopoly: two firms choosing quantities simultaneously, with price set by total output.
+
+Constant-sum game: a game in which the players' payoffs add up to the same total in every cell.
+
+Hotelling model: Cabral's model of two firms at the ends of a line with transport cost t, in which the equilibrium price is marginal cost plus t.
+
+Direct and strategic effects: moving toward the centre wins demand at given prices, the direct effect, but provokes the rival to cut its price, the strategic effect.
+
+Part seventeen. The whole lecture in five lines.
+
+One. A game is a decision problem in which payoffs depend on everyone's choices, written as players, strategy sets and payoff functions, with strategies as complete contingent plans and the game itself as common knowledge.
+
+Two. Rationality removes strictly dominated strategies, meaning one fixed alternative better against everything; when every player has a strictly dominant strategy, the equilibrium is unique and robust, while weak dominance is neither.
+
+Three. A dominant-strategy equilibrium can still be Pareto dominated, as in the prisoner's dilemma and the partnership band y over n less than c less than y, and only changing the game removes the waste.
+
+Four. Common knowledge of rationality lets the elimination be iterated, one level of "I know that you know" per round: matrix 4.1 ends at U, L, Cournot halves its interval to 30 each, and the pharmacies peel the avenue to block 4.
+
+Five. Iterated elimination always exists in finite games, ignores the order of removal, and returns any dominant-strategy equilibrium after one round, but it is often silent, as in the Battle of the Sexes, and that silence is what Nash equilibrium addresses in Lecture 2.

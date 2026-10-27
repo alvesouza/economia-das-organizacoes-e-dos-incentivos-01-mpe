@@ -1,0 +1,1113 @@
+Lecture 4. Multistage games and bargaining. A listening version of the Lecture 4 notes.
+
+How to listen.
+
+This is the full text of the Lecture 4 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every proposition, every number and every derivation from the written notes is here, with the mathematics spoken in words.
+
+One warning before anything else. This unit is estimated. It was written before the lecture, and there are no slides for Lecture 4 yet. The notes were built from the course study guide and from the books: Tadelis, Game Theory, An Introduction, published by Princeton University Press in 2013, chapter 9, Multistage Games, and chapter 11, Strategic Bargaining; and Gibbons, Game Theory for Applied Economists, Princeton University Press, 1992, section 2.1, part D, Sequential Bargaining, and section 2.2, two-stage games of complete but imperfect information. Two further sources appear in smaller roles: Mas-Colell, Whinston and Green, Microeconomic Theory, 1995, which the script calls M W G, chapter 9, appendix A; and Milgrom and Roberts, Economics, Organization, and Management, 1992, which the script calls M and R, on bargaining over a sale. When the slides arrive, the notes will be reconciled with them, and some emphasis may change.
+
+Page numbers are the books' printed page numbers. When the script says "Tadelis page 183", it means printed page 183 of Tadelis.
+
+The script has twenty parts, numbered zero to nineteen. Part zero is the map: the one claim of the lecture and how the pieces fit. Parts one to four are multistage games: the definition, the carrot and the stick, the one-stage deviation principle, and three two-stage applications from Gibbons. Parts five to nine are bargaining: the ultimatum game, finitely many rounds of alternating offers, Rubinstein's infinite horizon, legislative bargaining, and bargaining when values are private. After that come the support parts: the exam specification and the numbers to hold, common mistakes, a true or false self-test, a spoken formula sheet, the computer routines described in words, the figures and interactive companions described in words, the reading route and exercises, a short open self-test, a glossary, and the whole lecture in five lines.
+
+The notes use three layers. Layer U is intuition: the prose and examples of the books. Layer C is the course, the examinable material, estimated until the slides arrive. Layer G is the formal side, mostly M W G's proofs. The G layer is named or proved, but it is not examinable unless the lecture brings it. The script says so each time a G item appears.
+
+Two scope notes, said now and repeated where they apply. Mechanism design and the revelation principle are outside this course; they are named once, in part nine, only to place a result. Moral hazard is also outside the course unless a lecture brings it; the tournament in part four is used only as an example of a two-stage game, not as a lesson on hidden effort.
+
+Part zero. The map of the lecture.
+
+This part covers note zero, the map.
+
+The one claim of the lecture has three sentences, and it is worth hearing slowly.
+
+First. Later play can discipline earlier play, but only through equilibria. In a multistage game a threat is credible only if it is a Nash equilibrium of the stage where it is carried out. So behaviour that is not a stage-1 equilibrium needs a carrot and a stick in a later stage, and enough patience to make the gap between them bite.
+
+Second. Bargaining is the same logic run backwards from a deadline. Each proposer offers the responder exactly what rejecting is worth. So agreement is immediate, and the split is set by a threat that is never carried out.
+
+Third. Without a deadline, stationarity replaces the last period. The proposer gets one over one plus delta, where delta is the common discount factor. Patience is bargaining power.
+
+The lecture has two halves. Part one of the notes is multistage games, from Tadelis chapter 9 and Gibbons section 2.2. Part two is strategic bargaining, from Tadelis chapter 11, Gibbons section 2.1 part D, and M W G's appendix to chapter 9.
+
+The one result to hold is a chain of three expressions. Player 1's share in the infinite-horizon game is one minus delta 2, divided by one minus delta 1 times delta 2, where delta 1 is player 1's discount factor and delta 2 is player 2's. When both discount factors are equal to the same delta, this becomes one over one plus delta. And when delta tends to one, it tends to one half.
+
+Behind that chain sits one sentence. The proposer's share is set by what the responder could get by waiting. That same sentence gives the finite game's backward induction, the infinite game's stationarity, the legislative proposer's price per partner, and, in the first half of the lecture, the carrot-and-stick threshold: delta at least g over c minus s, where g is the one-shot gain from deviating, c is the carrot and s is the stick.
+
+Now the numbers and cases to have memorized. There are eight.
+
+One. In the Prisoner-Revenge Game, mutual mum, written capital M small m, is sustainable if and only if delta is at least one third: a gain of 1 against a stick worth 3.
+
+Two. In the same game, the lopsided outcome capital F small m is sustainable if and only if delta is at least two thirds: a gain of 2 against the same stick.
+
+Three. The subgame-perfect equilibrium of the ultimatum game gives the split 1 and 0: the proposer takes everything, while Nash equilibrium allows any split.
+
+Four. With two rounds of bargaining the split is one minus delta to player 1 and delta to player 2: the last word is worth delta.
+
+Five. With finitely many rounds and delta equal to 0.6, player 1's share as the number of rounds grows runs 1, 0.4, 0.76, 0.544, and so on, zig-zagging toward 0.625, which is one over one plus delta.
+
+Six. Rubinstein's infinite-horizon share is one over one plus delta with equal patience, and one minus delta 2 over one minus delta 1 delta 2 with different patience. Only the first-mover edge survives.
+
+Seven. In Gibbons's tariff game the equilibrium tariff is a minus c, over 3. It is dominant, and jointly worse than free trade.
+
+Eight. In legislative bargaining with three legislators, the proposer keeps one minus delta over 3 under a closed rule, one over one plus two delta under an open rule, and the switch to a risky strategy happens at delta equal to the square root of 3, minus 1. Protocol is power.
+
+How the lecture sits in the course. Lecture 1 gave strategies as complete contingent plans and dominance, which return here as the dominant fink and the dominant tariff. Lecture 2 gave stage-game Nash equilibria, pure and mixed, including the Revenge Game's mixed equilibrium with probability one half, and Cournot competition, which returns inside the tariff game. Lecture 3 gave backward induction and subgame perfection, which this lecture applies to stages and to offers. Lecture 5 plays the same stage-game forever: with no last stage, cooperation needs no second equilibrium, and the one-stage deviation principle is used with discounting. Lecture 6 is collusion and relational contracts, carrot-and-stick incentives inside organizations. Lecture 7 is private information and adverse selection, where part nine's example belongs. Lecture 8 is perfect Bayesian equilibrium, and bargaining with delay under asymmetric information.
+
+Part one. A multistage game is one extensive form: payoffs, histories, strategies.
+
+This part covers note one, Tadelis chapter 9 introduction and sections 9.1 to 9.3, printed pages 175 to 180, and Gibbons section 2.2 part A, pages 71 to 73.
+
+The claim of this part. Playing one game after another, with each outcome observed before the next stage, is one extensive-form game. Payoffs add up with discounting, and a strategy is a plan that names an action for every history. That richer strategy space lets later play be made to depend on earlier play, and that is where the economics of the chapter comes from.
+
+One point one. Why bother with stages.
+
+Tadelis opens, on page 175, with two firms that compete in one market and later meet in another, and with lawmakers who sit on one committee and then, if re-elected, on the next. Two questions follow, and the chapter answers both.
+
+The first question: should rational, forward-looking players treat the sequence as one grand game? Yes. They anticipate future games and use them.
+
+The second question: must they play a stage-game Nash equilibrium in every stage? No. If future behaviour can be conditioned on past outcomes, they can create credible, self-enforcing incentives for early-stage behaviour that is not a stage-game equilibrium.
+
+Tadelis states the core insight of multistage games on page 176: if players can condition future behaviour on past outcomes, the set of self-enforcing outcomes becomes richer.
+
+One point two. The definition, section 9.1, page 176.
+
+A multistage game is a finite sequence of normal-form stage-games. Each stage-game is a simultaneous-move game of complete but imperfect information, played by the same players, in periods t equal to 1, 2, and so on up to capital T. Two conventions come with it. First, after each stage all players observe its outcome, and this is common knowledge. Second, total payoffs are evaluated from the sequence of stage outcomes.
+
+Two things are left out. Infinite sequences of the same stage-game are repeated games, Tadelis chapter 10, which is Lecture 5. And games in which some stages are played before earlier outcomes are revealed are outside the text, as footnotes 1 and 2 on page 176 say.
+
+Gibbons's version, on page 72, is written with four players. Players 1 and 2 choose actions a 1 and a 2 simultaneously. Players 3 and 4 observe the pair a 1, a 2, and then choose a 3 and a 4 simultaneously. Payoffs are u i of a 1, a 2, a 3, a 4. Players 3 and 4 may be players 1 and 2 again, which is a multistage game in Tadelis's sense, or they may be different people, like the boss and the workers of a tournament in part four.
+
+One point three. The running example, the Prisoner-Revenge Game, pages 176 and 177.
+
+Stage 1 is the Prisoner's Dilemma. Each player chooses mum or fink. Player 1's actions are written in capitals, capital M and capital F, and player 2's in small letters, small m and small f. The payoffs, player 1 first: if both stay mum, 4 and 4. If player 1 stays mum and player 2 finks, minus 1 and 5. If player 1 finks and player 2 stays mum, 5 and minus 1. If both fink, 1 and 1.
+
+Stage 2 is the Revenge Game. Each player chooses to be a loner, capital L or small l, or to join a gang, capital G or small g. Two loners get 0 each. Two gang members fight and get minus 3 each. A loner facing a gang member gets minus 4, and the gang member gets minus 1.
+
+Now each stage on its own.
+
+In stage 1, fink strictly dominates mum: against mum, fink pays 5 against 4; against fink, fink pays 1 against minus 1. So the unique Nash equilibrium is both fink, capital F small f.
+
+In stage 2 there are two pure Nash equilibria. Both loners: against a loner, being a loner pays 0, more than minus 1. Both gang members: against a gang member, joining pays minus 3, more than minus 4. And there is a mixed equilibrium. Here is the worked step. Let player 2 play loner with probability q. Player 1's payoff from loner is 0 times q plus minus 4 times one minus q, which is 4 q minus 4. Player 1's payoff from gang is minus 1 times q plus minus 3 times one minus q, which is 2 q minus 3. Player 1 is indifferent when 4 q minus 4 equals 2 q minus 3, which gives q equal to one half. By symmetry player 1 also plays loner with probability one half; this is Tadelis's "verify this" on page 177. Each player then expects 4 times one half minus 4, which is minus 2.
+
+The point to keep. The two pure equilibria of stage 2 are what makes this game interesting: a friendly one worth 0 and a gang war worth minus 3. Part two turns the gap between them into a carrot and a stick.
+
+One point four. Payoffs: the discounted sum, section 9.2, page 177.
+
+Let v i t be player i's payoff from the outcome of stage t, and let delta be a common discount factor between 0 and 1. Player i's total payoff, v i, is v i 1, plus delta times v i 2, plus delta squared times v i 3, and so on, up to delta to the power T minus 1 times v i T. In short, the sum over t from 1 to T of delta to the power t minus 1, times v i t.
+
+A higher delta means more patient players. Delta equal to zero means only the current stage matters.
+
+The worked example from page 177. Suppose play is capital F small m in stage 1, then capital L small g in stage 2. Player 1 gets 5 in stage 1 and minus 4 in stage 2, so v 1 equals 5 plus delta times minus 4. Player 2 gets minus 1 and minus 1, so v 2 equals minus 1 plus delta times minus 1. With delta equal to one half, v 1 is 5 minus 2, which is 3, and v 2 is minus 1 minus 0.5, which is minus 1.5.
+
+Figure 9.1, on page 178, draws the whole game as one tree whose 16 terminal nodes carry these discounted sums. That the payoffs "arrive" only at the end of the tree is harmless: strategically only the sum matters, page 177.
+
+A note on notation. Tadelis writes v i for total payoffs in multistage games, while the Lecture 1 slides write u i for the payoff function of a normal-form game. These notes keep Tadelis's v i for the discounted total and v i t for the stage payoff, to be reconciled with the slides when they arrive.
+
+One point five. Strategies condition on histories, section 9.3, pages 178 to 180.
+
+Because each stage's outcome is revealed before the next, the number of information sets a player has at stage t equals the number of possible outcomes of stages 1 to t minus 1. That is page 178. Inside a stage the players still move without seeing each other, so each information set holds several nodes.
+
+In the Prisoner-Revenge Game, page 179, stage 1 has four outcomes: mum mum, mum fink, fink mum, fink fink. So each player has four stage-2 information sets. A pure strategy is a list of five entries: the stage-1 action, then the stage-2 action after mum mum, after mum fink, after fink mum, and after fink fink.
+
+Now the counting. Each of the five entries takes one of two values, so each player has 2 to the power 5, which is 32, pure strategies, and there are 32 times 32, which is 1024, pure-strategy profiles. That is page 179, and it is why the extensive form, not a 32 by 32 matrix, is the tool.
+
+In general, page 179, a pure strategy for player i is a list: an action for stage 1, then for each later stage t an action that is a function of the history h t minus 1, which is the sequence of outcomes before t. A behavioural strategy replaces each action by a randomization over actions, again one per history.
+
+A worked example from page 179: n firms pricing in T markets. Firm i's pure strategy is a list of prices: a first-period price, then a second-period price as a function of the first-period history, and so on. The history before period t is the list of every firm's price in every earlier period. Each entry after the first is a function from a continuum of histories to a price. Strategy spaces in multistage games are huge even when every stage is simple.
+
+The point to keep. A strategy is a complete contingent plan, the Lecture 1 slides' definition. In a multistage game, "complete" means one action for every history, including histories the plan itself rules out. Off-path entries are not decoration; part two shows they carry the threats.
+
+One point six. The solution concept, subgame perfection, worked stage by stage, Gibbons section 2.2 part A.
+
+Gibbons solves the two-stage class "in the spirit of backwards induction", pages 72 and 73, in three steps.
+
+Step one, stage 2 first. For each first-stage outcome a 1, a 2, find the Nash equilibrium of the game that remains: a 3 star and a 4 star, each a function of a 1 and a 2. Note the difference from Lecture 3: here the first step is a game, not a one-person optimization.
+
+Step two, substitute it back. Players 1 and 2 then play the simultaneous game whose payoffs are u i evaluated at a 1, a 2, and the stage-2 equilibrium actions that those choices lead to.
+
+Step three. If that game has a Nash equilibrium a 1 star, a 2 star, the subgame-perfect outcome is a 1 star, a 2 star, followed by the stage-2 equilibrium that those choices lead to.
+
+Gibbons assumes that stage 2 has a unique Nash equilibrium for every first-stage outcome, page 72. Then step one is well defined and the method needs no choice. Tadelis's Prisoner-Revenge Game deliberately breaks that assumption, and that is the whole of part two.
+
+Why not threats that are not stage-2 equilibria? Gibbons answers on page 73: when play reaches stage 2, at least one of players 3 and 4 will not carry out such a threat, exactly because it is not a Nash equilibrium of the game that remains. This is subgame perfection, from Lecture 3, applied to stages.
+
+The checklist for part one. You should be able to define a multistage game and state its two conventions. You should be able to write the discounted payoff and compute the page 177 example. You should be able to find all three Nash equilibria of the Revenge Game, including the mixed one with q equal to one half and value minus 2. You should be able to say why each player has 32 strategies and why there are 1024 profiles. And you should be able to state Gibbons's three-step method and the assumption it makes.
+
+Part two. Subgame-perfect equilibria of multistage games: the carrot and the stick.
+
+This part covers note two, Tadelis section 9.4, printed pages 180 to 184, and the chapter summary on page 186.
+
+The claim of this part. Stringing stage-game equilibria together is always subgame perfect, and if every stage has a unique equilibrium nothing else is. Behaviour that is not a stage-1 equilibrium can be sustained only when a later stage has two equilibria with different payoffs, a carrot and a stick, and when players are patient enough that the gap outweighs the one-shot gain from deviating. In the Prisoner-Revenge Game, mutual mum needs delta at least one third; the lopsided fink mum needs delta at least two thirds.
+
+Two point one. Proposition 9.1: stage equilibria in sequence are always a subgame-perfect equilibrium, page 180.
+
+The statement. Consider a multistage game with T stages, and let sigma t star be a Nash equilibrium strategy profile for the t-th stage-game. There exists a subgame-perfect equilibrium in the multistage game in which the equilibrium path coincides with the path generated by sigma 1 star, sigma 2 star, and so on up to sigma T star.
+
+The proof, step by step, from page 180. Let every player play their part of sigma t star at stage t, regardless of history. Call these unconditional strategies.
+
+Step one. In any subgame starting at stage T, the profile is sigma T star, a Nash equilibrium of stage T, and the earlier payoffs are sunk constants. So it is a Nash equilibrium of that subgame.
+
+Step two. In any subgame starting at stage T minus 1, a player's total payoff is the stage T minus 1 payoff plus a constant. The constant is made of two pieces: the sunk payoffs of earlier stages, and the discounted stage-T payoff, which does not depend on the stage T minus 1 outcome, because stage-T play is unconditional. Adding a constant changes no best response, as Tadelis's footnote 3 on page 181 says. So sigma T minus 1 star followed by sigma T star is a Nash equilibrium of the subgame.
+
+Step three. Induct backwards to t equal to 1. That ends the proof.
+
+In the Prisoner-Revenge Game, pages 180 and 181, this gives two pure subgame-perfect equilibria with unconditional play. In the first, player 1 plays fink, then loner after every history, and player 2 plays fink, then loner after every history. In the second, both fink and then join the gang after every history. There is a third, with the mixed Revenge equilibrium after every history, footnote 4 on page 181. In each, stage 2 adds the same constant to every stage-1 cell: 0, or minus 3 delta, or minus 2 delta. So fink stays dominant.
+
+The point to keep. Unconditional strategies remove every strategic link between the stages. Each stage is then a separate game, and Proposition 9.1 is just that observation made rigorous.
+
+Two point two. Propositions 9.2 and 9.3: the last stage pins everything when equilibria are unique.
+
+Proposition 9.2, page 181. If sigma star is a Nash equilibrium of the multistage game made of stage-games G 1 to G T, then the restriction of sigma star to the stage-game in period T must be a Nash equilibrium of that stage-game. Why: nothing follows stage T, so the only thing that determines what is best at T is a best response to what the others do at T.
+
+Proposition 9.3, page 181. If a finite multistage game consists of stage-games that each have a unique Nash equilibrium, then the multistage game has a unique subgame-perfect equilibrium.
+
+The proof by backward induction, page 182. At stage T the unique stage equilibrium is played after every history. At stage T minus 1, stage-T play cannot depend on the stage T minus 1 outcome, so the unique stage T minus 1 equilibrium is played. And so on, back to stage 1.
+
+A corollary to carry to Lecture 5. A Prisoner's Dilemma repeated a known finite number of times has a unique subgame-perfect equilibrium, fink in every period, because each stage has a unique Nash equilibrium. Cooperation needs either a stage with multiple equilibria, which is this part, or an infinite horizon, which is Lecture 5.
+
+Two point three. Supporting mutual mum in stage 1, pages 182 and 183.
+
+The target path is mum mum in stage 1, then loner loner in stage 2. Proposition 9.2 says stage 2 must be a Revenge equilibrium after every history, so the only tool is which equilibrium follows which history.
+
+The strategies, page 182. Player 1 plays mum in stage 1; then loner after mum mum, and gang after mum fink, after fink mum, and after fink fink. Player 2 does the mirror image: mum in stage 1; then loner after mum mum, and gang after everything else. In words: the friendly equilibrium if we both stayed mum; gang war after anything else.
+
+The check, subgame by subgame.
+
+First, the stage-2 subgames. After mum mum they play loner loner; after the other three histories they play gang gang. Both are Nash equilibria of the Revenge Game, as part one showed.
+
+Second, the whole game. Only stage-1 deviations remain to check. Player 1, given player 2's strategy: staying mum gives 4 plus 0 times delta. Finking gives 5 plus minus 3 times delta. Mum is a best response if and only if 4 is at least 5 minus 3 delta, which is the same as 3 delta at least 1, which is the same as delta at least one third. That is page 183. Player 2 is symmetric.
+
+The figure in the notes, the carrot-stick threshold, draws this. It shows, against delta, a flat line for staying, at 4, and a falling line for finking, 5 minus 3 delta, crossing at delta one third. A second pair of lines, for the fink mum path, shows player 2 staying at minus 1 and finking at 1 minus 3 delta, crossing at delta two thirds. Read each pair as "stay", flat because the carrot pays 0, so patience adds nothing on the path, against "fink", falling because the deviation is followed by the stick, minus 3, weighted by delta. The deviation gain is fixed; the discounted punishment, 3 delta, grows with patience and overtakes it at delta star equal to one third and two thirds. Cooperation is sustained to the right of each crossing.
+
+Two point three, continued. The reduced stage-1 game.
+
+Substitute the continuation values into the stage-1 matrix: add delta times 0 in the mum mum cell, and delta times minus 3 in every other cell. With delta equal to one half, the four cells become as follows. Mum mum: 4 plus 0, so 4 and 4. Mum fink: minus 1 minus 1.5, which is minus 2.5, for player 1, and 5 minus 1.5, which is 3.5, for player 2. Fink mum: 3.5 for player 1 and minus 2.5 for player 2. Fink fink: 1 minus 1.5, which is minus 0.5, for each.
+
+Now mum mum is a Nash equilibrium, because 4 is more than 3.5 for each player. And fink fink is also one, because minus 0.5 is more than minus 2.5.
+
+The second figure, the reduced Prisoner-Revenge game, shows three tables side by side: the stage-1 Prisoner's Dilemma with fink fink shaded; the Revenge Game with both pure equilibria shaded; and the stage-1 game with continuation payoffs at delta one half, where mum mum pays 4 and 4 and every other cell is lowered by 1.5. That right-hand table is how to see the construction: the linkage subtracts 3 delta from every cell except the target, and once 3 delta exceeds the one-shot gain of 1, the target becomes a best response.
+
+Two point four. The two requirements, page 183.
+
+Tadelis states them in these words. First: "There must be at least two distinct equilibria in the second stage: a 'stick' and a 'carrot.'" Second: "The discount factor has to be large enough for the difference in payoffs between the 'stick' and the 'carrot' to have enough impact in the first stage."
+
+Why each is necessary.
+
+Requirement one. If the target is not a stage-1 Nash equilibrium, some player gains in the short run by deviating. A credible punishment must itself be a stage-2 Nash equilibrium, by Proposition 9.2. So the only credible punishment is a switch from a better equilibrium to a worse one. With one stage-2 equilibrium there is nothing to switch between, and that is Proposition 9.3.
+
+Requirement two. The punishment is worth delta times the carrot minus the stick, measured today. A smaller delta "makes the carrot smaller and the stick less painful", page 183.
+
+The general threshold. Let g be the one-shot gain from deviating, and let c minus s be the continuation gap, carrot minus stick. The target is sustainable if and only if g is at most delta times c minus s, which is the same as delta at least delta star, equal to g over c minus s. For mutual mum, g is 5 minus 4, which is 1; c minus s is 0 minus minus 3, which is 3; so delta star is one third.
+
+Two point five. Worked: supporting fink mum, the lopsided path, pages 183 and 184.
+
+The target is fink mum in stage 1, then loner loner. The strategies: player 1 plays fink; then gang after mum mum, gang after mum fink, loner after fink mum, and gang after fink fink. Player 2 plays mum; then gang, gang, loner after fink mum, and gang. In words, friendly only after fink mum.
+
+Player 1 plays fink, a stage-1 dominant strategy, and gets the best stage-2 equilibrium. He has no incentive to deviate.
+
+Player 2: staying mum gives minus 1 plus 0 times delta. Finking gives 1 plus minus 3 times delta. Mum is a best response if and only if minus 1 is at least 1 minus 3 delta, which is delta at least two thirds. That is page 184.
+
+Now the four stage-1 outcomes compared. Mum mum: both players are tempted, symmetrically; the one-shot gain is 5 minus 4, which is 1; the punishment gap is 3; delta star is one third. Fink mum: player 2 is tempted; the gain is 1 minus minus 1, which is 2; the gap is 3; delta star is two thirds. Mum fink is the mirror image, with player 1 tempted, a gain of 2, a gap of 3, and delta star two thirds. Fink fink: nobody is tempted; the gain is 0, and it is sustainable for any delta, by Proposition 9.1.
+
+The point to keep. The same stick buys more the smaller the temptation it must overcome. That is why the efficient path, mutual mum, is easier to sustain than fink mum, which hurts player 2 in stage 1.
+
+The interactive companion for this part, The Carrot and the Stick, is described in part fifteen.
+
+Two point six. What the chapter summary asks you to keep, section 9.6, page 186.
+
+Three points. First, any sequence of stage-game Nash equilibria is a subgame-perfect equilibrium, regardless of delta; that is Proposition 9.1. Second, credible threats and promises in later stages give long-term incentives for short-term actions; that is the construction just heard. Third, their effectiveness depends on patience, and the supportable set often depends on delta; that is the threshold.
+
+The organizational reading. This is the logic of relational incentives inside firms. A future interaction with a good and a bad equilibrium, such as cooperative or hostile teams, or a friendly or a litigious supplier relationship, can discipline behaviour today without any contract. The repeated version, with no last stage, is Lecture 6's relational contracts.
+
+The checklist for part two. You should be able to state Propositions 9.1, 9.2 and 9.3 and prove 9.1 and 9.3 by backward induction. You should be able to write the carrot-and-stick strategies for mutual mum and derive delta at least one third. You should be able to build the reduced stage-1 game at delta one half. You should be able to state the two requirements and say why each is necessary. And you should be able to derive delta at least two thirds for fink mum and explain why it is harder than mutual mum.
+
+Part three. The one-stage deviation principle: check one information set at a time.
+
+This part covers note three, Tadelis section 9.5, printed pages 184 to 186, and the closing remark of section 9.4 on page 184.
+
+The claim of this part. To verify that a profile is subgame perfect in a finite game, you never need to test combinations of deviations. If no player gains by changing his action at one information set while following his strategy everywhere else, then no multi-stage deviation gains either. This is what made part two's check a two-line inequality, and it is the workhorse of Lecture 5.
+
+Three point one. The worry it removes, page 184.
+
+In a five-stage game a player might hope to gain by combining deviations: fink at stage 2 and switch at stage 4. Checking every combination looks daunting. The principle, due to Blackwell in 1965 in dynamic programming, says it is unnecessary. Fix the other players' strategies. Then player i faces a one-person decision tree, and in a finite decision tree a plan that cannot be improved one node at a time cannot be improved at all. That is pages 184 and 185.
+
+Three point two. Definition and theorem, page 185.
+
+Fix the other players' strategies, sigma minus i. For an information set h i, let v i of sigma i at h i be player i's expected payoff from h i onward. Sigma i is optimal if there is no other strategy sigma i prime and no information set h i where sigma i prime gives a strictly higher payoff from h i onward. Let sigma i hat, with superscript a and h i, be sigma i with the action at h i replaced by some action a available there.
+
+Definition 9.1. A strategy sigma i is one-stage unimprovable if there is no information set h i, action a available at h i, and corresponding strategy sigma i hat, such that sigma i hat gives a strictly higher payoff from h i onward than sigma i.
+
+Theorem 9.1. A one-stage unimprovable strategy must be optimal.
+
+The converse, that an optimal strategy is one-stage unimprovable, is immediate.
+
+Three point two, continued. The proof, step by step, pages 185 and 186.
+
+Step one. Suppose sigma i is one-stage unimprovable but not optimal. Then some sigma i prime and some information set h i 1 give a strictly higher payoff from h i 1 onward.
+
+Step two. Randomization cannot raise the best attainable payoff, so there is a path through finitely many of player i's information sets, h i 1 up to h i n, the last one a terminal node, that beats sigma i. Hence finitely many one-stage changes, at h i 1 up to h i n minus 1, beat sigma i.
+
+Step three. Let sigma i hat t be the strategy that makes the improving changes at h i 1 up to h i t, and follows sigma i elsewhere. Then the strategy with all n minus 1 changes gives a strictly higher payoff from h i 1 than sigma i. That is equation 9.1.
+
+Step four. Look at the last change. From h i n minus 1 on, the strategy with n minus 2 changes coincides with sigma i, and the strategy with n minus 1 changes is a one-stage deviation from sigma i there. Unimprovability says the one-stage deviation does not help: from h i n minus 1, the strategy with n minus 2 changes, which equals sigma i there, gives at least as much as the strategy with n minus 1 changes. The two strategies agree before h i n minus 1, so from h i 1, the strategy with n minus 2 changes gives at least as much as the strategy with n minus 1 changes. That is equation 9.2.
+
+Step five. Equations 9.1 and 9.2 together say that the strategy with n minus 2 changes gives strictly more than sigma i from h i 1. The improvement survives with one change fewer. Repeat the argument down to one change: the strategy with a single change gives strictly more than sigma i from h i 1. That is equation 9.3. But a single change is a one-stage deviation, which contradicts unimprovability. That ends the proof.
+
+The intuition, from page 186: look for the last profitable deviation in the sequence. In the subgame where it happens, it is a one-stage deviation that makes the player better off. Peeling deviations off from the end is backward induction in disguise.
+
+Three point three. How to use it.
+
+The recipe, from the closing remark of section 9.4, page 184. To check that a profile is a subgame-perfect equilibrium of a finite game: for every player i, given the others' strategies, show that player i has no single information set at which changing the action alone pays.
+
+Worked, on part two's carrot and stick. Player 1's information sets are stage 1 and the four stage-2 sets, after mum mum, mum fink, fink mum and fink fink. Three rows cover all five, because the last three stage-2 sets share one prescription.
+
+At stage 2 after mum mum, the strategy prescribes loner, and player 2 plays loner. The one-stage deviation is gang. Compare 0 with minus 1. No gain.
+
+At stage 2 after mum fink, fink mum or fink fink, the strategy prescribes gang, and player 2 plays gang. The deviation is loner. Compare minus 3 with minus 4. No gain.
+
+At stage 1, the strategy prescribes mum. The deviation is fink, and then follow the strategy, which means playing gang. Compare 4 with 5 minus 3 delta. No gain if and only if delta is at least one third.
+
+Five checks, each one line, instead of comparing player 1's strategy with 31 alternative strategies.
+
+The point to keep. The deviation is evaluated with the player's own strategy continuing afterwards. At stage 1 the deviator finks and then still plays gang after fink mum, because his strategy says gang there. A combined deviation, fink and then loner, is covered automatically: by the stage-2 check it is no better.
+
+Three point four. Finiteness, and what comes next. This is a G-layer point: named here, used in Lecture 5.
+
+Theorem 9.1 is stated for trees of finite length. Tadelis announces, on page 184, that it will be "even more useful" in chapter 10, where the horizon is infinite. There the principle still holds when payoffs are discounted, with delta below one, because what happens far in the future matters little; this property is called continuity at infinity. That extension is stated and used in Lecture 5. Without discounting it can fail: a player may gain only by deviating at infinitely many dates.
+
+The checklist for part three. You should be able to state Definition 9.1 and Theorem 9.1. You should be able to retell the proof in its five steps, peeling off the last change. You should be able to run the five one-line checks on the carrot-and-stick profile. And you should be able to say why the deviator's own strategy continues after the deviation, and why the infinite-horizon version needs discounting.
+
+Part four. Three two-stage games: a run, a tariff war, a tournament.
+
+This part covers note four, Gibbons section 2.2 parts B, C and D: bank runs, pages 73 to 75; tariffs and imperfect international competition, pages 75 to 79; and tournaments, pages 79 to 82.
+
+The claim of this part. The two-stage method of part one, solve stage 2 for every stage-1 outcome, substitute, then solve stage 1, produces three different lessons. Bank runs: stage 2 is harmless, but the reduced stage 1 has two equilibria, one of them a run. Tariffs: the reduced stage 1 is a Prisoners' Dilemma, with a dominant tariff of a minus c, over 3. Tournaments: the boss moves first and chooses the stage-2 game the workers play; the prize spread buys effort, and noise makes it expensive.
+
+Four point one. Bank runs, pages 73 to 75.
+
+The setup. Two investors each deposit D. The bank's project returns 2 r if it is liquidated early, and 2 capital R at maturity. The parameters satisfy D greater than r greater than D over 2, and capital R greater than D. There is no discounting. Date 1 is before maturity, date 2 after.
+
+At date 1, each investor chooses to withdraw or not. If both withdraw, each gets r. If one withdraws and the other does not, the one who withdraws gets D and the other gets 2 r minus D. If neither withdraws, the game goes on to date 2.
+
+At date 2, if both withdraw, each gets capital R. If one withdraws and the other does not, the one who withdraws gets 2 R minus D and the other gets D. If neither withdraws, each gets R.
+
+Step one, date 2. R greater than D implies 2 R minus D greater than R. So withdrawing strictly dominates: against withdraw, it pays R rather than D; against don't, it pays 2 R minus D rather than R. The unique Nash equilibrium is that both withdraw, with R each.
+
+Step two, substitute. This is Figure 2.2.1, on page 75. The reduced date-1 game has the same first three cells, and the cell where neither withdraws now pays R and R.
+
+Step three. r less than D gives 2 r minus D less than r. So against withdraw, withdrawing pays r, more than 2 r minus D. Against don't, not withdrawing pays R, more than D. There are two pure Nash equilibria.
+
+A worked version with illustrative numbers, not from the book: D equal to 100, r equal to 75, capital R equal to 150. They satisfy 100 greater than 75 greater than 50, and 150 greater than 100. The reduced date-1 game pays 75 and 75 if both withdraw; 100 and 50 if only the first withdraws; 50 and 100 if only the second withdraws; and 150 and 150 if neither withdraws. Both-withdraw, at 75 each, and neither-withdraws, at 150 each, are the two equilibria.
+
+The point to keep, from page 75. There are two subgame-perfect outcomes: a run, with r each at date 1, and no run, with R each at date 2. Unlike the Prisoners' Dilemma, an efficient equilibrium exists. The model does not predict when runs happen; it shows they can happen as equilibrium behaviour. This is the model of Diamond and Dybvig, 1983. The inefficiency is a coordination failure, not a dominant-strategy trap.
+
+Note the structure. Gibbons's method assumed a unique stage-2 equilibrium, and here stage 2 is unique. The multiplicity is in stage 1.
+
+Four point two. Tariffs and imperfect international competition, pages 75 to 79.
+
+The setup. Two identical countries, i equal to 1 and 2. Inverse demand in country i is P i equals a minus Q i. Firm i sells h i at home and exports e i, with constant marginal cost c, and pays a tariff t j per unit exported to country j. The timing: governments choose t 1 and t 2 simultaneously; firms observe them and then choose their home sales and exports simultaneously. The payoffs: each firm earns its profit, and each government gets welfare W i, equal to consumer surplus, which is one half of Q i squared, plus the home firm's profit pi i, plus tariff revenue, which is t i times e j, the tariff times the imports.
+
+Stage 2 is Cournot competition in each market.
+
+Firm i's profit splits into a home part and an export part, so it solves two separate problems. At home, it maximizes the price, a minus h i minus e j star, minus c, all times h i. The first-order condition gives h i star equal to one half of a minus e j star minus c. That is equation 2.2.1. For exports, it maximizes a minus e i minus h j star minus c minus t j, all times e i, which gives e i star equal to one half of a minus h j star minus c minus t j. That is equation 2.2.2.
+
+So market i is a Cournot duopoly between firm i, with cost c, and firm j, with cost c plus t i.
+
+Solve the pair. Home output is one half of a minus e j minus c, and imports are one half of a minus h i minus c minus t i. Substitute the second into the first: h i equals one half of the quantity a minus c, minus one half of a minus h i minus c minus t i. Multiply out: 4 h i equals a minus c plus h i plus t i. So h i star equals a minus c plus t i, all over 3. Then imports, e j star, equal one half of the quantity a minus c minus t i, minus a minus c plus t i over 3, which simplifies to a minus c minus 2 t i, all over 3. That is equation 2.2.3.
+
+A tariff raises the home firm's output and cuts the import by twice as much, page 77.
+
+Stage 1 is the governments' game.
+
+Write capital A for a minus c. In market i, total quantity Q i is home output plus imports, which is 2 A minus t i, over 3. The price-cost margins equal the quantities: the home price minus c equals h i star, and the foreign price minus c minus the foreign tariff equals e i star. So firm i's profit is h i star squared plus e i star squared. Putting the pieces together, government i's welfare, as a function of both tariffs, is the sum of four fractions: 2 A minus t i, squared, over 18; plus A plus t i, squared, over 9; plus A minus 2 t j, squared, over 9; plus t i times A minus 2 t i, over 3. That is page 78.
+
+The foreign tariff, t j, enters only through the export-profit term, the third one, which does not involve t i. Now differentiate with respect to t i. The derivative is minus the quantity 2 A minus t i, over 9, plus 2 times A plus t i, over 9, plus A minus 4 t i, over 3. Put it over the common denominator 9: minus 2 A plus t i, plus 2 A plus 2 t i, plus 3 A minus 12 t i, all over 9, which is 3 A minus 9 t i, over 9. Set it to zero.
+
+The result: t i star equals a minus c, over 3, for each country, independent of t j. The second derivative is 1 plus 2 minus 12, over 9, which is negative, so this is a maximum. And because it does not depend on t j, it is a dominant strategy.
+
+Substituting back: home output h i star is 4 times a minus c, over 9; exports e i star are a minus c, over 9; total output per market is 5 times a minus c, over 9. Under free trade it would be 2 times a minus c over 3, which is 6 times a minus c over 9.
+
+The governments' game in numbers, measured in units of A squared over 162 and computed from the welfare function. If both choose free trade, each gets 72. If country i sets the tariff A over 3 and country j sets zero, country i gets 81 and country j gets 56. The mirror case gives 56 and 81. If both set A over 3, each gets 65.
+
+Check one cell, both at A over 3. The four terms are: five thirds squared over 18, which is 25 over 162; four thirds squared over 9, which is 32 over 162; one third squared over 9, which is 2 over 162; and one third times one third over 3, which is 6 over 162. The sum is 65 over 162.
+
+The figure in the notes, the tariff dilemma, plots government i's welfare against its own tariff, with a minus c equal to 1, for two foreign tariffs, zero and one third. Both curves peak at t i equal to one third, whatever t j is: that is dominance. Yet both at the dominant tariff, 65 over 162, is worse than both at free trade, 72 over 162. The foreign tariff only shifts the curve down, because it taxes our exports; it never moves the peak. That is what "dominant" looks like.
+
+Free trade maximizes joint welfare among non-negative tariffs, so the governments face a Prisoners' Dilemma and have a reason to sign a free-trade treaty, pages 78 and 79. If subsidies were allowed, the joint optimum would be a tariff of minus the quantity a minus c, page 78.
+
+Four point three. Tournaments, pages 79 to 82.
+
+The scope note first. The incentive question behind the tournament, hidden effort, is moral hazard, which is outside this course unless a lecture brings it. Here the tournament is used only as a two-stage game.
+
+The setup. Worker i, equal to 1 or 2, produces y i equal to effort e i plus noise epsilon i. Effort is non-negative. The noise terms are independent and identically distributed with a zero-mean density f. Output is observed; effort is not. The boss pays w H to the worker with the higher output and w L to the other. A worker's payoff is the wage minus g of effort, where g is increasing and convex: g prime positive and g double prime positive. The boss's payoff is y 1 plus y 2 minus w H minus w L. In Gibbons's mapping the boss is player 1, choosing w H and w L in stage 1; there is no player 2; and the workers are players 3 and 4, choosing efforts in stage 2.
+
+Stage 2. Worker i chooses effort to maximize w L, plus the spread w H minus w L times the probability that his output beats the other's, minus g of e i. That is equation 2.2.4. The first-order condition: the spread times the derivative of the winning probability with respect to e i equals g prime of e i. That is equation 2.2.5.
+
+To compute the derivative, condition on the other worker's noise. The probability of winning is the probability that epsilon i exceeds e j minus e i plus epsilon j. That equals the integral of one minus F of e j minus e i plus epsilon j, times f of epsilon j, over epsilon j, where F is the distribution function of the noise. Its derivative with respect to e i is the integral of f of e j minus e i plus epsilon j, times f of epsilon j.
+
+In a symmetric equilibrium both efforts equal e star, and the condition becomes: the spread w H minus w L, times the integral of f of epsilon squared, equals g prime of e star. That is equation 2.2.6.
+
+Worked, with normal noise. Let epsilon be normal with mean zero and variance sigma squared. Then f squared is one over 2 pi sigma squared, times e to the minus epsilon squared over sigma squared. The integral of e to the minus epsilon squared over sigma squared is sigma times the square root of pi. So the integral of f squared is sigma root pi over 2 pi sigma squared, which is one over 2 sigma root pi. This falls in sigma: a bigger prize buys more effort, and more noise buys less, page 81.
+
+Stage 1. In the symmetric equilibrium each worker wins with probability one half, so participation requires one half w H plus one half w L minus g of e star to be at least U a, the workers' alternative utility. That is equation 2.2.7. The boss makes it bind: w L equals 2 U a plus 2 g of e star minus w H, equation 2.2.8. Expected profit becomes 2 e star minus w H minus w L, which is 2 e star minus 2 U a minus 2 g of e star. That is maximized where g prime of e star equals 1. Then equation 2.2.6 gives the optimal prize: the spread times the integral of f squared equals 1. With normal noise, the optimal spread w H minus w L is 2 sigma root pi.
+
+An illustrative case, not from the book. With g of e equal to e squared over 2, efficient effort is 1. With sigma equal to 1 the spread is 2 root pi, about 3.54. The computer routines in part fourteen check this number.
+
+The point to keep. The first mover designs the second stage. The boss is not in the workers' game; she picks the prize that makes the workers' equilibrium effort equal to the efficient one.
+
+The checklist for part four. You should be able to solve the bank-run game in three steps and say why it has two subgame-perfect outcomes and what kind of inefficiency the run is. You should be able to derive equation 2.2.3, home output a minus c plus t i over 3 and imports a minus c minus 2 t i over 3, and the dominant tariff a minus c over 3. You should be able to read the 72, 81, 56, 65 table as a Prisoners' Dilemma. And you should be able to derive the tournament's first-order condition and the optimal spread with normal noise.
+
+Part five. The ultimatum game: Nash says anything, subgame perfection says everything.
+
+This part covers note five, Tadelis chapter 11 introduction and section 11.1, printed pages 220 to 224.
+
+The claim of this part. With one round of bargaining, every split of the pie is a Nash equilibrium, because the responder can "threaten" to reject small offers. Sequential rationality kills those threats: a responder offered something positive accepts it, so the proposer takes the whole pie. The gap between the two answers is the case for subgame perfection in bargaining.
+
+Five point one. The bargaining protocol, from Ståhl and Rubinstein, pages 220 to 222.
+
+Two players split a pie of size 1, which stands for the gains from trade. Every rejection shrinks the pie by the discount factor delta, strictly between 0 and 1: in period t the pie is worth delta to the power t minus 1, page 221.
+
+The rounds go like this. In round 1, player 1 proposes an offer, x to player 1 and one minus x to player 2, and player 2 responds; if she accepts, the payoffs are x and one minus x. In round 2, player 2 proposes, with the same convention, x to player 1 and one minus x to player 2, and player 1 responds; if he accepts, the payoffs are delta x and delta times one minus x. In general, in round t, player 1 proposes if t is odd and player 2 if t is even, the other responds, and acceptance gives delta to the t minus 1 times x, and delta to the t minus 1 times one minus x.
+
+The convention: x is always player 1's share, whoever proposes. Gibbons uses the same convention, with s t, page 69. If round T ends without agreement, both get 0: a hard deadline. Tadelis tells it as a fisherman and a restaurateur, page 221.
+
+How this differs from a repeated game, page 221: the game can end in any round, and payoffs arrive only at agreement, not as a flow.
+
+Five point two. Proposition 11.1: any split is a Nash equilibrium, page 223.
+
+The statement. In the bargaining game, if T equals 1, then any division of surplus x star between 0 and 1, with payoffs x star and one minus x star, can be supported as a Nash equilibrium.
+
+The proof. Player 1's strategy: propose x star. Player 2's strategy: accept any x at most x star, reject any x above x star.
+
+Given player 2's rule, any x above x star yields 0, and any x below x star yields less than x star. So x star is a best response.
+
+Given that x star is offered, accepting yields one minus x star, which is at least 0, and rejecting yields 0. So the rule, which accepts, is a best response. The rule's rejections are never tested on the path. That ends the proof.
+
+In Tadelis's words, Nash equilibrium "has no bite" here, page 223: it rationalizes every division.
+
+Five point three. Proposition 11.2: the unique subgame-perfect equilibrium gives the proposer everything, page 223.
+
+The flaw in the Nash construction. Player 2's rule says "there is a minimum I accept". Suppose she is offered one minus x equal to epsilon, a positive amount below that minimum. Rejecting yields 0, and accepting yields epsilon, which is more. Rejecting a positive offer is not sequentially rational. So in any subgame-perfect equilibrium, player 2 accepts every x below 1.
+
+The statement. The bargaining game with T equal to 1 admits a unique subgame-perfect equilibrium, in which player 1 offers x equal to 1 and player 2 accepts any offer x at most 1.
+
+The proof covers both cases.
+
+One. Player 2 accepts every x below 1, as just shown. At x equal to 1 she is indifferent.
+
+Two. If she accepts x equal to 1, player 1's unique best response is to offer x equal to 1. This is the subgame-perfect equilibrium.
+
+Three. If she rejects x equal to 1, accepting only x below 1, then player 1 has no best response. Any offer x prime below 1 is beaten by x double prime, equal to x prime plus one minus x prime over 2, which is still below 1 and still accepted. That is footnote 1, page 223. The supremum, 1, is not attained. So this strategy cannot be part of a subgame-perfect equilibrium. That ends the proof.
+
+The comparison for T equal to 1. Nash equilibrium predicts any split x star, one minus x star, with x star anywhere from 0 to 1. Subgame-perfect equilibrium predicts the split 1 and 0, uniquely.
+
+The point to keep. The responder's indifference at x equal to 1 is resolved in favour of accepting, not by assumption, but because the alternative leaves the proposer without a best response. M W G make the same point in footnote 16, page 297: with offers on a penny grid, the proposer keeps the pie minus one penny, and the outcome converges to 1 and 0 as the penny shrinks.
+
+Worked, the same in money, with illustrative numbers. A buyer and a seller have gains from trade of 1,000 dollars, and the seller makes a take-it-or-leave-it price offer. The subgame-perfect price extracts all 1,000 dollars. Any price between the seller's cost and the buyer's value is a Nash outcome. The take-it-or-leave-it power is worth the entire surplus.
+
+Five point four. The experiments, the Remark on pages 223 and 224.
+
+In laboratory ultimatum games, proposers typically offer 25 to 50 per cent of the pie, and responders usually reject offers below about 20 to 25 per cent. The source is Camerer, 2003. Responders act with "spite": they prefer nothing to a split that gives the proposer much more.
+
+How to read this. The prediction assumed that payoffs equal the money. If the responder's utility also falls with the proposer's advantage, rejecting a small offer can be sequentially rational, and the subgame-perfect equilibrium of that game gives the responder a positive share. The game theory is fine; the payoff specification changed. M and R's Food for Thought 5.1, pages 163 and 164, asks the organizational version, about fairness and vengeance in commitment; it is set as practice item 20 in the practice list for classes 1 and 2.
+
+Five point five. The indifference convention, carried forward.
+
+Every backward-induction step in parts six and seven repeats this one: the responder accepts when indifferent, and the proposer offers exactly the responder's continuation value. Hold that convention fixed; it is what makes the formulas closed-form.
+
+The checklist for part five. You should be able to describe the alternating-offer protocol and the convention that x is always player 1's share. You should be able to prove Proposition 11.1 and say why the responder's rejections are never tested. You should be able to prove Proposition 11.2 in both cases, including why rejecting x equal to 1 leaves the proposer without a best response. And you should be able to say what the experiments do and do not refute.
+
+Part six. Finitely many rounds: backward induction, the last word, and the first move.
+
+This part covers note six, Tadelis section 11.2, printed pages 224 to 227; Gibbons section 2.1 part D, the three-period model, pages 68 to 70; and M W G Example 9.AA.1, pages 296 and 297.
+
+The claim of this part. With a deadline, backward induction pins a unique subgame-perfect equilibrium. The last proposer takes the pie, and each step back the proposer offers the responder exactly the discounted value of rejecting. Agreement is immediate. Player 1's share, x 1, is one minus the quantity minus delta to the power T, all over one plus delta. It zig-zags with the parity of T, which is the last-mover advantage, and it settles at one over one plus delta, more than one half, as T goes to infinity, which is the first-mover advantage from discounting.
+
+Six point one. Nash still says anything, and even "any time", page 224.
+
+The strategies of Proposition 11.1 extend to any horizon. In odd rounds player 1 proposes x star and player 2 accepts any x at most x star; in even rounds player 2 proposes x star and player 1 accepts any x at least x star. Worse, Nash cannot even pin down when agreement happens. Let player 1 open with x equal to 1 and let player 2 reject everything in round 1; agreement comes in round 2, and the pair is still a Nash equilibrium, page 224. Subgame perfection restores a unique answer.
+
+Six point two. Two rounds, Figure 11.2, pages 224 and 225.
+
+Work backwards, with delta below 1.
+
+Step one. Round 2 is an ultimatum game with player 2 proposing. She offers x equal to 0 and keeps the pie, which is worth delta in round-1 terms.
+
+Step two. In round 1, player 2 responds. Rejecting is worth delta, so she accepts if and only if one minus x is at least delta, that is, x at most one minus delta.
+
+Step three. In round 1, player 1 proposes the largest accepted x. So x 1 equals one minus delta, and the payoffs are one minus delta for player 1 and delta for player 2.
+
+With delta equal to 1, player 2 takes everything: pure last-mover advantage. With delta below 1, player 1 keeps one minus delta only because waiting costs player 2, page 225.
+
+Six point three. Odd T: the induction written out, pages 225 and 226.
+
+Let T be odd, so player 1 proposes both first and last. All payoffs are in round-1 values. Walk down the rounds from the last.
+
+Round T. Player 1 proposes; player 2 accepts anything, because it is an ultimatum. The offer is x equal to 1. Player 1's payoff is delta to the T minus 1, and player 2's is 0.
+
+Round T minus 1. Player 2 proposes. Player 1 accepts if and only if delta to the T minus 2 times x is at least delta to the T minus 1, that is, x at least delta. The offer is x equal to delta. Player 1 gets delta to the T minus 1, and player 2 gets delta to the T minus 2 times one minus delta.
+
+Round T minus 2. Player 1 proposes. Player 2 accepts if and only if delta to the T minus 3 times one minus x is at least delta to the T minus 2 times one minus delta. The offer is x equal to one minus delta plus delta squared. Player 1 gets delta to the T minus 3, minus delta to the T minus 2, plus delta to the T minus 1. Player 2 gets delta to the T minus 2, minus delta to the T minus 1.
+
+Round T minus 3. Player 2 proposes. Player 1 accepts if and only if delta to the T minus 4 times x is at least player 1's value from round T minus 2, which is delta to the T minus 3, minus delta to the T minus 2, plus delta to the T minus 1. The offer is x equal to delta minus delta squared plus delta cubed. Player 1's payoff is the same as in the round before. Player 2 gets delta to the T minus 4, minus delta to the T minus 3, plus delta to the T minus 2, minus delta to the T minus 1.
+
+Check one step, round T minus 2. Divide the acceptance condition by delta to the T minus 3. It becomes one minus x at least delta times one minus delta. So the largest accepted offer is x equal to one minus delta plus delta squared. Correct.
+
+The pattern, page 226. In odd rounds T minus s, with s even, the offer is one minus delta plus delta squared, and so on, alternating in sign, up to plus delta to the s. In even rounds, with s odd, it is delta minus delta squared, and so on, up to delta to the s. In round 1, s equals T minus 1. So x 1 is one minus delta plus delta squared minus delta cubed, and so on, up to plus delta to the T minus 1.
+
+Now sum it. Split it into the positive terms and the negative terms. The positive terms are one plus delta squared, and so on up to delta to the T minus 1, which sums to one minus delta to the T plus 1, over one minus delta squared. The negative terms are delta plus delta cubed, and so on up to delta to the T minus 2, which sums to delta minus delta to the T, over one minus delta squared. The difference is one minus delta, times one plus delta to the T, over one minus delta, times one plus delta.
+
+So, for T odd: v 1 equals x 1, which is one plus delta to the T, over one plus delta; and v 2 equals one minus x 1, which is delta minus delta to the T, over one plus delta. That is equation 11.1.
+
+Even T. This is M W G Example 9.AA.1, page 297; Tadelis leaves it as Exercise 11.3. Now player 2 is the first proposer of the odd-length game that starts in round 2. That game is worth delta times one plus delta to the T minus 1, over one plus delta, to her today. Player 1 offers exactly that, so x 1 equals one minus delta times one plus delta to the T minus 1 over one plus delta, which simplifies to one minus delta to the T, over one plus delta, for T even.
+
+Both cases in one line: x 1 of T is the sum, for k from 0 to T minus 1, of minus delta, raised to the power k. That equals one minus the quantity minus delta to the T, over one plus delta.
+
+Six point three, continued. Worked, with delta equal to 0.6, the project's calibration.
+
+With T equal to 1, x 1 is 1, and player 1 has the last word. With T equal to 2, it is 1 minus 0.6, which is 0.400, and player 2 has the last word. With T equal to 3, it is 1 minus 0.6 plus 0.36, which is 0.760, last word player 1. With T equal to 4, it is 1 minus 0.1296, over 1.6, which is 0.544, last word player 2. With T equal to 5, it is 1 plus 0.07776, over 1.6, which is 0.674, last word player 1. With T equal to 6, it is 1 minus 0.046656, over 1.6, which is 0.596, last word player 2. And as T goes to infinity it is 1 over 1.6, which is 0.625.
+
+The figure in the notes, the finite-horizon shares, plots player 1's share against T from 1 to 20, for delta equal to 0.6 and 0.9. The dots alternate above the dashed line at one over one plus delta for odd T, and below it for even T, converging to it, slowly for delta 0.9. The distance to the limit is delta to the T, over one plus delta. So the last-mover advantage decays geometrically, and more slowly the more patient the players: at delta 0.9 it is still visible at T equal to 20.
+
+Six point four. Proposition 11.3: agreement in round 1, page 226.
+
+The statement. Any subgame-perfect equilibrium must have the players reach an agreement in the first round.
+
+The proof. Suppose agreement came later, with payoffs v 1 and v 2. Discounting wastes part of the pie, so v 1 plus v 2 is less than 1. Player 1 could instead offer x equal to one minus v 2 minus epsilon in round 1. Player 2 then gets v 2 plus epsilon now, more than by continuing, so sequential rationality makes her accept. And for small epsilon, player 1 gets one minus v 2 minus epsilon, which is more than v 1. That is a profitable deviation, a contradiction. That ends the proof.
+
+The point to keep. With complete information, delay is pure waste, and rational bargainers do not waste. The off-path rounds still matter: they set the price of round 1. Where delay does occur in reality, as in strikes, something in this model must be missing; part nine shows what.
+
+Six point five. What the formula says about power, pages 226 and 227.
+
+Four cases. With delta equal to 0, x 1 is 1 for every T: only round 1 matters, and it is an ultimatum game. With delta equal to 1 and T odd, x 1 is 1: there is no cost of waiting, so only the last word matters, however long the game. With delta equal to 1 and T even, x 1 is 0: the same, for player 2. With T odd and delta strictly between 0 and 1, v 1 exceeds v 2: player 1 has both advantages.
+
+The limits, equations 11.2 and 11.3. Fix delta between 0 and 1 and lengthen the game. Delta to the T goes to 0, so the limit of v 1 as T goes to infinity is one over one plus delta, and the limit of v 2 is delta over one plus delta. That is equation 11.2. The deadline effect disappears; only the first-mover advantage from discounting remains.
+
+Then let players become patient. The limit, as delta goes to 1, of the limit as T goes to infinity of v 1, is the limit of one over one plus delta, which is one half; and the same for v 2. That is equation 11.3.
+
+The order of limits matters, footnote 2, page 227. Take delta to 1 first, at a fixed odd T: v 1 is one plus one, over one plus one, which is 1. Then letting T go to infinity keeps it at 1. The artificial take-it-or-leave-it advantage survives. Long horizon first, patience second, gives the equal split.
+
+The interactive companion for this part, The Patience Ledger, is described in part fifteen.
+
+Six point six. Worked: Gibbons's three-period model, and different discount factors.
+
+Gibbons, pages 68 to 70. Round 3's settlement, s for player 1 and one minus s for player 2, is given exogenously. In round 2, player 1 accepts an offer s 2 if and only if s 2 is at least delta times s, so player 2 offers s 2 star equal to delta s, keeping one minus delta s, which is better for her than delta times one minus s. In round 1, player 2 accepts if and only if one minus s 1 is at least delta times one minus s 2 star. So s 1 star equals one minus delta times the quantity one minus delta s, which is one minus delta plus delta squared s.
+
+With s equal to 1, meaning player 1 would get everything in round 3, this is one minus delta plus delta squared, the T equal to 3 value of equation 11.1. Part seven reuses this function, f of s equal to one minus delta plus delta squared s, to solve the infinite game.
+
+Different discount factors. Let delta 1 be player 1's discount factor and delta 2 player 2's. Three rounds, with player 1 proposing in rounds 1 and 3.
+
+Step one. Round 3: player 1 takes the pie, s 3 equal to 1.
+
+Step two. Round 2: player 1 accepts if and only if s 2 is at least delta 1 times 1, so player 2 offers s 2 equal to delta 1.
+
+Step three. Round 1: player 2 accepts if and only if one minus s 1 is at least delta 2 times one minus delta 1. So player 1 offers s 1 equal to one minus delta 2 times the quantity one minus delta 1.
+
+Numbers, the values verified in the project's checks: delta 1 equal to 0.9 and delta 2 equal to 0.7. Then s 1 equals 1 minus 0.7 times 0.1, which is 0.93. This is exactly Question 5a of Block 3 of the exercise list for classes 1 and 2, answer E, where the pie is the joint value W star.
+
+Six point six, continued. A G-layer item: M W G Example 9.AA.1, pages 296 and 297. Named here, not examinable unless the lecture brings it.
+
+M W G run the same induction on a pie of v dollars, Ståhl's model, and get, for odd T, player 1's payoff equal to v times the alternating sum one minus delta plus delta squared, and so on up to delta to the T minus 1, which is v times one plus delta to the T, over one plus delta. Player 2 gets v minus that. The even case is as in six point three. Scaling the pie scales every payoff and no share.
+
+The checklist for part six. You should be able to solve the two-round game and say what the last word is worth. You should be able to walk the odd-T induction down four rounds, check the round T minus 2 step, and sum the alternating series to equation 11.1. You should be able to derive the even-T formula and the one-line formula for both. You should be able to prove Proposition 11.3. You should be able to state the two limits and explain why the order matters. And you should be able to solve the three-round game with different discount factors.
+
+Part seven. Rubinstein's infinite horizon: stationarity replaces the last period.
+
+This part covers note seven, Tadelis section 11.3, printed pages 228 and 229, equations 11.4 and 11.5, and the Remark on Nash; Gibbons section 2.1 part D, the infinite horizon, pages 70 and 71; and M W G Example 9.AA.2, pages 297 and 298.
+
+The claim of this part. With no deadline there is no last round to start backward induction from, yet the game still has a unique subgame-perfect equilibrium. Every odd round looks like round 1, and every even round looks like round 1 with the roles swapped, so the best and the worst equilibrium payoffs must solve the same pair of equations. The proposer gets one over one plus delta, agreement is immediate, and with different patience the share is one minus delta 2, over one minus delta 1 delta 2. Patience is bargaining power, and as offers become frequent the split converges to the Nash bargaining solution, with weights set by the discount rates.
+
+Seven point one. Why the finite method breaks, and what replaces it, page 228.
+
+Disagreeing forever gives 0, because discounting leaves nothing to split. But the path of perpetual disagreement is infinitely long, so there is no terminal node to fold back from. What the game has instead is a stationary structure: the subgame after any two rejections is the original game. Gibbons, page 70, credits this argument to Shaked and Sutton, 1984. The infinite game is not "the limit of the finite games" by definition; that the answers coincide is a result. M W G stress, on page 298, that it is not a general property of infinite games, and Lecture 5's repeated games are the counterexample.
+
+Seven point two. The Shaked and Sutton argument, Tadelis pages 228 and 229.
+
+Step zero, immediate agreement. The logic of Proposition 11.3 applies unchanged: delay wastes pie that a slightly better round-1 offer could share. So in every subgame-perfect equilibrium the first offer is accepted.
+
+Step one, best and worst. Suppose several subgame-perfect equilibria exist. Let v bar and v underbar be the highest and the lowest equilibrium payoffs of the player who proposes in round 1. By stationarity the same two numbers bound player 2's payoff in the subgame where she proposes, round 2, and vice versa.
+
+Step two, the worst for player 1 is the best for player 2. In the equilibrium worst for player 1, player 2 can secure v bar by rejecting and proposing in round 2, which is worth delta v bar today. Player 1 must offer at least that, and offers no more. So v underbar equals one minus delta v bar. That is equation 11.4.
+
+Step three, symmetrically. In the equilibrium best for player 1, player 2's threat is worth delta v underbar. So v bar equals one minus delta v underbar. That is equation 11.5.
+
+Step four, solve. Subtract equation 11.4 from equation 11.5: v bar minus v underbar equals delta times the difference, v bar minus v underbar. So one minus delta, times v bar minus v underbar, equals zero, and since delta is below 1, v bar equals v underbar. Call the common value v. Then v equals one minus delta v.
+
+The result: v 1 star equals one over one plus delta, and v 2 star equals delta over one plus delta.
+
+The strategies, page 229. In odd rounds player 1 offers x equal to one over one plus delta, and player 2 accepts any x at most one over one plus delta. In even rounds player 2 offers x equal to delta over one plus delta, which is player 1's share, and player 1 accepts any x at least delta over one plus delta.
+
+Worked. With delta equal to 0.6, v 1 star is 1 over 1.6, which is 0.625, and v 2 star is 0.6 over 1.6, which is 0.375. With delta equal to 0.9, the shares are 0.526 against 0.474. This is the T to infinity limit, equation 11.2, of part six, now derived without any deadline.
+
+Seven point two, continued. Gibbons's version: a fixed point, pages 70 and 71.
+
+Gibbons truncates the game after round 2. If the continuation from round 3 gives player 1 the payoff s, the three-period logic of part six gives player 1, in round 1, f of s equal to one minus delta times the quantity one minus delta s, which is one minus delta plus delta squared s.
+
+Let s H be the highest backward-induction payoff of player 1 in the whole game. Using s H as the round-3 payoff yields f of s H, the highest possible round-1 payoff, because f is increasing. But that is s H itself, so f of s H equals s H. Likewise, for the lowest payoff s L, f of s L equals s L. There is only one fixed point: s equals one minus delta plus delta squared s, so s times one minus delta squared equals one minus delta, so s star equals one over one plus delta.
+
+The figure in the notes, the Shaked and Sutton fixed point, draws the line f of s equal to one minus delta plus delta squared s against the 45-degree line, for delta 0.6. They cross at s star equal to 0.625, and a cobweb of iterations starting from s equal to 0.05 converges to it. The function has slope delta squared, which is below 1, so it crosses the diagonal exactly once. That slope is the whole proof of uniqueness in one picture: a contraction has one fixed point. Iterating f from s equal to 1 reproduces the odd-T shares of part six: 1, then one minus delta plus delta squared, and so on.
+
+Seven point three. Verifying the strategies by one-stage deviations.
+
+Use the principle of part three; with discounting it applies to this infinite game. Check player 2 as responder in round 1, offered one minus x.
+
+If she accepts, she gets one minus x. If she rejects and then follows the strategies, she proposes in round 2 and keeps one minus delta over one plus delta, which is one over one plus delta, worth delta over one plus delta today.
+
+So accepting is optimal if and only if one minus x is at least delta over one plus delta, that is, x at most one over one plus delta. That is exactly the rule.
+
+Player 1 as proposer: any x at most one over one plus delta is accepted, so the largest, one over one plus delta, is best. A larger x is rejected and yields at most delta times delta over one plus delta, which is less than one over one plus delta. Correct. Even rounds are the mirror image.
+
+Seven point four. Different discount factors: patience is power.
+
+Let player i discount at delta i. Look for stationary shares: player 1, when proposing, keeps x; player 2, when proposing, keeps y, her own share. Each proposer gives the responder exactly the responder's discounted proposer share. So x equals one minus delta 2 times y, and y equals one minus delta 1 times x.
+
+Substitute: x equals one minus delta 2 times the quantity one minus delta 1 x. So x times one minus delta 1 delta 2 equals one minus delta 2.
+
+The result: x star equals one minus delta 2, over one minus delta 1 delta 2. And player 2's share, one minus x star, is delta 2 times one minus delta 1, over one minus delta 1 delta 2.
+
+This is the case Tadelis sets as Exercise 11.6, page 237, and M W G as Exercise 9.B.12, page 302; it is also derived in the class 2 notes, section 5.2. With equal discount factors, x star is one minus delta over one minus delta squared, which is one over one plus delta. Correct.
+
+The signs, by differentiating. The derivative of x star with respect to delta 1 is one minus delta 2, times delta 2, over the square of one minus delta 1 delta 2. That is positive. The derivative of x star with respect to delta 2 is minus the quantity one minus delta 1 delta 2, plus one minus delta 2 times delta 1, all over the square of one minus delta 1 delta 2, which simplifies to minus one minus delta 1, over the square of one minus delta 1 delta 2. That is negative.
+
+The point to keep. Your own patience raises your share; your opponent's patience lowers it. A patient responder is expensive to buy off, because waiting costs her little.
+
+Worked, with delta 1 equal to 0.9 and delta 2 equal to 0.7, the same values as in the project's checks. x star is 0.3 over 1 minus 0.63, which is 0.3 over 0.37, which is 0.811. Compare 0.93 with three rounds, from part six: the deadline was worth 0.12 to player 1, the last mover.
+
+The figure in the notes, Rubinstein patience, plots the proposer's infinite-horizon share against delta 2, for delta 1 equal to 0.3, 0.6 and 0.9, together with the equal-patience curve, one over one plus delta, as a dashed line falling toward one half. The proposer's share falls as the responder grows more patient and rises with the proposer's own patience. Each solid curve starts at 1, because an impatient responder accepts anything, and falls to 0 as delta 2 goes to 1, because a responder who does not mind waiting can hold out for everything.
+
+The companion page, The Patience Ledger, lets you move delta 1 and delta 2 separately with no deadline; it is described in part fifteen.
+
+Seven point five. Frequent offers and the Nash bargaining solution.
+
+Write delta i as e to the minus r i times capital Delta, where r i is player i's discount rate and capital Delta is the time between offers. As capital Delta goes to 0, using l'Hôpital's rule, or the approximation that one minus e to the minus z is about z for small z, x star, which is one minus e to the minus r 2 Delta, over one minus e to the minus r 1 plus r 2 times Delta, tends to r 2 over r 1 plus r 2.
+
+That is the generalized Nash bargaining solution with threat points 0 and weight beta 1 equal to r 2 over r 1 plus r 2 for player 1. See the class 2 notes, sections 5.1 and 5.2, and Tadelis's Remark on Nash's axiomatic approach, page 229. Equal rates give one half, matching equation 11.3, and the first-mover advantage vanishes because a round lasts no time.
+
+The point to keep. The axiomatic weights of the Nash solution have a strategic foundation: relative impatience. Question 5b of Block 3 in the exercise list for classes 1 and 2 examines exactly this limit.
+
+Seven point six. A G-layer item: M W G's proof of uniqueness, written with bounds, Example 9.AA.2, pages 297 and 298. Named and proved here; not examinable unless the lecture brings it.
+
+Take a pie of v. Let v 1 bar and v 1 underbar be player 1's highest and lowest subgame-perfect payoffs.
+
+Step one, the lower bound. Player 2 can get at most v 1 bar as the round-2 proposer, worth delta v 1 bar today. Offering her slightly more is surely accepted, so v 1 underbar is at least v minus delta v 1 bar.
+
+Step two, the upper bound. Player 2 can get at least v 1 underbar as the round-2 proposer, so she rejects any round-1 offer that gives her less than delta v 1 underbar. And a rejected offer leaves player 1 at most delta v minus delta v 1 underbar, which is less than v minus delta v 1 underbar. So v 1 bar is at most v minus delta v 1 underbar.
+
+Step three, the squeeze. v 1 bar is at most v minus delta v 1 underbar, which is at most v minus delta times the quantity v minus delta v 1 bar. So v 1 bar times one minus delta squared is at most v times one minus delta, and v 1 bar is at most v over one plus delta. Then v 1 underbar is at least v minus delta v 1 bar, which is at least v minus delta v over one plus delta, which is v over one plus delta.
+
+So v over one plus delta is at most v 1 underbar, which is at most v 1 bar, which is at most v over one plus delta. All are equal: player 1 gets v over one plus delta, and player 2 gets delta v over one plus delta.
+
+M W G add a warning on page 298: the result is sensitive to the protocol and to preferences. With a fixed cost per round instead of discounting, their Exercises 9.B.7 and 9.B.13, the infinite game can have many subgame-perfect equilibria.
+
+The checklist for part seven. You should be able to say why backward induction cannot start and what stationarity puts in its place. You should be able to derive equations 11.4 and 11.5 and solve them to one over one plus delta. You should be able to state Gibbons's fixed-point version and say why the slope delta squared gives uniqueness. You should be able to verify the strategies by one-stage deviations. You should be able to derive one minus delta 2 over one minus delta 1 delta 2 and sign both derivatives. And you should be able to take the frequent-offer limit to r 2 over r 1 plus r 2 and connect it to Nash bargaining.
+
+Part eight. Legislative bargaining: majority rule, random proposers, and amendments.
+
+This part covers note eight, Tadelis section 11.4, printed pages 229 to 235: the closed rule, equations 11.6 to 11.8; the open rule with guaranteed success, equation 11.9, and with risky success, equations 11.10 to 11.13; footnotes 7 and 8; and the chapter summary, section 11.5, pages 235 and 236.
+
+A scope note. Section 11.4 lies inside the study guide's page range, pages 220 to 237. Whether the lecture covers it is unknown until the slides arrive. The notes treat it as course material on that basis, and it should be rechecked when the slides come.
+
+The claim of this part. Replace "both must agree" by "a majority must agree", and "alternate" by "a random legislator proposes". This is the model of Baron and Ferejohn, 1989. In the symmetric stationary equilibrium the proposer buys the cheapest majority, paying each partner the discounted continuation value, delta over N. Under a closed rule, with no amendments, that is worth one minus delta times N minus 1 over 2 N to the proposer. An open rule destroys targeting and cuts the proposer to one over one plus two delta when N is 3, unless she gambles on a minimal coalition, which pays when delta exceeds the square root of 3, minus 1.
+
+Eight point one. The two departures, pages 229 and 230.
+
+First. There are N players, with N odd, and N plus 1 over 2 votes pass a proposal.
+
+Second. Each period every player is equally likely, with probability one over N, to be the proposer. There is no fixed order, so there is no last mover.
+
+With three or more players the game has many subgame-perfect equilibria; this is Herrero, 1985, footnote 4 on page 230. Baron and Ferejohn select symmetric stationary equilibria: a proposer makes the same proposal whenever she is called on, and responders vote on the current proposal against their expected continuation. Then the game "starts over" after each rejection, and every player's expected value at the start of a period is the same number, v. That is pages 230 and 231.
+
+Eight point two. The closed rule, section 11.4.1, pages 230 and 231.
+
+Responders. Rejecting is worth delta v, so responder i accepts if and only if her share x i is at least delta v.
+
+The proposer. She needs N plus 1 over 2 votes: her own plus N minus 1 over 2 others. She picks N minus 1 over 2 partners at random, pays each exactly delta v, gives the rest 0, and keeps k equal to one minus N minus 1 over 2, times delta v. That is equation 11.6.
+
+The value of the game. With probability one over N a player proposes and gets k. With probability N minus 1 over N she responds, and then she is chosen as a partner with probability one half, getting delta v, and otherwise gets 0. So v equals k over N, plus N minus 1 over 2 N, times delta v. That is equation 11.7.
+
+Solve. Substitute equation 11.6 into 11.7: v equals one over N, minus N minus 1 over 2 N times delta v, plus N minus 1 over 2 N times delta v. The two terms cancel, so v equals one over N. Then k of N equals one minus delta times N minus 1 over 2 N. That is equation 11.8.
+
+The value v equal to one over N is forced by symmetry and immediate agreement; the interesting object is k.
+
+Worked. With N equal to 3, k is one minus delta over 3. At delta 0.9 that is 1 minus 0.3, which is 0.70, and each partner gets delta over 3, which is 0.30. As delta goes to 1 it is two thirds. With N equal to 5, k is one minus delta times 4 over 10. At delta 0.9 that is 1 minus 0.36, which is 0.64, with two partners at 0.18 each. As delta goes to 1 it is 0.6. As N goes to infinity, k tends to one minus delta over 2, which is 2 minus delta, over 2. At delta 0.9 that is 0.55, and as delta goes to 1 it is one half.
+
+Two readings, pages 231 and 232.
+
+First. As in Rubinstein's game, k falls with delta: patient responders must be paid more.
+
+Second. As N grows, each partner costs less, delta over N, but more partners are needed. The second force wins, and k falls. Yet relative to a partner, the proposer's share, k divided by delta over N, rises without bound: more players means more ways to form a coalition.
+
+Eight point three. The open rule with guaranteed success, section 11.4.2.1, pages 232 and 233, with N equal to 3.
+
+After a proposal, one of the other two legislators is drawn as amender. She can second the proposal, which then goes to a majority vote, or offer an amendment, which is voted against it and becomes the new baseline next period.
+
+Guaranteed success. The proposer keeps k and offers each of the others one minus k over 2, so whoever is drawn seconds it. The amender's alternative is to propose herself next period, worth delta k by symmetry. The proposer pays exactly that. So one minus k over 2 equals delta k, which means one minus k equals 2 delta k, which means k equals one over one plus two delta. That is equation 11.9.
+
+Closed beats open, footnote 7, page 233. Take the difference: one minus delta over 3, minus one over one plus two delta. Over a common denominator this is 3 minus delta, times one plus two delta, minus 3, all over 3 times one plus two delta. The numerator simplifies to 5 delta minus 2 delta squared, which is delta times 5 minus 2 delta. So the difference is delta times 5 minus 2 delta, over 3 times one plus two delta, which is positive.
+
+Under a closed rule the proposer can play some legislators against others; under an open rule a shortchanged legislator amends at her expense. As delta goes to 1, k under the open rule tends to one third, an equal split, against two thirds under the closed rule, page 233.
+
+Eight point four. The open rule with risky success, section 11.4.2.2, pages 233 to 235.
+
+Now the proposer offers one minus k to one partner and 0 to the third legislator. If the partner is drawn as amender, she seconds. If the excluded player is drawn, she amends to k for herself, one minus k to the same partner, and 0 to the original proposer, and she wins. Tadelis calls this selective inclusion. Let v of k be the proposer's expected payoff and v of 0 the excluded player's.
+
+Three equations.
+
+Equation 11.10: v of k equals one half k plus one half delta v of 0. With probability one half the partner seconds and the proposer gets k; otherwise she becomes the excluded one next period.
+
+Equation 11.11: v of 0 equals one half delta v of k. With probability one half the excluded player is drawn and becomes the proposer next period.
+
+Equation 11.12: one minus k equals delta v of k. The partner could reject and stand in the proposer's shoes next period.
+
+Solve. Put 11.11 into 11.10: v of k equals k over 2 plus delta squared over 4 times v of k. So v of k equals 2 k over 4 minus delta squared. Then equation 11.12 says one minus k equals 2 delta k over 4 minus delta squared. So k times the quantity 4 minus delta squared plus 2 delta equals 4 minus delta squared.
+
+The result, equation 11.13: k equals 4 minus delta squared, over 4 plus 2 delta minus delta squared; and v of k equals 2 over 4 plus 2 delta minus delta squared.
+
+Closed still beats it, footnote 8, page 235. The difference, one minus delta over 3, minus 2 over 4 plus 2 delta minus delta squared, equals 6 plus 2 delta minus 5 delta squared plus delta cubed, over 12 plus 6 delta minus 3 delta squared, which is positive. The numerator is 3 minus delta times the quantity 4 plus 2 delta minus delta squared, minus 6; at delta equal to 1 it is 4.
+
+Risky against guaranteed, page 235. The risky payoff, 2 over 4 plus 2 delta minus delta squared, exceeds the guaranteed payoff, one over one plus two delta, if and only if 2 plus 4 delta exceeds 4 plus 2 delta minus delta squared, which is delta squared plus 2 delta minus 2 greater than 0, which is delta greater than the square root of 3, minus 1, about 0.732.
+
+The figure in the notes, legislative shares, plots the proposer's expected payoff against delta for three legislators. The closed rule, one minus delta over 3, is on top. The open rule with guaranteed success, one over one plus two delta, falls steeply. The open rule with risky success, 2 over 4 plus 2 delta minus delta squared, falls gently and crosses the guaranteed curve at delta equal to root 3 minus 1. The closed rule dominates both open-rule payoffs; the risky strategy beats the guaranteed one to the right of root 3 minus 1.
+
+Worked, with delta equal to 0.9. Closed rule: 0.700. Open rule, guaranteed: 1 over 2.8, which is 0.357. Open rule, risky: k is 3.19 over 4.99, which is 0.639, with expected payoff 2 over 4.99, which is 0.401, more than 0.357. Patient legislators make buying off both potential amenders too expensive, so the proposer caters to one and accepts a 50 per cent chance of failure and delay. Unlike in Rubinstein's game, delay now happens in equilibrium, page 235.
+
+Eight point five. What the chapter summary asks you to keep, section 11.5, pages 235 and 236.
+
+Four points. First, the discount factor drives the split; more patience means more equal shares. That is parts six and seven, and the closed rule here. Second, the protocol and the agreement rules matter a lot: closed against open rule. Third, finite alternating games have a last-mover advantage, and discounting gives a first-mover advantage: part six. Fourth, with an infinite horizon or random proposers there is no last-mover advantage, only the first-mover one: part seven, and this part.
+
+The checklist for part eight. You should be able to state the two departures from Rubinstein's game and the equilibrium selection. You should be able to derive equations 11.6 to 11.8 and say why v equals one over N while k is larger. You should be able to derive one over one plus two delta under the open rule and show the closed rule beats it. You should be able to set up and solve equations 11.10 to 11.12. And you should be able to derive the threshold root 3 minus 1 and explain why delay appears.
+
+Part nine. Bargaining over a sale: where the complete-information prediction stops.
+
+This part covers note nine, M and R chapter 5, Bargaining over a Sale, printed pages 140 to 142, Tables 5.2 and 5.3; Gibbons section 2.1 part D, opening paragraph, page 68; and Tadelis's Remark on page 229.
+
+A layer note. This part is an application, from the study guide's applications line. The general theory behind it, mechanism design and the revelation principle, is out of scope for this course. It is named here only so the result can be placed. Incomplete information proper is Lecture 7.
+
+The claim of this part. Parts five to eight predict immediate, efficient agreement whenever values are common knowledge; that is Proposition 11.3. M and R's two-type example shows the prediction depends on that assumption. Once each side privately knows its own value, no price rule can make both report truthfully and trade whenever trade is efficient. The seller needs a price of at least 1.75 dollars; the buyer needs a price of at most 1.25 dollars. Bargaining power then decides more than the split; it decides whether value is created.
+
+Nine point one. The organizational point, M and R page 140.
+
+With no wealth effects, the value-creating part of an agreement is determinate; this is the value maximization principle, from the class 2 notes, section 3. Bargaining strength, patience and guile decide only the transfers. That is exactly what Rubinstein's model delivers: the pie is never wasted, and delta sets the split. M and R's caveat: efficiency is defined relative to what is feasible, and what is feasible depends on information.
+
+Nine point two. Worked: the example, pages 140 to 142.
+
+The values. The seller's value is 0 with probability 0.8, or 2 dollars with probability 0.2. The buyer's value is 1 dollar with probability 0.2, or 3 dollars with probability 0.8. Each knows only its own value.
+
+The efficient outcome, Table 5.2. Trade, unless the buyer's value is 1 dollar and the seller's is 2 dollars, which has probability 0.2 times 0.2, which is 0.04. So trade is efficient 96 per cent of the time.
+
+A mediator's prices, Table 5.3. Look for prices that make truthful reports optimal. There are four report pairs. If the seller reports 2 and the buyer reports 3, the price is 2 dollars: a seller claiming 2 must get at least 2, and more would only reward the claim. If the seller reports 0 and the buyer reports 1, the price is 1 dollar: a buyer claiming 1 cannot be asked more than 1. If the seller reports 2 and the buyer reports 1, there is no trade, because trade would be inefficient. If the seller reports 0 and the buyer reports 3, the price is p, to be found.
+
+The seller with value 0, the incentive-compatibility condition. If honest, she trades at 1 dollar with a low buyer, probability 0.2, and at p with a high buyer, probability 0.8: an expected 0.2 times 1 plus 0.8 p. If she claims 2, there is no trade with a low buyer, and she gets 2 dollars from a high one: 0.2 times 0 plus 0.8 times 2, which is 1.60. Honesty requires 0.2 plus 0.8 p at least 1.60, which means p at least 1.40 over 0.8, which is 1.75 dollars.
+
+The buyer with value 3. If honest, he pays 2 dollars against a high-value seller, probability 0.2, and p against a low one, probability 0.8: an expected 0.2 times 3 minus 2, plus 0.8 times 3 minus p, which is 2.60 minus 0.8 p. If he claims 1, he trades only with the low seller, at 1 dollar: 0.8 times 3 minus 1, which is 1.60. Honesty requires 2.60 minus 0.8 p at least 1.60, which means p at most 1.00 over 0.8, which is 1.25 dollars.
+
+The point to keep. A price of at least 1.75 and a price of at most 1.25 cannot both hold. There is no price schedule under which both sides report truthfully and trade happens exactly when it is efficient, page 142. M and R's footnote 8 adds that allowing misreporting does not help; that is where the revelation principle enters, and it is out of scope here.
+
+The same numbers are verified in the project's checks for the class 1 and 2 notes, together with the reversed-probability case where efficient trade is feasible.
+
+Nine point three. The bridge back to the game theory.
+
+Compare complete information, parts five to eight, with private values, this part, on three dimensions. First, delay: with complete information it never occurs on the equilibrium path, by Proposition 11.3; with private values it can be a costly way to signal strength. Second, efficiency: with complete information it is always reached; with private values it can be unattainable by any rule. Third, what bargaining power decides: with complete information, the split; with private values, the split and whether trade happens.
+
+Gibbons anticipates the same contrast when he opens section 2.1 part D, page 68. In Rubinstein's model "settlement occurs immediately", whereas in sequential bargaining under asymmetric information strikes occur with positive probability. He cites Sobel and Takahashi, 1983, and treats it in his section 4.3 part B, which belongs with Lecture 8's perfect Bayesian equilibrium.
+
+The point for the organization designer. The complete-information model tells you how surplus is split once the parties can see it; the private-information example tells you why so much effort goes into making it visible: audits, standard costs, third-party appraisals.
+
+The checklist for part nine. You should be able to state the value maximization principle and M and R's caveat. You should be able to compute the probability that trade is efficient, 96 per cent. You should be able to derive the seller's bound, 1.75, and the buyer's bound, 1.25, and say why together they rule out a truthful efficient rule. And you should be able to say what delay means with and without private information.
+
+Part ten. The exam specification and the numbers to hold.
+
+This part covers note ten, the formula sheet's first two sections. There are no slides yet, so the specification is the study guide's Lecture 4 block, item by item. It will be reconciled with the slides' learning goals when they arrive.
+
+Ten items.
+
+One. Tadelis chapter 9, sections 9.1 to 9.3, pages 175 to 180. Define a multistage game; write the discounted payoff, the sum of delta to the t minus 1 times v i t; write strategies as history-contingent plans and count them. Part one.
+
+Two. Tadelis section 9.4, pages 180 to 184. State Propositions 9.1 to 9.3; build a carrot-and-stick equilibrium; derive delta star. Part two.
+
+Three. Tadelis section 9.5, pages 184 to 186. State and apply the one-stage deviation principle. Part three.
+
+Four. Gibbons section 2.2, pages 71 to 82. Solve two-stage games by "stage-2 equilibrium first": bank runs, tariffs, tournaments. Parts one and four.
+
+Five. Tadelis section 11.1, pages 222 to 224. The ultimatum game: Nash against subgame perfection, Propositions 11.1 and 11.2. Part five.
+
+Six. Tadelis section 11.2, pages 224 to 227; Gibbons section 2.1 part D, pages 68 to 70; M W G Example 9.AA.1. Finite alternating offers by backward induction; equation 11.1; Proposition 11.3; the limits and their order. Part six.
+
+Seven. Tadelis section 11.3, pages 228 and 229; Gibbons pages 70 and 71; M W G Example 9.AA.2. Rubinstein by stationarity; asymmetric patience; the frequent-offer limit and Nash. Part seven.
+
+Eight. Tadelis section 11.4, pages 229 to 235. Closed-rule and open-rule legislative bargaining. Part eight.
+
+Nine. M and R, bargaining over a sale, page 140. Why private values can make efficient trade infeasible. Part nine.
+
+Ten. The class 2 notes, section 5; Block 3 of the exercise list for classes 1 and 2; and the course's rules file on bargaining, topic 2. Link Rubinstein to Nash bargaining and to Coase. Part seven, section 7.5.
+
+Now every number and worked case, in one pass.
+
+The Prisoner-Revenge strategies: 2 to the 5, which is 32, each, and 1024 profiles, page 179. The Revenge mixed equilibrium: q equal to one half, value minus 2, page 177. The discounted payoff example: fink mum then loner gang gives v 1 equal to 5 minus 4 delta and v 2 equal to minus 1 minus delta, page 177. Supporting mutual mum: 4 at least 5 minus 3 delta, so delta at least one third, page 183. Supporting fink mum: minus 1 at least 1 minus 3 delta, so delta at least two thirds, page 184. The reduced stage 1 at delta one half: mum mum gives 4 and 4, fink mum gives 3.5 and minus 2.5, fink fink gives minus 0.5 and minus 0.5.
+
+The bank run, with illustrative numbers D 100, r 75, R 150: equilibria at 75 each and 150 each. The tariff game: 72, 81, 56 and 65, in units of a minus c squared over 162. The tournament, illustrative: with sigma 1, a spread of 2 root pi, about 3.54. The ultimatum experiments: offers of 25 to 50 per cent, rejections below 20 to 25 per cent.
+
+Finite shares with delta 0.6: for T from 1 to 6, 1, 0.4, 0.76, 0.544, 0.674 and 0.596, with limit 0.625. Asymmetric patience, delta 1 equal to 0.9 and delta 2 equal to 0.7: three rounds give 0.93; the infinite horizon gives 0.3 over 0.37, which is 0.811. Rubinstein with equal delta: 0.6 gives 0.625, and 0.9 gives 0.526.
+
+The closed rule at delta 0.9: N equal to 3 gives 0.70, N equal to 5 gives 0.64, and N to infinity gives 0.55. The open rule at delta 0.9: guaranteed 0.357; risky, k equal to 0.639 and v of k equal to 0.401. The threshold: root 3 minus 1, about 0.732. The M and R sale: efficient trade 96 per cent of the time; p at least 1.75 against p at most 1.25.
+
+Part eleven. Common mistakes.
+
+This part covers note eleven, part one: thirteen confusions this material produces. Each is said as the error, then the correction.
+
+Mistake one. The error is: a subgame-perfect equilibrium plays a stage Nash equilibrium in every stage. The correction is: only the last stage must be a stage Nash equilibrium, by Proposition 9.2. Earlier stages can be anything the continuation can enforce. The counterexample is mutual mum in stage 1 of the Prisoner-Revenge Game, a subgame-perfect path for delta at least one third, although mutual mum is not a Nash equilibrium of the Prisoner's Dilemma.
+
+Mistake two. The error is: two equilibria in stage 2 are enough. The correction is: they are necessary, not sufficient. The gap must also beat the one-shot gain after discounting: g at most delta times c minus s. The counterexample: at delta equal to 0.2, only fink fink survives in stage 1. And with a unique stage-2 equilibrium nothing can be enforced at all, by Proposition 9.3.
+
+Mistake three. The error is: punish with any threat that hurts. The correction is: a punishment must be a Nash equilibrium of the subgame where it is carried out. "I play gang while you play loner" is not one: the gang member gets minus 1, but the loner would switch to gang, for minus 3 rather than minus 4. Only the switch from both loners to both gang members is credible.
+
+Mistake four. The error is: testing a deviation with the wrong continuation. The correction is: a one-stage deviation changes the action at one information set; afterwards the deviator follows his own strategy, which may itself prescribe the punishment. For example, the stage-1 fink is followed by gang, so the deviation payoff is 5 minus 3 delta, not 5 plus 0.
+
+Mistake five. The error is, in two-stage games, substituting a non-equilibrium, or reading dominance as efficiency. The correction is: stage 2 is replaced by its Nash equilibrium, never by the jointly best outcome. And a dominant tariff is not a good tariff: both at the dominant tariff gives 65 over 162 each, against 72 over 162 under free trade. Nor does the bank-run model predict runs; it shows they can be an equilibrium.
+
+Mistake six. The error is: confusing Nash and subgame perfection in the ultimatum game. The correction is: "any split is an equilibrium" is true for Nash, Proposition 11.1, and false for subgame perfection, Proposition 11.2. The Nash strategies rely on a responder who would reject a positive offer, a threat never tested on the path.
+
+Mistake seven. The error is: the experiments refute the theory. The correction is: they refute the assumption that money equals utility. With a payoff that falls with the proposer's advantage, rejecting a low offer is sequentially rational, and the subgame-perfect equilibrium changes accordingly.
+
+Mistake eight. The error is: mixing the two advantages. The correction is: the last mover's advantage comes from the deadline; the first mover's comes from discounting. With delta equal to 1 only the last word matters: x 1 is 1 for odd T and 0 for even T. With T going to infinity only the first move matters, and it is worth one over one plus delta.
+
+Mistake nine. The error is: offering the responder the discounted pie instead of her discounted continuation. The correction is: the responder gets delta times what she would obtain as next round's proposer, not delta times 1. With two rounds those coincide, at delta; with three they do not: player 2 gets delta times one minus delta.
+
+Mistake ten. The error is: ignoring the order of limits. The correction is: the limit as delta goes to 1 of the limit as T goes to infinity of v 1 is one half, but the limit as T goes to infinity of the limit as delta goes to 1 is 1, for odd T. "Patient players split equally" needs the horizon to go first, footnote 2, page 227.
+
+Mistake eleven. The error is: swapping the discount factors. The correction is: one minus delta 2 over one minus delta 1 delta 2 has the responder's factor in the numerator. Your own patience raises your share; the opponent's lowers it. The swapped formula, one minus delta 1 over one minus delta 1 delta 2, is a standard wrong answer; it is distractor D of Question 5a in Block 3 of the classes 1 and 2 list.
+
+Mistake twelve. The error is: the infinite game is the limit of the finite games. The correction is: here the answers coincide, but that is a theorem, proved by stationarity, not a definition. In repeated games, Lecture 5, the infinite game supports cooperation that every finite version rules out; M W G page 298.
+
+Mistake thirteen. The error is, in legislative bargaining, taking v equal to one over N as the proposer's share. The correction is: one over N is the ex ante value of the game; the proposer keeps k equal to one minus delta times N minus 1 over 2 N, which is more than one over N. And an open rule hurts the proposer: one over one plus two delta is less than one minus delta over 3.
+
+Part twelve. True or false: twenty original items.
+
+This part covers note eleven, part two. The items are original, in the course's exam style. The scoring in that style is the maximum of zero and correct answers minus half the wrong answers, per item value; blanks do not count.
+
+After each statement, pause the audio, say true or false and why, then play on to hear the answer.
+
+Item one. In a finite multistage game in which every stage-game has a unique Nash equilibrium, the only subgame-perfect path plays that equilibrium in every stage.
+
+Pause.
+
+True. Proposition 9.3: by backward induction the last stage is fixed after every history, so the second-to-last stage cannot be linked to the future, and so on.
+
+Item two. In the Prisoner-Revenge Game, mutual mum in stage 1 can be part of a subgame-perfect path when delta is 0.4.
+
+Pause.
+
+True. The condition is 4 at least 5 minus 3 delta, that is, delta at least one third; 0.4 qualifies, since 4 is at least 3.8.
+
+Item three. In the same game, fink mum in stage 1 can be part of a subgame-perfect path when delta is 0.6.
+
+Pause.
+
+False. Player 2 needs minus 1 at least 1 minus 3 delta, that is, delta at least two thirds. At 0.6, finking pays 1 minus 1.8, which is minus 0.8, more than minus 1.
+
+Item four. If stage 2 has two Nash equilibria with the same payoffs for both players, history-dependent strategies can still sustain a non-equilibrium outcome in stage 1.
+
+Pause.
+
+False. Carrot minus stick is zero, so the discounted punishment, delta times c minus s, is zero and cannot offset any positive one-shot gain.
+
+Item five. A player in the Prisoner-Revenge Game has 32 pure strategies.
+
+Pause.
+
+True. One stage-1 action plus one stage-2 action for each of the four stage-1 outcomes: 2 to the 5, which is 32.
+
+Item six. To check that a profile is subgame perfect in a finite game, it suffices to check that no player gains by changing his action at a single information set while following his strategy elsewhere.
+
+Pause.
+
+True. That is Theorem 9.1, the one-stage deviation principle.
+
+Item seven. In Gibbons's bank-run model, both investors withdrawing at date 1 is the unique subgame-perfect outcome.
+
+Pause.
+
+False. After substituting date 2's outcome, R and R, the date-1 game has two pure Nash equilibria: the run, r and r, and waiting, R and R.
+
+Item eight. In Gibbons's tariff model, each government's equilibrium tariff depends on the other government's tariff.
+
+Pause.
+
+False. Welfare depends on the foreign tariff only through the export-profit term, which does not involve the home tariff; so a minus c over 3 is dominant.
+
+Item nine. In the tariff model, both governments would be better off committing to zero tariffs.
+
+Pause.
+
+True. Each gets 72 over 162 of a minus c squared at free trade, against 65 over 162 at the dominant tariffs: a Prisoners' Dilemma.
+
+Item ten. In the ultimatum game, offering the responder 40 per cent of the pie is a Nash equilibrium outcome.
+
+Pause.
+
+True. By Proposition 11.1, "accept if and only if offered at least 40 per cent" against "offer 40 per cent" are mutual best responses. It is not subgame perfect.
+
+Item eleven. In the ultimatum game's unique subgame-perfect equilibrium, the responder rejects an offer of zero.
+
+Pause.
+
+False. If she rejected zero, the proposer would have no best response, since there is no largest x below 1. In the subgame-perfect equilibrium she accepts every offer, including x equal to 1, by Proposition 11.2.
+
+Item twelve. With two rounds of bargaining and a common delta of 0.7, the first proposer receives 70 per cent of the pie.
+
+Pause.
+
+False. She receives one minus delta, 30 per cent. The responder can wait and take the whole pie in round 2, worth 0.7 now.
+
+Item thirteen. With T equal to 3 and a common delta of 0.5, player 1 receives 0.75.
+
+Pause.
+
+True. x 1 is one minus delta plus delta squared, which is 1 minus 0.5 plus 0.25, which is 0.75; equivalently, 1 plus 0.125, over 1.5, which is 0.75.
+
+Item fourteen. In the finite alternating-offer game with discounting, an agreement may be reached only in the last round if players are very patient.
+
+Pause.
+
+False. Proposition 11.3: any later agreement wastes pie that a slightly better round-1 offer could share, so every subgame-perfect equilibrium agrees in round 1, for any delta below 1.
+
+Item fifteen. In the finite game with delta equal to 1 and T odd, player 1 receives the whole pie.
+
+Pause.
+
+True. With no cost of delay, the last proposer's take-it-or-leave-it power flows up the tree: x 1 is one plus one over one plus one, which is 1.
+
+Item sixteen. In Rubinstein's infinite-horizon game with a common delta, the first proposer receives more than half the pie for every delta strictly between 0 and 1.
+
+Pause.
+
+True. One over one plus delta exceeds one half if and only if delta is below 1.
+
+Item seventeen. In Rubinstein's game with delta 1 equal to 0.8 and delta 2 equal to 0.5, player 1's share is 0.5 over 0.6.
+
+Pause.
+
+True. One minus delta 2 over one minus delta 1 delta 2 is 0.5 over 1 minus 0.4, which is 0.5 over 0.6, about 0.833.
+
+Item eighteen. Raising the responder's discount factor raises the proposer's infinite-horizon share.
+
+Pause.
+
+False. The derivative with respect to delta 2 is minus one minus delta 1, over the square of one minus delta 1 delta 2, which is negative: a patient responder must be paid more.
+
+Item nineteen. Under Baron and Ferejohn's closed rule with three legislators, the proposer keeps one minus delta over 3.
+
+Pause.
+
+True. Equation 11.8 with N equal to 3 gives k equal to one minus delta times 2 over 6. She buys one partner at delta v, which is delta over 3.
+
+Item twenty. Under the open rule with three legislators, catering to a single partner gives the proposer a higher expected payoff than the guaranteed-success proposal for every delta strictly between 0 and 1.
+
+Pause.
+
+False. Only for delta above root 3 minus 1, about 0.732. Below that, the guaranteed proposal, one over one plus two delta, is better.
+
+Part thirteen. The spoken formula sheet.
+
+Use this part for active recall. After each number, pause the audio, say the formula yourself, then play on to hear it.
+
+Formula one, the multistage payoff. v i equals the sum, for t from 1 to T, of delta to the t minus 1, times v i t.
+
+Formula two, a pure strategy. s i is a list: s i 1, then s i 2 as a function of h 1, and so on up to s i T as a function of h T minus 1; one action per history.
+
+Formula three, the strategy count in the Prisoner-Revenge Game. 2 to the 5 equals 32 strategies per player, and 32 times 32 equals 1024 profiles.
+
+Formula four, the Revenge Game's mixed equilibrium. 4 q minus 4 equals 2 q minus 3, so q equals one half, with value minus 2.
+
+Formula five, the carrot-and-stick threshold. The target is sustainable if and only if g is at most delta times c minus s, that is, delta at least g over c minus s.
+
+Formula six, its two cases. Mutual mum: 4 at least 5 minus 3 delta, so delta at least one third. Fink mum: minus 1 at least 1 minus 3 delta, so delta at least two thirds.
+
+Formula seven, Gibbons's subgame-perfect outcome. a 1 star, a 2 star, then a 3 star and a 4 star evaluated at a 1 star and a 2 star.
+
+Formula eight, the bank run. Two subgame-perfect outcomes: r and r, the run; R and R, no run.
+
+Formula nine, Cournot with tariffs, equation 2.2.3. h i star equals a minus c plus t i, over 3; e i star equals a minus c minus 2 t j, over 3.
+
+Formula ten, the dominant tariff. t i star equals a minus c over 3; then home output is 4 times a minus c over 9, and exports are a minus c over 9; the joint optimum is a zero tariff.
+
+Formula eleven, the tournament, equation 2.2.6. The spread w H minus w L, times the integral of f squared, equals g prime of e star; with normal noise the integral of f squared is one over 2 sigma root pi.
+
+Formula twelve, the optimal prize. g prime of e star equals 1, and the spread times the integral of f squared equals 1; with normal noise the spread is 2 sigma root pi.
+
+Formula thirteen, Propositions 11.1 and 11.2. With one round, every split x star, one minus x star, is a Nash equilibrium; the unique subgame-perfect equilibrium offers x equal to 1 and accepts any x at most 1.
+
+Formula fourteen, two rounds. v 1 equals one minus delta, and v 2 equals delta.
+
+Formula fifteen, equation 11.1. For T odd, v 1 equals one plus delta to the T, over one plus delta, and v 2 equals delta minus delta to the T, over one plus delta. For all T, x 1 equals one minus the quantity minus delta to the T, over one plus delta.
+
+Formula sixteen, the limits, equations 11.2 and 11.3. As T goes to infinity, v 1 tends to one over one plus delta; then as delta goes to 1, it tends to one half. In the reverse order, v 1 stays at 1 for odd T.
+
+Formula seventeen, Gibbons's three periods. s 1 star equals one minus delta times the quantity one minus delta s. With different discount factors and three rounds, s 1 equals one minus delta 2 times the quantity one minus delta 1.
+
+Formula eighteen, equations 11.4 and 11.5. v underbar equals one minus delta v bar; v bar equals one minus delta v underbar; so v equals one over one plus delta.
+
+Formula nineteen, Gibbons's fixed point. f of s equals one minus delta plus delta squared s; s star equals one over one plus delta.
+
+Formula twenty, asymmetric patience. x star equals one minus delta 2, over one minus delta 1 delta 2; its derivative in delta 1 is positive and in delta 2 negative.
+
+Formula twenty-one, frequent offers. With delta i equal to e to the minus r i Delta and Delta going to 0, x star tends to r 2 over r 1 plus r 2, the Nash weight.
+
+Formula twenty-two, M W G's squeeze, a G-layer item. v over one plus delta is at most v 1 underbar, which is at most v 1 bar, which is at most v over one plus delta.
+
+Formula twenty-three, the closed rule, equations 11.6 to 11.8. v equals one over N, and k equals one minus delta times N minus 1 over 2 N.
+
+Formula twenty-four, the open rule with guaranteed success, equation 11.9. k equals one over one plus two delta.
+
+Formula twenty-five, the open rule with risky success, equations 11.10 to 11.13. k equals 4 minus delta squared, over 4 plus 2 delta minus delta squared, and v of k equals 2 over 4 plus 2 delta minus delta squared.
+
+Formula twenty-six, risky against guaranteed. Risky is better if and only if delta exceeds root 3 minus 1.
+
+Formula twenty-seven, the M and R sale. The seller needs p at least 1.75; the buyer needs p at most 1.25; no truthful efficient rule exists.
+
+Part fourteen. The computer routines, described in words.
+
+This part covers note twelve, the reference implementation in Python. The code is not read aloud. Each routine is described by its inputs, its steps, and the check that would break if it were wrong. The note runs top to bottom as one script, using numpy, and every routine is followed by assertion checks against the books' own numbers.
+
+Routine zero, setup and reuse. The finite-horizon solver is not rewritten. It is the function proposer share from the check script of the class 1 and 2 notes. The routine loads only that function from the file, by parsing it, so that the file's own module-level checks, which take about ten seconds and use sympy and a Monte Carlo simulation, do not run on import. The function takes the number of rounds and the two discount factors, first proposer's and second's, and returns the round-1 proposer's share of a pie of 1. The exercise list for classes 1 and 2 has a symbolic twin, finite share.
+
+Routine one, the Prisoner-Revenge Game. The two stage-games are stored as tables of payoff pairs. A helper finds the pure Nash equilibria of any 2 by 2 game by checking, cell by cell, that each player's payoff is the maximum against the other's action. The main routine, pure subgame-perfect paths, takes delta. It loops over every assignment of a pure Revenge equilibrium to each of the four stage-1 histories, adds delta times the continuation payoffs to the stage-1 cells, and collects the Nash equilibria of the reduced game. By the one-stage deviation principle, that is exactly the set of stage-1 outcomes reachable in a pure subgame-perfect equilibrium. A small function returns the threshold delta star as gain over carrot minus stick, and nothing when the stick is not a punishment. The checks: the Prisoner's Dilemma's only equilibrium is fink fink; the Revenge Game has both pure equilibria; 2 to the 5 is 32 and 32 times 32 is 1024; the thresholds are one third and two thirds; at delta 0.2 only fink fink is reachable; at delta 0.5, mutual mum and fink fink; at 0.7, all four outcomes; and the mixed equilibrium's indifference at q one half, with value minus 2. The trap: forgetting that the deviator's own continuation applies, which would make the reduced game wrong.
+
+Routine two, the two-stage applications. The bank-run function takes D, r and R, first asserts the parameter restrictions, D above r above D over 2 and R above D, and returns the reduced date-1 game; the check is that it has two equilibria, the run and no run, at 100, 75 and 150. The tariff function returns government welfare as a function of both tariffs, with a minus c set to 1; the checks are that on a fine grid the welfare peak sits at one third for three different foreign tariffs, and that the four cells, times 162 and rounded, are 72, 81, 56 and 65; plus the outputs four ninths and one ninth. The tournament function takes sigma, integrates the squared normal density numerically on a wide grid, and returns the optimal spread as one over that integral; the checks are that the integral equals one over 2 root pi at sigma 1, and the spread equals 2 root pi, about 3.545.
+
+Routine three, alternating offers. A closed-form function returns one minus the quantity minus delta to the T, over one plus delta. A Rubinstein function returns one minus delta 2 over one minus delta 1 delta 2, and nothing when both discount factors are 1, since delay would then be free. An ultimatum function returns the proposer's best share on a grid, one minus the grid step. The checks: the one-round share is 1; on a penny grid the proposer keeps 0.99; the reused solver matches the closed form for five values of delta and every T from 1 to 24; the shares for delta 0.6 and T from 1 to 6 are 1, 0.4, 0.76, 0.544, 0.6736 and 0.59584; two rounds give one minus 0.6; with delta 1, T equal to 39 gives 1 and T equal to 40 gives 0; Rubinstein at 0.6 gives 0.625, and the finite solver at T equal to 401 agrees with it; iterating Gibbons's f two hundred times from zero converges to one over one plus delta; the asymmetric numbers 0.93 and 0.3 over 0.37; the derivative signs, by a small step in each discount factor; the frequent-offer limit, with rates 0.05 and 0.10 and a tiny period, matches r 2 over r 1 plus r 2; and the Rubinstein function returns nothing at 1 and 1.
+
+Routine four, legislative bargaining. One function returns the closed-rule share for N and delta; another, the open-rule guaranteed share. The risky case is solved not by the book's formula but as a linear system in three unknowns, the proposer's value, the excluded player's value, and k, built from equations 11.10 to 11.12, and the result is compared with equation 11.13 on 99 values of delta. The checks: 0.7 for N 3 and 0.64 for N 5 at delta 0.9; v equal to one over N solves equations 11.6 and 11.7; the closed rule beats both open-rule payoffs everywhere, footnotes 7 and 8; and a bisection on the point where the risky payoff overtakes the guaranteed one lands on root 3 minus 1.
+
+Routine five, the sale under private information. One function takes the probabilities of the low-value seller and the high-value buyer, default 0.8 each, and returns the seller's minimum and the buyer's maximum price for truthful reports. The checks: 1.75 and 1.25, the minimum above the maximum so that no price works, and the 4 per cent probability of efficient no-trade. The script ends by printing that all checks pass.
+
+Part fifteen. The figures and the interactive companions, described in words.
+
+The figures. Seven figures are built by one script in the figures folder of the Lecture 4 notes, and the script ends with assertion checks on every figure's key number. They have all been described where they appear: the reduced Prisoner-Revenge game and the carrot-stick threshold in part two; the tariff dilemma in part four; the finite-horizon shares in part six; the Shaked and Sutton fixed point and Rubinstein patience in part seven; and the legislative shares in part eight.
+
+There are two interactive pages, in the companions folder of the Lecture 4 notes. You cannot see them in an audio file, so here is what each does and what to try.
+
+Companion one, The Patience Ledger. Its controls are delta 1, delta 2, the horizon T, or a "no deadline" option, and the pie v. Its read-outs are player 1's share, which is the answer, both payoffs in dollars, the Rubinstein limit, the gap to it, the first-mover edge and who has the last word. Two panels: player 1's share against T, and the backward-induction ladder, which shows every round's offer, the path that is never played. What to try: slide T and watch the highlighted dot jump above and below the dashed limit. Press "delta equal to 1 first, T equal to 39", which is footnote 2: the artificial last-mover advantage survives. Tick "No deadline" and move delta 1 and delta 2 separately; the read-out names who is more patient, and the dashed line in the left panel is the formula one minus delta 2 over one minus delta 1 delta 2. "Patient pair, no deadline" sets delta to 0.99, a nearly equal split. At delta 1 and delta 2 both equal to 1, the page reports the share as indeterminate rather than computing zero over zero.
+
+Companion two, The Carrot and the Stick. Its controls are delta, the temptation T, the sucker payoff S and the stick s of the Prisoner-Revenge Game. Its read-outs are both thresholds and the set of sustainable stage-1 outcomes. What to try: use the "delta equal to one third exactly" and "delta equal to two thirds exactly" buttons to see the verdicts flip at the book's values. Then set s to zero: that deletes the stick, and every outcome other than fink fink goes with it.
+
+Both pages are verified by a check script that runs each page's own calculations against Python, with three sets of control values each.
+
+Part sixteen. Reading route and exercises.
+
+The reading route, in order. Tadelis chapter 9, Multistage Games, printed pages 175 to 189. Then Gibbons section 2.2, two-stage games of complete but imperfect information, pages 71 to 82. Then Tadelis chapter 11, Strategic Bargaining, pages 220 to 237. Then Gibbons section 2.1 part D, Sequential Bargaining, pages 68 to 71. For the formal side, M W G chapter 9, appendix A, pages 296 to 298, a G-layer reading, named and not examinable unless the lecture brings it. For the application, Milgrom and Roberts, Bargaining over a Sale, pages 140 to 142.
+
+Related project material: the class 2 notes, section 5, on Nash bargaining and a preview of alternating offers; Block 3 of the exercise list for classes 1 and 2, Questions 5 and 6, alternating offers over a Coasean surplus, with its check script; items 20, 28 and 29 of the practice list for classes 1 and 2; and the class 2 quiz on Nash bargaining and offers.
+
+The exercises, by address only. Statements are not read here; open the book.
+
+For multistage games. Tadelis exercise 9.1, page 186. Exercise 9.2, pages 186 and 187. Exercise 9.3, pages 187 and 188. Exercise 9.4, page 188. Exercise 9.5, pages 188 and 189. Exercise 9.6, page 189.
+
+For the two-stage applications. Gibbons problems 2.6 to 2.9, page 133, with Tadelis 9.4 and 9.6 again.
+
+For the ultimatum game. Tadelis exercises 11.1 and 11.2, page 236; Muñoz-Garcia and Toro-Gonzalez, Strategy and Game Theory, chapter 4, exercise 1, page 154.
+
+For finite alternating offers. Tadelis exercises 11.3 and 11.4, page 236, and 11.5, pages 236 and 237. Muñoz-Garcia chapter 4, exercise 16, page 198; exercise 17, page 199; exercise 18, page 200. M W G exercise 9.B.13, pages 302 and 303. And Question 5a of Block 3 in the classes 1 and 2 list.
+
+For Rubinstein's infinite horizon. Tadelis exercise 11.6, page 237. Gibbons problem 2.3, page 131. M W G exercise 9.B.12, pages 302 and 303. Muñoz-Garcia chapter 6, exercise 8, page 303.
+
+For legislative bargaining. Tadelis exercise 11.7, page 237, and Muñoz-Garcia chapter 6, exercise 8, page 303, again.
+
+Part seventeen. Open self-test.
+
+Ten questions. After each one, pause the audio and answer aloud before continuing.
+
+Question one. Why does each player in the Prisoner-Revenge Game have 32 pure strategies, and what do the off-path entries do?
+
+Pause.
+
+Question two. State the two requirements for sustaining a non-equilibrium stage-1 outcome, and derive the threshold for mutual mum.
+
+Pause.
+
+Question three. Why is fink mum harder to sustain than mutual mum with the same stick?
+
+Pause.
+
+Question four. In the one-stage deviation check at stage 1, what does the deviator play in stage 2, and why?
+
+Pause.
+
+Question five. Why does the bank-run game have two subgame-perfect outcomes, and why is the tariff game a Prisoners' Dilemma?
+
+Pause.
+
+Question six. In the ultimatum game, why can the responder not reject the offer x equal to 1 in a subgame-perfect equilibrium?
+
+Pause.
+
+Question seven. Give player 1's share with T rounds and common delta, and say what happens with delta equal to 1 and with T going to infinity.
+
+Pause.
+
+Question eight. Derive the Rubinstein share with different discount factors, and say how it moves with each.
+
+Pause.
+
+Question nine. Under the closed rule, why is the value of the game one over N while the proposer keeps more, and when does the risky open-rule strategy pay?
+
+Pause.
+
+Question ten. In M and R's sale, what are the two price bounds, and what do they show?
+
+Pause.
+
+The answers, briefly. One: one stage-1 action and one stage-2 action for each of four stage-1 outcomes, 2 to the 5; the off-path entries carry the threats. Two: two distinct stage-2 equilibria, a carrot and a stick, and delta large enough; 4 at least 5 minus 3 delta gives delta at least one third. Three: the stick is the same, 3, but the temptation is 2 rather than 1, so delta must be at least two thirds. Four: he follows his own strategy, which says gang after fink mum, so the deviation pays 5 minus 3 delta. Five: in the bank run, date 2 has a unique equilibrium, but the reduced date-1 game has two, a run and no run; in the tariff game, the tariff a minus c over 3 is dominant, yet both at it get 65 over 162 against 72 at free trade. Six: if she rejected it, player 1 would have no best response, since no largest offer below 1 exists. Seven: one minus the quantity minus delta to the T, over one plus delta; with delta 1 the last proposer takes all; with T to infinity it tends to one over one plus delta. Eight: one minus delta 2 over one minus delta 1 delta 2; it rises with the proposer's patience and falls with the responder's. Nine: by symmetry and immediate agreement each player's ex ante value is one over N, but the proposer keeps one minus delta times N minus 1 over 2 N; the risky strategy pays when delta exceeds root 3 minus 1. Ten: the seller needs at least 1.75 and the buyer at most 1.25; no price rule gives truthful reports and efficient trade.
+
+Part eighteen. Glossary.
+
+Multistage game: a finite sequence of simultaneous-move stage-games played by the same players, each stage's outcome observed before the next.
+
+Stage-game: one of the normal-form games that make up a multistage game.
+
+History: the sequence of outcomes of all stages before the current one; a strategy assigns an action to each history.
+
+Discount factor: delta, between 0 and 1, the weight on a payoff one period later; higher delta means more patient players.
+
+Carrot: the better of two stage-2 equilibria, played after the target behaviour.
+
+Stick: the worse of two stage-2 equilibria, played after a deviation.
+
+One-stage deviation principle: in a finite game, or an infinite one with discounting, a strategy that cannot be improved by changing one action at one information set cannot be improved at all.
+
+Coordination failure: an inefficient equilibrium chosen when an efficient one also exists, as in the bank run.
+
+Dominant tariff: a tariff that is the best reply to every foreign tariff, a minus c over 3 in Gibbons's model.
+
+Tournament: a compensation scheme that pays a prize for the higher output; here used only as a two-stage game.
+
+Ultimatum game: one round of bargaining, in which the proposer makes a take-it-or-leave-it offer.
+
+Alternating offers: the bargaining protocol in which the players take turns proposing, and the pie shrinks by delta with each rejection.
+
+Last-mover advantage: the power of the player who makes the final offer before a deadline.
+
+First-mover advantage: the edge of the first proposer created by discounting, worth one over one plus delta in the limit.
+
+Stationarity: the property that the subgame after two rejections is the original game, which replaces the last period in Rubinstein's game.
+
+Rubinstein share: one minus delta 2 over one minus delta 1 delta 2, the first proposer's share in the infinite game.
+
+Nash bargaining solution: the axiomatic split; its weights are given a strategic foundation by relative impatience as offers become frequent.
+
+Closed rule: a legislative procedure in which a proposal is voted up or down without amendment.
+
+Open rule: a legislative procedure in which a drawn legislator may amend the proposal.
+
+Incentive compatibility: the condition that each party does best by reporting its true value.
+
+Part nineteen. The whole lecture in five lines.
+
+One. A multistage game is one extensive form, and a strategy names an action for every history, including the histories it rules out.
+
+Two. Stage equilibria in sequence are always subgame perfect, and the last stage must always be a stage equilibrium; anything else in earlier stages needs a carrot and a stick in a later stage and a discount factor at least g over c minus s.
+
+Three. In bargaining, Nash allows any split, but subgame perfection gives the ultimatum proposer everything, and with a deadline each proposer offers exactly what rejecting is worth, so agreement is immediate.
+
+Four. Without a deadline, stationarity gives the proposer one over one plus delta, and with different patience one minus delta 2 over one minus delta 1 delta 2: patience is bargaining power, and frequent offers turn it into the Nash weights.
+
+Five. Protocol is power, as the closed and open rules show, and private information can make efficient agreement impossible, which is why organizations spend so much making value visible.

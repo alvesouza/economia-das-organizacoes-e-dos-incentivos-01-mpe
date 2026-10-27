@@ -1,0 +1,1275 @@
+Lecture 7. Bayesian games, adverse selection and auctions. A listening version of the Lecture 7 notes.
+
+How to listen.
+
+This is the full text of the Lecture 7 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every case, every number and every derivation from the written notes is here, with the mathematics spoken in words.
+
+One warning first. This unit is estimated. The notes were built on 16 October 2026, before the lecture, which is scheduled for Tuesday 17 November 2026. There are no slides for Lecture 7 yet. Everything you hear is built from the books: mainly Tadelis, Game Theory, An Introduction, chapters 12 and 13, and Gibbons, Game Theory for Applied Economists, chapter 3, with applications from Milgrom and Roberts, from Cabral, and from Mas-Colell, Whinston and Green. When the slides arrive, the notes will be reconciled with them, and some emphasis may change.
+
+The script has eighteen parts, numbered zero to seventeen. Part zero is the map of the lecture: the one claim, the one result to hold, and the numbers to have memorized. Parts one to four are the machinery: types and the common prior, Bayesian Nash equilibrium and the chicken game, Cournot competition with a privately known cost, and threshold strategies with purification. Part five is information and trade: adverse selection, insurance, credit, and the double auction. Parts six to eight are auctions: the second-price and English auctions, the first-price and Dutch auctions, and revenue equivalence. Part nine is common values: the jury and the oil field. After that come the support parts: common mistakes, a spoken formula sheet, the figures and interactive companions described in words, the computer routines described in words, the reading route and exercises, a self-test, a glossary, and the whole lecture in five lines.
+
+Three conventions. First, the books. "Tadelis" means Steven Tadelis, Game Theory, An Introduction, Princeton University Press, 2013; it is the spine of the lecture. "Gibbons" means Robert Gibbons, Game Theory for Applied Economists, Princeton, 1992. "M and R" means Milgrom and Roberts, Economics, Organization, and Management, Prentice-Hall, 1992. "M W G" means Mas-Colell, Whinston and Green, Microeconomic Theory, Oxford, 1995. "Cabral" means Luis Cabral, Introduction to Industrial Organization, second edition, MIT Press, 2017. "Muñoz-Garcia" means Muñoz-Garcia and Toro-Gonzalez, Strategy and Game Theory, Practice Exercises with Answers, second edition, Springer, 2019. Page numbers are the books' printed page numbers.
+
+Second, the abbreviations. B N E means Bayesian Nash equilibrium. S P E means subgame perfect equilibrium. I P V means independent private values. F O C means first-order condition. Each is expanded again the first time it matters.
+
+Third, the layers. The notes mark material in three layers. U is intuition. C is the course: what is examinable. G is graduate: named, but not examinable unless the lecture brings it. When the script reaches a G item, it says so.
+
+One scope rule, said once here and again wherever it applies. Mechanism design is outside this course: Tadelis chapter 14, Mas-Colell, Whinston and Green chapter 23, and Gibbons section 3.3 on the revelation principle are out. Revenue equivalence is stated and checked for the uniform case, not derived as a mechanism-design theorem. Moral hazard and cheap talk are also out. Signaling and screening belong to the next lecture, Lecture 8.
+
+Part zero. The map of the lecture.
+
+This part covers the map note, L07 zero zero.
+
+The one claim of the lecture has four sentences. Private information is modelled as Nature drawing types from a commonly known distribution, and a Bayesian Nash equilibrium is a Nash equilibrium of type-contingent plans. When one side's type enters the other's payoff, a single price selects the wrong half of the market: in Tadelis's orange grove every unit is worth more to the buyer, yet only the worst quality trades. Auctions are Bayesian games with a clean answer: bid your value in a second-price auction, shade to n minus one over n times your value in a first-price one, and expect the same revenue, n minus one over n plus one, either way. With common values, condition on the event in which your choice matters, winning, being pivotal, being accepted, or be cursed.
+
+A note on notation. Lecture 1's slides write a game as G equals the triple: the set of players I, the strategy sets S i, and the payoff functions u i. Tadelis chapter 12 writes the player set as N and payoffs as v i. These notes keep the slides' I and u i, and Tadelis's types, written theta i, belonging to the type space capital Theta i, and beliefs, written phi i. Gibbons writes types as t i in T i and beliefs as p i. Different letters, same object.
+
+The three layers, for this unit. The intuition layer is Gibbons chapter 3's prose and examples: the Battle of the Sexes, the linear auction, the double auction; Cabral's insurer and auction stories; and Milgrom and Roberts' insurance and credit markets. The course layer, the examinable one, is Tadelis's Definitions 12.1 to 12.4, Claims 12.1 to 12.3, Proposition 12.1, Propositions 13.1 and 13.2, Claim 13.1, equations 12.1 to 12.6 and 13.1 to 13.10, and Gibbons's Cournot and double-auction derivations. The graduate layer is Mas-Colell, Whinston and Green's Definition 8.E.1 and Proposition 8.E.1; their section 13.B on competitive adverse selection, Example 13.B.1, and constrained optimality; the purification theorem; and the Myerson and Satterthwaite theorem. Those are named, not examinable, unless the lecture brings them.
+
+The reading order has four blocks. Block one, the machinery, Tadelis chapter 12 and Gibbons section 3.1: types and the common prior, Bayesian Nash equilibrium, Cournot with private costs, and threshold strategies with purification. Block two, information and trade: adverse selection and the double auction. Block three, auctions, Tadelis chapter 13 and Gibbons section 3.2.B: second-price and English, first-price and Dutch, and revenue equivalence. Block four, common values: the swing voter's curse and the winner's curse.
+
+The one result to hold. In a Bayesian Nash equilibrium, player i's strategy, evaluated at his type theta i, maximizes his expected payoff, the expectation taken over the other players' types theta minus i, of u i of his action a i, the others' equilibrium strategies evaluated at their types, and his own type, conditional on his own type theta i. And this must hold for every type theta i.
+
+Every result of the lecture is this condition evaluated in one setting: a matrix in the chicken game, three first-order conditions in Cournot, a cutoff in the study groups, a price the seller accepts in the lemons market, a bid in the auctions. The economics lives in what the expectation conditions on. And with common values, the event "my action counts" is itself information.
+
+Now the numbers and cases to have memorized. There are eight.
+
+One, the orange grove, Tadelis page 260. The pools of sellers who accept are worth 14, 19 and 24 to the buyer at prices 10, 20 and 30. Only the low quality trades, and the Bayesian Nash equilibrium prices are the band from 10 to 14.
+
+Two, chicken, Tadelis page 254, with respect R equal to 8, harsh-parent cost H equal to 16 and lenient-parent cost L equal to 0. The unique equilibrium is D C for player 1 and d c for player 2, with payoffs 3 and 3. The child of lenient parents drives; the child of harsh parents swerves.
+
+Three, the study groups. The equilibrium cutoff is c to the power one third, the cube root of the cost of effort. This is the free-riding cutoff.
+
+Four, the first-price auction with uniform values. The bid is n minus one over n times the value. Gibbons's two-bidder version is one half of the value. The amount shaded, the value over n, falls as n rises.
+
+Five, revenue with uniform values: n minus one over n plus one, which is one third with two bidders, and the same in all four formats.
+
+Six, the double auction. Trade happens if and only if the buyer's value is at least the seller's value plus one quarter. Expected gains are nine sixty-fourths, against one sixth if trade were efficient. Two-sided private information costs 15.6 per cent of the gains.
+
+Seven, the oil field, Tadelis page 284. The expected value given a low signal is 15, given a high signal 25, and the payoff from bidding 15 with a low signal is minus 1.25. That is the winner's curse.
+
+Eight, the jury. The probability of guilt given one innocence signal and one guilt signal is exactly q, the prior. That is the swing voter's curse.
+
+The scope and its ceiling. Examinable: everything in Tadelis chapter 12 and sections 13.1 and 13.2 used in these notes, plus Gibbons's Cournot, linear-auction and double-auction derivations. Named only: Mas-Colell, Whinston and Green's section 8.E formalism and section 13.B's competitive equilibrium and constrained optimality; Harsanyi's purification theorem; the Mertens and Zamir universal type space; Myerson and Satterthwaite; and the fact that the English auction differs from the second-price auction with common values, a result from Krishna and from Milgrom. Out, by the course's scope rule: mechanism design, which is Tadelis chapter 14, Mas-Colell, Whinston and Green chapter 23, and Gibbons section 3.3 on the revelation principle. Optimal reserve prices are left to Tadelis's exercises. Moral hazard and cheap talk are out; the grove owner's remark "my soil is good" is the only cheap talk in this lecture. Signaling and screening are the next lecture's subject.
+
+Where the lecture sits in the course. Lecture 1 gave weak dominance and the second-price auction's truthful bid; here that bid becomes a type-contingent strategy. Lecture 2 gave Nash equilibrium and mixed strategies; a Bayesian Nash equilibrium is a Nash equilibrium of the Harsanyi game, and purification reinterprets the mix. Lecture 3 gave strategies as complete plans, the entry game's subgame perfect equilibrium, and Nature as a player. Lecture 4 gave ultimatum bargaining; the orange-grove offer is a take-it-or-leave-it game with private information. Lectures 5 and 6 gave reputation and relational contracts, the dynamic answer to hidden types; here types are static. Lecture 8 is signaling: the informed side moves first and the uninformed side updates, using perfect Bayesian equilibrium. That is the way out of the lemons pool.
+
+Recap of part zero. Types drawn by Nature, a common prior, and a plan for every type. A Bayesian Nash equilibrium asks every type to best-respond to his beliefs. A single price buys the bottom of the pool. Bid your value in a second-price auction, shade in a first-price one, and expect the same revenue. With common values, condition on the event in which you matter.
+
+Part one. Types, Nature and the common prior.
+
+This part covers note one, on Tadelis chapter 12's opening and sections 12.1.1 and 12.1.2, printed pages 241 to 249, with Gibbons section 3.1.B, pages 146 to 149, and Mas-Colell, Whinston and Green section 8.E, page 255.
+
+The claim. A game of incomplete information cannot be solved as it stands, because nobody knows the game. Harsanyi's move turns it into a game we already know how to solve. Nature draws each player's type from a commonly known distribution, and each player sees only his own type. The uncertainty about payoffs becomes uncertainty about Nature's move, which is a game of imperfect information. Everything after this part is Nash equilibrium applied to that game.
+
+One point one. What complete information assumed. This is the intuition layer.
+
+Every game so far assumed that the game itself is common knowledge: who plays, what each player can do, and how outcomes map into payoffs. That is Lecture 1, and Tadelis's Definition 3.1 on page 45. Tadelis opens chapter 12, on page 241, with the Cournot duopoly: is it reasonable that each firm knows the other's cost function exactly? Gibbons opens chapter 3, on page 143, with the sealed-bid auction: each bidder knows her own valuation and not the others'.
+
+The definition to hold, from Gibbons page 143. Incomplete information means at least one player is uncertain about another player's payoff function. It is a statement about preferences, not about moves.
+
+The problem it creates. To best-respond, player i needs a belief about what player j will do. What j does depends on j's payoffs. But i does not know them. And j needs a belief about i's belief about j's payoffs, and so on, without end. Harsanyi cut that infinite regress with one modelling device.
+
+One point two. Harsanyi's transformation, worked on Tadelis's entry game. This is the course layer.
+
+Start with the complete-information game, Tadelis Figure 12.1, page 243. Player 1, the entrant, chooses Out or Enter. After Enter, player 2, the incumbent, chooses Fight or Accommodate. The payoffs have three outcomes. If the entrant stays out, the entrant gets 0 and the incumbent gets 2. If the entrant enters and the incumbent fights, both get minus 1. If the entrant enters and the incumbent accommodates, both get 1.
+
+Backward induction. After Enter, player 2 compares minus 1 with 1 and accommodates, so player 1 enters. The unique subgame perfect equilibrium is Enter, Accommodate. The profile Out, Fight is a Nash equilibrium sustained by an incredible threat.
+
+Now add a second type of incumbent, Tadelis Figure 12.2, page 243. Player 2 is rational, with the payoffs just given, with probability p, or crazy, with probability one minus p. The crazy type enjoys fighting: Enter followed by Fight pays him 2 instead of minus 1. Everything else is unchanged.
+
+Three things must be pinned down, on pages 243 and 244. First, Nature moves first and picks player 2's type. Second, player 2 knows his own type when he moves; player 1 does not. Hence player 1 has a single information set across Nature's two branches. Third, the probability p is common knowledge. This is the common prior assumption: everyone agrees on how Nature draws types. In Tadelis's words, "This is of course a strong assumption, but without it we will not be able even to discuss equilibrium behavior". That is page 244.
+
+Now the induced normal form. A strategy for player 2 must say what each type does. Write it as two letters: the first is the rational type's action, the second the crazy type's. So player 2 has four strategies: A A, A F, F A and F F. Player 1 has two: Out and Enter. Each strategy pair produces a lottery over outcomes, and expected payoffs fill the matrix.
+
+Take Enter against A F, where the rational type accommodates and the crazy type fights. Player 1's payoff is p times 1 plus one minus p times minus 1, which is 2 p minus 1. Player 2's payoff is p times 1 plus one minus p times 2, which is 2 minus p.
+
+Take Enter against F A, where each type plays the action he likes less: the rational type fights and the crazy type accommodates. Player 1 gets p times minus 1 plus one minus p times 1, which is 1 minus 2 p. Player 2 gets exactly the same, p times minus 1 plus one minus p times 1, which is 1 minus 2 p.
+
+Take Enter against F F. Player 1 gets minus 1 for sure. Player 2 gets p times minus 1 plus one minus p times 2, which is 2 minus 3 p.
+
+Enter against A A gives 1 and 1. And after Out, every cell is 0 for player 1 and 2 for player 2, whatever player 2's strategy.
+
+Now set p equal to two thirds, the book's choice on page 244. The Enter row becomes: against A A, 1 and 1; against A F, one third and four thirds; against F A, minus one third and minus one third; against F F, minus 1 and 0. The Out row is 0 and 2 in every column.
+
+Solve it like any two-player matrix game. Player 1's best responses: against A A or A F, enter, because 1 is more than 0 and one third is more than 0. Against F A or F F, stay out, because 0 is more than minus one third and 0 is more than minus 1. Player 2's best responses: against Out, every column pays 2, so all four are best responses. Against Enter, the column payoffs are 1, four thirds, minus one third and 0, so only A F.
+
+The mutual best responses, on page 245, are three: Out with F A, Out with F F, and Enter with A F.
+
+Only Enter with A F survives the extensive-form check that each type moves optimally at his own node: the rational type accommodates and the crazy type fights. The other two equilibria rest on types who would not carry out the fight or the accommodation they are assigned.
+
+Why the "meta-player" gets it right, page 245. The matrix averages player 2's types into one player who maximizes the prior-weighted sum of his types' payoffs. That meta-player's best response coincides with each type's best response, because a strategy specifies an action per type. Against Enter, moving from A A to A F changes only the crazy type's action and raises only his payoff, so the average rises. A A is not a best response to Enter precisely because it asks the crazy type to play a dominated action.
+
+The device is not free. Before, equilibrium asked players to hold correct beliefs about actions. Now it asks, in addition, that everyone agree on how types are drawn, pages 245 and 246. Predictions are only as good as that leap.
+
+One point three. The general object: Tadelis Definition 12.1, page 246.
+
+The normal-form representation of an n-player static Bayesian game of incomplete information is a list of five things. The set of players, I. Each player's action set, A i. Each player's type space, capital Theta i, a finite list of types theta i 1 up to theta i k i. Each player's type-dependent payoff, u i, a function of the action profile and of his own type, into the real numbers. And each player's belief, phi i of theta minus i given theta i: his posterior belief about the other players' types, given his own.
+
+The timing has four steps, and every Bayesian game in this lecture follows them, pages 246 and 247. Step one: Nature draws a type profile, theta 1 up to theta n. Step two: each player i learns only his own type theta i, and forms his belief phi i about the others' types from the prior. Step three: players choose their actions simultaneously; it is a static game. Step four: payoffs are realized, u i of the action profile and his type.
+
+Private values against common values. With private values, a player's payoff depends on his own type only. The examples in this lecture are the chicken game, the study groups, and the independent private values auctions of part six. With common values, a player's payoff depends on the others' types too. The examples are the orange grove of part five, and the jury and the oil field of part nine.
+
+Hold this. Every "curse" in this lecture, adverse selection, the swing voter's curse and the winner's curse, needs common values. With private values, learning another player's type changes what you expect him to do, never what the outcome is worth to you.
+
+Gibbons makes the same extension in two lines, on page 149: when one player's private information enters another's payoff, write u i as a function of all the actions and of all the types, t 1 up to t n.
+
+One point four. Beliefs from the common prior: Tadelis Definition 12.2, pages 247 to 249.
+
+Each player learns his own type. If types are correlated, his own type is evidence about the others'. Bayes' rule converts the common prior into his interim belief.
+
+Definition 12.2, equation 12.1. Conditional on an event S, the probability of an event H is the probability of S intersected with H, divided by the probability of S.
+
+The book's correlated prior, page 249. Player 1's type is a or b; player 2's type is c or d. The prior puts one sixth on a with c, one third on a with d, one third on b with c, and one sixth on b with d. Each row sums to one half.
+
+Player 1 learns that his type is a. The probability that player 2 is c is one sixth divided by the sum of one sixth and one third. That sum is one half, so the probability is one sixth over one half, which is one third. The probability that player 2 is d is one third over one half, which is two thirds.
+
+Had he learned b instead: the probability of c is one third over one half, which is two thirds, and the probability of d is one third. His type moved his belief. Before learning it, the probability of c was one sixth plus one third, which is one half.
+
+Independent types, which is every application in Gibbons section 3.2, page 148. The prior factors into the product of each player's own distribution. Then the posterior about the others equals the prior about the others, and it does not depend on one's own type. The other players then also know i's belief, Gibbons page 149.
+
+Correlation is where conditioning bites. In the oil-field auction of part nine, the signals are correlated, and it is exactly the update "I won, so the other signal was low" that bidders who ignore Bayes' rule get wrong.
+
+One point five. The formal side. This is the graduate layer: not examinable unless the lecture brings it.
+
+The belief hierarchy. A type must encode beliefs about beliefs about payoffs, and so on. Harsanyi's argument that a rich enough type space captures the whole hierarchy was made precise by Mertens and Zamir, 1985, and by Brandenburger and Dekel, 1993. That is Tadelis's Remark on page 247. Named only.
+
+Mas-Colell, Whinston and Green section 8.E, page 255, write a Bayesian game as the players, their strategy sets, their payoff functions, the type space capital Theta, and a joint distribution capital F of the types, which is the common prior. Their Example 8.E.1, on page 254, is a two-type prisoner's dilemma solved exactly like the entry game above.
+
+Gibbons's version, page 148, lists the action sets A 1 to A n, the type spaces T 1 to T n, the beliefs p 1 to p n, and the payoffs u 1 to u n. Beliefs follow Bayes' rule, page 149: the probability of the others' types t minus i given one's own type t i is the joint probability of t minus i and t i, divided by the sum of that joint probability over all possible profiles of the others' types. Different letters, same object.
+
+The exercises for this part, by address only. Tadelis exercise 12.1, page 266. Gibbons problem 3.1, page 169. Muñoz-Garcia chapter 7, exercise 1, page 318, and exercise 2, page 323.
+
+Recap of part one. Incomplete information is uncertainty about payoffs. Harsanyi adds Nature, who draws types from a common prior; each player sees only his own type. The incumbent with two types has four strategies, and the entry game at p equal to two thirds has three Nash equilibria, of which only Enter with A F has each type acting optimally. Beliefs come from the prior by Bayes' rule, and they depend on one's own type only when types are correlated. Curses need common values.
+
+You should be able to build the entry game's four-column matrix for any p, find its equilibria at p equal to two thirds, and compute the one-third and two-thirds posteriors from the correlated prior.
+
+Part two. A strategy is a plan for every type; a Bayesian Nash equilibrium is a Nash equilibrium of those plans.
+
+This part covers note two, on Tadelis section 12.1.3, Definitions 12.3 and 12.4 and equation 12.2, pages 249 to 252, and section 12.2.1, chicken with incomplete information, pages 252 to 255; with Gibbons section 3.1.C, pages 149 to 152, and Mas-Colell, Whinston and Green's Definition 8.E.1 and Proposition 8.E.1, pages 255 and 256.
+
+The claim. In a Bayesian game a strategy maps types to actions, and a Bayesian Nash equilibrium is a profile of such maps in which every type of every player best-responds to his posterior over the others' types and their strategies. Checking it type by type is all the work. The chicken game shows the method end to end, and gives a prediction, "children of lenient parents drive on", that flips when the payoffs are reassigned.
+
+Two point one. Strategies: Tadelis Definition 12.3, page 249.
+
+A pure strategy for player i is a function from his type space to his action set. It specifies the action he chooses when his type is theta i. A mixed strategy is a probability distribution over pure strategies.
+
+Counting. With a given number of actions and a given number of types, player i has the number of actions raised to the power of the number of types as his count of pure strategies. The entry game's incumbent has 2 actions and 2 types, so 2 squared, which is 4: A A, A F, F A and F F. The chicken players below likewise have 4 each.
+
+Why specify a plan for types that were not drawn? Tadelis pages 250 and 251; Gibbons pages 150 and 151. Once Nature has drawn theta i, the other types of i never move. But player j cannot compute his expected payoff without knowing what every type of i would do, weighted by j's belief. A strategy that left some types unspecified would make j's best response undefined. It is the same reason a strategy in an extensive game must cover unreached information sets, as in Lecture 3.
+
+Types are information sets. Learning one's type is arriving at an information set that Nature's move determines, page 250. A type-contingent strategy is a complete contingent plan, exactly as in Lecture 1's definition of a strategy.
+
+A pure strategy of i looks mixed to j, page 250. If the incumbent plays A F and is rational with probability p, the entrant faces "Accommodate with probability p, Fight with probability one minus p". This is the seed of Harsanyi's reading of mixed strategies, in part four.
+
+Gibbons's vocabulary, page 150, which Lecture 8 needs. A separating strategy gives each type a different action. A pooling strategy gives all types the same action.
+
+Two point two. Bayesian Nash equilibrium: Tadelis Definition 12.4, page 251.
+
+A strategy profile, s 1 up to s n, is a pure-strategy Bayesian Nash equilibrium if, for every player i, for each of i's types theta i, and for every action a i, the following inequality holds. This is equation 12.2. On the left: the sum, over all profiles of the others' types theta minus i, of i's belief in theta minus i given theta i, times i's payoff when he plays his prescribed action s i of theta i, the others play s minus i of theta minus i, and his type is theta i. On the right: the same sum with his prescribed action replaced by the alternative action a i. The left must be greater than or equal to the right.
+
+Read the equation piece by piece. The belief phi i of theta minus i given theta i is what type theta i believes about the others' types, from the common prior. The term s minus i of theta minus i is what each of those types does: the others' strategies. The left side is type theta i's expected payoff from his prescribed action. The right side is his expected payoff from any single alternative action.
+
+The book makes two simplifications explicit, on page 251. First, it suffices to check deviations to actions, one type at a time, not to whole alternative strategies: if no type gains by switching his action, no rearrangement across types gains either. Second, the general form, valid for a continuum of types, the Remark on page 251: the expectation over the others' types, conditional on theta i, of i's payoff from his prescribed action, is at least the same conditional expectation of his payoff from any alternative action a i, for every a i.
+
+Hold this. A Bayesian Nash equilibrium is a Nash equilibrium of the Harsanyi game. In Gibbons's words, page 151, "a Bayesian Nash equilibrium is simply a Nash equilibrium in a Bayesian game". There are two equivalent ways to find one. Ex ante: build the matrix of prior-expected payoffs over type-contingent strategies and find its Nash equilibria, as in the entry game of part one. Interim: check equation 12.2 for each type separately. Mas-Colell, Whinston and Green's Proposition 8.E.1, page 256, is the statement that the two coincide for every type that occurs with positive probability.
+
+Existence, Gibbons pages 151 and 152. A finite static Bayesian game has a Bayesian Nash equilibrium, possibly in mixed strategies. The proof is Nash's existence theorem applied to the Harsanyi game.
+
+Two point three. Worked: chicken with incomplete information, Tadelis section 12.2.1, pages 252 to 255.
+
+The game. Two teenagers drive at each other. Each chooses chicken, which means swerve, or drive. Player 1's actions are written capital C and capital D; player 2's are small c and small d. The payoffs have three cases. If i chickens, he gets 0, whatever j does. If i drives and j chickens, i gets R, all the respect. If both drive, i gets R over 2 minus k i: they split the respect, and i pays an accident cost k i.
+
+The cost k i is i's type. His parents are harsh, cost H, or lenient, cost L, with L below H. Each type has probability one half, independently across players. Each kid knows his own parents only. So there are four equally likely states: L L, L H, H L and H H, Tadelis Figure 12.3, page 253. Strategies are two letters for player 1: C C, C D, D C and D D, where the first letter is the action of the lenient type and the second the action of the harsh type. Likewise small c c, c d, d c and d d for player 2.
+
+One cell by hand: player 1 plays C D and player 2 plays d d, page 254. Player 1's lenient type chickens and his harsh type drives; both types of player 2 drive. Average over the four states, each with weight one quarter.
+
+Player 1's expected payoff: one quarter times 0, when he is lenient and chickens against a driver; another quarter times 0, the same; one quarter times R over 2 minus H, when he is harsh and both drive; and another quarter times R over 2 minus H. The total is R over 4 minus H over 2.
+
+Player 2's expected payoff: one quarter times R, when player 1 is lenient and chickens and player 2 is lenient; one quarter times R, the same with player 2 harsh; one quarter times R over 2 minus L, when player 1 is harsh and drives and player 2 is lenient; and one quarter times R over 2 minus H, when player 2 is harsh. The total is 3 R over 4, minus L over 4, minus H over 4.
+
+Now the whole matrix at R equal to 8, H equal to 16 and L equal to 0, page 254. Rows are player 1's strategies, columns player 2's, in the order c c, c d, d c, d d. Player 1's payoff comes first.
+
+Row C C: 0 and 0; 0 and 4; 0 and 4; 0 and 8.
+
+Row C D: 4 and 0; minus 1 and minus 1; minus 1 and 3; minus 6 and 2.
+
+Row D C: 4 and 0; 3 and minus 1; 3 and 3; 2 and 2.
+
+Row D D: 8 and 0; 2 and minus 6; 2 and 2; minus 4 and minus 4.
+
+Check against the cell computed by hand. C D against d d gives 8 over 4 minus 16 over 2, which is minus 6, and 3 times 8 over 4 minus 0 minus 16 over 4, which is 2. It matches.
+
+Best responses. Player 1's best row in each column: against c c, D D, with 8; against c d, D C, with 3; against d c, D C, with 3; against d d, D C, with 2. Player 2's best column in each row: against C C, d d, with 8; against C D, d c, with 3; against D C, d c, with 3; against D D, d c, with 2. The only cell that is a best response both ways is D C against d c. That is the unique pure-strategy Bayesian Nash equilibrium, page 254.
+
+The same answer type by type: the interim check. Take player 2 playing d c: lenient drives, harsh chickens. Player 1 believes each of those with probability one half.
+
+Player 1 of the lenient type, with cost 0. Chicken pays 0. Drive pays one half times 4 minus 0, when player 2 drives, plus one half times 8, when player 2 chickens: that is 6. So drive.
+
+Player 1 of the harsh type, with cost 16. Chicken pays 0. Drive pays one half times 4 minus 16, plus one half times 8: that is minus 2. So chicken.
+
+So D C is player 1's best reply to d c, and by symmetry d c is player 2's best reply to D C. The ex ante payoff is one half times 6 plus one half times 0, which is 3: the matrix's 3 and 3. It matches.
+
+The prediction is only as good as the payoffs, page 255. With R equal to 8, H equal to 16 and L equal to 0, "harsh upbringing" yields fewer crashes. Tell the story the other way: lenient parents' children respect the car, so L is 16, and harsh parents' children do not, so H is 0. Then the unique equilibrium flips to C D against c d. Same game form, opposite policy advice.
+
+Two point four. Reading a Bayesian Nash equilibrium. This is the intuition layer.
+
+Each type is effectively a separate player, maximizing against his conditional distribution of the others' actions. That is Mas-Colell, Whinston and Green's gloss on Proposition 8.E.1, page 256.
+
+Uncertainty about the opponent's type acts like a mixed strategy by the opponent. Player 1 of the lenient type, above, faces "drive with probability one half", although player 2 plays a pure strategy.
+
+A Bayesian Nash equilibrium is a consistency condition, not a learning story. Beliefs about types are given by the prior; beliefs about strategies must be correct.
+
+The exercises for this part, by address only. Tadelis 12.1, page 266; 12.3, pages 266 and 267; 12.4, page 267. Gibbons problem 3.4, pages 169 and 170. Mas-Colell, Whinston and Green 8.E.1, page 265. Muñoz-Garcia chapter 7, exercise 3, page 327; exercise 4, page 331; exercise 7, page 343.
+
+Recap of part two. A strategy is a function from types to actions, and there are as many as the number of actions raised to the number of types. A Bayesian Nash equilibrium asks each type to maximize his expected payoff given his posterior, checked one action at a time. In the chicken game at 8, 16 and 0, the unique equilibrium is D C against d c, with payoffs 3 and 3, and it flips to C D against c d when the costs are swapped.
+
+You should be able to fill any cell of the chicken matrix from the four states, find the unique equilibrium, and confirm it type by type.
+
+Part three. Cournot with a privately known cost: one quantity for firm 1, two for firm 2.
+
+This part covers note three, on Gibbons section 3.1.A, "Cournot Competition under Asymmetric Information", printed pages 144 to 146, and sections 3.1.B and 3.1.C, pages 147, 150 and 151. Tadelis chapter 12's opening, page 241, and his exercise 12.2, page 266, are cited only. The numerical calibration in this part is illustrative.
+
+The claim. When firm 2 alone knows its marginal cost, its strategy is a pair of quantities, one for the high cost and one for the low cost, and firm 1 best-responds to their expectation. Solving three first-order conditions gives the equilibrium in closed form, and it differs from complete-information Cournot in a definite direction: the high-cost type produces more, the low-cost type less, because each type also responds to firm 1 not knowing which one it is.
+
+Three point one. The game as a static Bayesian game, Gibbons pages 144 and 147.
+
+The players are firms 1 and 2. Their actions are quantities q 1 and q 2, both nonnegative, chosen simultaneously. Firm 1 has one type: its cost c is common knowledge. Firm 2 has two types: a high cost c H or a low cost c L, with c L below c H. The prior: the probability of the high cost is theta, and of the low cost one minus theta, and this is common knowledge. Firm 1's profit is a minus q 1 minus q 2, minus c, all times q 1. Firm 2's profit, when its cost is c k, is a minus q 1 minus q 2, minus c k, all times q 2. Demand is the price P of Q equal to a minus Q, where Q is the sum of the two quantities. Firm 1's strategy is a number, q 1. Firm 2's strategy is a function from its cost to its quantity: a pair.
+
+Firm 2 could be a new entrant, or have a new technology, page 144. One caution: Gibbons writes theta for the probability of the high cost. Here theta is a probability, not a type.
+
+Why firm 2's strategy must be a pair, Gibbons pages 150 and 151. Firm 1 cannot check that q 1 is a best response unless it knows what firm 2 would produce at each cost. A single number for firm 2 would leave firm 1's expected profit undefined.
+
+Three point two. The three optimization problems and their first-order conditions, page 145.
+
+Firm 2 with the high cost maximizes, over q 2, the quantity a minus q 1 star minus q 2, minus c H, all times q 2. The first-order condition is a minus q 1 star minus 2 q 2 minus c H equal to zero. So q 2 star at the high cost equals a minus q 1 star minus c H, all over 2.
+
+Firm 2 with the low cost, the same way: q 2 star at the low cost equals a minus q 1 star minus c L, all over 2.
+
+Firm 1 does not know which type it faces, so it maximizes expected profit: theta times a minus q 1 minus q 2 star at c H, minus c, times q 1; plus one minus theta times a minus q 1 minus q 2 star at c L, minus c, times q 1.
+
+Differentiate. Theta times a minus 2 q 1 minus q 2 star at c H minus c, plus one minus theta times a minus 2 q 1 minus q 2 star at c L minus c, equals zero.
+
+So q 1 star equals theta times a minus q 2 star at c H minus c, plus one minus theta times a minus q 2 star at c L minus c, all over 2. That simplifies to a minus c minus the expected quantity of firm 2, all over 2, where the expected quantity of firm 2 is theta times its high-cost quantity plus one minus theta times its low-cost quantity.
+
+Hold this. Firm 1's problem is linear in q 2, so only the mean of firm 2's quantity matters to it. That is special to linear demand.
+
+Three point three. Solving, every step.
+
+Write c bar for firm 2's expected cost: theta times c H plus one minus theta times c L. Average firm 2's two first-order conditions with weights theta and one minus theta. The expected quantity of firm 2 equals a minus q 1 star minus c bar, all over 2.
+
+Substitute into firm 1's condition. q 1 star equals a minus c minus one half of a minus q 1 star minus c bar, all over 2. Multiply by 2: 2 q 1 star equals a over 2 minus c plus q 1 star over 2 plus c bar over 2. Collect the q 1 star terms: three halves of q 1 star equals a minus 2 c plus c bar, all over 2.
+
+So the boxed result: q 1 star equals a minus 2 c plus theta c H plus one minus theta c L, all over 3.
+
+Back into firm 2's high-cost condition, using c bar equal to c H minus one minus theta times c H minus c L. q 2 star at c H equals a minus c H over 2, minus a minus 2 c plus c bar over 6. That is 2 a plus 2 c minus c bar minus 3 c H, all over 6, which is 2 a plus 2 c minus 4 c H plus one minus theta times c H minus c L, all over 6.
+
+The boxed result: q 2 star at the high cost equals a minus 2 c H plus c, all over 3, plus one minus theta over 6, times c H minus c L.
+
+Likewise, using c bar equal to c L plus theta times c H minus c L, the boxed result: q 2 star at the low cost equals a minus 2 c L plus c, all over 3, minus theta over 6, times c H minus c L.
+
+Gibbons assumes the first-order conditions characterize the solutions, which means all three quantities are positive. He leaves a sufficient condition as an exercise on page 145.
+
+Three point four. Comparison with complete information, page 146.
+
+Under complete information with costs c 1 and c 2, firm i produces a minus 2 c i plus c j, all over 3.
+
+So firm 2 at the high cost would produce a minus 2 c H plus c, over 3. In the Bayesian equilibrium it produces one minus theta over 6 times c H minus c L more: it produces more. Firm 2 at the low cost would produce a minus 2 c L plus c, over 3. In the equilibrium it produces theta over 6 times c H minus c L less: it produces less.
+
+Why. In Gibbons's words, firm 2 "not only tailors its quantity to its cost but also responds to the fact that firm 1 cannot do so". That is page 146. Facing a high-cost rival, firm 1 would expand. Not knowing, it produces the average, which is less than it would produce against a known high-cost firm. So the high-cost type, facing less rival output than under complete information, produces more. The low-cost type faces more, and produces less.
+
+The "potentially misleading feature", page 146. Here q 1 star equals the average of firm 1's two complete-information quantities: theta times a minus 2 c plus c H, over 3, plus one minus theta times a minus 2 c plus c L, over 3, equals a minus 2 c plus c bar, over 3, which is q 1 star. But that holds only because costs enter linearly. Gibbons's counterexample: total cost c i times q i squared.
+
+Three point five. Worked: an illustrative calibration.
+
+Gibbons states the model in letters only. Take a equal to 10, c equal to 2, c H equal to 3, c L equal to 1, and theta equal to one half. These are illustrative. Then c bar is 2.
+
+q 1 star is 10 minus 4 plus 2, over 3, which is eight thirds, about 2.667.
+
+q 2 star at the high cost is 10 minus 6 plus 2, over 3, plus one half over 6 times 2: that is 2 plus one sixth, which is thirteen sixths, about 2.167.
+
+q 2 star at the low cost is 10 minus 2 plus 2, over 3, minus one half over 6 times 2: that is ten thirds minus one sixth, which is nineteen sixths, about 3.167.
+
+The expected quantity of firm 2 is one half of thirteen sixths plus nineteen sixths, which is eight thirds.
+
+Check each first-order condition. 10 minus eight thirds minus 3, over 2, is thirteen thirds over 2, which is thirteen sixths. Correct. 10 minus eight thirds minus 1, over 2, is nineteen thirds over 2, which is nineteen sixths. Correct. 10 minus 2 minus eight thirds, over 2, is sixteen thirds over 2, which is eight thirds. Correct.
+
+The complete-information benchmarks. Against the high cost: q 1 is 10 minus 4 plus 3, over 3, which is 3, and q 2 is 10 minus 6 plus 2, over 3, which is 2. Against the low cost: q 1 is 10 minus 4 plus 1, over 3, which is seven thirds, and q 2 is 10 minus 2 plus 2, over 3, which is ten thirds. Indeed thirteen sixths is more than 2, nineteen sixths is less than ten thirds, and q 1 star is one half of 3 plus seven thirds, which is eight thirds.
+
+Profits. With linear demand each first-order condition says the margin equals the quantity. For example, a minus q 1 minus q 2 star at c H, minus c H, equals q 2 star at c H. So each profit is a square.
+
+Firm 1's expected profit in the Bayesian equilibrium is eight thirds squared, sixty-four ninths, about 7.111. Under complete information it would be one half of 3 squared plus one half of seven thirds squared, which is sixty-five ninths, about 7.222. Firm 1 loses from the asymmetry.
+
+Firm 2 at the high cost earns thirteen sixths squared, about 4.694, against 2 squared, which is 4, under complete information. The high-cost type gains.
+
+Firm 2 at the low cost earns nineteen sixths squared, about 10.028, against ten thirds squared, about 11.111. The low-cost type loses.
+
+The figure for this part draws the best-response lines in the plane of q 1 and q 2. Firm 2 has two lines, one for the high cost and one for the low cost. Firm 1 has one line, drawn against firm 2's expected quantity. The equilibrium has one q 1, eight thirds, on a vertical line, with two points on it: q 2 equal to thirteen sixths for the high cost and nineteen sixths for the low cost. Hollow points mark the complete-information outcomes at 3 and 2, and at seven thirds and ten thirds. Firm 1's line crosses the vertical only at the mean, eight thirds. The high-cost point lies to the left of its complete-information twin, because firm 1 produces less than the 3 it would produce against a known high-cost rival, and therefore higher on firm 2's high-cost line.
+
+The exercises for this part, by address only. Tadelis 12.2, page 266. Gibbons problems 3.2 and 3.3, page 169. Mas-Colell, Whinston and Green 8.E.3, page 265. Muñoz-Garcia chapter 7, exercise 5, page 336.
+
+Recap of part three. Firm 2's strategy is a pair of quantities; firm 1 responds to their mean. Three first-order conditions give q 1 star equal to a minus 2 c plus the expected cost, over 3, and two quantities for firm 2 that differ from complete information by one minus theta over 6, or theta over 6, times the cost gap. The high-cost type produces more, the low-cost type less. In the illustrative calibration, firm 1 and the low-cost type lose from the asymmetry, and the high-cost type gains.
+
+You should be able to derive all three quantities from the first-order conditions, and say in one sentence why the high-cost type expands.
+
+Part four. Continuous types: best responses are thresholds, and mixed strategies are pure strategies of a perturbed game.
+
+This part covers note four, on Tadelis section 12.2.2, the study groups, equations 12.3 to 12.6, Claims 12.1 and 12.2 and Figure 12.4, pages 255 to 258; Tadelis section 12.5, Harsanyi's interpretation of mixed strategies, Claim 12.3, pages 264 to 266; Gibbons section 3.2.A, the Battle of the Sexes with incomplete information, equations 3.2.1 and 3.2.2, pages 152 to 154; and Mas-Colell, Whinston and Green Example 8.E.2, page 256.
+
+The claim. With a continuum of types and two actions, a player's best response to any strategy of the other is a cutoff in his own type, so the search for an equilibrium collapses from functions to numbers. Two payoffs follow. The study-group game has the unique equilibrium threshold c to the power one third. And Harsanyi's purification reads a mixed-strategy equilibrium as the limit of pure, type-contingent play when each player's payoff carries a small private perturbation.
+
+Four point one. Study groups, Tadelis section 12.2.2, pages 255 to 258.
+
+The game. Two students hand in a joint lab. Each chooses effort e i equal to 1, at cost c, with c below 1, or shirks, e i equal to 0, which is free. The lab succeeds if at least one of them works. Student i's type theta i is uniform on the interval from 0 to 1, independently across the two; his value of success is theta i squared.
+
+If i works, his payoff is theta i squared minus c, and success is guaranteed. If i shirks, his payoff is theta i squared if j works, and 0 if j shirks.
+
+A pure strategy is a function from the interval 0 to 1 into the set of 0 and 1. That is a continuum of strategies, so neither a tree nor a matrix helps, page 255.
+
+Only one number about j matters. Whatever j's strategy is, i's payoff from shirking depends on it only through the probability that j works. Working is a weak best response if and only if theta i squared minus c is at least theta i squared times the probability that j works. Equivalently, theta i squared times one minus the probability that j works is at least c. Equivalently, theta i is at least the square root of c divided by one minus the probability that j works. That is equation 12.3.
+
+Claim 12.1, page 256. The best response of player i to any strategy of j is a threshold rule: there is a cutoff theta hat i such that i works if and only if his type is at least theta hat i.
+
+The right side of equation 12.3 is a constant for a given strategy of j, so the set of types who work is an upper interval. The intuition, page 256. If j surely shirks, i works if and only if theta i is at least the square root of c. Any chance that j works lets i free-ride, so types just above the square root of c now shirk. And if j works with high enough probability, the cutoff exceeds 1, and i always shirks.
+
+The best response to a threshold. If j uses the cutoff theta hat j, then the probability that j works is the probability that theta j is at least theta hat j, which is one minus theta hat j. Equation 12.3 becomes: theta i is at least the square root of c over theta hat j. That is equation 12.4. A cutoff cannot exceed 1, so the best response, equation 12.5, has two branches. If theta hat j is at least c, the best-response cutoff is the square root of c over theta hat j. If theta hat j is below c, the best-response cutoff is 1.
+
+The equilibrium: Claim 12.2, page 257. In the unique Bayesian Nash equilibrium each player uses the same threshold theta hat star, strictly between 0 and 1.
+
+Interior candidates. Both players are on the top branch of equation 12.5. Theta hat 1 equals the square root of c over theta hat 2, and theta hat 2 equals the square root of c over theta hat 1. That is equation 12.6. Square both: theta hat 1 squared times theta hat 2 equals c, and theta hat 2 squared times theta hat 1 equals c. Divide the first by the second: theta hat 1 over theta hat 2 equals 1. So the two cutoffs are equal, to theta hat star, and theta hat star cubed equals c.
+
+The boxed result: theta hat star equals c to the power one third. Since c is below 1, c is below its square root, which is below its cube root, which is below 1.
+
+No corner equilibrium. Suppose theta hat j is below c. Then i's best-response cutoff is 1: i never works. But then j's best response to a cutoff of 1 is the square root of c, which is above c. That contradicts theta hat j being below c. So the equilibrium strategies are: shirk if theta i is below the cube root of c, and work if theta i is at or above it, for both students. The tie exactly at the cutoff is broken toward work; it has probability zero, footnote 4 on page 256.
+
+Worked, with c equal to one eighth. This value is illustrative. The cutoff if the partner surely shirks, the square root of c, is 0.354. The equilibrium cutoff, the cube root of c, is 0.5. Check: 0.5 squared times 0.5 is 0.5 cubed, which is 0.125, which is c. Correct. The probability a given student works, one minus the cutoff, is 0.5. The probability the lab fails, which means both shirk, is the cutoff squared, 0.25.
+
+The figure for this part draws the two best-response threshold curves of equation 12.5 for c equal to one eighth. Player 2's curve falls from 1, at player 1's cutoff equal to c, down to the square root of c, at player 1's cutoff equal to 1. Player 1's curve is its mirror image. They cross once, at the cube root of c, which is 0.5, as in Tadelis's Figure 12.4 on page 257. Each curve is decreasing. That is free-riding: the harder my partner works, which means the lower his cutoff, the higher my own cutoff. The flat segment at 1 is the region where theta hat j is below c, where j works so often that no type of i bothers. The curves cannot cross on that segment, which is the corner argument drawn.
+
+Mas-Colell, Whinston and Green have the identical example. Their Example 8.E.2, page 256, the "Zigger" R and D consortium: types uniform on 0 to 1, benefit theta i squared, cost c. Their condition 8.E.3 is equation 12.3 in other letters.
+
+Four point two. What the threshold result buys. This is the intuition layer.
+
+From functions to numbers. A strategy is any map from the interval 0 to 1 into the two actions. Claim 12.1 says only monotone cutoff maps can be best responses, so the equilibrium is a fixed point in one number per player. The same reduction drives the auction parts: a bid function is pinned down by one differential equation, in part seven.
+
+Monotonicity comes from the payoff, not from an assumption here. The benefit of working, theta i squared times one minus the probability that j works, rises with theta i, while the cost c does not.
+
+Four point three. Harsanyi's interpretation of mixed strategies, Tadelis section 12.5, pages 264 to 266.
+
+The discomfort. In Matching Pennies, the unique equilibrium has each player mix 50 50, although each is indifferent between heads and tails at that point. That is Lecture 2. Why randomize in exactly that proportion?
+
+Perturbed Matching Pennies, page 265. Player 1 is the row player, player 2 the column player, and each chooses heads or tails. If both play heads, player 1 gets 1 plus epsilon 1 and player 2 gets minus 1 plus epsilon 2. If player 1 plays heads and player 2 tails, player 1 gets minus 1 plus epsilon 1 and player 2 gets 1. If player 1 plays tails and player 2 heads, player 1 gets minus 1 and player 2 gets 1 plus epsilon 2. If both play tails, player 1 gets 1 and player 2 gets minus 1. Each epsilon i is uniform on the interval from minus epsilon to plus epsilon, independently, and known only to player i: a small private taste for heads. A strategy maps epsilon i to heads or tails.
+
+Claim 12.3. The unique pure-strategy Bayesian Nash equilibrium has each player play heads if and only if epsilon i is at least zero, and tails otherwise. Its outcomes and payoffs converge to the mixed equilibrium of Matching Pennies as epsilon goes to zero.
+
+Verification of the equilibrium, page 265. If j uses this rule, j plays heads with the probability that epsilon j is at least zero, which is one half. Facing a 50 50 opponent, i strictly prefers heads if and only if epsilon i is positive: exactly the rule. Uniqueness takes more work; it is exercise 12.10, page 269.
+
+Worked: Gibbons's Battle of the Sexes, section 3.2.A, pages 152 to 154. Chris is the row player, Pat the column player, and each chooses Opera or Fight. If both choose Opera, Chris gets 2 plus t c and Pat gets 1. If both choose Fight, Chris gets 1 and Pat gets 2 plus t p. If they choose differently, both get 0. The perturbations t c and t p are uniform on the interval from 0 to x, independent and private. The complete-information game, with x equal to zero, has a mixed equilibrium in which Chris plays Opera with probability two thirds and Pat plays Fight with probability two thirds.
+
+The candidate. Chris plays Opera if and only if t c is at least a cutoff c. Pat plays Fight if and only if t p is at least a cutoff p. Then Chris plays Opera with probability x minus c over x, and Pat plays Opera with probability p over x.
+
+Chris's best response. Opera pays p over x times 2 plus t c. Fight pays one minus p over x, times 1. Opera is better if and only if p over x times 2 plus t c is at least one minus p over x; equivalently, 2 plus t c is at least x over p minus 1; equivalently, t c is at least x over p minus 3. That must be the cutoff c. This is equation 3.2.1.
+
+Pat's best response. Fight pays c over x times 2 plus t p. Opera pays one minus c over x, times 1. Fight is better if and only if t p is at least x over c minus 3, which must be the cutoff p. This is equation 3.2.2.
+
+Solve. The two conditions are symmetric, so p equals c, and c equals x over c minus 3. That is c squared plus 3 c minus x equal to zero. So c equals minus 3 plus the square root of 9 plus 4 x, all over 2. And the probability that Chris plays Opera, x minus c over x, equals 1 minus, minus 3 plus the square root of 9 plus 4 x, all over 2 x.
+
+The limit. The square root of 9 plus 4 x equals 3 times the square root of 1 plus 4 x over 9, which is 3 plus 2 x over 3, plus terms of order x squared. So minus 3 plus that square root, over 2 x, tends to one third, and the probability of Opera tends to two thirds.
+
+The numbers. At x equal to 1, the cutoff is 0.3028 and the probability of Opera is 0.6972. At x equal to 0.5, the cutoff is 0.1583 and the probability is 0.6834. At x equal to 0.1, the cutoff is 0.0330 and the probability is 0.6703. At x equal to 0.01, the cutoff is 0.0033 and the probability is 0.6670. As x goes to zero, the cutoff goes to zero and the probability goes to two thirds.
+
+The point of purification, Gibbons page 152. In his words, "the crucial feature of a mixed-strategy Nash equilibrium is not that player j chooses a strategy randomly, but rather that player i is uncertain about player j's choice." Each player is a pure-strategy, type-contingent player; the population of types looks mixed.
+
+Four point four. The general theorem. This is the graduate layer, named, not examinable.
+
+Harsanyi's 1973 purification theorem says that almost every mixed equilibrium of a complete-information game is the limit of pure-strategy Bayesian Nash equilibria of nearby games with small independent payoff perturbations. Tadelis page 265 refers to Govindan, 2003, for a short proof, and Gibbons page 152 notes the rare exceptions.
+
+The exercises for this part, by address only. Tadelis 12.9 and 12.10, page 269, and 12.7, page 268. Gibbons problem 3.5, page 170. Muñoz-Garcia chapter 7, exercise 6, page 339.
+
+Recap of part four. With two actions and a continuum of types, best responses are cutoffs. In the study groups, the best-response cutoff is the square root of c over the partner's cutoff, the curves are decreasing because of free-riding, and the unique equilibrium cutoff is the cube root of c. Purification: a small private taste turns a mixed equilibrium into pure type-contingent play, and in Gibbons's Battle of the Sexes the probability of Opera tends to two thirds as the perturbation vanishes.
+
+You should be able to derive equation 12.3 from the payoffs, solve the fixed point for the cube root of c, rule out the corner, and derive Gibbons's cutoff and its limit.
+
+Part five. Adverse selection: a single price buys the bottom of the pool, and trade unravels.
+
+This part covers note five, the longest in the unit. Its sources are Tadelis section 12.3, "Inefficient Trade and Adverse Selection", printed pages 258 to 261, with Figure 12.5, Proposition 12.1 and the values 10, 20, 30 and 14, 24, 34; Milgrom and Roberts chapter 5, "Adverse Selection", pages 149 to 153, with equations 5.1 and 5.2, Figure 5.1 and the bank example; Cabral section 7.4, pages 174 to 176, with Figure 7.11; Gibbons section 3.2.C, "A Double Auction", pages 158 to 163, with equations 3.2.5 to 3.2.8 and Figures 3.2.1 to 3.2.3; and Mas-Colell, Whinston and Green section 13.B, pages 437 to 447.
+
+The claim. When the seller knows the quality and the buyer does not, any one price attracts exactly the sellers whose quality is below it. So the buyer pays for an average that falls as the good types withdraw. In Tadelis's example every unit is worth 4 more to the buyer than to the seller, yet only the lowest quality can trade in any Bayesian Nash equilibrium. The same logic closes insurance markets, in Milgrom and Roberts and in Cabral. And with two-sided private information, no equilibrium of a double auction trades exactly when trade is efficient, in Gibbons.
+
+Five point one. What perfect information was doing for markets, page 258. This is the intuition layer.
+
+The competitive argument goes like this. If a good is held by someone who values it less than someone else, market pressure raises its price until the owner sells. With perfect information and no transaction costs, the Coase theorem says ownership ends up with whoever values the good most, whatever the initial allocation. Lecture 4 covered the bargaining side. Akerlof, in 1970, asked what is left of this when the seller knows more than the buyer.
+
+Five point two. The orange grove, pages 258 and 259.
+
+The types. Player 1 owns a grove of quality L, M or H, each with probability one third, and only he knows it. The values: quality L is worth 10 to the seller and 14 to the buyer; quality M is worth 20 to the seller and 24 to the buyer; quality H is worth 30 to the seller and 34 to the buyer. The gain from trade is 4 at every quality.
+
+The game, Figure 12.5. Player 2, a soybean grower, makes a take-it-or-leave-it offer of a price p, at least zero. Player 1 accepts or rejects. A strategy for player 2 is a price. A pure strategy for player 1 is a map from the price and his type to accept or reject. On acceptance, the seller gets p minus his value, and the buyer gets his value of that quality minus p. Otherwise both get zero.
+
+Efficiency says every grove should change hands: the buyer values every quality more. Under complete information it would. With quality known to be L, the ultimatum game's subgame perfect equilibrium has the buyer offer 10 and the seller accept, and any price between 10 and 14 is a Nash equilibrium, page 259, footnote 5.
+
+Five point three. Unravelling, step by step, pages 259 and 260.
+
+The naive candidate. On average the land is worth one third of 14 plus 24 plus 34, which is 24, to the buyer, and one third of 10 plus 20 plus 30, which is 20, to the seller. So offer 20?
+
+Walk through the price ranges in four steps.
+
+Step one. A price from 20 up to, but not including, 30. Types L and M accept, each with probability one half given a sale, footnote 6. The buyer's value of that accepting pool is one half of 14 plus one half of 24, which is 19. The buyer's payoff is 19 minus p, which is negative.
+
+Step two. A price of 30 or more. All three types accept. The pool is worth 24 to the buyer. His payoff is 24 minus p, which is at most minus 6: negative.
+
+Step three. A price from 10 up to, but not including, 20. Only type L accepts. The pool is worth 14. The buyer's payoff, 14 minus p, is nonnegative if and only if p is at most 14.
+
+Step four. A price below 10. Nobody accepts, and the buyer gets zero.
+
+The Bayes step in step one: conditional on a sale, the grove is L or M with prior weights one third and one third, renormalized to one half and one half.
+
+Proposition 12.1, page 260. Trade can occur in a Bayesian Nash equilibrium only if it involves the lowest type of player 1 trading. Furthermore, any price p star between 10 and 14 can be supported as a Bayesian Nash equilibrium.
+
+The supporting strategies, page 260. Player 2 offers p star. Player 1 of type L accepts if and only if the price is at least p star; type M if and only if it is at least 20; type H if and only if it is at least 30.
+
+Check player 2. At p star he gets one third of 14 minus p star, which is nonnegative. A lower price is refused and gives 0. A price between p star and 20 buys the same L grove for more. A price from 20 to 30 gives two thirds of 19 minus p, which is negative. A price of 30 or more gives 24 minus p, which is negative. So p star is a best response if and only if p star is at most 14.
+
+Check player 1. At a price p star between 10 and 14, type L gains p star minus 10, which is nonnegative, by accepting, and types M and H would lose by accepting.
+
+The definition of adverse selection, page 260. When the buyer offers his average value, the sellers willing to sell at that price are below average: the best types select themselves out. In the example the traded quality falls all the way to the bottom.
+
+Two things make it bite, pages 260 and 261. First, common values: the seller's type enters the buyer's payoff, because the buyer's value depends on the quality. With private values the buyer would not care who accepts. Second, talk is cheap: "My soil is of high quality" is worthless, because every type would say it. A credible revelation of type changes the outcome. That is signaling, Lecture 8, Tadelis chapter 16.
+
+Five point four. Worked: how much premium does trade need?
+
+Generalize the grove. There are K equally likely qualities. Quality k is worth v k to the seller, where v k equals v 1 plus k minus 1 times s, and s is the quality spread. The buyer values quality k at v k plus Delta, the premium. Qualities 1 through k can trade if and only if the buyer does not lose on that pool at the price v k, the price that brings in the k-th quality. The mean seller value of qualities 1 through k is v 1 plus k minus 1 times s over 2. So the condition is: v 1 plus k minus 1 times s over 2, plus Delta, is at least v 1 plus k minus 1 times s. That holds if and only if Delta is at least k minus 1 times s, over 2. That is the boxed condition.
+
+In Tadelis's numbers, s is 10 and K is 3. For k equal to 1, only L, the premium needed is 0. For k equal to 2, L and M, it is 5. For k equal to 3, all qualities, it is 10. At Delta equal to 4, only the first trades; the other two are out.
+
+Three consequences. First, the level v 1 drops out: only the spread of quality the seller knows about, relative to the gain from trade, matters. Second, the gains lost. With full information every grove trades, and the expected gain is Delta, which is 4. In the best equilibrium only L trades, so the expected gain is one third of 4, which is four thirds. Two thirds of the surplus are destroyed. Third, the buyer's preferred equilibrium. Offering v k yields him k over K times the quantity Delta minus k minus 1 times s over 2. At Delta equal to 4, only k equal to 1 gives a positive value: offer 10, and his expected surplus is one third of 4, which is four thirds.
+
+The figure for this part has two panels. The left panel is Tadelis's orange grove: the buyer's expected value of the sellers who accept a price p, which is a step function at 14, 19 and 24, drawn against the 45-degree line. Only the band of prices from 10 to 14 lies under the step. Trade is possible where what a price buys, the step, is at least the price, the 45-degree line. Every jump of the step comes too late. When the price reaches 20 the pool improves to 19, one short of the price that bought the improvement. At 30 it improves to 24, six short. The right panel is Mas-Colell, Whinston and Green's Example 13.B.1, page 442, the continuous version, described in five point eight below.
+
+Five point five. Insurance: the buyer is the informed side. Milgrom and Roberts, pages 149 to 152.
+
+Why insurance. The people who buy a policy are not a random sample: they know something about their expected claims. Milgrom and Roberts' example is maternity coverage, page 149. Here the buyer has the private information, and the bad types are the high-cost ones.
+
+The model. A buyer's expected claims, x, are uniform between 0 and x bar, and private. A buyer also values the risk reduction itself at v. So she buys at price P if and only if P is at most v plus x, that is, if and only if x is at least P minus v. The insurer pays 1 plus c per dollar of claims, where c is the administration cost. If the marginal buyer has claims x, the pool's average claim is x plus x bar, over 2.
+
+Equation 5.1, the insurer's break-even price: P s of x equals one half of x plus x bar, times 1 plus c.
+
+Equation 5.2, the price at which buyer x is just willing: P b of x equals x plus v.
+
+When does a market exist? There must be some x at which P b is at least P s. The gap, P b minus P s, equals one minus c over 2 times x, plus v, minus one plus c over 2 times x bar. It rises with x when c is below 1, so it is largest at x equal to x bar, where it equals v minus c times x bar.
+
+The boxed result, page 152: the market breaks down if and only if c times x bar is greater than v. The highest-claim customer must be worth serving on her own.
+
+Mandatory coverage, everyone in, has average benefit v plus x bar over 2 and average cost 1 plus c times x bar over 2. It is worthwhile if and only if v is greater than c times x bar over 2. Hence the band: when c times x bar is greater than v, and v is greater than c times x bar over 2, insurance is desirable, but no private individual market survives. That is the case for group insurance, through the employer, a private-sector fix, page 152.
+
+An illustration, with x bar equal to 100 and c equal to 0.1. These numbers are illustrative. The market exists if and only if v is at least 10. Mandatory coverage pays if and only if v is above 5. At v equal to 8, insurance is efficient and the market is closed.
+
+Credit rationing, Milgrom and Roberts page 153. Safe borrowers, type A, repay 1.1 million for sure. Risky borrowers, type B, have projects that pay 0.9 million or 1.3 million. Raising the loan rate to just over 10 per cent drives out the A borrowers, who would pay more than they earn, and keeps the B borrowers, whose expected profit is one half of 1.3 minus 1.1, which is 0.1 million. So the bank's pool worsens and its return falls. The price the lender charges changes the quality of its customers. That is Stiglitz and Weiss credit rationing.
+
+Five point six. Worked: Cabral's insurer, section 7.4, pages 174 to 176.
+
+Ten per cent of patients are high risk. A year's insurance is worth 20 to a high-risk patient and 3 to a low-risk one; it costs the insurer 30 for a high-risk patient and 1 for a low-risk one. All figures are in thousands of dollars. The averages: value 0.1 times 20 plus 0.9 times 3, which is 4.7; cost 0.1 times 30 plus 0.9 times 1, which is 3.9. The insurer considers a price of 4.5, between the two averages, and a price of 30.
+
+At a price of 4.5, the high-risk patients, one tenth of the population, buy, because 20 is at least 4.5, and the insurer makes 4.5 minus 30, which is minus 25.5, on each. The low-risk patients do not buy, because 3 is less than 4.5. The insurer's expected profit is 0.1 times minus 25.5, which is minus 2.55.
+
+At a price of 30, neither type buys, and the profit is zero.
+
+So the insurer sets the price at 30, and nobody is insured. Cabral prints minus 2.5, rounding minus 2.55.
+
+Now reverse the information. Suppose the patient does not know his own risk either; that is Cabral's Figure 7.12. Then the price of 4.5 is accepted by the "average" patient, since 4.7 is at least 4.5, and the insurer earns 4.5 minus 3.9, which is 0.6, a positive amount. Same numbers; only who knows what, and when, changed. That is page 176.
+
+Five point seven. Two-sided private information: the double auction. Gibbons section 3.2.C, pages 158 to 163.
+
+The game. A seller with value v s and a buyer with value v b are each privately informed. Both values are uniform on 0 to 1, independent. Simultaneously the seller names an ask, p s, and the buyer an offer, p b. If the offer is at least the ask, they trade at the price p equal to the average of the two, p b plus p s over 2. Otherwise there is no trade. On trade, the buyer gets v b minus p and the seller gets p minus v s; otherwise both get 0. Strategies are functions: p b of v b, and p s of v s. Trade is efficient if and only if v b is at least v s.
+
+There are many equilibria. First, the one-price family, pages 159 and 160. For any x between 0 and 1: the buyer offers x if v b is at least x, and 0 otherwise; the seller asks x if v s is at most x, and 1 otherwise. Given the other's strategy, each side's choice is just "trade at x or not", and exactly the types who prefer trading at x do so. Trade happens if and only if v s is at most x and x is at most v b.
+
+The expected gains of a one-price equilibrium: integrate v b minus v s over v s from 0 to x and over v b from x to 1. That is x times one minus x, times the difference between the mean buyer value in the trading region, one plus x over 2, and the mean seller value, x over 2. The difference is one half, so the gains are x times one minus x, over 2. That is largest, at one eighth, when x equals one half.
+
+The linear equilibrium, derived, pages 160 and 161.
+
+The buyer's best reply to a linear seller. Suppose the seller asks p s equal to a s plus c s times v s. Then the ask is uniform between a s and a s plus c s. Given trade, the expected ask, conditional on the ask being at most the offer, is a s plus p b, over 2. And the probability that the ask is at most the offer is p b minus a s, over c s. The buyer maximizes v b minus one half of p b plus a s plus p b over 2, all times p b minus a s over c s. That simplifies to v b minus 3 p b plus a s over 4, times p b minus a s over c s.
+
+The first-order condition: minus three quarters of p b minus a s, plus v b minus 3 p b plus a s over 4, equals zero. Multiply through by 4 and collect: 4 v b equals 6 p b minus 2 a s. So p b equals two thirds of v b plus one third of a s. That is equation 3.2.5.
+
+The seller's best reply to a linear buyer. Suppose the buyer offers p b equal to a b plus c b times v b, which is uniform between a b and a b plus c b. Write capital A for a b plus c b, the top of the offers. The seller maximizes one half of p s plus p s plus A over 2, minus v s, all times A minus p s over c b. The first-order condition gives three quarters of A minus p s, minus the quantity 3 p s plus A over 4 minus v s, equal to zero. So p s equals two thirds of v s plus one third of a b plus c b. That is equation 3.2.6.
+
+The fixed point. From equation 3.2.5, c b is two thirds and a b is a s over 3. From equation 3.2.6, c s is two thirds and a s is a b plus c b, over 3. Then a s equals one third of a s over 3 plus two thirds. So eight ninths of a s equals two ninths, and a s is one quarter. Then a b is one twelfth.
+
+The boxed result, equations 3.2.7 and 3.2.8: the buyer offers two thirds of v b plus one twelfth, and the seller asks two thirds of v s plus one quarter.
+
+When do they trade? The offer is at least the ask if and only if two thirds of v b minus v s is at least one quarter minus one twelfth, which is one sixth. That holds if and only if v b is at least v s plus one quarter. That is the boxed trade condition.
+
+Seller types above three quarters ask more than the highest offer, which is p b of 1, equal to three quarters. Buyer types below one quarter offer less than the lowest ask, which is p s of 0, equal to one quarter. That is page 161.
+
+How much is lost. Three cases.
+
+The efficient benchmark trades if and only if v b is at least v s. Its expected gains are the integral of v b minus v s over the triangle above the diagonal, which is one sixth, about 0.1667. That is 100 per cent.
+
+The linear equilibrium trades if and only if v b is at least v s plus one quarter. Its expected gains are nine sixty-fourths, about 0.1406: 84.4 per cent of the efficient gains.
+
+The one-price equilibrium at x equal to one half trades if and only if v s is at most one half and v b is at least one half. Its expected gains are one eighth, 0.125: 75 per cent.
+
+The linear figure, computed. For a fixed seller value v s up to three quarters, integrate v b minus v s over v b from v s plus one quarter to 1. That gives one half of the quantity one minus v s squared, minus one sixteenth. Substitute u for one minus v s, and integrate one half of u squared minus one sixteenth, for u from one quarter to 1. The antiderivative is u cubed over 6 minus u over 32. Evaluated between one quarter and 1, it gives fifty-two over 384 plus two over 384, which is fifty-four over 384, which is nine sixty-fourths.
+
+The figure for this part draws the unit square, with the seller's value on one axis and the buyer's value on the other. The left panel shows the one-price equilibrium at x equal to one half, which trades only in the top-left quarter of the square. The right panel shows the linear equilibrium, which trades above the line v b equal to v s plus one quarter. Both regions sit inside the efficient triangle above the diagonal. The one-price equilibrium misses valuable trades and makes some trades worth almost nothing; the linear one misses only trades worth less than one quarter. That is Gibbons Figures 3.2.1 and 3.2.3, pages 160 to 163.
+
+Myerson and Satterthwaite, named only. Among all Bayesian Nash equilibria of the double auction, the linear one gives the highest expected gains. And no bargaining game the two would willingly play trades if and only if v b is at least v s. That is Gibbons pages 162 and 163. Proving it uses the revelation principle, which is mechanism design, outside this course's scope.
+
+Five point eight. The competitive version. Mas-Colell, Whinston and Green section 13.B, pages 437 to 447. This is the graduate layer: named, not examinable.
+
+Workers of productivity theta, which is private, earn r of theta at home. Firms pay one wage w to all workers.
+
+Definition 13.B.1, page 439. A competitive equilibrium is a wage w star and a set of workers who accept, capital Theta star, such that the set contains exactly the workers whose home earnings are at most w star, and w star equals the expected productivity of the workers in that set. Hence equation 13.B.6, page 441: w star equals the expected value of theta conditional on r of theta being at most w star.
+
+Example 13.B.1, page 442. Theta is uniform between 0 and 2, and r of theta is alpha times theta, with alpha below 1, so every worker belongs in a firm. The applicants at wage w are the workers with theta at most w over alpha, and their average is w over 2 alpha, while w is at most 2 alpha. When alpha is above one half, w over 2 alpha is below w for every positive wage. So the only equilibrium is w star equal to zero: complete unravelling. That is the right panel of the figure, with alpha equal to 0.75, which crosses the 45-degree line only at zero; with alpha equal to 0.4, illustrative, the curve of average productivity, the minimum of w over 2 alpha and 1, crosses at 1.
+
+Multiple equilibria can be Pareto-ranked, Figure 13.B.3, page 442. Proposition 13.B.1, page 443: with wage-setting firms, the subgame perfect equilibrium picks the highest-wage competitive equilibrium. Proposition 13.B.2, page 447: that equilibrium is a constrained Pareto optimum; a planner who cannot see theta cannot improve on it. Named, not examinable.
+
+The exercises for this part, by address only. Tadelis 12.5 and 12.6, pages 267 and 268. Gibbons problem 3.8, page 171. Mas-Colell, Whinston and Green 13.B.1 to 13.B.5, page 473. Milgrom and Roberts Questions 5.3 to 5.5, pages 164 and 165. Cabral exercises 7.9, page 180, and 7.10, page 181.
+
+Recap of part five. A single price attracts the sellers whose quality is below it. In the orange grove the pools are worth 14, 19 and 24 at prices 10, 20 and 30, only the low quality trades, and the equilibrium prices run from 10 to 14. Trade of the k-th quality needs a premium of at least k minus 1 times the spread over 2. In insurance, the market breaks down if and only if c times x bar exceeds v, and there is a band where coverage is efficient and no market survives. Cabral's insurer loses 2.55 at a price of 4.5 and insures nobody. In the double auction the linear equilibrium trades if and only if the buyer's value exceeds the seller's by one quarter, and keeps nine sixty-fourths of the one sixth of possible gains.
+
+You should be able to walk the four price ranges of the grove, derive the premium condition, derive Milgrom and Roberts' breakdown condition, and derive the linear double-auction strategies from the two first-order conditions.
+
+Part six. Second-price and English auctions: bid your value, whatever the others do.
+
+This part covers note six, on Tadelis chapter 13's opening, the four formats, pages 270 and 271; section 13.1 on independent private values, page 272; section 13.1.1, the second-price sealed-bid auction, with Proposition 13.1 and Figure 13.1, pages 272 to 275; section 13.1.2, the English or button auction, with Proposition 13.2, pages 275 and 276; and Cabral section 6.4, pages 140 to 142.
+
+The claim. In the second-price sealed-bid auction, bidding one's value is weakly dominant: a Bayesian Nash equilibrium that needs no beliefs at all. The English, or button, auction has the same outcome: the highest-value bidder wins and pays the second-highest value. Lecture 1 met the dominance argument as a complete-information game; here it becomes a strategy, a map from types to bids, in which each type bids his value.
+
+Six point one. Four auctions, one Bayesian game, pages 270 to 272.
+
+The four formats sort along two dimensions: open or sealed, and paying the second-highest price or your own price.
+
+The English auction is open and pays the second price: the price rises until one bidder is left, and he pays where the last rival quit.
+
+The second-price sealed-bid auction, also called the Vickrey auction, is sealed and pays the second price: the highest bid wins and pays the highest losing bid.
+
+The Dutch auction is open and pays your own price: the price falls until someone shouts "buy" and pays that price.
+
+The first-price sealed-bid auction is sealed and pays your own price: the highest bid wins and pays his bid.
+
+The two strategic equivalences that this part and the next establish follow those rows: English is close to second-price, and Dutch is identical to first-price. An auction is a Bayesian game, page 271: the players are bidders, the actions are bids, payoffs depend on winning and paying, and nobody knows the others' valuations.
+
+The independent private values setting, page 272. Bidder i's value is his type theta i, in an interval from a lowest value theta lower bar i to a highest value theta upper bar i, drawn from a distribution F i, independently across bidders. Winning at price p pays theta i minus p; losing pays 0. Private values: i's payoff depends on his own type only. Tadelis's image is the filet mignon that must be eaten within the hour, page 272. The seller is not a player: once he fixes the rules, he has no further move.
+
+Six point two. The second-price sealed-bid auction, pages 272 to 274.
+
+The payoff, page 273. Write b j star for the highest of the other bidders' bids. If i's bid is above every other bid, he gets theta i minus b j star. If some other bid is at least his, he gets 0. That is Tadelis's baseline tie rule: tied top bidders get nothing. The Remark on page 274 replaces it with a random winner paying his own bid, and nothing below changes.
+
+A strategy is a function from i's interval of values to the nonnegative real numbers: a bid for each value.
+
+Proposition 13.1, page 273. In the second-price sealed-bid auction, each player has a weakly dominant strategy, which is to bid his true valuation. The profile in which every player bids his value is a Bayesian Nash equilibrium in weakly dominant strategies.
+
+The proof, by three cases, pages 273 and 274, Figure 13.1. Fix a value theta i and an underbid b i below theta i. Let b j star be the highest rival bid. Split the line into three regions. Region L: the highest rival bid is below the underbid. Region M: it is between the underbid and the value. Region H: it is above the value.
+
+Case one, the highest rival bid in region L. The underbid wins and pays b j star. The truthful bid also wins and pays b j star: the same price. Equal.
+
+Case two, the highest rival bid in region H. The underbid loses and gets 0. The truthful bid also loses and gets 0. Equal.
+
+Case three, the highest rival bid in region M. The underbid loses and gets 0. The truthful bid wins and gets theta i minus b j star, which is positive. Truthful is strictly better.
+
+Never worse, sometimes strictly better: the value weakly dominates every lower bid. An overbid, above the value, is the mirror image. It changes the outcome only when the highest rival bid lies between the value and the overbid, and there it wins at a price above the value. Tadelis leaves that write-up as exercise 13.1, page 285.
+
+Why it works. Your bid decides whether you win, never what you pay. The price is set by someone else's bid, so the only question your bid answers is "do I want the object at the price the others set?". Bidding your value answers "yes" exactly when your value exceeds that price.
+
+The figure for this part draws payoff against the highest rival bid for a bidder with value 0.6. The truthful bid earns 0.6 minus the rival bid when the rival bid is below 0.6, and zero above. An underbid of 0.4 loses the profitable wins between 0.4 and 0.6. An overbid of 0.8 wins at a loss between 0.6 and 0.8. These values are illustrative. The truthful curve is the upper envelope of the other two everywhere: that is weak dominance read off a picture. At a rival bid of 0.5, in region M, truthful earns 0.1 and the underbid earns 0.
+
+What the dominance buys, page 274. Three things. First, no beliefs are needed. The bidder need not know the others' distributions or strategies: the common-prior assumption can be dropped. Second, it is robust to correlation. With correlated but still private values, truth-telling stays weakly dominant. Third, efficiency. The highest-value bidder wins, so the outcome is Pareto optimal.
+
+Worked: three bidders. The values are 0.9, 0.6 and 0.3, and everyone bids his value. Bidder 1 wins and pays 0.6. The payoffs are 0.3, 0 and 0. The seller's revenue is 0.6, the second-highest value. Could bidder 2 do better by bidding 0.95? He would win and pay 0.9, which is above his value of 0.6: a payoff of minus 0.3. Could bidder 1 gain by bidding 0.7, or 2? He still wins at 0.6: no change.
+
+Dominance is not uniqueness. Weak dominance singles out this equilibrium; it does not rule out others built on weakly dominated bids. Whether they exist under complete information is Tadelis exercise 13.2, page 285. Lecture 1 showed that the iterated elimination of strictly dominated strategies alone says nothing in this auction.
+
+Six point three. The English auction as a button auction, pages 275 and 276.
+
+An open ascending auction has no best response with continuous increments, because any jump could be smaller, as in Bertrand competition with unequal costs, in Lecture 2. Milgrom and Weber's button auction fixes this. The price rises continuously from 0. Each bidder holds a button and quits for good by releasing it. The last bidder holding wins and pays the price at which the second-to-last let go. A strategy maps a type to a quitting price.
+
+Proposition 13.2, page 275. In the button-auction model it is a weakly dominant strategy for each player to keep his button pressed as long as the price is below his value, and to release it once the price equals his value. This is outcome-equivalent to the second-price sealed-bid auction.
+
+The proof sketch, page 276. While the price is below the value, staying in can only lead to winning at a price below the value; quitting forgoes that. At the price equal to the value, staying could only win at a price above value. The winner is the highest-value bidder, and he pays the price at which the second-highest quit, which is that bidder's value. Same allocation, same price as the sealed-bid version.
+
+Compare the two. In the second-price sealed auction the weakly dominant strategy is to bid your value; in the English button auction, it is to quit at a price equal to your value. In both, the winner is the highest value, and the price is the second-highest value.
+
+eBay, page 276, runs proxy bidding. Your "maximum bid" is a button eBay holds for you. And eBay's own advice, "enter the maximum amount you are willing to pay", is the weakly dominant strategy.
+
+Six point four. Why sell by auction at all. Cabral section 6.4, pages 140 to 142. This is the intuition layer.
+
+Two buyers have values that are both 100 or both 150, equally likely. The buyers know; the seller does not. Compare three selling methods. A posted price of 100 sells for sure and raises 100. A posted price of 150 raises one half of 150 plus one half of 0, which is 75. An ascending auction stops at 100 if values are 100 and at 150 if values are 150, raising one half of 100 plus one half of 150, which is 125.
+
+An auction is price discrimination by self-selection: it makes the price track the buyers' valuations without the seller knowing them, page 141. Cabral's bidding-strategy remark on page 141 is the first-price trade-off of the next part: a higher bid wins more often but earns less when it wins, "just like monopoly pricing".
+
+A link back to Lecture 1. Lecture 1 already proved the dominance, with a reserve price on a grid of bids: the Lecture 1 list, question 1 b, its computer check, and the Lecture 1 practice list items 17, 23 and 24, with their written solutions, and the Lecture 1 quiz on dominance and Pareto, in its auction section.
+
+The exercises for this part, by address only. Tadelis 13.1 and 13.2, page 285; 13.3, pages 285 and 286; 13.4, page 286. Muñoz-Garcia chapter 8, exercise 4, page 362.
+
+Recap of part six. Four formats: English, second-price, Dutch and first-price. With independent private values, bidding your value in the second-price auction is weakly dominant, by three cases: equal in regions L and H, strictly better in region M. No beliefs are needed. The button auction has the same outcome: the highest value wins and pays the second-highest value. An auction is price discrimination by self-selection; in Cabral's example it raises 125 against 100 from the best posted price.
+
+You should be able to state Proposition 13.1, run the three cases for an underbid and the mirror case for an overbid, and explain why the English and second-price auctions give the same outcome.
+
+Part seven. First-price and Dutch auctions: shade the bid until margin and win probability balance.
+
+This part covers note seven, on Tadelis section 13.1.3, "First-Price Sealed-Bid and Dutch Auctions", printed pages 276 to 279, with Claim 13.1, Assumption 13.1, equations 13.1 to 13.8 and footnote 5; Gibbons section 3.2.B, "An Auction", and Appendix 3.2.B, pages 155 to 158; and Cabral section 6.4, page 141.
+
+The claim. When the winner pays his own bid, bidding one's value guarantees zero, so every bidder shades. With no dominant strategy, the bid depends on beliefs about the others' bids, and the symmetric equilibrium solves one differential equation. The bid equals the value minus the integral, from the lowest value up to the value, of F to the power n minus 1, divided by F of the value to the power n minus 1. For uniform values, that is the boxed result: the bid is n minus one over n times the value. The Dutch auction is the same game in different clothes.
+
+Seven point one. Bidding your value is dominated, page 276.
+
+Claim 13.1. In a first-price sealed-bid auction it is a dominated strategy for a player to bid his valuation.
+
+Bidding your value pays 0 if you lose, and your value minus your value, which is 0, if you win. Zero always. Bidding slightly less wins with positive probability, against low enough rival bids, at a positive margin: the expected payoff is positive. The domination is weak: against rival bids above your value, both bids earn 0.
+
+The trade-off, page 276. Lowering the bid raises the margin, value minus bid, when you win: that is the marginal benefit. It lowers the probability of winning: that is the marginal cost. Unlike the second-price auction, the best bid now depends on the others' strategies. No weakly dominant strategy exists, page 277.
+
+Seven point two. The expected payoff, page 277.
+
+Assumption 13.1. The higher a player's valuation, the higher his bid: if theta j is above theta j prime, then j's bid at theta j is above his bid at theta j prime.
+
+So j's bid function is invertible: a bid b comes from exactly one type, the inverse of j's bid function at b. The probability that j's bid is below i's bid b i is the probability that theta j is below the inverse of s j at b i, which is F j evaluated at the inverse of s j at b i.
+
+Independence multiplies these across rivals. Equation 13.1: i's expected payoff, given his type, equals the product, over all rivals j, of F j of the inverse of s j at b i, times theta i minus b i.
+
+Here the common prior has real bite, page 277: the distributions F j and the strategies s j both enter equation 13.1. In the second-price auction neither did.
+
+Seven point three. The symmetric equilibrium, every step, pages 277 to 279.
+
+The bidders are symmetric: values lie between a lowest value, theta lower bar, and a highest value, theta upper bar, with a common distribution F and density f, and all rivals use the same bid function s. Type theta i solves equation 13.2: maximize, over bids b at least zero, F of the inverse of s at b, raised to the power n minus 1, times theta i minus b.
+
+The first-order condition, for an interior bid, uses the product rule. This is equation 13.3. Minus F of the inverse of s at b, to the power n minus 1; plus n minus 1, times F of the inverse of s at b to the power n minus 2, times the density f at the inverse of s at b, times the derivative of the inverse of s with respect to b, times theta i minus b; equals zero.
+
+Impose equilibrium. The bid b equal to s of theta must solve equation 13.3 for every theta. Then the inverse of s at b is theta, and the derivative of the inverse is one over s prime of theta. This gives equation 13.4. Minus F of theta to the power n minus 1, plus n minus 1 times F of theta to the power n minus 2, times f of theta, times theta minus s of theta, divided by s prime of theta, equals zero.
+
+Rearrange. Multiply by s prime of theta and move the s of theta term to the left. This is equation 13.5. F of theta to the power n minus 1, times s prime of theta, plus n minus 1 times F of theta to the power n minus 2 times f of theta times s of theta, equals n minus 1 times F of theta to the power n minus 2 times f of theta times theta.
+
+Spot the product rule. The left side is the derivative with respect to theta of F of theta to the power n minus 1, times s of theta, because the derivative of F to the power n minus 1 is n minus 1 times F to the power n minus 2 times f. Integrate from the lowest value, where F is zero. This is equation 13.6. F of theta to the power n minus 1, times s of theta, equals the integral, from the lowest value to theta, of n minus 1 times F of x to the power n minus 2, times f of x, times x, d x.
+
+Integrate by parts, footnote 5, page 278. Take g prime of x equal to n minus 1 times F of x to the power n minus 2 times f of x, so g is F to the power n minus 1, and take h of x equal to x. The integral equals F of theta to the power n minus 1 times theta, minus the integral from the lowest value to theta of F of x to the power n minus 1, d x. The boundary term at the lowest value vanishes because F there is zero. Divide by F of theta to the power n minus 1.
+
+The boxed result, equation 13.7. The bid at theta equals theta, minus the integral from the lowest value to theta of F of x to the power n minus 1, d x, divided by F of theta to the power n minus 1.
+
+The bid is below the value, by an amount that depends on F, on n, and on theta. This is the unique symmetric Bayesian Nash equilibrium, page 278; the proof of uniqueness is beyond the book.
+
+Uniform values on 0 to 1, page 279. Here F of x is x. The integral from 0 to theta of x to the power n minus 1 is theta to the power n, over n. So the bid is theta minus theta to the power n over n, divided by theta to the power n minus 1, which is theta minus theta over n. That is the boxed result, equation 13.8: the bid is theta times n minus one over n.
+
+The bid-shading factor, n minus one over n, lies between 0 and 1 and rises with n: more bidders, fiercer competition, bids closer to values. The bid as a share of the value is 0.5 with 2 bidders, 0.667 with 3, 0.8 with 5, 0.9 with 10, and it tends to 1 as the number of bidders grows without limit.
+
+A reading of equation 13.7 that pays off in the next part. Let Y be the highest of the n minus 1 rival values. Its distribution function is F to the power n minus 1. Integrating by parts as above, the expected value of Y, conditional on Y being below theta, equals theta minus the integral from the lowest value to theta of F to the power n minus 1, divided by F of theta to the power n minus 1. So the first-price bid equals the expected highest rival value, given that it is below yours. That is exactly the price you would expect to pay when you win in a second-price auction. In the uniform case, the expected value of Y given Y below theta is n minus one over n times theta. Revenue equivalence, in part eight, is this line averaged over types.
+
+Seven point four. Worked: Gibbons's two-bidder auction, pages 155 to 158.
+
+Two bidders have values v i uniform on 0 to 1, independent. The highest bid wins and pays it; ties are broken by a coin flip.
+
+Guess linear: bidder j bids a j plus c j times v j. This is not a restriction on strategies; it is a question whether a linear equilibrium exists. For a bid b i between a j and a j plus c j, bidder i maximizes v i minus b i, times the probability that b i exceeds a j plus c j v j, which is b i minus a j, over c j.
+
+The first-order condition: minus b i minus a j, plus v i minus b i, equals zero. So b i equals v i plus a j, over 2, when v i is at least a j; otherwise bid a j and lose. Linearity rules out a j strictly between 0 and 1, because then the reply would be flat and then rising. It rules out a j at least 1, because that would mean j bids at least his value. So a j is at most 0, which gives c i equal to one half and a i equal to a j over 2. Symmetry gives a equal to a over 2, so a is zero.
+
+So the bid is one half of the value, page 156. That is equation 13.8 with n equal to 2.
+
+Without the linear guess, Appendix 3.2.B, pages 157 and 158. Suppose the bid function b is increasing and differentiable. Then the probability that b i exceeds b of v j is the inverse of b at b i. Bidder i maximizes v i minus b i, times the inverse of b at b i. The first-order condition: minus the inverse of b at b i, plus v i minus b i times the derivative of the inverse of b at b i, equals zero. Impose b i equal to b of v i, so the inverse of b at b i is v i and its derivative is one over b prime of v i. Then minus v i plus v i minus b of v i, over b prime of v i, equals zero. Equivalently, b prime of v i times v i plus b of v i equals v i. Equivalently, the derivative with respect to v i of b of v i times v i equals v i.
+
+Integrate: b of v times v equals one half of v squared plus a constant k. No one bids above his value and bids are nonnegative, so b of 0 is 0 and k is 0. So b of v is v over 2: the case of equation 13.5 with n equal to 2 and F of x equal to x.
+
+Numbers, with a value of 0.8. This value is illustrative. The rival bids half his value, so a bid b wins if and only if the rival's value is below 2 b.
+
+A bid of 0.30 wins with probability 0.60, has a margin of 0.50, and an expected payoff of 0.300.
+
+A bid of 0.40 wins with probability 0.80, has a margin of 0.40, and an expected payoff of 0.320. This is the optimum.
+
+A bid of 0.50 wins with probability 1, has a margin of 0.30, and an expected payoff of 0.300.
+
+A bid of 0.80 wins with probability 1, has a margin of 0, and an expected payoff of 0.
+
+The figure for this part has two panels. The left panel draws the equilibrium bid functions, n minus one over n times the value, for n equal to 2, 3, 5 and 10, below the 45-degree line, which is the second-price bid. The right panel draws the expected payoff of one's own bid for a value of 0.8, with rivals playing equation 13.8. With 2 bidders it peaks at a bid of 0.40, with payoff 0.32. With 5 bidders it peaks at 0.64, with payoff about 0.066. Both fall to zero at a bid of 0.8. The peaks sit at n minus one over n times the value, with height the value to the power n, over n. The two-bidder curve has a kink at a bid of 0.5: above it the bidder beats every rival bid, since rivals never bid more than one half, so raising the bid only lowers the margin. With five bidders winning is rarer, and the peak is lower and further right: more competition, less shading, less surplus.
+
+Seven point five. The Dutch auction is the first-price auction, page 279.
+
+In a Dutch auction, each bidder decides at what price to shout "buy". While the price falls, nothing useful is learned: the only news, "someone shouted", ends the auction. So a strategy is a map from value to a stopping price, and the highest stopping price wins and pays it. That is the same normal form as the first-price sealed-bid auction. The two are strategically equivalent and share their equilibrium, equation 13.7.
+
+Two pairs, two relations. Dutch and first-price are strategically equivalent: they have the same normal form, because nothing observed during the descent changes anyone's choice. English and second-price are outcome-equivalent under private values, Proposition 13.2. In the English auction bidders do see others quit; that is harmless with private values, and informative with common values.
+
+A link back to Lecture 1: its discrete first-price auction, solved by iterated elimination, is item 17 of the Lecture 1 practice list, Tadelis exercise 4.3, page 76.
+
+The exercises for this part, by address only. Tadelis 13.5, page 286; 13.6, pages 286 and 287; 13.7 and 13.9, page 287. Gibbons problems 3.6, page 170, and 3.7, pages 170 and 171. Muñoz-Garcia chapter 8, exercise 1, page 350; exercise 2, page 352; exercise 3, page 355; exercise 8, page 371.
+
+Recap of part seven. In a first-price auction, bidding your value guarantees zero, so you shade. The expected payoff is the probability of winning, the product of the rivals' distributions at the inverse bid, times the margin. The first-order condition becomes a differential equation whose left side is the derivative of F to the power n minus 1 times the bid. Integrating and then integrating by parts gives equation 13.7, and with uniform values the bid is n minus one over n times the value. The bid equals the expected highest rival value given that it is below yours. Gibbons's two-bidder bid is one half of the value. The Dutch auction is the same game.
+
+You should be able to derive equations 13.2 to 13.8 line by line, derive Gibbons's half-value bid both ways, and state the difference between strategic and outcome equivalence.
+
+Part eight. Revenue equivalence: shading in the first-price auction exactly offsets paying the second price.
+
+This part covers note eight, on Tadelis section 13.1.4, "Revenue Equivalence", printed pages 279 to 282: the four conditions on page 280, order statistics on pages 280 and 281, equations 13.9 and 13.10, and the uniform computation on pages 281 and 282; with Cabral section 6.4, page 141. The result is stated and checked for the uniform independent-private-values case only. Mechanism design, Tadelis chapter 14 and Mas-Colell, Whinston and Green chapter 23, is outside the course.
+
+The claim. With independent private values and risk-neutral bidders, all four standard auctions give the seller the same expected revenue. In the uniform case, both the expected highest first-price bid and the expected second-highest value equal n minus one over n plus one. And the equality already holds type by type: every bidder expects to pay the same amount in both formats. The prices are different random variables with the same mean.
+
+Eight point one. The statement, page 280.
+
+The revenue equivalence theorem is due to Vickrey, 1961; Myerson, 1981; and Riley and Samuelson, 1981. Any auction game that satisfies four conditions yields the seller the same expected revenue, and each type of bidder the same expected payoff.
+
+Condition one: each type is drawn from a "well-behaved" distribution, which means F i is strictly increasing and continuous. It fails when values have atoms or gaps.
+
+Condition two: bidders are risk neutral. It fails when bidders are risk averse; that is Tadelis exercise 13.7, page 287.
+
+Condition three: the bidder with the highest type wins. It fails when a reserve price keeps the object unsold, or when bidders are asymmetric.
+
+Condition four: the lowest possible type has expected payoff zero. It fails when entry fees or subsidies shift the bottom.
+
+The two easy halves, page 279. The second-price and English auctions share a dominant-strategy outcome. The first-price and Dutch auctions are strategically equivalent. The surprise is across the halves: shading in the first-price auction, and settling for the second-highest value in the second-price auction, come to the same thing on average.
+
+On scope. The general proof uses the envelope theorem and belongs to mechanism design. These notes state the theorem and verify it for n uniform bidders, which is what Tadelis does, page 280.
+
+Eight point two. Order statistics, pages 280 and 281.
+
+Draw n values independently from F. The first-order statistic is the highest draw; the second-order statistic is the second highest. In the second-price auction the seller receives the second-highest value, so his expected revenue is the expected second-order statistic of the values. In the first-price auction he receives the highest bid, so his expected revenue is the expected highest bid.
+
+The distribution function of the maximum. The probability that the maximum is at most x is the probability that every draw is at most x, which by independence is F of x to the power n. That is footnote 8, page 281.
+
+The distribution function of the second highest, pages 281 and 282. The event that the second highest is at most x happens in two disjoint ways: all n draws are below x, or exactly one is above and n minus 1 are below, and there are n ways to choose which one. So the distribution function of the second highest is F of x to the power n, plus n times one minus F of x times F of x to the power n minus 1. That simplifies to n times F of x to the power n minus 1, minus n minus 1 times F of x to the power n.
+
+Eight point three. The first-price side, page 281.
+
+Each bid is n minus one over n times the value, so bids are uniform on the interval from 0 to n minus one over n, with distribution function n over n minus 1 times b. The highest bid has distribution function, equation 13.9, n x over n minus 1, all to the power n, for x between 0 and n minus one over n. Its density is n times n over n minus 1 to the power n, times x to the power n minus 1.
+
+The expected highest bid is the integral, from 0 to n minus one over n, of x times that density. That is n times n over n minus 1 to the power n, times one over n plus 1, times n minus one over n to the power n plus 1. The powers cancel down to n over n plus 1 times n minus one over n, which is n minus one over n plus one. That is the boxed result.
+
+Eight point four. The second-price side, page 282.
+
+Values are uniform, F of x equal to x. The distribution function of the second-highest value is, equation 13.10, n times x to the power n minus 1, minus n minus 1 times x to the power n. Its density is n times n minus 1 times x to the power n minus 2, minus n times n minus 1 times x to the power n minus 1.
+
+The expected second-highest value is the integral from 0 to 1 of x times that density, which is the integral of n times n minus 1 times x to the power n minus 1, minus n times n minus 1 times x to the power n. The antiderivative is n minus 1 times x to the power n, minus n times n minus 1 over n plus 1, times x to the power n plus 1. Evaluated from 0 to 1, it is n minus 1 minus n times n minus 1 over n plus 1, which is n minus one over n plus one. The same boxed result.
+
+The expected revenue, n minus one over n plus one, is one third with 2 bidders, one half with 3, three fifths with 4, two thirds with 5, five sevenths with 6, and nine elevenths with 10. Revenue rises with n toward the top of the support, 1: competition transfers surplus to the seller.
+
+The figure for this part has two panels. The left panel, for n equal to 3, draws the density of the highest first-price bid, which rises and is cut off at two thirds, and the density of the second-highest value, a hump on the interval from 0 to 1. Both have mean one half. The two price distributions differ in shape and range and share the mean. The right panel draws the expected revenue, n minus one over n plus one, for n from 2 to 10, with simulated first-price and second-price revenues, 200,000 draws for each n, lying on the curve.
+
+The first-price price never exceeds n minus one over n, and it is more concentrated; the second-price price ranges over all of the interval from 0 to 1. Same mean, different risk. With 2 bidders, the first-price price is one half of the maximum of the two values, and its variance is one quarter of one eighteenth, which is one seventy-second, about 0.014. The second-price price is the minimum of the two values, and its variance is one eighteenth, about 0.056. Both are computed in the Python note. That is a reason a risk-averse seller might prefer the first-price format even though the means agree.
+
+Eight point five. Worked: equivalence type by type.
+
+Fix a bidder of value theta facing n minus 1 uniform rivals. Let Y be the highest rival value; its distribution function is y to the power n minus 1 and its density is n minus 1 times y to the power n minus 2. Both formats allocate efficiently, so he wins if and only if Y is below theta, with probability theta to the power n minus 1.
+
+In the first-price auction, when he wins he pays his bid, n minus one over n times theta. His expected payment is theta to the power n minus 1 times n minus one over n times theta. In the second-price auction, when he wins he pays Y. His expected payment is the integral from 0 to theta of y times n minus 1 times y to the power n minus 2, d y, which is n minus one over n times theta to the power n. Those are the same.
+
+His expected surplus, in the first-price auction, is theta to the power n minus n minus one over n times theta to the power n, which is theta to the power n over n. In the second-price auction it is the same, theta to the power n over n.
+
+Identical for every theta: that is the second claim of the theorem. And the lowest type, theta equal to zero, gets zero, which is condition four. Average the payment over theta uniform on 0 to 1 and multiply by the n bidders: n times the integral from 0 to 1 of n minus one over n times theta to the power n, d theta, which is n minus one over n plus one. That is the revenue of sections eight point three and eight point four, by a third route. And it is part seven's reading at work: the first-price bid is the expected second-price payment conditional on winning.
+
+Numbers, with 2 bidders and a value of 0.8. He wins with probability 0.8. In the first-price auction he pays 0.4, so his expected payment is 0.32. In the second-price auction his expected payment is one half of 0.8 squared, which is 0.32. His surplus is 0.8 squared over 2, which is 0.32, in both.
+
+Eight point six. What the result does and does not say. This is the intuition layer.
+
+It does not say the auctions are the same game. Bids, the winner's payment in a given realization, and the price's variance all differ.
+
+It says the format is not a revenue lever under its four conditions. Cabral page 141: with independent valuations, "several auction designs yield on average the same revenue level". So the choice can rest on speed, transparency or resistance to collusion.
+
+The lever is in breaking a condition: a reserve price, which breaks condition three; risk-averse bidders, which break condition two; correlated or common values, in part nine. Each is a Tadelis exercise.
+
+The exercises for this part, by address only. Tadelis 13.3, pages 285 and 286; 13.4 and 13.5, page 286; 13.6, pages 286 and 287; 13.7, page 287. Muñoz-Garcia chapter 8, exercise 3, page 355, and exercise 7, page 371.
+
+Recap of part eight. Under four conditions, well-behaved distributions, risk neutrality, the highest type winning, and a zero payoff for the lowest type, all standard auctions raise the same expected revenue. With n uniform bidders, the expected highest first-price bid and the expected second-highest value are both n minus one over n plus one, one third with two bidders. Type by type, a bidder of value theta expects to pay n minus one over n times theta to the power n in both formats, and keeps theta to the power n over n. The prices differ in variance: one seventy-second against one eighteenth with two bidders.
+
+You should be able to derive the two order-statistic distribution functions, compute both expected revenues, and run the type-by-type comparison.
+
+Part nine. Common values: condition on the event in which your choice matters.
+
+This part covers note nine, on Tadelis section 12.4, "Committee Voting", with the jury game, posteriors and the signal table, pages 261 to 264; Tadelis section 13.2, "Common Values and the Winner's Curse", with the oil field, the expected values 15 and 25, and the payoff minus 1.25, pages 282 to 284; and Cabral section 6.4, page 142.
+
+The claim. When the others' information bears on what an outcome is worth to you, your action matters only in particular states, and those states are informative. A juror is decisive only when the other juror votes to convict. A bidder wins only when the other bidder's signal was low. Ignoring that conditioning makes "vote your signal" and "bid your expected value" fail as equilibria. The mechanics are the same as adverse selection: the event "trade happens" is bad news about quality.
+
+Nine point one. The jury game, Tadelis section 12.4, pages 261 to 264.
+
+Without private information. Two jurors vote Acquit or Convict. Conviction needs both to vote Convict. The defendant is guilty with prior probability q, above one half. Each juror gets 1 for the right verdict and 0 for the wrong one. So if either juror votes Acquit, the defendant is acquitted, and each juror's expected payoff is one minus q, the probability that he is innocent. If both vote Convict, each gets q. With q above one half, Convict is weakly dominant, page 261.
+
+Private signals. Each juror privately sees a signal: theta G, a guilt signal, or theta I, an innocence signal. Signals are independent given the truth. The probability of a guilt signal given guilt, and of an innocence signal given innocence, is p, above one half. The type is information about the state, not a taste. Since the state enters everyone's payoff, this is a common-values game, page 262. Strategies are two letters, A A, A C, C A and C C: the first is the vote after a guilt signal, the second the vote after an innocence signal.
+
+Alone, a juror follows his signal if and only if p is greater than q, page 262. The probability of guilt given a guilt signal is q p divided by q p plus one minus q times one minus p, which is greater than q. The probability of guilt given an innocence signal is q times one minus p, divided by q times one minus p plus one minus q times p, which is less than q. Acquitting after an innocence signal is right if and only if that probability is below one half; that is, if and only if q times one minus p is less than one minus q times p; that is, if and only if q is less than p. At p equal to one half, the signal is noise and the posterior stays at q.
+
+Is "vote your signal", C A for both jurors, an equilibrium? Pages 263 and 264.
+
+The signal probabilities, page 263. Both jurors see guilt with probability q p squared plus one minus q times one minus p squared. Both see innocence with probability q times one minus p squared, plus one minus q times p squared. Each mixed pair, one guilt and one innocence signal, has probability p times one minus p. The mixed case adds q p times one minus p and one minus q times one minus p times p, which sums to p times one minus p.
+
+Pivotality. Under unanimity, juror i's vote changes the verdict only if juror j votes Convict. If j plays C A, that means j saw a guilt signal. So i must evaluate his vote conditional on j having seen a guilt signal.
+
+With two guilt signals, the probability of guilt is q p squared divided by q p squared plus one minus q times one minus p squared, which is greater than q. So convict.
+
+With i's innocence signal and j's guilt signal, the probability of guilt is q times one minus p times p, divided by p times one minus p, which is exactly q, above one half. So convict, not acquit.
+
+The two opposite signals cancel, leaving the prior. A juror with an innocence signal who is pivotal should convict. So C A is not a best response to C A: voting one's signal is not a Bayesian Nash equilibrium.
+
+The swing voter's curse. This is Feddersen and Pesendorfer, 1996, and Austen-Smith and Banks, 1996, on page 264. In Tadelis's words, "When a voter believes that his vote counts, he must condition this on the situation in which his vote counts." It cuts against the Condorcet jury theorem, whose assumption that voters act as they would alone is exactly what strategic conditioning breaks.
+
+A check before exercise 12.8, page 268. Tadelis states, on page 264, that both jurors playing C C is a Bayesian Nash equilibrium, and leaves it to exercise 12.8, part a. Run the pivotal logic on it. If j always convicts, i is always decisive and conditions on his own signal only. So, by the "alone" result, a juror with an innocence signal prefers to acquit whenever p is greater than q. For example, with q equal to 0.6 and p equal to 0.7, the probability of guilt given an innocence signal is 0.391, below one half. Work the exercise keeping the case p at most q, against p greater than q, explicit. The Python note computes both.
+
+Nine point two. The oil field and the winner's curse, Tadelis section 13.2, pages 282 to 284.
+
+Pure common value. Two identical firms bid for an oil field worth the same v to both. The value is 10 with probability one quarter, 20 with probability one half, and 30 with probability one quarter.
+
+Each firm explores and sees a signal, L or H. If the value is 10, both signals are L. If the value is 30, both signals are H. If the value is 20, the signals are L H or H L, with equal chance. Every signal pair has probability one quarter, and the signals are correlated through the value.
+
+Posteriors and conditional values, pages 283 and 284. A firm with signal L knows the pair is L L, with value 10, or L H, with value 20, each with prior one quarter. The probability that the other firm also saw L, given one's own L, is one quarter over one half, which is one half. So the expected value given L is one half of 10 plus one half of 20, which is 15. And the expected value given H is one half of 20 plus one half of 30, which is 25.
+
+"Bid your expected value" in a second-price auction fails, page 284. Suppose firm 2 bids its expected value given its signal, and firm 1, with signal L, bids 15.
+
+If firm 2's signal is L, which has probability one half, firm 2 bids 15. There is a tie: firm 1 wins with probability one half and pays 15. The true value is 10. Firm 1's payoff in that case is one half of 10 minus 15, which is minus 2.5.
+
+If firm 2's signal is H, also with probability one half, firm 2 bids 25, and firm 1 loses. The true value is 20, and firm 1's payoff is 0.
+
+So firm 1's expected payoff is one half times one half times 10 minus 15, plus one half times 0, which is minus 1.25, less than zero. Firm 1 would rather bid below 15 and never win. The truthful-looking strategy is not a Bayesian Nash equilibrium.
+
+The winner's curse, page 284. In Tadelis's words, "a player wins when his signal is the most optimistic, which in the common-values setting means that he has overestimated the value of the good." The equilibrium bid must condition on winning, not just on one's own signal. The expected value given signal L and winning is the expected value given L L, which is 10, less than 15.
+
+The equilibrium of this auction is Tadelis exercise 13.8, page 287. The curse exists in first-price and second-price formats alike, page 284.
+
+Why private-value logic does not transfer. Four contrasts. One, your value: with private values it is known to you, your type; with common values it is the expected value given all the signals, and you see only one. Two, what winning tells you: with private values, nothing about your value; with common values, that the rival's signal was lower. Three, the second-price advice: with private values, bid your value, which is weakly dominant; with common values, bidding your expected value given your own signal loses money. Four, the English against the sealed second-price auction: with private values, the same outcome; with common values, not the same, because quitting prices reveal signals. That last point is named only, from Krishna, 2002, and Milgrom, 2004.
+
+Nine point three. The curse in the field, Cabral page 142. This is the intuition layer.
+
+A domestic telecom operator and a foreign one bid for spectrum. Values are correlated, because a small market is small for both, and the domestic firm is better informed. The uninformed bidder must shade more: if it wins, it is probably because the informed rival bid low. Seasoned bidders learn this, so the uninformed bid less and win less often. In United States offshore oil-lease auctions, the winner is most often the firm already drilling the adjacent tract: the better-informed bidder.
+
+Nine point four. One lesson, three settings. This is the intuition layer.
+
+In the lemons market, your choice matters when the seller accepts your price, which tells you that quality is below the price. The naive behaviour is to pay for the average. That is part five.
+
+In the jury, your choice matters when the other juror convicts, which tells you his signal said guilty. The naive behaviour is to vote your signal. That is nine point one.
+
+In the common-value auction, your choice matters when you win, which tells you the rival's signal was lower. The naive behaviour is to bid your expected value given your own signal. That is nine point two.
+
+The common thread: Bayes' rule applied to the event in which your action is decisive. In each case the naive strategy is optimal for a decision taken alone, and fails in the game.
+
+The exercises for this part, by address only. Tadelis 12.8, pages 268 and 269; 13.8 and 13.10, page 287. Muñoz-Garcia chapter 7, exercise 4, page 331.
+
+Recap of part nine. With common values, your action matters only in informative states. A pivotal juror conditions on the other juror's guilt signal, and with one guilt and one innocence signal the posterior is exactly the prior q, so voting one's signal is not an equilibrium. In the oil field, the expected values given L and H are 15 and 25, and a low-signal firm that bids 15 against a rival doing the same earns minus 1.25: the winner's curse. Lemons, the jury and the auction share one lesson: condition on the event in which you matter.
+
+You should be able to compute the jury posteriors, show why the pivotal posterior is q, compute 15, 25 and minus 1.25 for the oil field, and line up the three settings.
+
+Part ten. Common mistakes.
+
+This part covers Part I of the pitfalls note, L07 eleven. Each mistake is said as the error, then the correction.
+
+Mistake one. The error is: a type is an action, or a strategy is an action. The correction is: a strategy in a Bayesian game is a function from types to actions. "Firm 2 produces q 2" is not a strategy; "q 2 at the high cost is thirteen sixths, and q 2 at the low cost is nineteen sixths" is. The minimal counterexample: in the entry game the incumbent has 2 actions but 4 strategies, A A, A F, F A and F F, and the equilibrium Enter with A F cannot even be written with actions alone. See part two.
+
+Mistake two. The error is: there is no need to say what types that were not drawn would do. The correction is: the other players' expected payoffs depend on it. Firm 1 in Gibbons's Cournot game cannot evaluate its quantity against "firm 2 produces thirteen sixths"; it needs both quantities and the probability theta. It is the same reason a strategy covers unreached nodes in Lecture 3. See part three.
+
+Mistake three. The error is: incomplete and imperfect information are the same thing. The correction is: incomplete information means someone does not know another player's payoffs; imperfect information means someone does not know the history of moves. Harsanyi converts the first into the second by adding Nature's move. A simultaneous-move game with known payoffs has imperfect, not incomplete, information. See part one.
+
+Mistake four. The error is: confusing private and common values. The correction is: with private values, a player's payoff depends on his own type only; with common values, it depends on others' types too. Adverse selection, the swing voter's curse and the winner's curse all need common values. In an independent private values auction, learning the rival's value never changes what the object is worth to you. See part nine.
+
+Mistake five. The error is: "the buyer's average value exceeds the seller's, so trade happens at some average price". The correction is: that is false with private quality information. In the orange grove the average values are 24 and 20, yet at a price of 20 only L and M sell, and that pool is worth 19 to the buyer. The relevant average is over the sellers who accept, and it depends on the price. See part five.
+
+Mistake six. The error is: "adverse selection needs a small gain from trade". The correction is: it needs a gain that is small relative to the spread of the privately known quality. The k-th quality joins if and only if the premium is at least k minus 1 times the spread, over 2. Raising every value by the same amount changes nothing. See part five.
+
+Mistake seven. The error is: weakly dominant means unique, or means strictly dominant. The correction is: bidding your value in a second-price auction is weakly dominant, with ties in regions L and H. That selects an equilibrium; it does not prove there is no other. See part six.
+
+Mistake eight. The error is: "in a first-price auction, bid your value". The correction is: bidding your value guarantees zero, by Claim 13.1. The equilibrium bid is n minus one over n times the value under uniform values, and the shading falls with n; it does not rise. See part seven.
+
+Mistake nine. The error is: strategic equivalence and outcome equivalence are the same. The correction is: Dutch and first-price have the same normal form, so they are strategically equivalent. English and second-price give the same outcome under private values, Proposition 13.2, but they are different games: in the English auction bidders observe exits, which matters with common values. See part seven.
+
+Mistake ten. The error is: revenue equivalence means "the auctions are the same". The correction is: they share the same expected revenue and the same expected payoff per type, but they have different bids, different realized prices and different price variance, one seventy-second against one eighteenth with two bidders. And equivalence holds only under its four conditions. See part eight.
+
+Mistake eleven. The error is: "voting your informative signal is an equilibrium". The correction is: under unanimity a juror is decisive only when the other votes Convict, and conditional on that, an innocence signal leaves the posterior at q, above one half. Decision-theoretic optimality alone is not equilibrium optimality. See part nine.
+
+Mistake twelve. The error is: confusing adverse selection with moral hazard. The correction is: adverse selection is pre-contractual hidden information, who you are. Moral hazard is post-contractual hidden action, what you do. Milgrom and Roberts page 150: a family buying maternity cover because it plans children is adverse selection; having more children because it is covered is moral hazard, and moral hazard is outside this course. See part five.
+
+Part eleven. The spoken formula sheet.
+
+This part covers the formula note, L07 ten. Use it for active recall. After each number, pause the audio, say the formula or result yourself, then play on to hear it.
+
+First, the study guide's content, mapped. The Lecture 7 block of the study guide has fifteen items, plus the graduate ones. One: incomplete information, types, Nature, the common prior, and Harsanyi's transformation, in part one. Two: beliefs from the prior by Bayes' rule, part one. Three: strategies as type-contingent plans, and Bayesian Nash equilibrium, part two. Four: solving a finite Bayesian game, ex ante and type by type, part two. Five: a Bayesian Nash equilibrium with continuous actions, Cournot with private costs, part three. Six: continuous types and threshold strategies, part four. Seven: mixed strategies as purified equilibria, part four. Eight: inefficient trade and adverse selection, part five. Nine: the applications, insurance, credit and Cabral's insurer, part five. Ten: two-sided private information, the double auction, part five. Eleven: committee voting and the swing voter's curse, part nine. Twelve: auction formats, independent private values, second-price dominance, and the English auction, part six. Thirteen: the first-price equilibrium and the Dutch auction, part seven. Fourteen: revenue equivalence, part eight. Fifteen: common values and the winner's curse, part nine. And the graduate items: Mas-Colell, Whinston and Green section 8.E, Definition 8.E.1 and Proposition 8.E.1, and section 13.B, Definition 13.B.1, Example 13.B.1, and Propositions 13.B.1 and 13.B.2, named in parts one, two, four and five.
+
+Now the definitions and results, in order.
+
+Formula one, Tadelis Definition 12.1, page 246. A Bayesian game is the list: the players I, the action sets A i, the type spaces capital Theta i, the type-dependent payoffs u i, and the beliefs phi i.
+
+Formula two, Definition 12.2 and equation 12.1, page 248. The probability of H given S is the probability of S and H together, divided by the probability of S.
+
+Formula three, Definition 12.3, page 249. A pure strategy is a function from types to actions, and there are as many as the number of actions raised to the number of types.
+
+Formula four, Definition 12.4 and equation 12.2, page 251. For every player, every type and every action: the belief-weighted sum of the payoff from the prescribed action, against the others' strategies, is at least the belief-weighted sum of the payoff from that alternative action.
+
+Formula five, Mas-Colell, Whinston and Green Proposition 8.E.1, page 256. A profile is a Bayesian Nash equilibrium if and only if each type that occurs with positive probability best-responds to his conditional distribution.
+
+Formula six, Gibbons page 145, Cournot with a private cost. Firm 1 produces a minus 2 c plus theta c H plus one minus theta c L, all over 3. Firm 2 at the high cost produces a minus 2 c H plus c, over 3, plus one minus theta over 6 times c H minus c L. Firm 2 at the low cost produces a minus 2 c L plus c, over 3, minus theta over 6 times c H minus c L.
+
+Formula seven, equations 12.3 to 12.5, pages 255 to 257. Work if and only if theta i is at least the square root of c over one minus the probability that j works. The best response to a cutoff theta hat j is the square root of c over theta hat j if theta hat j is at least c, and 1 otherwise.
+
+Formula eight, Claims 12.1 and 12.2, pages 256 and 257. Best responses are thresholds, and the unique equilibrium threshold is the cube root of c.
+
+Formula nine, Claim 12.3, page 265. In perturbed Matching Pennies, play heads if and only if epsilon i is at least zero; the play converges to the mixed equilibrium as epsilon goes to zero.
+
+Formula ten, Gibbons equations 3.2.1 and 3.2.2, page 154. The cutoffs c and p are equal, at minus 3 plus the square root of 9 plus 4 x, over 2. The probability of Opera is 1 minus c over x, which tends to two thirds.
+
+Formula eleven, Proposition 12.1, page 260. Only the lowest type can trade, and any price between 10 and 14 is an equilibrium price.
+
+Formula twelve, the lemons ladder, built in this unit. Qualities 1 through k can trade if and only if the premium Delta is at least k minus 1 times the spread s, over 2.
+
+Formula thirteen, Milgrom and Roberts equations 5.1 and 5.2, page 151. The insurer's break-even price is one half of x plus x bar, times 1 plus c. The buyer's willingness is x plus v. The market breaks down if and only if c times x bar is greater than v. Mandatory coverage is efficient if and only if v is greater than c times x bar over 2.
+
+Formula fourteen, Gibbons equations 3.2.5 to 3.2.8, pages 160 and 161. The buyer offers two thirds of v b plus one twelfth; the seller asks two thirds of v s plus one quarter; they trade if and only if v b is at least v s plus one quarter.
+
+Formula fifteen, Mas-Colell, Whinston and Green Definition 13.B.1 and equation 13.B.6, pages 439 and 441. The competitive wage equals the expected productivity of the workers whose home earnings are at most that wage.
+
+Formula sixteen, Tadelis section 12.4, pages 262 to 264. Alone, a juror follows his signal if and only if p is greater than q. When pivotal, the probability of guilt given one innocence and one guilt signal is q, so C A is not an equilibrium.
+
+Formula seventeen, Proposition 13.1, page 273. In the second-price auction, bidding your value is weakly dominant.
+
+Formula eighteen, Proposition 13.2, page 275. In the button auction, quit when the price reaches your value; the outcome is the same as the second-price auction.
+
+Formula nineteen, Claim 13.1, page 276. In the first-price auction, bidding your value is dominated.
+
+Formula twenty, equation 13.1, page 277. The expected payoff is the product, over the rivals, of each rival's distribution at the inverse of his bid function at your bid, times your value minus your bid.
+
+Formula twenty-one, equation 13.7, page 278. The bid equals the value minus the integral, from the lowest value to the value, of F to the power n minus 1, divided by F of the value to the power n minus 1. And this equals the expected highest rival value, given that it is below yours.
+
+Formula twenty-two, equation 13.8, page 279. With uniform values the bid is n minus one over n times the value. Gibbons, with two bidders: half the value.
+
+Formula twenty-three, equation 13.9, page 281. The highest first-price bid has distribution function n x over n minus 1, to the power n, on the interval from 0 to n minus one over n.
+
+Formula twenty-four, equation 13.10, page 282. The second-highest value has distribution function n x to the power n minus 1, minus n minus 1 times x to the power n.
+
+Formula twenty-five, revenue equivalence, page 280. Under the four conditions, the same expected revenue and the same expected payoff per type. With uniform values, n minus one over n plus one.
+
+Formula twenty-six, Tadelis section 13.2, page 284. The winner's curse: bidding your expected value given your own signal is not an equilibrium with common values.
+
+Now every number and worked case, again for recall.
+
+The entry game, pages 243 to 245, with p equal to two thirds. The Enter row: 1 and 1; one third and four thirds; minus one third and minus one third; minus 1 and 0. The Nash equilibria are Out with F A, Out with F F, and Enter with A F. Only Enter with A F has each type acting optimally at his own node.
+
+The correlated prior, page 249, one sixth and one third, one third and one sixth. Given type a, the probability of c is one third and of d is two thirds.
+
+Chicken, pages 253 to 255, with R equal to 8, H equal to 16 and L equal to 0. The unique equilibrium is D C with d c, payoffs 3 and 3. With the story swapped, C D with c d.
+
+Cournot, illustrative, with a equal to 10, c equal to 2, c H equal to 3, c L equal to 1 and theta one half. Firm 1 produces eight thirds; firm 2 produces thirteen sixths or nineteen sixths. Firm 1's profit is sixty-four ninths, against sixty-five ninths with information.
+
+Study groups, illustrative, with c equal to one eighth. The cutoff is 0.5; the square root of c is 0.354.
+
+The purified Battle of the Sexes, with x equal to 1, 0.1 and 0.01. The probability of Opera is 0.6972, 0.6703 and 0.6670, tending to two thirds.
+
+The orange grove, pages 258 to 260, with seller values 10, 20 and 30 and buyer values 14, 24 and 34. The pools are worth 14, 19 and 24; the equilibrium prices run from 10 to 14; the gains realized are four thirds out of 4.
+
+Milgrom and Roberts' insurance, illustrative, with x bar equal to 100 and c equal to 0.1. The market exists if and only if v is at least 10; mandatory coverage is efficient if and only if v is above 5.
+
+Milgrom and Roberts' bank, page 153. A repays 1.1 million for sure; B gets 0.9 or 1.3 million. At about 10 per cent only B borrows, and B's expected profit is 0.1 million.
+
+Cabral's insurer, pages 174 to 176. Ten per cent high risk; values 20 and 3; costs 30 and 1. At a price of 4.5 the insurer makes minus 2.55, printed minus 2.5; at 30 it makes 0.
+
+The double auction, pages 159 to 163, with uniform values. Efficient gains one sixth; linear equilibrium nine sixty-fourths; one-price equilibrium x times one minus x over 2, at most one eighth.
+
+Mas-Colell, Whinston and Green Example 13.B.1, page 442, with theta uniform on 0 to 2 and home earnings alpha times theta. When alpha is above one half, the wage is zero.
+
+Cabral's auction, pages 140 and 141, with values both 100 or both 150. A posted price of 100 raises 100; the auction raises 125.
+
+The second-price auction with three bidders, illustrative, values 0.9, 0.6 and 0.3. The winner pays 0.6.
+
+Gibbons's first-price auction, illustrative value 0.8. With two bidders, bid 0.4 and expected payoff 0.32; with five, bid 0.64 and expected payoff 0.0655.
+
+Revenue, with n equal to 2, 3, 4, 5 and 10: one third, one half, three fifths, two thirds, and nine elevenths. The price variance with two bidders: one seventy-second against one eighteenth.
+
+The jury, with q equal to 0.6 and p equal to 0.7. The probability of guilt given an innocence signal is 0.391; the pivotal posterior is q.
+
+The oil field, pages 283 and 284, values 10, 20 and 30 with probabilities one quarter, one half and one quarter. The expected value given L is 15, given H is 25; bidding 15 with L earns minus 1.25.
+
+Part twelve. The figures and the interactive companions, described in words.
+
+The notes have seven figures, built by a script in the figures folder of the Lecture 7 notes, which ends with a check on a plotted number of every figure. Each figure was described in its part; here is the list. One, Cournot with private costs: the best-response lines, one quantity for firm 1, two for firm 2, and the complete-information points, in part three. Two, the study-group thresholds: the two best-response curves crossing at the cube root of c, in part four. Three, lemons unravelling: Tadelis's step against the 45-degree line, and Mas-Colell, Whinston and Green's Example 13.B.1, in part five. Four, the double-auction regions: one-price against linear trade regions, in part five. Five, second-price dominance: Figure 13.1's regions as payoff curves, in part six. Six, first-price bidding: the bid functions for n equal to 2, 3, 5 and 10, and payoff against own bid, in part seven. Seven, revenue equivalence: the two price densities at n equal to 3, and n minus one over n plus one against a simulation, in part eight.
+
+The unit has two interactive pages, in the companions folder of the Lecture 7 notes. You cannot see them in an audio file, so here is what each one does and what to try.
+
+Companion one, The Bid Shading Desk. You move the number of bidders n, your value theta, and your bid b. The page reads out the first-price bid, n minus 1 times theta over n, which is the answer; the second-price bid, which is theta; the expected payment and the expected surplus of your type, which are equal in both formats; the seller's revenue, n minus one over n plus one; and what your deviation earns in each format. What to try: press the button that sets your bid equal to your value and read the second-price payoff at its optimum; then move the bid either way and watch the loss turn positive. Next move your bid and watch the first-price payoff fall on both sides of n minus 1 times theta over n; raise n and watch the optimum slide toward your value. Finally, move theta and n and watch the payment, surplus and revenue readings, labelled "both formats", never split. It is linked from parts six, seven and eight.
+
+Companion two, The Lemons Ladder. You move the lowest value v 1, the quality spread s, the number of qualities K, and the buyer's premium Delta. The page reads out the highest quality that can trade, the equilibrium price band, the buyer's best offer, and the gains lost. The defaults are Tadelis's numbers from page 258. What to try: move the premium and the spread and watch the highest tradable quality jump at a premium of s times k minus 1, over 2; then move v 1 and see the prices shift while the set of qualities that trade stays put. It is linked from part five.
+
+Both pages are checked by a script in the same folder: a JavaScript engine runs each page's model, Python recomputes it by another route, sweeps every control, and renders the page against a stand-in for the browser.
+
+Part thirteen. The computer routines, described in words.
+
+This part covers the Python note, L07 twelve. The code is not read aloud. The note collects every routine the lecture needs, each followed by checks that must pass, using Python with numpy, and scipy for numerical integration only. The blocks run in order as one script, and together they are the source of every number in the notes that is not printed in a book. One point of reuse: Lecture 1 already checks weak dominance in the second-price auction, with a reserve price and ties, on a grid of bids, in the Lecture 1 list's check script. That script runs all its checks when it is loaded, so it is cited rather than imported. There are nine sections.
+
+Routine block one, the Harsanyi normal form. Take the two players' type lists, the prior, their actions and their payoff functions; enumerate every type-contingent strategy; average each pair's payoffs over the prior to build the matrix; then search the matrix for cells that are best responses both ways. A separate routine computes a posterior by summing the prior over the rows that match one's own type and dividing. The checks reproduce the entry game's matrix at p equal to two thirds with its three equilibria, and the one-third and two-thirds posteriors. The trap: a strategy must list one action per type, in a fixed order, or the matrix is mislabelled.
+
+Routine block two, chicken. Build the four-by-four matrix from the four equally likely states, at R equal to 8, H equal to 16 and L equal to 0, find the unique equilibrium, D C with d c, and then swap L and H and confirm the flip to C D with c d.
+
+Routine block three, Cournot with a private cost. Compute the closed forms, check each against its own first-order condition, and check them again by iterating best responses, starting from zero, until they settle. Then compute profits as squared quantities, which works only because each margin equals the quantity under linear demand.
+
+Routine block four, thresholds, purification and the jury. Iterate the study-group best-response map from any cutoff and confirm it converges to the cube root of c; compute Gibbons's cutoff for shrinking x and confirm the probability of Opera tends to two thirds; compute the jury posteriors and confirm that the pivotal posterior equals q; and compute the best reply of an innocence-signal juror to a partner who always convicts, who acquits if and only if p is greater than q.
+
+Routine block five, adverse selection. For a list of seller values and a premium, find the largest pool of lowest qualities the buyer is willing to pay for, and the price band that supports it, which reproduces Proposition 12.1: only L, with prices from 10 to 14. Check Milgrom and Roberts' breakdown condition and the band in which mandatory coverage would add value but the private market cannot exist. Compute Cabral's insurer's profit at each price, giving minus 2.55 at 4.5. And, on a fine grid of wages, find the fixed points of Mas-Colell, Whinston and Green's Example 13.B.1.
+
+Routine block six, the double auction. Given the two values, apply the linear strategies and decide trade; integrate the gains over the unit square for the linear, one-price and efficient cases, giving nine sixty-fourths, one eighth and one sixth; and check numerically that the buyer's offer of two thirds of v b plus one twelfth is a best reply to the linear seller.
+
+Routine block seven, second-price and first-price bidding. The second-price payoff function runs the three cases of the proof against a continuum of rival bids. The first-price bid routine evaluates equation 13.7 for any distribution by numerical integration, and reproduces equation 13.8 for the uniform. A best-reply routine maximizes a bidder's expected payoff against rivals using the equilibrium bid and confirms the maximum sits at n minus one over n times the value.
+
+Routine block eight, revenue equivalence. Compute both expected revenues by numerical integration of equations 13.9 and 13.10 and compare them with the closed form; compute the type-by-type payments; run a Monte Carlo simulation; and compute the two price variances with two bidders, one seventy-second and one eighteenth.
+
+Routine block nine, the oil field. List the four signal states with their values and probabilities, compute the conditional values 15 and 25 with exact fractions, and compute the expected payoff of a low-signal firm that bids 15 against a rival bidding its conditional value, giving exactly minus five quarters, minus 1.25. The trap: the tie at two low signals is a coin flip, and forgetting the one half doubles the loss.
+
+Part fourteen. Reading route and exercises.
+
+The reading route before class, in order. Tadelis chapter 12, printed pages 241 to 269, with adverse selection in section 12.3 on page 258. Tadelis chapter 13, pages 270 to 287. Gibbons chapter 3, pages 143 to 172, with auctions in section 3.2.B on page 155 and the double auction in section 3.2.C on page 158.
+
+The formal side, for the graduate layer. Mas-Colell, Whinston and Green section 8.E, starting on page 253, and section 13.B, pages 437 to 449.
+
+The applications. Milgrom and Roberts on adverse selection, starting on page 149. Cabral section 7.4, starting on page 174, and section 6.4, auctions and negotiations, starting on page 140.
+
+After class, the drill. Muñoz-Garcia chapter 7, pages 317 to 347, and chapter 8, pages 349 to 373. Mas-Colell, Whinston and Green exercises 13.B.1 and 13.B.2, page 473.
+
+The exercises, by address only. Statements are not read here; open the book. Each part above gave its own addresses; here they are by book.
+
+Tadelis chapter 12: 12.1, page 266; 12.2, page 266; 12.3, pages 266 and 267; 12.4, page 267; 12.5 and 12.6, pages 267 and 268; 12.7, page 268; 12.8, pages 268 and 269; 12.9 and 12.10, page 269.
+
+Tadelis chapter 13: 13.1 and 13.2, page 285; 13.3, pages 285 and 286; 13.4 and 13.5, page 286; 13.6, pages 286 and 287; 13.7, 13.8, 13.9 and 13.10, page 287.
+
+Gibbons chapter 3: problems 3.1, 3.2 and 3.3, page 169; 3.4, pages 169 and 170; 3.5 and 3.6, page 170; 3.7, pages 170 and 171; 3.8, page 171.
+
+Mas-Colell, Whinston and Green: 8.E.1 and 8.E.3, page 265; 13.B.1 to 13.B.5, page 473.
+
+Muñoz-Garcia chapter 7: exercise 1, page 318; 2, page 323; 3, page 327; 4, page 331; 5, page 336; 6, page 339; 7, page 343. Chapter 8: exercise 1, page 350; 2, page 352; 3, page 355; 4, page 362; 7 and 8, page 371.
+
+Milgrom and Roberts: Questions 5.3 to 5.5, pages 164 and 165. Cabral: exercise 7.9, page 180, and 7.10, page 181.
+
+One warning, from part nine: before working Tadelis 12.8, keep the cases p at most q and p greater than q apart, because the pivotal logic says an innocence-signal juror facing a partner who always convicts prefers to acquit when p is greater than q.
+
+Part fifteen. Self-test.
+
+This part covers Part II of the pitfalls note: twenty-six original true-or-false items, in six blocks, marked easy, medium or hard. After each one, pause the audio, say true or false and why, then play on to hear the answer.
+
+Block A. Bayesian games and Bayesian Nash equilibrium.
+
+Item one, easy. In a static Bayesian game, a player's pure strategy specifies one action for each of his own types.
+
+Pause.
+
+True. Definition 12.3: a strategy is a function from types to actions. With 2 actions and 3 types there are 2 cubed, which is 8, pure strategies, not 2.
+
+Item two, medium. If types are independent, a player's posterior about the others' types depends on his own type.
+
+Pause.
+
+False. Independence makes the prior the product of the separate distributions, so Bayes' rule returns the others' own distribution for every type of i. Dependence on one's own type requires correlation, as in the one-sixth, one-third prior on page 249.
+
+Item three, easy. Harsanyi's transformation turns a game of incomplete information into a game of imperfect information in which Nature moves first.
+
+Pause.
+
+True. Nature draws types, and each player observes only his own, so later movers do not know the full history. Gibbons page 148.
+
+Item four, medium. In the entry game with p equal to two thirds, Out with F F is a Nash equilibrium of the induced normal form, but not an equilibrium in which each type of incumbent acts optimally at his node.
+
+Pause.
+
+True. Against F F the entrant prefers Out, since 0 is more than minus 1, and against Out every incumbent strategy pays 2. But a rational incumbent reaching his node would accommodate, since 1 is more than minus 1, so F F asks him to carry out a non-credible fight.
+
+Item five, medium. To verify a pure Bayesian Nash equilibrium in a finite game, it suffices to check, type by type, that no single alternative action raises that type's expected payoff.
+
+Pause.
+
+True. Tadelis page 251, and Mas-Colell, Whinston and Green Proposition 8.E.1: if no type gains by changing his own action, no type-contingent rearrangement gains either.
+
+Item six, hard. In the chicken game with R equal to 8, H equal to 16 and L equal to 0, the harsh-parent type drives in the unique equilibrium.
+
+Pause.
+
+False. The unique equilibrium is D C with d c: lenient types drive, harsh types swerve. A harsh type facing d c gets one half of 4 minus 16, plus one half of 8, which is minus 2, from driving, and 0 from swerving.
+
+Block B. Continuous types and purification.
+
+Item seven, easy. In the study-group game, a student's best response to any strategy of his partner is a cutoff in his own type.
+
+Pause.
+
+True. Claim 12.1: work if and only if theta i is at least the square root of c over one minus the probability that j works, which is a constant cutoff.
+
+Item eight, medium. The more likely the partner is to work, the lower a student's own effort cutoff.
+
+Pause.
+
+False. The cutoff, the square root of c over one minus the probability that j works, rises with that probability: free-riding. The best response is decreasing in the partner's cutoff precisely because a lower partner cutoff means the partner works more.
+
+Item nine, medium. With c equal to one eighth, each student works with probability one half in equilibrium.
+
+Pause.
+
+True. The cutoff is the cube root of one eighth, which is one half, and the probability that theta i is at least one half is one half.
+
+Item ten, hard. Harsanyi's purification says players in a mixed equilibrium literally randomize because they are indifferent.
+
+Pause.
+
+False. It says the opposite: each type plays a pure, strict best response, and the mix is the opponent's uncertainty about which type he faces, Gibbons page 152. In Gibbons's example the probability of Opera, 1 minus c over x, tends to two thirds as x goes to zero.
+
+Block C. Cournot with private costs.
+
+Item eleven, medium. In Gibbons's asymmetric-cost Cournot game, the high-cost type of firm 2 produces more than it would if its cost were common knowledge.
+
+Pause.
+
+True. Its quantity exceeds a minus 2 c H plus c, over 3, by one minus theta over 6 times c H minus c L, which is positive. Firm 1, not knowing the cost is high, produces less than it would against a known high-cost rival.
+
+Item twelve, hard. In that game, firm 1's equilibrium quantity always equals the average of its complete-information quantities.
+
+Pause.
+
+False. It does with linear demand and linear costs, page 146, but Gibbons flags it as misleading: with total cost c i times q i squared, the equality fails in general.
+
+Block D. Adverse selection and bilateral trade.
+
+Item thirteen, easy. In Tadelis's orange-grove game, the grove trades in every Bayesian Nash equilibrium at a price between 10 and 14 when its quality is L.
+
+Pause.
+
+False. Proposition 12.1 says trade can occur only with the lowest type, and any price between 10 and 14 can be supported. It does not say trade occurs in every equilibrium: an offer below 10 that everybody rejects is also part of an equilibrium. Read "only if", not "if".
+
+Item fourteen, medium. In the orange grove, raising every seller and buyer value by 100 would let the M type trade.
+
+Pause.
+
+False. The condition, premium at least k minus 1 times the spread over 2, involves only the premium, 4, and the spread, 10; the level drops out. The pool of L and M would be worth 119 against a price of 120.
+
+Item fifteen, medium. In Milgrom and Roberts' insurance model, the private market collapses whenever mandatory coverage would be inefficient.
+
+Pause.
+
+False. That is the false converse. The market collapses if and only if c times x bar is greater than v; mandatory coverage is efficient if and only if v is greater than c times x bar over 2. In the band between them, the market collapses although coverage is efficient.
+
+Item sixteen, easy. In Cabral's insurer game, a premium between the average valuation and the average cost makes money.
+
+Pause.
+
+False. At a price of 4.5 only high-risk patients buy, and the expected profit is 0.1 times 4.5 minus 30, which is minus 2.55. The averages are over the whole population; the buyers are not.
+
+Item seventeen, medium. In Gibbons's linear equilibrium of the double auction, every pair with a buyer value above the seller value trades.
+
+Pause.
+
+False. Trade happens if and only if the buyer's value is at least the seller's plus one quarter. Pairs with gains below one quarter do not trade, and the expected gains are nine sixty-fourths, less than one sixth.
+
+Block E. Auctions.
+
+Item eighteen, easy. In a second-price auction with private values, bidding one's value is weakly dominant even if the bidder knows nothing about the distribution of the others' values.
+
+Pause.
+
+True. Proposition 13.1's proof never uses the rivals' distributions: in each case the comparison holds pointwise in the rivals' bids, page 274.
+
+Item nineteen, medium. In a second-price auction, raising your bid above your value can change the price you pay.
+
+Pause.
+
+False. Your bid only decides whether you win; the price is the highest rival bid. Overbidding changes the outcome only when that rival bid lies between your value and your bid, and then you win at a loss.
+
+Item twenty, easy. With n bidders and values uniform on 0 to 1, the symmetric first-price equilibrium bid is the value over n.
+
+Pause.
+
+False. It is n minus 1 times the value, over n; the value over n is the amount shaded. With two bidders the bid is half the value and the shade is half the value: the two coincide only there.
+
+Item twenty-one, medium. The Dutch auction and the first-price sealed-bid auction have the same set of Bayesian Nash equilibria.
+
+Pause.
+
+True. They are strategically equivalent: in both, a strategy maps a value to a price, the highest price wins and pays it, and nothing useful is observed before one's own choice, page 279.
+
+Item twenty-two, medium. With uniform values on 0 to 1, the seller's expected revenue is one third with two bidders in both the first-price and the second-price auctions.
+
+Pause.
+
+True. n minus one over n plus one, at n equal to 2. In the first-price auction, the expected value of half the maximum is one half of two thirds; in the second-price auction, the expected minimum is one third.
+
+Item twenty-three, hard. Revenue equivalence implies that, for each realization of values, the first-price and second-price auctions raise the same revenue.
+
+Pause.
+
+False. It is a statement about expectations. With values 0.9 and 0.2, the first-price auction raises 0.45 and the second-price auction raises 0.2.
+
+Item twenty-four, hard. In the type-by-type comparison, a bidder of value theta expects to pay n minus one over n times theta to the power n in both the first-price and the second-price auctions.
+
+Pause.
+
+True. First price: theta to the power n minus 1, times n minus one over n times theta. Second price: the integral from 0 to theta of y times n minus 1 times y to the power n minus 2, which is n minus one over n times theta to the power n.
+
+Block F. Common values.
+
+Item twenty-five, medium. In the oil-field auction, a firm with a low signal that bids its expected value, 15, earns zero expected profit when the rival does the same.
+
+Pause.
+
+False. It wins only on a tie with another low signal, when the value is 10: one half times one half times 10 minus 15, which is minus 1.25, less than zero. That is the winner's curse.
+
+Item twenty-six, hard. Under unanimity with informative signals, a juror who sees an innocence signal and believes the other juror votes his signal should acquit.
+
+Pause.
+
+False. He is pivotal only if the other saw a guilt signal. Then the probability of guilt, given one innocence and one guilt signal, is q, above one half, and he should convict.
+
+Part sixteen. Glossary.
+
+Incomplete information: at least one player is uncertain about another player's payoff function.
+
+Imperfect information: at least one player does not know the history of moves when he chooses.
+
+Type: a player's private information, drawn by Nature, that fixes his payoffs or his signal.
+
+Common prior: the assumption that every player agrees on the distribution from which Nature draws the types.
+
+Harsanyi transformation: turning a game of incomplete information into a game of imperfect information by letting Nature move first.
+
+Posterior belief: a player's belief about the others' types after learning his own type, computed from the prior by Bayes' rule.
+
+Type-contingent strategy: a function that gives an action for each of a player's types.
+
+Bayesian Nash equilibrium: a profile of type-contingent strategies in which every type of every player best-responds to his posterior and the others' strategies.
+
+Separating strategy: a strategy that gives each type a different action.
+
+Pooling strategy: a strategy that gives all types the same action.
+
+Private values: a player's payoff depends on his own type only.
+
+Common values: a player's payoff depends on other players' types too.
+
+Threshold strategy: a strategy that takes one action for types above a cutoff and the other below it.
+
+Purification: reading a mixed equilibrium as the limit of pure, type-contingent play in a game with small private payoff perturbations.
+
+Adverse selection: when a price attracts the types who are worst for the uninformed side, because the informed side's type enters the other side's payoff.
+
+Unravelling: the collapse of trade, step by step, as the better types withdraw from the pool.
+
+Credit rationing: when a lender does not raise its rate to clear the market, because a higher rate drives out the safe borrowers.
+
+Double auction: a buyer and a seller name prices simultaneously and trade at the average if the offer is at least the ask.
+
+Independent private values: each bidder's value is his own type, drawn independently of the others.
+
+Second-price sealed-bid auction: the highest bid wins and pays the highest losing bid; also called the Vickrey auction.
+
+English auction: an open ascending auction; in the button version, bidders quit for good and the last one holding pays the price at which the second-to-last quit.
+
+First-price sealed-bid auction: the highest bid wins and pays his own bid.
+
+Dutch auction: an open descending auction; the first bidder to shout "buy" pays the current price.
+
+Bid shading: bidding below one's value in a first-price auction, trading margin against the probability of winning.
+
+Strategic equivalence: two games with the same normal form, like the Dutch and first-price auctions.
+
+Outcome equivalence: two different games that produce the same allocation and payments, like the English and second-price auctions under private values.
+
+Order statistic: the k-th highest of a set of draws; the first is the maximum, the second the second highest.
+
+Revenue equivalence: under four conditions, all standard auctions give the seller the same expected revenue and each bidder type the same expected payoff.
+
+Swing voter's curse: the error of a voter who ignores that his vote matters only when it is pivotal, and that being pivotal is informative.
+
+Winner's curse: the loss of a bidder who ignores that, with common values, winning means his signal was the most optimistic.
+
+Part seventeen. The whole lecture in five lines.
+
+One. Private information is modelled by Nature drawing types from a common prior; a strategy is a plan for every type, and a Bayesian Nash equilibrium asks every type to best-respond to his posterior.
+
+Two. With continuous types, best responses are cutoffs: the study-group equilibrium is the cube root of c, and purification turns a mixed equilibrium into pure play by privately informed types.
+
+Three. When the seller's type enters the buyer's payoff, a single price buys the bottom of the pool: in the orange grove only the lowest quality trades, insurance markets close when c times x bar exceeds v, and the double auction trades only when the buyer's value beats the seller's by one quarter.
+
+Four. In a second-price auction bid your value, a weakly dominant strategy; in a first-price auction shade to n minus one over n times your value; and with independent private values both raise the same expected revenue, n minus one over n plus one.
+
+Five. With common values, condition on the event in which your choice matters, being accepted, being pivotal, or winning, or be cursed: a pivotal juror's posterior is the prior, and a low-signal oil firm that bids 15 loses 1.25.

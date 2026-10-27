@@ -1,7 +1,7 @@
 ---
 tags: [notes, lecture-02, python, nash-equilibrium, support-enumeration, linear-programming]
-date: 2026-10-16
-status: estimated
+date: 2026-10-25
+status: taught
 source: "Tadelis (2013) Ch. 4.3, 5, 6 (printed pp. 69–123): every assert below is a number from those pages; Gibbons (1992) §1.2–1.3 (pp. 14–44)"
 ---
 

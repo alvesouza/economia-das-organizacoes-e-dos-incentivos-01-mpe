@@ -32,6 +32,7 @@ second reader; check against a later printing before citing in an answer.
 | Tadelis p. 322 | Matrix cell $(DU, BB)$ printed 4.5; should be 5.5. | `Notas/L08` MBA game |
 | Tadelis p. 331 | Entrant's pooled-entry profit printed $7/18$; arithmetic gives $7/36$. | `Notas/L08` limit pricing |
 | Tadelis Def. 16.1 | Condition 2 reads $v_2$ where it must be $v_1$. | `Notas/L08` |
+| Tadelis Ex. 16.2 | Prints $q_1^{1L}=1.5$ where $q_1^{1H}$ belongs. | `Listas/pratica-lecture-08.md` (optional extra) |
 | MWG Fig. 8.B.3 (3×2) | Iterated weak elimination has three end states, (D,R), (D,L), D×{L,R}, not two. | `Notas/L01` IESDS |
 | Tadelis p. 81 | (M, C) is the unique *pure* NE, but the game has four more mixed NE (e.g. $(1/6, 5/6, 0)$ for both). | `Notas/L02` Nash equilibrium |
 | Tadelis p. 87, fn. 5 | Commons gain 0.051 is the base-10 value; with natural logs $\ln(9/8) \approx 0.118$. | `Notas/L02` commons |

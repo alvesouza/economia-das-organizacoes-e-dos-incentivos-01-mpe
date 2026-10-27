@@ -25,14 +25,14 @@ the organizational and IO applications. Pages are printed pages, verified on 202
 
 | L | Date | Session | Tadelis (2013) | Gibbons (1992) | Project material |
 |---|---|---|---|---|---|
-| 1 | Tue Oct 13 | Static games I: dominance, iterated elimination | Ch. 3 (43–58); §4.1–4.2 (59–69) | §1.1.A–B (2–7) | `Listas/pratica-lecture-01.md`, `Listas/lista-lecture-01.tex`, 3 quizzes |
-| 2 | Tue Oct 20 | Static games II: Nash equilibrium, mixed strategies | §4.3 (69–76); Ch. 5 (79–100); Ch. 6 (101–126) | §1.1.C, §1.2, §1.3 (8–48) | — |
-| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | — |
-| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) |
-| 5 | **Fri Nov 6** | Repeated games I: cooperation | §10.1–10.3 (190–201); §10.6 (209) | §2.3.A–B (82–102) | — |
-| 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | — |
-| 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] |
-| 8 | Tue Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | [[rules/07_selecao_adversa\|Topic 7]] |
+| 1 | Tue Oct 13 | Static games I: dominance, iterated elimination | Ch. 3 (43–58); §4.1–4.2 (59–69) | §1.1.A–B (2–7) | `Listas/pratica-lecture-01.md`, `Listas/lista-lecture-01.tex`, 3 quizzes, 2 audio prompts, TTS |
+| 2 | Tue Oct 20 | Static games II: Nash equilibrium, mixed strategies | §4.3 (69–76); Ch. 5 (79–100); Ch. 6 (101–126) | §1.1.C, §1.2, §1.3 (8–48) | `Listas/pratica-lecture-02.md`, 3 quizzes, 2 audio prompts, TTS |
+| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts, TTS |
+| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) · `Listas/pratica-lecture-04.md`, 3 quizzes, 2 audio prompts, TTS |
+| 5 | **Fri Nov 6** | Repeated games I: cooperation | §10.1–10.3 (190–201); §10.6 (209) | §2.3.A–B (82–102) | `Listas/pratica-lecture-05.md`, 3 quizzes, 2 audio prompts, TTS |
+| 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | `Listas/pratica-lecture-06.md`, 3 quizzes, 2 audio prompts, TTS |
+| 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-07.md`, 3 quizzes, 2 audio prompts, TTS |
+| 8 | Tue Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-08.md`, 3 quizzes, 2 audio prompts, TTS |
 | 9 | Tue Dec 1 | Short-paper presentations | — | — | — |
 | 10 | Tue Dec 8 | Final exam (55%) | — | — | — |
 
@@ -54,19 +54,19 @@ Ch. 10 before Nov 3.
 
 ### Lecture 2 — Static games II: Nash equilibrium and mixed strategies
 #lecture/2
-- **Content (from the slides' preview and the course outline):** best responses and rationalizability; Nash equilibrium; mixed strategies and existence.
+- **Content:** best responses and rationalizability; Nash equilibrium; mixed strategies and existence.
 - **Before class:** Tadelis §4.3 (pp. 69–76), Ch. 5 (pp. 79–100; Hotelling voting §5.2.5 p. 93), Ch. 6 (pp. 101–126; IESDS revisited §6.3 p. 114, existence §6.4 p. 117) · Gibbons §1.1.C (p. 8), §1.2 (pp. 14–29), §1.3 (pp. 29–48)
-- **After class:** Tadelis 5.2, 5.3, 5.15 (pp. 95, 99), 6.2, 6.3 (p. 123) · Gibbons 1.3, 1.5, 1.8 (pp. 49–50) · MWG 8.C.1, 8.D.3–8.D.5 (p. 263) · Muñoz-Garcia Ch. 2 (pp. 37–84), Ch. 3 (pp. 85–151)
+- **After class:** `Listas/pratica-lecture-02.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture02-{1,2,3}-*.md` · Tadelis 5.2, 5.3, 5.15 (pp. 95, 99), 6.2, 6.3 (p. 123) · Gibbons 1.3, 1.5, 1.8 (pp. 49–50) · MWG 8.C.1 (p. 262), 8.D.3–8.D.5 (p. 263) · Muñoz-Garcia Ch. 2 (pp. 37–84), Ch. 3 (pp. 85–151)
 - **Formal side:** MWG §8.C (p. 242), §8.D (p. 246), App. A (p. 260)
 - **Applications:** Cabral §7.1 (from p. 161)
-- **Notes:** [[Notas/L02/L02-00-map|Lecture 2 notes]] (estimated before the lecture; figures and companions inside)
+- **Notes:** [[Notas/L02/L02-00-map|Lecture 2 notes]] (taught; reconciled with `Aula/Lecture02.pdf` on 2026-10-25; figures and companions inside)
 
 ## Dynamic games of complete information
 
 ### Lecture 3 — Dynamic games: backward induction and subgame perfection
 #lecture/3
 - **Before class:** Tadelis Ch. 7 (pp. 129–150), Ch. 8 (pp. 151–174) · Gibbons §2.1.A (p. 57), §2.2.A (p. 71), §2.4 (pp. 115–129)
-- **After class:** Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
+- **After class:** `Listas/pratica-lecture-03.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture03-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
 - **Formal side:** MWG §7.C (p. 221), §9.A–9.B (pp. 267–281)
 - **Applications:** Cabral §7.2 (p. 167)
 - **Notes:** [[Notas/L03/L03-00-map|Lecture 3 notes]] (estimated before the lecture; figures and companions inside)
@@ -74,7 +74,7 @@ Ch. 10 before Nov 3.
 ### Lecture 4 — Multistage games and bargaining
 #lecture/4
 - **Before class:** Tadelis Ch. 9 (pp. 175–189), Ch. 11 (pp. 220–237) · Gibbons §2.1.D sequential bargaining (p. 68), §2.2 (pp. 71–82)
-- **After class:** Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
+- **After class:** `Listas/pratica-lecture-04.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture04-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
 - **Formal side:** MWG 9.AA (p. 296)
 - **Applications and project material:** M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · `Listas/lista-aulas-01-02.tex` block 3 · [[rules/02_barganha|Topic 2]]
 - **Notes:** [[Notas/L04/L04-00-map|Lecture 4 notes]] (estimated before the lecture; figures and companions inside)
@@ -82,7 +82,7 @@ Ch. 10 before Nov 3.
 ### Lecture 5 — Repeated games I: cooperation
 #lecture/5
 - **Before class:** Tadelis §10.1–10.3 (pp. 190–201), folk theorem §10.6 (p. 209) · Gibbons §2.3.A–B (pp. 82–102)
-- **After class:** Muñoz-Garcia Ch. 6 Ex. 1 (p. 274) · Tadelis Ch. 10 exercises
+- **After class:** `Listas/pratica-lecture-05.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture05-{1,2,3}-*.md` · Muñoz-Garcia Ch. 6 Ex. 1 (p. 274) · Tadelis Ch. 10 exercises
 - **Formal side:** MWG §12.D (p. 400), App. 12.A "Infinitely Repeated Games and the Folk Theorem" (p. 417)
 - **Applications:** Cabral §7.3 (p. 172)
 - **Notes:** [[Notas/L05/L05-00-map|Lecture 5 notes]] (estimated before the lecture; figures and companions inside)
@@ -90,7 +90,7 @@ Ch. 10 before Nov 3.
 ### Lecture 6 — Repeated games II: collusion and relational contracts
 #lecture/6
 - **Before class:** Tadelis §10.4 tacit collusion (p. 201), §10.5 reputation (pp. 204–209) · Gibbons §2.3.C Cournot collusion (p. 102), §2.3.D efficiency wages (p. 107) · M&R Ch. 8 "Reputations as contract enforcers" (p. 259), the repeated trust game (pp. 261–263), "live and let live" (p. 264), limits of reputation (p. 265)
-- **After class:** Muñoz-Garcia Ch. 6 Ex. 2–5 (pp. 278–290), Ex. 10 (p. 310); Ch. 5 Ex. 4–5, 8 (pp. 228–239) · M&R Quantitative Exercise 4 (p. 286)
+- **After class:** `Listas/pratica-lecture-06.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture06-{1,2,3}-*.md` · Muñoz-Garcia Ch. 6 Ex. 2–5 (pp. 278–290), Ex. 10 (p. 310); Ch. 5 Ex. 4–5, 8 (pp. 228–239) · M&R Quantitative Exercise 4 (p. 286)
 - **Formal side:** MWG §12.D (p. 400)
 - **Applications:** Cabral Ch. 9 (from p. 217: stability of collusive agreements p. 218, price wars p. 222) · M&R efficiency wages (p. 250)
 - **Notes:** [[Notas/L06/L06-00-map|Lecture 6 notes]] (estimated before the lecture; figures and companions inside)
@@ -100,7 +100,7 @@ Ch. 10 before Nov 3.
 ### Lecture 7 — Bayesian games, adverse selection and auctions
 #lecture/7
 - **Before class:** Tadelis Ch. 12 (pp. 241–269; adverse selection §12.3 p. 258), Ch. 13 (pp. 270–287) · Gibbons Ch. 3 (pp. 143–172; auctions §3.2.B p. 155, double auction §3.2.C p. 158)
-- **After class:** Muñoz-Garcia Ch. 7 (pp. 317–347), Ch. 8 (pp. 349–373) · MWG 13.B.1, 13.B.2
+- **After class:** `Listas/pratica-lecture-07.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture07-{1,2,3}-*.md` · Muñoz-Garcia Ch. 7 (pp. 317–347), Ch. 8 (pp. 349–373) · MWG 13.B.1, 13.B.2
 - **Formal side:** MWG §8.E (p. 253), §13.B (pp. 437–449)
 - **Applications:** M&R adverse selection (p. 149) · Cabral §7.4 (p. 174), §6.4 auctions and negotiations (p. 140) · [[rules/07_selecao_adversa|Topic 7]]
 - **Notes:** [[Notas/L07/L07-00-map|Lecture 7 notes]] (estimated before the lecture; figures and companions inside)
@@ -108,7 +108,7 @@ Ch. 10 before Nov 3.
 ### Lecture 8 — Signaling and perfect Bayesian equilibrium
 #lecture/8
 - **Before class:** Tadelis Ch. 15 (pp. 303–317), Ch. 16 (pp. 318–338) · Gibbons §4.1 (p. 175), §4.2 (pp. 183–210; job-market signaling p. 190)
-- **After class:** Muñoz-Garcia Ch. 9 (pp. 375–451), Ch. 11 (pp. 481–520) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
+- **After class:** `Listas/pratica-lecture-08.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture08-{1,2,3}-*.md` · Muñoz-Garcia Ch. 9 (pp. 375–451), Ch. 11 (pp. 481–520) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
 - **Formal side:** MWG §9.C (p. 282), §9.D (p. 292), §13.C (pp. 450–459), 13.AA (p. 467)
 - **Applications:** M&R signaling and screening (p. 154) · [[rules/07_selecao_adversa|Topic 7]]
 - **Notes:** [[Notas/L08/L08-00-map|Lecture 8 notes]] (estimated before the lecture; figures and companions inside)

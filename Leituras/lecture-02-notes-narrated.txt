@@ -1,0 +1,801 @@
+Lecture 2. Static games of complete information, part two: Nash equilibrium and mixed strategies. A listening version of the Lecture 2 notes.
+
+How to listen.
+
+This is the full text of the Lecture 2 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. The notes were first written before the lecture, from the study guide, and then reconciled with the slides the lecture actually used, on Tuesday the 20th of October 2026. This narration follows the reconciled notes. Every definition, every proof, every worked example and every number is here, with the mathematics spoken in words.
+
+The script has seventeen parts, numbered zero to sixteen. Part zero states the lecture's claim and says what the lecture taught and what it left as reading. Parts one to five are the material the slides teach: best responses and rationalizability; Nash equilibrium; Cournot competition; Bertrand competition; and mixed strategies, with the principle of indifference, the Battle of the Sexes in mixed strategies, and the method for the graded mini case. Parts six to nine are book material the lecture did not teach: the tragedy of the commons, Hotelling's model of voting, iterated dominance with mixed strategies, and the proof that an equilibrium exists. After that come the support parts: common mistakes, a spoken formula sheet, the code and the interactive companions described in words, the reading route and exercises, a self-test, a glossary, and the whole lecture in five lines.
+
+Three conventions. First, "Tadelis" means the book the slides follow, Steven Tadelis, Game Theory: An Introduction, Princeton University Press, 2013. "Gibbons" means Robert Gibbons, Game Theory for Applied Economists, 1992. "M W G" means Mas-Colell, Whinston and Green, Microeconomic Theory, 1995. Page numbers are the books' printed page numbers. Slide numbers are the numbers printed at the bottom of each slide of the Lecture 2 deck.
+
+Second, notation. The slides write player i's payoff as u sub i. Tadelis writes v sub i for the same thing. This script says "u sub i" throughout. A mixed strategy is sigma sub i, and the set of all of player i's mixed strategies is capital sigma sub i. In Cournot, q superscript m is the monopoly output and q superscript c p is the perfectly competitive output. In Bertrand, p superscript m is the monopoly price. When the script says "s minus i", it means the profile of strategies of every player other than i.
+
+Third, scope. Parts one to five are examinable. Parts six to nine are reading: useful practice, examinable only if a problem set brings them. The script says so each time. One more rule: the lecture ended with a graded mini case, done in pairs and handed in on the day. This script describes the method for it and does not solve it.
+
+Part zero. The claim, and what the lecture covered.
+
+This part covers the map of the notes.
+
+Here is the lecture's argument in five sentences.
+
+First. Lecture 1 asked what a rational player would never do. Lecture 2 asks what he might do: a best response to some belief, and, iterated, the rationalizable strategies.
+
+Second. Nash equilibrium adds one demand, that the beliefs be correct. Every player best-responds to what the others actually play. That makes the profile self-enforcing, and it makes it a fixed point of the best-response correspondences.
+
+Third. With continuous strategies the equilibrium is the crossing of best-response functions. Cournot lands between monopoly and competition, with each firm producing two thirds of the monopoly output. Bertrand lands on marginal cost: the Bertrand paradox.
+
+Fourth. Players can also mix. By the principle of indifference, each player's mix is pinned down by the other player's indifference. The Battle of the Sexes gains a third, mixed equilibrium.
+
+Fifth. Nash's theorem closes the loop: every finite game has an equilibrium, possibly mixed.
+
+The notes come in three layers. The U layer is intuition: Gibbons's motivation, Tadelis's stories, mixing as uncertainty rather than coin flipping. The C layer is the course, and it is examinable. It is what the slides teach: best response, the best-response correspondence, "never a best response", and rationalizability, which are Tadelis's definitions 4.5 to 4.8 and his proposition 4.4; Nash equilibrium, Tadelis definition 5.1, and the slides' propositions 1 and 2 with their proofs; Cournot, with the duopoly, the cartel and n firms; Bertrand, with the best-response correspondence and the unique equilibrium at cost; mixed strategies, expected payoffs, mixed equilibrium, and the principle of indifference, which the slides state as an if and only if and prove on slides 45 and 46, and which is M W G's proposition 8.D.1; the Battle of the Sexes in mixed strategies; and Nash's theorem as a statement. The G layer is formal and reading. It holds the Tadelis material the lecture skipped, which is the commons, Hotelling voting, mixed dominance and proposition 6.2, the Kakutani proof, and the cent-grid and asymmetric Bertrand. It also holds M W G sections 8.C and 8.D and Appendix A. None of it is examinable unless a problem set brings it.
+
+How the slides map onto the notes. Slides 2 to 8 recap Lecture 1: dominant-strategy equilibrium, Pareto optimality, and the epistemic reading of iterated elimination. Slides 9 to 12 are the Battle of the Sexes, best responses, the best-response correspondence, "never a best response", rationalizability, a proposition that is Tadelis 4.4, and Lessons 3 and 4. Slides 14 to 18 are Nash equilibrium, its interpretations, the two propositions with proofs, the note on weakly dominated strategies, the side-of-the-road game and the prisoner's dilemma. Slides 20 to 27 are Cournot. Slides 29 to 40 are Bertrand. Slides 42 to 51 are mixed strategies through Nash's theorem. Slides 53 to 55 are the mini case on monitoring remote work. Not on the slides at all: the beauty contest, the Stag Hunt, the commons, Hotelling voting, Matching Pennies, rock-paper-scissors, Tadelis's two-by-two game of section 6.2.3, mixed dominance, and the Kakutani proof.
+
+The one result to hold. Sigma star is a Nash equilibrium if and only if each sigma i star is a best response to sigma minus i star for every player, if and only if sigma star belongs to B R of sigma star, and every pure strategy in the support of sigma i star earns player i's equilibrium payoff. Best response to correct beliefs; a fixed point; indifference on the support. The first clause defines the concept, the second proves it exists, the third computes it.
+
+Numbers to have memorized. Cournot with inverse demand P equals 100 minus Q and cost 10: each firm produces 30, which is two thirds of the monopoly output 45; total output 60; price 40; profit 900 each; the competitive output is 90. The cartel: 22.5 each, about 1,012 each; the best reply to the cartel output is 33.75, which earns about 1,139. Cournot with n firms: each firm produces 2 q m over n plus 1, total output is 2 n over n plus 1 times q m, which tends to the competitive output. Bertrand: the monopoly price is a plus c over 2, and the unique equilibrium is both firms at c, with zero profit. The Battle of the Sexes: opera together, football together, and the mixed profile with Alex at the opera with probability two thirds and Chris at the opera with probability one third, each expecting two thirds. The road game: both left or both right. The slides' prisoner's dilemma: the unique equilibrium is both defecting. And, as reading: the commons equilibrium K over 3 against the optimum K over 4; Hotelling, both candidates at the median; Matching Pennies, one half each; rock-paper-scissors, one third each; and the 6.2.3 game, with p one sixth and q three sevenths.
+
+Recap of part zero. The lecture moves from beliefs to equilibrium, applies equilibrium to two oligopoly models, and then lets players mix. You should be able to say which parts were taught and which are reading.
+
+Part one. Best responses, beliefs and rationalizability: asking what a rational player might do.
+
+This part covers slides 7 and 9 to 12, and Tadelis section 4.3, printed pages 69 to 76.
+
+The claim. Lecture 1 removed what a rational player would never do: dominance and iterated elimination. Rationalizability asks the mirror question: what might a rational player do? The answer is a best response to some belief. Iterating "only strategies that are a best response to some belief about strategies that are themselves rationalizable", under common knowledge of rationality, is the same machine as iterated elimination in two-player games. It has bite in Cournot, where it converges to 30, and in the beauty contest, and none at all in the Battle of the Sexes.
+
+One point one. Why beliefs enter. This is intuition.
+
+In a decision problem the best action depends only on the problem. In a game it depends on what the others do, and in a static game a player cannot see that, so the player must hold a belief. That is Tadelis page 71. Tadelis's test of whether someone is irrational is to ask "What were you thinking?". If some belief about the others makes the choice optimal, the choice is rationalized. That is page 69.
+
+The lecture opens this part with Lecture 1's epistemic reading of iterated elimination, on slide 7. S i one is what rationality allows. S i k is what rationality plus k minus 1 levels of belief in rationality allow. S i infinity is what common belief in rationality allows. And then one question: "But what if no strategy is dominated?"
+
+The answer is Example 1, the Battle of the Sexes, on slide 9 and Tadelis page 69. Alex chooses the row and Chris the column. Each chooses opera, O, or football, F. Alex prefers the opera, Chris prefers football, and being apart is the worst outcome for both. The payoffs, Alex first: at opera together, Alex gets 2 and Chris gets 1. At football together, Alex gets 1 and Chris gets 2. When they are apart, in either combination, both get 0.
+
+Slide 9 asks three questions. Here are the answers, step by step. Is there a dominant strategy? Alex's O pays 2 against O but 0 against F, while F pays 0 against O and 1 against F. Neither beats the other against both of Chris's choices, so Alex has no dominant strategy, and by the mirror argument neither does Chris. Are there dominated strategies? None, for the same reason. What does iterated elimination predict? It removes nothing, so all four cells survive: Lecture 1's tools say "anything can happen". Alex's best choice is O if Chris goes to O and F if Chris goes to F. The best choice flips with the belief.
+
+One point two. The definitions, exactly. This is course material.
+
+Definition 4.5, Tadelis page 70, slide 10. A strategy s i in S i is player i's best response to s minus i in S minus i if u i of s i and s minus i is at least u i of s i prime and s minus i, for every s i prime in S i.
+
+Claim 4.2, page 70. A rational player who believes the opponents play s minus i always chooses a best response to s minus i. A worked line from page 70: if Chris believes Alex goes to the opera, Chris's payoff from O is 1 and from F is 0, so Chris's best response is O.
+
+Proposition 4.3, page 70. If s i is strictly dominated, it is not a best response to any s minus i. The proof, every step. Strict dominance gives some s i prime with u i of s i prime and s minus i strictly greater than u i of s i and s minus i, for all s minus i. A best response to a particular s minus i needs u i of s i and s minus i to be at least u i of s i prime and s minus i, for that s minus i. The two inequalities contradict each other at every s minus i, so no such s minus i exists. End of proof.
+
+Proposition 4.4, page 70, which slide 12 states simply as "Proposition". In a finite game, if s star is a strict dominant-strategy equilibrium, or the unique survivor of iterated elimination, then s i star is a best response to s minus i star, for every player i.
+
+The proof, Tadelis's contradiction, pages 70 and 71. A strict dominant-strategy equilibrium uniquely survives iterated elimination, from Lecture 1, so it is enough to treat the unique survivor. Suppose s i star is not a best response to s minus i star. Then some s i prime gives a strictly higher payoff against s minus i star. That s i prime was eliminated at some round, while s minus i star was never eliminated. So the strategy s i double prime that eliminated it does even better against s minus i star: the payoff of s i double prime beats that of s i prime, which beats that of s i star. Repeat. Finiteness ends the chain at a strategy that beats s i star against s minus i star and is never eliminated. That contradicts the uniqueness of the survivor. End of proof.
+
+Definition 4.6, page 72. A belief of player i is a profile of the opponents' strategies, s minus i in S minus i. Here a belief is a pure profile. Later, in Tadelis's definition 6.4 on page 105, a belief becomes a probability distribution.
+
+Definition 4.7, page 72, slide 10. The best-response correspondence selects, for each s minus i, the set B R i of s minus i, a subset of S i, of best responses. It is a correspondence, not a function, because a belief can have several best responses.
+
+A worked example, Tadelis's three-by-three game on page 72. Player 1 has rows U, M and D; player 2 has columns L, C and R. Row U pays 3 and 3 against L, 5 and 1 against C, 6 and 2 against R. Row M pays 4 and 1 against L, 8 and 4 against C, 3 and 6 against R. Row D pays 4 and 0 against L, 9 and 6 against C, 6 and 8 against R. Against R, player 1's payoffs are 6 from U, 3 from M and 6 from D, so B R 1 of R is the set U and D. Against L, the payoffs are 3, 4 and 4, so B R 1 of L is M and D. Against C, they are 5, 8 and 9, so B R 1 of C is D alone.
+
+Definition 4.8, page 73, slide 10, where it is abbreviated N B R. A strategy s i is never a best response if there is no belief s minus i for which s i belongs to B R i of s minus i.
+
+Rationalizability, page 73 and slide 11. The slide asks: "What might a rational player do?". A rational player only chooses strategies that are a best response to some belief. Using common knowledge of rationality, remove every strategy that is never a best response. In the reduced game, remove again, and iterate. The survivors are the rationalizable strategies. Tadelis postpones the formal definition until beliefs can be mixed, in section 6.3, page 114, definition 6.8, because with pure beliefs only, the elimination is too weak: part eight shows a strategy that is a best response only to a mixed belief.
+
+Lesson 3, slide 12: a rational player never plays a strategy that is never a best response. Lesson 4, slide 12, which is Claim 4.2: a rational player who believes the opponents play s minus i chooses a best response to s minus i. Lessons 1 and 2 were Lecture 1's: never play a strictly dominated strategy; and individually rational choices can be socially undesirable.
+
+Compare three concepts. Strict dominance asks: is there something always better? It assumes rationality. Iterated elimination asks: what would a rational player never do, iterated? It assumes common knowledge of rationality. Rationalizability asks: what can a rational player justify by some belief, iterated? It also assumes common knowledge of rationality.
+
+One point three. Worked: Cournot revisited, section 4.3.4, pages 73 and 74.
+
+The inverse demand is p of q equals 100 minus q, and each firm's cost is 10 times its output. Firm 1 maximizes u 1 equals 100 minus q 1 minus q 2, all times q 1, minus 10 q 1. The derivative with respect to q 1 is 100 minus 2 q 1 minus q 2 minus 10, which is 90 minus 2 q 1 minus q 2. Setting it to zero gives q 1 equals 90 minus q 2, over 2. The second derivative is minus 2, so this is a maximum. Truncated at zero, the best response is 90 minus q 2 over 2 when q 2 is between 0 and 90, and 0 when q 2 is 90 or more. For q 2 of 90 or more, the price is below 10 at any positive q 1, so producing loses money. It is a function: one best reply per belief.
+
+Now run rationalizability round by round. Round one: beliefs about q j can be anything from zero up. The best replies lie between 0 and 45, because B R is largest, 45, when q j is 0. Round two: beliefs between 0 and 45 give best replies between 22.5 and 45, since B R of 45 is 22.5 and B R of 0 is 45. Round three: beliefs between 22.5 and 45 give replies between 22.5 and 33.75, since B R of 22.5 is 33.75. Round four: beliefs between 22.5 and 33.75 give replies between 28.125 and 33.75, since B R of 33.75 is 28.125. In the limit, the only survivor is 30, the fixed point of q equals 90 minus q over 2, that is, 3 q equals 90.
+
+Each round halves the width of the interval, because the slope of the best response is minus one half. So the intervals shrink to the point 30, which is the Nash equilibrium of part three. Lecture 1 reached the same point by iterated elimination, Tadelis page 65 and Gibbons pages 18 to 20. Gibbons, pages 20 and 21, adds a warning: with three firms the process stops after the first round, because the rivals' total output can range over zero to a minus c, and every output between zero and a minus c over 2 is the best reply to rivals' total output equal to a minus c minus 2 q i.
+
+The figure in the notes shows the two best-response lines, the rationalizability squares, the Nash equilibrium at 30 and 30, and the collusive split. The shaded squares are rounds one and two of rationalizability, the square from 0 to 45 and the square from 22.5 to 45. They close in on the crossing at 30 and 30. Read the figure as a staircase: a belief anywhere in the outer square implies a reply inside the inner one, and so on. The crossing is the only point that survives every round, which is why rationalizability is "unique" here.
+
+One point four. Not covered in class: the p-beauty contest, section 4.3.5, pages 74 and 75. The slides do not present it; it is kept as practice in iterated reasoning.
+
+n players choose integers from 0 to 20. The winners are those closest to three quarters of the average. Each player pays 1, and the winners split the pot. Tadelis's example: n equals 3, choices 1, 5 and 18. The average is 8. Three quarters of 8 is 6. Player 2, at 5, is closest, and wins.
+
+Round one: 20 is never a best response. If you believe the average is below 20, a lower number is closer to three quarters of it. If you believe everyone else plays 20, then choosing 20 ties with everyone, while 19 wins alone. The average is then one over n times n minus 1 times 20 plus 19, which lies between 19.5 and 20. Three quarters of it lies between 14.625 and 15, and 19 is closer than 20. That is footnote 6 on page 75. So 20 is beaten under every belief.
+
+Rounds two to nineteen. In the reduced game the same argument removes the new top number each time, leaving the set 0 and 1. For n greater than 2 both survive, because each is a best response to "everyone else plays it". For n equal to 2, only 0 survives. That is page 75, and the proofs are Tadelis exercises 4.8 and 4.9 on page 78.
+
+Common knowledge of rationality is doing all the work. Tadelis notes that real classes rarely produce a winning number below 4, footnote 7 on page 75. The prediction is only as good as the assumption that everyone reasons all nineteen rounds deep.
+
+One point five. Evaluating rationalizability, page 76. Existence: always, as with iterated elimination. Uniqueness: sometimes sharp, as in Cournot on slide 24 and in the beauty contest; in the Battle of the Sexes, "anything can happen". Pareto: survivors need not be Pareto optimal; the prisoner's dilemma survives intact.
+
+The sentence to remember. Rationalizability lets each player hold some belief; it never asks the beliefs to be right. In the Battle of the Sexes, Alex can rationally go to the opera believing Chris goes to the opera, while Chris rationally goes to football believing Alex goes to football. Removing that dissonance is the step to Nash equilibrium.
+
+One point six. The formal version, M W G section 8.C, pages 242 to 245. This is the G layer. M W G's definition 8.C.1, page 243, defines a best response among mixed strategies, and "never a best response" against all mixed profiles of the rivals. Definition 8.C.2 calls the survivors of the iterated removal the rationalizable strategies, after Bernheim 1984 and Pearce 1984. The set of rationalizable strategies is no larger than the set surviving iterated elimination, and the order of removal does not matter. Not examinable unless the lecture states it.
+
+Recap of part one. You should be able to define a best response, the best-response correspondence and "never a best response"; prove that a strictly dominated strategy is never a best response; state and prove Tadelis's proposition 4.4; run rationalizability in Cournot round by round; and explain why rationalizability says nothing in the Battle of the Sexes.
+
+Part two. Nash equilibrium: best responses to beliefs that are correct.
+
+This part covers slides 4 to 6 and 14 to 18, and Tadelis section 5.1, pages 79 to 84.
+
+The claim. A Nash equilibrium is a profile in which every player best-responds to the others' actual strategies: rationality plus correct beliefs. It refines iterated elimination and rationalizability, since every Nash equilibrium survives them and a unique survivor is the unique equilibrium. It is found in a matrix by marking best replies and looking for a cell marked twice. It can be multiple, as in the Battle of the Sexes, and it need not be Pareto optimal.
+
+Two point one. From rationalizable to self-enforcing. This is intuition.
+
+Rationalizability allowed opera for Alex and football for Chris in the Battle of the Sexes: Alex at the opera believing Chris goes, Chris at the game believing Alex goes. Each is optimal given a belief, but the beliefs are wrong. That is Tadelis page 79. Nash's "heroic leap" ties actions and beliefs together: in equilibrium everyone's belief is what the others actually do.
+
+Gibbons's motivation, section 1.1.C, pages 8 and 9. If game theory offers a unique prediction, each player must be willing to play the predicted strategy. It must be a best reply to the predicted strategies of the others. A prediction that is not a Nash equilibrium is falsified by the play it predicts: someone deviates. The same argument applies to a convention: a convention that is not a Nash equilibrium is not obeyed. Such a prediction is self-enforcing.
+
+Two point two. The definition and its relation to Lecture 1.
+
+Definition 5.1, Tadelis page 80, slide 14. The pure-strategy profile s star, made of s 1 star up to s n star, is a Nash equilibrium of the game G if s i star is a best response to s minus i star for every player i. In symbols, call this equation one: u i of s i star and s minus i star is at least u i of s i and s minus i star, for every s i in S i and every player i. In the slide's words: each player's strategy is a best response to the others' strategies, so no player gains from a unilateral deviation. In the Battle of the Sexes, opera together and football together are Nash equilibria, slide 14.
+
+Equivalently, s i star belongs to B R i of s minus i star for every i. The profile is a fixed point of the best-response correspondences, and this is how existence is proved, in part nine.
+
+The two requirements, page 81. One: each player plays a best response to his beliefs. Two: the beliefs are correct. Requirement one is rationality. Requirement two is the demanding one.
+
+Two point three. How Nash equilibrium differs from iterated elimination, slide 15.
+
+Compare the two kinds of concept. Iterated elimination and rationalizability are epistemic: they follow from common knowledge of rationality. Nash equilibrium is a notion of strategic stability: beliefs are correct. Iterated elimination and rationalizability describe what rational players who reason about each other can do. Nash equilibrium has three interpretations on the slide: first, self-fulfilling expectations; second, self-enforcing agreements; third, social norms or conventions. Gibbons's argument above is interpretation two. Tadelis's story of an influential Alex, later in this part, is interpretation one. The side of the road, below, is interpretation three.
+
+Two point four. The slides' two propositions, with their proofs, slides 16 and 17.
+
+Notation for the proofs. S i k is player i's set of strategies that survive k rounds of iterated elimination, with S i zero equal to S i, and S minus i k is the rivals' surviving profiles.
+
+Proposition 1, slide 16. If s star is a Nash equilibrium, then s star survives iterated elimination.
+
+The proof, by contradiction, in five steps. Step one: suppose not, and let k be the first round in which some component s i star is eliminated. Step two: then s i star is strictly dominated by some s i prime in S i k minus 1, against every s minus i in S minus i k minus 1. Step three: no component of s star was eliminated before round k, so s minus i star is in S minus i k minus 1. Step four: applying step two at s minus i equal to s minus i star, the payoff of s i prime against s minus i star is strictly greater than the payoff of s i star against s minus i star. Step five: so s i star is not a best response to s minus i star, which contradicts equation one. End of proof.
+
+The note on slide 16. A Nash equilibrium may involve weakly dominated strategies, and such equilibria are often considered less plausible. The lecture's example is Bertrand: charging marginal cost is weakly dominated by any higher price at which demand is positive, yet both firms at marginal cost is the unique Nash equilibrium. That is slide 36, in part four. Proposition 1 is about strict dominance only.
+
+Proposition 2, slide 17. In a finite game, if s star is the unique profile that survives iterated elimination, then s star is a Nash equilibrium, and, by proposition 1, the unique one.
+
+The proof, by contradiction, in five steps. Step one: suppose some player i has a strategy s i whose payoff against s minus i star is strictly greater than that of s i star. Step two: since s i is different from s i star and s star is the unique survivor, s i was eliminated in some round, by some s i prime that strictly dominates it against all surviving s minus i, including s minus i star, which is never eliminated. So s i prime pays strictly more than s i against s minus i star. Step three: if s i prime is eliminated later, repeat the argument with s i prime in the role of s i. Step four: the game is finite, so the chain ends at a strategy that is never eliminated, that is, at s i star. Step five: payoffs against s minus i star increase along the chain, so s i star pays strictly more than s i, which contradicts step one. End of proof.
+
+These are Gibbons's propositions B and A, in the appendix to section 1.1.C, pages 12 to 14, and the two halves of Tadelis's proposition 5.1.
+
+Proposition 5.1, Tadelis pages 80 and 81. If s star is one, a strict dominant-strategy equilibrium, two, the unique survivor of iterated elimination, or three, the unique rationalizable profile, then s star is the unique Nash equilibrium. Why, step by step. First, s star is a Nash equilibrium: by proposition 4.4, each s i star is a best response to s minus i star. Second, there is no other Nash equilibrium: a Nash equilibrium never contains a strictly dominated strategy, because a strictly dominated strategy is never a best response, and the same holds round by round in the reduced games, so every Nash equilibrium survives iterated elimination. If only s star survives, s star is the only candidate. The proof is Tadelis exercise 5.1, page 95.
+
+Three comparisons, and where the converse fails. A strict dominant-strategy equilibrium is the unique survivor and the unique Nash equilibrium; the converse fails, since Cournot has a unique equilibrium and no dominant strategy. The unique survivor of iterated elimination is the unique Nash equilibrium; the converse fails, since the three-by-three game of section two point six has a unique pure equilibrium and nothing is eliminated. A Nash equilibrium is an iterated-elimination survivor and is rationalizable; the converse fails, since in the Battle of the Sexes, opera for Alex and football for Chris survives both and is not an equilibrium.
+
+A worked line, Tadelis page 80, using Lecture 1's iterated-elimination game: rows U, M and D, columns L, C and R. U and L is the only survivor and the only Nash equilibrium, since B R 1 of L is U and B R 2 of U is L. In the prisoner's dilemma the unique Nash equilibrium is both finking: each plays a dominant strategy, which is a best reply to anything. Slides 4 and 5 call it the strict dominant-strategy equilibrium, and slide 6 notes that both staying mum Pareto dominates it.
+
+Two point five. Worked: coordination and dilemmas, slide 18.
+
+Which side of the road? Two drivers each choose left, L, or right, R. Both get 1 if they choose the same side and 0 if they choose differently. Best replies: to L it is L, since 1 beats 0; to R it is R, for both players. Mutual best replies: both left, and both right. Nothing is dominated, because L is better against L and worse against R. So iterated elimination eliminates nothing. The equilibrium concept does the selecting, and which side a country drives on is a convention, interpretation three.
+
+The prisoner's dilemma, with the slide's payoffs. Each player chooses C or D. Both C gives 2 to each. C against D gives minus 1 to the C player and 3 to the D player. Both D gives 0 to each. Player 1: against C, D gives 3, more than 2; against D, D gives 0, more than minus 1. D strictly dominates C, and by symmetry for player 2. The unique Nash equilibrium is both playing D, although both playing C gives 2 instead of 0 to each and so Pareto dominates it.
+
+Two point six. Finding pure equilibria in a matrix: the underline method, section 5.1.1, pages 81 and 82.
+
+The game of page 81, where nothing is dominated, so iterated elimination and rationalizability say "anything can happen". Rows U, M, D; columns L, C, R. Row U: 7 and 7 against L, 4 and 2 against C, 1 and 8 against R. Row M: 2 and 4 against L, 5 and 5 against C, 2 and 3 against R. Row D: 8 and 1 against L, 3 and 2 against C, 0 and 0 against R.
+
+Step one, player 1, column by column. Against L, the maximum of 7, 2 and 8 is 8, from D. Against C, the maximum of 4, 5 and 3 is 5, from M. Against R, the maximum of 1, 2 and 0 is 2, from M. So player 1 best-responds at D and L, at M and C, and at M and R.
+
+Step two, player 2, row by row. Against U, the maximum of 7, 2 and 8 is 8, at R. Against M, the maximum of 4, 5 and 3 is 5, at C. Against D, the maximum of 1, 2 and 0 is 2, at C. So player 2 best-responds at U and R, at M and C, and at D and C.
+
+Step three. The only cell marked twice is M and C: the unique pure-strategy Nash equilibrium.
+
+The figure in the notes shows the matrix with player 1's best replies underlined, player 2's overlined, and the doubly marked cell, M and C, shaded. Notice what it shows that iterated elimination could not: every row and column is a best reply to something, so nothing is eliminated, yet only one cell is a mutual best reply.
+
+"Unique pure-strategy equilibrium" is the exact claim, page 82. The game also has four mixed equilibria, found by support enumeration. For instance, both players put one sixth on their first strategy and five sixths on their second. That makes U and M pay player 1 the same 4.5, and D only twenty-three sixths, and likewise for player 2. The underline method finds pure equilibria only. Gibbons uses the same device, figure 1.1.5 on page 10, and so does Cabral, marking best replies with asterisks, figure 7.5 on pages 165 and 166.
+
+Two point seven. Multiple equilibria, and what selects among them.
+
+The Battle of the Sexes, pages 79, 81 and 83. Opera together and football together are both Nash equilibria. The two mixed-up profiles are not, since each player would move to the other's event. Tadelis's selection story: if Alex is influential, the belief that both go to the opera is self-fulfilling, not because Chris likes pleasing Alex, which would change the payoffs, but because beliefs coordinate. As the outside analyst, "one of these two outcomes is what we predict", page 81.
+
+The Stag Hunt, section 5.2.1, pages 83 and 84. Not covered in class; this is reading, and the slides' coordination example is the road game. Each hunter chooses stag, S, or hare, H. Both stag gives 5 each. Stag against hare gives 0 to the stag hunter and 3 to the hare hunter. Both hare gives 3 each. Best replies: to S, the best reply is S, since 5 beats 3; to H, it is H, since 3 beats 0. Both stag and both hare are Nash equilibria, and both stag Pareto dominates both hare. Yet both hare is a reasonable prediction: a hunter who expects the other to hunt hare gets 0 from the stag alone. Tadelis's reading: identical societies end up cooperative or individualist through self-fulfilling beliefs, or norms, page 84, with the "big push" in footnote 2.
+
+Compare three selection stories. In the Battle of the Sexes, the pure equilibria are opera together and football together, and the selection argument is influence, history or convention. In the Stag Hunt, the equilibria are both stag and both hare, and the argument is Pareto dominance against the safety of hare. In Cabral's figure 7.6 on standards, there are two compatible standards, and the argument is focal points, Cabral pages 166 and 167. Cabral's "meet me in New York" example, page 167: infinitely many equilibria, yet most subjects choose Grand Central at noon, a focal point that comes from outside the game.
+
+The sentence to remember. Multiplicity is not a failure of the concept. Nash equilibrium is a consistency condition; which consistent profile is played is a question about beliefs that the payoff matrix alone cannot answer.
+
+Two point eight. Evaluating Nash equilibrium, section 5.1.2, page 83. Existence: not always in pure strategies, as in Matching Pennies and in asymmetric Bertrand with continuous prices; always in mixed strategies for finite games, part nine. Uniqueness: often fails, but the concept is sharper than iterated elimination and rationalizability, by proposition 5.1. Pareto: not guaranteed, as in the prisoner's dilemma and the tragedy of the commons.
+
+Two point nine. M W G section 8.D, pages 246 to 249. G layer. M W G's definition 8.D.1, page 246, states the pure-strategy Nash equilibrium exactly as Tadelis's definition 5.1. M W G discusses why players might play a Nash equilibrium, pages 248 and 249: a self-enforcing agreement reached by pre-play communication, a stable social convention, a focal point, or the outcome of learning. It also stresses that common knowledge of rationality alone does not imply Nash play; it implies only rationalizability. Named here; not examinable unless the lecture states it.
+
+Recap of part two. You should be able to state definition 5.1 and its two requirements; give the three interpretations of slide 15; prove the slides' propositions 1 and 2; explain why a Nash equilibrium can use a weakly dominated strategy; find all pure equilibria of a matrix by the underline method; and solve the road game and the prisoner's dilemma.
+
+Part three. Cournot duopoly: two best-response lines and one crossing.
+
+This part covers slides 20 to 27, Tadelis section 5.2.3, pages 87 and 88, and Gibbons section 1.2.A, pages 14 to 21.
+
+The claim. With continuous strategies a Nash equilibrium is found by solving every player's first-order condition at once. Each first-order condition is a best-response function, and the equilibrium is where they cross. In Cournot the lines slope down, which is called strategic substitutes, and they cross once. The duopoly produces more than a monopoly and less than competition, because collusion at the monopoly output is not a best reply to itself.
+
+Three point zero. The lecture's version, slides 20 to 24, in its notation.
+
+Notation. q i, at least zero, is firm i's output. Capital Q is q 1 plus q 2. Inverse demand is P of Q equals a minus b Q, with a greater than c, c at least zero, and b positive. Both firms have the same constant marginal cost c. Capital pi i is firm i's profit. q superscript m is the monopoly output, and q superscript c p is the perfectly competitive output. Example 2 on slide 20 uses a equals 100, b equals 1 and c equals 10.
+
+The game, slide 21. The players are firms 1 and 2. Each firm's strategy set is all outputs q i of zero or more. The good is homogeneous: consumers only care about the price, which is the same for both firms. Each firm maximizes its own profit. Call this equation one: pi i of q i and q j equals P of q i plus q j, times q i, minus c q i, which equals a minus c minus b times the sum of q i and q j, all times q i. In the example, pi i equals 100 minus q i minus q j, times q i, minus 10 q i.
+
+Slide 20 asks for four things: a, the normal form, which is the one just written; b, the dominant and dominated strategies; c, each firm's best response, plotted; and d, the Nash equilibrium, compared with the monopoly output. For b: no output is dominant, because the best output depends on q j, as the best response below shows. Outputs above q m are strictly dominated, and that starts the elimination sequence below.
+
+Two benchmarks, slide 22. A monopolist sets marginal revenue equal to marginal cost. Marginal revenue at output q m is a minus 2 b q m. Setting it equal to c gives equation two: q m equals a minus c, over 2 b. Many identical firms push the price down to cost. P of q c p equals a minus b q c p, and setting it equal to c gives equation three: q c p equals a minus c over b, which is 2 q m. In the example, q m equals 100 minus 10 over 2, which is 45, and q c p equals 90. Where does the duopoly fall between these two benchmarks?
+
+The best response, slide 23. Given q j, firm i maximizes equation one. The first-order condition, equation four: the derivative of pi i with respect to q i equals a minus c minus 2 b q i minus b q j, set equal to zero. Solving equation four for q i gives q i equals a minus c minus b q j, over 2 b, which is a minus c over 2 b, minus one half of q j. By equation two, that is q m minus one half q j. So, equation five: firm i's best response is q m minus one half q j when q j is between 0 and q c p, and it is 0 when q j is q c p or more. The corner: q m minus one half q j is zero or below exactly when q j is at least 2 q m, which is q c p by equation three. In the example, 100 minus 2 q i minus q j minus 10 equals zero, so the best response is 90 minus q j, over 2.
+
+The Nash equilibrium, slide 24. A Nash equilibrium is a pair of mutual best responses: q 1 equals q m minus one half q 2, and q 2 equals q m minus one half q 1. Substitute the second into the first. First, q 1 equals q m minus one half of the bracket q m minus one half q 1. Then, q 1 equals one half q m plus one quarter q 1. Then, three quarters of q 1 equals one half q m, so q 1 star equals two thirds of q m. By symmetry, equation six: q 1 star equals q 2 star equals two thirds of q m. In the example, q star is two thirds of 45, which is 30. Total output is 60. The price is 100 minus 60, which is 40. Each firm's profit is 40 minus 10, times 30, which is 900.
+
+Iterated elimination gives the same answer, slide 24. By equation five, the largest best response is q m, reached when q j is zero, so outputs above q m are never optimal. Given that q j is at most q m, the smallest best response is q m minus one half q m, which is one half q m. And so on. The end points of the surviving interval alternate. First one half q m. Then q m minus one half of one half q m, which is three quarters q m. Then q m minus one half of three quarters q m, which is five eighths q m. Then q m minus one half of five eighths q m, which is eleven sixteenths q m. And so on, converging to two thirds q m. In the example the bounds are 22.5, 33.75, 28.125, 30.9375, and so on, converging to 30. These are the rounds of part one.
+
+Compare the three market structures. A monopoly, or a cartel, produces total output q m, 45 in the example. The Cournot duopoly produces four thirds of q m, 60 in the example. Perfect competition produces q c p, which is 2 q m, 90 in the example.
+
+The rest of this part is Tadelis's version with different marginal costs, c 1 and c 2. Set them equal to c and it collapses to equations five and six.
+
+Three point one. The game and the best response, Tadelis page 87.
+
+The players are firms 1 and 2. Strategies are outputs q i of zero or more. Inverse demand is P equals a minus b times q 1 plus q 2. Costs are c i times q i. The payoff is u i of q i and q j equals a minus b q i minus b q j, times q i, minus c i q i. The first-order condition, given a belief q j: a minus 2 b q i minus b q j minus c i equals zero. The second-order condition: the second derivative is minus 2 b, which is negative, so the first-order condition gives the maximum. Solving for q i and truncating at zero, because a firm never produces at a loss: B R i of q j is the larger of zero and a minus b q j minus c i, over 2 b. This is Tadelis's equation 5.2.
+
+The slope is minus one half: one more unit from the rival cuts the best reply by half a unit. This is strategic substitutes, in Tadelis's remark on page 93: a best reply that falls in the rival's choice.
+
+Three point two. Solving the two lines, every step.
+
+In an interior equilibrium both firms are on their lines: 2 b q 1 plus b q 2 equals a minus c 1, and b q 1 plus 2 b q 2 equals a minus c 2. Multiply the first by 2 and subtract the second: 3 b q 1 equals 2 times a minus c 1, minus a minus c 2, which is a minus 2 c 1 plus c 2. Symmetrically for firm 2. So q 1 star equals a minus 2 c 1 plus c 2, over 3 b, and q 2 star equals a minus 2 c 2 plus c 1, over 3 b. Then total output is 2 a minus c 1 minus c 2, over 3 b, and the price is a minus b times total output, which is a plus c 1 plus c 2, over 3.
+
+Profits. From the first-order condition, the price minus c i equals b q i star. To see it, substitute a minus b q j star minus c i equals 2 b q i star into the price minus c i, which is a minus b q i star minus b q j star minus c i. So each firm's profit, price minus c i times q i star, equals b times q i star squared.
+
+The corner. If a minus 2 c 1 plus c 2 is negative, that is, if c 1 is more than a plus c 2 over 2, the formula gives a negative output for firm 1. Then firm 1 produces zero and firm 2 is a monopolist, producing a minus c 2 over 2 b. Check that this is an equilibrium: firm 1's best response to a minus c 2 over 2 b is the larger of zero and a minus 2 c 1 plus c 2, over 4 b, which is zero.
+
+Comparative statics, in the interior case. The derivative of q 1 star with respect to c 1 is minus 2 over 3 b. The derivative of q 2 star with respect to c 1 is plus 1 over 3 b. The derivative of total output with respect to c 1 is minus 1 over 3 b. The derivative of the price with respect to c 1 is plus one third. A cost increase is passed to the price only one third, and the rival picks up half of the lost output.
+
+Three point three. Worked: Tadelis's numbers, a equals 100, b equals 1, both costs 10, pages 87, 88 and 90.
+
+The best response is 100 minus q j minus 10, over 2, which is 90 minus q j over 2. The equilibrium output is 100 minus 20 plus 10, over 3, which is 30. Total output 60 and price 100 minus 60, which is 40. Profit, 40 minus 10 times 30, which is 900. Monopoly: maximize 100 minus q, times q, minus 10 q; the first-order condition is 90 minus 2 q equals zero, so q equals 45, the price is 55 and profit is 2025. Competition: price equals cost, 10, so total output is 90. Joint duopoly profit is 2 times 900, which is 1800, less than 2025. The ordering: 45 for monopoly, less than 60 for Cournot, less than 90 for competition. Cournot output is two thirds of the competitive output.
+
+The figure in the notes shows the two best-response lines crossing once at 30 and 30. A hollow dot marks the collusive split, 22.5 each, on the line where total output is the monopoly output; an arrow shows firm 1's best reply to 22.5, which is 33.75. The arrow is the whole economics of the figure. Starting from the split that maximizes joint profit, each firm wants to expand, and only at the crossing does no firm want to move.
+
+Three point four. Why collusion fails, Gibbons page 17. This is intuition.
+
+Joint profit is maximal at total output q m, equal to a minus c over 2 b, for example with each firm producing half of q m. But the best reply to half of q m is a minus c minus b times half of q m, over 2 b, which is a minus c minus a minus c over 4, over 2 b, which is 3 times a minus c over 8 b. That is more than a minus c over 4 b, which is half of q m. With Tadelis's numbers: the best reply to 22.5 is 90 minus 22.5, over 2, which is 33.75, more than 22.5. Deviating raises firm i's profit from 55 minus 10 times 22.5, which is 1012.5, to 100 minus 56.25 minus 10, times 33.75, which is 1139.06.
+
+The sentence to remember. The low monopoly output keeps the price high, and at a high price each firm wants to sell more, even though doing so drives the price down. In equilibrium the price has fallen just enough that the temptation to expand is exactly offset, Gibbons page 17. This is the prisoner's-dilemma structure of oligopoly that Lectures 5 and 6 will try to escape with repetition.
+
+Three point five. The cartel as a prisoner's dilemma, slide 25.
+
+A cartel: competing firms coordinate to maximize joint profit, as a single monopolist. With identical costs each produces half of q m, 22.5 in the example. Restrict each firm to two choices: Cartel, which is 22.5, or Deviate, which is the best response to the cartel output, 90 minus 22.5 over 2, which is 33.75.
+
+The payoffs, worked. At Cartel and Cartel, total output is 45 and the price 55, so each firm earns 55 minus 10, times 22.5, which is 1,012.5. At Deviate against Cartel, total output is 56.25 and the price 43.75. The deviator earns 33.75 times 33.75, which is 1,139.06. The cartel firm earns 33.75 times 22.5, which is 759.38.
+
+The slide's matrix, with payoffs rounded. Both Cartel: 1,012 each. Cartel against Deviate: 759 for the cartel firm and 1,139 for the deviator. Both Deviate: 900 each.
+
+Reading the both-Deviate cell. 900 is each firm's profit at the Nash outputs, 30 and 30, where mutual deviation ends up. If both literally produced 33.75, total output would be 67.5 and the price 32.5, and each would earn 32.5 minus 10, times 33.75, which is 759.38. That is exactly what the cartel firm earns against a deviator, so Deviate would then be only weakly dominant. With the slide's 900, Deviate strictly dominates Cartel: 1,139 beats 1,012, and 900 beats 759.
+
+The slide asks: "Which game has the same structure?" The prisoner's dilemma. Each firm has a dominant strategy, deviate, and the equilibrium, 900 each, is Pareto dominated by the cartel, 1,012 each. Lectures 5 and 6 ask whether repetition can sustain the cartel.
+
+Three point six. Cournot oligopoly with n firms, slides 26 and 27.
+
+The price is a minus b times the sum of all n outputs, and firm i's payoff is q i times the price minus c. The same first-order condition as equation four, with the sum of the rivals' outputs in place of q j, gives equation seven: firm i's best response is q m minus one half the sum of q j over all j other than i, if positive. In equilibrium, equation seven holds for every i at the equilibrium outputs. Multiply by 2 and move the sum, equation eight: 2 q i star equals 2 q m minus the sum of the rivals' equilibrium outputs, so q i star equals 2 q m minus the sum over all firms, which is 2 q m minus total output Q star. Summing equation eight over the n firms, equation nine: Q star equals 2 n q m minus n Q star, so Q star equals 2 n over n plus 1, times q m. Substituting equation nine back into equation eight, equation ten: q i star equals 2 q m minus 2 n over n plus 1 times q m, which is 2 q m over n plus 1, for every firm.
+
+Checks. n equals 1 gives q m, the monopoly. n equals 2 gives two thirds of q m, as in equation six. As n goes to infinity, total output tends to 2 q m, which is q c p: with many identical firms the market approaches perfect competition, slide 27. In Tadelis's notation, equation ten is q i star equals a minus c over n plus 1 times b, and the price is a plus n c over n plus 1, which tends to c. That is Tadelis exercise 5.8, page 96, and Gibbons problem 1.4, page 49. Cournot firms keep some market power when they are few; Bertrand firms lose it with two, in part four.
+
+Three point seven. Asymmetric costs, worked. This is not on the slides; it is reading.
+
+Take a equals 100, b equals 1, c 1 equals 1 and c 2 equals 2, the costs Tadelis uses for asymmetric Bertrand on page 91. q 1 star is 100 minus 2 plus 2, over 3, which is 33.333. q 2 star is 100 minus 4 plus 1, over 3, which is 32.333. The price is 100 plus 1 plus 2, over 3, which is 34.333. Firm 1's profit, b times q 1 star squared, is 33.333 squared, which is 1111.11. Firm 2's is 32.333 squared, which is 1045.44. The cheaper firm sells exactly c 2 minus c 1 over b, one unit, more, and both firms survive, unlike asymmetric Bertrand, where the efficient firm takes the whole market.
+
+Recap of part three. You should be able to write the Cournot game; derive the benchmarks q m and q c p; derive the best response, corner included; solve for two thirds of q m; reproduce the elimination sequence one half, three quarters, five eighths, eleven sixteenths; show that the cartel is not a best reply to itself and that the cartel game is a prisoner's dilemma; and derive the n-firm equilibrium and its competitive limit.
+
+Part four. Bertrand duopoly: two firms are enough for marginal-cost pricing.
+
+This part covers slides 29 to 40 and Tadelis section 5.2.4, pages 88 to 93.
+
+The claim. Change the strategy from quantity to price and the same market behaves competitively. With identical costs the unique equilibrium of the continuous game is both firms pricing at marginal cost, which is Tadelis's proposition 5.2, proved by showing that every other profile has a profitable deviation. The reading sections add three things the lecture did not cover: on a one-cent grid there are exactly two equilibria; with unequal costs and continuous prices there is no pure equilibrium, because the payoff jumps at the rival's price; and differentiated products restore interior, upward-sloping best responses, which is called strategic complements.
+
+Four point zero. The lecture's version, slides 29 to 40, in its notation.
+
+Notation. p i, at least zero, is firm i's price. c, at least zero, is the common marginal cost. Market demand at the lowest price p is Q of p equals a over b minus p over b when p is below a, and zero otherwise. This is the inverse of P equals a minus b Q. p superscript m is the monopoly price.
+
+The game, slide 29. In many markets, firms compete in prices rather than quantities. Two firms sell a homogeneous good and choose prices simultaneously. Consumers always buy from the cheapest firm, and split equally at a tie. Equation one: firm i's payoff is p i minus c, times Q of p i, when p i is below p j; one half of p i minus c, times Q of p i, when the prices are equal; and zero when p i is above p j.
+
+The monopoly price, slide 30. Maximize p minus c, times Q of p, which is p minus c times a minus p, over b. The first-order condition: a minus p, minus p minus c, all over b, equals zero. Equation two: p m equals a plus c, over 2. With Tadelis's numbers, a equals 100 and c equals 10, the monopoly price is 55.
+
+Firm i's payoff given p j, case by case, slides 31 to 33. Four cases.
+
+First, the rival prices below cost. Any price at or below p j sells at a loss, and any price above p j sells nothing and earns zero. So the best response is every price above p j.
+
+Second, the rival prices at cost. A price below c loses money; a price equal to c and a price above c both earn zero. So the best response is every price at or above p j.
+
+Third, the rival prices above cost but at or below the monopoly price. Firm i wants a price below p j, as close as possible to p j. But for any such price, a higher price still below p j earns more. So there is no best response at all. This is the existence problem.
+
+Fourth, the rival prices above the monopoly price. Any price below p j takes the whole market, and the best of them is the monopoly price itself. So the best response is p m.
+
+The best response, slide 34, equation three. Firm i's best response to p j is: the set of prices above p j, if p j is below c; the set of prices at or above p j, if p j equals c; the empty set, if p j is above c and at most p m; and the single price p m, if p j is above p m.
+
+Both firms at cost is a Nash equilibrium, slide 35. Suppose p 2 equals c. By equation three, any p 1 at or above c is a best response; in particular c is. The same argument holds for firm 2.
+
+A weakly dominated equilibrium strategy, slide 36. Charging c is weakly dominated by any higher price at which demand is positive. Such a price earns zero when it is undercut and a strictly positive profit when it is the lowest or tied, while charging c earns zero always. This is slide 16's caveat in action.
+
+Both firms at cost is the unique equilibrium, slides 37 and 38.
+
+Step one. In any Nash equilibrium, the two prices are equal. Suppose firm 1's price is above firm 2's. Three cases. If firm 2's price is below cost, firm 2 makes a loss, when it could earn zero by pricing above firm 1. If firm 2's price equals cost, firm 2 earns zero, when it could earn a positive profit by matching firm 1's price, getting half the market at a positive margin. If firm 2's price is above cost, firm 1 earns zero, when it could earn a positive profit with any price between c and firm 2's price. An analogous argument rules out firm 1's price being below firm 2's.
+
+Step two. In any Nash equilibrium, both prices equal c. If both prices are equal and above c, firm 1 could charge a price between c and firm 2's price, close to firm 2's price, and serve the whole market instead of sharing it, almost doubling its profit. If both prices are equal and below c, both make losses, and each would rather raise its price and sell nothing.
+
+In the slide's words: "According to the model, a duopoly in Nash equilibrium works like a competitive market."
+
+The Bertrand paradox, slide 39. Two firms behave as if in perfect competition: price equals marginal cost and profits are zero. The assumptions behind it are three: one, homogeneous products; two, simultaneous choices; three, unlimited production capacity. Relax any one and prices rise above cost. Section four point five relaxes the first.
+
+Cournot or Bertrand, slide 40. Which model should we use? It depends on what is harder to adjust. In Cournot, quantity, or capacity, is harder to adjust than price, and the strategic decision is how much to produce; the slide's examples are cars, cement, steel and commodities. In Bertrand, price is harder to adjust than quantity, or quantity can be expanded at almost no cost, and the strategic decision is the price; the slide's example is software and other digital goods. In both models the Nash equilibrium predicts more output than a cartel, but the Bertrand prediction is much more extreme: total output equals q c p, against Cournot's four thirds of q m.
+
+The rest of this part is Tadelis's treatment. Sections four point one and four point three are the same result in his numbers. Sections four point two, four point four and four point five were not covered in class and are reading.
+
+Four point one. The game, Tadelis page 88.
+
+Demand is p equals 100 minus q, costs are 10 times output, and prices are any number of zero or more. The lower price takes the market and a tie splits it. Firm i's payoff is 100 minus p i, times p i minus 10, when p i is below p j; one half of that when the prices are equal; and zero when p i is above p j. The monopoly benchmark, page 89: maximize 100 minus p, times p minus 10. The first-order condition is 110 minus 2 p equals zero, so p equals 55, quantity 45, and profit 45 times 45, which is 2025.
+
+Four point two. Not covered in class: the best response on a cent grid, pages 89 and 90.
+
+Prices move in steps of one cent. Go case by case over the rival's price. If p j is above 55, the best response is 55, since the monopoly price already undercuts. If p j is between 10.02 and 55, the best response is p j minus one cent, since undercutting by a cent beats tying. If p j is 10.01, the best response is 10.01: undercutting to 10 earns zero, while tying earns one half of 89.99 times 0.01, which is positive. If p j is 10, any price of 10 or more is a best response, since each earns exactly zero. If p j is below 10, any price above p j is a best response, since matching or undercutting sells below cost.
+
+The undercut beats the tie at every step, page 89. Let delta v be the gain from pricing at p j minus one cent rather than at p j. Delta v equals 100 minus the bracket p j minus 0.01, times the bracket p j minus 0.01 minus 10, minus one half of 100 minus p j, times p j minus 10. Expand the first product: 100.01 minus p j, times p j minus 10.01, equals minus p j squared plus 110.02 p j minus 1001.1001. The second: one half of minus p j squared plus 110 p j minus 1000, equals minus 0.5 p j squared plus 55 p j minus 500. Subtract: delta v equals minus 0.5 p j squared plus 55.02 p j minus 501.1001, which is about 55.02 p j minus 0.5 p j squared minus 501.1.
+
+At p j equal to 10.02, the book's rounded form gives 551.3004 minus 50.2002 minus 501.1, which is 0.0002, positive. The exact constant gives 0.0001, which is also the direct comparison: undercutting to 10.01 earns 89.99 times 0.01, which is 0.8999, while tying at 10.02 earns one half of 89.98 times 0.02, which is 0.8998. Either way the gain is positive. And the derivative of delta v with respect to p j is 55.02 minus p j, positive for p j below 55.02, so delta v is positive on the whole range from 10.02 to 55.
+
+The equilibria. Look for mutual best replies: the best reply to 10.01 is 10.01, and 10 is a best reply to 10. So the equilibria are both at 10 and both at 10.01. No other pair works. At or above 10.02, the higher-priced or tied firm undercuts. A pair with one firm at 10 and the other above 10 fails, because the firm at 10 earns zero and would rather raise its price to just below the other for a positive profit.
+
+Tadelis's warning, page 90. When p 2 is 10, every p 1 of 10 or more is a best reply for firm 1. It does not follow that every such pair is an equilibrium: if p 1 is above 10, firm 2's price of 10 is no longer a best reply to it. An equilibrium needs both players best-responding, not one.
+
+The figure in the notes has two panels. On the left, the cent-grid best response, computed by brute force: it hugs the 45-degree line one cent below it, so the only places it can meet its mirror image are where undercutting stops paying, at 10 and 10.01. A shaded band marks that every price of 10 or more is a best response to 10. On the right, Tadelis's figure 5.3 with the book's numbers, firm 1's cost 1 and firm 2's price 2: firm 1's profit rises toward 98 as its price approaches 2 from below, drops to 49 at 2, and is zero above. The open circle at 98 is the whole existence problem: the supremum is approached but never attained.
+
+Profits compared, page 90. Cournot: 900 each. Bertrand: zero at 10 and 10, or about 0.45 at 10.01 and 10.01. Monopoly: 2025. Adding a third or fourth Bertrand firm changes nothing.
+
+Four point three. Proposition 5.2: continuous prices, page 91. This is the slides' result, slides 35 to 38.
+
+Proposition 5.2. With continuous prices, costs c times quantity for both firms, and demand p equals a minus b q with a greater than c, the unique Nash equilibrium is both prices equal to c.
+
+The proof, every case. One: no equilibrium has a price below c; the firm with the lower price sells at a loss and would rather raise its price. So both prices are at least c. Two: both prices equal and above c; each earns half the market at margin p minus c, and cutting slightly takes the whole market at almost the same margin, nearly doubling profit. Not an equilibrium. Three: firm 1's price above firm 2's, which is above c; firm 2 earns the whole market but can raise its price to just below firm 1's and earn more, as long as its price is below the monopoly price, and above it, firm 1 undercuts. Not an equilibrium. Four: firm 1's price above firm 2's, which equals c; firm 2 earns zero and can raise its price toward firm 1's for a positive profit. Not an equilibrium. Five: both prices equal c; both earn zero, any higher price sells nothing and earns zero, any lower price loses. Every price at or above c is a best reply to c, so c is one. Equilibrium. End of proof.
+
+The sentence to remember. Two firms reproduce perfect competition. In Tadelis's words on page 90: "One firm may have monopoly power, but when we let one more firm compete, and they compete on prices, then the market will behave competitively."
+
+Four point four. Not covered in class: unequal costs, no equilibrium in pure strategies, pages 91 to 93.
+
+Firm 1's cost is 1, firm 2's is 2, and demand is p equals 100 minus q. With cents: firm 1 at 1.99 and firm 2 at 2.00 is an equilibrium. Firm 1 takes the market at a margin of 0.99 and would lose by raising to 2.00, where it splits, or above, where it sells nothing. Firm 2 sells nothing and would lose money by pricing below 2. Tadelis exercise 5.12, page 98, asks for the other equilibria.
+
+With continuous prices, the "limit" of both at 2 is not an equilibrium. Firm 1 earns one half of 98 times 1, which is 49, and would earn almost 98 by pricing a hair below 2. But there is no best hair. Firm 1's payoff against a rival price of 2 is 100 minus p 1, times p 1 minus 1, tending to 98, when p 1 is below 2; 49 at exactly 2; and zero above 2. The supremum, 98, is not attained: for any price below 2, a price closer to 2 earns more. Firm 1 has no best response to a rival price of 2, nor to any rival price below 50.5, its monopoly price, footnote 7 on page 92.
+
+Ruling out every candidate, pages 92 and 93. If both prices are above 2, the firm with the higher or equal price deviates to a price between 2 and the other's. If prices are below 1, the firm selling at a loss deviates up. So any equilibrium has prices between 1 and 2. There, firm 1 at or above firm 2 fails, since firm 1 undercuts just below firm 2's price, and firm 2 at or above firm 1 fails, since firm 2 prefers any price above firm 1's. No pure equilibrium.
+
+The sentence to remember. The culprit is a discontinuous payoff, not the solution concept. Nash's existence theorem, in part nine, needs finite games or continuous payoffs; this game has neither. Tadelis's pragmatic line, page 93: discreteness removes the problem, so continuous prices are a convenience to be dropped when they create such anomalies.
+
+Four point five. Not covered in class: strategic complements and differentiated products.
+
+Tadelis's remark on page 93. Cournot best replies fall in the rival's choice, which is strategic substitutes, and so do the commons best replies. Bertrand best replies rise with the rival's price between marginal cost and the monopoly price, which is strategic complements. Note a slip in the printed text: the remark says the monopoly price is "equal to 45"; in the leading example it is 55. 45 is the monopoly quantity, page 89.
+
+Gibbons section 1.2.B, pages 21 and 22: differentiated products. Demand for firm i is q i equals a minus p i plus b p j, with b between 0 and 2, and marginal cost c below a. Profit is a minus p i plus b p j, times p i minus c. The first-order condition: a minus p i plus b p j, minus p i minus c, equals zero, so p i equals a plus b p j plus c, over 2. The slope is b over 2, positive: upward-sloping best responses. The symmetric solution: p star equals a plus b p star plus c, over 2, so 2 minus b times p star equals a plus c, and both prices equal a plus c over 2 minus b. That is why the model needs b below 2. Prices are above cost: product differentiation softens price competition. Gibbons stresses that "Cournot equilibrium" and "Bertrand equilibrium" are the same concept, Nash, applied to two different games, page 21.
+
+Compare the three models in three dimensions. First, the slope of the best response: minus one half in Cournot, strategic substitutes; plus one, a cent below, in homogeneous Bertrand, complements; plus b over 2 in differentiated Bertrand, complements. Second, the price with a equals 100 and c equals 10: 40 in Cournot, 10 in homogeneous Bertrand, a plus c over 2 minus b in differentiated Bertrand. Third, market power with two firms: partial in Cournot, none in homogeneous Bertrand, partial in differentiated Bertrand.
+
+Recap of part four. You should be able to derive the monopoly price a plus c over 2; build the Bertrand best-response correspondence in its four cases and explain why one case is empty; show that both firms at cost is an equilibrium using a weakly dominated strategy; prove uniqueness in the slides' two steps; state the paradox and its three assumptions; and say when Cournot or Bertrand is the better model.
+
+Part five. Mixed strategies: each player's mix is pinned by the other player's indifference.
+
+This part covers slides 42 to 55, Tadelis sections 6.1 and 6.2, pages 101 to 114, and Gibbons section 1.3, pages 29 to 44.
+
+The claim. A mixed strategy is a probability distribution over pure strategies; a belief is a distribution over the rivals' strategies. A mixed-strategy Nash equilibrium is a profile of mutual best responses, and a player mixes only between strategies that pay the same. So the recipe is: find the rival's mix that makes me indifferent; that is the rival's equilibrium strategy. The lecture's example is the Battle of the Sexes, whose two pure equilibria gain a third, mixed one, with Alex at the opera with probability two thirds and Chris with probability one third, worth only two thirds to each player. The book's other examples, Matching Pennies, rock-paper-scissors and the game of section 6.2.3, are reading.
+
+Five point one. Why mix, slide 42, and games with no pure equilibrium.
+
+Slide 42's motivation: a player randomizes to avoid being predictable, to surprise or to avoid being surprised. The book's examples in this section were not covered in class.
+
+Matching Pennies, Tadelis page 101. Each player shows heads or tails. Player 1 wins 1 from player 2 if the pennies match, and loses 1 if they do not. By the underline method, player 1 wants to match and player 2 wants to mismatch, so no cell is a mutual best reply. The same holds in rock-paper-scissors, page 102: from any pure pair at least one player switches. Gibbons, pages 29 and 30, gives poker with its bluffing, a pitcher against a batter, and an attack by land or by sea: games where each wants to outguess the other. Tadelis, page 111, adds penalty kicks, bosses monitoring employees, and police and criminals.
+
+Five point two. The definitions, exactly.
+
+Definition 6.1, Tadelis page 102, slide 42. A mixed strategy of player i is a probability distribution over S i: a function sigma i from S i to the interval from 0 to 1, whose values sum to 1 over all of player i's pure strategies. The set of mixed strategies is capital sigma i, defined as delta of S i; Tadelis writes delta S i, the simplex. A mixed-strategy profile is sigma, made of sigma 1 up to sigma n, in capital sigma, the product of the individual sets. Every pure strategy is a degenerate mixed strategy, and with mixed strategies players evaluate expected payoffs.
+
+Definition 6.2, page 104. A pure strategy s i is in the support of sigma i if and only if sigma i of s i is positive.
+
+Definition 6.3, page 104. If S i is an interval, a mixed strategy is a cumulative distribution function, F i of x, the probability that s i is at most x. With a density f i, the support is where the density is positive. Tadelis's example: in Cournot with capacity 100, choose q i uniformly between 30 and 50. Then F i of s is s minus 30, over 20, between 30 and 50, and the density is one twentieth there. That is figure 6.1.
+
+Definition 6.4, page 105. A belief of player i is a probability distribution pi i over S minus i, where pi i of s minus i is the probability i assigns to s minus i. Beliefs live in the same set as the rivals' mixed profiles.
+
+Definition 6.5, page 105, and slide 43: expected payoffs, in the slide's three formulas. Players randomize independently, so the probability of a pure profile is the product of the individual probabilities. Equation one: u i of the profile sigma equals the sum over all pure profiles s of sigma 1 of s 1, times and so on up to sigma n of s n, times u i of s. Equation two: u i of the pure strategy s i against sigma minus i equals the sum over all rival profiles s minus i of the product, over every rival j, of sigma j of s j, times u i of s i and s minus i. Equation three: u i of the mixed strategy sigma i against sigma minus i equals the sum over player i's pure strategies of sigma i of s i times u i of s i and sigma minus i.
+
+The sentence to remember. A mixed strategy's payoff is a weighted average of its pure strategies' payoffs. Everything below follows from that one line: no mix can beat the best pure strategy in its support, and a mix ties with it only if every pure strategy in the support ties.
+
+A worked line, page 106, reading. In rock-paper-scissors, suppose player 2 plays rock with probability one half, paper with probability one half, and scissors never. Player 1's rock earns one half times 0 plus one half times minus 1 plus zero times 1, which is minus one half. Paper earns one half times 1 plus one half times 0 plus zero times minus 1, which is one half. Scissors earns one half times minus 1 plus one half times 1 plus zero, which is 0. The unique best reply is paper.
+
+A continuous example, pages 106 and 107, reading: the all-pay auction for a dollar. Both players bid, both pay their bids, and the higher bid wins the dollar. Suppose player 2 bids uniformly between 0 and 1. A bid s 1 below 1 gives player 1 the probability that s 1 is below s 2, times minus s 1, plus the probability that s 1 is above s 2, times 1 minus s 1. That is 1 minus s 1, times minus s 1, plus s 1 times 1 minus s 1, which is zero. Ties have probability zero, and any bid above 1 gives 1 minus s 1, which is negative. Every bid between 0 and 1 earns exactly zero: player 1 is indifferent across a continuum. Uniform bidding is in fact a symmetric equilibrium, Tadelis exercise 6.10 on page 125.
+
+Definition 6.6, page 107, slide 44. Sigma star in capital sigma is a Nash equilibrium if, for every player i, sigma i star is a best response to sigma minus i star. Equation four: u i of sigma i star and sigma minus i star is at least u i of sigma i and sigma minus i star, for every sigma i in capital sigma i. Reading sigma minus i star as player i's belief: rational play given beliefs, which is rationalizability with uncertain beliefs, plus correct beliefs, page 108.
+
+Proposition 6.1, page 108. If sigma star is a Nash equilibrium and s i and s i prime are both in the support of sigma i star, then both earn the same against sigma minus i star, and that common value equals u i of sigma i star and sigma minus i star.
+
+The proof. Suppose s i earns strictly more than s i prime against sigma minus i star. Move the probability sigma i star of s i prime, which is positive, from s i prime to s i. By definition 6.5, the payoff rises by sigma i star of s i prime times the payoff gap, which is positive, so sigma i star was not a best response. Hence the two payoffs are equal, and the weighted average of equal numbers equals each of them. End of proof.
+
+Tadelis's proposition 6.1 is one direction of one condition. The lecture states and proves the full characterisation.
+
+Five point three. The principle of indifference, slides 44 to 46.
+
+The support of sigma i is the set of pure strategies s i with sigma i of s i positive, Tadelis's definition 6.2.
+
+The principle of indifference, slide 44. Sigma star in capital sigma is a Nash equilibrium if and only if, for every player i, two conditions hold. Condition one, equation five: u i of sigma star equals u i of s i and sigma minus i star, for every s i in the support of sigma i star. Condition two, equation six: u i of sigma star is at least u i of s i and sigma minus i star, for every s i in S i outside the support of sigma i star. In words: every strategy played with positive probability yields the same expected payoff, and no strategy outside the support yields more. This is M W G's proposition 8.D.1, page 250.
+
+The proof that indifference implies Nash, slide 45. Suppose sigma star satisfies equations five and six for every player. Together they say that u i of s i and sigma minus i star is at most u i of sigma i star and sigma minus i star, for every pure s i in S i. Take any sigma i in capital sigma i. By equation three, u i of sigma i and sigma minus i star equals the sum over s i of sigma i of s i times u i of s i and sigma minus i star. That is at most the sum over s i of sigma i of s i times u i of sigma i star and sigma minus i star. And that equals u i of sigma i star and sigma minus i star, because the weights sigma i of s i are non-negative and sum to 1. That is equation four. End of proof.
+
+The proof that Nash implies indifference, slide 46. Suppose sigma star is a Nash equilibrium, but equation five fails for some player j. Then there are two strategies, s j prime and s j double prime, both in the support of sigma j star, with s j double prime earning strictly more than s j prime against sigma minus j star. Build a new mix, sigma hat j, by moving the probability of s j prime onto s j double prime. Sigma hat j equals sigma j star on every strategy other than these two; it puts zero on s j prime; and it puts sigma j star of s j prime plus sigma j star of s j double prime on s j double prime. By equation three the payoff changes by sigma j star of s j prime times the payoff gap between s j double prime and s j prime, which is positive. So sigma hat j earns strictly more than sigma j star, which contradicts equation four. Condition two follows the same way: if some s j outside the support paid more than u j of sigma star, moving all the weight onto s j would pay more. End of proof.
+
+How to use it. To find a mixed Nash equilibrium, guess the supports, then write the indifference conditions of equation five: player i's indifference is an equation in the others' probabilities. Then check equation six for the unused strategies. To verify a candidate, it suffices to check deviations to pure strategies.
+
+Five point four. Worked: Example 3, the Battle of the Sexes in mixed strategies, slides 47 to 50.
+
+Notation. p is the probability that Alex plays O, between 0 and 1. q is the probability that Chris plays O, between 0 and 1. The payoffs are as in part one: Alex 2 and Chris 1 at opera together; Alex 1 and Chris 2 at football together; 0 apart.
+
+Alex's expected payoffs, slide 47, from equation two. Equation seven: Alex's payoff from O, given q, is 2 q plus 0 times 1 minus q, which is 2 q. Equation eight: Alex's payoff from F, given q, is 0 times q plus 1 times 1 minus q, which is 1 minus q. Alex prefers O if and only if equation seven exceeds equation eight: 2 q greater than 1 minus q, that is, q greater than one third. So, slide 48, equation nine: Alex's best response is F, p equals 0, when q is below one third; any p between 0 and 1 when q equals one third; and O, p equals 1, when q is above one third.
+
+Chris's expected payoffs, slide 49. Equation ten: Chris's payoff from O, given p, is 1 times p plus 0 times 1 minus p, which is p. Equation eleven: Chris's payoff from F, given p, is 0 times p plus 2 times 1 minus p, which is 2 minus 2 p. Chris prefers O if and only if equation ten exceeds equation eleven: p greater than 2 minus 2 p, that is, p greater than two thirds. So, equation twelve: Chris's best response is q equals 0, F, when p is below two thirds; any q between 0 and 1 when p equals two thirds; and q equals 1, O, when p is above two thirds.
+
+All Nash equilibria, slide 50, are the intersections of equations nine and twelve. Three of them. First, p and q both 0: football together, with Alex earning 1 and Chris 2. Second, p and q both 1: opera together, with Alex earning 2 and Chris 1. Third, p equals two thirds and q equals one third: the mixed equilibrium, where Alex earns 2 q, which is 2 times one third, two thirds, and Chris earns p, two thirds. At the mixed equilibrium both supports are full, so equation five is the whole check: equations seven and eight are equal at q equals one third, and equations ten and eleven are equal at p equals two thirds.
+
+The figure in the notes has two panels. On the left, Alex's expected payoffs, 2 q from O and 1 minus q from F, against Chris's probability q; they cross at q equals one third, with payoff two thirds. The upper envelope is Alex's best-reply payoff, and Alex is willing to mix only at q equals one third. On the right, Alex's best response, solid, and Chris's, dashed, in the square of q and p, crossing three times: at football together, at opera together, and at the mixed point.
+
+Two things to read off. First, each probability is pinned down by the other player's payoffs. Alex's p of two thirds is what makes Chris indifferent, in equations ten and eleven, and Chris's q of one third is what makes Alex indifferent, in equations seven and eight. Second, each player expects two thirds, less than in either pure equilibrium, where the worse-off player still gets 1. They miscoordinate with probability p times 1 minus q plus 1 minus p times q, which is two thirds times two thirds plus one third times one third, five ninths.
+
+Five point five. Not covered in class: Matching Pennies, section 6.2.1, pages 108 to 111.
+
+Let p be the probability that player 1 plays heads and q the probability that player 2 plays heads. Player 1's payoffs, Tadelis's equations 6.1 and 6.2: heads earns q minus 1 minus q, which is 2 q minus 1; tails earns minus q plus 1 minus q, which is 1 minus 2 q. Heads is better if and only if 2 q minus 1 exceeds 1 minus 2 q, that is, q above one half. So player 1's best response is p equals 0 when q is below one half, any p when q equals one half, and p equals 1 when q is above one half. For player 2, heads earns minus p plus 1 minus p, which is 1 minus 2 p, and tails earns 2 p minus 1. So player 2's best response is q equals 1 when p is below one half, any q when p equals one half, and q equals 0 when p is above one half. The correspondences cross once, at p and q both one half.
+
+The indifference logic, page 111. Player 1 is willing to mix only if q is one half, so player 1's indifference pins player 2's strategy, and vice versa. Each player mixes in a way that makes the other indifferent. A player's own payoffs do not determine his own mix.
+
+Gibbons writes the same payoff as one linear function of the mixing probability, 2 q minus 1, plus r times 2 minus 4 q, equation 1.3.1 on page 34, where his r is the probability of heads for player 1. Flat at q equal to one half means every r is a best reply, which is why the correspondence has a vertical segment.
+
+Five point six. Not covered in class: rock-paper-scissors, section 6.2.2, pages 111 to 113.
+
+Claim 6.1. No equilibrium has one player pure and the other mixing. Against a pure strategy the other player's three payoffs are all different, 0, 1 and minus 1 in some order, so he cannot be indifferent, so he plays pure; and there is no pure equilibrium.
+
+Claim 6.2. No equilibrium has a player mixing over exactly two strategies. If player i mixes rock and paper, then for player j, paper beats rock against both: against rock, paper gives 1 rather than 0; against paper, paper gives 0 rather than minus 1. So j never plays rock. But if j never plays rock, then for i, scissors beats paper against both of j's remaining strategies: against paper, scissors gives 1 rather than 0; against scissors, scissors gives 0 rather than minus 1. So i never plays paper, contradicting the mix. The same holds for every pair.
+
+Full support. Let i play rock with probability sigma R, paper with probability sigma P, and scissors with the rest. Player j's payoffs: rock earns minus sigma P plus 1 minus sigma R minus sigma P, which is 1 minus sigma R minus 2 sigma P. Paper earns sigma R minus the bracket 1 minus sigma R minus sigma P, which is 2 sigma R plus sigma P minus 1. Scissors earns minus sigma R plus sigma P. Rock equal to scissors gives 1 minus sigma R minus 2 sigma P equals minus sigma R plus sigma P, so sigma P is one third. Paper equal to scissors gives 2 sigma R plus sigma P minus 1 equals minus sigma R plus sigma P, so sigma R is one third. Hence scissors also has one third. Both players playing one third each is the unique Nash equilibrium, and each player's payoff is zero.
+
+Five point seven. Not covered in class: pure and mixed together, section 6.2.3, pages 113 and 114.
+
+Player 1 chooses M or D, player 2 chooses C or R. M against C gives 0 and 0; M against R gives 3 and 5; D against C gives 4 and 4; D against R gives 0 and 3. Pure equilibria by the underline method: against C, player 1 prefers D, 4 over 0; against R, M, 3 over 0; against M, player 2 prefers R, 5 over 0; against D, C, 4 over 3. Mutual: M and R, and D and C.
+
+Mixed: let p be the probability of M and q the probability of C. Player 1 is indifferent when M's payoff, 3 times 1 minus q, equals D's, 4 q: 3 minus 3 q equals 4 q, so q is three sevenths. Player 2 is indifferent when C's payoff, 4 times 1 minus p, equals R's, 5 p plus 3 times 1 minus p, which is 3 plus 2 p: 4 minus 4 p equals 3 plus 2 p, so p is one sixth. The mixed equilibrium is player 1 at M with probability one sixth and D with five sixths, and player 2 at C with probability three sevenths and R with four sevenths. Payoffs there: player 1 gets 4 q, twelve sevenths; player 2 gets 3 plus 2 p, ten thirds. Player 1's best response is p equals 1 when q is below three sevenths, any p at three sevenths, and p equals 0 above. Player 2's is q equals 1 when p is below one sixth, any q at one sixth, and q equals 0 above. They cross three times: p 1 and q 0, the mixed point, and p 0 and q 1.
+
+The figure in the notes shows, on the left, player 1's payoffs 3 times 1 minus q and 4 q crossing at three sevenths with payoff twelve sevenths; and on the right, Tadelis's figure 6.4, three crossings, three equilibria. Read the left panel to see why player 1's mix is irrelevant to player 1: at three sevenths both lines give twelve sevenths, so every p is optimal; what fixes p at one sixth is player 2's indifference, on the other side of the game.
+
+"Almost always" an odd number, footnote 6 on page 113. A two-by-two game with two pure equilibria generically has a third, mixed one; generic finite games have an odd number of equilibria. That is the index theorem, named only.
+
+Five point eight. Not covered in class: every two-by-two game, by cases, Gibbons section 1.3.B, pages 41 to 44.
+
+Write player 1's payoffs as x for Up against Left, y for Up against Right, z for Down against Left and w for Down against Right, and let q be the probability of Left and r the probability of Up. Four cases. Case one: x above z and y above w; Up is strictly dominant, r equals 1. Case two: x below z and y below w; Down is strictly dominant, r equals 0. Case three: x above z and y below w; Up if and only if q is above a threshold q prime, any r at the threshold. Case four: x below z and y above w; Up if and only if q is below q prime, any r at the threshold. The threshold q prime is w minus y, over x minus z plus w minus y. Equalities give L-shaped correspondences. Pairing any of player 1's four shapes with any of player 2's always produces at least one crossing. The generic outcomes are one pure equilibrium; one mixed equilibrium, as in Matching Pennies; or two pure and one mixed, as in the Battle of the Sexes. This is the graphical existence proof for two-by-two games.
+
+The Battle of the Sexes, Gibbons page 40 and Tadelis exercise 6.1 on page 123, is the lecture's Example 3, worked in five point four: each goes to his own favourite event with probability two thirds, and they miscoordinate with probability five ninths. In Gibbons's case language it is case three for both players: two pure equilibria and one mixed.
+
+Five point nine. What a mixed strategy means, and existence, slide 51.
+
+The slides list three common interpretations of mixed strategies. First, beliefs: sigma minus i describes what player i believes the others will do. Second, empirical frequencies: long-run frequencies of actions in repeated interactions. Third, population distribution: the share of a population of players using each action.
+
+Nash's theorem, 1950, slide 51. Every finite normal-form game has a Nash equilibrium in mixed strategies. Slide 51 asks why a profile of pure strategies is also a profile of mixed strategies. The answer: each pure s i is the degenerate sigma i that puts probability 1 on s i. So a pure equilibrium, when it exists, is one of the equilibria the theorem counts; the Battle of the Sexes has three.
+
+The book's version of the beliefs reading. Gibbons, pages 39 and 40, following Harsanyi 1973: a mixed equilibrium does not require anyone to flip a coin. Player j's mix represents player i's uncertainty about j's pure choice, for example a pitcher who picks the pitch from private information the batter does not see. Tadelis, page 105, offers the same reading: an opponent whose unknown background determines his play. The indifference condition pins the opponent's mix, which is the useful part. Tadelis returns to this "purification" in section 12.5, Lecture 7.
+
+Five point ten. M W G's proposition 8.D.1, page 250, is the slides' principle of indifference.
+
+The lecture promoted this from the formal layer to the course layer. M W G's definition 8.D.2, page 250, is Tadelis's definition 6.6. Proposition 8.D.1: with S i plus the support of sigma i, sigma is a Nash equilibrium if and only if, for every player, one, all strategies in the support earn the same against sigma minus i, and two, every strategy in the support earns at least as much as every strategy outside it. Condition two is the half that Tadelis's proposition 6.1 does not state: unused strategies must not do better. Its corollary: to test a profile, it suffices to check deviations to pure strategies. This is the basis of support enumeration.
+
+Five point eleven. The mini case: monitoring remote work, slides 53 to 55. This was graded in-class work, in pairs, handed in on the day. This script describes the method only and does not solve any part.
+
+The motivation, slide 53. In September 2025 Itaú dismissed employees after finding mismatches between their clock-in records and the activity monitored on their computers while working from home. The bank workers' union estimated about 1,000 dismissals; the slide's source is g1, 2025. Monitoring software is costly for firms, and employees know it may be in place. The question: how much should a firm monitor, and how much shirking should it expect?
+
+The game, slide 54. A remote employee chooses to work, W, or to shirk, S. At the same time the manager chooses to monitor, M, or not, N. A shirker who is caught loses the wage. The payoffs, employee first. Work against monitor: w minus g for the employee, v minus w minus h for the manager. Work against not monitoring: w minus g, and v minus w. Shirk against monitor: 0 for the employee, minus h for the manager. Shirk against not monitoring: w for the employee, minus w for the manager. The parameters: w equals 10 is the wage, g equals 2 is the cost of effort, v equals 20 is the value of output, and h equals 1 is the cost of monitoring.
+
+The method, part by part, slide 55.
+
+Part a, show there is no pure equilibrium. Apply the underline method of part two to the four cells with the numbers plugged in. For each cell, ask whether one player gains by switching. A cell where nobody gains would be a pure equilibrium; show that every cell has a profitable unilateral deviation.
+
+Part b, the mixed equilibrium. Name the probabilities, for example s for the employee's probability of shirking and m for the manager's probability of monitoring. By the principle of indifference: the manager's indifference between monitoring and not monitoring is one equation in the employee's shirking probability, and the employee's indifference between working and shirking is one equation in the manager's monitoring probability. Solve each linear equation and check that both lie strictly between 0 and 1.
+
+Parts c and d, comparative statics. Re-solve with the new parameter, first h equal to 0.5 and then w equal to 20, and compare. For the intuition, ask whose indifference condition contains the changed parameter, and therefore whose probability moves. That is slide 50's lesson.
+
+Part e, general formulas. Redo part b with w, g, h and v as symbols, and read each probability's dependence off its formula. For the policy question, compare what each lever costs the firm. For the critique, list what the two-by-two model assumes: simultaneous moves, perfect detection when monitoring, a fixed wage, one period, and no other sanctions. Then ask which of these the Itaú story strains.
+
+The related book exercises, Tadelis 6.4, "Monitoring", on pages 123 and 124, and 6.12, "The Tax Man", on page 126, are kept out of the practice list until the case is returned.
+
+Recap of part five. You should be able to define a mixed strategy, the support, a belief and expected payoffs with the slide's three formulas; state the mixed Nash equilibrium; state the principle of indifference with both conditions and prove both directions; find all three equilibria of the Battle of the Sexes, with the payoffs; explain why each player's mix is pinned by the other's payoffs; give the three interpretations; state Nash's theorem; and describe, without solving it, the method for the monitoring case.
+
+Part six. Not covered in class: the tragedy of the commons, an equilibrium everyone would vote to leave.
+
+This part covers Tadelis section 5.2.2, pages 84 to 87, and Gibbons section 1.2.D, pages 27 to 29. The Lecture 2 slides do not teach it. It is reading and practice, examinable only if a problem set brings it.
+
+The claim. When each player's use of a shared resource harms all users, but each user counts only his own share of the harm, the Nash equilibrium over-uses the resource. In Tadelis's clean-air game each of two players takes K over 3 where K over 4 would make both better off. In Gibbons's village too many goats graze, because the equilibrium condition weighs the harm by G star over n instead of G double star. Nash equilibrium is not Pareto optimal.
+
+Six point one. The story, Hardin 1968. A pasture shared by herders: each extra animal benefits its owner, but the degradation it causes is shared by all. Each herder's incentive is to grow his herd, and everyone ends up worse off: the free-rider problem, and the prisoner's dilemma with continuous strategies, Tadelis page 84. Hardin's latter-day commons: the atmosphere, oceans, fish stocks, parking meters.
+
+Six point two. Tadelis's clean-air game, pages 84 to 86. n players each choose an amount k i, zero or more, of a common stock K of clean air. The benefit from own use is the natural log of k i, and every player also enjoys what is left. Tadelis's equation 5.1: u i equals the log of k i plus the log of K minus the sum of all players' k j, assuming that sum is below K, footnote 3.
+
+The best response. Given the others' choices, the derivative of u i with respect to k i is 1 over k i minus 1 over K minus the sum. Setting it to zero: K minus k i minus the sum of the others equals k i. So the best response is K minus the sum of the others' k j, over 2. The second derivative, minus 1 over k i squared minus 1 over the remaining stock squared, is negative, confirming a maximum. The slope is minus one half in each rival's use: strategic substitutes, like Cournot.
+
+The method, page 85: when best responses are functions, a Nash equilibrium is a solution of n equations, each k i equal to its best response, in n unknowns.
+
+Two players. k 1 equals K minus k 2, over 2, and k 2 equals K minus k 1, over 2. Substitute the second into the first: k 1 equals K minus the bracket K minus k 1 over 2, all over 2, which is K over 4 plus k 1 over 4. So three quarters of k 1 equals K over 4, and both players take K over 3.
+
+The Pareto benchmark, page 86. Maximize the "world's payoff", the sum of the two payoffs, which is log k 1 plus log k 2 plus 2 times log of K minus k 1 minus k 2. The derivative with respect to k 1 is 1 over k 1 minus 2 over K minus k 1 minus k 2, and similarly for k 2. Setting both to zero, k 1 equals k 2, call it k, and K minus 2 k equals 2 k. So each takes K over 4.
+
+The difference is a single factor of 2. The private first-order condition charges the player one unit of the harm; the social one charges two, because the remaining air is enjoyed by both. Each player ignores the harm to the other: an externality, so the equilibrium over-consumes.
+
+Both gain, footnote 5 on page 87. Each player's payoff at K over 4 minus the payoff at K over 3: the log of K over 4 plus the log of K over 2, minus twice the log of K over 3. That is 2 log 3 minus log 2 minus log 4, which is the log of nine eighths, about 0.118, positive. The printed footnote gives 0.051, which is the same expression in base-10 logarithms, 2 log base 10 of 3 minus log base 10 of 8, which is 0.0512. With the natural logarithm of equation 5.1 the gain is 0.118. The sign, which is the point, is the same.
+
+The figure in the notes has two panels. On the left, Tadelis's figure 5.1 with K equal to 1: the two best-response lines cross at K over 3, and the optimum K over 4 lies on neither line. On the right, each player's payoff at a symmetric profile, the log of k plus the log of K minus 2 k, peaking at K over 4 with value minus 2.079, against minus 2.197 at K over 3. The right panel is the tragedy in one curve: the equilibrium is to the right of the peak, on the falling side, so a uniform cut in everyone's use raises everyone's payoff. No single player will make that cut alone, because on his own best-response line a unilateral cut lowers his payoff.
+
+Tadelis closes, page 87, with Hardin's policy point and its counterweight: regulation could help everyone, if the regulator can be trusted, a question game theory alone cannot answer. The n-player version is Tadelis exercise 5.7, page 96.
+
+Six point three. Gibbons's village green, section 1.2.D, pages 27 to 29. n farmers choose numbers of goats g i, with total G. Each goat costs c and is worth v of G, with v falling and concave below a maximum G. The payoff, Gibbons's equation 1.2.4, is g i times v of G, minus c g i.
+
+The first-order condition of farmer i, equation 1.2.5: v of G plus g i times v prime of G, minus c, equals zero. The first term is the value of one more goat; the second is the harm it does to his own g i goats. Sum over i and divide by n, equation 1.2.6: v of G star plus one over n times G star times v prime of G star, minus c, equals zero. The social optimum, equation 1.2.7: maximize G v of G minus G c, which gives v of G double star plus G double star times v prime of G double star, minus c, equals zero.
+
+The proof that G star exceeds G double star, footnote 12 on page 28. Suppose instead G star is at most G double star. Then v of G star is at least v of G double star, since v is falling. And v prime of G star is negative but at least v prime of G double star, since v is concave. And G star over n is less than G double star. So one over n times G star times v prime of G star is greater than G double star times v prime of G double star: a smaller positive number times a smaller-in-size negative number. Hence the left side of equation 1.2.6 strictly exceeds the left side of equation 1.2.7. Both equal zero: a contradiction. End of proof.
+
+Read the two conditions side by side: the farmer weighs the marginal harm by his own herd; society weighs it by the whole herd. Too many goats graze.
+
+Six point four. Where this goes in an organization. Any shared input with private use and common cost follows the same arithmetic: a shared IT budget, a common sales pool, team effort with a shared output. Lecture 1's partnership game was its discrete cousin. Lecture 5 asks whether repetition can sustain the cooperative K over 4.
+
+Part seven. Not covered in class: political ideology and electoral competition, both candidates go to the middle.
+
+This part covers Tadelis section 5.2.5, pages 93 to 95. The Lecture 2 slides do not teach Hotelling voting; slide 3 only recalls Lecture 1's pharmacies and says that with prices the chains would move apart, a problem-set question. It is reading.
+
+The claim. Two office-seeking candidates choose platforms on a left-right line of 101 citizens, each citizen voting for the nearer platform. Against a rival at a positive platform a j, any platform strictly between minus a j and a j wins, so the best response is an interval, and the intervals of the two players meet in a single point: both at the median citizen, at zero. This is Hotelling's 1929 insight and the seed of the median voter theorem, and it is Lecture 1's pharmacy case solved with best responses instead of dominance.
+
+Seven point one. The game, pages 93 and 94. Two candidates care only about winning: win is better than tie, which is better than lose. There are 101 citizens, labelled minus 50 up to plus 50 by ideology. Each votes for the nearer platform, and an indifferent citizen tosses a coin, or abstains, footnote 9. Strategies are platforms from minus 50 to plus 50. Majority wins.
+
+A worked example, figure 5.4 on page 94. Candidate 1 at minus 15, candidate 2 at plus 22. Citizen 3 is at distance 18 from minus 15 and 19 from plus 22, so votes for candidate 1. Citizen 4 is at 19 and 18, so votes for candidate 2. Candidate 1 gets citizens minus 50 to 3: 54 votes. Candidate 2 gets citizens 4 to 50: 47 votes. Candidate 1 wins: being nearer the middle wins.
+
+Seven point two. The best-response correspondence, page 94. Fix the rival at a positive platform a j. If candidate i chooses a j or minus a j, it is a tie: identical platforms split everything, and mirror platforms split the line at zero. If candidate i goes beyond a j, or beyond minus a j on the other side, it loses: the rival is nearer to more than half the citizens. If candidate i chooses strictly between minus a j and a j, it wins: the midpoint between the platforms lies to the right of zero, so i gets every citizen at or below zero plus some more. So, in integers, the best response to a negative a j is every platform from a j plus 1 to minus a j minus 1; to zero, just zero; to a positive a j, every platform from minus a j plus 1 to a j minus 1. Against zero, every other platform loses and zero ties, so the best response is zero. Against plus or minus 1, the interval collapses to zero, footnote 10.
+
+The equilibrium. Suppose a j is not zero. Then i's best response lies strictly inside the interval from minus the absolute value of a j to plus the absolute value, so the absolute value of a i is less than that of a j. But the same argument for j requires the absolute value of a j to be less than that of a i. A contradiction. Hence a j is zero, and then i's best response is zero. Both at zero is the unique Nash equilibrium.
+
+The figure in the notes is a scatter of best responses on the 101-platform grid, computed by brute force over all pairs: each column of dots is candidate 1's best responses to a given a 2, forming a bow-tie of intervals strictly inside the rival's distance from the centre, and candidate 2's mirror image overlaps it only at the centre. The bow-tie shape is the content: the further the rival moves from the centre, the more platforms beat him, but all of them are closer to the centre than he is, so nobody can rest anywhere but the middle. Hotelling, 1929, quoted by Tadelis on page 94: the parties do not offer "two strongly contrasted positions"; "each party strives to make its platform as much like the other's as possible."
+
+Seven point three. The median voter theorem and the continuum, pages 94 and 95. The median voter theorem, after Black 1948 and Downs 1957: with voters ordered on one dimension and single-peaked preferences, meaning utility highest at the bliss point and falling on both sides, footnote 11, the platform at the median voter beats any other in a simple majority vote. Tadelis's remark on page 95: with a continuum of voters with distribution F, the median a m solves the probability that a is at most a m equals one half; for a uniform distribution it is the midpoint. For a rival away from the median, the best response is an open interval, between the rival and the "opposite" platform that ties with it. Only the median has a unique best reply, itself, so both at the median is the unique equilibrium. That is Tadelis exercise 5.15, page 99.
+
+Seven point four. The link to Lecture 1's pharmacies. Lecture 1's mini case, two chains on a seven-block avenue, is the same model with customers instead of voters and a payoff equal to the number of customers instead of win, tie or lose. There iterated elimination removed the outer blocks round by round until both chains stood in the middle; here best responses deliver the centre directly. Both predict clustering, which is excessive from the walking-distance point of view: total distance falls when the two stores spread out toward the two halves of the avenue. The prediction depends on fixed prices and one dimension; Tadelis exercise 5.16, page 99, adds price competition.
+
+Part eight. Not covered in class: iterated elimination and rationalizability revisited, letting mixtures dominate and beliefs be mixed.
+
+This part covers Tadelis section 6.3, pages 114 to 117, and Gibbons section 1.3.A, pages 31 to 33. The slides do not teach dominance by mixed strategies or proposition 6.2; slide 11 defines rationalizability with pure beliefs only. It is reading.
+
+The claim. Once mixed strategies exist, a pure strategy can be strictly dominated by a mixture without being dominated by any pure strategy, and it can be a best response to a mixed belief without being a best response to any pure one. Both sharpen the Lecture 1 tools. In Tadelis's three-by-three game nothing is dominated by a pure strategy, yet mixed elimination reduces it to the two-by-two game of section 6.2.3. In two-player games, "strictly dominated" and "never a best response" are the same thing, proposition 6.2, so iterated elimination and rationalizability coincide.
+
+Eight point one. The two definitions, page 114. Definition 6.7: s i is strictly dominated by a mixed strategy sigma i if sigma i earns strictly more than s i against every s minus i. Definition 6.8: sigma i is never a best response if there is no belief sigma minus i for which sigma i is a best response. Checking against pure s minus i is enough: the payoff against a mixed belief is an average of payoffs against pure profiles, so a strict inequality at every pure profile survives every average.
+
+Eight point two. Gibbons's two pictures, pages 31 to 33. Player 1 has T, M and B; player 2 has L and R; q is the probability of L; only player 1's payoffs matter. T pays 3 against L and 0 against R, so 3 q. M pays 0 and 3, so 3 times 1 minus q. In figure 1.3.1, B pays 1 against both. In figure 1.3.2, B pays 2 against both.
+
+Figure 1.3.1: dominated by a mix, not by a pure strategy. B is not beaten by T against R, since 1 beats 0, nor by M against L. But one half T plus one half M pays three halves against L and three halves against R, and three halves beats 1: B is strictly dominated by the mixture. Equivalently, the best reply is T for q at least one half and M for q at most one half, never B.
+
+Figure 1.3.2: a best reply only to a mixed belief. With B paying 2, B is a best reply to neither L, where T gives 3, nor R, where M gives 3. Against a mixed belief, B beats both if and only if 2 exceeds 3 q and 2 exceeds 3 times 1 minus q, that is, q between one third and two thirds. So with pure beliefs only, B would be wrongly eliminated as never a best response.
+
+The figure in the notes shows both panels: on the left, B at 1 lies below the mixture's three halves everywhere; on the right, B at 2 rises above the upper envelope of T and M between one third and two thirds, shaded. The two panels are the two halves of proposition 6.2. Cabral makes the same point in footnote f on page 162: in his figure 7.2 variant, M is not dominated by any pure strategy and is a best reply to the belief that player 2 plays C with probability two thirds and R with one third.
+
+Eight point three. Tadelis's three-by-three game, pages 115 and 116. Player 1 has U, M and D; player 2 has L, C and R. U pays 5 and 1 against L, 1 and 4 against C, 1 and 0 against R. M pays 3 and 2 against L, 0 and 0 against C, 3 and 5 against R. D pays 4 and 3 against L, 4 and 4 against C, 0 and 3 against R.
+
+No pure domination. For player 2, L beats C against M, 2 over 0, and beats R against U, 1 over 0, so L is not dominated by a pure strategy; C and R are best replies to U and M respectively. For player 1, U is best against L, D against C, and M against R. Pure elimination removes nothing.
+
+Round one: L is dominated by the mix that puts one half on C and one half on R. Against U, L gives 1 and the mix gives one half of 4 plus one half of 0, which is 2. Against M, L gives 2 and the mix gives one half of 0 plus one half of 5, which is 2.5. Against D, L gives 3 and the mix gives one half of 4 plus one half of 3, which is 3.5. The mix wins every time. Remove L.
+
+Round two: in the reduced game, with columns C and R, U is dominated by the mix that puts one half on M and one half on D. Against C, U gives 1 and the mix gives one half of 0 plus one half of 4, which is 2. Against R, U gives 1 and the mix gives one half of 3 plus one half of 0, which is 1.5. Remove U. U was not dominated before L went: against L, U's 5 beats the mix's 3.5. Order matters for what you can see at each round, though not for the final survivors.
+
+What is left is the two-by-two game of section 6.2.3, with M and D against C and R, which has no dominated strategy, pure or mixed. Its three equilibria are in five point seven.
+
+How to find the dominating mix, page 116: "a good eye for numbers", or a linear program. Strict dominance is an open condition: shift a small amount of probability and the mix still dominates, so there are infinitely many dominating mixtures. Tadelis exercise 6.3, page 123, asks for others.
+
+Eight point four. The equivalence. The fact on page 116: if sigma i is strictly dominated, it is never a best response, because if another strategy does strictly better against every belief, no belief makes sigma i at least as good. So every strategy removed by iterated elimination is removed by rationalizability: rationalizable strategies are a subset of the survivors. Proposition 6.2, page 116: in any two-player game, a strategy is strictly dominated if and only if it is never a best response. Hence the two procedures give the same survivors. The proof is beyond the course: Fudenberg and Tirole 1991, Bernheim 1984, Pearce 1984. With three or more players, rationalizability can be strictly smaller unless beliefs may be correlated, footnote 7 on page 117 and Gibbons footnote 13 on page 31.
+
+Compare the two procedures. Iterated elimination removes strategies strictly dominated by a pure or mixed strategy; rationalizability removes strategies that are a best response to no belief, mixed included. With two players they give the same survivors. With three or more, iterated elimination can leave more and rationalizability can leave less. Every Nash equilibrium survives both.
+
+Eight point five. M W G section 8.C, pages 243 to 245, G layer: rationalizability built directly on mixed strategies; a probabilistic conjecture over rivals' mixed strategies reduces to a deterministic mixed profile when rivals' choices are independent; and the set of rationalizable strategies is no larger than the set surviving iterated strict dominance. Named only.
+
+Part nine. Nash's existence theorem: an equilibrium is a fixed point, and fixed points exist.
+
+This part covers slide 51, which states the theorem only, and Tadelis section 6.4, pages 117 to 123. From nine point two onward the material was not covered in class: slide 51 states the theorem without proof, and the proof is reading.
+
+The claim. A profile is a Nash equilibrium if and only if it is a fixed point of the joint best-response correspondence, B R of sigma, the product of every player's B R i. In a finite game, mixed strategies make the strategy space a compact convex simplex and expected payoffs linear, which delivers Kakutani's four conditions. So every finite game has at least one Nash equilibrium, possibly mixed. When the conditions fail, as in asymmetric Bertrand with continuous prices, existence can fail too.
+
+Nine point one. The theorem. Nash, 1950, slide 51, Tadelis page 117: every finite normal-form game has a Nash equilibrium in mixed strategies. Tadelis's wording: any n-player normal-form game with finite strategy sets S i for all players has a Nash equilibrium in mixed strategies. A pure equilibrium counts, because pure strategies are degenerate mixtures, footnote 8. Gibbons's statement, page 45: in a game with finitely many players, each with a finite strategy set, there exists at least one Nash equilibrium, possibly in mixed strategies.
+
+Sufficient, not necessary. Cournot and the commons have infinite strategy sets and still have equilibria, constructed by hand, "following Cournot's lead", Gibbons page 11. The theorem guarantees existence where we cannot construct.
+
+Nine point two. Brouwer in one dimension, page 117 and figure 6.5. Not covered in class. Brouwer's fixed-point theorem: if f maps the interval from 0 to 1 continuously into itself, some x star has f of x star equal to x star. Why: if f of 0 is 0 or f of 1 is 1, we are done. Otherwise f of 0 is above 0 and f of 1 is below 1. So f starts above the 45-degree line and ends below it, and the continuous function g of x equals f of x minus x goes from positive to negative, so it has a zero, by the intermediate value theorem. A function that jumps across the diagonal need not cross it. Each hypothesis matters, footnote 10 on page 121. On the open interval from 0 to 1, the square root of x stays above the diagonal with no fixed point. On the non-convex set made of the interval from 0 to one third and the interval from two thirds to 1, a function equal to three quarters on the first piece and one quarter on the second jumps over the gap.
+
+Nine point three. Equilibrium as a fixed point, pages 118 to 120. Definition 6.9, page 119: the collection of best-response correspondences, B R equals B R 1 times and so on up to B R n, maps the set of mixed profiles into its subsets. The fact on page 120: sigma star is a Nash equilibrium if and only if sigma star belongs to B R of sigma star. Why: sigma star in B R of sigma star says each sigma i star is in B R i of sigma minus i star, which is definition 6.6 word for word.
+
+A worked check, the section 6.2.3 game, figure 6.6. Write the joint best response at a point with coordinates q and p as the pair B R 2 of p and B R 1 of q. At q 0 and p 1: q is below three sevenths, so B R 1 gives p equals 1; p is above one sixth, so B R 2 gives q equals 0; the image is the point itself, a fixed point, M and R. At q 1 and p 0: the image is again the point itself, a fixed point, D and C. At q three sevenths and p one sixth: both correspondences give the whole interval, so the image is the whole square, which contains the point: a fixed point. At q 0.8 and p 0.5: B R 1 gives p 0 and B R 2 gives q 0, so the image is the origin, not the point: not a fixed point. At q 0.2 and p 0.1: the image is the corner with both coordinates 1: not a fixed point.
+
+Nine point four. Kakutani, and why mixed strategies satisfy it, pages 120 to 122. Theorem 6.1, Kakutani's fixed-point theorem, page 120: a correspondence C from a set X into its subsets has a fixed point, an x in C of x, if one, X is a non-empty, compact and convex subset of n-dimensional real space; two, C of x is non-empty for all x; three, C of x is convex for all x; and four, C has a closed graph. Definitions, page 120. Convex: every weighted average of two points in X is in X. Closed: limits of sequences in X stay in X; the half-open interval from 0 to 1 is not closed, since 1 over n tends to 0. Compact: closed and bounded. Closed graph: if x n tends to x, y n is in C of x n, and y n tends to y, then y is in C of x.
+
+The four conditions for any two-by-two game, pages 121 and 122. Condition one: X is the unit square, non-empty, convex and compact. Condition two: expected payoff is continuous, in fact linear, in one's own mix on the compact interval from 0 to 1, so a maximum exists by the extreme value theorem. Condition three: by proposition 6.1, if two mixes are best replies the player is indifferent between the pure strategies they use, so every mix between them is a best reply; each B R i is 0 alone, 1 alone, or the whole interval. Condition four: if q n is in B R 2 of p n, that is, q n does at least as well as every q against p n, and the pairs converge, continuity lets the inequality pass to the limit, so the limit q is a best reply to the limit p. So B R has a fixed point, and every two-by-two game has a Nash equilibrium. With m pure strategies the simplex of mixed strategies is non-empty, compact and convex, and the same four arguments go through, pages 122 and 123.
+
+Mixed strategies are what make existence work. A finite set of pure strategies is not convex, so condition three fails for pure best replies; Matching Pennies has no pure fixed point. Allowing mixtures convexifies the strategy space and turns indifference into a convex set of best replies, M W G footnote 5 on page 253.
+
+Nine point five. When existence fails: back to Bertrand. Asymmetric Bertrand with continuous prices, part four, has infinite strategy sets and a payoff that jumps when the prices are equal, so firm 1's best-response set to a rival price of 2 is empty: condition two fails. Tadelis's choice, page 93, is to avoid such discontinuities, or restore discreteness, rather than to abandon Nash equilibrium.
+
+Nine point six. M W G's general statements, G layer. Proposition 8.D.2, page 252: every game with finite strategy sets has a mixed-strategy Nash equilibrium. Proposition 8.D.3, page 253: a pure Nash equilibrium exists if each strategy set is a non-empty, convex, compact subset of some real space and each payoff is continuous in all strategies and quasiconcave in the player's own strategy. Cournot and the commons satisfy it; homogeneous Bertrand violates continuity. Appendix A, pages 260 and 261: a lemma shows the best-response correspondence is non-empty, convex-valued and upper hemicontinuous; Kakutani then gives proposition 8.D.3, and proposition 8.D.2 follows by applying 8.D.3 to the mixed extension. Not examinable unless the lecture states it.
+
+Recap of parts six to nine. These parts are reading. You should know that they exist, what each one settles, and where to find them: the commons in Tadelis 5.2.2, voting in 5.2.5, mixed dominance in 6.3, and the existence proof in 6.4. For the exam, the taught part is Nash's theorem as a statement.
+
+Part ten. Common mistakes.
+
+This part covers the pitfalls note. Each is said as the error, then the correction.
+
+One. The error: one player best-responds, so it is an equilibrium. The correction: in Bertrand with firm 2 at 10, every price of 10 or more is a best reply for firm 1, but firm 1 at 12 and firm 2 at 10 is not an equilibrium, because firm 2's price of 10 is not a best reply to 12; it would rather price at 11.99. Equilibrium is mutual best response, Tadelis page 90.
+
+Two. The error: rationalizable, or surviving iterated elimination, means Nash. The correction: in the Battle of the Sexes, opera for Alex and football for Chris survives both and is not an equilibrium; each player best-responds to a wrong belief. The inclusion runs one way only: Nash equilibria are rationalizable, and rationalizable strategies survive iterated elimination.
+
+Three. The error: a Nash equilibrium is efficient, or the Pareto-best equilibrium will be played. The correction: the prisoner's dilemma, Cournot with 1800 in total against the monopoly's 2025, and the commons with K over 3 against K over 4 all show that equilibrium need not be Pareto optimal. In the Stag Hunt, both hunting hare is an equilibrium although both hunting stag Pareto dominates it; nothing in the definition selects the better one.
+
+Four. The error: in a mixed equilibrium my mix makes me indifferent. The correction: it makes the other player indifferent. In the Battle of the Sexes, Alex's two thirds comes from Chris's payoffs; in the section 6.2.3 game, player 1's one sixth comes from player 2's payoffs. Change a player's own payoffs, keeping the pattern of best responses, and his own probability does not move; the other player's does.
+
+Five. The error: indifferent between two strategies, so any mix of all strategies is fine. The correction: the principle of indifference has two conditions. Strategies in the support tie, and strategies outside the support must not pay more. A mix that puts weight only on equal-payoff strategies is a best reply only if no other strategy pays strictly more.
+
+Six. The error: not dominated by any pure strategy, so it survives iterated elimination. The correction, reading: in Tadelis's page 115 game, L is beaten by the half-half mix of C and R, though by neither alone; Gibbons's B paying 1 is beaten by the half-half mix of T and M.
+
+Seven. The error: never a best response to a pure belief means never a best response. The correction, reading: Gibbons's B paying 2 is a best reply to neither L nor R, but it is the unique best reply when the probability of L is between one third and two thirds. Beliefs must be allowed to be mixed.
+
+Eight. The error: a best-response function always exists. The correction: in homogeneous Bertrand, when the rival prices above cost but at or below the monopoly price, the best-response set is empty; in asymmetric Bertrand with continuous prices, against a rival price of 2 firm 1's profit approaches 98 but never reaches it. Correspondences can be multi-valued, with ties, or empty, with discontinuities.
+
+Nine. The error: Nash's theorem guarantees a pure equilibrium, or there is no equilibrium without finiteness. The correction: the theorem covers finite games and promises a mixed equilibrium; Matching Pennies has no pure one. It is sufficient, not necessary: Cournot has infinite strategy sets and a pure equilibrium.
+
+Ten. The error: "Cournot equilibrium" and "Bertrand equilibrium" are different solution concepts. The correction: they are the same concept, Nash, applied to two different games, quantities against prices, Gibbons page 21.
+
+Eleven. The error: reading substitutes and complements off the wrong axis. The correction: strategic substitutes and complements describe the slope of the best response, down in Cournot and up in Bertrand, not whether the products are substitutes. They are substitutes in both models.
+
+Twelve. The error: a Nash equilibrium never uses a dominated strategy. The correction: only strictly dominated strategies are excluded, by the slides' proposition 1. Bertrand's price at cost is weakly dominated, yet both firms at cost is the unique equilibrium, slides 16 and 36.
+
+Thirteen. The error: in the mixed Battle of the Sexes equilibrium each player is better off than at a pure one, since nobody is left out. The correction: each expects two thirds, less than in either pure equilibrium, where the worse-off player still gets 1; they miscoordinate with probability five ninths, slide 50.
+
+Fourteen. The error: reading the cartel matrix's both-Deviate cell as both firms producing 33.75. The correction: the printed 900 is the payoff at the Nash outputs, 30 each. Both at 33.75 would give each 759.38, a tie with staying in the cartel, slide 25.
+
+Fifteen. Two printed slips worth knowing. Tadelis's footnote 5 on page 87 gives the commons gain as 0.051, which is the base-10 value; with the natural log it is the log of nine eighths, about 0.118. Tadelis's remark on page 93 calls the monopoly price 45; it is 55, and 45 is the quantity. Neither changes a conclusion.
+
+Part eleven. The spoken formula sheet.
+
+How to use this part: pause after each item's name, say the formula yourself, then hear the answer.
+
+The best response. Player i's best response to s minus i is any s i whose payoff against s minus i is at least that of every other s i prime.
+
+Never a best response. No belief s minus i makes s i a best response.
+
+Nash equilibrium in pure strategies. For every player and every alternative s i, u i of s i star and s minus i star is at least u i of s i and s minus i star.
+
+The slides' proposition 1. A Nash equilibrium survives iterated elimination of strictly dominated strategies.
+
+The slides' proposition 2. In a finite game, a unique survivor of iterated elimination is a Nash equilibrium, and the unique one.
+
+The Cournot benchmarks. The monopoly output q m equals a minus c over 2 b. The competitive output q c p equals a minus c over b, which is 2 q m.
+
+The Cournot best response. q m minus one half q j, when q j is below q c p, and zero otherwise.
+
+The Cournot equilibrium. Each firm produces two thirds of q m. Total output is four thirds of q m. The price is a plus 2 c, over 3.
+
+The elimination sequence. One half, three quarters, five eighths, eleven sixteenths of q m, converging to two thirds of q m.
+
+The cartel deviation. The best reply to half of q m is three quarters of q m, which is 3 times a minus c over 8 b.
+
+Cournot with n firms. Total output is 2 n over n plus 1 times q m; each firm produces 2 q m over n plus 1; the price is a plus n c over n plus 1, which tends to c.
+
+Cournot with unequal costs. q i star equals a minus 2 c i plus c j, over 3 b; the price is a plus c 1 plus c 2, over 3; profit is b times q i star squared; firm i is out if c i is at least a plus c j, over 2.
+
+The Bertrand monopoly price. p m equals a plus c, over 2.
+
+The Bertrand best response. Prices above p j, if p j is below c; prices at or above p j, if p j equals c; none, if p j is above c and at most p m; and p m, if p j is above p m.
+
+The Bertrand equilibrium. Both prices equal c, with zero profit.
+
+Differentiated Bertrand, reading. The best response is a plus b p j plus c, over 2, and the equilibrium price is a plus c, over 2 minus b, with b below 2.
+
+Expected payoff of a mixed strategy. The sum over player i's pure strategies of sigma i of s i times the payoff of s i against sigma minus i.
+
+The principle of indifference. Sigma star is a Nash equilibrium if and only if every strategy in the support earns u i of sigma star, and every strategy outside the support earns no more.
+
+The Battle of the Sexes, mixed. Alex's payoffs are 2 q from O and 1 minus q from F, so q is one third. Chris's are p from O and 2 minus 2 p from F, so p is two thirds. Each earns two thirds.
+
+The general two-by-two threshold, reading. Player 1 is indifferent at q prime equals w minus y, over x minus z plus w minus y.
+
+The commons, reading. The best response is K minus the other's use, over 2. The equilibrium is K over 3 each, the optimum K over 4 each, and each gains the log of nine eighths.
+
+Hotelling voting, reading. Against a positive a j, the best response is every platform from minus a j plus 1 to a j minus 1; the equilibrium is both at the median.
+
+Existence. Every finite game has a Nash equilibrium in mixed strategies; sigma star is an equilibrium if and only if it belongs to B R of sigma star.
+
+Part twelve. The code and the interactive companions, described in words.
+
+The notes include a Python note in which every routine checks itself against the books' own numbers. Nine routines.
+
+Routine one: best responses and pure equilibria in a matrix. Take the two payoff matrices, mark each player's best responses column by column and row by row, keep the cells marked twice. It confirms the page 81 game's unique pure equilibrium, the ties of page 72, the Battle of the Sexes' two equilibria, the prisoner's dilemma's one, the Stag Hunt's two and Matching Pennies' none. The trap: ties must keep every maximizer, or a correspondence turns into a function.
+
+Routine two: rationalizability in Cournot and the beauty contest. Iterate the interval of surviving outputs, mapping the upper and lower bounds through the best response, and watch it shrink to 30.
+
+Routine three: Cournot. The best response with its corner, the equilibrium with unequal costs, corners included, the monopoly benchmark, the collusion deviation, and the n-firm formula.
+
+Routine four: Bertrand on a cent grid. Compute every firm's profit against every rival price by brute force, find the best-response sets and the equilibria, 10 and 10.01, and check the undercutting gain at 10.02.
+
+Routine five: the commons, with the grid maximizer of the symmetric payoff at K over 4 and the base-10 explanation of the printed 0.051.
+
+Routine six: Hotelling voting, counting votes for every pair of the 101 platforms.
+
+Routine seven: mixed equilibria. For two-by-two games, solve the two indifference conditions. For larger games, support enumeration: for every pair of supports, solve for mixes that equalize payoffs on the support, then check that no strategy outside the support pays more. It finds the five equilibria of the page 81 game, and a degenerate game with two pure equilibria and no mixed one. The trap: grid searches miss mixed equilibria such as three sevenths and one sixth, so solve exactly.
+
+Routine eight: dominance by a mixed strategy, as a linear program that looks for a mix beating a pure strategy against every rival strategy. It confirms the page 115 eliminations and Gibbons's two pictures.
+
+Routine nine: equilibria as fixed points of the joint best response, checked at the points of the 6.2.3 game.
+
+The figure script draws eight figures, each ending with checks on the plotted numbers, including the new figure for the Battle of the Sexes in mixed strategies.
+
+Two interactive companions. The first, the Mixing Square, takes any two-by-two game through the four payoff differences that decide every best response, plus two belief sliders. It draws both best-response correspondences in the square, lists every equilibrium exactly, pure, mixed or a continuum, and reads out each player's indifference point and gain. Its default is the 6.2.3 game, with presets for Matching Pennies, the Battle of the Sexes, the Stag Hunt and the prisoner's dilemma. Load the Battle of the Sexes and set the beliefs to the indifference points to watch both gains reach zero. The second, the Cournot Crossing, moves a, b, c 1 and c 2 and shows the two best-response lines, the equilibrium outputs, price and profits, the monopoly and competitive benchmarks, the exit threshold and the collusion deviation. Raise c 1 to the exit threshold and watch firm 1's line slide inside firm 2's until the crossing reaches the axis.
+
+Part thirteen. Reading route and exercises.
+
+Read, in order: Tadelis section 4.3, pages 69 to 76; chapter 5, pages 79 to 95, with sections 5.2.2 and 5.2.5 as reading; chapter 6, pages 101 to 123, with 6.3 and the proof in 6.4 as reading. For intuition, Gibbons sections 1.1.C, 1.2.A and B, and 1.3, pages 8 to 48. For the formal side, M W G sections 8.C and 8.D, pages 242 to 253, and Appendix A. For applications, Cabral section 7.1, from page 161.
+
+The practice list, Listas, pratica lecture 02, has twenty-five book exercises in three tiers. Addresses only. Foundations: Muñoz-Garcia chapter 2 exercise 2, page 41, and exercise 7, page 48; Tadelis 5.6 and 5.5, page 96; Gibbons 1.3, page 49; Muñoz-Garcia chapter 3 exercise 1, pages 86 and 87; Tadelis 6.1, page 123; Gibbons 1.12, page 51. Exam level: Tadelis 5.1, 5.2 and 5.3, page 95; Tadelis 5.8, pages 96 and 97; Gibbons 1.5, 1.6 and 1.7, pages 49 and 50; Tadelis 6.5, page 124; Tadelis 6.8, page 125; M W G 8.D.2, page 263. Advanced: M W G 8.C.1, page 262; Gibbons 1.14, page 51; M W G 8.D.3, page 263; Tadelis 5.12, page 98; M W G 8.D.6, page 264; and, as reading, Tadelis 6.3, page 123, and 5.15, page 99. Tadelis 6.4 and 6.12 wait until the graded mini case is returned.
+
+Three quizzes accompany the lecture, in Simulados: Nash equilibrium, Cournot and Bertrand, and mixed strategies.
+
+Part fourteen. Self-test.
+
+Answer each question aloud, then pause before the answer.
+
+Question one. If a game has a unique profile surviving iterated elimination, is it the game's unique Nash equilibrium? Pause. Yes: by proposition 2 it is an equilibrium, and by proposition 1 every equilibrium survives, so no other exists.
+
+Question two. Can a Nash equilibrium use a weakly dominated strategy? Pause. Yes: Bertrand at cost.
+
+Question three. In the Battle of the Sexes, is opera for Alex and football for Chris rationalizable, and is it an equilibrium? Pause. Rationalizable, yes; an equilibrium, no, because the beliefs behind it are wrong.
+
+Question four. In the linear Cournot duopoly, what fraction of the monopoly output does each firm produce? Pause. Two thirds.
+
+Question five. With n Cournot firms, what is total output? Pause. 2 n over n plus 1 times q m, tending to q c p.
+
+Question six. Is half the monopoly output a best reply to itself? Pause. No: the best reply is three quarters of q m.
+
+Question seven. In homogeneous Bertrand, what is a firm's best response when the rival prices above cost but at or below the monopoly price? Pause. There is none: the set is empty.
+
+Question eight. What are the three assumptions behind the Bertrand paradox? Pause. Homogeneous products, simultaneous choices, unlimited capacity.
+
+Question nine. State the principle of indifference. Pause. Sigma star is an equilibrium if and only if every strategy in each support earns the equilibrium payoff and no strategy outside earns more.
+
+Question ten. In the mixed Battle of the Sexes, with what probability does Alex go to the opera, and whose payoffs pin it down? Pause. Two thirds, pinned by Chris's payoffs.
+
+Question eleven. What does each player expect in that mixed equilibrium? Pause. Two thirds, less than in either pure equilibrium.
+
+Question twelve. In the Battle of the Sexes with Alex's opera payoff alpha, what happens to Chris's probability of opera when alpha rises? Pause. It falls: q equals 1 over 1 plus alpha.
+
+Question thirteen. Does every finite game have a pure Nash equilibrium? Pause. No; it has a mixed one, by Nash's theorem.
+
+Question fourteen. Name the three interpretations of a mixed strategy. Pause. Beliefs, empirical frequencies, population distribution.
+
+Question fifteen. In the mini case, whose indifference determines the employee's shirking probability? Pause. The manager's: that is the method; solving it is the exercise.
+
+Part fifteen. Glossary.
+
+Best response: a strategy that does at least as well as any other against a given belief.
+
+Best-response correspondence: the set of best responses to each belief; a set because of ties, possibly empty.
+
+Never a best response: a strategy that is a best response to no belief.
+
+Rationalizable strategy: one that survives the iterated removal of strategies that are never a best response.
+
+Nash equilibrium: a profile in which every player best-responds to the others' actual strategies.
+
+Strategic substitutes: best responses that fall in the rival's choice, as in Cournot.
+
+Strategic complements: best responses that rise in the rival's choice, as in Bertrand.
+
+Cartel: firms coordinating to maximize joint profit, as a single monopolist.
+
+Bertrand paradox: two price-setting firms price at marginal cost and earn zero profit.
+
+Mixed strategy: a probability distribution over a player's pure strategies.
+
+Support: the pure strategies a mixed strategy plays with positive probability.
+
+Principle of indifference: in equilibrium, strategies in the support earn the same, and strategies outside it earn no more.
+
+Nash's theorem: every finite game has a Nash equilibrium in mixed strategies.
+
+Focal point: an equilibrium selected by cues from outside the game.
+
+Part sixteen. The whole lecture in five lines.
+
+One. A rational player plays a best response to some belief; iterating that gives rationalizability, which can leave anything standing.
+
+Two. Nash equilibrium demands that beliefs be correct: no player gains from a unilateral deviation, and every equilibrium survives iterated elimination.
+
+Three. Cournot firms each produce two thirds of the monopoly output; a cartel is a prisoner's dilemma; with many firms output tends to the competitive level.
+
+Four. Bertrand firms price at marginal cost, the paradox, which rests on homogeneous products, simultaneous choices and unlimited capacity.
+
+Five. Mixed equilibria come from the principle of indifference, each player's mix pinned by the other's payoffs, and Nash's theorem guarantees one in every finite game.

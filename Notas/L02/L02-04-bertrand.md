@@ -1,11 +1,11 @@
 ---
 tags: [notes, lecture-02, bertrand, price-competition, existence, strategic-complements, differentiated-products]
-date: 2026-10-16
-status: estimated
-source: "Tadelis (2013) §5.2.4, printed pp. 88–93 (discrete best response p. 90; Prop. 5.2 p. 91; asymmetric costs and Fig. 5.3 pp. 91–93; Remark on strategic complements p. 93); Gibbons (1992) §1.2.B pp. 21–22 (differentiated products)"
+date: 2026-10-25
+status: taught
+source: "Aula/Lecture02.pdf slides 29–40; Tadelis (2013) §5.2.4, printed pp. 88–93 (discrete best response p. 90; Prop. 5.2 p. 91; asymmetric costs and Fig. 5.3 pp. 91–93; Remark on strategic complements p. 93); Gibbons (1992) §1.2.B pp. 21–22 (differentiated products)"
 ---
 
-# 5.2.4 · Bertrand duopoly: two firms are enough for marginal-cost pricing
+# Slides 29–40 · 5.2.4 · Bertrand duopoly: two firms are enough for marginal-cost pricing
 
 > **Claim.** Change the strategy from quantity to price and the same market behaves competitively: with identical
 > costs the unique equilibrium of the continuous game is **$p_1=p_2=c$** (Prop. 5.2), proved by showing every other
@@ -18,17 +18,83 @@ source: "Tadelis (2013) §5.2.4, printed pp. 88–93 (discrete best response p. 
 
 ---
 
+## 0 · C — the lecture's version (slides 29–40), in its notation
+
+**Notation.** $p_i\ge0$ firm $i$'s price; $c\ge0$ the common marginal cost; market demand at the lowest price $p$ is
+$Q(p)=\frac ab-\frac pb$ for $p<a$ and 0 otherwise (the inverse of $P=a-bQ$); $p^m$ the monopoly price.
+
+**The game (slide 29).** Two firms sell a homogeneous good and choose prices simultaneously; consumers buy from the
+cheapest firm and split equally at a tie:
+$$u_i(p_i,p_j)=\begin{cases}(p_i-c)\,Q(p_i)&p_i<p_j,\\ \tfrac12(p_i-c)\,Q(p_i)&p_i=p_j,\\ 0&p_i>p_j.\end{cases}\tag{1}$$
+
+**The monopoly price (slide 30).** Maximize $(p-c)Q(p)=(p-c)\dfrac{a-p}{b}$. FOC:
+$$\frac{(a-p)-(p-c)}{b}=0\ \Longrightarrow\ p^m=\frac{a+c}{2}.\tag{2}$$
+(With Tadelis's numbers $a=100$, $c=10$: $p^m=55$, as in §1 below.)
+
+**Firm $i$'s payoff given $p_j$, case by case (slides 31–33).**
+
+| Rival's price | What firm $i$ can earn | Best response |
+|---|---|---|
+| $p_j<c$ | any $p_i\le p_j$ sells at a loss; any $p_i>p_j$ sells nothing and earns 0 | every $p_i>p_j$ |
+| $p_j=c$ | $p_i<c$ loses; $p_i=c$ and $p_i>c$ both earn 0 | every $p_i\ge p_j$ |
+| $c<p_j\le p^m$ | $i$ wants $p_i<p_j$ **as close as possible** to $p_j$; for any such $p_i$ a higher price still below $p_j$ earns more | **none**: the existence problem |
+| $p^m<p_j$ | any price below $p_j$ takes the whole market, and the best of them is $p^m$ | $p^m$ |
+
+**Best response (slide 34).**
+$$p_i^*(p_j)=\begin{cases}\{p_i:p_i>p_j\}&p_j<c,\\ \{p_i:p_i\ge p_j\}&p_j=c,\\ \emptyset&c<p_j\le p^m,\\ \{p^m\}&p^m<p_j.\end{cases}\tag{3}$$
+
+**$(c,c)$ is a Nash equilibrium (slide 35).** Suppose $p_2=c$. By (3) any $p_1\ge c$ is a best response; in
+particular $c$ is. The same argument holds for firm 2.
+
+> **A weakly dominated equilibrium strategy (slide 36).** $p_i^*=c$ is weakly dominated by any higher price at which
+> demand is positive: such a price earns 0 when undercut and a strictly positive profit when it is the lowest or tied,
+> while $c$ earns 0 always. This is slide 16's caveat in action ([[L02-02-nash-equilibrium]] §2c).
+
+**$(c,c)$ is the unique equilibrium (slides 37–38).**
+
+*Step 1. In any NE, $p_1^*=p_2^*$.* Suppose $p_1^*>p_2^*$. Three cases:
+- $p_2^*<c$: firm 2 makes a loss, when it could earn zero with any $p_2'>p_1^*$;
+- $p_2^*=c$: firm 2 earns zero, when it could earn a positive profit with $p_2'=p_1^*$ (half the market at a margin
+  $p_1^*-c>0$);
+- $p_2^*>c$: firm 1 earns zero, when it could earn a positive profit with any $p_1'\in(c,p_2^*)$.
+
+An analogous argument rules out $p_1^*<p_2^*$.
+
+*Step 2. In any NE, $p_1^*=p_2^*=c$.*
+- If $p_1^*=p_2^*>c$, firm 1 could charge $p_1'\in(c,p_2^*)$ close to $p_2^*$ and serve the whole market instead of
+  sharing it (almost twice the profit).
+- If $p_1^*=p_2^*<c$, both make losses, and each would rather raise its price and sell nothing.
+
+"According to the model, a duopoly in Nash equilibrium works like a competitive market" (slide 38).
+
+**The Bertrand paradox (slide 39).** Two firms behave as if in perfect competition: price equals marginal cost and
+profits are zero. The assumptions behind it: (i) **homogeneous products**; (ii) **simultaneous choices**; (iii)
+**unlimited production capacity**. Relax any one and prices rise above cost (§5 relaxes (i)).
+
+**Cournot or Bertrand? (slide 40).** It depends on what is harder to adjust.
+
+| Model | Harder to adjust | Strategic decision | Slide's examples |
+|---|---|---|---|
+| Cournot | quantity (capacity) | how much to produce | cars, cement, steel, commodities |
+| Bertrand | price, or quantity expands at almost no cost | the price | software and other digital goods |
+
+In both models the NE predicts **more output than a cartel**, but the Bertrand prediction is much more extreme
+($Q^*=q^{cp}$ against Cournot's $\tfrac43q^m$).
+
+The sections below are Tadelis's treatment. §1 and §3 are the same result in his numbers; **§2 (cent grid), §4
+(unequal costs) and §5 (differentiated products) were not covered in class** and are reading.
+
 ## 1 · C — the game (p. 88)
 
 Demand $p=100-q$, $c_i(q_i)=10q_i$, prices $p_i\in[0,\infty)$; the lower price takes the market, a tie splits it:
 
-$$v_i(p_i,p_j)=\begin{cases}(100-p_i)(p_i-10)&p_i<p_j\\ \tfrac12(100-p_i)(p_i-10)&p_i=p_j\\ 0&p_i>p_j\end{cases}$$
+$$u_i(p_i,p_j)=\begin{cases}(100-p_i)(p_i-10)&p_i<p_j\\ \tfrac12(100-p_i)(p_i-10)&p_i=p_j\\ 0&p_i>p_j\end{cases}$$
 
 **Monopoly benchmark (p. 89).** $\max_p(100-p)(p-10)$: FOC $110-2p=0$, so $p=55$, $q=45$, profit $45\cdot45=2025$.
 
 ---
 
-## 2 · C — the best response on a cent grid (pp. 89–90)
+## 2 · Not covered in class — the best response on a cent grid (pp. 89–90)
 
 Prices in steps of $\Delta=0.01$. Go case by case over the rival's price $p_j$:
 
@@ -76,7 +142,7 @@ are where undercutting stops paying: at 10 and 10.01. On the right, the open cir
 
 ---
 
-## 3 · C — Proposition 5.2: continuous prices (p. 91)
+## 3 · C — Proposition 5.2: continuous prices (p. 91; the slides' result, slides 35–38)
 
 **Proposition 5.2.** With $\Delta=0$, $c_i(q_i)=cq_i$ for both firms and $p=a-bq$, $a>c$, the unique Nash equilibrium
 is $p_1=p_2=c$.
@@ -97,7 +163,7 @@ is $p_1=p_2=c$.
 
 ---
 
-## 4 · C — unequal costs: no equilibrium in pure strategies (pp. 91–93)
+## 4 · Not covered in class — unequal costs: no equilibrium in pure strategies (pp. 91–93)
 
 $c_1=1$, $c_2=2$, $p=100-q$.
 
@@ -108,7 +174,7 @@ by raising to 2.00 (split) or above (nothing); firm 2 sells nothing and would lo
 **Continuous prices.** The "limit" $p_1=p_2=2$ is **not** an equilibrium: firm 1 earns
 $\tfrac12(98)(1)=49$ and would earn almost $98$ by pricing a hair below 2. But there is no best "hair":
 
-$$v_1(p_1,2)=\begin{cases}(100-p_1)(p_1-1)&p_1<2\ \ (\to98)\\ 49&p_1=2\\ 0&p_1>2\end{cases}$$
+$$u_1(p_1,2)=\begin{cases}(100-p_1)(p_1-1)&p_1<2\ \ (\to98)\\ 49&p_1=2\\ 0&p_1>2\end{cases}$$
 
 The supremum 98 is **not attained**: for any $p_1<2$, a price closer to 2 earns more. Firm 1 has **no best
 response** to $p_2=2$, nor to any $p_2<50.5$ (its monopoly price, footnote 7, p. 92).
@@ -124,7 +190,7 @@ undercuts just below $p_2$) and $p_2\ge p_1$ fails (firm 2 prefers any price abo
 
 ---
 
-## 5 · C — strategic complements and differentiated products
+## 5 · Not covered in class — strategic complements and differentiated products
 
 **Tadelis's Remark (p. 93).** Cournot best replies fall in the rival's choice (**strategic substitutes**; also the
 commons). Bertrand best replies **rise** with the rival's price between marginal cost and the monopoly price

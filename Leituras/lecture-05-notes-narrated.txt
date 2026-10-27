@@ -1,0 +1,789 @@
+Lecture 5. Repeated Games, part one: Cooperation. A listening version of the lecture 5 notes.
+
+How to listen.
+
+This is the full text of the lecture 5 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every definition, every derivation and every number from the written notes is here, with the mathematics spoken in words.
+
+One warning first. This unit is estimated. The notes were built on October 16, 2026, from the course study guide, before the lecture was given, and there are no slides for it yet. Everything here follows the textbooks instead: Tadelis, Game Theory: An Introduction, published by Princeton University Press in 2013, chapter 10, sections 10.1 to 10.3 and section 10.6. When the slides arrive, the notes will be reconciled with them, and some emphasis may change.
+
+The script has sixteen parts. Part one is the map: the one claim of the lecture, and what to hold on to. Parts two and three are finite horizons: why a known last period kills cooperation when the stage game has one equilibrium, and how two stage equilibria bring it back as a carrot and a stick. Parts four, five and six are infinite horizons: discounting and average payoffs, the grim trigger equilibrium, and the critical discount factor. Part seven is the folk theorem. After that come the support parts: common mistakes, a spoken formula sheet, the figures and interactive companions described in words, the Python routines described in words, the reading route and exercises, a self-test, a glossary, and the whole lecture in five lines.
+
+Three conventions. First, the books. "Tadelis" is the 2013 book just named, the spine of the course. "Gibbons" is Robert Gibbons, Game Theory for Applied Economists, Princeton, 1992, section 2.3, parts A and B. "Cabral" is Luís Cabral, Introduction to Industrial Organization, second edition, MIT Press, 2017, section 7.3. "M W G" is Mas-Colell, Whinston and Green, Microeconomic Theory, 1995. Page numbers are printed page numbers.
+
+Second, the players and their actions. As in Tadelis and in the lecture 1 slides, player 1 chooses capital M or capital F, for mum or fink, and player 2 chooses small m or small f. Mum means keep quiet, that is, cooperate. Fink means confess, that is, defect.
+
+Third, a notation clash you must keep straight. The letter T has two jobs. In parts two and three, T is the number of periods: Tadelis writes the finitely repeated game as G of T and delta. From part five on, T is the temptation payoff of the Prisoner's Dilemma. The script says which one it means each time.
+
+One scope note, which applies throughout. The notes have three layers. The U layer is intuition. The C layer is the course: Tadelis's definitions 10.1 to 10.7, propositions 10.1 to 10.3, the inequalities numbered 10.3 and 10.5, theorem 10.1, and the worked examples. That is what is examinable. The G layer is the formal side: M W G's appendix to chapter 12, Fudenberg and Maskin, Abreu's optimal punishments, renegotiation-proofness. The G layer is named, not examinable, unless the lecture brings it. Tacit collusion, reputation and relational contracts belong to lecture 6, and this script points to them without treating them.
+
+Part one. The map of the lecture.
+
+This part covers the map note, which spans Tadelis pages 190 to 214, with Gibbons pages 82 to 102, Cabral pages 172 to 174, and M W G page 401 and pages 417 to 422.
+
+Here is the one claim of the lecture, in five sentences.
+
+A repeated game can sustain behaviour that no one-shot equilibrium allows, but only if tomorrow can depend on today.
+
+With a known last period and a unique stage equilibrium, it cannot: the end unravels the whole game.
+
+Two stage equilibria give a carrot and a stick, so the early rounds can cooperate.
+
+With no last period, the repeated game manufactures its own carrot. Cooperation forever supports itself, and grim trigger sustains it if and only if delta is at least T minus R, over T minus P. In Tadelis's Prisoner's Dilemma that number is one quarter.
+
+And the folk theorem then says that almost anything individually rational can be sustained by patient players. That explains cooperation as a possibility, not as a prediction.
+
+The notes read in three movements. Part one of the reading is finite horizons, Tadelis section 10.1. First, definition 10.1 and proposition 10.1, on page 192, with its proof by induction written out: the Prisoner's Dilemma unravels after one repetition or after 500. This settles that the length of the horizon and the size of delta are irrelevant when the stage equilibrium is unique. Second, Tadelis's two-stage example on page 191, where playing mum in the first period and a reward equilibrium in the second is subgame-perfect if and only if delta is at least one half; Gibbons's version with renegotiation; and an extension to T rounds where the last cooperative round binds and the floor is delta greater than one third.
+
+The second movement is infinite horizons, sections 10.2 and 10.3. First, definitions 10.2 to 10.4: delta as a probability that the game continues, the sum of a constant stream, why the average payoff of a constant stream is the constant itself, histories and strategies, and proposition 10.2. Second, definition 10.5, the grim trigger strategies, proposition 10.3 which is the one-stage deviation principle, the two checks, and inequality 10.3, which gives delta at least one quarter. Gibbons's recursive version, V equals 4 plus delta V, and Cabral's version, where the threshold is one half. And the idea of the bootstrap. Third, inequality 10.5 derived in general: the critical discount factor, the signed comparative statics, the fact that the sucker payoff drops out, and three readings of the number.
+
+The third movement is the folk theorem, section 10.6: convex combinations and convex hulls, theorem 10.1, Gibbons's proof, the alternating path that reaches the payoff two, two, where the bad period binds and the threshold is one half, and why "almost anything goes" is a selection problem.
+
+The one result to hold. Cooperating forever pays R today plus delta R over one minus delta from tomorrow on. Cheating once and being punished forever pays T today plus delta P over one minus delta. Cooperation is an equilibrium if and only if the first is at least the second, and that holds if and only if delta is at least delta star, equal to T minus R, over T minus P. Read it as a one-time gain, T minus R, against a per-period loss, R minus P, that lasts forever. In Tadelis's Prisoner's Dilemma, T is 5, R is 4 and P is 1, so delta star is 5 minus 4 over 5 minus 1, which is one quarter. In general, inequality 10.5 says: for every player i, delta is at least v i d minus v i c, over v i d minus v i star, where v i d is the best deviation payoff, v i c the cooperative payoff, and v i star the stage Nash payoff used as punishment.
+
+Six numbers to have memorized. One: in the finite Prisoner's Dilemma, for any number of periods and any delta, both players fink in every period. That is proposition 10.1. Two: in the two-stage game of page 191, the threshold is delta at least one half, because the gain is plus 1 today and the loss is 2 delta tomorrow. Three: grim trigger in the Tadelis and Gibbons Prisoner's Dilemma has delta star equal to one quarter, which is inequality 10.3. Four: grim trigger in Cabral's game needs a continuation probability alpha of at least one half: the same gain, but a cheaper punishment. Five: the alternating path that reaches two, two needs delta at least one half, and at delta equal to 0.9 its averages are 2.158 and 1.842; the bad period binds. Six: in Tadelis's Prisoner's Dilemma, the folk-theorem region has corners at one, one; one, 4.6; four, four; and 4.6, one. Those are the feasible payoffs that give each player more than 1.
+
+How this lecture sits in the course. Lecture 1, dominance and iterated elimination, supplies the Prisoner's Dilemma's dominant strategy, which is why the one-shot game fails; the stage game is solved by dominance. Lecture 2, Nash equilibrium, supplies the stage equilibria that serve as carrots, sticks and punishment payoffs. Lecture 3, backward induction and subgame perfection, supplies the unraveling, which is backward induction, and the solution concept used throughout. Lecture 4, multistage games and bargaining, supplies propositions 9.1 to 9.3, the Prisoner-Revenge game, theorem 9.1 on one-stage deviations, and discounting. Lecture 5 is finite against infinite repetition, grim trigger, inequality 10.5 and the folk theorem. Lecture 6 applies inequality 10.5 to Cournot and Bertrand collusion, price wars, reputation and efficiency wages. Lectures 7 and 8 bring incomplete information; reputation with private types is outside this unit.
+
+Scope, said once more in full. Examinable: Tadelis sections 10.1 to 10.3 and 10.6 as listed, the one-stage deviation principle as Tadelis states it in proposition 10.3, and the threshold 10.5 with its Prisoner's Dilemma form. Named only: M W G's appendix to chapter 12, with Nash reversion, the monotonicity result in proposition 12.AA.2, and the minimax folk theorem 12.AA.5; Fudenberg and Maskin; Abreu's optimal punishments; renegotiation-proofness. Not here, but in lecture 6: tacit collusion in section 10.4, reputation and the trust game in section 10.5, Gibbons's sections 2.3.C and 2.3.D on Cournot collusion and efficiency wages, and Milgrom and Roberts chapter 8. Out of the course entirely: imperfect monitoring beyond a pointer to price wars, mechanism design, cheap talk and moral hazard. And one piece is the notes' own construction, not the books': the T-round extension of the two-stage game, in part three of this script. It is marked as such when it comes.
+
+Recap of part one. You should be able to state the one claim in five sentences. You should be able to write the grim trigger inequality from memory and solve it for delta star. And you should know the six numbers: fink always, one half, one quarter, one half for Cabral, one half for the alternating path, and the corners of the folk region.
+
+Part two. Finitely repeated games: a unique stage equilibrium unravels every period.
+
+This part covers Tadelis section 10.1, definition 10.1 and proposition 10.1, pages 190 to 192, with proposition 9.3 on page 181; Gibbons section 2.3.A, figures 2.3.1 and 2.3.2 and the proposition on page 84; and M W G section 12.D, page 401.
+
+The claim first. Repeat a game with a unique Nash equilibrium a known, finite number of times, and the future can discipline nothing. The last period must be the stage equilibrium whatever happened before, so the second-to-last period has no reward or punishment left to offer, and the argument walks back to period 1. Five hundred rounds of the Prisoner's Dilemma have exactly one subgame-perfect equilibrium: fink, every period.
+
+Two point one. The object: a stage game played T times. Here T is the number of periods.
+
+Definition 10.1, on Tadelis page 190. Given a stage game G, G of T and delta denotes the finitely repeated game in which the stage game G is played T consecutive times, and delta is the common discount factor.
+
+A repeated game is a multistage game in which every stage is the same game. That is the chapter opener on page 190. So everything lecture 4 proved for multistage games applies here; the repetition only adds structure.
+
+Two ingredients are implicit, and both matter. The first is perfect monitoring: the outcome of every stage is observed before the next stage begins. That is Gibbons's definition, on page 84. It is what lets strategies condition on the history. The second is a known last period: it is common knowledge that stage T is the end. That is what drives the unraveling.
+
+Gibbons states the same object without discounting. He writes G of T, with payoffs equal to the sum of the T stage payoffs, on page 84. With delta below 1 or delta equal to 1, the result is identical, because it never uses the size of delta.
+
+Two point two. Proposition 10.1.
+
+Proposition 10.1, Tadelis page 192. If the stage game of a finitely repeated game has a unique Nash equilibrium, then the finitely repeated game has a unique subgame-perfect equilibrium.
+
+It is a special case of proposition 9.3, on page 181: a finite multistage game whose stage games each have a unique Nash equilibrium has a unique subgame-perfect equilibrium. The unique subgame-perfect equilibrium is the stage equilibrium played in every period, after every history.
+
+Gibbons's version, on page 84: if the stage game G has a unique Nash equilibrium then, for any finite T, the repeated game G of T has a unique subgame-perfect outcome: the Nash equilibrium of G is played in every stage.
+
+Now the proof, by induction from the end, in four steps. Call the unique stage equilibrium a star, with payoffs u i of a star.
+
+Step one, stage T. Every subgame that starts at stage T is a one-shot play of G: no future depends on the action. Each player best-responds to what the others do now, so play is a Nash equilibrium of G, by proposition 9.2 on page 181. And there is only one, a star. This holds after every history.
+
+Step two, stage T minus 1, after any history. Whatever is played now, stage T delivers a star. So player i's payoff from an action profile a at stage T minus 1 is u i of a, plus delta times u i of a star. And delta times u i of a star is the same constant in every cell. Adding a constant to every payoff does not change any best response; that is Tadelis's footnote 3 on page 181. So the stage T minus 1 game is strategically G itself, and its unique equilibrium is a star.
+
+Step three, the inductive step. Suppose that from stage t plus 1 on, a star is played after every history. Then at stage t the continuation adds the sum, over s from t plus 1 to T, of delta to the power s minus t, times u i of a star. Again that is the same in every cell. The stage t game is G plus a constant, and its unique equilibrium is a star.
+
+Step four. By induction, a star is played at every stage after every history. Uniqueness at each step gives uniqueness of the subgame-perfect equilibrium. End of proof.
+
+The engine is step two. A continuation that does not depend on today's action is a constant, and a constant cannot reward or punish. Conditioning tomorrow on today needs at least two different things tomorrow could be: two continuation equilibria. Remove that, and nothing is left.
+
+Two point three. Worked: the Prisoner's Dilemma unravels.
+
+Tadelis's stage game is on page 197, and again as the folk-theorem matrix on page 210. Walk the four cells. If both play mum, M and m, each gets 4. If player 1 plays mum and player 2 finks, player 1 gets minus 1 and player 2 gets 5. If player 1 finks and player 2 plays mum, player 1 gets 5 and player 2 gets minus 1. If both fink, each gets 1.
+
+At stage T. Fink strictly dominates mum for player 1: 5 is more than 4 against mum, and 1 is more than minus 1 against fink. Symmetrically for player 2. The unique Nash equilibrium is both fink, and, as Tadelis says on page 192, "in fact it is the unique dominant strategy!"
+
+At stage T minus 1. Stage T will be both fink whatever happens, worth delta times 1 to each player. So the game at T minus 1 is the same matrix with delta added to every entry. Take delta equal to 1, Gibbons's no-discounting case. Both mum now pays 5 each. Mum against fink pays 0 to the mum player and 6 to the fink player. Both fink pays 2 each. Fink still dominates: 6 is more than 5, and 2 is more than 0. The unique equilibrium is both fink, again. The same addition happens at T minus 2, now plus delta plus delta squared, and so on back to period 1.
+
+The figure in the notes shows this as two tables side by side. On the left, Tadelis's Prisoner's Dilemma, with both fink, paying one, one, highlighted as the unique equilibrium. On the right, the same game with 1 added to every cell, where both fink, now paying two, two, is again the unique equilibrium. The right table is the left table shifted by one unit everywhere. Every comparison a best response makes, 5 against 4, 1 against minus 1, becomes 6 against 5, 2 against 0: same signs, same equilibrium.
+
+Gibbons's two-stage Prisoners' Dilemma, pages 82 and 83. Gibbons's figure 2.3.1 uses L for defect and R for cooperate. Both L pays 1 each. Player 1 L against player 2 R pays 5 to player 1 and 0 to player 2. The reverse pays 0 and 5. Both R pays 4 each. Played twice with summed payoffs, the second stage is both L after every first-stage outcome. So the first stage is the game of figure 2.3.2: add one, one to every cell. Both L becomes two, two; L against R becomes six, one; R against L becomes one, six; both R becomes five, five. The unique equilibrium is both L. So the unique subgame-perfect outcome is both L in both stages. Cooperation, both R, cannot be achieved in either stage. That is on page 84.
+
+Two point four. Intuition: why the result feels wrong, and why it is right.
+
+Tadelis, on page 192, puts the tempting intuition this way: two players facing 500 rounds "can use the future to discipline behavior and try to cooperate by playing mum in early periods." The intuition fails because it is common knowledge that the game ends after 500 periods. At period 500 both must fink. At period 499 no reward-and-punishment incentive is left. And so on.
+
+What the intuition gets wrong is not "the future matters". It is "the future can be made to depend on today". A threat to punish tomorrow is only credible if punishing is itself an equilibrium of tomorrow's game, and a promise to reward is only credible if rewarding is one. With a unique stage equilibrium, there is exactly one thing tomorrow can be.
+
+Four features, and whether each matters for the result. The length of the horizon, two periods or 500: no, the induction does not care. The size of delta: no, delta only scales a constant. The uniqueness of the stage equilibrium: yes, and part three shows what happens without it. A known last period: yes, and part five shows what happens without it.
+
+The same holds for the finitely repeated Cournot and Bertrand games of Tadelis section 5.2: their stage equilibria are unique, so repetition changes nothing. That is on page 192.
+
+Two point five. The same argument in M W G. This is the G layer.
+
+M W G section 12.D, on page 401, runs the argument for the finitely repeated Bertrand duopoly. In period T, prices equal cost whatever happened earlier, so period T minus 1 is, "strategically speaking, at the last period", and backward induction delivers T repetitions of the static Bertrand outcome. Gibbons's footnote 13, on page 84, extends the proposition to dynamic stage games: a unique backwards-induction or subgame-perfect outcome of G is played in every stage of G of T. Not examinable beyond the statement.
+
+Recap of part two. You should be able to state definition 10.1 and proposition 10.1. You should be able to prove proposition 10.1 by induction in four steps, and to say that step two is the engine: a continuation that is the same in every cell is a constant, and a constant cannot reward or punish. You should be able to fold Gibbons's two-stage Prisoners' Dilemma into figure 2.3.2. And you should be able to say which features matter, uniqueness and a known end, and which do not, length and delta.
+
+Part three. Two stage equilibria: a carrot, a stick, and cooperation in the early rounds.
+
+This part covers Tadelis section 10.1, the two-stage example with footnotes 1 and 2, page 191; the Prisoner-Revenge game of section 9.1, page 176; and Gibbons section 2.3.A, figures 2.3.3 to 2.3.5, pages 84 to 88.
+
+The claim. When the stage game has two Pareto-ranked Nash equilibria, the last period can still reward or punish: play the good one if everyone behaved, the bad one if anyone cheated. That gap buys behaviour in earlier periods that is not a stage equilibrium at all. In Tadelis's game, both mum in period 1 is subgame-perfect if and only if delta is at least one half. Over a longer horizon, the early rounds are the easy ones, because they have the most future at stake.
+
+Three point one. Tadelis's two-stage example, page 191.
+
+The stage game is played twice, with discount factor delta. It is a three by three game. Player 1 chooses M, F or a new action, capital R. Player 2 chooses m, f or small r. The upper-left two by two block is the Prisoner's Dilemma of part two: both mum pays four, four; mum against fink pays minus one, five; fink against mum pays five, minus one; both fink pays one, one. The new actions: both R pays three, three. Every other cell that involves R or r pays zero, zero.
+
+Its pure Nash equilibria, checking each candidate by best responses. Both mum, four, four: not an equilibrium, because fink gives player 1 a 5, which beats 4, and likewise for player 2. Both fink, one, one: an equilibrium, because player 1's alternatives give minus 1 for mum and 0 for R, and player 2's give minus 1 and 0 as well. Both R, three, three: an equilibrium, because every alternative gives 0.
+
+So there are two equilibria, and they are Pareto ranked: both R, at three each, beats both fink, at one each, for both players. Both mum, at four each, beats both, but it is not an equilibrium.
+
+The strategies, from page 191. Player 1: play M in stage 1. In stage 2, play R if both played mum in stage 1, and F otherwise. Player 2: play m in stage 1. In stage 2, play r if both played mum in stage 1, and f otherwise.
+
+Formally, in footnote 1, player 1's strategy is a pair: a first-stage action, which is M, and a second-stage action that depends on the first-stage history h 1, equal to R if h 1 is both mum, and F if h 1 is anything else. That is one first-stage action and nine contingent second-stage actions. A strategy names an action for every history, including those that never happen.
+
+Verifying subgame perfection, every step.
+
+Stage 2. After every first-stage outcome, the prescribed pair, both R or both fink, is a stage Nash equilibrium. So no one-stage deviation pays in any of the nine stage-2 subgames.
+
+Stage 1. Fix player 2's strategy, and compare player 1's three options, each with its continuation. If player 1 plays M, he gets 4 in stage 1, the second stage is both R, worth 3, so his total is 4 plus 3 delta. If he plays F, he gets 5 now, the second stage is both fink, worth 1, so his total is 5 plus delta. If he plays R, he gets 0 now, the second stage is both fink, worth 1, so his total is just delta.
+
+R is never better than M, since delta is less than 4 plus 3 delta. M beats F if and only if 4 plus 3 delta is at least 5 plus delta. Subtract: 2 delta is at least 1. So delta is at least one half. Footnote 2 puts it as: "M is a best response if and only if minus 1 is at least minus 2 delta, or delta is at least one half". Player 2 is symmetric.
+
+Say it as gain against loss. The gain from deviating today is 5 minus 4, plus 1. The loss tomorrow is the switch from both R to both fink, which costs 3 minus 1, that is 2, worth 2 delta today. Cooperate if and only if 2 delta is at least 1. In Tadelis's words on page 191, "both players will incur a loss of minus 2 in the second-period stage-game", while "the temptation to deviate" is "the added payoff of plus 1".
+
+Three point two. Worked: folding the second stage into the first.
+
+Replace stage 2 by its prescribed payoff: plus 3 delta to both players after both mum, and plus delta to both after any other cell. Take delta equal to one half. Then both mum becomes 5.5 each. Mum against fink becomes minus 0.5 and 5.5. Fink against mum becomes 5.5 and minus 0.5. Both fink becomes 1.5 each. Both R becomes 3.5 each. And every cell that paid zero now pays 0.5 each.
+
+The folded game has three pure equilibria. First, both mum: player 1 compares 5.5 with 5.5 from fink, and 5.5 with 0.5 from R. That is a tie at exactly delta equal to one half. In the repeated game this is the outcome both mum, then both R: cooperation in stage 1. Second, both fink: 1.5 beats minus 0.5 and 0.5. In the repeated game: both fink, then both fink. Third, both R: 3.5 beats 0.5. In the repeated game: both R, then both fink.
+
+The figure in the notes has three panels: the three by three stage game with its two equilibria highlighted; the folded first-stage game at delta equal to one half, with the three equilibria highlighted; and a line chart in which the deviation gain, 1, is flat, and the loss, 2 delta, rises and crosses it at delta equal to one half.
+
+The middle table is where the work happens. The both-mum cell gained 3 delta, that is 1.5, while every other cell gained only delta, 0.5. That extra 2 delta is exactly enough to offset the plus 1 from fink. Below one half, the rising line sits under the flat gain, and both mum stops being an equilibrium of the folded game.
+
+Gibbons's version, figures 2.3.3 and 2.3.4, pages 84 to 86. Gibbons's stage game is the same idea with defect called L, cooperate called M, and an added equilibrium called R. Both L pays one, one. Both M pays four, four. Both R pays three, three. And player 1 L against player 2 M pays five, zero. With summed payoffs, delta equal to 1, add three, three to the both-M cell and one, one to the other eight cells. That gives figure 2.3.4, whose three pure equilibria correspond to three subgame-perfect outcomes: both L then both L; both R then both L; and both M then both R. The third is "qualitatively different": the first-stage outcome is not a Nash equilibrium of G.
+
+Gibbons's general point, on page 86: if G has multiple Nash equilibria, then there may be subgame-perfect outcomes of G of T in which, for any t before T, the outcome in stage t is not a Nash equilibrium of G.
+
+Three point three. Why this is chapter 9 again.
+
+Tadelis, on page 191, points to the Prisoner-Revenge game of section 9.1, page 176: a reward-and-punishment second stage disciplines first-stage play. The only difference is that here the same game is repeated. The requirement, from proposition 9.3 read in reverse: non-Nash behaviour early needs multiple continuation equilibria later. That is on page 192. The good one is the carrot, the bad one is the stick, and the players must be patient enough that the gap outweighs the one-period temptation.
+
+Three point four. An extension: T rounds and a reward phase of length k.
+
+This section is the notes' own construction on Tadelis's game, not the book's text. It is what the second interactive companion computes.
+
+Play both mum in rounds 1 to n, and both R in rounds n plus 1 to T. Call those last rounds the reward phase, of length k, equal to T minus n. Any deviation sends play to both fink until the end. Write the payoffs in letters: small a, equal to 4, for both mum; small b, equal to 5, for fink against mum; small r, equal to 3, for both R; and small p, equal to 1, for both fink.
+
+Rounds in the reward or punishment phase prescribe a stage equilibrium, so no one-stage deviation pays there.
+
+The last cooperative round, round n. Deviating gains b minus a now. From round n plus 1, the deviator gets p instead of r in each of the k remaining rounds. So the loss is the sum, for j from 1 to k, of delta to the j times r minus p. Factor it: r minus p, times delta, times 1 plus delta plus and so on up to delta to the k minus 1. And that geometric sum closes to: r minus p, times delta times 1 minus delta to the k, over 1 minus delta.
+
+So round n holds if and only if b minus a is at most r minus p, times delta times 1 minus delta to the k, all over 1 minus delta. That is the boxed condition.
+
+Two cases. With k equal to 1, it says b minus a is at most r minus p times delta, so delta is at least b minus a over r minus p, which is 1 over 2, one half: Tadelis's condition. As k goes to infinity, the right side tends to r minus p times delta over 1 minus delta. So some reward phase works if and only if delta is strictly greater than b minus a, over b minus a plus r minus p. With the numbers, that is 1 over 1 plus 2, one third. At delta of one third or less, no finite game supports even a single round of both mum with this profile.
+
+Earlier cooperative rounds are slack, as long as r is at most a. Let L n be the loss at round n. The loss one round earlier is L n minus 1, equal to delta times a minus p, plus delta times L n. So the difference, L n minus 1 minus L n, equals delta times a minus p, minus 1 minus delta times L n. Substitute L n, and that equals delta times a minus p, minus r minus p times delta times 1 minus delta to the k. That is at least delta times the bracket a minus p minus r minus p, which is at least zero. So every earlier round has more at stake. Only the last cooperative round binds, and the most cooperation is n star equal to T minus k min, where k min is the smallest k that satisfies the boxed condition.
+
+Worked, with T equal to 10 rounds. The quantity to compare with the gain of 1 is r minus p, times delta times 1 minus delta to the k, over 1 minus delta. At delta equal to 0.30: for k equal to 1, 2, 3 and 4 it is 0.60, 0.78, 0.83 and 0.85. It never reaches 1, so there is no k min, and zero rounds of both mum. At delta equal to 0.34: 0.68, 0.91, 0.99, and then 1.02 at k equal to 4. So k min is 4, and 6 rounds of both mum. At delta equal to 0.40: 0.80 and then 1.12 at k equal to 2. So k min is 2, and 8 rounds. At delta equal to 0.50: exactly 1.00 at k equal to 1, so k min is 1, and 9 rounds. At delta equal to 0.90: 1.80 at k equal to 1, so again 9 rounds.
+
+The figure in the notes is a step chart of the number of rounds of both mum in a subgame-perfect equilibrium of the 10-round game, against delta. It is zero up to one third, then rises quickly through 6, 7 and 8, and stays at 9 from delta of one half on. Patience buys cooperative rounds, but never the last one. The curve never reaches 10, because the last round must be a stage equilibrium, by proposition 9.2 on page 181. Between one third and one half the curve climbs in steps, as one more reward round becomes necessary; from one half on, a single reward round is enough.
+
+Three point five. The renegotiation problem, Gibbons pages 86 to 88. This is the U and G layer.
+
+The stick, both fink, hurts the punisher too. After a first-stage deviation, both players would rather play both R, worth 3 each, than both fink, worth 1. "Bygones are bygones", and they might renegotiate. That is on page 87. If they would, the threat is empty: stage 2 is both R after every history, and fink is again a best response in stage 1.
+
+Gibbons's fix, figure 2.3.5 on page 87, adds two more equilibria: one called P, with payoffs 4 and one half, and one called Q, with payoffs one half and 4. Punish player 1's deviation with Q, and player 2's with P; reward mutual cooperation with R. Cooperating gives 4 plus 3. Deviating gives at best 5 plus one half. That is on page 88. Each punishment equilibrium is on the Pareto frontier of the stage equilibria, so the punisher has nothing to renegotiate toward. This is named here as a caveat; it is not part of Tadelis's treatment.
+
+Recap of part three. You should be able to find the two pure equilibria of the three by three game, and say why both mum is not one. You should be able to derive the threshold one half, as 4 plus 3 delta against 5 plus delta, and as a gain of 1 against a loss of 2 delta. You should be able to fold the second stage at delta equal to one half and name the three equilibria of the folded game. You should be able to state Gibbons's general point about multiple equilibria. You should know that, in the notes' own extension, only the last cooperative round binds and the floor is one third. And you should be able to explain renegotiation and Gibbons's fix.
+
+Part four. Infinite horizons: discounting, average payoffs, histories and strategies.
+
+This part covers Tadelis sections 10.2.1 and 10.2.2 and the start of section 10.3: definitions 10.2 to 10.4, equations 10.1 and 10.2, footnotes 3 to 5, and proposition 10.2, pages 192 to 197. It also uses Gibbons section 2.3.B, pages 88 to 97, and Cabral section 7.3, pages 172 to 174.
+
+The claim. Remove the last period and the unraveling has nowhere to start. To compare infinite payoff streams we discount them, and delta can be read as the probability that the relationship survives one more period. So "infinitely repeated" means "no one knows which period is the last", not "lasts forever". The average payoff, which is 1 minus delta times the present value, puts a stream on the same scale as a stage payoff. And a strategy is a rule that maps every past history to an action.
+
+Four point one. Present value, definition 10.2.
+
+Let G of delta be the infinitely repeated game with discount factor delta. That is on page 193.
+
+Definition 10.2, page 193. Given a discount factor delta strictly between 0 and 1, the present value of an infinite sequence of payoffs for player i is: the payoff in period 1, plus delta times the payoff in period 2, plus delta squared times the payoff in period 3, and so on, with the payoff in period t multiplied by delta to the power t minus 1. In short, the sum over t from 1 to infinity of delta to the t minus 1, times v i t.
+
+Delta below 1 is needed. At delta equal to 1, a stream of 4s and a stream of 1s both sum to infinity, and they cannot be ranked. That is Gibbons, page 89.
+
+Why the sum is finite, footnote 3, page 193. Suppose every stage payoff is below a bound, b, which is positive. Then the present value is below the sum of delta to the t minus 1 times b; call that sum capital B. To see that B is finite, multiply it by 1 minus delta. You get the sum of delta to the t minus 1 times b, minus the sum of delta to the t times b. The first sum is b plus the sum of delta to the t times b. So everything cancels except b. B times 1 minus delta equals b, and B equals b over 1 minus delta, which is finite.
+
+Four point two. Delta as a continuation probability, pages 193 and 194. This is the intuition layer.
+
+Suppose that after each period the relationship continues with probability delta and ends with probability 1 minus delta. With no time discounting at all, the expected payoff is: the first payoff, plus delta times the second, plus 1 minus delta times zero, plus delta squared times the third, plus delta times 1 minus delta times zero, and so on. The zeros drop out, and what is left is the sum over t of delta to the t minus 1 times v i t: the same expression as definition 10.2.
+
+The probability of playing infinitely many times is the limit of delta to the t, which is zero. So the game ends in finite time with probability 1, and yet, at every period, a future is still ahead. That is page 194.
+
+Two numbers at delta equal to 0.97, from page 194. The probability of at least 100 periods is 0.97 to the power 100, which is 0.0475. The probability of at least 500 periods is 0.97 to the power 500, which is 2.4315 times ten to the minus seven: in Tadelis's words, "less than one in four million".
+
+Both effects together, footnote 4 on page 194. With a continuation probability p and a time discount factor delta, the effective discount factor is the product, p times delta. Gibbons writes the same thing as delta equal to 1 minus p, over 1 plus r, where p is the probability, each stage, that the game ends, and r is the interest rate. That is page 90. Cabral calls this reading the indefinitely repeated game, and notes that for risk-neutral players the two interpretations give the same computation. That is page 174.
+
+The figure in the notes has two panels. On the left, on a log scale, 0.97 to the power t falls in a straight line, with points marked at t equal to 100, at 0.04755, and at t equal to 500, at 2.431 times ten to the minus seven. On the right, the present value of receiving 4 for T periods rises toward 40 when delta is 0.9, and toward 16 when delta is 0.75. The left panel is why "infinitely repeated" is not science fiction: even a 97 per cent continuation probability makes 500 periods essentially impossible, yet the analysis needs only that some future is always possible. The right panel shows that most of a discounted stream's value arrives early: at delta equal to 0.75, the sum is within 1 per cent of its limit by T equal to 17, since 0.75 to the 17th is 0.0075.
+
+Four point three. The average payoff, definition 10.3, and the finite sum.
+
+Definition 10.3, page 194. Given delta below 1, the average payoff of an infinite sequence of payoffs is 1 minus delta, times the sum over t of delta to the t minus 1 times v i t. That is, 1 minus delta times the present value.
+
+Why the factor 1 minus delta. Take a constant payment v for T periods; here T is a number of periods. Equation 10.1 defines s of v, delta and T as v plus delta v plus delta squared v, and so on up to delta to the T minus 1 times v. Equation 10.2 multiplies that by delta: delta times s equals delta v plus delta squared v and so on up to delta to the T times v. Subtract 10.2 from 10.1. Every term cancels except the first term of 10.1, which is v, and the last term of 10.2, which is delta to the T times v. So s minus delta s equals v minus delta to the T times v, and s of v, delta and T equals v minus delta to the T v, over 1 minus delta. Now let T go to infinity. Since delta to the T goes to zero, s of v and delta equals v over 1 minus delta. And the average payoff, 1 minus delta times that, is v.
+
+The average payoff of a constant stream v is v itself. That is the whole point of the normalization: the average payoffs of repeated-game paths live on the same axes as the stage game's payoffs. That is what lets the folk theorem draw them in one picture, in part seven.
+
+Worked. Both mum forever in Tadelis's Prisoner's Dilemma has a present value of 4 over 1 minus delta. At delta equal to 0.9, that is 40. Its average is 1 minus 0.9, times 40, which is 4. Maximizing the average or the present value is the same problem, since one is a positive multiple of the other. That is Gibbons, page 97.
+
+Four point four. Histories and strategies, definition 10.4.
+
+The game tree grows in length and in width: after each period, every action profile opens a new branch. In the repeated Prisoner's Dilemma, at stage 4 each player has 64 information sets, one per possible three-period history, because 4 to the power 3 is 64. That is footnote 5, page 195. In general, if the stage game has a given number of action profiles, the number of histories before stage t is that number raised to the power t minus 1.
+
+Because each information set is identified with a unique history, a strategy can be written as a function of the history. That is page 196.
+
+Definition 10.4, page 196. Let H t denote the set of all possible histories of length t, with h t an element of it, and let H be the union of all the H t, the set of all possible histories. A pure strategy for player i is a mapping s i from H into S i that maps histories into actions of the stage game. Similarly, a behavioural strategy of player i, sigma i, maps histories into stochastic choices of actions in each stage.
+
+How big is a strategy? In the two-stage Prisoner's Dilemma, a strategy has five instructions: one for stage 1, and one for each of the four first-stage outcomes. In a two-stage game whose stage game is three by three, like Gibbons's figure 2.3.3 or Tadelis's page 191 example, it has ten. That is Gibbons, page 93. In G of delta, a strategy is an infinite list. The useful strategies are short rules, like "cooperate unless someone has ever defected", that compress the list.
+
+Subgames. A subgame starts after any history and includes everything that follows. In G of T, the subgame after stage t is G of T minus t. In G of delta, every subgame is identical to the original game. That is Gibbons, page 94. This self-similarity is what makes the bootstrap argument of part five consistent rather than circular.
+
+And one warning, from Gibbons page 95: the t-th stage on its own is not a subgame. A subgame includes all the moves that follow. Analysing stage t in isolation treats it as the last stage, which is exactly the mistake the repeated game exists to avoid.
+
+Four point five. The trivial equilibrium, proposition 10.2.
+
+Proposition 10.2, page 196. Let G of delta be an infinitely repeated game, and let sigma 1 star to sigma n star be a static Nash equilibrium strategy profile of the stage game G. Define the repeated-game strategy for each player i to be the history-independent Nash strategy: sigma i star of h equals sigma i star for every history h. Then this profile is a subgame-perfect equilibrium of the repeated game, for any delta below 1.
+
+Why. If the opponents' play ignores the history, today's action cannot change tomorrow. So each period is a one-shot game in which sigma i star is a best response to the others' sigma star. That is page 196. So fink forever is always a subgame-perfect equilibrium of the repeated Prisoner's Dilemma, on page 197: the stick is available for free. The question of part five is whether anything better is.
+
+Recap of part four. You should be able to state definitions 10.2 and 10.3, and show that the sum of a bounded stream is finite. You should be able to derive the finite sum s of v, delta and T by subtracting 10.2 from 10.1, take the limit, and say why the average payoff of a constant stream is the constant. You should be able to read delta as a continuation probability, and quote 0.97 to the 500th as about 2.4 times ten to the minus seven. You should be able to state definition 10.4, count 64 information sets at stage 4, and say why every subgame of G of delta is the whole game. And you should be able to state and justify proposition 10.2.
+
+Part five. Grim trigger: cooperation forever is subgame-perfect if and only if delta is at least one quarter.
+
+This part covers Tadelis section 10.3: definition 10.5, propositions 10.2 and 10.3, the grim trigger strategies, inequality 10.3 and footnote 6, pages 196 to 200, with theorem 9.1 on page 185. It also uses Gibbons section 2.3.B, the trigger strategy and his inequality 2.3.1, pages 90 to 96; and Cabral section 7.3, pages 172 and 173.
+
+From here on, T is the temptation payoff, not a number of periods.
+
+The claim. In the infinitely repeated Prisoner's Dilemma, "cooperate until anyone defects, then defect forever" is a subgame-perfect equilibrium if and only if delta is at least one quarter, with Tadelis's payoffs. The stick is the stage equilibrium repeated, which is always a subgame-perfect equilibrium. The carrot is the cooperative equilibrium itself: a bootstrap, consistent because every subgame of G of delta is the same game. And checking the infinitely many subgames reduces to two checks, one per state, thanks to the one-stage deviation principle.
+
+Five point one. Subgame-perfect equilibrium in a repeated game.
+
+Definition 10.5, page 196, in words. A profile of history-contingent strategies, sigma star, is a subgame-perfect equilibrium of G of delta if, for every history h, the strategies restricted to the subgame that starts after h form a Nash equilibrium of that subgame.
+
+Gibbons, page 95, after Selten in 1965: a Nash equilibrium is subgame-perfect if the players' strategies constitute a Nash equilibrium in every subgame.
+
+Two consequences. First, off-path behaviour matters. Histories that never occur in equilibrium, where someone defected, are subgames too, and the threatened play there must be an equilibrium: a credible threat. Second, there are infinitely many subgames, one per history. Checking them one by one is impossible, which is why the one-stage deviation principle matters.
+
+Five point two. The grim trigger strategies, page 198.
+
+Tadelis's stage game, page 197: both mum pays four, four; mum against fink pays minus one, five; fink against mum pays five, minus one; both fink pays one, one.
+
+Player 1: in the first stage play M. In any stage t after the first, play M if and only if the history so far consists only of both mum; otherwise play F. Player 2: the mirror strategy. Play m in stage 1, play m if and only if every past outcome was both mum, and otherwise play f.
+
+Read it as a machine with two states. The cooperation state is entered at t equal to 1, or whenever every past outcome was both mum; it prescribes both mum; and it is left after any outcome other than both mum. The punishment state is entered when some past outcome was not both mum, "be it once or more than once, be it by one player or both", as page 198 says; it prescribes both fink; and it is never left.
+
+It is called "grim" because the punishment is forever, and "trigger" because any deviation pulls it.
+
+Gibbons's trigger strategy, page 91, is the same with his labels: play R i in the first stage. In the t-th stage, if the outcome of all t minus 1 preceding stages has been both R, then play R i; otherwise, play L i.
+
+Five point three. The one-stage deviation principle, proposition 10.3.
+
+Proposition 10.3, page 198. In an infinitely repeated game G of delta, a profile of strategies sigma star is a subgame-perfect equilibrium if and only if there is no player i and no single history h t minus 1 for which player i would gain from deviating from s i of h t minus 1.
+
+It is the repeated-game form of theorem 9.1, on page 185: a one-stage unimprovable strategy must be optimal. That was lecture 4. A one-stage deviation changes the action at one history and follows the strategy everywhere else.
+
+Why it survives an infinite horizon, footnote 6 on page 199. In a finite tree, a profitable deviation can be broken into finitely many one-stage deviations, and induction finishes the proof. With an infinite horizon, a profitable deviation may change infinitely many actions. But discounting makes payoffs continuous at infinity: changes after period N are worth at most a multiple of delta to the N. So some deviation that differs from the strategy in only finitely many stages must also be profitable, and the finite argument applies. The footnote cites Fudenberg and Tirole, 1991, theorem 4.2.
+
+The practical rule: list the states, and in each state check the single most tempting action today, followed by the equilibrium continuation from tomorrow. For grim trigger, that is two checks.
+
+Five point four. Worked: the two checks.
+
+Check one, off the path: the punishment state. After any history with a deviation, the strategies prescribe both fink now and forever, whatever happens next. Player 1 faces f today and f forever after. If he plays F, as prescribed, he gets 1 today, and from tomorrow both fink forever, worth delta over 1 minus delta; total, 1 plus delta over 1 minus delta. If he deviates to M, he gets minus 1 today, and from tomorrow still both fink forever, worth delta over 1 minus delta; total, minus 1 plus delta over 1 minus delta. Deviating loses 2 today "with no gains in subsequent stages", on page 199. The punishment is credible for every delta. It is proposition 10.2's equilibrium.
+
+Check two, on the path: the cooperation state. After a history of only both mum, with the opponent playing grim trigger.
+
+Follow the strategy: 4 today and both mum forever after. The value is 4 plus 4 delta plus 4 delta squared and so on, which is 4 plus 4 delta over 1 minus delta.
+
+Deviate to F: 5 today, then the opponent plays f forever, and F is the best reply. The value is 5 plus delta plus delta squared and so on, which is 5 plus delta over 1 minus delta.
+
+There is no profitable deviation if and only if 4 plus 4 delta over 1 minus delta is at least 5 plus delta over 1 minus delta. That is inequality 10.3.
+
+Solve it, every step. Step one: multiply both sides by 1 minus delta, which is positive. You get 4 times 1 minus delta, plus 4 delta, on the left, and 5 times 1 minus delta, plus delta, on the right. Step two: expand. The left side is 4. The right side is 5 minus 5 delta plus delta, which is 5 minus 4 delta. So 4 is at least 5 minus 4 delta. Step three: rearrange: 4 delta is at least 1. Step four: delta is at least one quarter.
+
+Three values, to see it. At delta equal to 0.20: cooperating is worth 4 over 0.8, which is 5.000; deviating is worth 5 plus 0.2 over 0.8, which is 5.250. Deviate: not a subgame-perfect equilibrium. At delta equal to 0.25: cooperating is worth 4 over 0.75, which is 5.333; deviating is worth 5 plus 0.25 over 0.75, which is also 5.333. Indifferent: a subgame-perfect equilibrium, weakly. At delta equal to 0.50: cooperating is worth 8.000 and deviating 6.000. Cooperate: a subgame-perfect equilibrium.
+
+Today's action has two effects, as page 199 puts it. The direct effect on today's payoff: 5 against 4, plus 1. And the indirect effect on the continuation: 4 delta over 1 minus delta against delta over 1 minus delta, a loss of 3 delta over 1 minus delta. Patience is what makes the indirect effect large.
+
+The figure in the notes plots the cumulative present value of deviating minus cooperating, period by period, for delta equal to 0.15, 0.25 and 0.5. All three start at plus 1, then fall. The 0.15 line levels off near plus 0.47. The 0.25 line converges to 0. The 0.5 line converges to minus 2. A deviation at period 1 pays plus 1 once and costs 3 in every later period; discounted, the running total converges to 1 minus 3 delta over 1 minus delta. At delta equal to 0.25 it converges exactly to zero: that is the threshold. Below it, the one-period gain is never paid back; above it, the losses overtake the gain within a few periods. The first loss already counts 3 delta, so the verdict is mostly settled by the period right after the deviation.
+
+Gibbons's recursive version, pages 91 and 92. Gibbons first shows that grim trigger is a Nash equilibrium, with his Prisoner's Dilemma: both L pays one each, both R pays four each, and L against R pays 5 to the defector. Once someone defects, player j's best reply is L forever. In a cooperative stage, let V be the value of making the L-or-R choice optimally now and whenever it recurs. If R is optimal, it yields 4 now and the same choice next stage, so V equals 4 plus delta V, and V equals 4 over 1 minus delta. If L is optimal, V equals 5 plus delta over 1 minus delta. R is optimal if and only if 4 over 1 minus delta is at least 5 plus delta over 1 minus delta. That is Gibbons's inequality 2.3.1, and it gives delta at least one quarter. Then, on page 95, subgame perfection follows from two classes of subgames. After all-cooperation, the continuation is again grim trigger, a Nash equilibrium of the whole game. After any defection, it is both L forever, also a Nash equilibrium. The same threshold, with a sucker payoff of 0 instead of minus 1: the sucker payoff never enters, because it is on neither side of inequality 10.3.
+
+Cabral's indefinitely repeated version, pages 172 and 173. In Cabral's game, the cooperative cell pays 5 each, the dominant-strategy equilibrium pays 4 each, and deviating from the cooperative cell pays 6. The game continues with probability alpha. Cooperation holds if and only if 5 over 1 minus alpha is at least 6 plus 4 alpha over 1 minus alpha. Multiply by 1 minus alpha: 5 is at least 6 times 1 minus alpha plus 4 alpha. So alpha is at least one half. In Cabral's words on page 173, "a gain of 1 in the short run", 6 minus 5, "against a loss of 1 in every future period", 5 minus 4.
+
+Five point five. The bootstrap. This is the intuition layer.
+
+Tadelis, pages 197 and 198. To support both mum forever we need a stick, which is both fink forever, a subgame-perfect equilibrium by proposition 10.2, and a carrot. The carrot is the proposed equilibrium itself: if playing both mum forever is a subgame-perfect equilibrium, then it is available as the reward continuation that supports itself.
+
+In Tadelis's words, on page 197: "Indeed this is a circular argument, but it is not inconsistent". It is a bootstrap equilibrium. It is consistent because every subgame of G of delta is the same infinitely repeated game, so "cooperate forever from tomorrow" is exactly the object whose equilibrium status we are checking.
+
+Back to chapter 9, page 200. Think of "today" as stage 1 and "the infinite future" as stage 2. Non-Nash behaviour today needs two things: multiple equilibria tomorrow, and sufficient patience. Delta at least one quarter is the second. For the first, "from the unique equilibrium of the stage-game we get multiple equilibria of the repeated game". The infinite horizon manufactures the carrot that the finite game of part two lacked.
+
+The probability reading, page 200: cooperation is credible "as long as the game is likely enough to be played again". Or, "what goes around comes around".
+
+Recap of part five. You should be able to state definition 10.5 and say why off-path play must be an equilibrium. You should be able to describe grim trigger as a two-state machine. You should be able to state proposition 10.3 and say why discounting lets it survive an infinite horizon. You should be able to make both checks: the punishment loses 2 today and gains nothing, so it is credible for every delta; and the cooperation check, 4 plus 4 delta over 1 minus delta against 5 plus delta over 1 minus delta, solves to delta at least one quarter in four steps. You should be able to reproduce Gibbons's V equals 4 plus delta V, Cabral's one half, and explain the bootstrap.
+
+Part six. The critical discount factor: one formula, three readings.
+
+This part covers Tadelis inequality 10.3 on page 200 and its general form, 10.5, on page 202; Gibbons's appendix 2.3.B, pages 100 to 102, and his remarks on reservation payoffs, pages 98 and 99; Cabral section 7.3, pages 172 and 173; and M W G's appendix to chapter 12, definition 12.AA.1 and lemma 12.AA.1 on page 418, and proposition 12.AA.2 on page 420.
+
+The claim. For any stage game, grim trigger supports a path paying v i c per period, against a best one-shot deviation paying v i d and a stage-Nash punishment paying v i star, if and only if delta is at least v i d minus v i c, over v i d minus v i star, for every player. In Prisoner's Dilemma labels, this is delta star equal to T minus R, over T minus P: the one-time gain, over the one-time gain plus the per-period loss. A bigger temptation or a softer punishment raises it; a better reward lowers it; and the sucker payoff is irrelevant.
+
+Six point one. The general condition, inequality 10.5.
+
+Tadelis's notation, page 202. On the cooperative path, player i earns v i c per period. The most profitable one-stage deviation earns v i d once. The stage Nash equilibrium used as the trigger punishment earns v i star per period. Player i does not deviate if and only if: the current payoff from cooperating, v i c, plus the future payoff if he cooperates, delta v i c over 1 minus delta, is at least the current payoff from the best defection, v i d, plus the future payoff if he defects, delta v i star over 1 minus delta.
+
+Tadelis says "after some algebra". Here it is, in four steps. Step one: multiply by 1 minus delta, which is positive. You get v i c times 1 minus delta, plus delta v i c, on the left; and v i d times 1 minus delta, plus delta v i star, on the right. Step two: simplify the left side to v i c. So v i c is at least v i d minus delta v i d plus delta v i star. Step three: collect delta. Delta, times v i d minus v i star, is at least v i d minus v i c. Step four: divide by v i d minus v i star, which is positive, because a deviation beats the punishment: v i d is at least v i c, which is greater than v i star. The result: delta is at least v i d minus v i c, over v i d minus v i star. That is inequality 10.5.
+
+Step one is also the average-payoff form. Cooperating gives an average of v i c. Deviating gives 1 minus delta times v i d plus delta times v i star: a weighted average of the deviation and the punishment.
+
+With several players, each needs her own condition. So delta must be at least the maximum, over players i, of v i d minus v i c over v i d minus v i star. That is Gibbons's appendix 2.3.B, page 101. Gibbons writes d i, x i and e i for Tadelis's v i d, v i c and v i star. Since d i is at least x i, which is greater than e i, each fraction is strictly below 1. That is page 102. So a patient enough delta below 1 always exists. This is the seed of the folk theorem in part seven.
+
+Lecture 6 applies inequality 10.5 to asymmetric Cournot collusion, where the two firms need different thresholds. That is Tadelis section 10.4, page 202, and it belongs to lecture 6.
+
+Six point two. The Prisoner's Dilemma labels.
+
+Write the symmetric Prisoner's Dilemma with the standard labels: temptation T, reward R, punishment P and sucker S, with T greater than R, greater than P, greater than S. Then v d is T, v c is R and v star is P. So delta star equals T minus R, over T minus P. Write g for the one-time gain, T minus R, and l for the per-period loss, R minus P. Then delta star equals g over g plus l.
+
+Three sources, three thresholds. Tadelis, page 197: T, R, P and S are 5, 4, 1 and minus 1. The gain g is 1, the loss l is 3, and delta star is one quarter. Gibbons, page 90: 5, 4, 1 and 0. Again g is 1, l is 3, and delta star is one quarter. Cabral, page 173: T is 6, R is 5 and P is 4. Now g is 1, l is 1, and delta star is one half.
+
+The figure in the notes plots average payoff against delta for two games. Cooperating is a flat dashed line at R. Deviating is a solid line, 1 minus delta times T plus delta times P. Tadelis's deviation line falls from 5 to 1 and crosses the cooperate line at 4, at delta star equal to 0.25. Cabral's falls from 6 to 4 and crosses the cooperate line at 5, at delta star equal to 0.5. Grim trigger is a subgame-perfect equilibrium to the right of the crossing. The deviation line runs from T at delta equal to zero, when only today counts, to P as delta goes to 1, when only the punishment counts. It crosses R where 1 minus delta times T plus delta times P equals R, which is delta star. Cabral's temptation is the same plus 1, but his punishment costs only 1 per period instead of 3, so his line is flatter and the crossing moves right, to one half.
+
+Six point three. Comparative statics, with signs.
+
+Start from delta star equals T minus R over T minus P, and differentiate.
+
+With respect to T: the derivative is T minus P, minus T minus R, all over T minus P squared, which simplifies to R minus P over T minus P squared. That is positive.
+
+With respect to R: the derivative is minus 1 over T minus P. That is negative.
+
+With respect to P: the derivative is T minus R over T minus P squared. That is positive.
+
+With respect to S: the derivative is zero.
+
+Now say why, payoff by payoff. When the temptation T rises, delta star rises: a bigger one-time gain needs more future to offset it. When the reward R rises, delta star falls: the gain shrinks and the loss grows. When the punishment payoff P rises, delta star rises: a milder stick costs the deviator less per period. When the sucker payoff S rises, delta star is unchanged: on the grim trigger path nobody is ever the sucker.
+
+The harshest credible punishment makes cooperation easiest. That is why grim trigger reverts to the worst stage equilibrium, and why Gibbons, on page 99, names Abreu's 1988 idea: punish with the worst subgame-perfect equilibrium, which can be harsher than reverting to the stage Nash equilibrium, as the route to cooperation when delta is not close to 1. In the Prisoner's Dilemma the two coincide, because the stage equilibrium already gives each player her reservation payoff. This is the G layer, named only.
+
+Six point four. Three readings of the same number. This is the intuition layer.
+
+Reading one, patience. Delta at least delta star says the future weighs enough.
+
+Reading two, the interest rate. With delta equal to 1 over 1 plus r, as in Gibbons page 89, delta is at least delta star if and only if 1 plus r is at most 1 over delta star, which is g plus l over g. That holds if and only if r is at most l over g. In Tadelis's Prisoner's Dilemma, l over g is 3. So cooperation survives any per-period interest rate up to 300 per cent. The condition is generous because each period's loss is three times the one-time gain.
+
+Reading three, the continuation probability. With delta the probability of another period, as in part four, the expected number of periods is 1 plus delta plus delta squared and so on, which is 1 over 1 minus delta. At delta star equal to one quarter, that is four thirds. An expected third of a period of future already disciplines a one-unit temptation, when each lost period costs 3.
+
+Six point five. M W G's version, appendix A to chapter 12. This is the G layer.
+
+M W G calls grim trigger Nash reversion, in definition 12.AA.1, page 418: play a prescribed path until someone deviates, then the stage Nash equilibrium forever. Lemma 12.AA.1, on page 418, is inequality 10.5 for an arbitrary path, and its rewriting, equation 12.AA.2, states it as "one-period gain at most the discounted future loss". Proposition 12.AA.2, page 420: if a path can be sustained by Nash reversion at discount factor delta, it can be sustained at any delta prime that is at least delta. The sustainable set only grows with patience, which is why delta star is a threshold rather than a window. Not examinable unless the lecture brings it.
+
+Recap of part six. You should be able to derive inequality 10.5 in four steps from the present-value comparison, and to write its average-payoff form. You should know that with several players the largest threshold binds, and that each threshold is below 1. You should be able to write delta star as T minus R over T minus P and as g over g plus l, and to compute one quarter for Tadelis and Gibbons and one half for Cabral. You should be able to sign all four derivatives and say why S drops out. And you should be able to give the three readings: patience, an interest rate up to 300 per cent, and an expected future of four thirds of a period.
+
+Part seven. The folk theorem: with enough patience, almost anything goes.
+
+This part covers Tadelis section 10.6: definitions 10.6 and 10.7, figures 10.3 to 10.5, theorem 10.1, the alternating-path example and the Remark, pages 209 to 214. It also uses Gibbons section 2.3.B on feasible payoffs, the average payoff, Friedman's theorem and Fudenberg and Maskin, pages 96 to 99, and his appendix 2.3.B, pages 100 to 102; and M W G's appendix to chapter 12, propositions 12.AA.3 on page 420 and 12.AA.5 on page 422, and the minimax payoff on page 421.
+
+The claim. Every payoff vector that is feasible, meaning a weighted average of stage-game payoffs, and that gives each player more than a stage Nash equilibrium, can be approximated by a subgame-perfect equilibrium of G of delta once delta is close enough to 1. That is theorem 10.1. Cooperation is one of a continuum of equilibria. So is perpetual defection, and so is a lopsided path that gives one player 4.6 and the other 1. Repetition explains how cooperation can be sustained; it does not predict that it will be.
+
+Seven point one. Feasible payoffs: convex combinations and the convex hull.
+
+Definition 10.6, page 209. Consider two vectors v and v prime, each with n entries. The vector v hat is a convex combination of v and v prime if there exists some number alpha between 0 and 1, inclusive, such that v hat equals alpha v plus 1 minus alpha times v prime; that is, each entry v hat i equals alpha v i plus 1 minus alpha times v prime i.
+
+Worked, from figure 10.3 on page 210. Take alpha equal to 0.6, v equal to four, four, and v prime equal to five, minus one. Then v hat is 0.6 times four, four, plus 0.4 times five, minus one. The first entry is 2.4 plus 2.0, which is 4.4. The second is 2.4 minus 0.4, which is 2. So v hat is 4.4, 2.
+
+Definition 10.7, page 210. Given a set V of k vectors, v 1 to v k, the convex hull of V is the set of all vectors v for which there exist non-negative weights alpha 1 to alpha k, summing to 1, such that v equals the sum of alpha j times v j.
+
+Apply it to average payoffs. Repeating a pure profile s forever gives an average payoff equal to u of s, as part four showed. So the pure-profile payoff vectors are achievable averages, and their convex hull is the set of feasible payoffs. That is page 211. For Tadelis's Prisoner's Dilemma, V is the set of four vectors: four, four; five, minus one; minus one, five; and one, one. That is figure 10.4 on page 211.
+
+Gibbons, on page 96, calls a payoff feasible if it is a convex combination of the pure-strategy payoffs, and notes how to get one exactly: with a public randomizing device. Flip a fair coin to choose between player 1 defecting while player 2 cooperates, and the reverse, and the expected payoff is two and a half, two and a half. Without the device, Tadelis gets there over time, by alternating, in section seven point three below.
+
+Seven point two. Theorem 10.1.
+
+Theorem 10.1, the folk theorem, page 211. Let G be a finite, simultaneous-move game of complete information. Let v 1 star to v n star denote the payoffs from a Nash equilibrium of G, and let v 1 to v n be a feasible payoff of G. If v i is greater than v i star for every player i, and if delta is sufficiently close to 1, then there exists a subgame-perfect equilibrium of the infinitely repeated game G of delta that achieves an average payoff arbitrarily close to v 1 to v n.
+
+Gibbons's Friedman theorem, from 1971, on page 97, is the same statement, except that it achieves the target exactly as the average payoff, using the randomizing device. Gibbons writes e i for the Nash payoffs and x i for the target.
+
+The intuition in four steps, pages 211 and 212. One: the target v is a weighted average of pure-profile payoffs, because it is feasible. Two: with delta near 1, a deterministic sequence of pure profiles can mimic those weights, so its average payoff is close to v. Three: because v i is above v i star for everyone, reverting to the stage Nash equilibrium is a punishment for every player. That is the wedge. Four: as delta goes to 1, even the largest one-period gain "is dwarfed by an infinite series of even small losses", so the wedge deters every deviation.
+
+The proof for a stationary target, from Gibbons's appendix 2.3.B, pages 100 to 102. Play the profile a x that yields x. After any deviation, play the stage Nash equilibrium a e forever. Let d i be player i's best one-shot deviation payoff against a x, so that d i is at least x i, which is greater than e i. By the computation of part six, player i conforms if and only if delta is at least d i minus x i over d i minus e i. So the profile is a Nash equilibrium if and only if delta is at least the maximum, over i, of d i minus x i over d i minus e i, and that maximum is less than 1. Subgame perfection: after an all-a x history, the continuation is the same trigger profile, a Nash equilibrium of the game; after any other history, it is a e forever, also a Nash equilibrium. End of proof.
+
+The figure in the notes shows the payoff space for Tadelis's Prisoner's Dilemma. The feasible set is a grey quadrilateral with corners at minus one, five; four, four; five, minus one; and one, one. Inside it, the green folk-theorem region, where both payoffs exceed 1, has corners at one, one; one, 4.6; four, four; and 4.6, one. The point 4.4, 2 is marked. And an orange segment runs from three, one at delta equal to one half toward two, two as delta goes to 1: the alternating path's average payoffs, with the delta equal to 0.9 point, 2.158 and 1.842, marked.
+
+Where does 4.6 come from? The green region's top-left corner is where the edge from minus one, five to four, four meets the line where player 1's payoff equals 1. That edge is the line where v 2 equals 5 minus, v 1 plus 1, over 5. At v 1 equal to 1, v 2 equals 5 minus two fifths, which is 4.6. Every point in the green interior, including lopsided ones near one, 4.6, is a subgame-perfect equilibrium average for delta high enough. The orange segment starts at three, one, because at delta equal to one half player 2's average on the alternating path is exactly the punishment payoff, 1: the edge of the region. That is why the next section finds delta at least one half.
+
+Seven point three. Worked: reaching two, two by alternating, pages 212 to 214.
+
+Two, two equals one half of five, minus one, plus one half of minus one, five. It is not the payoff of any pure profile, but it is feasible. That is figure 10.5 on page 212.
+
+The strategies, page 212. Player 1: in period 1 play F. In even periods, play M if and only if the pattern so far was fink against mum, then mum against fink, then fink against mum, and so on; otherwise play F. In odd periods, 3, 5 and so on, play F. Player 2: in period 1 play m. In odd periods, 3, 5 and so on, play m if and only if the pattern was respected; otherwise play f. In even periods, play f.
+
+On the path, the outcomes alternate: fink against mum, mum against fink, fink against mum, and so on, paying five, minus one, then minus one, five, and so on.
+
+Average payoffs, every step. Split player 1's stream by parity. His average is 1 minus delta, times the bracket 5, minus delta, plus 5 delta squared, minus delta cubed, and so on. Group it: 5 times 1 plus delta squared plus delta to the fourth and so on, plus minus 1 times delta plus delta cubed plus delta to the fifth and so on. Both brackets are geometric series in delta squared. The first sums to 1 over 1 minus delta squared. The second sums to delta over 1 minus delta squared. And 1 minus delta squared factors as 1 minus delta times 1 plus delta. So player 1's average is 1 minus delta, times 5 minus delta, over 1 minus delta times 1 plus delta. The 1 minus delta cancels, and player 1's average is 5 minus delta, over 1 plus delta. By the same steps with roles swapped, player 2's average is minus 1 plus 5 delta, over 1 plus delta. As delta goes to 1, player 1's average goes to 4 over 2, which is 2, and so does player 2's.
+
+Subgame perfection: three kinds of history, by the one-stage deviation principle, proposition 10.3.
+
+First, the punishment state, both fink forever. Following pays 1 per period. The best one-stage deviation, playing mum, pays minus 1 today, and the punishment continues. It always holds; the deviation loses 2.
+
+Second, player 1's good period, when he gets 5. Following gives an average of 5 minus delta over 1 plus delta. The best one-stage deviation is to play M against m: 4 today, then 1 forever, an average of 1 minus delta times 4, plus delta. This holds for every delta between 0 and 1. Every step: multiply 5 minus delta over 1 plus delta, at least 4 minus 3 delta, through by 1 plus delta. That gives 5 minus delta at least 4 minus 3 delta times 1 plus delta, which is 4 plus delta minus 3 delta squared. Rearranged, 3 delta squared minus 2 delta plus 1 is at least zero. The discriminant is 4 minus 12, which is negative, so the quadratic is always positive. The condition always holds.
+
+Third, player 1's bad period, when he gets minus 1. Following gives an average of minus 1 plus 5 delta, over 1 plus delta. The best one-stage deviation is to play F against f: 1 today, then 1 forever, an average of 1. Every step: minus 1 plus 5 delta, over 1 plus delta, is at least 1, if and only if minus 1 plus 5 delta is at least 1 plus delta, if and only if 4 delta is at least 2, if and only if delta is at least one half.
+
+Player 2's checks are the mirror images. So the alternating path is a subgame-perfect equilibrium if and only if delta is at least one half, and its averages approach two, two as delta goes to 1.
+
+The binding constraint is the bad period. A player taking minus 1 today must be held there by the promise of 5 tomorrow. In general, the bad period needs S plus delta T, over 1 plus delta, to be at least P; that is, delta at least P minus S over T minus P. Here the sucker payoff matters, unlike grim trigger on the cooperative cell.
+
+The Remark: fine-tuning without delta going to 1, page 214. At delta equal to 0.9, the alternating path gives player 1 an average of 5 minus 0.9 over 1.9, which is 2.158, and player 2 an average of minus 1 plus 4.5 over 1.9, which is 1.842. Tadelis then alters single far-off periods to pull the averages toward two, two. A change at period 26 moves them by 0.151 and 0.076, to 2.007 and 1.918. One at period 36 moves them by 0.013 and 0.066, to 1.994 and 1.984.
+
+A reading note from the notes. Those four adjustments equal the payoff change, times delta to the t minus 1, over 1 plus delta. For example, 4 times 0.9 to the 25th, over 1.9, is 0.151. That is the effect of changing the outcome in period t and in every second period after it: 1 minus delta, times the change, times delta to the t minus 1 plus delta to the t plus 1 and so on. A one-off change in period 26 alone moves player 1's average by 1 minus delta times delta to the 25th times 4, which is 0.029. The point of the Remark is unaffected: far-off periods are a fine dial on the average, so targets can be hit even at a fixed delta below 1. The notes verify this in the Python note.
+
+Seven point four. What the threshold is: Nash payoffs or minimax payoffs. This is the U and G layer.
+
+Tadelis's and Friedman's theorem punishes with a stage Nash equilibrium, so it covers payoffs above v i star. Gibbons, on pages 98 and 99, defines the reservation payoff r i: the largest payoff player i can guarantee whatever the others do. Necessarily r i is at most e i. In the Prisoner's Dilemma, r i equals e i equals 1, because finking guarantees at least 1. In Cournot, r i is 0, which is below e i, because only producing nothing guarantees anything.
+
+Fudenberg and Maskin, 1986: for two players, r i can replace e i. Any feasible payoff with x i above r i is a subgame-perfect equilibrium average for delta near 1. That is Gibbons, page 99.
+
+M W G: proposition 12.AA.3, page 420, is the Nash-reversion folk theorem. The minimax payoff, on page 421, is the lowest payoff the rivals can hold player i to; payoffs above it are individually rational; and proposition 12.AA.5, page 422, the folk theorem proper, supports every feasible individually rational payoff as delta goes to 1.
+
+This is the G layer: not examinable unless the lecture brings it. In Tadelis's Prisoner's Dilemma, the two versions draw the same green region.
+
+Seven point five. What "almost anything goes" means for prediction. This is the intuition layer.
+
+Tadelis's own word for the result is "rather disturbing", on page 209, and the section title is "Almost Anything Goes".
+
+Three things the folk theorem delivers, and three it does not. It delivers a proof that cooperation can be self-enforcing among patient players; it does not deliver a prediction of which equilibrium is played. It delivers a whole region of subgame-perfect payoffs, efficient ones included; it does not deliver a reason to rule out one, one, since fink forever is still a subgame-perfect equilibrium by proposition 10.2. It delivers conditions, patience and observable deviations; it says nothing about settings where deviations cannot be seen, such as price wars, Tadelis page 203, which belong to lecture 6.
+
+A prediction that does not select among equilibria is not a prediction. That is item 3 of the course's game-theory rules file. The folk theorem moves the question from "can they cooperate?" to "which of many equilibria will they coordinate on, and how?": focal points, communication, institutions. Lecture 6's applications, tacit collusion, reputation and relational contracts, are cases where the context picks the equilibrium.
+
+Recap of part seven. You should be able to state definitions 10.6 and 10.7 and compute 0.6 of four, four plus 0.4 of five, minus one as 4.4, 2. You should be able to state theorem 10.1 with both conditions, feasibility and v i above v i star, and give its four-step intuition and Gibbons's stationary proof. You should be able to find the corner one, 4.6. You should be able to derive the alternating averages, 5 minus delta over 1 plus delta and minus 1 plus 5 delta over 1 plus delta, make the three checks, and say that the bad period binds at one half. You should be able to distinguish Nash and minimax thresholds. And you should be able to explain why the folk theorem is a possibility result, not a prediction.
+
+Part eight. Common mistakes.
+
+This part covers the pitfalls note. There are twelve. Each is said as the error, then the correction.
+
+Mistake one. The error is: "a long finite game is almost an infinite one". The correction: it is not, when the stage equilibrium is unique. Five hundred rounds and two rounds have the same unique subgame-perfect equilibrium, by proposition 10.1 on page 192; the induction never uses the length. What saves cooperation is the absence of a known last period, or a second stage equilibrium, not a large number of periods. The minimal counterexample is the 500-round Prisoner's Dilemma: fink in every period is the only subgame-perfect equilibrium.
+
+Mistake two. The error is: "finitely repeated games can never support non-Nash play". The correction: that is true only with a unique stage equilibrium. With two Pareto-ranked equilibria, both mum in stage 1 of Tadelis's two-stage game is subgame-perfect for delta at least one half, on page 191. The last period, though, must always be a stage equilibrium.
+
+Mistake three. The error is reading the infinite horizon as "the game lasts forever". The correction: delta can be a continuation probability, and then the game ends in finite time with probability 1, on page 194. What matters is that at every period another period is possible, so there is never a last period from which to unravel.
+
+Mistake four. The error is confusing Nash and subgame-perfect equilibrium in the repeated game. The correction: a threat that is not an equilibrium of the subgame where it would be carried out is not credible. Grim trigger works because its punishment, both fink forever, is itself a subgame-perfect equilibrium, by proposition 10.2. The minimal counterexample: a profile whose off-path behaviour is not a best response there can be a Nash equilibrium for high delta and a subgame-perfect equilibrium for no delta. Tadelis exercise 10.4, on page 216, asks for exactly such a profile in the trust game of section 10.5, which belongs to lecture 6. The off-path plays are never reached, so Nash equilibrium does not test them; subgame perfection does.
+
+Mistake five. The error is checking only the equilibrium path. The correction: the one-stage deviation principle needs the check in every state, off the path included. For grim trigger the off-path check is trivial, minus 2 today and nothing gained, but in other profiles it binds: in the alternating path of section 10.6 the binding constraint is the bad period, not the punishment.
+
+Mistake six. The error is comparing today's gain with one period's loss. The correction: the loss from deviating is every future period's loss, discounted: R minus P, times delta over 1 minus delta, not R minus P times delta. With Tadelis's numbers the first gives delta at least one quarter; the second would give delta at least one third. The one-period version is right in the two-stage game, because there is only one future period.
+
+Mistake seven. The error is thinking the sucker payoff matters for grim trigger. The correction: on the grim trigger path nobody is ever the sucker, and the punishment is both fink, so delta star, T minus R over T minus P, has no S in it. Tadelis, with S equal to minus 1, and Gibbons, with S equal to 0, both get one quarter. S does matter for the feasible set and for the alternating path, whose bad period needs delta at least P minus S over T minus P.
+
+Mistake eight. The error is reading the folk theorem as a prediction of cooperation. The correction: it says a whole region of payoffs is supportable, including the non-cooperative one, one and lopsided points like 4.6, one. It is an existence result about possibilities, and it raises the equilibrium-selection problem rather than solving it.
+
+Mistake nine. The error is: "feasible means a payoff of some pure profile". The correction: feasible means a convex combination of those payoffs. Two, two and 4.4, 2 in the Prisoner's Dilemma are feasible though no cell pays them. They are reached by alternating over time, in Tadelis, or by a public randomizing device, in Gibbons on page 96.
+
+Mistake ten. The error is mixing present values and average payoffs. The correction: compare like with like. Either 4 over 1 minus delta, a present value, against 5 plus delta over 1 minus delta, also a present value; or 4, an average, against 1 minus delta times 5 plus delta, also an average. Comparing 4 with 5 plus delta over 1 minus delta is the classic slip.
+
+Mistake eleven. The error is: "the stage t game is a subgame". The correction: it is not. A subgame includes all the moves that follow, Gibbons page 95. Treating stage t as a one-shot game assumes it is the last one.
+
+Mistake twelve. The error is confusing the two T's. The correction: Tadelis writes G of T and delta with T the number of periods; the Prisoner's Dilemma label T is the temptation payoff. Context decides. The notes use T for the horizon in the finite-horizon notes and for the temptation in the grim trigger, threshold and folk theorem notes.
+
+Part nine. Spoken formula sheet.
+
+This part covers the formulas note. Use it for active recall: when you hear the name of a result, pause, say the formula yourself, then hear the answer.
+
+The examinable specification, in eight items. One: finitely repeated games, where a unique stage equilibrium gives a unique subgame-perfect equilibrium "regardless of the discount factor's value", proposition 10.1. Two: multiple stage equilibria, where a carrot and a stick support non-Nash play in early stages. Three: the infinite horizon: discounting, present value, average payoff, and delta as a continuation probability. Four: histories and strategies, and proposition 10.2. Five: grim trigger, the one-stage deviation principle in proposition 10.3, and inequality 10.3. Six: the threshold for any payoffs, inequality 10.5, and what moves it. Seven: in the words of the chapter summary, section 10.7, "the folk theorem teaches us that as the discount factor approaches 1 … almost anything can happen". Eight: an application pointer, Cabral section 7.3 and relational contracts, with the rest in lecture 6. This specification is estimated; it will be reconciled with the slides.
+
+Now every result, in order.
+
+Definition 10.1, page 190. Pause. G of T and delta: the stage game G played T consecutive times, with common discount factor delta.
+
+Proposition 10.1, page 192. Pause. A unique stage Nash equilibrium implies a unique subgame-perfect equilibrium of G of T and delta: the stage equilibrium in every period. Proposition 9.3, on page 181, is the multistage version.
+
+The two-stage example, page 191 and footnote 2. Pause. Both mum, then both R; otherwise both fink. A subgame-perfect equilibrium if and only if 4 plus 3 delta is at least 5 plus delta, that is, delta at least one half.
+
+The notes' own extension. Pause. With T rounds and a reward phase of length k, the last cooperative round needs b minus a to be at most r minus p, times delta times 1 minus delta to the k, over 1 minus delta. Some k works if and only if delta exceeds b minus a over b minus a plus r minus p.
+
+Definition 10.2, page 193. Pause. The present value is the sum over t of delta to the t minus 1 times v i t, with delta strictly between 0 and 1.
+
+Footnote 3, page 193. Pause. For bounded payoffs, the sum of delta to the t minus 1 times b is b over 1 minus delta.
+
+Footnote 4, page 194. Pause. With continuation probability p and discount factor delta, the effective factor is p times delta. Gibbons, page 90, writes delta equals 1 minus p, over 1 plus r.
+
+Definition 10.3, page 194. Pause. The average payoff is 1 minus delta times the sum over t of delta to the t minus 1 times v i t.
+
+Equations 10.1 and 10.2, pages 194 and 195. Pause. s of v, delta and T equals v minus delta to the T times v, over 1 minus delta. Its limit is v over 1 minus delta. The average of a constant v is v.
+
+Definition 10.4, page 196. Pause. A pure strategy maps the set of all histories H into the stage actions S i. A behavioural strategy maps H into probability distributions over S i.
+
+Proposition 10.2, page 196. Pause. The history-independent stage Nash equilibrium is a subgame-perfect equilibrium of G of delta for any delta below 1.
+
+Definition 10.5, page 196. Pause. A subgame-perfect equilibrium is a Nash equilibrium after every history.
+
+Grim trigger, page 198. Pause. Play M if and only if the history is all both mum; otherwise F forever.
+
+Proposition 10.3, page 198. Pause. A profile is a subgame-perfect equilibrium if and only if no player gains from a single deviation at a single history. Theorem 9.1, page 185: a one-stage unimprovable strategy is optimal.
+
+Inequality 10.3, page 200. Pause. 4 plus 4 delta over 1 minus delta is at least 5 plus delta over 1 minus delta, if and only if delta is at least one quarter.
+
+Gibbons's inequality 2.3.1, page 92. Pause. 4 over 1 minus delta is at least 5 plus delta over 1 minus delta, if and only if delta is at least one quarter.
+
+Inequality 10.5, page 202. Pause. Delta is at least v i d minus v i c, over v i d minus v i star.
+
+The Prisoner's Dilemma labels. Pause. Delta star equals T minus R over T minus P, which equals g over g plus l, with g equal to T minus R and l equal to R minus P.
+
+The signs. Pause. The derivative of delta star with respect to T is positive; with respect to R, negative; with respect to P, positive; with respect to S, zero.
+
+Several players, Gibbons page 101. Pause. Delta is at least the maximum over i of d i minus x i over d i minus e i, and that maximum is below 1.
+
+The interest-rate reading. Pause. Delta equal to 1 over 1 plus r is at least delta star if and only if r is at most l over g.
+
+Definition 10.6, page 209. Pause. A convex combination is v hat equal to alpha v plus 1 minus alpha times v prime, with alpha between 0 and 1.
+
+Definition 10.7, page 210. Pause. The convex hull of V is the set of all weighted averages of the vectors in V, with non-negative weights summing to 1.
+
+Theorem 10.1, page 211. Pause. If v is feasible and v i is greater than v i star for every i, then for delta near 1 there is a subgame-perfect equilibrium with average payoff arbitrarily close to v.
+
+The alternating path, pages 212 to 214. Pause. Player 1's average is 5 minus delta over 1 plus delta; player 2's is minus 1 plus 5 delta over 1 plus delta; a subgame-perfect equilibrium if and only if delta is at least one half.
+
+The general alternating bad period. Pause. S plus delta T, over 1 plus delta, at least P, if and only if delta is at least P minus S over T minus P.
+
+And the G layer, named only. M W G definition 12.AA.1 and lemma 12.AA.1, page 418: Nash reversion and its no-deviation test. Proposition 12.AA.2, page 420: sustainable at delta implies sustainable at every delta prime at least delta. Propositions 12.AA.3, page 420, and 12.AA.5, page 422: the Nash-reversion folk theorem and the minimax, individually rational, folk theorem. Fudenberg and Maskin, in Gibbons page 99: with two players, reservation payoffs replace Nash payoffs.
+
+The games, once more. Tadelis's Prisoner's Dilemma, page 197 and page 210: T, R, P and S equal 5, 4, 1 and minus 1. Tadelis's two-stage game, page 191: the Prisoner's Dilemma block plus R and r, with both R paying three, three and every other R or r cell paying zero. Gibbons's Prisoner's Dilemma, pages 82 and 90: both L one, one; player 1 L against player 2 R, five, zero; the reverse, zero, five; both R, four, four. Gibbons's three by three, page 85: it adds an equilibrium paying three, three, with labels L, M and R. Cabral's game, pages 172 and 173: cooperate 5 each, deviate 6, Nash 4.
+
+The thresholds, once more. The two-stage game with one reward round: one half. The T-round extension: a floor of one third, and at 10 rounds, delta of 0.34 gives 6 rounds of cooperation, 0.4 gives 8, and 0.5 gives 9. Grim trigger for Tadelis and Gibbons: one quarter. Grim trigger for Cabral: one half. The alternating path: one half, with the good period holding for every delta.
+
+The values, once more. 0.97 to the 100th is 0.0475, and to the 500th, 2.4315 times ten to the minus seven, page 194. Information sets at stage 4 of the repeated Prisoner's Dilemma: 4 cubed, 64, footnote 5 on page 195. The present value of 4 forever at delta equal to 0.9: 40, with average 4. Grim trigger at delta equal to 0.2, 0.25 and 0.5: cooperate against deviate is 5 against 5.25, then 5.333 against 5.333, then 8 against 6. The convex combination: 0.6 of four, four plus 0.4 of five, minus one equals 4.4, 2, on page 209. The folk region corners: one, one; one, 4.6; four, four; 4.6, one; figure 10.4. The alternating path at 0.9: 2.158 and 1.842, page 214. The Remark's adjustments: minus 0.151 and plus 0.076 at period 26, minus 0.013 and plus 0.066 at period 36, ending at 1.994 and 1.984. The two-stage folded game at one half: both mum 5.5 each, both fink 1.5 each, both R 3.5 each. And, for lecture 6, the Cournot cutoffs 0.595 and 0.392, section 10.4, page 202.
+
+Part ten. The figures and the interactive companions, in words.
+
+The notes come with seven figures, all drawn by one script in the figures folder, which ends with checks on the plotted numbers. They were described where they appear. In order: the unraveling figure, the Prisoner's Dilemma and the same game plus 1, with the same unique equilibrium; the carrot-and-stick figure, the three by three game, its folded first stage at one half, and gain against loss; the cooperative-rounds figure, rounds of both mum in a 10-round equilibrium against delta; the discounting figure, 0.97 to the t on a log scale and the finite sum converging to v over 1 minus delta; the deviation-stream figure, the running present value of deviating minus cooperating at 0.15, 0.25 and 0.5; the grim-threshold figure, cooperate and deviate average payoffs crossing at one quarter and one half; and the folk-theorem figure, the feasible set, the folk region, the point 4.4, 2 and the alternating path.
+
+There are two interactive companions, web pages you open in a browser.
+
+The first is called The Patience Threshold. Its controls are the four Prisoner's Dilemma payoffs, T, R, P and S, and delta. It reads out the answer, delta star equal to T minus R over T minus P; the present values of cooperating and deviating; the gain and the per-period loss; and the alternating path's averages and threshold. It has two panels: the cooperate and deviate lines, and the feasible set with the folk-theorem region. The defaults are Tadelis's page 197 payoffs, and a button loads Gibbons's page 90 payoffs. Three things to try. Move delta across delta star and watch the verdict flip. Move T, R and P, and see that S does not move the threshold. Move P toward R and watch delta star approach 1. The right panel also redraws the feasible set and the folk region as the payoffs move, and plots the alternating path at the current delta.
+
+The second is called The Endgame Reward. Its controls are delta, the number of rounds T, and the temptation, carrot and stick payoffs of Tadelis's page 191 game. It reads out how many early rounds of both mum survive in a subgame-perfect equilibrium, the length of the reward phase, the one-round threshold, one half, and the floor, one third. Its panels show the round-by-round incentive check, with bars for what a deviator loses against a line for what he gains, and the number of rounds against delta. One thing to try: set the carrot equal to the stick, so the two stage equilibria pay the same, and every round collapses to stage play.
+
+Both pages are checked by a script that runs each page's model and recomputes every read-out independently in Python.
+
+Part eleven. The computations, described in words.
+
+The Python note has every routine the lecture needs, each followed by checks against the books' own numbers. The blocks run top to bottom as one script, using only numpy and sympy. The project already had dominance and iterated-elimination code from lecture 1, but no Nash equilibrium finder and no repeated-game routine, so two functions are written here and shared with the figure script: the pure Nash equilibrium finder and the cooperative-rounds counter. The code is not read aloud. Here is what each routine does.
+
+Routine one, the stage games and the unraveling. Store Tadelis's Prisoner's Dilemma as a table from each pair of actions to a pair of payoffs. The pure Nash finder keeps every cell in which the row payoff is at least every other row's payoff in that column, and the column payoff is at least every other column's in that row; weak best responses count, with a small tolerance. A fold routine adds a continuation payoff to every cell: one step of backward induction. The unravel routine walks from period T back to period 1: at each step it folds the current carried continuation into the stage game, insists that the folded game has exactly one equilibrium, records it, and updates the carried value by discounting the equilibrium payoff plus the old carried value. The trap: if the stage equilibrium is not unique, the routine stops with an error, because proposition 10.1 needs uniqueness. The checks: the Prisoner's Dilemma's only equilibrium is both fink; 500 rounds at delta 0.97 give both fink in every period; and the game plus one, one still has both fink as its equilibrium, Gibbons's figure 2.3.2 logic.
+
+Routine two, the carrot and the stick. Store the three by three game of page 191, and check that its equilibria are exactly both fink and both R. Fold the first stage with 3 delta after both mum and delta otherwise. Check that 4 plus 3 delta equals 5 plus delta at one half and falls short at 0.49; that the folded game at one half has the three equilibria both mum, both fink and both R; and that at 0.49 both mum is no longer an equilibrium. Then the cooperative-rounds counter, for the notes' own extension: for each candidate number of cooperative rounds n, it checks every cooperative round, one at a time, comparing the gain of 1 with the discounted sum of what the deviator loses in every later round, and keeps the largest n that passes. A second routine finds the shortest reward phase from the closed-form box. The checks: at 10 rounds, delta of 0.3, 0.34, 0.4, 0.5 and 0.9 give 0, 6, 8, 9 and 9 rounds; the round count always equals 10 minus the shortest reward phase, which confirms that only the last round binds; and no reward phase works just below one third, while one works at 0.3334.
+
+Routine three, discounting and average payoffs. A present-value routine discounts a given stream; an average routine multiplies it by 1 minus delta; and a finite-sum routine uses the closed form v minus delta to the T times v over 1 minus delta. The checks: the closed form matches the explicit sum for 30 periods at 0.9; at a very long horizon the sum is 40 and the average is 4; 0.97 to the 100th is 0.0475 and to the 500th is 2.4315 times ten to the minus seven; and 4 cubed is 64.
+
+Routine four, grim trigger. A threshold routine returns T minus R over T minus P, as an exact fraction when the payoffs are whole numbers. An on-path check compares the present value of R forever with T once and then P forever, over a long explicit horizon. An off-path check compares P forever with S once and then P forever. The checks: Tadelis's payoffs give exactly one quarter, Cabral's exactly one half; the on-path check passes at 0.25 and fails at 0.24; the punishment is credible at 0.01, 0.5 and 0.99; the table values at 0.2, 0.25 and 0.5 are reproduced; and the deviation stream at one half converges to 1 minus 3 delta over 1 minus delta, which is minus 2.
+
+Routine five, the general threshold and its signs, done symbolically. Solve the boundary of the cooperation inequality for delta and confirm it equals v d minus v c over v d minus v star. Differentiate delta star with respect to T, R, P and S and confirm the four derivatives: R minus P over T minus P squared, minus 1 over T minus P, T minus R over T minus P squared, and zero. A several-players routine takes each player's deviation, cooperation and punishment payoffs, checks every fraction is below 1, and returns the largest; with Tadelis's and Cabral's players together it returns one half. And the interest-rate reading is checked: 1 over 1 plus 3 is one quarter.
+
+Routine six, the folk theorem. The alternating routine returns the two averages, T plus delta S over 1 plus delta and S plus delta T over 1 plus delta, together with the good-period check and the bad-period check. The checks: at 0.9 it gives 2.158 and 1.842 and passes; it passes at one half and fails at 0.49; the good-period check holds on a grid of 99 values of delta; the averages approach 2 as delta approaches 1; and the closed form matches an explicit alternating stream. Then the Remark: the book's four adjustments, 0.151, 0.076, 0.013 and 0.066, are reproduced by the formula change times delta to the t minus 1 over 1 plus delta, which equals the effect of changing every second period from t on, while a one-off change at period 26 gives 0.029. Finally a convex-hull routine tests whether a point lies inside a polygon whose corners are listed counter-clockwise, using the sign of cross products along each edge. The checks: two, two and 4.4, 2 are inside the Prisoner's Dilemma's feasible set, 4.5, 4.5 is not; 0.6 of four, four plus 0.4 of five, minus one is 4.4, 2; and the corner is at 4.6.
+
+Part twelve. Reading route and exercises.
+
+Addresses only; the statements are not read aloud.
+
+Before class: Tadelis sections 10.1 to 10.3, printed pages 190 to 201, and the folk theorem, section 10.6, from page 209; and Gibbons section 2.3, parts A and B, pages 82 to 102. Useful background from lecture 4: Tadelis sections 9.4 and 9.5, pages 180 to 185. For the applications: Cabral section 7.3, page 172. For the formal side, after class: M W G section 12.D, page 401, and appendix A to chapter 12, "Infinitely Repeated Games and the Folk Theorem", pages 417 to 422.
+
+Exercises, by number and page. Tadelis chapter 10: exercise 10.2, page 215; 10.3, pages 215 and 216, on milder punishments that last T periods; 10.5, pages 216 and 217; 10.6 and 10.7, pages 217 and 218, where parts b of each go with the finite-horizon material; 10.9, pages 218 and 219; and 10.12, page 219, which uses the trust game of section 10.5 and so comes after lecture 6. Gibbons: problem 2.10, page 134; problems 2.11 and 2.12, page 135, where 2.12 asks for the definitions of a strategy and a subgame in a repeated game. Muñoz-Garcia and Toro-Gonzalez, chapter 6, exercise 1, page 274. And M W G exercise 12.AA.1, page 420.
+
+Part thirteen. Self-test.
+
+Twenty-two true-or-false statements, original items in the style of the course's exams. After each, pause and decide: true or false, and why. The answers follow all twenty-two.
+
+Statement one. In the Prisoner's Dilemma repeated 1,000 times with delta equal to 0.99, there is a subgame-perfect equilibrium in which both players cooperate in the first period.
+
+Pause.
+
+Statement two. In a finitely repeated game, behaviour in the last period of any subgame-perfect equilibrium must be a Nash equilibrium of the stage game.
+
+Pause.
+
+Statement three. In Tadelis's two-stage game on page 191, the strategy profile that rewards both mum with both R and punishes everything else with both fink is subgame-perfect for every delta between 0 and 1.
+
+Pause.
+
+Statement four. If a stage game has two Nash equilibria that give every player the same payoff, repetition a finite number of times cannot support any non-Nash first-period behaviour through rewards and punishments.
+
+Pause.
+
+Statement five. Reading delta as the probability that the game continues, the infinitely repeated game ends in finite time with probability one.
+
+Pause.
+
+Statement six. The average payoff of the stream 4, 4, 4, and so on, is 4 over 1 minus delta.
+
+Pause.
+
+Statement seven. In the infinitely repeated Prisoner's Dilemma, playing fink after every history is a subgame-perfect equilibrium only if delta is small.
+
+Pause.
+
+Statement eight. With Tadelis's payoffs, grim trigger is a subgame-perfect equilibrium of the infinitely repeated Prisoner's Dilemma if and only if delta is at least one quarter.
+
+Pause.
+
+Statement nine. To verify that grim trigger is subgame-perfect, it is enough to check that no player gains from a single deviation on the cooperative path.
+
+Pause.
+
+Statement ten. Raising the sucker payoff S of a Prisoner's Dilemma lowers the critical discount factor for grim trigger.
+
+Pause.
+
+Statement eleven. Making the stage Nash payoff P closer to the cooperative payoff R makes cooperation harder to sustain with grim trigger.
+
+Pause.
+
+Statement twelve. In Cabral's game, where cooperating pays 5, deviating 6 and the stage equilibrium 4, cooperation is sustainable by trigger strategies if the continuation probability is at least one half.
+
+Pause.
+
+Statement thirteen. If two players have different critical discount factors under a grim trigger profile, the profile is a subgame-perfect equilibrium when the common delta exceeds the smaller one.
+
+Pause.
+
+Statement fourteen. With delta equal to 1 over 1 plus r, grim trigger in Tadelis's Prisoner's Dilemma survives any per-period interest rate up to 300 per cent.
+
+Pause.
+
+Statement fifteen. The payoff vector two, two is feasible in Tadelis's Prisoner's Dilemma even though no pure profile yields it.
+
+Pause.
+
+Statement sixteen. By the folk theorem, the average payoff 0.5, 3 can be supported in Tadelis's repeated Prisoner's Dilemma for delta close enough to 1.
+
+Pause.
+
+Statement seventeen. In the alternating path, fink against mum, then mum against fink, and so on, in Tadelis's Prisoner's Dilemma, the binding incentive constraint is a player's bad period.
+
+Pause.
+
+Statement eighteen. The folk theorem predicts that patient players in a repeated Prisoner's Dilemma will cooperate.
+
+Pause.
+
+Statement nineteen. The one-stage deviation principle for infinitely repeated games relies on discounting.
+
+Pause.
+
+Statement twenty. In a two-stage game with stage-game equilibria worth three, three and one, one, punishing with one, one is immune to renegotiation.
+
+Pause.
+
+Statement twenty-one. In the infinitely repeated game, every subgame is identical to the whole game.
+
+Pause.
+
+Statement twenty-two. Increasing the number of rounds in Tadelis's three-action stage game can increase the number of rounds in which both mum is played in a subgame-perfect equilibrium, but never to all the rounds.
+
+Pause.
+
+The answers.
+
+One: false. The stage game has a unique equilibrium, so by proposition 10.1 the unique subgame-perfect equilibrium plays both fink in every period; neither the horizon nor delta enters the argument.
+
+Two: true. At the last period nothing in the future depends on today's action, so each player best-responds in the stage game, by proposition 9.2 on page 181, whether the stage equilibrium is unique or not.
+
+Three: false. Stage-2 play is a stage equilibrium after every history, but stage 1 requires 4 plus 3 delta at least 5 plus delta, that is, delta at least one half.
+
+Four: true. A carrot and a stick must differ in payoff. If they pay the same, the loss from deviating is zero and the one-period temptation is never offset.
+
+Five: true. The probability of reaching period t is delta to the t minus 1, which goes to zero, on page 194; the analysis only needs a future to exist at each period.
+
+Six: false. That is its present value. The average payoff is 1 minus delta times 4 over 1 minus delta, which is 4, by definition 10.3.
+
+Seven: false. By proposition 10.2 it is a subgame-perfect equilibrium for every delta below 1: history-independent play makes each period a one-shot game.
+
+Eight: true. Off the path, both fink forever is a subgame-perfect equilibrium; on the path, 4 plus 4 delta over 1 minus delta at least 5 plus delta over 1 minus delta holds if and only if delta is at least one quarter, inequality 10.3.
+
+Nine: false. The one-stage deviation principle requires checking every history, including those after a deviation. Grim trigger passes the off-path check, but the check has to be made.
+
+Ten: false. Delta star, T minus R over T minus P, does not contain S.
+
+Eleven: true. The derivative of delta star with respect to P is T minus R over T minus P squared, which is positive: a milder punishment needs more patience.
+
+Twelve: true. 5 over 1 minus alpha at least 6 plus 4 alpha over 1 minus alpha holds if and only if alpha is at least one half, pages 172 and 173.
+
+Thirteen: false. Each player must be deterred, so delta must exceed the larger threshold, the maximum over i of d i minus x i over d i minus e i, Gibbons page 101.
+
+Fourteen: true. Delta at least one quarter holds if and only if 1 plus r is at most 4, that is, r at most 3.
+
+Fifteen: true. Two, two equals one half of five, minus one, plus one half of minus one, five: a convex combination, definition 10.7 and figure 10.5.
+
+Sixteen: false. It is feasible, but player 1 gets less than the stage Nash payoff of 1, and theorem 10.1 needs every player's payoff above the stage Nash payoff.
+
+Seventeen: true. The good-period condition holds for every delta; the bad period needs minus 1 plus 5 delta, over 1 plus delta, at least 1, that is, delta at least one half.
+
+Eighteen: false. It shows that cooperation is one of many subgame-perfect outcomes, alongside perpetual defection and lopsided paths; it does not select among them.
+
+Nineteen: true. Discounting makes payoffs continuous at infinity, so a profitable infinite deviation implies a profitable finite one, footnote 6 on page 199.
+
+Twenty: false. After a deviation both players prefer three, three; "bygones are bygones" undermines the threat, Gibbons page 87. Renegotiation-proof punishments need equilibria the punisher does not want to leave, as in figure 2.3.5.
+
+Twenty-one: true. That is Gibbons, page 94, and it is what makes the bootstrap, the cooperative equilibrium serving as its own reward, consistent rather than circular.
+
+Twenty-two: true. Longer games allow longer reward phases, which helps when delta is between one third and one half; and the final round must be a stage equilibrium, which both mum is not.
+
+Part fourteen. Glossary.
+
+Stage game: the one-shot game that is played in every period of a repeated game.
+
+Finitely repeated game: the stage game played a known number of times, T, with a common discount factor; Tadelis writes G of T and delta.
+
+Infinitely repeated game: the stage game played with no last period, G of delta; equivalently, a game that continues each period with probability delta.
+
+Perfect monitoring: every stage's outcome is observed by all players before the next stage begins.
+
+Unraveling: the backward-induction argument by which a known last period forces stage-equilibrium play in every earlier period when the stage equilibrium is unique.
+
+Carrot and stick: a good and a bad continuation equilibrium, used to reward compliance and punish deviation.
+
+Renegotiation: the players' temptation, after a deviation, to abandon a punishment that hurts the punisher too.
+
+Discount factor: the weight delta, between 0 and 1, placed on next period's payoff relative to today's.
+
+Present value: the discounted sum of a payoff stream, the sum of delta to the t minus 1 times each period's payoff.
+
+Average payoff: 1 minus delta times the present value; for a constant stream, the constant itself.
+
+History: the list of action profiles played in all earlier periods.
+
+Strategy in a repeated game: a rule that maps every possible history to an action of the stage game.
+
+Subgame-perfect equilibrium: a strategy profile that is a Nash equilibrium of the subgame after every history, on and off the path.
+
+Grim trigger: cooperate as long as every past outcome was cooperative; after any deviation, play the stage Nash equilibrium forever.
+
+One-stage deviation principle: a profile is subgame-perfect if and only if no player can gain by changing her action at a single history and following the strategy everywhere else.
+
+Bootstrap equilibrium: an equilibrium in which cooperation forever serves as its own reward continuation, consistent because every subgame of the infinitely repeated game is the whole game.
+
+Critical discount factor: delta star, the smallest delta at which a profile is sustainable; T minus R over T minus P for grim trigger in the Prisoner's Dilemma.
+
+Temptation, reward, punishment and sucker: the Prisoner's Dilemma payoffs T, R, P and S, with T greater than R, greater than P, greater than S.
+
+Nash reversion: M W G's name for punishing a deviation with the stage Nash equilibrium forever.
+
+Convex combination: a weighted average of two payoff vectors, with weights between 0 and 1 that sum to 1.
+
+Convex hull: the set of all weighted averages of a set of vectors.
+
+Feasible payoff: a payoff vector in the convex hull of the stage game's pure-profile payoffs.
+
+Folk theorem: any feasible payoff that gives every player more than a stage Nash equilibrium can be approximated by a subgame-perfect equilibrium average when players are patient enough.
+
+Reservation payoff, or minimax payoff: the lowest payoff the other players can hold a player to; payoffs above it are individually rational.
+
+Public randomizing device: a commonly observed random signal, like a coin flip, that lets players reach a convex combination of payoffs exactly.
+
+Part fifteen. The whole lecture in five lines.
+
+One. A repeated game can sustain what no one-shot equilibrium can, but only if tomorrow can depend on today; with a known end and a unique stage equilibrium, it cannot, and the game unravels to fink every period.
+
+Two. Two stage equilibria give a carrot and a stick, so early rounds can cooperate: in Tadelis's two-stage game, if and only if delta is at least one half.
+
+Three. With no last period, cooperation forever is its own carrot, and grim trigger is subgame-perfect if and only if delta is at least T minus R over T minus P, a one-time gain over the gain plus a per-period loss: one quarter in Tadelis's Prisoner's Dilemma.
+
+Four. The threshold rises with the temptation and with a milder punishment, falls with the reward, and ignores the sucker payoff; the one-stage deviation principle reduces the check to one test per state.
+
+Five. The folk theorem: with enough patience, every feasible payoff above the stage Nash payoffs is an equilibrium average, so repetition explains how cooperation can be sustained, not that it will be.

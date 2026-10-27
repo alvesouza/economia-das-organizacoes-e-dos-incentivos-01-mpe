@@ -1,11 +1,11 @@
 ---
 tags: [notes, lecture-02, best-response, beliefs, rationalizability, cournot, beauty-contest]
-date: 2026-10-16
-status: estimated
-source: "Tadelis (2013) §4.3.1–4.3.6, printed pp. 69–76 (Defs. 4.5–4.8, Claim 4.2, Props. 4.3–4.4; Battle of the Sexes p. 69; the 3×3 game p. 72; Cournot p. 73–74; p-beauty contest pp. 74–75); Gibbons (1992) §1.2.A pp. 18–21 (graphical IESDS); MWG §8.C pp. 242–245 (G)"
+date: 2026-10-25
+status: taught
+source: "Aula/Lecture02.pdf slides 7, 9–12; Tadelis (2013) §4.3.1–4.3.6, printed pp. 69–76 (Defs. 4.5–4.8, Claim 4.2, Props. 4.3–4.4; Battle of the Sexes p. 69; the 3×3 game p. 72; Cournot p. 73–74; p-beauty contest pp. 74–75); Gibbons (1992) §1.2.A pp. 18–21 (graphical IESDS); MWG §8.C pp. 242–245 (G)"
 ---
 
-# 4.3 · Best responses, beliefs and rationalizability: asking what a rational player *might* do
+# Slides 9–12 · 4.3 · Best responses, beliefs and rationalizability: asking what a rational player *might* do
 
 > **Claim.** Lecture 1 removed what a rational player would **never** do (dominance, IESDS). Rationalizability asks
 > the mirror question: what **might** a rational player do? The answer is a best response **to some belief**.
@@ -25,48 +25,55 @@ and in a static game a player cannot see that, so the player must hold a **belie
 of whether someone is irrational is to ask *"What were you thinking?"*: if some belief about the others makes the
 choice optimal, the choice is **rationalized** (p. 69).
 
-The Battle of the Sexes (p. 69; Alex picks the row, Chris the column):
+The lecture opens this part with Lecture 1's epistemic reading of IESDS (slide 7: $S_i^1$ is what rationality allows,
+$S_i^k$ what rationality plus $k-1$ levels of belief in rationality allow, $S_i^\infty$ what common belief in
+rationality allows) and one question: **"But what if no strategy is dominated?"** Its answer is Example 1, the
+Battle of the Sexes (slide 9; Tadelis p. 69; Alex picks the row, Chris the column; Alex prefers the opera, Chris
+football, and being apart is the worst outcome for both):
 
 | Alex \ Chris | O | F |
 |---|---|---|
 | **O** | 2, 1 | 0, 0 |
 | **F** | 0, 0 | 1, 2 |
 
-Alex's best choice is O if Chris goes to O and F if Chris goes to F. Nothing is dominated, so Lecture 1's tools say
-"anything can happen"; the best choice **flips with the belief**.
+Slide 9 asks three questions; the answers, step by step. *Dominant strategy?* Alex's O pays 2 against O but 0 against
+F, while F pays 0 and 1: neither beats the other against **both** columns, so Alex has none, and by the mirror
+argument neither has Chris. *Dominated strategies?* None, for the same reason. *What does IESDS predict?* It removes
+nothing, so all four cells survive: Lecture 1's tools say "anything can happen". Alex's best choice is O if Chris
+goes to O and F if Chris goes to F; the best choice **flips with the belief**.
 
 ---
 
 ## 2 · C — the definitions, exactly
 
-**Definition 4.5 (p. 70).** $s_i\in S_i$ is player $i$'s **best response** to $s_{-i}\in S_{-i}$ if
-$$v_i(s_i,s_{-i})\ \ge\ v_i(s_i',s_{-i})\qquad\forall s_i'\in S_i .$$
+**Definition 4.5 (p. 70; slide 10).** $s_i\in S_i$ is player $i$'s **best response** to $s_{-i}\in S_{-i}$ if
+$$u_i(s_i,s_{-i})\ \ge\ u_i(s_i',s_{-i})\qquad\forall s_i'\in S_i .$$
 
 **Claim 4.2 (p. 70).** A rational player who believes the opponents play $s_{-i}$ always chooses a best response to
 $s_{-i}$.
 
-Worked (p. 70): if Chris believes Alex goes to the opera, $v_2(O,O)=1>0=v_2(O,F)$, so Chris's best response is O.
+Worked (p. 70): if Chris believes Alex goes to the opera, $u_2(O,O)=1>0=u_2(O,F)$, so Chris's best response is O.
 
 **Proposition 4.3 (p. 70).** If $s_i$ is strictly dominated, it is not a best response to any $s_{-i}$.
 
-*Proof, every step.* Strict dominance gives some $s_i'$ with $v_i(s_i',s_{-i})>v_i(s_i,s_{-i})$ for **all** $s_{-i}$.
-A best response to a particular $s_{-i}$ needs $v_i(s_i,s_{-i})\ge v_i(s_i',s_{-i})$ for that $s_{-i}$. The two
+*Proof, every step.* Strict dominance gives some $s_i'$ with $u_i(s_i',s_{-i})>u_i(s_i,s_{-i})$ for **all** $s_{-i}$.
+A best response to a particular $s_{-i}$ needs $u_i(s_i,s_{-i})\ge u_i(s_i',s_{-i})$ for that $s_{-i}$. The two
 inequalities contradict each other at every $s_{-i}$, so no such $s_{-i}$ exists. ∎
 
-**Proposition 4.4 (p. 70).** In a finite game, if $s^*$ is a strict dominant-strategy equilibrium, or the unique
-survivor of IESDS, then $s_i^*$ is a best response to $s_{-i}^*$ for every $i$.
+**Proposition 4.4 (p. 70; slide 12, stated as "Proposition").** In a finite game, if $s^*$ is a strict
+dominant-strategy equilibrium, or the unique survivor of IESDS, then $s_i^*\in BR_i(s_{-i}^*)$ for every $i$.
 
 *Proof (Tadelis's contradiction, pp. 70–71).* A strict dominant-strategy equilibrium uniquely survives IESDS (Lecture 1),
 so it suffices to treat the unique survivor. Suppose $s_i^*$ is **not** a best response to $s_{-i}^*$: some $s_i'$ has
-$v_i(s_i',s_{-i}^*)>v_i(s_i^*,s_{-i}^*)$. That $s_i'$ was eliminated at some round, while $s_{-i}^*$ was never
+$u_i(s_i',s_{-i}^*)>u_i(s_i^*,s_{-i}^*)$. That $s_i'$ was eliminated at some round, while $s_{-i}^*$ was never
 eliminated, so the strategy $s_i''$ that eliminated it does even better against $s_{-i}^*$:
-$v_i(s_i'',s_{-i}^*)>v_i(s_i',s_{-i}^*)>v_i(s_i^*,s_{-i}^*)$. Repeat; finiteness ends the chain at a strategy that
+$u_i(s_i'',s_{-i}^*)>u_i(s_i',s_{-i}^*)>u_i(s_i^*,s_{-i}^*)$. Repeat; finiteness ends the chain at a strategy that
 beats $s_i^*$ against $s_{-i}^*$ and **is never eliminated**, contradicting uniqueness of the survivor. ∎
 
 **Definition 4.6 (p. 72).** A **belief** of player $i$ is a profile of opponents' strategies $s_{-i}\in S_{-i}$.
 (Here a belief is a *pure* profile; Lecture 2's §6 replaces it by a probability distribution, Def. 6.4, p. 105.)
 
-**Definition 4.7 (p. 72).** The **best-response correspondence** selects, for each $s_{-i}$, the set
+**Definition 4.7 (p. 72; slide 10).** The **best-response correspondence** selects, for each $s_{-i}$, the set
 $BR_i(s_{-i})\subseteq S_i$ of best responses.
 
 > **It is a correspondence, not a function, because a belief can have several best responses.**
@@ -82,11 +89,17 @@ Worked: the 3×3 game of p. 72.
 Against R, player 1's payoffs are U 6, M 3, D 6, so $BR_1(R)=\{U,D\}$. Against L: U 3, M 4, D 4, so
 $BR_1(L)=\{M,D\}$. Against C: 5, 8, 9, so $BR_1(C)=\{D\}$.
 
-**Definition 4.8 (p. 73).** $s_i$ is **never a best response** if there is no belief $s_{-i}$ with
+**Definition 4.8 (p. 73; slide 10, "NBR").** $s_i$ is **never a best response** if there is no belief $s_{-i}$ with
 $s_i\in BR_i(s_{-i})$.
 
-**Rationalizability (p. 73).** Remove every strategy that is never a best response; in the reduced game, remove
-again; iterate. The survivors are the **rationalizable** strategies. Tadelis postpones the formal definition until
+**Rationalizability (p. 73; slide 11).** "What might a rational player do?" A rational player only chooses strategies
+that are a best response to some belief. Using common knowledge of rationality, remove every strategy that is never a
+best response; in the reduced game, remove again; iterate. The survivors are the **rationalizable** strategies.
+
+> **Lesson 3 (slide 12):** a rational player never plays a strategy that is never a best response.
+> **Lesson 4 (slide 12; Claim 4.2):** a rational player who believes the opponents play $s_{-i}$ chooses a best
+> response to $s_{-i}$. (Lessons 1–2 were Lecture 1's: never play a strictly dominated strategy; individually rational
+> choices can be socially undesirable.) Tadelis postpones the formal definition until
 beliefs can be mixed (§6.3, p. 114, Def. 6.8) because with pure beliefs only the elimination is too weak
 ([[L02-08-iesds-rationalizability-revisited]] §2 shows a strategy that is a best response only to a *mixed*
 belief).
@@ -101,9 +114,9 @@ belief).
 
 ## 3 · Worked — Cournot revisited (§4.3.4, pp. 73–74)
 
-$p(q)=100-q$, $c_i(q_i)=10q_i$. Firm 1 maximizes $v_1=(100-q_1-q_2)q_1-10q_1$.
+$p(q)=100-q$, $c_i(q_i)=10q_i$. Firm 1 maximizes $u_1=(100-q_1-q_2)q_1-10q_1$.
 
-$$\frac{\partial v_1}{\partial q_1}=100-2q_1-q_2-10=90-2q_1-q_2=0\ \Longrightarrow\ q_1=\frac{90-q_2}{2}.$$
+$$\frac{\partial u_1}{\partial q_1}=100-2q_1-q_2-10=90-2q_1-q_2=0\ \Longrightarrow\ q_1=\frac{90-q_2}{2}.$$
 
 The second derivative is $-2<0$, so this is the maximum. Truncated at zero:
 
@@ -137,7 +150,9 @@ The crossing is the only point that survives every round, which is why rationali
 
 ---
 
-## 4 · Worked — the p-beauty contest (§4.3.5, pp. 74–75)
+## 4 · Not covered in class — the p-beauty contest (§4.3.5, pp. 74–75)
+
+*Reading only: the slides do not present the beauty contest; kept as practice in iterated reasoning.*
 
 $n$ players choose integers in $\{0,\dots,20\}$; the winners are those closest to $\tfrac34$ of the average; each
 player pays 1 and winners split the pot. Tadelis's example: $n=3$, choices $1,5,18$; average 8; $\tfrac34\cdot8=6$;
@@ -163,7 +178,7 @@ $S_i^{19}=\{0,1\}$. For $n>2$ both survive (each is a best response to "everyone
 | Criterion | Verdict |
 |---|---|
 | Existence | always (as IESDS) |
-| Uniqueness | sometimes sharp (Cournot, beauty contest); in the Battle of the Sexes **"anything can happen"** |
+| Uniqueness | sometimes sharp (Cournot, slide 24; the beauty contest); in the Battle of the Sexes **"anything can happen"** |
 | Pareto | survivors need not be Pareto optimal (the prisoner's dilemma survives intact) |
 
 > **Rationalizability lets each player hold *some* belief; it never asks the beliefs to be right.** In the Battle of

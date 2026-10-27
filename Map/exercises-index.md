@@ -14,6 +14,23 @@ where the OCR kept them; otherwise the level is inferred.
 
 Topic names match [[Map/topics-index|topics-index]].
 
+## Game-theory books (Tadelis, Gibbons, Muñoz-Garcia & Toro-Gonzalez, MWG Ch. 7–9, 12–13)
+
+Catalogued per lecture, not per book: each practice list carries a tier table (number, page,
+what it trains) and the statement reproduced verbatim, with pages checked against the PDF
+(2026-10-13 for L01, 2026-10-25 for L02–L08).
+
+| L | List | Items | Sources |
+|---|---|---|---|
+| 1 | `Listas/pratica-lecture-01.md` | 24 | Tadelis 3–4, Gibbons 1, MWG 8.B, Muñoz-Garcia 1 |
+| 2 | `Listas/pratica-lecture-02.md` | 25 | Tadelis 5–6 (12), Gibbons 1 (6), MWG 8.C–8.D (4), Muñoz-Garcia 2–3 (3) |
+| 3 | `Listas/pratica-lecture-03.md` | 25 | Tadelis 7–8 (16), Muñoz-Garcia 4 (5), MWG 9.B.4–5, Gibbons 2.1 |
+| 4 | `Listas/pratica-lecture-04.md` | 25 | Tadelis 9, 11 (13), Gibbons 2 (5), Muñoz-Garcia 4, 6 (5), MWG 9.B.12–13 |
+| 5 | `Listas/pratica-lecture-05.md` | 17 | Tadelis 10 (5), Gibbons 2 (4), Cabral 7 (3), Muñoz-Garcia 6 (3), MWG 12.AA.1–2 |
+| 6 | `Listas/pratica-lecture-06.md` | 25 | Muñoz-Garcia 5–6 (9), Gibbons 2 (4), Tadelis 10 (4), M&R Ch. 8 (6), Cabral 9 (3) |
+| 7 | `Listas/pratica-lecture-07.md` | 24 | Tadelis 12–13 (14), Gibbons 3 (5), Muñoz-Garcia 7–8 (3), MWG 13.B.1–2 |
+| 8 | `Listas/pratica-lecture-08.md` | 25 | Tadelis 15–16 (10), Gibbons 4 (6), Muñoz-Garcia 9, 11 (5), MWG 13.C (4) |
+
 ## MWG — Mas-Colell, Whinston & Green (1995)
 
 PDF page = (printed + 20) // 2 (see `Livros/book-registry.json`).

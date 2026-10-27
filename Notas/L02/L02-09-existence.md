@@ -1,8 +1,8 @@
 ---
 tags: [notes, lecture-02, existence, nash-theorem, fixed-point, brouwer, kakutani]
-date: 2026-10-16
-status: estimated
-source: "Tadelis (2013) §6.4, printed pp. 117–123 (Nash's Existence Theorem p. 117; Brouwer p. 117, Fig. 6.5; Def. 6.9 and Fig. 6.6 pp. 118–119; Fact p. 120; Kakutani Theorem 6.1 p. 120; the 2×2 proof pp. 121–122); Gibbons (1992) §1.3.B pp. 41–48; MWG §8.D pp. 252–253 and Appendix A pp. 260–261 (G)"
+date: 2026-10-25
+status: taught
+source: "Aula/Lecture02.pdf slide 51 (statement only); Tadelis (2013) §6.4, printed pp. 117–123 (Nash's Existence Theorem p. 117; Brouwer p. 117, Fig. 6.5; Def. 6.9 and Fig. 6.6 pp. 118–119; Fact p. 120; Kakutani Theorem 6.1 p. 120; the 2×2 proof pp. 121–122); Gibbons (1992) §1.3.B pp. 41–48; MWG §8.D pp. 252–253 and Appendix A pp. 260–261 (G)"
 ---
 
 # 6.4 · Nash's existence theorem: an equilibrium is a fixed point, and fixed points exist
@@ -19,7 +19,8 @@ source: "Tadelis (2013) §6.4, printed pp. 117–123 (Nash's Existence Theorem p
 
 ## 1 · C — the theorem
 
-**Theorem (Nash's Existence Theorem, p. 117).** Any $n$-player normal-form game with finite strategy sets $S_i$ for
+**Theorem (Nash, 1950; slide 51; Tadelis p. 117).** *Every finite normal-form game has a Nash equilibrium in
+mixed strategies* (slide 51). Tadelis's wording: Any $n$-player normal-form game with finite strategy sets $S_i$ for
 all players has a Nash equilibrium in mixed strategies. (A pure equilibrium counts: pure strategies are degenerate
 mixtures, footnote 8.)
 
@@ -31,6 +32,8 @@ exists at least one NE, possibly in mixed strategies.
 > construct.
 
 ---
+
+> **Not covered in class from here on.** Slide 51 states the theorem without proof; §2–§6 are reading.
 
 ## 2 · U — Brouwer in one dimension (p. 117, Fig. 6.5)
 
@@ -85,7 +88,7 @@ if $x_n\to x$, $y_n\in C(x_n)$ and $y_n\to y$, then $y\in C(x)$.
 | (1) $X=[0,1]^2$ | non-empty, convex, compact |
 | (2) $BR$ non-empty | expected payoff is continuous (linear) in own mix on the compact $[0,1]$: a maximum exists (extreme value theorem) |
 | (3) $BR$ convex-valued | by Prop. 6.1, if two mixes are best replies the player is indifferent between the pure strategies they use, so **every** mix between them is a best reply; $BR_i$ is $\{0\}$, $\{1\}$ or $[0,1]$ |
-| (4) closed graph | if $q_n\in BR_2(p_n)$, i.e. $v_2(q_n,p_n)\ge v_2(q,p_n)$ for all $q$, and $(q_n,p_n)\to(\hat q,\hat p)$, continuity lets the inequality pass to the limit: $v_2(\hat q,\hat p)\ge v_2(q,\hat p)$, so $\hat q\in BR_2(\hat p)$ |
+| (4) closed graph | if $q_n\in BR_2(p_n)$, i.e. $u_2(q_n,p_n)\ge u_2(q,p_n)$ for all $q$, and $(q_n,p_n)\to(\hat q,\hat p)$, continuity lets the inequality pass to the limit: $u_2(\hat q,\hat p)\ge u_2(q,\hat p)$, so $\hat q\in BR_2(\hat p)$ |
 
 So $BR$ has a fixed point and **every 2×2 game has a NE**. With $m$ pure strategies the simplex
 $\Delta_i=\{\sigma_i:\sigma_i(s_{ik})\in[0,1],\sum_k\sigma_i(s_{ik})=1\}$ is non-empty, compact and convex in $\mathbb R^m$,

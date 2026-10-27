@@ -1,8 +1,8 @@
 ---
 tags: [notes, lecture-02, pitfalls, true-false, self-test]
-date: 2026-10-16
-status: estimated
-source: "Tadelis (2013) §4.3, Ch. 5–6 (pp. 69–123); Gibbons (1992) §1.1.C–1.3; rules/00_estilo_avaliacao.md (macro-1 True/False style)"
+date: 2026-10-25
+status: taught
+source: "Aula/Lecture02.pdf (slides 1–56); Tadelis (2013) §4.3, Ch. 5–6 (pp. 69–123); Gibbons (1992) §1.1.C–1.3; rules/00_estilo_avaliacao.md (macro-1 True/False style)"
 ---
 
 # Lecture 2 · Pitfalls and a True/False self-test
@@ -70,6 +70,21 @@ They are the **same** concept, Nash, applied to two different games (quantities 
 
 Strategic substitutes/complements describe the slope of the **best response** (Cournot down, Bertrand up, p. 93), not
 whether the **products** are substitutes (they are substitutes in both models).
+
+### 12a · "A Nash equilibrium never uses a dominated strategy"
+
+Only **strictly** dominated strategies are excluded (slides' Prop. 1). Bertrand's $p_i^*=c$ is **weakly** dominated, yet
+$(c,c)$ is the unique NE (slides 16, 36). → [[L02-02-nash-equilibrium]] §2c.
+
+### 12b · "In the mixed BoS equilibrium each player is better off than at a pure one, since nobody is left out"
+
+Each expects $\tfrac23$, **less than in either pure equilibrium** (the worse-off player gets 1 there): they
+miscoordinate with probability $\tfrac59$ (slide 50). → [[L02-07-mixed-strategies]] §2c.
+
+### 12c · Reading the cartel matrix's (Deviate, Deviate) cell as "both produce 33.75"
+
+The printed 900 is the payoff at the Nash outputs (30, 30). Both at 33.75 would give each 759.38, a tie with staying
+in the cartel (slide 25). → [[L02-03-cournot]] §4b.
 
 ### 12 · Two printed slips worth knowing
 
@@ -163,7 +178,7 @@ quantity). Neither changes a conclusion.
 
 20. **If Chris believes Alex will go to the opera, Chris's unique best response in the Battle of the Sexes is to go to
     the opera, so (O, O) is the unique Nash equilibrium.**
-    **False.** The first half is true ($v_2(O,O)=1>0$); the conclusion is not: (F, F) and the mixed profile are also NE.
+    **False.** The first half is true ($u_2(O,O)=1>0$); the conclusion is not: (F, F) and the mixed profile are also NE.
 
 21. **In the all-pay auction for a dollar, if the rival bids uniformly on $[0,1]$, every bid in $[0,1]$ gives the same
     expected payoff.**
@@ -177,3 +192,27 @@ quantity). Neither changes a conclusion.
 
 24. **In the mixed equilibrium of Tadelis's §6.2.3 game, player 1 plays M with probability $\tfrac37$.**
     **False.** $\tfrac37$ is player 2's probability of C; player 1 plays M with probability $\tfrac16$ (Pitfall 4 again).
+
+*Items 25–30 follow the slides.*
+
+25. **Every Nash equilibrium survives the iterated elimination of strictly dominated strategies.**
+    **True.** Slides' Prop. 1: at the first round some $s_i^*$ fell, its dominator would beat it against $s_{-i}^*$.
+
+26. **A Nash equilibrium cannot involve a weakly dominated strategy.**
+    **False.** Bertrand's $(c,c)$ (slides 16, 36).
+
+27. **In the linear Cournot duopoly, each firm's equilibrium output is two-thirds of the monopoly output.**
+    **True.** $q_i^*=\tfrac23q^m$ (slide 24); total output is $\tfrac43q^m$.
+
+28. **In the Cournot oligopoly with $n$ identical firms, total output equals $\tfrac{2n}{n+1}$ times the monopoly
+    output.**
+    **True.** Slide 27; it tends to $2q^m=q^{cp}$.
+
+29. **In the homogeneous Bertrand duopoly with marginal cost $c<p_j\le p^m$, firm $i$'s best response is to price one
+    cent below $p_j$.**
+    **False.** With continuous prices the best-response set is **empty** (slide 34): any price below $p_j$ can be
+    raised slightly and still undercut.
+
+30. **By the principle of indifference, in a mixed Nash equilibrium every pure strategy of a player, including those
+    played with probability zero, yields the same expected payoff.**
+    **False.** Only strategies **in the support** tie; those outside it must yield **no more** (slide 44, condition 2).

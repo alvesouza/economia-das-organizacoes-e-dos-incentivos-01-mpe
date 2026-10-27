@@ -1,0 +1,995 @@
+Lecture 6. Repeated games II: collusion and relational contracts. A listening version of the Lecture 6 notes.
+
+How to listen.
+
+This is the full text of the Lecture 6 notes for Economia das Organizações e dos Incentivos, rewritten to be heard rather than read. Nothing has been cut. Every derivation, every number and every example in the written notes is here, with the mathematics spoken in words.
+
+First, a warning that matters. This unit is estimated. The notes were built on October 16, 2026, from the course study guide, before the lecture itself, which is on Tuesday, November 10, 2026. There are no slides yet. Everything here is anchored in the books instead of the slides, and it will be reconciled with the slides when they arrive. If the lecture puts the emphasis somewhere else, the lecture wins.
+
+The script has seventeen parts, numbered zero to sixteen. Part zero gives the one claim of the lecture, the layers, the numbers to memorize, and where the lecture sits in the course. Part one is the tool: one inequality that runs the whole lecture. Parts two, three and four are collusion: quantities, then prices and market structure, then sharper punishments and price wars. Parts five and six are reputation: the trust game and Milgrom and Roberts' theory, then institutions that lend reputations to strangers. Part seven is efficiency wages. Part eight puts all of it together as relational contracts. After that come the support parts: common mistakes, a spoken formula sheet, the Python routines described in words, the figures and interactive companions described in words, the reading route and exercises, a self-test, a glossary, and the whole lecture in five lines.
+
+Some conventions. "M and R" means Milgrom and Roberts, Economics, Organization, and Management, Prentice-Hall, 1992. "Tadelis" is Steven Tadelis, Game Theory: An Introduction, Princeton, 2013, the book the course slides follow. "Gibbons" is Robert Gibbons, Game Theory for Applied Economists, Princeton, 1992. "Cabral" is Luís Cabral, Introduction to Industrial Organization, second edition, MIT Press, 2017. "M W G" is Mas-Colell, Whinston and Green, Microeconomic Theory, 1995. Page numbers are printed page numbers.
+
+The letter delta is always the discount factor: the weight on next period's payoff, a number between zero and one. "Grim trigger" is the strategy that cooperates until someone deviates and then plays the one-shot Nash equilibrium forever.
+
+Three layers run through the notes. The U layer is intuition: Gibbons's applied prose, M and R's cases, such as Lord Clive, the Maghribi traders, the trench truces of the First World War, and the fast-food outlets nicknamed MacRents, and Cabral's industry boxes. The C layer is the course material, the examinable part: Tadelis's inequality ten point five and its applications in sections ten point four and ten point five; Gibbons's equations two point three point two to two point three point seven with every derivation; Cabral's equations nine point one to nine point five; and M and R's equation eight point one and their trust box. The G layer is graduate material: the M W G proof that nothing survives below one half, imperfect monitoring in the work of Green and Porter and of Abreu, Pearce and Stacchetti, and renegotiation-proofness. These are named, not examinable. The script says so each time one appears.
+
+And one scope rule from the course file. Moral hazard is out of scope: agency theory, and incentive contracts with hidden effort. Efficiency wages and relational contracts appear here only as applications of repeated games. Milgrom and Roberts' comparison with incentive pay gets one sentence and no more. The script repeats this where it applies.
+
+Part zero. The one claim, the numbers, and the position of the lecture.
+
+This part covers the map of the notes.
+
+The one claim of the lecture is this. A promise nobody can enforce in court can still be kept, if breaking it costs more than it pays. In an infinitely repeated game the gain from cheating today is weighed against the discounted loss of the relationship, and cooperation is self-enforcing if and only if delta is at least v d minus v c, over v d minus v p. Here v c is the payoff from cooperating, v d the payoff from the best deviation, and v p the payoff during the punishment.
+
+Firms use it to collude without a contract: the cutoff is 9 over 17 for a Cournot duopoly, and 1 minus 1 over n for n Bertrand firms. Traders use it to be trusted: a reputation is that inequality held in front of many partners, and institutions lend it to strangers. Firms use it to buy effort: an efficiency wage is the rent that makes the job worth keeping honestly.
+
+The one result to hold, in its most general form, reads as follows. The gain from cheating today, v d minus v c, must be no larger than delta over 1 minus delta, times the probability of being caught, times what the relationship is worth per period, v c minus v p. Every relational contract in the course is this line. A cartel member, a trusted merchant, a guarantor and a well-paid worker differ only in what v c, v d, v p and the detection probability are.
+
+Now the numbers to have memorized. There are eight.
+
+One. The repeated prisoner's dilemma with payoffs 4, 5 and 1 needs delta at least one quarter. Tadelis, page 200.
+
+Two. A Cournot duopoly where each firm takes half the monopoly output needs delta at least 9 over 17, which is 0.529. Gibbons, page 103.
+
+Three. Tadelis's unequal split of 22 and 23 units needs 0.595 for firm 1 and 0.473 for firm 2. That second number is a correction: the book prints a different number on page 202, and part two explains why.
+
+Four. Bertrand with n firms needs 1 minus 1 over n: 0.5 for two firms, 0.667 for three, 0.75 for four. Cabral's equation nine point four, and M W G's exercise twelve point D point one.
+
+Five. With monthly prices and an interest rate of 10 per cent a year, delta is 0.9917, and up to 121 firms can collude. Cabral, page 221.
+
+Six. Abreu's carrot and stick at delta equal to one half works for a punishment output x, as a fraction of a minus c, between three eighths and one half. Gibbons, page 106.
+
+Seven. The trust game needs one half; the guarantor needs 0.95. Tadelis, pages 205 and 207.
+
+Eight. M and R's efficiency wage is 60,000 US dollars when their multiplier N equals 1, and 50,000 when N equals 2. M and R, pages 251 and 252.
+
+Where the lecture sits in the course. Lecture 1 gave the Cournot stage game and dominance: the one-shot problem that collusion solves. Lecture 2 gave the Nash equilibrium of Cournot and Bertrand, which are the punishments v p used here. Lecture 3 gave backward induction: why the trust game fails when played once, and why a known end unravels cooperation. Lecture 4 gave multistage games and the one-stage deviation principle, Tadelis section nine point five. Lecture 5 gave finite against infinite repetition, grim trigger and the folk theorem: the toolkit used here. Lecture 6, this one, is collusion, reputation and efficiency wages: relational contracts. Lecture 7 moves to incomplete information, where reputation becomes a belief about types. Lecture 8 is signaling, the other way to make a promise credible.
+
+The scope, said once more in full. Examinable, as estimated: inequality ten point five and its derivation; tacit collusion in Cournot and in Bertrand, with n firms; the factors in Cabral's equation nine point five and his section nine point three; Abreu's two-phase strategy at the level of Gibbons; reputation in the trust game and in M and R's box; the guarantor; Gibbons's efficiency-wage model and M and R's equation eight point one. Named only: imperfect monitoring beyond the intuition; the M W G proof that nothing survives below one half; renegotiation-proofness; and reputation as beliefs about types, which is Tadelis chapter 17 and Gibbons section four point three point C, background for Lecture 8. Out: moral hazard.
+
+Part one. The tool: one inequality runs the whole lecture.
+
+This part covers note one, a recap of Tadelis sections ten point two and ten point three, printed pages 192 to 200, with equation ten point five on page 202. It is a recap only. The full treatment, with finite against infinite repetition, the folk theorem and the proofs, belongs to Lecture 5. Only what Lecture 6 uses is restated here.
+
+The claim of this part. Everything in Lecture 6, a cartel, a trusted merchant, a well-paid worker, is the same check: the one-period gain from cheating must not exceed the discounted loss of the relationship it destroys. Written once, as Tadelis's equation ten point five, it is delta at least v d minus v c, over v d minus v p. Every later part only fills in v c, v d and v p.
+
+One point one. Why the future can discipline the present.
+
+A stage game with a unique Nash equilibrium, repeated a known, finite number of times, unravels. In the last period only the stage Nash equilibrium can be played, so nothing that happens earlier can be rewarded or punished, and backward induction repeats the argument all the way back to period 1. That is Tadelis's Proposition ten point one, page 192.
+
+Infinite repetition removes the last period. So does a probability delta that the game goes on after every period; the two are equivalent. Then the proposed equilibrium itself can serve as the reward, the carrot, and the repeated stage Nash equilibrium as the punishment, the stick. Tadelis calls this a bootstrap equilibrium, on page 197.
+
+Two things are needed, and both are examinable. Tadelis lists them on page 204. First, no predetermined terminal period. Second, a discount factor that is not too small. Drop either one and cooperation that is not a stage-game best response cannot be sustained.
+
+One point two. The tools, as Tadelis states them. There are five.
+
+First, present value, Definition ten point two on page 193. The present value of a stream of payoffs for player i is the sum, from period 1 to infinity, of delta to the power t minus 1, times the payoff in period t.
+
+Second, average payoff, Definition ten point three on page 194. It is 1 minus delta, times that same sum. A constant stream of v has average payoff v. That is why average payoffs are convenient: they are in the same units as one period's payoff.
+
+Third, Proposition ten point two on page 196. Playing a stage Nash equilibrium after every history is a subgame-perfect equilibrium for any delta below one.
+
+Fourth, Proposition ten point three on page 198, the one-stage deviation principle. A strategy profile is a subgame-perfect equilibrium if and only if no player gains by deviating at one history and conforming afterwards.
+
+Fifth, grim trigger, page 198. Play the cooperative action while every past outcome was cooperative. After any deviation, play the stage Nash equilibrium forever.
+
+Why does Proposition ten point three make the check finite? Under grim trigger every history falls into one of two classes, page 199. Either no deviation has happened yet, and the strategy says play cooperatively. Or some deviation has happened, and the strategy says play stage Nash. Off the equilibrium path, the prescription is a stage Nash equilibrium followed by more of the same, so a one-shot deviation only lowers today's payoff. There is no condition to check there. On the path there is exactly one condition, the inequality that comes next.
+
+One point three. The template, every step.
+
+Let v c be player i's per-period payoff on the cooperative path. Let v d be the best payoff he can grab in one period by deviating. Let v p be his per-period payoff in the punishment, the stage Nash equilibrium; Tadelis writes it v star.
+
+Conforming forever is worth v c, plus delta times v c, plus delta squared times v c, and so on. That sum equals v c plus delta v c over 1 minus delta.
+
+Deviating today and being punished forever after is worth v d, plus delta times v p, plus delta squared times v p, and so on. That equals v d plus delta v p over 1 minus delta.
+
+No profitable one-shot deviation requires the first to be at least the second: v c plus delta v c over 1 minus delta is greater than or equal to v d plus delta v p over 1 minus delta.
+
+Step two. Multiply both sides by 1 minus delta, which is positive. The left side becomes 1 minus delta times v c, plus delta v c, which is just v c. The right side becomes 1 minus delta times v d, plus delta v p. So the condition is: v c is at least 1 minus delta times v d, plus delta times v p.
+
+Step three. Collect the terms in delta. v c minus v d is at least minus delta v d plus delta v p, which is minus delta times v d minus v p.
+
+Step four. Divide by v d minus v p, which is positive, and flip signs. The result is the boxed equation, Tadelis ten point five, page 202: delta is at least delta star for player i, defined as v d minus v c, over v d minus v p.
+
+Read the fraction as temptation over stake. The numerator is the one-period gain from cheating. The denominator is the gain from cheating plus the per-period loss the punishment inflicts, v c minus v p.
+
+Rearranged once more, the same inequality says: the gain today, v d minus v c, is no larger than delta over 1 minus delta, times the loss per period from tomorrow, v c minus v p. This second form is the one Milgrom and Roberts and the efficiency-wage model use, in parts five and seven.
+
+The middle line from step two, v c at least 1 minus delta times v d plus delta times v p, is the average-payoff form. The cooperative payoff must beat a weighted average of the deviation payoff and the punishment payoff. Every "conform against deviate" figure in this unit plots exactly those two sides against delta.
+
+One point three point one. Worked example: Tadelis's repeated prisoner's dilemma, pages 197 to 200.
+
+In the stage game, both staying mum pays 4 each. Finking against a player who stays mum pays 5 to the finker and minus 1 to the other. Both finking pays 1 each. So v c is 4, v d is 5, and v p is 1.
+
+The condition, Tadelis's equation ten point three, is: 4 plus 4 delta over 1 minus delta is at least 5 plus delta over 1 minus delta. That holds if and only if delta is at least 5 minus 4 over 5 minus 1, which is one quarter.
+
+Three values make it concrete. Conforming is worth 4 over 1 minus delta; deviating is worth 5 plus delta over 1 minus delta. At delta equal to 0.20, conforming is worth 5.000 and deviating 5.250: deviate. At delta equal to 0.25, both are worth 5.333: the player is indifferent, and that is the cutoff. At delta equal to 0.50, conforming is worth 8.000 and deviating 6.000: conform.
+
+One point four. What delta stands for.
+
+Delta is not only impatience. Tadelis reads it as the probability that the game is played again, page 200. Cabral turns it into a formula with the interest rate, the frequency of price changes, the hazard that the industry ends, and its growth. That is his equation nine point five, worked in part three. Everything that raises delta makes every relational contract in this lecture easier to sustain.
+
+One point five. The checklist for any application. Five steps.
+
+One. Name the cooperative path and its per-period payoff v c for each player. Asymmetric splits give different cutoffs, as part two shows.
+
+Two. Find the best one-period deviation v d: the stage best response to the others' cooperative actions. Not any deviation; the most tempting one.
+
+Three. Name the punishment and its value v p, and check that it is itself an equilibrium. Stage Nash forever is, by Proposition ten point two. Otherwise the threat is not credible.
+
+Four. Apply equation ten point five for every player. The cooperative path survives if and only if delta is at least the largest of the players' cutoffs.
+
+Five. Check off-path behaviour with Proposition ten point three. Under Nash reversion it is automatic.
+
+Recap of part one. One inequality: delta at least temptation over stake. Three equivalent forms: the cutoff form, the temptation-against-discounted-stake form, and the average-payoff form. One worked number: one quarter for the prisoner's dilemma.
+
+Spoken checklist. You should be able to derive equation ten point five from the two present values in four steps. You should be able to state it in all three forms. You should be able to say why the off-path check is automatic under grim trigger. And you should be able to say the two conditions Tadelis requires: no known last period, and delta not too small.
+
+For practice, Tadelis exercises 10.2 and 10.3, page 215, drill the cutoff, and so does Muñoz-Garcia chapter 6, exercise 2, from page 278.
+
+Part two. Tacit collusion in quantities: who needs patience, and how much.
+
+This part covers note two: Tadelis section ten point four, "Application: Tacit Collusion", printed pages 201 to 203, with equations ten point four and ten point five and the 22 and 23 split; and Gibbons section two point three point C, "Collusion between Cournot Duopolists", pages 102 to 104, with equation two point three point two, the 9 over 17 cutoff, and the formula for the most collusive output.
+
+The claim. A Cournot cartel is a relational contract between firms that cannot sign one. Each firm produces less than its static best response only because cheating would trigger a return to Cournot forever. With linear demand and two firms, the monopoly split survives if and only if delta is at least 9 over 17. Below that, the cartel does not collapse to Cournot; it shrinks to the most collusive output the threat can still support. And in an asymmetric split, the firm with the smaller share needs the more patience.
+
+Two point one. Collusion without a contract.
+
+Explicit cartel contracts are illegal. The Sherman Act of 1890, section 1, outlaws "conspiracies in restraint of trade", as Tadelis notes on page 201. They are unenforceable anyway. The repeated game shows that firms may not need a contract. Shared beliefs about reward and punishment support output restriction as a subgame-perfect equilibrium, with no meeting and no agreement. That is tacit collusion. Friedman, in 1971, was the first to show it, for exactly this Cournot case, as Gibbons notes on page 102.
+
+Two point two. Worked example: Tadelis's asymmetric split, pages 201 and 202.
+
+The stage game. Demand is p equals 100 minus q, and each firm's cost is 10 times its quantity. From Tadelis section five point two point three, two benchmarks. At the Cournot-Nash equilibrium each firm produces 30, the price is 40, and each earns 900. That 900 is v star, the punishment payoff. At the monopoly output split equally, each firm produces 22.5, total 45, the price is 55, and each earns 55 minus 10, times 22.5, which is 1012.5.
+
+The split Tadelis uses is deliberately unequal: firm 1 produces 22 and firm 2 produces 23. The total is still 45 and the price still 55. So firm 1's cooperative profit is 45 times 22, which is 990, and firm 2's is 45 times 23, which is 1035.
+
+The strategies are grim trigger. Each firm plays its cooperative quantity in period 1 and keeps doing so while every past pair was 22 and 23. After any other history it plays 30 forever.
+
+Off the path, each firm expects 30 from the rival, and 30 is a best response to 30. No condition, for any delta, page 202.
+
+On the path, the most tempting deviation is the static best response to the rival's cooperative output. Firm i maximizes 100 minus q i minus q j minus 10, all times q i. The first-order condition is 90 minus 2 q i minus q j equals zero. So the best response, Tadelis's equation ten point four, is q i equals 90 minus q j, over 2.
+
+Now walk the two firms.
+
+Firm 1 faces a rival producing 23. Its best deviation is 90 minus 23, over 2, which is 33.5. The price becomes 100 minus 33.5 minus 23, which is 43.5. Its deviation profit is 43.5 minus 10, times 33.5, which is 1122.25. Its cooperative profit is 990. Its cutoff is 1122.25 minus 990, over 1122.25 minus 900: that is 132.25 over 222.25, which is 0.595.
+
+Firm 2 faces a rival producing 22. Its best deviation is 90 minus 22, over 2, which is 34. The price becomes 100 minus 22 minus 34, which is 44. Its deviation profit is 44 minus 10, times 34, which is 1156. Its cooperative profit is 1035. Its cutoff is 1156 minus 1035, over 1156 minus 900: that is 121 over 256, which is 0.473.
+
+Now the erratum. Check before you copy the book. Tadelis prints firm 2's deviation profit as 100 minus 23 minus 34, times 34, minus 10 times 34, which gives 1122, and the cutoff for firm 2 as 0.392, on page 202. That formula plugs in 23, which is firm 2's own cooperative output, where the rival's output, 22, belongs. With 22, the price is 44, the deviation profit is 1156, and the cutoff is 121 over 256, which is 0.473. The book's conclusion survives: 0.595 is larger than 0.473, so firm 1 is still the one that needs more patience. The Python note verifies this.
+
+Why is the smaller firm the binding one? Tadelis, page 203, says the result "nicely reflects the temptations". Two effects push the same way. Firm 1 gains more from deviating: 1122.25 minus 990, which is 132.25, against 1156 minus 1035, which is 121. And firm 1 loses less when Cournot returns: 990 minus 900, which is 90 per period, against 1035 minus 900, which is 135. Both effects push its cutoff up. The cartel survives if and only if delta is at least the larger cutoff, 0.595.
+
+The figure for this section plots the average-payoff form of the inequality. Each firm's conform line is flat, at 990 for firm 1 and 1035 for firm 2. Each deviate line is 1 minus delta times the deviation profit, plus delta times 900. It starts at the deviation profit when delta is zero, where only today counts, and falls to Cournot's 900 as delta approaches one, where only the punishment counts. Each firm conforms where its flat line lies above its falling line. Firm 1's falling line crosses its lower flat line later, at 0.595, so firm 1 sets the cartel's patience requirement. Firm 2's crossing is at 0.473. A cross on the figure marks where the printed 0.392 would put firm 2.
+
+The lesson for designing a split. An unequal division of the monopoly profit raises the cartel's required delta to the worse-treated firm's cutoff. A cartel that wants to survive at the lowest delta gives every member a share that equalizes the cutoffs, not the quantities. That is Cabral's asymmetry point, which returns in part three.
+
+Two point three. Gibbons's symmetric cartel: delta at least 9 over 17, pages 102 and 103.
+
+The stage game. Inverse demand is P of Q equals a minus Q, marginal cost is c, and there are two firms. The Cournot output per firm is a minus c, over 3. The monopoly output is a minus c, over 2. The cartel plays half the monopoly output each: a minus c, over 4.
+
+Three payoffs per firm.
+
+The collusive payoff, half the monopoly profit. The price is a minus a minus c over 2, which is a plus c, over 2. The margin is a minus c, over 2. Times the quantity a minus c over 4, that gives a minus c, all squared, over 8.
+
+The Cournot payoff. The margin is a minus two thirds of a minus c, minus c, which is a minus c, over 3. Times the quantity a minus c over 3, that gives a minus c, all squared, over 9.
+
+The deviation payoff. Firm j maximizes a minus q j minus a minus c over 4, minus c, all times q j. The first-order condition is three quarters of a minus c, minus 2 q j, equals zero, so q j is three eighths of a minus c. The margin is also three eighths of a minus c. So the deviation profit is 9 times a minus c squared, over 64.
+
+Grim trigger is a subgame-perfect equilibrium if and only if, Gibbons's equation two point three point two on page 103: 1 over 1 minus delta, times half the monopoly profit, is at least the deviation profit plus delta over 1 minus delta times the Cournot profit.
+
+Using the template, with a minus c squared cancelling everywhere: delta is at least the deviation profit minus the collusive profit, over the deviation profit minus the Cournot profit. That is 9 sixty-fourths minus 8 sixty-fourths, over 9 sixty-fourths minus one ninth. The numerator is 1 over 64. The denominator is 81 minus 64, over 576, which is 17 over 576. So the ratio is 1 over 64, times 576 over 17, which is 9 over 17, about 0.529.
+
+Tadelis's numbers in Gibbons's model: a equals 100, c equals 10, so a minus c is 90. The collusive profit is 1012.5. The deviation quantity is 33.75, with profit 33.75 squared, which is 1139.06. Cournot is 900. The cutoff is 1139.06 minus 1012.5, over 1139.06 minus 900: 126.56 over 239.06, which is again 0.529.
+
+Two point four. Below 9 over 17 the cartel shrinks instead of dying, Gibbons pages 103 and 104.
+
+For delta below 9 over 17, half the monopoly output cannot be sustained. But repeating Cournot is always a subgame-perfect equilibrium, so the best grim-trigger cartel produces some quantity q star between half the monopoly output and the Cournot output. Take the trigger strategy: produce q star while both always did; otherwise produce the Cournot output forever.
+
+Three payoffs again. Conforming gives a minus 2 q star minus c, times q star. The best deviation against q star is a minus q star minus c, over 2, with profit a minus q star minus c, all squared, over 4. The punishment gives the Cournot profit, a minus c squared over 9.
+
+The condition is: the conform payoff is at least 1 minus delta times the deviation profit, plus delta times the Cournot profit. Work in units of a minus c, and write q for q star over a minus c. The condition becomes: 1 minus 2 q, times q, is at least 1 minus delta times 1 minus q squared over 4, plus delta over 9.
+
+Multiply by 36. The left side is 36 q minus 72 q squared. The right side is 9 times 1 minus delta, times 1 minus 2 q plus q squared, plus 4 delta.
+
+Move everything to the right. Zero is at least: 72 plus 9 times 1 minus delta, all times q squared; minus 36 plus 18 times 1 minus delta, all times q; plus 9 times 1 minus delta, plus 4 delta. Simplify the coefficients. The condition is: 9 times 9 minus delta, times q squared, minus 18 times 3 minus delta, times q, plus 9 minus 5 delta, is less than or equal to zero.
+
+The quadratic opens upward, so the condition holds between its roots. One root is the Cournot output, q equals one third. Check it: 9 minus delta, minus 6 times 3 minus delta, plus 9 minus 5 delta, equals zero. The product of the roots is 9 minus 5 delta, over 9 times 9 minus delta. So the other root is that product divided by one third.
+
+The result, Gibbons page 104: q star equals 9 minus 5 delta, over 3 times 9 minus delta, all times a minus c.
+
+Check the ends. At delta equal to zero it is a minus c over 3, the Cournot output. At delta equal to 9 over 17 it is 9 minus 45 seventeenths, over 3 times 9 minus 9 seventeenths: that is 108 seventeenths over 432 seventeenths, which is one quarter, half the monopoly output. Between the two it falls monotonically.
+
+Worked at delta equal to one half, with Tadelis's numbers. q star is 9 minus 2.5, over 3 times 8.5, times 90: that is 0.2549 times 90, which is 22.94 per firm. Total output is 45.88, the price is 54.12, and the profit per firm is 54.12 minus 10, times 22.94, which is 1012.1. That is within half a unit of the monopoly share of 1012.5, even though the full share itself is not sustainable at this delta.
+
+The figure for this section has two panels. On the left, q star over a minus c falls, looking almost linear, from one third at delta zero to one quarter at delta 9 over 17, and stays flat after that, with the point at delta one half marked at 0.2549. On the right, the profit per firm over a minus c squared rises from one ninth to one eighth.
+
+Profit climbs steeply at low delta and flattens near 9 over 17. The last steps toward the monopoly output are worth little, because profit is flat at its maximum. That is why a cartel just short of the threshold loses almost nothing. And it is why the carrot-and-stick punishment of part four, which reaches the full monopoly share at delta one half, gains little in profit but a lot in theory.
+
+Two point five. n Cournot firms.
+
+Now n identical firms, with P equal to a minus Q and marginal cost c. This is the general case of Muñoz-Garcia chapter 6, exercise 4, page 287.
+
+Three payoffs per firm. The collusive share is the monopoly profit, a minus c squared over 4, split n ways: a minus c squared over 4 n.
+
+The best deviation. The rivals produce n minus 1 times a minus c over 2 n. The deviator's best response is one half of a minus c minus that, which works out to n plus 1 times a minus c, over 4 n. The margin equals that quantity, so the deviation profit is n plus 1 squared times a minus c squared, over 16 n squared.
+
+The Cournot output is a minus c over n plus 1, the margin is the same, and the Cournot profit is a minus c squared over n plus 1 squared.
+
+The numerator of equation ten point five, deviation minus collusive profit, is n plus 1 squared minus 4 n, over 16 n squared, times a minus c squared. And n plus 1 squared minus 4 n is n minus 1 squared. So the numerator is n minus 1 squared over 16 n squared, times a minus c squared.
+
+The denominator, deviation minus Cournot profit, is n plus 1 to the fourth minus 16 n squared, over 16 n squared times n plus 1 squared, times a minus c squared. Factor the top as a difference of squares: n plus 1 squared minus 4 n, times n plus 1 squared plus 4 n. The first factor is n minus 1 squared; the second is n squared plus 6 n plus 1.
+
+The ratio: the n minus 1 squared and the 16 n squared cancel, leaving the Cournot cutoff with n firms equal to n plus 1 squared, over n squared plus 6 n plus 1.
+
+For two firms that is 9 over 17, 0.529. For three, 16 over 28, 0.571. For ten, 121 over 161, 0.752. It rises with n, because more firms means a smaller share and a bigger relative temptation, and it tends to one. The side-by-side comparison with Bertrand's 1 minus 1 over n is in part three.
+
+The interactive companion called the Cartel Patience Dial lets you switch to Cournot, move n and delta, and watch the cutoff, the deviation profit and the most collusive sustainable output respond; a button snaps delta exactly onto the cutoff.
+
+Two point six. Tadelis's two closing remarks, page 203.
+
+First, beliefs without talk. If firms share these beliefs without ever discussing them, they evade antitrust rules. Where collusion is legal, as in OPEC, the same reward-and-punishment strategies replace an enforceable contract.
+
+Second, price wars are a puzzle for this model. On the equilibrium path nobody deviates, so a price war, or a quantity war, is off-path behaviour and should never be observed. The resolution, imperfect monitoring, is in part four.
+
+A second misprint, harmless. Tadelis writes that the collusive price "will remain fixed (at p equals 45 in the example previously solved)", on page 203. Total output is 45; the price is 100 minus 45, which is 55.
+
+Recap of part two. The 22 and 23 split: cutoffs 0.595 and 0.473, with the smaller firm binding, and the book's 0.392 corrected. The symmetric duopoly: 9 over 17. Below it the cartel shrinks along q star equals 9 minus 5 delta over 3 times 9 minus delta, times a minus c. With n firms the cutoff is n plus 1 squared over n squared plus 6 n plus 1.
+
+Spoken checklist. You should be able to compute a best one-period deviation from a best-response function. You should be able to explain, with two effects, why the smaller member of a cartel needs more patience. You should be able to derive 9 over 17 from the three payoffs one eighth, nine sixty-fourths and one ninth. You should be able to derive the shrinking-cartel output from the quadratic, using the Cournot root. And you should be able to derive the n-firm cutoff.
+
+Part three. Price collusion: delta at least 1 minus 1 over n, and what moves delta.
+
+This part covers note three: Cabral chapter 9, section nine point one, "Stability of collusive agreements", printed pages 218 to 222, with equations nine point one to nine point five and Box nine point one; Cabral section nine point three, "Factors that facilitate collusion", pages 227 to 231, with Boxes nine point three and nine point five; M W G section twelve point D, pages 400 to 405, Propositions twelve point D point one and twelve point D point two; and Tadelis section ten point four, footnote 7, page 203.
+
+The claim. With prices, the stage game's Bertrand trap makes the punishment as harsh as it can be, zero profit, and the temptation as large as it can be, the whole market. So the cartel holds if and only if delta is at least 1 minus 1 over n: an all-or-nothing condition that does not depend on the price colluded on. Everything that raises the effective discount factor makes collusion easier: frequent interaction, a stable and growing market, few and similar firms, contact in many markets. That list is the antitrust checklist.
+
+Three point one. The repeated Bertrand duopoly, Cabral pages 218 and 219.
+
+The stage game. A homogeneous product, constant marginal cost c, no capacity constraints, prices set simultaneously. The unique stage Nash equilibrium is price equal to c, with zero profit: the Bertrand trap, Cabral section eight point one.
+
+Grim strategies, Cabral page 218. M W G calls them Nash reversion, page 401. Set the monopoly price in period 1. Keep setting it while every past price was the monopoly price. After any deviation, price at c forever.
+
+Conforming. Each firm gets half the monopoly profit every period. The value V is half the monopoly profit, plus delta times that, plus delta squared times that, and so on: half the monopoly profit over 1 minus delta. Those are Cabral's equations nine point one and nine point two.
+
+Deviating. Future payoff is zero whatever the deviation, so the best deviation maximizes today's profit: undercut to the monopoly price minus a tiny amount epsilon and take the whole market. The value V prime is the whole monopoly profit, equation nine point three. Strictly it is the monopoly profit minus an arbitrarily small amount; Cabral's footnote c sets it equal.
+
+The condition, V at least V prime: half the monopoly profit over 1 minus delta is at least the monopoly profit. That holds if and only if one half is at least 1 minus delta, that is, delta at least one half. Equation nine point four.
+
+In the template's terms: v c is half the monopoly profit, v d is the monopoly profit, v p is zero. The cutoff is the monopoly profit minus half of it, over the monopoly profit minus zero: one half.
+
+M W G's statement. The content is course level; the proof is graduate level. Proposition twelve point D point one, page 401: the Nash reversion strategies are a subgame-perfect equilibrium of the infinitely repeated Bertrand duopoly if and only if delta is at least one half. Proposition twelve point D point two, page 403: for delta at least one half, any price between c and the monopoly price can be supported the same way; for delta below one half, every subgame-perfect equilibrium has all sales at price c in every period.
+
+All or nothing. Replace the monopoly price by any price p above c and up to the monopoly price. Conforming gives half of the profit at p, over 1 minus delta; deviating gives the profit at p. The profit at p cancels. The cutoff is one half whatever the price. Contrast Cournot, where a shortfall in delta is absorbed by colluding less, as part two showed. In Bertrand, a cartel short of patience has no fallback.
+
+Now a graduate-level aside, named and not examinable: why nothing survives below one half, M W G page 403, in small type. In any subgame-perfect equilibrium, at any date t, each firm could undercut the lowest price, take almost the whole industry profit of that date today, and still guarantee itself at least zero afterwards. So conforming requires each firm's equilibrium value from date t on to be at least that date's industry profit. That is M W G's twelve point D point three. Adding the two firms: the two values together are at least twice the industry profit of date t. At a date where industry profit is at its largest, which is case one of the proof, the two values together are at most that profit plus delta times it plus delta squared times it, and so on: the profit over 1 minus delta. So twice the profit is at most the profit over 1 minus delta, which fails for every positive profit when delta is below one half. Case two, a supremum that is never attained, needs a limit argument. Again: named, not examinable.
+
+Three point two. n firms: delta at least 1 minus 1 over n.
+
+With n symmetric firms the collusive share is the monopoly profit over n, the undercutter still takes the whole monopoly profit, and the punishment still yields zero. The condition: the monopoly profit over n, over 1 minus delta, is at least the monopoly profit. That holds if and only if 1 over n is at least 1 minus delta: delta at least 1 minus 1 over n.
+
+Cabral's reading, page 227: "profit per firm would be smaller. However, the profit that a price cutter would gain would still be the same." M W G sets the version with J firms as Exercise twelve point D point two, page 405.
+
+Now compare the two cutoffs by number of firms. Bertrand is 1 minus 1 over n; Cournot is n plus 1 squared over n squared plus 6 n plus 1.
+
+With 2 firms: Bertrand 0.500, Cournot 0.529. Cournot needs more patience.
+With 3 firms: Bertrand 0.667, Cournot 0.571. Bertrand needs more.
+With 4 firms: Bertrand 0.750, Cournot 0.610. Bertrand needs more.
+With 6 firms: Bertrand 0.833, Cournot 0.671. Bertrand needs more.
+With 10 firms: Bertrand 0.900, Cournot 0.752. Bertrand needs more.
+
+Why does the ranking flip after two firms? Bertrand punishes harder, zero against Cournot's positive profit, and that lowers its cutoff. But Bertrand also tempts harder, the whole monopoly profit, against a Cournot best response that leaves the rivals some sales, and that raises it. With two firms the harsher stick wins by a hair. From three firms on, the bigger reward for cheating dominates.
+
+The figure for this section has two panels. On the left, the critical delta against n for Bertrand and for Cournot, crossing between n equal to 2 and n equal to 3. On the right, the largest number of firms that can sustain Bertrand collusion, against the pricing frequency, on logarithmic axes: a straight line through the point with frequency 12 and 121 firms, and a lower dashed line for the case where the industry ends with probability 10 per cent a year.
+
+The right panel is the same inequality read backwards. Delta at least 1 minus 1 over n is equivalent to n at most 1 over 1 minus delta. With no hazard and no growth, 1 over 1 minus delta equals 1 plus f over r, which is a straight line on log axes. A 10 per cent annual chance that the industry disappears halves the sustainable cartel at every frequency.
+
+In the Cartel Patience Dial companion, switch between Bertrand and Cournot at the same n and delta: the Bertrand cutoff jumps past Cournot's from three firms on, and below its cutoff the Bertrand cartel has no partial fallback.
+
+Three point three. What the discount factor is made of, Cabral pages 219 and 220.
+
+Cabral builds delta from four primitives. First, the interest rate r per year, with prices reset f times a year. One period is then 1 over f years, so discount at r over f: the factor is 1 over 1 plus r over f. Second, the hazard h, the probability that the industry is gone next period. The payoff arrives only with probability 1 minus h, so the factor is 1 minus h. Third, demand growth g per period. Next period's profit is 1 plus g times bigger, so the factor is 1 plus g.
+
+Put together, Cabral's equation nine point five: delta equals 1 plus g, times 1 minus h, over 1 plus r over f.
+
+The signs, page 220. Delta rises with the frequency f and with growth g. It falls with the hazard h and with the interest rate r. Hence Cabral's summary: "Collusion is normally easier to maintain when firms interact frequently and when the probability of industry continuation and growth is high." Gas stations that reprice daily collude more easily than holiday resorts that set annual rates. A pharmaceutical market with fast obsolescence, a high h, colludes less easily than cement, page 220. M W G makes the same three points on page 403: growth, a probability of ending, and the time it takes to detect a deviation.
+
+Three point three point one. Worked example: "why don't firms collude more often?", Cabral page 221.
+
+Annual interest of 10 per cent, monthly prices, no hazard and no growth. Delta is 1 over 1 plus 0.10 over 12, that is 1 over 1.00833, which is 0.99174. The largest cartel is n at most 1 over 1 minus delta, which equals 1 plus f over r, which is 1 plus 12 over 0.10: 121 firms.
+
+So, in Cabral's words, "even if there are dozens of symmetric price setting firms", monopoly pricing is an equilibrium. With annual prices instead, delta is 1 over 1.1, which is 0.909, and n is at most 11.
+
+The model now over-predicts collusion, the opposite of the static Bertrand trap. Cabral gives four answers, page 222. One, antitrust makes explicit cartels illegal and can catch tacit ones. Two, turnover: high entry and exit means a high h and a low delta. Three, the infinite price war is not credible: after a deviation both firms gain by renegotiating back to collusion, which removes the threat. Four, prices are not perfectly observed, so secret price cuts are possible. Answers three and four are part four of this script.
+
+Box nine point one, De Beers, page 221, is the punishment made visible. When Zaire left the Central Selling Organisation in 1981, about a million carats of industrial diamonds flooded the market, and the price fell from 3 US dollars to under 1.80 US dollars per carat. In 1983 Zaire asked to return, on worse terms.
+
+Three point four. Structure that facilitates collusion, Cabral section nine point three, pages 227 to 231. Four factors.
+
+First, few firms. The cutoff 1 minus 1 over n rises with n: a smaller share, the same temptation. Cabral's exercise 9.17, page 245, drills it.
+
+Second, symmetric firms. With a cost gap, the jointly efficient cartel gives the high-cost firm zero output. It then has nothing to lose, and undercuts for any delta. An equal-price cartel instead tempts the low-cost firm, whose margin is large and whose punishment, the rival pricing at its own higher cost, is weak. Cabral's evidence is the bromide cartel, which had six price wars between 1885 and 1914 over the division of profit, page 228.
+
+Third, multimarket contact. In identical markets, the stick and the carrot both double, and the cutoff is unchanged. In markets where each firm has its own cost advantage, the threat to retaliate in the other market sustains collusion that a single market cannot. The evidence is Box nine point three on airlines, page 229, and Box nine point four on dog food, page 230.
+
+Fourth, facilitating practices. Most-favoured-customer clauses make a price cut to one buyer costly on all buyers, so they lower v d. The evidence is Box nine point five, the General Electric and Westinghouse price book, from 1963 to 1975, page 231.
+
+Multimarket contact, worked, pages 228 and 229. Two identical markets, each a Bertrand duopoly. Colluding in both is worth 2 times half the monopoly profit, over 1 minus delta. Deviating in both, which is the best deviation since any deviation triggers war everywhere, is worth twice the monopoly profit today and zero after. The condition is the monopoly profit over 1 minus delta at least twice the monopoly profit: delta at least one half. Identical to one market. Contact matters only when the markets differ.
+
+Box nine point three, the number. On routes served by American, Delta and Northwest in 1988, the pairs of airlines met on 527, 357 and 323 of the top 1,000 routes. The average contact is 527 plus 357 plus 323, over 3, which is 402.3. And higher contact predicts higher fares.
+
+Recap of part three. Bertrand collusion needs one half with two firms and 1 minus 1 over n with n, whatever the price, all or nothing. Bertrand needs less patience than Cournot with two firms, more from three on. Delta is built by Cabral's nine point five from frequency, hazard, growth and interest. Monthly pricing at 10 per cent allows 121 firms, which over-predicts collusion, and Cabral gives four reasons why it does not happen. And structure matters: few firms, similar firms, multimarket contact across different markets, facilitating practices.
+
+Spoken checklist. You should be able to derive one half and 1 minus 1 over n. You should be able to explain why the Bertrand cutoff does not depend on the collusive price. You should be able to explain why the Bertrand and Cournot ranking flips at three firms. You should be able to write Cabral's nine point five and sign each ingredient. You should be able to compute the largest cartel from delta. And you should be able to explain why contact in identical markets changes nothing.
+
+Part four. Sharper sticks, and wars that happen on the path.
+
+This part covers note four: Gibbons section two point three point C, printed pages 104 to 107, with Abreu's two-phase strategy, equations two point three point three and two point three point four, Rotemberg and Saloner, and Green and Porter; Gibbons page 111 on renegotiation; Tadelis section ten point four, pages 203 and 204, on price wars and OPEC; and Cabral section nine point one, page 222, and section nine point two, "Price wars", pages 222 to 227, with Box nine point two.
+
+The claim. Grim trigger is the simplest punishment, not the strongest. A one-period punishment harsher than Cournot, followed by a return to collusion, sustains the monopoly outcome at delta equal to one half, which is below 9 over 17, and it is easier to defend against renegotiation. And when firms see only noisy prices, price wars are part of the equilibrium, not evidence of cheating. No one deviates, yet bad luck must trigger punishment, or everyone would cheat.
+
+Four point one. Abreu's carrot and stick, Gibbons pages 104 to 106.
+
+The two-phase strategy. Produce half the monopoly output in period 1. In period t, produce half the monopoly output if both firms produced half the monopoly output in period t minus 1, or if both produced x in period t minus 1. Otherwise produce x. So a deviation from either phase triggers one period of x, the stick. Obeying the stick restores collusion, the carrot.
+
+Normalize a minus c to one. Five payoffs per firm. The collusive payoff, half the monopoly profit, is one eighth. The best deviation from collusion is nine sixty-fourths. When both produce x, each earns 1 minus 2 x, times x; call it pi of x. The best deviation from the punishment is to produce 1 minus x, over 2, earning 1 minus x squared, over 4; call it pi d p of x. And V of x is the value of the punishment now and collusion forever after: pi of x, plus delta over 1 minus delta times one eighth.
+
+The collusive phase, equation two point three point three. A firm must prefer collusion forever to deviating and then being punished. One over 1 minus delta, times half the monopoly profit, must be at least the deviation profit plus delta times V of x.
+
+Substitute V of x. The right side is the deviation profit, plus delta times pi of x, plus delta squared over 1 minus delta times half the monopoly profit. Subtract delta squared over 1 minus delta times half the monopoly profit from both sides. The left side becomes 1 minus delta squared, over 1 minus delta, times half the monopoly profit, which is 1 plus delta times half the monopoly profit. So: 1 plus delta, times half the monopoly profit, is at least the deviation profit plus delta times pi of x. Rearranged, the boxed form: delta times half the monopoly profit minus pi of x, is at least the deviation profit minus half the monopoly profit.
+
+In words: the gain from deviating today must not exceed the discounted loss from tomorrow's one-period punishment.
+
+The punishment phase, equation two point three point four. A firm must prefer to administer the punishment than to deviate from it and face it again. V of x must be at least pi d p of x plus delta times V of x.
+
+Multiply out: 1 minus delta times V of x is at least pi d p of x. With V of x equal to pi of x plus delta times half the monopoly profit over 1 minus delta, this gives: 1 minus delta times pi of x, plus delta times half the monopoly profit, is at least pi d p of x. Rearranged, the boxed form: delta times half the monopoly profit minus pi of x, is at least pi d p of x minus pi of x.
+
+Four point one point one. Worked at delta equal to one half, Gibbons page 106.
+
+Equation two point three point three first. One half times one eighth minus x plus 2 x squared, is at least nine sixty-fourths minus eight sixty-fourths, which is one sixty-fourth. Multiply by 2: 2 x squared minus x plus one eighth is at least one thirty-second. So 2 x squared minus x plus three thirty-seconds is at least zero. The roots are 1 plus or minus the square root of 1 minus three quarters, over 4, which is 1 plus or minus one half, over 4: one eighth and three eighths. So the condition holds for x at most one eighth or x at least three eighths. In Gibbons's words, x over a minus c "is not between 1/8 and 3/8".
+
+Now equation two point three point four. The left side is one sixteenth minus x over 2 plus x squared. The right side is 1 minus x squared over 4, minus x, plus 2 x squared, which is one quarter minus three halves x plus nine quarters x squared. The inequality becomes: zero is at least three sixteenths minus x plus five quarters x squared. The roots are 1 plus or minus the square root of 1 minus fifteen sixteenths, over five halves, which is 1 plus or minus one quarter, over 2.5: three tenths and one half. So the condition holds for x between three tenths and one half.
+
+Both together: x over a minus c lies between three eighths and one half, inclusive.
+
+The figure for this section plots the slack of each constraint against x over a minus c at delta one half. Equation two point three point three is non-negative outside the open interval from one eighth to three eighths. Equation two point three point four is non-negative on the closed interval from three tenths to one half. The shaded band where both hold is from three eighths to one half: the set of punishments that work.
+
+Read the band. The stick must be harsh enough: x at least three eighths, so the punishment profit, pi of three eighths, equal to one quarter times three eighths, which is three thirty-seconds, or 0.094, is below even Cournot's one ninth, 0.111. That deters the collusive-phase deviation. And it must not be so harsh that the firms themselves refuse to carry it out: x at most one half. At x equal to one half, total output is a minus c, the price equals c, and profit is zero. Since one half is less than 9 over 17, the two-phase strategy reaches the monopoly outcome where grim trigger cannot.
+
+Why it beats grim trigger. Grim trigger's stick is Cournot forever: long but mild. Abreu's is a price war for one period: short but severe. And it is self-enforcing, because obeying it is the ticket back to collusion. Severity per period, not duration, is what deters.
+
+Four point two. Renegotiation: is "forever" credible?
+
+Gibbons, on page 111, for the efficiency-wage version, and Cabral, on page 222, as his third reason, raise the same objection. After a deviation, grim trigger prescribes the stage Nash equilibrium forever. But both firms then prefer to return to collusion. So the deviator can propose "let bygones be bygones", and if both expect that, the punishment never happens and the deviation pays. The subgame-perfect equilibrium survives on paper; the threat does not survive negotiation.
+
+Compare the two punishments. Grim trigger, stage Nash forever, hurts the punisher too, forever, and the pressure to renegotiate is strong, because both gain by restarting. The two-phase strategy, one period of x and then collusion, hurts the punisher for one period only, and the pressure to renegotiate is weaker, because collusion returns anyway after one period.
+
+At the graduate level: the formal notion is renegotiation-proofness, introduced in Gibbons section two point three point A. It is named here, not examinable.
+
+Four point three. Imperfect monitoring: price wars on the equilibrium path.
+
+The puzzle, Tadelis page 203. Under perfect monitoring a sustainable cartel never fights: punishment is off the path. Yet cartels have price wars.
+
+The resolution, Tadelis pages 203 and 204, Gibbons pages 106 and 107, Cabral pages 223 and 224. Firms do not see rivals' quantities or secret discounts. They see the market price, or their own sales, which also move with demand. A low price is then a noisy signal: either a rival cut, or demand fell. Each firm is tempted to cheat and plead, in Tadelis's words, "I didn't deviate; demand must have been low!"
+
+Cabral walks through three candidate policies after low demand, page 223.
+
+First policy: never punish, and assume it was demand. That is not an equilibrium: each firm secretly cuts and blames the market.
+
+Second policy: an infinite price war. It deters cheating, but sooner or later a downturn triggers permanent war with nobody cheating.
+
+Third policy: a price war for T periods, then back to collusion. With delta close enough to one, some T deters cheating. Collusion and wars alternate, and no one ever cheats.
+
+Cabral's line, page 224: "If price cuts are difficult to observe, then occasional price wars may be necessary to discipline collusive agreements." Wars are the price of incentive compatibility under noise, a "necessary evil", not a breakdown.
+
+Gibbons's version is Green and Porter, 1984: trigger-price equilibria. Any price below a critical level starts a Cournot phase. In equilibrium no firm deviates, yet an especially bad shock triggers punishment. Because punishments happen by accident, finite punishments beat infinite ones, and Abreu, Pearce and Stacchetti, in 1986, show that two-phase strategies can be optimal. That is Gibbons page 107.
+
+Box nine point two, the Joint Executive Committee, 1880 to 1886, Cabral page 224. A legal railroad cartel on eastbound freight from Chicago to the Atlantic coast. Several times it thought cheating had occurred, cut prices for a while, and returned to the collusive rate. The wars were caused by unpredictable disturbances, not by entry, and not by the predictable season of navigation on the Great Lakes.
+
+At the graduate level: repeated games with imperfect monitoring are "extremely technical and beyond the scope" of Tadelis, page 204, who points to Mailath and Samuelson, 2006. Named, not examinable. The drill is Muñoz-Garcia chapter 6, exercise 10, page 310, and Cabral exercise 9.19, page 245.
+
+Four point four. Observable demand shocks: wars in booms. This is Rotemberg and Saloner.
+
+If demand varies but everyone sees the current shock before pricing, Gibbons page 106 and Cabral page 225, then deviations are detectable, yet the temptation varies. The gain from undercutting is proportional to current demand, while the future loss, with independent and identically distributed shocks, is the same in every state. So the no-deviation constraint binds in high-demand periods, and the cartel must lower its price in booms to keep its members loyal.
+
+Compare the two models on three points. When do wars or low prices come? Under Green and Porter, with unobserved shocks, after low demand. Under Rotemberg and Saloner, with observed shocks, during high demand. The price over the cycle: pro-cyclical under Green and Porter, counter-cyclical under Rotemberg and Saloner. Cabral's evidence: for Green and Porter, the Joint Executive Committee railroads of 1880 to 1886; for Rotemberg and Saloner, cement from 1947 to 1981, where a rise of 1 per cent in GDP goes with a fall in the relative price of between 0.5 and 1 per cent, page 225.
+
+Four point five. A firm whose delta falls starts the war, Cabral pages 225 to 227.
+
+A firm in financial trouble attaches a higher probability to exiting: a higher hazard h in equation nine point five, so a lower delta. If its delta drops below its cutoff, it deviates and a price war follows. An airline executive put it this way, on page 226: "Fares are dictated not by the strongest, but by the financially troubled". Wars can also be started by the strong. The Times cut its price from 45 to 30 pence in July 1993, and to 20 pence ten months later. Google cut cloud prices by 30 to 85 per cent in March 2014. Pages 226 and 227.
+
+Recap of part four. Abreu's two-phase strategy: one period of a harsh output x, then back to collusion; at delta one half it works for x over a minus c between three eighths and one half, so it sustains the monopoly outcome below 9 over 17. "Forever" invites renegotiation. Under noisy monitoring, wars happen on the path with nobody cheating: Green and Porter, and the Joint Executive Committee. Under observed shocks, prices fall in booms: Rotemberg and Saloner, and cement. A firm whose delta falls starts the war.
+
+Spoken checklist. You should be able to write the two constraints, two point three point three and two point three point four, from the definitions of the phases. You should be able to solve both at delta one half and find the band from three eighths to one half. You should be able to explain why severity per period, not duration, deters. You should be able to state the renegotiation objection. And you should be able to contrast Green and Porter with Rotemberg and Saloner on timing and on the cyclicality of prices.
+
+Part five. Reputation: trust that pays for itself.
+
+This part covers note five: Tadelis section ten point five, "Sequential Interaction and Reputation", and section ten point five point one, "Cooperation as Reputation", printed pages 204 and 205, with Figure ten point one and footnotes 8 and 9; and Milgrom and Roberts chapter 8, "Reputations as Contract Enforcers", pages 259 to 266: the elementary theory and the trust box on pages 261 to 263 with footnote 11, "live and let live" on page 264, and "Ambiguity, Complexity, and Limits of Reputations" on pages 264 to 266.
+
+The claim. In the one-shot trust game trust is never offered, because it would never be honoured. Repeat it, and the trusted party honours trust to keep being trusted. Honesty becomes an asset whose value is the stream of future business, and it is worth protecting if and only if delta is at least G over V plus G: the temptation over the temptation plus the per-period value of the relationship. A reputation is that asset when the future partners are different people who observe the past. Its limits are the limits of the assumption that everyone can tell, cheaply and after the fact, whether the right thing was done.
+
+Five point one. Tadelis's trust game, pages 204 and 205.
+
+One shot, Figure ten point one. Player 1 trusts or does not trust. If trusted, player 2 cooperates or defects. The payoffs, player 1 first: not trusting gives zero and zero. Trust and cooperation give 1 and 1. Trust and defection give minus 1 to player 1 and 2 to player 2. Backward induction: player 2 defects, because 2 beats 1. Anticipating it, player 1 does not trust, because zero beats minus 1. The subgame-perfect outcome, zero and zero, is Pareto-dominated by 1 and 1.
+
+Infinitely repeated. Footnote 8 notes that the stage game is sequential, but every extensive form has a normal form, so the repeated-game machinery applies. Grim trigger:
+
+Player 1 trusts in period 1, and keeps trusting while no deviation from trust and cooperation has occurred. After one, never trusts again.
+
+Player 2 cooperates in period 1, and keeps cooperating while no deviation from trust and cooperation has occurred. After one, defects forever.
+
+Off the path, each prescription is a best response to the other's: never trust, and defect if ever trusted. On the path, player 1's stream of ones beats a stream of zeros. Player 2 conforms if and only if the stream of ones beats 2 today and zero after: 1 over 1 minus delta is at least 2, which means 1 is at least 2 minus 2 delta, which means delta is at least one half. Page 205.
+
+In the template: v c is 1, v d is 2, v p is zero, so the cutoff is 2 minus 1, over 2 minus zero: one half.
+
+Footnote 9, the trap. Writing player 2's strategy as "cooperate as long as player 1 trusts me" gives a Nash equilibrium that is not subgame-perfect: some off-path prescriptions are not best responses. Tadelis leaves the proof as exercise 10.4, page 216. The lesson: a repeated-game strategy must say what to do after every history, including the ones the equilibrium never reaches.
+
+The figure for this section has two panels. On the left, the one-shot trust game as a tree: player 1 chooses not trusting, with payoffs zero and zero, or trusting; then player 2 chooses cooperating, with 1 and 1, or defecting, with minus 1 and 2; the cooperative path is drawn in green. On the right, the average payoff of honouring, flat at 1, and of cheating, 1 minus delta times 2, crossing at delta one half; and the guarantor's fee of 0.1, crossing the same cheating line at 0.95. That second threshold is from Tadelis page 207 and is the subject of part six.
+
+The same falling "cheat" line serves both players, because both grab 2 once and get zero after. What differs is the flat line they give up: the trusted player's 1 against the guarantor's 0.1. A thinner stream of rents needs a far more patient keeper.
+
+Five point two. Milgrom and Roberts's elementary theory, pages 259 to 263.
+
+The setting. Relational contracts leave one party relying on the other's good faith. Examples: an authority relation; an employee who accepts direction "within somewhat nebulous customary limits"; a contractor who must handle rain delays and discontinued fixtures. Pages 259 to 261. The elementary theory assumes that contracts cannot specify what to do, but that the parties can tell afterwards whether the right thing was done. Page 261.
+
+The box, page 261. The offeror offers trust or not; the decision maker honours it or not. If the offeror offers trust and the decision maker honours it, both get V. If the offeror offers trust and the decision maker does not honour it, the offeror gets minus L and the decision maker gets V plus G. If the offeror does not offer trust, both get zero, whatever the decision maker would have done. V, G and L are all positive: honoured trust beats no trade, dishonouring pays G extra, and the offeror risks L. Played once, there is no trust, page 262: the same unravelling as Tadelis's tree.
+
+The decision maker's speech, page 262: "trust me once ... if I should ever fail to honor your trust, you would never trust me again. For that very reason, it will actually be in my interest ... to honor your trust." Is it believable? Value a stream of X per meeting as N times X today. Honouring forever is worth N V. Cheating now is worth V plus G today and nothing after.
+
+M and R's multiplier, footnote 11, page 263. With meetings every t periods at interest rate r, N equals 1 over 1 plus r to the power t minus 1, plus 1. That simplifies to 1 plus r to the t, over 1 plus r to the t minus 1; which equals 1 over 1 minus 1 plus r to the power minus t; which is 1 over 1 minus delta, with delta defined as 1 plus r to the power minus t.
+
+So the exact condition is: N V at least V plus G. Equivalently, N minus 1 times V is at least G. Equivalently, delta over 1 minus delta times V is at least G. Equivalently, delta is at least G over V plus G. That is Tadelis's one half when V and G both equal 1.
+
+A caution. M and R write the comparison as N V greater than G, on page 263: honouring is worth N V against "only G" from cheating. Their own box gives the cheater V plus G in the round he cheats, so the exact one-shot-deviation comparison is N V at least V plus G. The two differ by one round's V. They agree in spirit, and almost in value when N is large. In an exam, derive from the box.
+
+Five point two point one. Worked example: how often must you meet, at 10 per cent a year?
+
+Meeting every year, t equals 1: delta is 1 over 1.1, which is 0.909; N is 11.0; the decision maker honours if and only if G is at most 10 V.
+
+Meeting every 5 years: delta is 1 over 1.6105, which is 0.621; N is 2.64; honours if and only if G is at most 1.64 V.
+
+Meeting every 20 years: delta is 1 over 6.727, which is 0.149; N is 1.17; honours if and only if G is at most 0.17 V.
+
+Frequency is patience. A relationship renewed every year can carry a temptation ten times its per-meeting value; one renewed every twenty years almost none. Compare Cabral's frequency f in part three.
+
+Five point three. Many equilibria, M and R page 263.
+
+The trusting equilibrium is not the only one. "Never offer, never honour" is also an equilibrium; it repeats the stage subgame-perfect equilibrium. So is a third: the decision maker cheats every second time trust is offered, and the offeror keeps offering as long as there are never two cheats in a row. That is an equilibrium if L is less than V and rounds are frequent, because the offeror's average over a pair of rounds is V minus L, over 2, which is positive. In M and R's words, "The hypothesis of Nash equilibrium rules out some patterns of behavior but does not always lead to a unique prediction". That is the folk theorem of Lecture 5, in M and R's words.
+
+Five point four. From relationship to reputation, M and R page 263.
+
+Nothing in the box argument needs the offeror to be the same person each round. If the decision maker faces a series of different offerors, each of whom trusts if and only if trust was honoured the last time it was offered, his calculation is unchanged. He honours trust, in M and R's words, "to encourage future trading partners to offer trust or, in other words, to maintain his or her reputation for honesty."
+
+Two preconditions follow, and both are where reputations fail. First, future partners observe the past: the history must travel. Second, they can judge it: tell honoured from dishonoured trust. A good reputation then attracts partners, and saves the cost of detailed contracts and of legal enforcement.
+
+Five point five. "Live and let live", 1914 to 1918, M and R page 264.
+
+The same opposing battalions faced each other for long stretches on the Western Front: a repeated game. Each side could reciprocate deadly fire, so "fire in earnest only if fired upon" became an equilibrium. To keep it one, each side showed that it could retaliate, while showing that it would not fire unprovoked. German snipers cut a hole in a cottage wall; artillery placed a few accurate shots. This is Axelrod, 1984. Commanders ended the truces with commando raids that set off cycles of retaliation. Two lessons: the punishment must be visibly feasible, and an outsider who can inject deviations can destroy the equilibrium.
+
+Five point six. The limits of reputation, M and R pages 264 to 266. Three limits.
+
+First limit, ambiguity: was it honourable? If right behaviour were easy to judge, courts could enforce it cheaply. Parties disagree about the circumstances and about what would have worked. What helps: shared principles.
+
+Second limit, outsiders must judge. A reputation system asks a series of third parties to evaluate disputes they did not see, which is costly and error-prone. What helps: institutions that judge and broadcast, the subject of part six.
+
+Third limit, the end game. The relationship must be expected to last long enough that its value exceeds the gain from cheating. Near a known end, reputation is worth little. What helps: explicit incentives, and the sale of the business.
+
+Corporate culture as a fix for ambiguity, page 265: simple, communicable rules that make "the right thing" unambiguous. The San Francisco 49ers' rule that an injured starter always gets his place back, so injuries are not concealed. Nordstrom's story of cheerfully accepting returned tyres it never sold. Reputations and the law, pages 265 and 266: in Shasta County, neighbours settle damage done by stray cattle by community norms, not by the law, as Ellickson found; and "most contractual disputes never reach a court of law."
+
+The end game, three cases, page 266. First, chief executives near retirement: their career concerns weaken, so their pay should become more sensitive to performance, and Gibbons and Murphy found exactly that. Second, selling the business: a founder near retirement keeps the firm's reputation intact to get a higher price, so the firm acts with a longer horizon than its owner. That is the brand-name logic of part six. Third, bankruptcy: customers of a failing firm claim the last deliveries were defective and refuse to pay in full. With the relationship ending, attitudes harden.
+
+The end game is the finite-horizon unravelling of Lecture 5 in business form. The final period cannot be rewarded, so it cannot be disciplined, and the problem creeps backwards. M and R's quantitative exercise 4, page 286, asks about a trust game played exactly twice.
+
+Recap of part five. The trust game needs delta at least one half. M and R's box gives the exact condition N V at least V plus G, which is delta at least G over V plus G; their printed N V greater than G drops one round's V. The multiplier N is 1 over 1 minus delta, and frequency is patience. There are many equilibria. A reputation is the same calculation in front of a series of partners who see and judge the past. Its limits are ambiguity, outsiders who must judge, and the end game.
+
+Spoken checklist. You should be able to solve the one-shot trust game by backward induction and derive one half in the repeated game. You should be able to explain footnote 9's trap. You should be able to derive M and R's multiplier as 1 over 1 minus delta and the exact condition from the box. You should be able to say why meeting frequency matters. And you should be able to name the two preconditions of a reputation and the three limits.
+
+Part six. When the traders are strangers: borrowed reputations.
+
+This part covers note six: Tadelis section ten point five point two, "Third-Party Institutions as Reputation Mechanisms", printed pages 205 to 207, with Figure ten point two and footnote 10; Tadelis section ten point five point three, "Reputation Transfers without Third Parties", pages 207 to 209; and Milgrom and Roberts chapter 8, pages 252 and 258 to 259, on the Maghribi traders and brand names, and "The Advanced Theory: Reputations Aided by Institutions", pages 266 to 268.
+
+The claim. One-shot traders cannot discipline each other, but a long-lived third party can: a guarantor holding a bond, a judge, a brand name passed from owner to owner. The repeated game moves from the traders to the institution, and the institution's own no-cheating condition is the same inequality. With a thin per-period rent it needs a very high delta: 0.95 in Tadelis's example. Reputation is then not a trait of a person but an asset that can be held, sold and lost.
+
+Six point one. The guarantor, Tadelis pages 205 to 207.
+
+A bond fixes the one-shot game, Figure ten point two. Player 2 deposits 2 with a guarantor, player 3, under the contract: "if player 1 trusts me and I defect, you keep the 2; otherwise return it". If the guarantor must follow the contract, defecting nets player 2 a payoff of 2 minus 2, which is zero, less than 1. So player 2 cooperates, player 1 trusts, and the unique subgame-perfect equilibrium is cooperative trade.
+
+Two objections, page 206. Why would such a committed guarantor exist? And if player 3 is a real player, his dominant strategy is to keep the deposit.
+
+The repeated-game answer. Player 3 is a long-lived local official, a judge or an arbitrator, with discount factor delta. In each period t a new pair of traders arrives and plays the trust game once. The period-t player 2 may post a bond of 2 with player 3 for a fee w of 0.1.
+
+The strategies, pages 206 and 207. The period-t player 1 trusts if and only if the period-t player 2 posted a bond. The period-t player 2 posts a bond if and only if player 3 has honoured the bond contract in every earlier period; if a bond was posted, he cooperates, and otherwise he defects. Player 3 returns the bond to a player 2 who cooperated, and keeps it otherwise.
+
+The traders. Given player 3's strategy, each pair plays Figure ten point two. With the bond, player 2 gets 1 minus 0.1, which is 0.9, by cooperating, against 2 minus 2 minus 0.1, which is minus 0.1, by defecting. So he cooperates, and he posts the bond, because 0.9 beats zero.
+
+The guarantor. Honouring pays 0.1 every period. Cheating means keeping the bond, 2 once, and then no trader ever posts again. The condition: 0.1 over 1 minus delta is at least 2, which means 0.1 is at least 2 minus 2 delta, which means delta is at least 0.95. Page 207. In the template: v c is 0.1, v d is 2, v p is zero, and the cutoff is 2 minus 0.1, over 2, which is 0.95.
+
+Footnote 10, the design margin. The bond need only exceed 1, player 2's one-period gain from defecting. And a trader would pay any fee up to 1 for the service. Fee and bond are the institution's two dials: a higher fee raises the guarantor's stake in his reputation; a smaller bond lowers his temptation. Exercise 10.10, page 219, pushes this to its limit.
+
+History, page 207. Milgrom, North and Weingast, 1990, read the law merchants of medieval Europe as such third parties. Future traders "somehow learned about the law merchant, and about his past adherence" to the norms. Greif, 2006, surveys institutions and trade.
+
+Six point two. Brand names: a reputation you can sell, Tadelis pages 207 to 209.
+
+Kreps, 1990. Drop the third party. Before period 1, the first player 2 can create a unique brand name, "Trusted Associates", and sell it to the next period's player 2 at a price p star greater than 1. The strategies, page 208, in outline: player 1 trusts a brand that was bought and under which no abuse of trust ever occurred; each player 2 buys the clean brand, cooperates, and sells it on at p star.
+
+Why it works. In Tadelis's words, "The investment made in the name ... acts like a bond". The brand is worth p star to its holder only while it is clean. Cheating earns one extra unit today, 2 instead of 1, and destroys a resale value of p star, which is more than 1. Short-lived owners become, through the name, an infinitely lived player: "the concept of a terminal period is removed altogether". Proving that the profile is a subgame-perfect equilibrium is exercise 10.11, page 219.
+
+The roots, page 208: Klein and Leffler, 1981, a firm's brand value as a bond for its performance; and Crémer, 1986, a firm sustaining cooperation among employees who come and go.
+
+The open question, pages 208 and 209. Bootstrap equilibria say nothing about how reputations arise, or why their value rises and falls. Tadelis's remark: in The Princess Bride, the Dread Pirate Roberts is a name handed from captain to captain, because "no one would surrender to the Dread Pirate Westley."
+
+M and R's product-market version, page 259, is Klein and Leffler again: "thin profit margins are the enemy of quality". With recognizable products and high margins, the value of staying in business outweighs the short-run gain from degrading quality. A brand covering a whole product line extends the reputation to products replaced too fast for their own track record to matter: the Black and Decker drill.
+
+Six point three. Institutions that make reputations work, M and R pages 266 to 268.
+
+M and R's advanced theory. When people specialize, transactions with any one partner are infrequent, and the elementary theory's repeated relationship is missing. There are two responses. Replace reputation with the legal system, which is general but slow, costly, and sometimes without authority across borders. Or buttress reputation with private institutions. Four of them.
+
+First, the law merchant, private judges applying the lex mercatoria. It judges disputes and broadcasts offenders: the outsider's two hard tasks from part five. Page 267.
+
+Second, the whalers' "gam". Captains exchanged information on disputes at sea. United States whalers concentrated in a few towns needed nothing more: there was no recorded court case over whale ownership until rents fell in the late nineteenth century. Pages 267 and 268.
+
+Third, the Better Business Bureau, credit bureaus and consumer agencies. They collect and disseminate past behaviour, raising the cost of cheating. Page 268.
+
+Fourth, merchant guilds and the Hansa. They coordinate sanctions, such as an embargo of a city that reneged, against the free-rider problem of individual sanctioners. Page 268.
+
+The Hansa, worked as an incentive problem, page 268. In 1280 the guild trading in Bruges moved its trade to Aardenburg. Bruges broke the embargo by offering special terms to merchants from various towns. Each merchant's gain from breaking the embargo was private, and the cost, a weaker threat, was shared: a free-rider problem. The Hansa added a second-order sanction. Traders who broke a declared embargo could have their home city embargoed, which made complying individually rational again.
+
+The Maghribi traders, M and R pages 252 and 258, following Greif, 1989. Eleventh-century merchants in Fustat ostracized an agent who cheated any one of them. In the efficiency-wage formula of part seven, this lowers the cheater's outside option, w bar; it raises the multiplier N, because all merchants' business is lost, not one; and the web of correspondence raises the detection probability p. Overseas agency became cheaper to motivate as the network grew.
+
+Recap of part six. A guarantor paid 0.1 a period who could pocket a bond of 2 keeps the contract if and only if delta is at least 0.95; the bond need only exceed 1 and the fee can go up to 1. A brand name acts as a bond and makes short-lived owners an infinitely lived player. Private institutions judge, broadcast and coordinate sanctions; the Hansa solved the sanctioners' free-rider problem with a second-order sanction.
+
+Spoken checklist. You should be able to derive 0.95 for the guarantor and explain the two dials of footnote 10. You should be able to explain why a brand's resale value deters cheating. And you should be able to say which of the outsider's tasks each institution performs.
+
+Part seven. Efficiency wages: a rent the worker will not risk.
+
+This part covers note seven: Gibbons section two point three point D, "Efficiency Wages", printed pages 107 to 112, with equations two point three point five to two point three point seven; and Milgrom and Roberts chapter 8, "Efficiency Wages for Employment Incentives", pages 250 to 255, with equations eight point one to eight point six and the example of 50,000 and 40,000 dollars, and the MacRents box on pages 260 and 261.
+
+The claim. When effort cannot be contracted on, a firm can still buy it with a promise: pay more than the worker's outside option and fire him if output is ever low. The wage must leave a rent large enough that the expected loss of the job outweighs the one-period gain from shirking. The wage w star equals w zero plus e plus 1 minus delta times e, over delta times 1 minus p. The premium explodes as detection fails, p going to 1, or as patience vanishes, delta going to zero. And the relationship survives only if the job produces enough to pay it. This is the cartel inequality again, with the worker as the party tempted to cheat.
+
+The scope rule, said where it applies. Efficiency wages are covered here as a repeated-game application only. Incentive contracts with hidden effort, agency theory and optimal pay for performance, are moral hazard, and out of scope for this course. M and R's comparison with incentive pay is named, not developed.
+
+Seven point one. Why pay more than the market.
+
+M and R open with an organization that must rely on an employee's honesty: a police officer offered bribes, a tanker captain who must stay sober, an analyst who must investigate with diligence. The only sanction is dismissal, because fines are impractical when wealth is limited, page 250. Then the threat of firing is the incentive, and it bites only if the job is worth more than the next one: the worker must earn a rent.
+
+Marshall's epigraph says it: "Highly paid labour is generally efficient and therefore not dear labour", page 248. Lord Clive, reforming the East India Company's servants around 1765, saw it too: "it was absurd to give men power and to require them to live in penury", page 252. The class 1 notes meet the same logic in Ford's five dollar day.
+
+Seven point two. Gibbons's stage game, pages 107 and 108.
+
+Three moves. First, the firm offers a wage w. Second, the worker accepts or rejects; rejecting means self-employment at w zero. Third, if he accepts, he supplies effort, with disutility e, or shirks, with no disutility. Effort is not observed; output is. With effort, output is y, a positive number, for sure. Shirking gives y with probability p and zero with probability 1 minus p. So low output is proof of shirking.
+
+The payoffs when employed at w. The firm gets y minus w, or minus w if output is zero. The worker gets w minus e, or w if he shirks.
+
+The assumptions, page 108: y minus e is greater than w zero, which is greater than p times y. In words: employment with effort is efficient, and self-employment beats employment with shirking.
+
+Played once. The wage is paid in advance, so the worker shirks. Anticipating it, the firm offers at most w zero, and the worker stays self-employed. The efficient relationship never forms.
+
+Why not pay on output? Courts may be unable to verify output, its quality, or unexpected production difficulties, so output-contingent contracts are infeasible or imperfect, "but there will remain a role for the repeated-game incentives studied here", page 108.
+
+Seven point three. The worker's condition, Gibbons pages 108 to 110.
+
+The strategies. Call a history "high-wage, high-output" if every past offer was w star, every offer was accepted, and every output was high.
+
+The firm offers w star in period 1 and after every high-wage, high-output history, and offers a wage of zero otherwise.
+
+The worker accepts if and only if the wage is at least w zero. He supplies effort if and only if the history, including the current offer, is high-wage, high-output; otherwise he shirks. Because the stage game is sequential, a deviation by the firm is detected within the stage and answered at once, page 109.
+
+The value of effort forever. Output is high for sure, so the same choice recurs next period. V e equals w star minus e, plus delta times V e. So V e equals w star minus e, over 1 minus delta.
+
+The value of shirking. This period he gets w star, with no effort cost. With probability p output is high and the same situation recurs. With probability 1 minus p he is fired and self-employed forever, worth w zero over 1 minus delta. So V s equals w star, plus delta times the bracket: p times V s, plus 1 minus p times w zero over 1 minus delta. Collect V s: V s times 1 minus delta p equals w star plus delta times 1 minus p times w zero, over 1 minus delta. So V s equals 1 minus delta times w star, plus delta times 1 minus p times w zero, all over 1 minus delta p times 1 minus delta.
+
+Effort if and only if V e is at least V s. Multiply both by 1 minus delta times 1 minus delta p, which is positive. The condition becomes: w star minus e, times 1 minus delta p, is at least 1 minus delta times w star, plus delta times 1 minus p times w zero.
+
+Collect the terms in w star. The coefficient is 1 minus delta p, minus 1 minus delta, which is delta times 1 minus p. So: w star times delta times 1 minus p is at least e times 1 minus delta p, plus delta times 1 minus p times w zero. Divide: w star is at least w zero, plus 1 minus delta p over delta times 1 minus p, times e.
+
+Split 1 minus delta p as delta times 1 minus p, plus 1 minus delta. The result, Gibbons's equation two point three point five: w star is at least w zero, plus e, plus 1 minus delta over delta times 1 minus p, times e.
+
+The firm must cover three things: the outside option w zero; the effort cost e; and a wage premium, 1 minus delta times e, over delta times 1 minus p. The premium is the rent.
+
+Four limiting cases. When p goes to 1, so shirking is almost never caught, the premium goes to infinity: "the wage premium must be extremely high", page 110. When p is zero, perfect monitoring, the premium is 1 minus delta over delta, times e; that is equation two point three point six, and w star is at least w zero plus 1 plus 1 minus delta over delta, times e, which is w zero plus e over delta. When delta goes to 1, the premium goes to zero: a patient worker needs almost no rent. When delta goes to zero, the premium goes to infinity: no future, no discipline.
+
+The template, recovered. Rearranging equation two point three point five: the gain today, e, is no larger than the detection probability 1 minus p, times delta over 1 minus delta, times the rent per period, w star minus e minus w zero. That is exactly the second form from part one, with the loss weighted by the probability that cheating is caught.
+
+Seven point four. The firm's condition and the patience required, page 110.
+
+Given the worker's strategy, the firm compares paying w star forever, y minus w star a period, with offering zero and getting zero. So y minus w star must be at least zero: equation two point three point seven.
+
+Together with equation two point three point five at its lowest wage: y minus e must be at least w zero plus 1 minus delta over delta times 1 minus p, times e.
+
+Solve for delta. Write S for y minus e minus w zero, the surplus of the relationship, which is positive. Then S times delta times 1 minus p is at least 1 minus delta times e. Equivalently, delta times the sum of 1 minus p times S, plus e, is at least e. So delta must be at least delta min, equal to e, over e plus 1 minus p times y minus e minus w zero.
+
+This is "the familiar restriction that delta must be sufficiently large", page 111. Efficiency, a positive surplus, is necessary but not sufficient.
+
+Off the path, page 111. After any other history the worker never works, so the firm should induce self-employment, offering zero forever, and the worker should shirk and accept only wages of at least w zero. Note that the subgames now begin within stages too: after the worker sees the offer.
+
+Seven point five. Renegotiation and outside options, Gibbons pages 111 and 112. Three points.
+
+First, permanent self-employment is a strange punishment. Both players prefer to restart the high-wage relationship: the renegotiation problem of part four. A firm with many workers may refuse to renegotiate with one, to protect the equilibrium with the others. Firms may refuse to hire workers fired elsewhere, which is a possible account of low mid-career mobility among large Japanese firms.
+
+Second, outside jobs set w zero. If fired workers find jobs they prefer to self-employment, the net wage in those jobs plays the role of w zero. If a fired worker loses nothing, there is no punishment and no effort in any subgame-perfect equilibrium.
+
+Third, sovereign debt, Bulow and Rogoff, 1989, page 112. If a defaulting country can replicate long-term loans with cash-in-advance trades, creditors have no punishment, and lending collapses. The same logic: no loss, no discipline.
+
+Seven point six. Milgrom and Roberts's version of the Shapiro and Stiglitz model, pages 250 to 252.
+
+M and R's notation differs from Gibbons's. w is the current wage. w bar is the wage after being fired, net of search costs. g is the gain from cheating. p is the probability that cheating is detected. N is a multiplier for the long-term value of the relationship: N equals 1 for a one-period job, and is larger the longer and more certain re-hiring is.
+
+The employee cheats if and only if g is greater than p times w minus w bar, times N: equation eight point one. The gain from cheating, against the probability of detection times the income lost by being fired. And w minus w bar is the rent.
+
+Seven point six point one. Worked example, M and R's numbers, page 251.
+
+The wage is 50,000 dollars, w bar is 40,000 dollars, g is 1,000 dollars, p is 0.05, and N is 1. Then p times w minus w bar times N is 0.05 times 10,000 times 1, which is 500. That is less than g, 1,000. So cheating pays.
+
+The efficiency wage, the smallest wage that deters, page 252: w equals w bar plus g over N p. That is 40,000 plus 1,000 over 0.05 N, which is 40,000 plus 20,000 over N. With N equal to 1, that is 60,000 dollars. With N equal to 2, 50,000 dollars. So the 50,000 dollar job deters cheating only if the relationship is worth twice a single period.
+
+Lord Clive and the Maghribi traders in the formula, page 252. The East India Company's servants had a large g, the power to extort, and a small p, because their posts were remote; so only a large premium worked. The Maghribi coalition lowered w bar and raised N, because an ostracized agent lost all merchants' business, and raised p, through dense correspondence. That is part six.
+
+Seven point six point two. The two models are one inequality.
+
+Four correspondences. Gibbons's gain from shirking, e, is M and R's g. Gibbons's detection probability, 1 minus p, is M and R's p: the two books use the letter p in opposite ways. Gibbons's rent, w star minus e minus w zero, is M and R's w minus w bar, so M and R's w bar corresponds to Gibbons's w zero plus e: M and R's outside wage is already net of the effort an honest worker supplies in either job. And Gibbons's delta over 1 minus delta is M and R's N. Gibbons counts the future only; M and R's N equals 1 for a one-period job, so it counts the current period's rent too, as their footnote 4 explains. Same algebra, different bookkeeping.
+
+Calibrated into Gibbons. Take e equal to 1, w zero equal to 39, so that w zero plus e is 40, equal to w bar, and p equal to 0.95, which is detection of 0.05, all in thousands of US dollars. Then w star is 40 plus 1 minus delta over delta, times 1 over 0.05: 40 plus 20 times 1 minus delta over delta. At delta one half, which is N equal to 1, w star is 60. At delta two thirds, which is N equal to 2, w star is 50.
+
+The figure for this section plots the minimum no-shirking wage w star against delta for three values of p: 0.95, 0.5 and zero. Each curve falls from very high values to the floor, w zero plus e, which is 40, as delta approaches 1. On the p equal to 0.95 curve, the points delta one half, with w star 60, and delta two thirds, with w star 50, are marked, and M and R's current wage of 50 is drawn as a dashed line. The vertical gap between a curve and the dotted floor is the premium. At 5 per cent detection the premium is twenty times what perfect monitoring needs at the same delta. The M and R wage of 50 crosses the curve exactly at delta two thirds, N equal to 2.
+
+The interactive companion called the No-Shirking Wage lets you move delta, the detection rate and the effort cost, and watch w star, the rent, and the two value lines, V e and V s, cross; raise y to see when the firm will pay. Its defaults reproduce M and R's 60,000 dollars.
+
+Seven point seven. Monitoring, the alternative, and the evidence, M and R pages 252 to 255 and 260 to 261.
+
+Monitoring against wages, pages 254 and 255. If detection costs M of p per period, the firm solves the minimum cost implementation problem: minimize M of p plus w, over p and w, subject to p times w minus w bar times N at least g. That is equation eight point two. The wage is set at its floor, w equals w bar plus g over N p, equation eight point three. Substituting, the firm minimizes M of p plus w bar plus g over N p, equation eight point four. The first-order condition is M prime of p star equals g over p star squared times N, equation eight point five. The second-order condition is M double prime of p star plus 2 g over p star cubed times N, at least zero, equation eight point six.
+
+How does p star move with N? Differentiate equation eight point five. M double prime of p star times d p star equals minus 2 g over p star cubed N, times d p star, minus g over p star squared N squared, times d N. So d p star over d N equals minus g over p star squared N squared, divided by M double prime of p star plus 2 g over p star cubed N. That is negative, by equation eight point six holding strictly. In M and R's words, "As the potential length of a relationship increases, there is more trust and less direct monitoring", page 255.
+
+Why not explicit incentive pay? Pages 252 and 253. Wealth limits: the worker cannot bear low pay or fines. And subjective evaluations: a firm that pays on its own assessment is tempted to underrate; a flat efficiency wage removes that temptation. The incentive-contract side is moral hazard, and out of scope.
+
+Unemployment as the stick, page 253. Not every firm can pay above every other. Shapiro and Stiglitz close the model with unemployment, so a fired worker loses income while searching, at the social cost of idle labour. Okuno-Fujiwara's alternative, lifetime employment with no mid-career hiring, is "very fragile", page 254.
+
+MacRents, pages 260 and 261, from Krueger, 1990. Company-owned fast-food outlets, run by salaried managers who monitor less than franchisee-owners, should pay more. They do. Supervisors earn 8.9 per cent more, and full-time non-managerial workers 1.7 per cent more, than in franchised outlets. Company outlets are only two thirds as likely to start workers at the minimum wage, and give more generous benefits, such as free meals.
+
+Recap of part seven. One shot, the worker shirks and the relationship never forms. Repeated, effort is sustained by w star at least w zero plus e plus 1 minus delta times e over delta times 1 minus p. The firm pays only if y is at least w star, which needs delta at least e over e plus 1 minus p times the surplus. M and R's version is cheat if and only if g exceeds p times the rent times N, with an efficiency wage of w bar plus g over N p: 60,000 dollars with N equal to 1 and 50,000 with N equal to 2. A longer relationship means less monitoring.
+
+Spoken checklist. You should be able to derive V e and V s and get equation two point three point five. You should be able to sign the premium in p and in delta, and state the perfect-monitoring case. You should be able to combine the worker's and the firm's conditions into delta min. You should be able to map Gibbons's model into M and R's, watching the two p's. And you should be able to derive the sign of d p star over d N.
+
+Part eight. Synthesis: a relational contract is a self-enforcing promise.
+
+This part covers note eight, a synthesis of Tadelis sections ten point four and ten point five, Gibbons sections two point three point C and D, Cabral sections nine point one to nine point three, and Milgrom and Roberts chapter 8, pages 250 to 268, with the relational contract defined on page 259.
+
+The claim. A relational contract, M and R's term for an agreement that leaves decisions to discretion and relies on good faith, page 259, is enforced not by a court but by the value of the relationship itself. Every case in this lecture is one inequality with four numbers: the per-period value of cooperating, the best one-period gain from cheating, what is left after the breakdown, and delta. Organizational design is the art of moving those four numbers.
+
+Eight point one. The cases side by side.
+
+The inequality: cooperation is self-enforcing if and only if the gain from cheating today, v d minus v c, is no larger than delta over 1 minus delta, times the detection probability, times the per-period stake, v c minus v p. Under perfect monitoring the detection probability is 1.
+
+Six relationships, each with its v c, v d, v p and cutoff.
+
+The symmetric Cournot cartel: v c is a minus c squared over 8, v d is 9 times a minus c squared over 64, v p is a minus c squared over 9, and the cutoff is 9 over 17, 0.529.
+
+The Cournot cartel with the 22 and 23 split: v c is 990 for firm 1 and 1035 for firm 2; v d is 1122.25 and 1156; v p is 900; the cutoffs are 0.595 and 0.473.
+
+The Bertrand cartel with n firms: v c is the monopoly profit over n, v d is the monopoly profit, v p is zero, and the cutoff is 1 minus 1 over n.
+
+The trust game, for the trusted party: v c is V, equal to 1; v d is V plus G, equal to 2; v p is zero; the cutoff is G over V plus G, one half.
+
+The guarantor or law merchant: v c is the fee, 0.1; v d is the bond, 2; v p is zero; the cutoff is 0.95.
+
+The efficiency wage, for the worker: v c is w star minus e; v d is w star, with no effort, but the shirker is caught with probability 1 minus p; v p is w zero; and the condition is w star at least w zero plus e plus 1 minus delta times e over delta times 1 minus p.
+
+Eight point two. The design levers. Six of them.
+
+First, raise the stake, v c minus v p, which moves the denominator up. Examples: the efficiency-wage rent; a brand's resale value; a harsher punishment, as in Abreu.
+
+Second, cut the temptation, v d minus v c, which moves the numerator down. Examples: most-favoured-customer clauses; a bond that is lost on cheating; sharing a cartel so that no member is "worse treated".
+
+Third, raise delta. Examples: frequent interaction, the f in Cabral; a stable market, a low h; growth, g; all from Cabral's nine point five; and lifetime employment.
+
+Fourth, raise detection. Examples: monitoring at cost M of p; credit bureaus; the Maghribi correspondence; transparent prices.
+
+Fifth, make judging easy, which removes ambiguity. Examples: corporate culture's simple rules; private judges.
+
+Sixth, remove the end, so there is no terminal period. Examples: the sale of the business; brand names that outlive their owners.
+
+Every lever has a social sign. The same levers that let a firm buy honesty from its workers let competitors keep prices high. That is why antitrust attacks transparency devices, such as General Electric's price book in Cabral's Box nine point five, that a personnel manager would welcome.
+
+Eight point three. When relational contracts fail. Six ways.
+
+One, a known last period: the end game of M and R page 266, and the finite-horizon unravelling of Lecture 5.
+
+Two, too little patience: delta below the cutoff. A financially weak firm whose delta falls starts the war, Cabral page 226.
+
+Three, nothing to lose: a party with zero stake cannot be disciplined at any delta. The high-cost firm in an efficient cartel; a worker whose next job is as good.
+
+Four, noisy monitoring: punishments must fire on bad luck too, so there are price wars on the path, as in Green and Porter.
+
+Five, renegotiation: a punishment both parties would rather skip is not credible.
+
+Six, ambiguity: when nobody can tell whether the right thing was done, there is nothing to condition the punishment on.
+
+Eight point four. Where this sits in the course.
+
+Relational contracts are the bridge between the complete-information repeated games of Lectures 5 and 6 and the incomplete contracts of M and R chapter 5. A contract can be incomplete, because courts cannot verify effort, quality or honour, and still be enforced, because the parties themselves can see enough to punish. Lectures 7 and 8 drop complete information. Then reputation becomes a belief about a type, which is Tadelis chapter 17, background only, rather than a strategy profile.
+
+Recap of part eight. One inequality, six relationships, six levers, six ways to fail.
+
+Spoken checklist. For any relationship in the lecture, you should be able to name v c, v d, v p and the detection probability, write the cutoff, and say which lever an institution or a contract design is pulling.
+
+Part nine. Common mistakes.
+
+This part covers the first half of note ten: twelve confusions this material produces. Each is said as the error, then the correction.
+
+Mistake one. The error is to use any deviation instead of the best one-period deviation. The correction: the cutoff in equation ten point five uses v d, the most tempting deviation, which is the stage best response to the others' cooperative play. A firm in Tadelis's cartel that deviates from 22 to 30 earns 100 minus 30 minus 23 minus 10, times 30, which is 1110. Deviating to 33.5 earns 1122.25. Using 30 gives a cutoff of 1110 minus 990, over 1110 minus 900, which is 0.571, instead of 0.595: an understated requirement. See part two.
+
+Mistake two. The error is to compute one cutoff for an asymmetric cartel. The correction: each player has his own cutoff, and the cartel survives if and only if delta is at least the largest one. In the 22 and 23 split the smaller firm binds, 0.595 against 0.473. And copy the book with care: its 0.392 for firm 2 plugs in the wrong rival quantity.
+
+Mistake three. The error is to say that too little patience always means back to the stage game. The correction: that is true for Bertrand and false for Cournot. In Bertrand, the condition, the profit at p over n, over 1 minus delta, at least the profit at p, does not depend on p, so below 1 minus 1 over n nothing above cost survives; that is M W G Proposition twelve point D point two. In Cournot, below 9 over 17 the cartel shrinks to q star of delta and still beats Cournot. See part three.
+
+Mistake four. The error is to say that price competition makes collusion harder. The correction: not with two firms. Bertrand needs one half and Cournot 9 over 17, which is more, with two firms. From three firms the ranking flips: 0.667 against 0.571. A harsher stick against a bigger temptation.
+
+Mistake five. The error is to read a price war as proof that someone cheated. The correction: under imperfect monitoring, as in Green and Porter, wars happen on the equilibrium path after bad demand shocks, and nobody cheats. Under observed shocks, as in Rotemberg and Saloner, prices fall in booms. See part four.
+
+Mistake six. The error is to treat grim trigger as the punishment. The correction: it is the simplest, not the strongest. Abreu's one-period stick sustains the monopoly outcome at delta one half, below 9 over 17. And "forever" invites renegotiation.
+
+Mistake seven. The error is to forget the off-path half of a strategy. The correction: "cooperate as long as player 1 trusts me" is a Nash equilibrium, not a subgame-perfect equilibrium, Tadelis footnote 9. A repeated-game strategy specifies play after every history.
+
+Mistake eight. The error is to mix the two p's. The correction: Gibbons's p is the probability that shirking goes undetected, because output is still high. M and R's p is the probability that cheating is detected. Gibbons's premium has 1 minus p in the denominator; M and R's has p. Same economics, opposite letters. See part seven.
+
+Mistake nine. The error is to take M and R's N V greater than G literally. The correction: from the box, cheating yields V plus G in the round of cheating, so the exact comparison is N V at least V plus G, which is delta at least G over V plus G. With V and G both equal to 1, N V greater than G would give N greater than 1, that is, any positive delta, which is wrong. The exact form gives delta at least one half.
+
+Mistake ten. The error is "efficient, therefore sustainable". The correction: y minus e greater than w zero makes the employment relation efficient. It is sustainable only if y is at least w star, which is delta at least e over e plus 1 minus p times y minus e minus w zero. With M and R's calibration and y equal to 41, that is delta at least 0.952.
+
+Mistake eleven. The error is to expect reputation without observability or judgment. The correction: reputation needs future partners to see the past and to judge it. Remove either, with no communication or with ambiguous duties, and the incentive disappears. That is the case for law merchants, credit bureaus and corporate culture. See part five.
+
+Mistake twelve. The error is to reproduce a finite-horizon argument in an infinite game, or the reverse. The correction: with a known last period, cooperation unravels, as in the end game and the chief executive near retirement. With indefinite continuation with probability delta, cooperation is possible. The question always states which one.
+
+Part ten. Spoken formula sheet.
+
+This part covers note nine. Use it for active recall: pause after the name of each result, say the formula yourself, then hear the answer.
+
+First, the exam specification, mapped. There are no slides yet, so the specification is the Lecture 6 block of the study guide, item by item. Item one, Tadelis section ten point four, tacit collusion, page 201: part two. Item two, Tadelis section ten point five, reputation, pages 204 to 209: parts five and six. Item three, Gibbons section two point three point C, Cournot collusion, page 102: parts two and four. Item four, Gibbons section two point three point D, efficiency wages, page 107: part seven. Item five, M and R's "Reputations as contract enforcers", page 259, and the repeated trust game, pages 261 to 263: part five. Item six, M and R's "live and let live", page 264, and the limits of reputation, page 265: part five. Item seven, the formal side, M W G section twelve point D, page 400: part three. Item eight, Cabral chapter 9, stability on page 218 and price wars on page 222: parts three and four. Item nine, M and R on efficiency wages, page 250: part seven. Plus the recap needed from Lecture 5, part one, and the unifying inequality, part eight.
+
+Ten point one. The machinery, from Tadelis.
+
+Definitions ten point two and ten point three, pages 193 and 194. Pause. Present value is the sum of delta to the t minus 1 times the period-t payoff. The average payoff is 1 minus delta times that sum.
+
+Proposition ten point two, page 196. Pause. Stage Nash after every history is a subgame-perfect equilibrium.
+
+Proposition ten point three, page 198. Pause. The one-stage deviation principle for infinitely repeated games.
+
+Equation ten point three, page 200. Pause. For the prisoner's dilemma: 4 plus 4 delta over 1 minus delta at least 5 plus delta over 1 minus delta, if and only if delta is at least one quarter.
+
+Equation ten point five, page 202. Pause. Delta at least v d minus v c, over v d minus v star. Equivalent forms: v d minus v c at most delta over 1 minus delta times v c minus v p; and the average form, v c at least 1 minus delta times v d plus delta times v p.
+
+Ten point two. Collusion.
+
+Equation ten point four, page 202. Pause. The best response is 90 minus q j, over 2.
+
+Equation two point three point two, page 103. Pause. 1 over 1 minus delta times half the monopoly profit, at least the deviation profit plus delta over 1 minus delta times the Cournot profit; if and only if delta is at least 9 over 17.
+
+Gibbons page 104. Pause. For delta below 9 over 17, q star of delta equals 9 minus 5 delta, over 3 times 9 minus delta, times a minus c.
+
+The n-firm Cournot cutoff. Pause. n plus 1 squared, over n squared plus 6 n plus 1.
+
+Equations nine point one to nine point four, page 219. Pause. Half the monopoly profit over 1 minus delta at least the monopoly profit, if and only if delta is at least one half.
+
+M W G Proposition twelve point D point one, page 401. Pause. Nash reversion is a subgame-perfect equilibrium of repeated Bertrand if and only if delta is at least one half.
+
+M W G Proposition twelve point D point two, page 403. Pause. With delta at least one half, any price from c to the monopoly price is sustainable; with delta below one half, every subgame-perfect equilibrium prices at c.
+
+The n-firm Bertrand cutoff, M W G exercise twelve point D point two, page 405, and Cabral page 227. Pause. Delta at least 1 minus 1 over n.
+
+Equation nine point five, page 220. Pause. Delta equals 1 plus g, times 1 minus h, over 1 plus r over f. It rises with f and g, and falls with h and r.
+
+Equation two point three point three, page 105. Pause. Delta times half the monopoly profit minus pi of x, at least the deviation profit minus half the monopoly profit.
+
+Equation two point three point four, page 106. Pause. Delta times half the monopoly profit minus pi of x, at least pi d p of x minus pi of x.
+
+Ten point three. Reputation.
+
+The trust game, page 205. Pause. 1 over 1 minus delta at least 2, if and only if delta is at least one half.
+
+M and R's footnote 11, page 263. Pause. N equals 1 over 1 plus r to the t minus 1, plus 1, which equals 1 over 1 minus delta, with delta equal to 1 plus r to the minus t.
+
+M and R's trust box, pages 261 to 263. Pause. The exact condition is N V at least V plus G, which is delta at least G over V plus G. M and R print N V greater than G.
+
+The guarantor, page 207. Pause. 0.1 over 1 minus delta at least 2, if and only if delta is at least 0.95.
+
+Ten point four. Efficiency wages.
+
+Gibbons page 109. Pause. V e equals w star minus e, over 1 minus delta.
+
+Gibbons page 110. Pause. V s equals 1 minus delta times w star plus delta times 1 minus p times w zero, all over 1 minus delta p times 1 minus delta.
+
+Equation two point three point five, page 110. Pause. w star at least w zero plus e plus 1 minus delta times e, over delta times 1 minus p.
+
+Equation two point three point six, page 110. Pause. With p equal to zero, w star at least w zero plus 1 plus 1 minus delta over delta, times e.
+
+Equation two point three point seven, page 110. Pause. y minus w star at least zero.
+
+The combined condition. Pause. Delta at least e over e plus 1 minus p times y minus e minus w zero.
+
+Equation eight point one, page 251. Pause. Cheat if and only if g is greater than p times w minus w bar times N, with p the detection probability.
+
+Page 252, equation eight point three. Pause. The efficiency wage is w bar plus g over N p.
+
+Equations eight point two to eight point six, page 254. Pause. Minimize M of p plus w subject to the incentive constraint; M prime of p star equals g over p star squared N; and d p star over d N is negative.
+
+Ten point five. Every number.
+
+Tadelis's Cournot cartel, with p equal to 100 minus q and cost 10. Firm 1, producing 22: v c 990, deviation quantity 33.5, v d 1122.25, cutoff 0.595. Firm 2, producing 23: v c 1035, deviation quantity 34, v d 1156, where the book prints 1122, and cutoff 0.473, where the book prints 0.392. Cournot: 30 each, price 40, profit 900. The monopoly split: 22.5 each, price 55, where the book's 45 on page 203 is total output, and profit 1012.5.
+
+Gibbons's symmetric cartel, with a minus c equal to 1, and Tadelis's numbers in brackets. Half the monopoly profit is one eighth, bracket 1012.5. The deviation profit is nine sixty-fourths, bracket 1139.06, with a deviation quantity of 33.75. Cournot is one ninth, bracket 900. The cutoff is 9 over 17, 0.529. At delta one half, q star is 6.5 over 25.5, which is 0.2549, bracket 22.94 each, price 54.12, profit 1012.1. The n-firm Cournot cutoffs: 0.529, 0.571, 0.610 and 0.643 for n equal to 2, 3, 4 and 5; and 0.752 at n equal to 10.
+
+Bertrand and Cabral. The cutoffs 0.5, 0.667, 0.75, 0.8 and 0.9 for n equal to 2, 3, 4, 5 and 10. Cabral page 221: r of 10 per cent and monthly prices give delta 0.9917 and up to 121 firms; annual prices give delta 0.909 and up to 11 firms. Box nine point one: industrial diamonds from 3 dollars to under 1.80 dollars per carat, in 1981. Box nine point three: average route contact 402.3. Cement: a 1 per cent rise in GDP, a fall in the relative price of 0.5 to 1 per cent.
+
+Punishments, reputation, institutions. Abreu at delta one half: equation two point three point three holds for x outside the open interval from one eighth to three eighths; equation two point three point four holds for x from three tenths to one half; so x over a minus c is between three eighths and one half. Trust game: delta at least one half. Guarantor: fee 0.1 and bond 2, delta at least 0.95, and the bond need only exceed 1. M and R's multiplier at 10 per cent: N is 11 for yearly meetings, 2.64 for every 5 years, 1.17 for every 20 years.
+
+Efficiency wages. M and R, in thousands of dollars: w 50, w bar 40, g 1, p 0.05. So 0.05 times 10 times N, against 1: cheat at N equal to 1. The efficiency wage is 40 plus 20 over N: 60 at N equal to 1, 50 at N equal to 2. In Gibbons's terms, with w zero 39, e 1 and p 0.95: w star equals 40 plus 20 times 1 minus delta over delta; 60 at delta one half, 50 at delta two thirds. MacRents: supervisors 8.9 per cent more, non-managerial workers 1.7 per cent more, in company outlets.
+
+Part eleven. Implementation: the Python routines, described.
+
+This part covers note eleven. Every routine the lecture needs, each with self-checks, called asserts, against the books' own numbers. It uses only the numpy library, and the blocks run top to bottom in one session, because they share names. The project had no repeated-game code before this unit. The figure script and the companion check re-implement the same expressions independently on purpose: they are the second path on which the numbers are verified.
+
+Routine one, the one inequality. Two functions. The first computes the present value of a finite payoff stream, using a long horizon to stand in for infinity: multiply each payoff by delta to the power of its position and add. The second is the grim-trigger cutoff: it takes the cooperative payoff, the best deviation payoff and the punishment payoff, checks that they are ordered with deviation above cooperation above punishment, and returns deviation minus cooperation over deviation minus punishment. The checks: for the prisoner's dilemma with 4, 5 and 1 the cutoff is exactly one quarter; and, by brute force over four thousand periods at delta 0.24, 0.25 and 0.26, conforming beats deviating exactly when delta is at least one quarter.
+
+Routine two, Tadelis's tacit collusion, with the corrected firm-2 numbers. A profit function for demand 100 minus total output and cost 10, and the best-response function 90 minus the rival's output, over 2. The checks reproduce every number: Cournot profit 900, monopoly share 1012.5, cooperative profits 990 and 1035, best responses 33.5 and 34, deviation profits 1122.25 and 1156. It also checks that plugging in 23 for the rival, the book's slip, gives the printed 1122, and that a cutoff computed from 1122 rounds to the printed 0.392. Then the cutoffs: 0.595 for firm 1, and exactly 121 over 256 for firm 2. It checks that firm 1's cutoff is still the larger one, so the book's conclusion survives the fix, and that the collusive price is 100 minus 45, which is 55.
+
+Routine three, the symmetric n-firm Cournot cartel. One function returns the three per-firm profits for n identical firms: the collusive share, the deviation profit, and the Cournot profit. A second returns the closed-form cutoff, n plus 1 squared over n squared plus 6 n plus 1. A third finds the lowest symmetric output that grim trigger sustains: it writes the condition as a quadratic in q that vanishes at the Cournot output, takes the other root as the product of the roots divided by the Cournot output, and returns the larger of that root and the monopoly share. The checks: with two firms the profits are one eighth, nine sixty-fourths and one ninth, and the cutoff is 9 over 17; the general cutoff matches the closed form for every n from 2 to 29; the output routine matches Gibbons's formula at fifty values of delta below 9 over 17; it gives one third at delta zero and one quarter at delta 0.6; a brute-force grid search with four firms at delta 0.4 finds the same output to within a thousandth; and with Tadelis's numbers at delta one half the output is 22.94. The one trap: the formula applies only below the cutoff, so the routine must cap the output at the monopoly share.
+
+Routine four, Bertrand, the number of firms, and Cabral's discount factor. One function returns 1 minus 1 over n. Another implements Cabral's equation nine point five, with the interest rate, the frequency, the hazard and the growth rate. The checks: one half for two firms; just below each firm count's cutoff collusion fails and just above it holds; with 10 per cent and monthly prices, delta rounds to 0.9917 and the largest cartel is 121 firms; delta rises with frequency, falls with a hazard of 5 per cent and rises with growth of 2 per cent; and two identical markets give the same threshold, one half.
+
+Routine five, Abreu's carrot and stick. It takes delta, lays a fine grid of half a million points on punishment outputs from zero to one half, evaluates both constraints, two point three point three and two point three point four, and returns the smallest and largest x that satisfy both. The check: at delta one half the band runs from three eighths to one half, to within a hundred-thousandth, and one half is below 9 over 17.
+
+Routine six, reputation: the trust game, M and R's multiplier, and the guarantor. One function returns G over V plus G. Another returns M and R's multiplier from the interest rate and the interval between meetings. The checks: one half for V and G equal to 1; the multiplier equals 1 over 1 minus delta at 5 per cent; for four pairs of values, M and R's N V at least V plus G gives exactly the same verdict as delta at least G over V plus G; and the guarantor's cutoff, from a fee of 0.1 and a bond of 2, is exactly 0.95.
+
+Routine seven, efficiency wages. Four functions. The first returns w star from Gibbons's equation two point three point five, given w zero, e, p and delta. The second returns the two present values, of effort and of shirking, at any wage. The third returns the smallest delta at which the firm will pay, and returns nothing if the surplus is not positive. The fourth returns M and R's efficiency wage, w bar plus g over N p. The checks: at w star the two values coincide exactly, for three different parameter sets, and a cent above w star effort strictly wins; with p equal to zero the routine reproduces equation two point three point six; M and R's expected loss of 0.5 is below the gain of 1, so the worker cheats with N equal to 1; their efficiency wage is 60 with N equal to 1 and 50 with N equal to 2; the mapping, with g equal to e, M and R's p equal to 1 minus Gibbons's p, N equal to delta over 1 minus delta, and w bar equal to w zero plus e, gives identical wages at three values of delta; and at the companion's default y of 41 the firm's minimum delta is 1 over 1.05, at which w star equals exactly 41. The trap: the two books' p's run in opposite directions, so the mapping must flip it.
+
+To run it all, copy the blocks into one file or one notebook cell, in order; every assert passes. The figure script and the companion check are independent re-implementations of routines two to seven.
+
+Part twelve. The figures and the interactive companions, described.
+
+This part covers the figures and companions listed in the map of the notes. Six figures are built by one script in the figures folder, which ends with checks on the plotted numbers. They were described in their parts; here is the list again. One, the Cournot cutoffs: conform against deviate for the 22 and 23 split, with cutoffs 0.595 and 0.473 and the printed 0.392 marked, in part two. Two, the best sustainable output: Gibbons's q star of delta and the profit it delivers, in part two. Three, the threshold against n: Bertrand against Cournot cutoffs by number of firms, and the largest cartel by pricing frequency from Cabral's nine point five, in part three. Four, the carrot and stick: the slack of the two constraints at delta one half and the band from three eighths to one half, in part four. Five, the trust game: Tadelis's Figure ten point one as a tree, with the thresholds one half and 0.95, in part five. Six, the efficiency wage: w star against delta at M and R's calibration for three detection rates, in part seven.
+
+Two interactive companions, which are web pages in the companions folder.
+
+The first is the Cartel Patience Dial. Its controls are the mode, Cournot or Bertrand; the number of firms n; delta; and the demand intercept a and the cost c. Its main read-out is the cutoff delta star, the answer. It also shows the collusive, deviation and punishment profits, the most collusive sustainable output and price, and the cutoffs by n for both modes. A button snaps delta exactly onto the cutoff, the landmark case. It is linked from parts two and three.
+
+The second is the No-Shirking Wage. Its controls are delta, p, e, w zero and y. Its main read-out is w star, the answer. It also shows the rent, M and R's N, the firm's margin and its minimum delta, and the two value lines, effort and shirking, crossing at w star. Its defaults reproduce M and R's 60,000 dollars. It is linked from part seven.
+
+Both are verified by a check script that runs the Python formulas against the pages' own JavaScript under Node.
+
+Part thirteen. Reading route and exercises.
+
+This part gives addresses only. Exercise statements are not read aloud.
+
+Before class, from the study guide. Tadelis section ten point four, tacit collusion, page 201, and section ten point five, reputation, pages 204 to 209. Gibbons section two point three point C, Cournot collusion, page 102, and section two point three point D, efficiency wages, page 107. M and R chapter 8, "Reputations as contract enforcers", page 259; the repeated trust game, pages 261 to 263; "live and let live", page 264; the limits of reputation, page 265.
+
+The recap material, from Lecture 5: Tadelis sections ten point two and ten point three, pages 192 to 200.
+
+The formal side: M W G section twelve point D, pages 400 to 405.
+
+Applications: Cabral chapter 9, from page 217, with the stability of collusive agreements on page 218 and price wars on page 222; and M and R on efficiency wages, from page 250.
+
+Related project material: the rules file on bounded rationality and contracts, whose section on relational and implicit contracts is still a placeholder; the game-theory rules file; reputation as a substitute for commitment, M and R pages 139 and 140, in the class 2 notes; and efficiency wages named in the class 1 notes, through Ford.
+
+Exercises, by part. Part one: Tadelis exercises 10.2 and 10.3, page 215; Muñoz-Garcia chapter 6, exercise 2, from page 278. Part two: Muñoz-Garcia chapter 5, exercise 4, page 228, and exercise 8, page 239; chapter 6, exercise 2, page 278, and exercise 4, page 287; Cabral exercise 9.17, page 245. Part three: Tadelis exercise 10.8, page 218; Muñoz-Garcia chapter 5, exercise 5, page 231, and chapter 6, exercise 5, page 290; Cabral exercises 9.17 and 9.18, page 245; M W G exercise twelve point D point two, page 405. Part four: Muñoz-Garcia chapter 6, exercise 3, on temporary punishments, page 282, and exercise 10, on imperfect monitoring, page 310; Cabral exercises 9.19, page 245, and 9.20, page 246. Part five: Tadelis exercises 10.4, page 216, and 10.12, page 219; M and R quantitative exercises 4 and 5, page 286. Part six: Tadelis exercises 10.10 and 10.11, page 219. Part seven: M and R quantitative exercises 1, page 285, and 3, page 286.
+
+Part fourteen. Self-test.
+
+This part covers the second half of note ten: twenty-four original true or false items. Scoring, as in the course's exam style: the maximum of zero and the number correct minus half the number wrong, times the value of an item; blanks do not count as wrong. After each statement, pause and decide, then hear the answer.
+
+Item one. In the infinitely repeated Cournot duopoly with P equal to a minus Q and constant marginal cost, grim trigger sustains half the monopoly output for every player if and only if delta is at least 9 over 17. Pause. True. Half the monopoly profit is a minus c squared over 8, the deviation profit 9 a minus c squared over 64, Cournot a minus c squared over 9. Equation ten point five gives 1 over 64 divided by 17 over 576, which is 9 over 17, and the symmetric game gives both firms the same cutoff.
+
+Item two. If delta is below 9 over 17 in that duopoly, the only subgame-perfect outcome of the repeated game under Nash-reversion strategies is the Cournot outcome in every period. Pause. False. Grim trigger still sustains any symmetric output at least q star of delta, 9 minus 5 delta over 3 times 9 minus delta, times a minus c, which is strictly below Cournot for positive delta; for example 0.2549 times a minus c at delta one half.
+
+Item three. In the repeated Bertrand duopoly with grim strategies, the cutoff discount factor depends on the collusive price chosen. Pause. False. Conforming gives half the profit at p over 1 minus delta, deviating gives the profit at p; the profit cancels, and the cutoff is one half for every price above c up to the monopoly price. M W G Proposition twelve point D point two.
+
+Item four. With n symmetric Bertrand firms, collusion at the monopoly price is sustainable if and only if delta is at least 1 minus 1 over n. Pause. True. The monopoly profit over n, over 1 minus delta, at least the monopoly profit, if and only if 1 over n is at least 1 minus delta.
+
+Item five. With two firms, tacit collusion requires more patience under Bertrand than under Cournot competition. Pause. False. One half is less than 9 over 17: with two firms Bertrand needs less. The ranking reverses from three firms on.
+
+Item six. In Tadelis's 22 and 23 split of the monopoly output, the firm producing 22 needs a higher discount factor than the firm producing 23. Pause. True. It gains more by deviating, 132.25 against 121, and loses less per period from Cournot, 90 against 135: 0.595 against 0.473.
+
+Item seven. By Cabral's equation nine point five, collusion is easier in an industry that reprices daily than in one that reprices once a year, other things equal. Pause. True. Delta equals 1 plus g times 1 minus h, over 1 plus r over f, which rises with the frequency f.
+
+Item eight. An increase in the hazard that the industry disappears makes collusion easier, because firms have less to lose from a price war. Pause. False. A higher h lowers delta: the future punishment matters less, so the temptation wins more often. Collusion is harder.
+
+Item nine. In Cabral's model, if two firms meet in two identical markets, multimarket contact halves the discount factor needed to collude. Pause. False. Both the gain from deviating and the punishment double; the cutoff stays one half. Contact helps only when the markets differ.
+
+Item ten. In a Green and Porter cartel with unobserved demand shocks, price wars occur on the equilibrium path even though no firm ever deviates. Pause. True. Low prices must trigger punishment, or every firm would cut secretly; bad shocks then start wars with nobody cheating.
+
+Item eleven. If demand shocks are observed before pricing and are independent over time, a collusive cartel's price tends to be lowest when demand is highest. Pause. True. The deviation gain scales with current demand while the future loss does not; the constraint binds in booms, so the cartel cuts its price there. Rotemberg and Saloner.
+
+Item twelve. In Abreu's two-phase strategy at delta one half, any punishment output x larger than the Cournot quantity, a minus c over 3, sustains the monopoly outcome. Pause. False. The collusive-phase constraint needs x at least three eighths of a minus c, and outputs between one third and three eighths fail it. The feasible band is x over a minus c from three eighths to one half.
+
+Item thirteen. A punishment that hurts the punisher as well as the deviator can never be part of a subgame-perfect equilibrium. Pause. False. Both grim trigger and Abreu's stick hurt the punisher; they are subgame-perfect because carrying out the punishment is a best response given what follows. The issue they raise is renegotiation, not subgame perfection.
+
+Item fourteen. In Tadelis's repeated trust game with payoffs 1 and 1, minus 1 and 2, and zero and zero, cooperation is sustainable by grim trigger if and only if delta is at least one half. Pause. True. 1 over 1 minus delta at least 2.
+
+Item fifteen. In M and R's trust box, the decision maker's exact no-cheating condition is N V at least G. Pause. False. Cheating gives V plus G in the round of cheating; the exact condition is N V at least V plus G, that is, delta at least G over V plus G.
+
+Item sixteen. Reputation can discipline a decision maker even if he never meets the same offeror twice, provided each offeror observes how he treated earlier offerors. Pause. True. M and R page 263: the calculation is the same as with one offeror; that is what a reputation is.
+
+Item seventeen. A guarantor who earns a fee of 0.1 per period and could pocket a bond of 2 keeps the contract if and only if delta is at least 0.95. Pause. True. 0.1 over 1 minus delta at least 2, if and only if delta is at least 0.95.
+
+Item eighteen. In Gibbons's efficiency-wage model, the wage premium needed to induce effort falls as the probability that a shirker still produces high output rises. Pause. False. The premium, 1 minus delta times e over delta times 1 minus p, rises with p: shirking is caught less often, so a larger rent is needed.
+
+Item nineteen. If shirking is always detected, p equal to zero in Gibbons, the firm can induce effort by paying exactly w zero plus e. Pause. False. It must still pay w zero plus e over delta: the gain e today must be covered by the rent from tomorrow, which is discounted. Only as delta goes to 1 does w star go to w zero plus e.
+
+Item twenty. In the efficiency-wage model, y minus e greater than w zero guarantees that the high-wage, high-output equilibrium exists for every delta. Pause. False. It also needs y at least w star, that is, delta at least e over e plus 1 minus p times y minus e minus w zero.
+
+Item twenty-one. With M and R's numbers, a rent of 10,000 dollars, detection of 5 per cent and a gain of 1,000 dollars, a worker with N equal to 1 prefers to cheat. Pause. True. The expected loss is 0.05 times 10,000, which is 500, less than 1,000. The efficiency wage would be 60,000 dollars.
+
+Item twenty-two. A longer expected relationship, a higher N, leads, in M and R's minimum-cost implementation problem, to more intensive monitoring. Pause. False. d p star over d N is negative: a longer relationship substitutes for monitoring, "more trust and less direct monitoring", page 255.
+
+Item twenty-three. A known final period weakens reputational incentives as it approaches. Pause. True. The end-game problem, M and R page 266: at the last date there is no future to protect, and the argument creeps backwards; hence more explicit incentive pay for chief executives near retirement.
+
+Item twenty-four. A firm's brand name can sustain cooperation by short-lived owners because the brand's resale value is lost if trust is abused under it. Pause. True. Kreps's brand acts as a bond, Tadelis pages 207 and 208: a resale value above 1 exceeds the one-period gain from defecting.
+
+Part fifteen. Glossary.
+
+Repeated game: a stage game played again and again, where each player can condition today's action on the history of play.
+
+Discount factor, delta: the weight on next period's payoff; it combines impatience with the probability that the game continues.
+
+Present value: the sum of a payoff stream, each period's payoff weighted by delta to the number of periods ahead.
+
+Average payoff: 1 minus delta times the present value; a constant stream has an average payoff equal to that constant.
+
+One-stage deviation principle: a profile is subgame-perfect if and only if no player gains by deviating at a single history and conforming afterwards.
+
+Grim trigger, or Nash reversion: cooperate until any deviation, then play the stage Nash equilibrium forever.
+
+Bootstrap equilibrium: Tadelis's name for an equilibrium that uses its own continuation as the reward and the stage Nash equilibrium as the punishment.
+
+Tacit collusion: output restriction or high prices sustained by shared beliefs about reward and punishment, without an agreement.
+
+Bertrand trap: the stage-game result that two price-setting firms with equal constant cost price at cost and earn zero.
+
+Cutoff, delta star: the smallest discount factor at which cooperation is self-enforcing; the temptation over the stake.
+
+Multimarket contact: firms meeting in several markets, so that a deviation in one can be punished in the others.
+
+Facilitating practice: a device, such as a most-favoured-customer clause or a published price book, that lowers the gain from cheating or makes it easier to detect.
+
+Carrot and stick: Abreu's two-phase strategy, one period of a harsh punishment, then a return to collusion.
+
+Renegotiation: the possibility that, after a deviation, both parties agree to skip the punishment, which undermines its credibility.
+
+Imperfect monitoring: players see only noisy signals of each other's actions, such as a market price that also moves with demand.
+
+Trigger-price equilibrium: Green and Porter's equilibrium in which any price below a critical level starts a punishment phase.
+
+Trust game: a stage game where one player decides whether to trust and the other whether to honour or exploit that trust.
+
+Reputation: the value of being trusted by future partners who observe and judge past behaviour.
+
+Multiplier N: M and R's factor converting a per-meeting payoff into its value today, equal to 1 over 1 minus delta.
+
+Guarantor: a long-lived third party who holds a bond and returns it only if the trader cooperates.
+
+Law merchant: the private judges of medieval trade who judged disputes and broadcast offenders.
+
+Brand name: in Kreps's model, a saleable name whose resale value acts as a bond for honest behaviour.
+
+Second-order sanction: a sanction against those who fail to sanction, as in the Hansa's embargo of a home city.
+
+Efficiency wage: a wage above the outside option, high enough that the threat of dismissal deters shirking.
+
+Rent: the excess of the value of the job over the worker's outside option; what the worker loses if fired.
+
+Minimum cost implementation problem: M and R's choice of monitoring intensity and wage that induces honesty at least cost.
+
+Relational contract: an agreement that leaves decisions to discretion, relies on good faith, and is enforced by the value of the relationship rather than by a court.
+
+End game: the weakening of incentives as a known last period approaches.
+
+Part sixteen. The whole lecture in five lines.
+
+One. Every relational contract is one inequality: the gain from cheating today must be no larger than delta over 1 minus delta, times the probability of being caught, times what the relationship is worth per period; so delta must be at least the temptation over the stake.
+
+Two. Firms collude without contracts: a Cournot duopoly needs 9 over 17 and shrinks rather than dies below it; Bertrand needs 1 minus 1 over n, all or nothing; frequency, stability, growth, few and similar firms make collusion easier.
+
+Three. Grim trigger is the simplest stick, not the strongest: a short, severe punishment works at lower delta, and when monitoring is noisy, price wars happen on the path with nobody cheating.
+
+Four. A reputation is the same inequality held in front of many partners who see and judge the past; institutions such as guarantors, law merchants and brand names lend it to strangers, and it fails with ambiguity and with a known end.
+
+Five. An efficiency wage buys effort with a rent: w star at least w zero plus e plus 1 minus delta times e over delta times 1 minus p, paid only if the job produces enough, and a longer relationship means more trust and less monitoring.

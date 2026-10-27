@@ -15,16 +15,33 @@ has on the same idea.
 The design is copied from `../Finanças 01 - MPE/Notas/` (look at `S04/` for a finished unit when
 in doubt). This file is where it is binding.
 
-## Step 0: One question, then work
+## Step 0: One question round, then work
 
-Ask **one** `AskUserQuestion`, and only if `$ARGUMENTS` carries neither `--companions` nor
-`--no-companions`:
+Every run that writes notes for a topic not yet in `Notas/` opens with **one** `AskUserQuestion`
+round, even when an earlier topic was already answered — the right depth differs per topic.
+*Why:* a single fixed depth produced notes too heavy for light topics and too thin on the
+model-driven ones. Ask these, in this order:
 
-> Include and link interactive companions (1–2 per lecture, controls + live read-outs, in
-> `Notas/LNN/companions/`)?
+1. **Depth** — *Full: every step, U/C/G layers, all support notes (Recommended)* ·
+   *Exam-focused: C layer only, key derivations, formulas + pitfalls* ·
+   *Overview: intuition and results, no full proofs*.
+2. **Math ↔ theory** — *Equation-led: derive every equation, then read it — which assumption
+   drives it and what it says about the theory (Recommended)* · *Theory-led: the economic
+   argument first, equations as support* · *Results only: state each result and interpret it*.
+3. **Graphs** — *Model curves: 4–8 figures, exact expressions, comparative statics in the key
+   parameter (Recommended)* · *Reproduce the slides'/book's diagrams* · *Minimal: 1–3 key
+   figures* · *None*. Name in the option description the figures you would draw for this
+   topic (e.g. best-response curves, an indifference map, an equilibrium vs. a parameter).
+4. **Companions** — only if `$ARGUMENTS` carries neither `--companions` nor `--no-companions`:
+   *Yes, every unit (Recommended)* · *Yes, taught units only* · *Link existing ones only* · *No*.
+5. **PDF** — asked on **every** run that creates or rewrites a unit, never skipped or defaulted:
+   *Yes, one PDF per unit (Recommended)* · *No, Markdown only*. *Why:* students print and
+   annotate the notes; a run that finished with Markdown only left them asking afterwards
+   whether a PDF existed. A "yes" runs Step 4b.
 
-Options: *Yes, every unit (Recommended)* · *Yes, taught units only* · *Link existing ones only* ·
-*No*. Everything else has a project default below — **do not open a wider question round.**
+The answers override the matching defaults in *Note anatomy*, *Support notes* and *Figures*
+below; record them in the map's plan (Step 2). Everything else keeps its default — **do not
+add further questions.**
 
 When companions are on, the answer **stands in for `/companion`'s Step 0**: write each page's
 control contract into the plan (Step 2) from the source's own calibration, and follow
@@ -74,6 +91,7 @@ Notas/
     figures/make_figures.py     one script, writes LNN-<slug>.png beside itself
     figures/LNN-<slug>.png
     companions/companion-<model>.html
+    LNN-notes.pdf               rendered from the .md notes (Step 4b, when PDF = yes)
 ```
 
 Slugs are English, lowercase, hyphenated. Book, chapter and section titles stay verbatim.
@@ -191,7 +209,20 @@ Slugs are English, lowercase, hyphenated. Book, chapter and section titles stay 
 3. Companion checks pass (when on).
 4. No exercise statement reproduced anywhere — only number and page.
 5. Report: units built and their status, note count and line counts, figures, companions with
-   their three verification vectors, anything skipped and why.
+   their three verification vectors, the PDF (path, pages) or "PDF: declined", anything skipped
+   and why.
+
+## Step 4b: Compile the PDF (when the Step 0 PDF answer is yes)
+
+After Step 4 passes, for each unit:
+`python -I ~/.claude/commands/templates/notes_pdf.py Notas/LNN` → `Notas/LNN/LNN-notes.pdf`
+(pandoc + LuaLaTeX; Latin Modern with a Cambria/Segoe glyph fallback; the Markdown stays the
+source, so rerun it after any note edit). Then check:
+- the build prints no `Missing character` warning (a missing glyph silently drops text);
+- `pdffonts` shows no Type 3 font;
+- every figure embedded in the notes appears (page count well above the note count; open one
+  figure page).
+Link the PDF from the unit's map and from `Notas/00-index.md`.
 
 ## Important
 
