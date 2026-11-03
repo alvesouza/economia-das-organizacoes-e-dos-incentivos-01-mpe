@@ -1,0 +1,89 @@
+\begin{exsol}{17}{\MG{} Ch.~4 Exercise 12}{185--186}{Exam}{L3}
+\asked With $p(Q) = 10 - Q$ and marginal cost 2: (a) the Stackelberg equilibrium with leader~1 and
+follower~2; (b) the equilibrium when a third firm moves after firm~2, and how firms~1 and~2's
+outputs change.
+
+\method Backward induction with continuous actions: solve the last mover's best reply, substitute
+it into the previous mover's profit, repeat (Tadelis \S8.3.2, eqs.~(8.1)--(8.2), pp.~160--161;
+Gibbons \S2.1.B, pp.~61--64). The SPE lists each follower's whole reaction function, the outcome
+only the quantities (Gibbons pp.~125--126).
+
+\solution
+\textbf{Notation.} $q_i \ge 0$ is firm $i$'s output, $Q$ the total; price-cost margin
+$p - 2 = 8 - Q$; profit $\pi_i = (8 - Q)\,q_i$.
+
+\textbf{(a) Two firms.}
+
+\emph{Step 1: follower.} Firm~2 maximizes $\pi_2 = (8 - q_1 - q_2)\,q_2$:
+\begin{equation}
+  \frac{\partial \pi_2}{\partial q_2} = 8 - q_1 - 2q_2 = 0
+  \;\Rightarrow\; q_2(q_1) = 4 - \frac{q_1}{2}\quad (q_1 \le 8). \label{eq:17r2}
+\end{equation}
+\emph{Step 2: leader.} Substituting \eqref{eq:17r2} into $\pi_1$:
+\[
+  \pi_1 = \Bigl(8 - q_1 - \bigl(4 - \tfrac{q_1}{2}\bigr)\Bigr) q_1
+        = \Bigl(4 - \frac{q_1}{2}\Bigr) q_1 ,
+  \qquad \frac{d\pi_1}{dq_1} = 4 - q_1 = 0 \;\Rightarrow\; q_1^* = 4 .
+\]
+\emph{Step 3: outcome.} From \eqref{eq:17r2}, $q_2^* = 4 - \frac{(4)}{2} = 2$; $Q = 6$,
+$p = 10 - 6 = 4$, and
+\[
+  \pi_1 = (4 - 2)(4) = 8, \qquad \pi_2 = (4 - 2)(2) = 4 .
+\]
+SPE: $\bigl(q_1^* = 4,\ q_2(q_1) = \max\{0, 4 - q_1/2\}\bigr)$.
+
+\textbf{(b) Three firms, moving in the order 1, 2, 3.}
+
+\emph{Step 1: firm 3.} It maximizes $(8 - q_1 - q_2 - q_3)\,q_3$:
+\begin{equation}
+  8 - q_1 - q_2 - 2q_3 = 0 \;\Rightarrow\; q_3(q_1,q_2) = 4 - \frac{q_1 + q_2}{2}. \label{eq:17r3}
+\end{equation}
+\emph{Step 2: firm 2.} Substituting \eqref{eq:17r3} into $\pi_2$:
+\[
+  \pi_2 = \Bigl(8 - q_1 - q_2 - \bigl(4 - \tfrac{q_1+q_2}{2}\bigr)\Bigr) q_2
+        = \Bigl(4 - \frac{q_1 + q_2}{2}\Bigr) q_2 ,
+\]
+\begin{equation}
+  \frac{\partial \pi_2}{\partial q_2} = 4 - \frac{q_1}{2} - q_2 = 0
+  \;\Rightarrow\; q_2(q_1) = 4 - \frac{q_1}{2}. \label{eq:17r2b}
+\end{equation}
+Substituting \eqref{eq:17r2b} into \eqref{eq:17r3}:
+\[
+  q_3(q_1) = 4 - \frac{q_1 + \bigl(4 - \frac{q_1}{2}\bigr)}{2} = 2 - \frac{q_1}{4}.
+\]
+\emph{Step 3: firm 1.} Substituting both:
+\[
+  \pi_1 = \Bigl(8 - q_1 - \bigl(4 - \tfrac{q_1}{2}\bigr) - \bigl(2 - \tfrac{q_1}{4}\bigr)\Bigr) q_1
+        = \Bigl(2 - \frac{q_1}{4}\Bigr) q_1 ,
+  \qquad \frac{d\pi_1}{dq_1} = 2 - \frac{q_1}{2} = 0 \;\Rightarrow\; q_1^* = 4 .
+\]
+\emph{Step 4: outcome.} $q_2^* = 4 - \frac{(4)}{2} = 2$, $q_3^* = 2 - \frac{(4)}{4} = 1$;
+$Q = 7$, $p = 3$, margin $1$:
+\[
+  \pi_1 = 4,\qquad \pi_2 = 2,\qquad \pi_3 = 1 .
+\]
+\emph{Comparison.} Firms~1 and~2 produce exactly what they produced in (a), 4 and 2; firm~3 adds 1.
+Total output rises from 6 to 7, the price falls from 4 to 3, and the profits of firms~1 and~2 halve
+(8 to 4, and 4 to 2).
+
+\interp Why do the outputs not move? Firm~3 absorbs half of any change in $q_1 + q_2$
+(slope $-\frac12$ in \eqref{eq:17r3}). After substituting it, firm~2's residual margin is
+$4 - \frac{q_1 + q_2}{2}$, half of the margin it faced in (a): the same problem scaled by $\frac12$,
+so the same maximizer. The same scaling repeats upstream, which gives the pattern
+$q_k = (a - c)/2^k$ for the $k$-th mover with demand $a - Q$ and marginal cost $c$ (here
+$a - c = 8$: $4, 2, 1$). The leader always produces the
+monopoly output $(a-c)/2 = 4$. Entry at the end of the chain does not change earlier outputs, but
+it lowers their profits through the price.
+
+\verify \texttt{check\_B\_L03.py} redoes every first-order condition with sympy (reaction functions,
+$q^* = (4,2)$ and $(4,2,1)$, prices 4 and 3, profits $(8,4)$ and $(4,2,1)$, concavity of the
+leader's problem) and repeats both games numerically with the leader on a $0.01$ grid. \emph{Comparison
+with \MG{}'s answer} (pp.~186--189): same quantities, $(4,2)$ and $(4,2,1)$, and the same conclusion
+that firms~1 and~2 do not change output. The book reports no prices or profits. Minor slips in its
+text: the interior condition of firm~2's first-order condition is written ``if $q_1 > 0$'' where
+$q_2 > 0$ is meant, both in (a) and in (b).
+
+\answer{(a) $q_1 = 4$, $q_2 = 4 - q_1/2 = 2$; $p = 4$; $\pi = (8, 4)$. (b) $q_1 = 4$,
+$q_2 = 4 - q_1/2 = 2$, $q_3 = 4 - (q_1+q_2)/2 = 1$; $p = 3$; $\pi = (4,2,1)$. Firms~1 and~2's outputs
+are unchanged by firm~3's entry; their profits halve because the price falls.}
+\end{exsol}

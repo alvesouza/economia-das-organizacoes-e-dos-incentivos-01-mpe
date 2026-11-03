@@ -1,0 +1,91 @@
+\begin{exsol}{9}{Tadelis Exercise 5.8}{96--97}{Exam}{L2}
+\asked Cournot with $n$ identical firms, $P(Q) = a - Q$, unit cost $c < a$: (a) write the normal
+form; (b) find the Nash (Cournot) equilibrium; (c) find the limit of the equilibrium price as
+$n \to \infty$ and say what it is.
+
+\method Nash equilibrium with continuous strategies as the crossing of best responses (Tadelis
+\S5.2.3, pp.~87--88; Lecture~2, slides~20--27, with the $n$-firm case on slides~26--27).
+
+\solution
+\textbf{Book typo.} The statement prints ``$Q = q_i + \cdots + q_n$''. Aggregate production is the
+sum over all firms, $Q = q_1 + \cdots + q_n$; the subscript $i$ is a typo for $1$, and the solution
+uses $Q = \sum_{j=1}^n q_j$.
+
+\textbf{Notation.} $N = \{1, \dots, n\}$; $q_i \ge 0$ firm $i$'s output; $Q = \sum_j q_j$;
+$Q_{-i} = Q - q_i$ the rivals' total; $a > c \ge 0$. The book defines $P(Q) = a - Q$ for $Q \le a$;
+for $Q > a$ we take $P = 0$ (Gibbons's convention, p.~15). This only matters off equilibrium:
+there a firm earns $-c\,q_i \le 0$.
+
+\textbf{(a) Normal form.} Players $N$; strategies $S_i = [0, \infty)$; payoffs
+\[
+  u_i(q_i, q_{-i}) = \max\{0,\ a - q_i - Q_{-i}\}\, q_i - c\, q_i . \tag{1}
+\]
+
+\textbf{(b) Best response.} Fix $Q_{-i}$. Raising $q_i$ beyond $a - Q_{-i}$ only adds cost, so
+consider $q_i \le a - Q_{-i}$, where $u_i = (a - c - Q_{-i} - q_i)\,q_i$ is strictly concave
+($\partial^2 u_i/\partial q_i^2 = -2$). The first-order condition is
+\[
+  a - c - Q_{-i} - 2q_i = 0, \tag{2}
+\]
+and with the constraint $q_i \ge 0$,
+\[
+  BR_i(Q_{-i}) = \max\Big\{0,\ \frac{a - c - Q_{-i}}{2}\Big\}. \tag{3}
+\]
+
+\textbf{Every firm produces in equilibrium.} Suppose some firm has $q_i^* = 0$. By (3) that
+requires $Q_{-i}^* \ge a - c$, so some rival $j$ produces $q_j^* > 0$ and, by (2) for $j$,
+$q_j^* = a - c - Q^*$ (because $Q_{-j}^* + 2q_j^* = Q^* + q_j^*$). But $Q^* \ge Q_{-i}^* \ge a - c$
+makes $q_j^* \le 0$, a contradiction. So every firm is interior and (2) holds for all $i$.
+
+\textbf{Solving.} Rewrite (2) with $Q_{-i} = Q - q_i$:
+\[
+  a - c - (Q - q_i) - 2q_i = 0 \;\Longrightarrow\; q_i = a - c - Q . \tag{4}
+\]
+The right side of (4) is the same for every firm, so all firms produce the same amount, $q_i = q$.
+Summing (4) over the $n$ firms:
+\[
+  Q = n(a - c - Q) \;\Longrightarrow\; (n+1)Q = n(a - c) \;\Longrightarrow\;
+  Q^* = \frac{n(a-c)}{n+1}. \tag{5}
+\]
+Substituting (5) into (4):
+\[
+  q_i^* = a - c - \frac{n(a-c)}{n+1} = \frac{a-c}{n+1}, \qquad i = 1, \dots, n. \tag{6}
+\]
+Since $Q^* < a - c < a$, the price is on the linear part of demand:
+\[
+  P^* = a - Q^* = a - \frac{n(a-c)}{n+1} = \frac{a + nc}{n+1}, \tag{7}
+\]
+and each firm earns
+\[
+  u_i^* = (P^* - c)\,q_i^* = \Big(\frac{a + nc}{n+1} - c\Big)\frac{a-c}{n+1}
+        = \Big(\frac{a-c}{n+1}\Big)^2 .
+\]
+The equilibrium is unique: the argument above showed every NE is interior, and (4)--(6) have one
+solution. In the slides' notation, $q^m = (a-c)/2$ and (6) reads $q_i^* = 2q^m/(n+1)$; $n = 1$
+gives the monopoly output $q^m$ and $n = 2$ gives $\tfrac23 q^m$ (slide~24).
+
+\textbf{(c) Limit.} From (7),
+\[
+  P^* = \frac{a + nc}{n+1} = c + \frac{a - c}{n+1} \;\xrightarrow[n\to\infty]{}\; c ,
+\]
+and $Q^* \to a - c = q^{cp}$, the competitive output, with each firm's output and profit going to
+zero. This is the familiar perfectly competitive outcome: price equals marginal cost.
+
+\interp The markup $P^* - c = (a-c)/(n+1)$ falls as $1/(n+1)$. Each firm's output lowers the
+price for everyone, but a firm counts only the loss on its own units; with more firms its own share
+is smaller, so it expands more aggressively and the outcome approaches competition (slide~27).
+Contrast with Bertrand (Lecture~2, slides~29--40), where two firms already price at cost.
+
+\verify \texttt{check\_A2.py} solves the $n$ first-order conditions with sympy for
+$n = 1, \dots, 6$ and checks (5)--(7) and the profit formula, checks that $P^* - c = (a-c)/(n+1)$
+and that the limit is $c$, and confirms numerically ($a = 100$, $c = 10$, $n = 3$) that no
+unilateral deviation on a fine grid beats $q_i^* = 22.5$, including the kinked part of demand.
+No answer in the book.
+
+\answer{(a) $N = \{1,\dots,n\}$, $S_i = [0,\infty)$,
+$u_i = (a - \sum_j q_j)\,q_i - c\,q_i$ (with price $0$ if $\sum_j q_j > a$); the printed
+``$Q = q_i + \cdots + q_n$'' should be $q_1 + \cdots + q_n$. (b) Unique NE
+$q_i^* = \frac{a-c}{n+1}$, $Q^* = \frac{n(a-c)}{n+1}$, $P^* = \frac{a + nc}{n+1}$, profit
+$\big(\frac{a-c}{n+1}\big)^2$. (c) $P^* \to c$: the perfectly competitive price (price $=$
+marginal cost).}
+\end{exsol}

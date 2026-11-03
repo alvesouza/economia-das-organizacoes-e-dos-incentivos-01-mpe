@@ -1,0 +1,99 @@
+\begin{exsol}{12}{MWG Exercise 8.D.6}{264}{Advanced}{L2}
+\asked Prove that every two-player game with two strategies each, with arbitrary payoffs
+$u, v, \ell, m, w, x, y, z$ as in the list's matrix, has a mixed-strategy Nash equilibrium.
+
+\method The hint's route: describe each player's strategy by one probability, write the
+best-response correspondences, and show they always intersect (MWG \S8.D, Def.~8.D.2 and
+Prop.~8.D.1, pp.~250--251, which is the slides' principle of indifference, Lecture~2,
+slides~44--46; Tadelis \S6.4, pp.~121--122; Gibbons \S1.3.B, pp.~41--44). Pure equilibria count:
+they are degenerate mixed strategies. Nash's theorem (slide~51) gives the result in general; the
+point here is a direct proof.
+
+\solution
+\textbf{Notation.} $p = \sigma_1(a_1) \in [0,1]$, $q = \sigma_2(b_1) \in [0,1]$. Payoffs:
+$u_1(a_1,b_1) = u$, $u_1(a_1,b_2) = \ell$, $u_1(a_2,b_1) = w$, $u_1(a_2,b_2) = y$;
+$u_2(a_1,b_1) = v$, $u_2(a_1,b_2) = m$, $u_2(a_2,b_1) = x$, $u_2(a_2,b_2) = z$.
+
+\textbf{Step 1: the payoff gains are affine.} Player~1's gain from $a_1$ over $a_2$ when player~2
+plays $q$:
+\[
+  D_1(q) = \big[qu + (1-q)\ell\big] - \big[qw + (1-q)y\big] = q(u - w) + (1-q)(\ell - y). \tag{1}
+\]
+Player~2's gain from $b_1$ over $b_2$ when player~1 plays $p$:
+\[
+  D_2(p) = \big[pv + (1-p)x\big] - \big[pm + (1-p)z\big] = p(v - m) + (1-p)(x - z). \tag{2}
+\]
+Player~1's expected payoff is $u_1(p,q) = u_1(a_2,q) + p\,D_1(q)$, linear in $p$, so
+\[
+  BR_1(q) = \begin{cases} \{1\} & D_1(q) > 0,\\ [0,1] & D_1(q) = 0,\\ \{0\} & D_1(q) < 0,\end{cases}
+  \qquad
+  BR_2(p) = \begin{cases} \{1\} & D_2(p) > 0,\\ [0,1] & D_2(p) = 0,\\ \{0\} & D_2(p) < 0.\end{cases} \tag{3}
+\]
+$(p^*, q^*)$ is a NE iff $p^* \in BR_1(q^*)$ and $q^* \in BR_2(p^*)$.
+
+\textbf{Step 2: a sign lemma.} An affine function $D$ on $[0,1]$ satisfies exactly one of:
+(i) $D(t) \ge 0$ for all $t \in [0,1]$; (ii) $D(t) \le 0$ for all $t$, with $D \not\equiv 0$; or
+(iii) $D(0)$ and $D(1)$ are nonzero with opposite signs. In case (iii) $D$ has a unique zero
+$t^* = D(0)/(D(0) - D(1)) \in (0,1)$. (If $D(0)$, $D(1)$ are both $\ge 0$ or both $\le 0$, then
+$D$, a convex combination of them, keeps that sign on $[0,1]$.)
+
+\textbf{Step 3: the proof, by cases on $D_1$.}
+
+\emph{Case A: $D_1(q) \ge 0$ for all $q$.} Then $p = 1 \in BR_1(q)$ for every $q$ by (3). Let
+$\hat q \in BR_2(1)$; it exists because (3) never gives an empty set. Then $1 \in BR_1(\hat q)$
+and $\hat q \in BR_2(1)$: $(1, \hat q)$ is a NE.
+
+\emph{Case B: $D_1(q) \le 0$ for all $q$.} Symmetrically, $p = 0$ is a best reply to every $q$,
+and $(0, \hat q)$ with $\hat q \in BR_2(0)$ is a NE.
+
+\emph{Case C: $D_1(0)$ and $D_1(1)$ have opposite signs.} Player~1 is indifferent at exactly one
+$q^* \in (0,1)$. Solving $D_1(q^*) = 0$ from (1):
+\[
+  q^* = \frac{y - \ell}{(u - w) + (y - \ell)} . \tag{4}
+\]
+Now look at $D_2$ and apply the lemma again.
+\begin{itemize}
+  \item If $D_2(p) \ge 0$ for all $p$: $q = 1$ is a best reply to every $p$; with
+  $\hat p \in BR_1(1)$, $(\hat p, 1)$ is a NE.
+  \item If $D_2(p) \le 0$ for all $p$: with $\hat p \in BR_1(0)$, $(\hat p, 0)$ is a NE.
+  \item If $D_2(0)$, $D_2(1)$ have opposite signs: player~2 is indifferent at
+  \[
+    p^* = \frac{z - x}{(v - m) + (z - x)} \in (0,1). \tag{5}
+  \]
+  At $(p^*, q^*)$, $D_1(q^*) = 0$ gives $BR_1(q^*) = [0,1] \ni p^*$, and $D_2(p^*) = 0$ gives
+  $BR_2(p^*) = [0,1] \ni q^*$. So $(p^*, q^*)$ is a NE, in strictly mixed strategies.
+\end{itemize}
+The cases A, B, C exhaust all possibilities by the lemma, and each produces a NE. Hence every game
+of this form has a mixed-strategy Nash equilibrium. $\blacksquare$
+
+\interp The argument is the 2$\times$2 version of the fixed-point proof (Tadelis
+pp.~121--122): each best-response correspondence is a ``step'' from one side of the unit square to
+the other, with a vertical (or horizontal) segment where the player is indifferent, and two such
+steps must cross. Mixing is what makes this work: in pure strategies the steps have gaps (Matching
+Pennies has no pure NE), and the indifference segment closes the gap. Gibbons's four cases
+(p.~42) are the sign patterns of $D_1(0) = \ell - y$ and $D_1(1) = u - w$.
+
+\verify \texttt{check\_A2.py} checks (1), (2), (4) and (5) with sympy, then draws 20{,}000 random
+$2\times2$ games (half with integer payoffs in $\{-2,\dots,2\}$, so that ties and constant gains
+occur often), runs the case construction above, and confirms with the exact best-response test (3)
+that the profile it returns is a NE every time. \emph{Comparison with the MWG solutions manual}
+(pp.~8-15--8-16, where the OCR in \texttt{Livros/} prints the number as ``8.0.6''): it splits into
+the four strict-dominance cases ($u > w,\ \ell > y$; $u < w,\ \ell < y$; $v > m,\ x > z$;
+$v < m,\ x < z$) plus ``all other cases'', where it gives the mixed equilibrium
+$\alpha = (y - \ell)/(u + y - \ell - w)$ for player~2 and $\beta = (z - x)/(v + z - x - m)$ for
+player~1. These are our (4) and (5); the conclusion agrees. Two remarks on the manual: (i) in
+cases~3 and~4 it says ``Player 2 will play his best response'' where it means player~1 (a slip:
+the strategies named are $a_1$, $a_2$); (ii) its ``all other cases'' is not complete as written:
+if $u = w$ and $\ell = y$ (player~1 indifferent to everything) and player~2 has no strictly
+dominant strategy, the formula for $\alpha$ is $0/0$ (any $\alpha$ then works, so an equilibrium
+still exists, but the manual's formula does not exhibit it); the same holds for $\beta$ when
+$v = m$ and $x = z$. The case split by the sign of $D_1$ above has no such gap.
+
+\answer{With $p = \Pr(a_1)$, $q = \Pr(b_1)$, player~1's gain from $a_1$ is
+$D_1(q) = q(u-w) + (1-q)(\ell-y)$ and player~2's gain from $b_1$ is
+$D_2(p) = p(v-m) + (1-p)(x-z)$, both affine. If $D_1 \ge 0$ (or $\le 0$) on $[0,1]$, player~1 has a
+pure strategy that is always a best reply, and pairing it with player~2's best reply to it is a NE;
+the same if $D_2$ keeps a sign. Otherwise both change sign, at
+$q^* = \frac{y-\ell}{(u-w)+(y-\ell)}$ and $p^* = \frac{z-x}{(v-m)+(z-x)}$ in $(0,1)$, and
+$(p^*, q^*)$ is a NE because each player is indifferent. So a NE always exists.}
+\end{exsol}

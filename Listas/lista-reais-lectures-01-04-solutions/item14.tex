@@ -1,0 +1,60 @@
+\begin{exsol}{14}{\MG{} Ch.~4 Exercise 3}{160}{Foundations}{L3}
+\asked In the sequential prisoner's dilemma of Fig.~4.9: (a) player~2's best reply to each
+move of player~1; (b) player~1's move and the subgame-perfect equilibrium; (c) whether play
+differs from the simultaneous version (Ch.~1, Fig.~1.8).
+
+\method Backward induction (Tadelis \S8.1, Prop.~8.1, p.~153). An SPE is written as complete
+strategies: player~2's strategy names a reply at \emph{both} of her nodes, including the one off
+the path (Tadelis Def.~7.4, p.~139; Gibbons pp.~125--126 on outcome vs.\ equilibrium).
+
+\solution
+\textbf{Notation.} $C$ = Confess, $N$ = Not confess. Payoffs $(u_1,u_2)$ from Fig.~4.9:
+$(C,C)\mapsto(-5,-5)$, $(C,N)\mapsto(0,-15)$, $(N,C)\mapsto(-15,0)$, $(N,N)\mapsto(-1,-1)$.
+Player~2's strategy is a pair $s_2 = (s_2(C), s_2(N))$: her reply after $C$, then after $N$. So
+$S_2 = \{CC, CN, NC, NN\}$ and $S_1 = \{C, N\}$.
+
+\textbf{(a) Player 2's best replies.}
+\begin{align*}
+  \text{after } C:&\quad u_2(C,C) = -5 > -15 = u_2(C,N) \ \Rightarrow\ C;\\
+  \text{after } N:&\quad u_2(N,C) = 0 > -1 = u_2(N,N) \ \Rightarrow\ C .
+\end{align*}
+So $s_2^* = CC$: confess whatever player~1 did.
+
+\textbf{(b) Player 1's move.} Replacing each of player~2's nodes by its outcome,
+\[
+  u_1(C, s_2^*) = u_1(C,C) = -5 \;>\; -15 = u_1(N,C) = u_1(N, s_2^*),
+\]
+so player~1 confesses. The SPE is
+\[
+  (s_1^*, s_2^*) = \bigl(C,\ (C \text{ after } C,\ C \text{ after } N)\bigr) = (C, CC),
+\]
+with outcome $(C,C)$ and payoffs $(-5,-5)$. In the normal form ($2\times4$) this is also the
+only pure Nash equilibrium. If player~1 plays $C$, player~2 must reply $C$ after $C$ ($CC$ or
+$CN$), and against $CN$ player~1 would switch to $N$ ($-1 > -5$). If player~1 plays $N$,
+player~2 must reply $C$ after $N$ ($CC$ or $NC$), and then $C$ pays player~1 $-5$ or $0$, more
+than $-15$.
+
+\textbf{(c) Comparison.} In the simultaneous game (Fig.~1.8) $C$ is strictly dominant for each
+prisoner ($-5 > -15$ and $0 > -1$), so the unique Nash equilibrium is $(C,C)$ with $(-5,-5)$. The
+sequential version has the same outcome. Seeing player~1's move does not change player~2's
+choice, because $C$ is her best reply to each of player~1's moves; player~1 therefore gains
+nothing from moving first.
+
+\interp Observing the other's move matters only when the best reply depends on it. Here it does
+not: confessing is dominant at both of player~2's nodes, so the sequential game unravels
+exactly as the simultaneous one, and the Pareto-better $(N,N)$ is still out of reach. Making a
+move observable is a commitment device only when it changes what the follower wants to do (item~17,
+Stackelberg).
+
+\verify \texttt{check\_B\_L03.py} computes player~2's replies, player~1's choice, the pure Nash
+equilibria of the $2\times4$ normal form (only $(C, CC)$) and of the simultaneous game (only
+$(C,C)$). \emph{Comparison with \MG{}'s answer} (pp.~160--162): it agrees on all three parts,
+$\text{SPNE} = \{(\text{Confess}, \text{Confess}, \text{Confess})\}$. One wording slip there: the
+third component is described as player~2's response ``to player~1 selecting Confess (in
+Subgame~3)''; Subgame~3 follows Not Confess, so it is the reply to Not Confess.
+
+\answer{(a) Player~2 confesses after Confess ($-5 > -15$) and after Not confess ($0 > -1$).
+(b) Player~1 confesses ($-5 > -15$); SPE $= (C, (C, C))$, outcome $(C,C)$, payoffs $(-5,-5)$.
+(c) No difference: the simultaneous game's unique equilibrium is also $(C,C)$, since Confess is
+strictly dominant at every node.}
+\end{exsol}

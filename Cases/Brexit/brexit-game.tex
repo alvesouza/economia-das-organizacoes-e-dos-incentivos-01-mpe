@@ -1,0 +1,809 @@
+% The Brexit negotiation as a game: tasks (i)-(vii) of Cases/Brexit/intrucoes.md.
+% Compile: pdflatex brexit-game.tex (twice). Check: pdffonts (all Type 1, uni = yes).
+% Every number is asserted by brexit-check.py in this folder. The case PDFs are not reproduced:
+% only the cost figures listed in .agent/plans/cases-lecture-03-brexit.md, section 2, are used.
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[portuguese,english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,array,tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=3pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+\allowdisplaybreaks
+\captionsetup{font=small,labelfont=bf}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize Case: the Brexit negotiation as a game}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\definecolor{ans}{RGB}{20,110,70}
+\definecolor{src}{RGB}{30,80,150}
+\definecolor{warn}{RGB}{190,90,20}
+\newcommand{\answer}[1]{\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.6pt,
+  left=5pt,right=5pt,top=3pt,bottom=3pt]\textbf{Answer.} #1\end{tcolorbox}}
+\newcommand{\gbp}{\pounds}
+\newcommand{\Nt}{\mathit{Nt}}
+\newcommand{\dF}{\mathit{F}}
+\newcommand{\dU}{\mathit{U}}
+
+% One UK decision node with its Present/Reject edges, the vote and three leaves.
+% #1 index of its top leaf, #2 parent EU node, #3 deal label, #4-#6 payoffs (pass, fail, reject),
+% #7 style of the EU edge, #8 style of the present edge, #9 style of the reject edge.
+\newcommand{\branch}[9]{%
+  \node[dec,label={[font=\tiny,inner sep=1pt]above:UK}] (u#1) at (4,{#1+1}) {};
+  \node[nat,label={[font=\tiny,inner sep=1pt]above:Parl.}] (n#1) at (6,{#1+0.5}) {};
+  \draw[#7] (#2) -- node[lab]{#3} (u#1);
+  \draw[#8] (u#1) -- node[lab,above,sloped]{present} (n#1);
+  \draw[#9] (u#1) -- node[lab,below,sloped,pos=0.4]{reject} (8,{#1+2});
+  \draw[e] (n#1) -- node[lab,above,pos=0.6]{$0.8$} (8,#1);
+  \draw[e] (n#1) -- node[lab,below,pos=0.6]{$0.2$} (8,{#1+1});
+  \node[right] at (8,#1) {#4};
+  \node[right] at (8,{#1+1}) {#5};
+  \node[right] at (8,{#1+2}) {#6};
+}
+
+\title{\textbf{Boris's Brexit Dilemma as a Game}\\[4pt]
+  \large Players, tree, subgame-perfect equilibrium and the value of commitment\\[2pt]
+  \normalsize Case write-up for Lecture 3 --- Economics of Organizations and Incentives (MPE Insper)}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{tcolorbox}[colback=src!4,colframe=src,boxrule=0.5pt,title={The assignment and the sources}]
+\textbf{Cases.} ``Boris's Brexit Dilemma (A)'' and ``Boris's Brexit Dilemma (B)'' (Darden,
+UV9621 and UV9624). The case text is not reproduced here. The model uses only the cost figures
+summarized in \S4; every other element (the political cost $r$, the deterrence premium $k$, the
+variants) is an addition of this write-up and is labelled as such.
+
+\textbf{Assignment} (\texttt{Cases/Brexit/intrucoes.md}, quoted in the original Portuguese). In
+pairs, students negotiate a Brexit deal with their counterpart and write the negotiation as a
+game; in class each side decides whether to prepare for a no-deal Brexit (UK), which deal to offer
+(EU) and whether to take the EU's proposal to Parliament (UK). The task list:
+
+\begin{quote}\small\foreignlanguage{portuguese}{%
+Para modelar a negociação como um jogo, seu grupo deve:
+(i) identificar os jogadores;
+(ii) indicar a ordem das jogadas e as ações disponíveis para cada jogador em cada ponto de
+decisão;
+(iii) indicar o que cada jogador sabe quando joga (por exemplo, a UE observa se o Reino Unido se
+preparou para um Brexit sem acordo?);
+(iv) atribuir payoffs a cada resultado final com base nas informações do caso (os números exatos
+importam menos do que uma ordenação que vocês consigam justificar);
+(v) desenhar a árvore do jogo; (vi) resolver o jogo por indução retroativa e encontrar o
+equilíbrio perfeito em subjogos; e
+(vii) comparar o equilíbrio com o resultado da negociação de vocês e, se forem diferentes,
+explicar por quê.}
+\end{quote}
+
+\textbf{Method.} Extensive form, strategies, backward induction and subgame perfection: Tadelis
+(2013) Ch.~7 (pp.~129--150) and Ch.~8 (pp.~151--174); credibility and commitment: Cabral (2017)
+\S7.2, as in \texttt{Notas/L03/L03-06-credibility-entry-commitment.md}. Every number below is
+asserted with exact fractions by \texttt{Cases/Brexit/brexit-check.py}, which also runs backward
+induction programmatically on the tree.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.8pt,title={Executive summary}]
+\textbf{Subgame-perfect equilibrium} (baseline: the EU sees whether the UK prepared; $r=0$):
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{UK:} \emph{prepare} for no deal; if prepared, present only the favourable deal
+    and reject the neutral and unfavourable ones; if unprepared, present every deal.
+  \item \textbf{EU:} offer the \emph{favourable} deal if the UK prepared and the
+    \emph{unfavourable} deal if it did not.
+\end{itemize}
+On the equilibrium path the UK prepares, the EU offers the favourable deal and the UK presents
+it. Expected payoffs are $(-24.7,\,-14)$ in \gbp bn, against $(-28.6,\,-7.6)$ if the UK had not
+prepared.
+
+\textbf{Lesson.} A sunk, visible investment makes the threat to reject credible and shifts the
+EU's offer. Preparation lowers the UK's ex-post cost of walking away from 35 to 22.5, below the
+neutral and unfavourable deals. The EU, seeing this, concedes the favourable deal. The UK gains
+3.9; the EU loses 6.4; the 2.5 difference is a deadweight loss.
+
+\textbf{Robustness.} The result needs the preparation to be \emph{observed}: if it is hidden,
+there is no pure equilibrium, and the UK prepares with probability $8/13$ while the EU offers the
+favourable deal with probability $11/36$. Talks then break down with probability $50/117\approx0.43$.
+It also needs the political cost of walking away to be small ($r<0.4$) and the EU's
+deterrence premium on a favourable deal to be moderate ($k\le5$).
+\end{tcolorbox}
+
+\paragraph{Notation.}
+\begin{itemize}[leftmargin=1.4em,topsep=1pt,itemsep=0pt]\small
+  \item $d\in\{\dF,\Nt,\dU\}$: the soft-Brexit deal the EU offers (favourable, neutral,
+    unfavourable to the UK); $c_d$ and $e_d$ are the UK's and the EU's costs of deal $d$.
+  \item $H_{UK}=35$, $H_{EU}=18$: the costs of a hard (no-deal) Brexit.
+  \item $\kappa=5$: the UK's preparation cost; $m=12.5$: the hard-Brexit cost it saves.
+  \item $p=0.8$: the probability that Parliament passes a presented deal.
+  \item $r\ge0$: the UK government's political cost of rejecting the EU's offer outright (not in
+    the case's numbers). $k\ge0$: the EU's deterrence premium on a favourable deal (not in the case's
+    numbers).
+  \item Payoff $=-$cost, in \gbp bn. Players are risk neutral: they rank lotteries by expected
+    cost.
+\end{itemize}
+
+%-------------------------------------------------------------------------------------------
+\section{(i) The players}
+
+\begin{itemize}
+  \item \textbf{The United Kingdom}, represented by the government of Boris Johnson. It moves
+    twice: it chooses whether to prepare for no deal, and whether to take the EU's offer to
+    Parliament.
+  \item \textbf{The European Union}, represented by its chief negotiator, Michel Barnier. It chooses
+    which deal to offer.
+  \item \textbf{Parliament, modelled as Nature.} A presented deal passes with probability
+    $p=0.8$ and fails with probability $0.2$; a failed vote means a hard Brexit.
+\end{itemize}
+
+\textbf{Why Parliament is Nature.} The case data give the vote as a probability, not as the
+choice of an agent with stated payoffs. The government cannot control it, and the EU cannot
+bargain with it directly. A chance move with known probabilities is the standard way to put such
+a step into an extensive form (Tadelis \S7.1, Definition~7.1, the ``Nature'' player). The model
+also makes $p$ independent of the deal type, which is what a Nature move with one probability
+implies.
+
+\textbf{Remark: Parliament as a strategic player.} A strategic Parliament (say, a pivotal MP who
+compares each deal with no deal) would make three changes. (1)~The game has three players, and
+the vote becomes a best response, so $p$ depends on the deal: an unfavourable deal is more likely
+to fail. \S7.4 shows that this \emph{helps} the UK, because the EU then has a reason to offer
+more even to an unprepared UK. (2)~The government may want a \emph{tougher} Parliament: a veto
+player that rejects bad deals is a commitment device. This is Schelling's (1960) point that the
+power to bind oneself is bargaining power, and Putnam's (1988) ``two-level game''. (3)~With
+several parties in Parliament, the vote is itself a bargaining game; the legislative bargaining of
+\texttt{Notas/L04/L04-08-legislative-bargaining.md} would be the tool. We keep Parliament as
+Nature in the baseline because it keeps the tree solvable by hand and isolates the commitment
+effect.
+
+%-------------------------------------------------------------------------------------------
+\section{(ii) Timing and actions}
+
+\begin{enumerate}[label=\textbf{Stage \arabic*.},leftmargin=4.6em]
+  \item \textbf{UK} chooses \emph{Prepare} ($P$) or \emph{Not prepare} ($N$) for a no-deal
+    Brexit. Preparation costs $\kappa=5$, is all-or-nothing and is sunk: it is paid even if a deal
+    is later implemented.
+  \item \textbf{EU} offers a soft-Brexit deal $d\in\{\dF,\Nt,\dU\}$.
+  \item \textbf{UK} either \emph{presents} the deal to Parliament or \emph{rejects} it outright.
+    Rejection means a hard Brexit, plus the political cost $r$.
+  \item \textbf{Nature (Parliament)} passes a presented deal with probability $0.8$ (the deal is
+    implemented) or rejects it with probability $0.2$ (hard Brexit, no political cost $r$:
+    the government tried).
+\end{enumerate}
+
+\textbf{Strategies.} A pure strategy names an action at every decision node, including nodes that
+are never reached (Tadelis Definition~7.4, pp.~138--139). The UK has one root node and six
+present/reject nodes, one for each (preparation, offer) pair. The EU has two nodes, one for each
+preparation choice. Counting by Tadelis's rule $\lvert S_i\rvert=\prod_k m_k$:
+\begin{align*}
+  \lvert S_{UK}\rvert &= 2\times2^6 = 128, & \lvert S_{EU}\rvert &= 3^2 = 9 .
+\end{align*}
+A UK strategy therefore reads like ``$P$; after $P$: present $\dF$, reject $\Nt$, reject $\dU$;
+after $N$: present all three''. The EU's reads like ``$\dF$ after $P$, $\dU$ after $N$''.
+
+%-------------------------------------------------------------------------------------------
+\section{(iii) Information: who knows what}
+
+\textbf{Baseline: the EU observes preparation.} Stockpiling, contingency contracts and border
+infrastructure are visible, so the EU knows whether the UK prepared when it makes its offer.
+The UK sees the offer before deciding whether to present it. Every information set is a
+singleton. Because Nature moves, Tadelis's Definition~7.3 (p.~136) formally classifies the game as
+one of imperfect information. Still, no player is ever unsure about an earlier move: Nature moves
+last, and its probability is common knowledge. The UK presents without knowing how the vote will
+go, but that is risk, not private information. We also take $r$ and $k$ as common knowledge in the
+baseline; \S11 discusses what changes when they are not.
+
+\textbf{Variant: the EU does not observe preparation.} The EU's two nodes (after $P$ and after
+$N$) lie in one information set, drawn as a dashed line in Figure~\ref{fig:unobs}. The EU must choose
+one offer for both. The UK still knows its own preparation and sees the offer, so its six
+present/reject nodes remain singletons (perfect recall, Tadelis Definition~7.7, p.~142). The EU's strategy
+set shrinks to $\{\dF,\Nt,\dU\}$. Strategically, stage~1 and stage~2 become simultaneous: the
+same tree with a different information structure, as in the sequential and simultaneous Battle of
+the Sexes of \texttt{Notas/L03/L03-01-extensive-form.md}~\S4. \S8 solves this variant.
+
+%-------------------------------------------------------------------------------------------
+\section{(iv) Payoffs}
+
+\subsection{Inputs}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Outcome (costs in \gbp bn) & UK & EU \\
+\midrule
+Hard Brexit, UK unprepared & 35 & 18 \\
+Soft Brexit, favourable deal $\dF$ & 19 & 13 \\
+Soft Brexit, neutral deal $\Nt$ & 23 & 9 \\
+Soft Brexit, unfavourable deal $\dU$ & 27 & 5 \\
+\midrule
+Preparation: cost $\kappa$, hard-Brexit cost saved $m$ & 5; \ 12.5 & --- \\
+Probability Parliament passes a presented deal & \multicolumn{2}{c}{$p=0.8$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Preparation saves 2.5 per pound spent ($12.5=2.5\times5$), but only in a hard Brexit. In a soft
+Brexit the 5 is lost. The EU's costs do not depend on whether the UK prepared.
+
+\subsection{How each terminal payoff is computed}
+
+A prepared UK's hard-Brexit cost is the unprepared cost, minus the saving, plus the sunk outlay:
+\begin{align*}
+  H_{UK}-m+\kappa &= 35-12.5+5\\
+                  &= 22.5+5\\
+                  &= 27.5 .
+\end{align*}
+A prepared UK in a soft Brexit pays the deal plus the outlay, $c_d+5$. A rejection adds $r$ to the
+UK's hard-Brexit cost. The eighteen terminal nodes therefore carry only eight distinct payoff
+pairs (Table~\ref{tab:leaves}).
+
+\begin{table}[h]
+\centering
+\caption{Terminal payoffs (UK, EU) in \gbp bn. ``Fail'' is the vote failing; ``reject'' is the
+UK rejecting outright.}\label{tab:leaves}
+\begin{tabular}{llccc}
+\toprule
+& & \multicolumn{3}{c}{Offer $d$} \\
+\cmidrule(lr){3-5}
+UK prepared? & Event & $\dF$ & $\Nt$ & $\dU$ \\
+\midrule
+$N$ & deal passes   & $(-19,-13)$ & $(-23,-9)$ & $(-27,-5)$ \\
+$N$ & vote fails    & $(-35,-18)$ & $(-35,-18)$ & $(-35,-18)$ \\
+$N$ & UK rejects    & $(-35-r,-18)$ & $(-35-r,-18)$ & $(-35-r,-18)$ \\
+\midrule
+$P$ & deal passes   & $(-24,-13)$ & $(-28,-9)$ & $(-32,-5)$ \\
+$P$ & vote fails    & $(-27.5,-18)$ & $(-27.5,-18)$ & $(-27.5,-18)$ \\
+$P$ & UK rejects    & $(-27.5-r,-18)$ & $(-27.5-r,-18)$ & $(-27.5-r,-18)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Why the ordering is defensible}
+
+The assignment stresses that a justified ordering matters more than exact numbers. Four ordinal
+facts drive the whole solution; any numbers that preserve them give the same equilibrium.
+
+\begin{enumerate}[label=(O\arabic*)]
+  \item \textbf{An unprepared UK prefers every deal to no deal:} $27<35$. Even the unfavourable
+    deal avoids the worst disruption.
+  \item \textbf{A prepared UK prefers no deal to the neutral and unfavourable deals, but not to the
+    favourable one:} $19<22.5<23<27$. Here 22.5 is the prepared hard-Brexit cost net of the sunk
+    5, which is paid in either case.
+  \item \textbf{The EU prefers any implemented deal to no deal, and less generous deals to more
+    generous ones:} $5<9<13<18$. A hard Brexit hurts the EU too, but less than the UK
+    ($18<35$): the EU is the larger party and the one with the better outside option.
+  \item \textbf{Preparation plus the favourable deal beats no preparation plus the unfavourable
+    deal for the UK}, in expectation: $24.7<28.6$ (computed in \S6).
+\end{enumerate}
+
+The complete ranking of the UK's sure outcomes is
+$(N,\dF)\succ(N,\Nt)\succ(P,\dF)\succ(N,\dU)\succ(P,\text{hard})\succ(P,\Nt)\succ(P,\dU)\succ(N,\text{hard})$,
+that is, $-19>-23>-24>-27>-27.5>-28>-32>-35$. The EU ranks
+$\dU\succ\Nt\succ\dF\succ\text{hard}$ whatever the UK did.
+
+Every deal costs the two sides 32 jointly ($19+13=23+9=27+5$). The deal type is therefore a pure
+transfer between the two sides; only the probability of a hard Brexit and the preparation outlay
+change total costs (\S9).
+
+\subsection{What the payoffs leave out}
+
+\begin{itemize}
+  \item \textbf{The political cost $r$} of walking away from an offer. A government that refuses
+    to put a deal to a vote may be blamed for the hard Brexit that follows; one that loses a vote
+    is less exposed. The baseline sets $r=0$, and \S7.1 shows that it matters a lot.
+  \item \textbf{The EU's deterrence motive.} The EU wants low costs, but it also wants to deter
+    other members from leaving. A generous deal for a leaver sets a precedent. We represent this as a
+    premium $k$ added to the EU's cost of an implemented favourable deal (\S7.3).
+  \item \textbf{Non-monetary values}: sovereignty, the Irish border and the peace process, the
+    integrity of the Union and of the single market, careers and party politics. They enter only
+    through $r$ and $k$, or through the ordering.
+  \item \textbf{Risk attitudes, dynamics and uncertainty}: risk neutrality is assumed; the
+    future relationship and later negotiations are absent; the costs, $p$ and $r$ are known.
+\end{itemize}
+
+%-------------------------------------------------------------------------------------------
+\section{(v) The game tree}
+
+Figure~\ref{fig:tree} is the full tree of the baseline game. Filled dots are decision nodes, open
+dots are Nature's (Parliament's) moves; the payoffs are (UK, EU). Thick green edges are the
+subgame-perfect choices at \emph{every} node, on and off the equilibrium path (\S6).
+
+\begin{figure}[p]
+\centering
+\begin{tikzpicture}[x=1.22cm,y=-0.70cm,every node/.style={font=\footnotesize},
+  dec/.style={circle,fill=black,inner sep=1.7pt},
+  nat/.style={circle,draw,fill=white,inner sep=1.7pt},
+  e/.style={draw=gray!70,thin},
+  spe/.style={draw=ans,line width=1.4pt},
+  lab/.style={font=\scriptsize,fill=white,inner sep=1pt}]
+  \node[dec,label={[font=\scriptsize]left:UK}] (r) at (0,8.5) {};
+  \node[dec,label={[font=\scriptsize]above:EU}] (eP) at (2,4) {};
+  \node[dec,label={[font=\scriptsize]below:EU}] (eN) at (2,13) {};
+  \draw[spe] (r) -- node[lab,above left]{Prepare ($P$)} (eP);
+  \draw[e] (r) -- node[lab,below left]{Not ($N$)} (eN);
+  \branch{0}{eP}{$\dF$}{$(-24,\,-13)$}{$(-27.5,\,-18)$}{$(-27.5-r,\,-18)$}{spe}{spe}{e}
+  \branch{3}{eP}{$\Nt$}{$(-28,\,-9)$}{$(-27.5,\,-18)$}{$(-27.5-r,\,-18)$}{e}{e}{spe}
+  \branch{6}{eP}{$\dU$}{$(-32,\,-5)$}{$(-27.5,\,-18)$}{$(-27.5-r,\,-18)$}{e}{e}{spe}
+  \branch{9}{eN}{$\dF$}{$(-19,\,-13)$}{$(-35,\,-18)$}{$(-35-r,\,-18)$}{e}{spe}{e}
+  \branch{12}{eN}{$\Nt$}{$(-23,\,-9)$}{$(-35,\,-18)$}{$(-35-r,\,-18)$}{e}{spe}{e}
+  \branch{15}{eN}{$\dU$}{$(-27,\,-5)$}{$(-35,\,-18)$}{$(-35-r,\,-18)$}{spe}{spe}{e}
+\end{tikzpicture}
+\caption{The baseline game (the EU observes preparation). At each Parliament node the upper edge
+is ``pass'' (0.8) and the lower is ``fail'' (0.2). Green: the SPE action at every node, for
+$r<0.4$ and $k\le5$.}\label{fig:tree}
+
+\bigskip
+\begin{tikzpicture}[x=1.3cm,y=-0.80cm,every node/.style={font=\footnotesize},
+  dec/.style={circle,fill=black,inner sep=1.7pt},
+  e/.style={draw=gray!70,thin},
+  lab/.style={font=\scriptsize,fill=white,inner sep=1pt}]
+  \node[dec,label={[font=\scriptsize]left:UK}] (r) at (0,2.5) {};
+  \node[dec] (eP) at (2.2,1) {};
+  \node[dec] (eN) at (2.2,4) {};
+  \draw[e] (r) -- node[lab,above left]{$P$} (eP);
+  \draw[e] (r) -- node[lab,below left]{$N$} (eN);
+  \draw[dashed,thick,warn] (eP) -- node[lab,right,text=warn]{EU's information set} (eN);
+  \foreach \yy/\dd/\pa/\txt in {0/\dF/eP/{UK presents: $(-24.7,\,-14)$},
+                               1/\Nt/eP/{UK rejects: $(-27.5,\,-18)$},
+                               2/\dU/eP/{UK rejects: $(-27.5,\,-18)$},
+                               3/\dF/eN/{UK presents: $(-22.2,\,-14)$},
+                               4/\Nt/eN/{UK presents: $(-25.4,\,-10.8)$},
+                               5/\dU/eN/{UK presents: $(-28.6,\,-7.6)$}} {
+    \draw[e] (\pa) -- node[lab]{$\dd$} (5.2,\yy);
+    \node[right] at (5.2,\yy) {\txt};
+  }
+\end{tikzpicture}
+\caption{The unobservable variant, reduced. The EU's two nodes are one information set. After
+each offer the UK still moves at a singleton node, so each leaf shows the UK's optimal
+present/reject choice (from Figure~\ref{fig:tree}, $r=0$) and the expected payoffs it
+yields.}\label{fig:unobs}
+\end{figure}
+
+%-------------------------------------------------------------------------------------------
+\section{(vi) Backward induction and the subgame-perfect equilibrium}
+
+The game is finite and every information set is a singleton. Zermelo's argument (Tadelis
+Proposition~8.1) carries over once each chance node is replaced by its expected payoffs, so
+backward induction yields a subgame-perfect equilibrium. Every decision node starts a subgame,
+so the backward-induction profile is the SPE (Tadelis \S8.2). With $r=0$ there are no ties, so the
+SPE is unique. Throughout, the UK and the EU compare \emph{expected costs}.
+
+\subsection{Step 1: the UK's present/reject decisions (six nodes)}
+
+\textbf{After $N$.} Presenting deal $d$ costs $0.8\,c_d+0.2\times35$; rejecting costs $35+r$.
+For the favourable deal:
+\begin{align*}
+  0.8\times19+0.2\times35 &= 15.2+7\\
+                          &= 22.2 .
+\end{align*}
+In the same way, $\Nt$ costs $18.4+7=25.4$ and $\dU$ costs $21.6+7=28.6$. All three are below 35, and
+therefore below $35+r$ for any $r\ge0$. \textbf{An unprepared UK presents every deal.}
+
+\textbf{After $P$.} Presenting deal $d$ costs $0.8\,(c_d+5)+0.2\times27.5$; rejecting costs
+$27.5+r$. For the favourable deal:
+\begin{align*}
+  0.8\times24+0.2\times27.5 &= 19.2+5.5\\
+                            &= 24.7 .
+\end{align*}
+In the same way, $\Nt$ costs $22.4+5.5=27.9$ and $\dU$ costs $25.6+5.5=31.1$. With $r=0$ only $24.7<27.5$:
+\textbf{a prepared UK presents $\dF$ and rejects $\Nt$ and $\dU$.}
+
+\textbf{The general present/reject rule.} For any $p\in(0,1]$ and $r\ge0$, a prepared UK
+presents $d$ when the expected cost of presenting does not exceed that of rejecting:
+\begin{align}
+  5+p\,c_d+(1-p)\,22.5 &\le 27.5+r \nonumber\\
+  p\,c_d+22.5-22.5\,p &\le 22.5+r \nonumber\\
+  p\,(c_d-22.5) &\le r \nonumber\\
+  c_d &\le 22.5+\frac{r}{p}. \label{eq:rule}
+\end{align}
+The sunk 5 is paid in both cases, so it drops out of \eqref{eq:rule}. What moves the threshold is the
+\emph{saving} $m=12.5$, which lowers the ex-post cost of no deal from 35 to 22.5. For an
+unprepared UK the same steps give $c_d\le35+r/p$, which every deal satisfies.
+
+\begin{table}[h]
+\centering
+\caption{Step 1: the UK's expected cost of presenting each deal versus rejecting it ($p=0.8$).}
+\begin{tabular}{lcccc}
+\toprule
+UK at node & present $\dF$ & present $\Nt$ & present $\dU$ & reject \\
+\midrule
+after $N$ & \textbf{22.2} & \textbf{25.4} & \textbf{28.6} & $35+r$ \\
+after $P$ & \textbf{24.7} & 27.9 & 31.1 & $\mathbf{27.5+r}$ (for $\Nt$, $\dU$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Step 2: the EU's offer (two nodes)}
+
+If a deal is presented, the EU's expected cost is $0.8\,e_d+0.2\times18=0.8\,e_d+3.6$:
+\begin{align*}
+  \dF:&\ 0.8\times13+3.6=14, & \Nt:&\ 0.8\times9+3.6=10.8, & \dU:&\ 0.8\times5+3.6=7.6 .
+\end{align*}
+If the UK rejects, the EU's cost is 18.
+\begin{itemize}
+  \item \textbf{After $N$} every deal is presented, so the EU picks the cheapest for itself:
+    $\dU$ (cost 7.6). The UK's cost is 28.6.
+  \item \textbf{After $P$} only $\dF$ is presented. The EU compares $\dF$ (14) with $\Nt$ or $\dU$, which are
+    rejected (18), and offers $\dF$. The UK's cost is 24.7.
+\end{itemize}
+
+\subsection{Step 3: the UK's preparation decision}
+
+Preparing leads to $(-24.7,\,-14)$ and not preparing to $(-28.6,\,-7.6)$. Since $24.7<28.6$, the UK
+\textbf{prepares}. Its gain is $28.6-24.7=3.9$, and the EU's loss is $14-7.6=6.4$.
+
+\answer{The subgame-perfect equilibrium (baseline, $r=0$, $k=0$) is the strategy profile
+\begin{align*}
+  s^*_{UK} &= \bigl(P;\ \text{after }P\text{: present }\dF,\ \text{reject }\Nt,\ \text{reject }\dU;\
+              \text{after }N\text{: present }\dF,\Nt,\dU\bigr),\\
+  s^*_{EU} &= \bigl(\dF\text{ after }P;\ \dU\text{ after }N\bigr),
+\end{align*}
+with Parliament passing a presented deal with probability 0.8. On the equilibrium path the UK prepares,
+the EU offers $\dF$, and the UK presents it. With probability 0.8 the vote passes, giving
+$(-24,\,-13)$. With probability 0.2 it fails, giving a prepared hard Brexit, $(-27.5,\,-18)$.
+Expected payoffs are $(-24.7,\,-14)$. The actions after $N$ are off the path, yet they are part
+of the equilibrium: they tell the UK what not preparing would cost it.}
+
+\subsection{A Nash equilibrium that is not subgame perfect}
+
+Consider the profile in which the UK does \emph{not} prepare but says it would reject anything but
+the favourable deal, and the EU believes it:
+\begin{align*}
+  s'_{UK} &= \bigl(N;\ \text{after }N\text{: present }\dF,\ \text{reject }\Nt,\dU;\
+              \text{after }P\text{: present }\dF,\ \text{reject }\Nt,\dU\bigr),\\
+  s'_{EU} &= \bigl(\dF\text{ after }P;\ \dF\text{ after }N\bigr).
+\end{align*}
+The outcome is $N$, then $\dF$, presented, with expected payoffs $(-22.2,\,-14)$. This is better for the
+UK than the SPE.
+
+\textbf{It is a Nash equilibrium.} Given $s'_{EU}$, preparing would cost the UK 24.7 instead of
+22.2, and presenting $\dF$ is optimal at the node that is reached. Given $s'_{UK}$, offering $\Nt$ or $\dU$
+after $N$ would be rejected and cost the EU 18 instead of 14.
+
+\textbf{It is not subgame perfect.} In the subgame after $(N,\dU)$, rejecting costs the UK 35
+while presenting costs 28.6. The threat to reject is never tested on the path, so Nash
+equilibrium does not discipline it; subgame perfection does (Tadelis \S8.2,
+\texttt{Notas/L03/L03-05-subgame-perfection.md}). Without preparation the threat is cheap talk.
+
+The UK's \emph{price of credibility} is the gap between this non-credible ideal and the SPE:
+$24.7-22.2=2.5=5-0.2\times12.5$. That is the outlay minus its expected saving. The script
+enumerates all $128\times9$ pure-strategy profiles: there are 88 pure Nash equilibria, with outcomes
+$(-22.2,-14)$, $(-24.7,-14)$, $(-25.4,-10.8)$ and $(-27.5,-18)$, and exactly \textbf{one} of them is
+subgame perfect. As in the ultimatum game (Tadelis Proposition~11.1), Nash equilibrium
+``has no bite'' here. Non-credible threats support almost anything.
+
+%-------------------------------------------------------------------------------------------
+\section{Sensitivity}
+
+\subsection{\texorpdfstring{The political cost of walking away, $r$}{The political cost of walking away, r}}
+
+By \eqref{eq:rule} with $p=0.8$, a prepared UK presents $\Nt$ iff $23\le22.5+r/0.8$, that is,
+$r\ge0.8\times0.5=0.4$. It presents $\dU$ iff $27\le22.5+r/0.8$, that is, $r\ge0.8\times4.5=3.6$.
+The after-$N$ rule never changes. Three regimes follow (ties at the thresholds are broken
+toward presenting):
+
+\begin{center}
+\begin{tikzpicture}[x=1cm]
+  \draw[->,thick] (0,0) -- (13,0) node[right]{$r$};
+  \foreach \x/\lb in {0/0,3/0.4,8.5/3.6} {\draw (\x,0.12) -- (\x,-0.12) node[below]{$\lb$};}
+  \node[align=center,font=\footnotesize] at (1.5,0.75) {$(P,\dF)$\\UK $-24.7$, EU $-14$};
+  \node[align=center,font=\footnotesize] at (5.75,0.75) {$(P,\Nt)$\\UK $-27.9$, EU $-10.8$};
+  \node[align=center,font=\footnotesize] at (10.8,0.75) {$(N,\dU)$\\UK $-28.6$, EU $-7.6$};
+\end{tikzpicture}
+
+\footnotesize (not to scale)
+\end{center}
+
+\begin{itemize}
+  \item \textbf{$r<0.4$}: the baseline. A prepared UK presents only $\dF$; the EU offers $\dF$.
+  \item \textbf{$0.4<r<3.6$}: a prepared UK presents $\dF$ and $\Nt$, so the EU offers $\Nt$ (10.8
+    beats 14). Preparing gives the UK $5+0.8\times23+0.2\times22.5=27.9$, which still beats 28.6, so the
+    UK prepares. Preparation buys it only the neutral deal, a gain of $0.7$.
+  \item \textbf{$r>3.6$}: even a prepared UK would present $\dU$, so the EU offers $\dU$ in both
+    subgames. Preparing would cost $5+0.8\times27+0.2\times22.5=31.1>28.6$, so the UK does not
+    prepare. The outcome is $(N,\dU)$.
+\end{itemize}
+
+The comparative static is the opposite of what one might expect. A higher political cost of walking
+away is a cost of \emph{carrying out} the threat, so it weakens the threat. The UK wants a
+low $r$, for instance a public that would not blame it for no deal. A \emph{negative} $r$, a political
+reward for walking away, would make the threat credible even without preparation: an unprepared
+UK rejects $\dU$ iff $28.6>35+r$, that is, iff $r<-6.4$.
+
+\subsection{\texorpdfstring{A general pass probability $p$}{A general pass probability p}}
+
+With $r=0$, rule \eqref{eq:rule} gives ``present $\dF$ only'' after $P$ for every $p>0$. After $N$ the
+UK presents every deal and the EU offers $\dU$. The UK's gain from preparing is
+\begin{align*}
+  \bigl[27p+35(1-p)\bigr]-\bigl[5+19p+22.5(1-p)\bigr]
+    &= (27-19-5)\,p+(35-22.5-5)(1-p)\\
+    &= 3p+7.5(1-p)\\
+    &= 7.5-4.5p,
+\end{align*}
+which is positive for every $p\in[0,1]$ and equals 3.9 at $p=0.8$. The two terms read
+naturally. If the deal passes, preparation buys a better deal ($27-19=8$) for 5. If it fails,
+preparation is insurance ($35-22.5=12.5$) for the same 5.
+
+For general $p$ the thresholds in $r$ become $r\ge0.5\,p$ (present $\Nt$) and $r\ge4.5\,p$
+(present $\dU$). In the middle regime the UK prepares iff $27.5+0.5p<35-8p$, that is,
+$p<15/17\approx0.88$. In the high regime preparation is pure insurance, and the UK
+prepares iff $27.5+4.5p<35-8p$, that is, $p<0.6$. A Parliament likely to pass deals ($p$ near 1)
+makes insurance worthless and leaves only the strategic motive.
+
+\subsection{\texorpdfstring{The EU's deterrence premium $k$}{The EU's deterrence premium k}}
+
+Suppose an implemented favourable deal costs the EU $13+k$, where $k$ is the reputational cost of
+rewarding a leaver in the eyes of other members. After $P$, the EU offers $\dF$ iff
+\begin{align*}
+  0.8\,(13+k)+0.2\times18 &\le 18\\
+  10.4+0.8k+3.6 &\le 18\\
+  0.8k &\le 4\\
+  k &\le 5 .
+\end{align*}
+For $k>5$ the EU offers $\Nt$ or $\dU$ to a prepared UK, both are rejected, and the game ends in a
+hard Brexit: $(-27.5,\,-18)$. The UK still prepares ($27.5<28.6$), so the outcome is no deal by
+design, with joint cost 45.5. (If the premium were paid on \emph{offering} $\dF$ rather than on
+implementing it, the condition would be $14+k\le18$, that is, $k\le4$.) After $N$ the EU offers
+$\dU$ whatever $k$ is. Deterrence concerns can thus turn a commitment that works into a breakdown: a
+tough EU and a credible UK are a bad combination.
+
+\subsection{Pass probabilities that depend on the deal}
+
+Let $p_d$ be the probability that Parliament passes deal $d$. Relative to a hard Brexit, a presented deal
+saves the EU $p_d\,(18-e_d)$: $5p_{\dF}$, $9p_{\Nt}$ and $13p_{\dU}$. An unprepared UK still presents
+everything, so the EU offers $\dU$ to it only if $13p_{\dU}\ge\max\{9p_{\Nt},\,5p_{\dF}\}$. Take
+$(p_{\dF},p_{\Nt},p_{\dU})=(0.9,\,0.8,\,0.5)$. The savings are $4.5$, $7.2$ and $6.5$, so the EU offers
+$\Nt$ after $N$ and the UK's cost is 25.4. After $P$, with $r=0$, rule \eqref{eq:rule} (with $p_d$) still
+presents only $\dF$, so the EU offers $\dF$: the EU's cost is $0.9\times13+0.1\times18=13.5$ and the UK's is
+$5+0.9\times19+0.1\times22.5=24.35$. The UK still prepares, but its gain falls to $1.05$. A
+Parliament that is hard on bad deals does part of the work of preparation.
+
+%-------------------------------------------------------------------------------------------
+\section{The unobservable variant: commitment must be seen}
+
+If the EU cannot see preparation, the only proper subgames start at the UK's present/reject
+nodes. Those decisions are as in Step~1. Substituting them gives the reduced normal form
+(rows: UK; columns: EU; payoffs (UK, EU)):
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $\dF$ & $\Nt$ & $\dU$ \\
+\midrule
+$P$ & $(-24.7,\ \mathbf{-14})$ & $(\mathbf{-27.5},\ -18)$ & $(\mathbf{-27.5},\ -18)$ \\
+$N$ & $(\mathbf{-22.2},\ -14)$ & $(\mathbf{-25.4},\ -10.8)$ & $(-28.6,\ \mathbf{-7.6})$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Bold marks best responses: the EU's within a row, the UK's within a column (for $\Nt$, the UK's best
+response is $N$; after $P$, $\Nt$ and $\dU$ tie for the EU at $-18$, but $\dF$ beats both).
+
+\textbf{No pure Nash equilibrium.} The best responses cycle. Against $P$ the EU offers $\dF$;
+against $\dF$ the UK does not prepare; against $N$ the EU offers $\dU$; against $\dU$ the UK prepares.
+This is the structure of Matching Pennies (\texttt{Notas/L02/L02-07-mixed-strategies.md}) and of
+the Lecture~3 inspection mini case ``Work or shirk?''. Preparation only pays if the EU
+expects it and concedes; but if the EU expects it, the UK would rather save the 5.
+
+\textbf{The mixed equilibrium.} Let $\sigma=\Pr(P)$ and $\tau=\Pr(\dF)$. $\Nt$ is never used:
+it costs the EU at least as much as $\dU$ in each row, and strictly more against $N$.
+The EU is indifferent between $\dF$ and $\dU$ when
+\begin{align*}
+  -14 &= \sigma\,(-18)+(1-\sigma)(-7.6)\\
+  14-7.6 &= (18-7.6)\,\sigma\\
+  \sigma &= \frac{6.4}{10.4} = \frac{8}{13}.
+\end{align*}
+The UK is indifferent between $P$ and $N$ when
+\begin{align*}
+  -24.7\,\tau-27.5\,(1-\tau) &= -22.2\,\tau-28.6\,(1-\tau)\\
+  28.6-27.5 &= (28.6-27.5+24.7-22.2)\,\tau\\
+  \tau &= \frac{1.1}{3.6} = \frac{11}{36}.
+\end{align*}
+At $\sigma=8/13$, $\Nt$ would cost the EU $\tfrac{8}{13}\,18+\tfrac{5}{13}\,10.8=198/13\approx15.2>14$, so it
+stays unused. Equilibrium payoffs:
+\begin{align*}
+  u_{UK} &= -27.5+2.8\,\tau = -27.5+\tfrac{2.8\times11}{36} = -\tfrac{1199}{45}\approx-26.64,
+  & u_{EU} &= -14 .
+\end{align*}
+
+\textbf{Lessons.} (1)~Hidden commitment is no commitment. With observability the UK's cost is
+24.7; without it, 26.64. Being seen to prepare is worth $35/18\approx1.94$ to the UK. The EU's
+payoff, $-14$, is the same in both games. (2)~Breakdown becomes likely. A prepared UK meets the
+unfavourable offer and rejects it with probability $\sigma(1-\tau)=50/117\approx0.43$. The
+overall probability of a hard Brexit rises from 0.2 to $317/585\approx0.54$. (3)~The UK
+therefore wants its preparation to be verifiable, and the EU, which gets $-14$ either way, has no
+reason to block that. Lecture~3's point that a commitment must be observed and irreversible
+(\texttt{Notas/L03/L03-06-credibility-entry-commitment.md}~\S3) is exactly this.
+
+%-------------------------------------------------------------------------------------------
+\section{Efficiency: preparation as rent-shifting}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Outcome & UK cost & EU cost & Joint cost \\
+\midrule
+$(N,\dU)$: no preparation ($r>3.6$, or the benchmark) & 28.6 & 7.6 & 36.2 \\
+$(P,\dF)$: SPE, $r<0.4$ & 24.7 & 14 & 38.7 \\
+$(P,\Nt)$: SPE, $0.4<r<3.6$ & 27.9 & 10.8 & 38.7 \\
+Unobservable preparation, mixed equilibrium & 26.64 & 14 & 40.64 \\
+$(P,\text{hard})$: $k>5$ & 27.5 & 18 & 45.5 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every deal costs 32 jointly, and a hard Brexit costs 53 jointly (40.5 if the UK prepared, before the
+outlay). So
+\begin{align*}
+  (N,\dU):&\ 0.8\times32+0.2\times53=25.6+10.6=36.2,\\
+  (P,\dF):&\ 5+0.8\times32+0.2\times40.5=5+25.6+8.1=38.7 .
+\end{align*}
+The difference, $2.5=5-0.2\times12.5$, is the outlay minus its expected saving. Preparation is
+socially worthwhile only if $(1-p)\,12.5\ge5$, that is, $p\le0.6$. At $p=0.8$ it is a
+\textbf{rent-shifting investment with a deadweight loss}: it moves 6.4 from the EU to the UK and
+destroys 2.5 along the way ($6.4-3.9=2.5$).
+
+This is the logic of strategic investment in industrial organization. An incumbent sinks capacity,
+or posts a bond, not because the investment is productive but because it changes what the rival
+does next (Cabral \S7.2, \texttt{Notas/L03/L03-06-credibility-entry-commitment.md}; the bond there
+is worth 30 to the incumbent). There is one difference. Cabral's bond costs nothing on the
+equilibrium path, whereas here the 5 is spent even when the deal passes, which is where the
+deadweight loss comes from.
+
+\textbf{A bargain the parties cannot strike.} Suppose a deal on the same frontier ($c+e=32$) gave the
+UK $c^*=(24.7-0.2\times35)/0.8=22.125$. An unprepared UK would then be exactly as well off as in the
+SPE, and the EU would pay $0.8\times9.875+3.6=11.5<14$. Both would gain from the EU promising
+``a generous deal if you do not prepare''. But the promise is not credible: once the UK is
+unprepared, the EU's best reply is $\dU$. The inefficiency comes from a commitment problem on the EU's
+side. Moreover, no deal in the case's menu achieves it: $\Nt$ leaves an unprepared UK at 25.4.
+
+%-------------------------------------------------------------------------------------------
+\section{In-class decision guide}
+
+\subsection*{Playing the UK}
+\begin{enumerate}
+  \item \textbf{Prepare, and make sure the EU sees it.} Visible preparation is worth 3.9 at
+    $p=0.8$ (and $3p+7.5(1-p)>0$ for any $p$). Hidden preparation is worth far less (\S8).
+  \item \textbf{If prepared: present only the favourable deal}, and reject the neutral and
+    unfavourable ones, as long as your political cost of walking away is small ($r<0.4$).
+    If $0.4<r<3.6$, present $\dF$ or $\Nt$ and reject $\dU$. If $r>3.6$, do not prepare at all.
+  \item \textbf{If unprepared: present whatever is offered.} Every deal beats no deal. Saying
+    otherwise is cheap talk, and a well-briefed EU will ignore it.
+  \item \textbf{Expect a breakdown if the EU's deterrence concern is large} ($k>5$): you still
+    prefer to have prepared ($27.5<28.6$).
+\end{enumerate}
+
+\subsection*{Playing the EU}
+\begin{enumerate}
+  \item \textbf{If you see preparation, offer the favourable deal}, unless you believe the UK's
+    political cost of walking away is high. If you are unsure, offer $\Nt$ instead of $\dF$ only if
+    $\Pr(r\ge0.4)>5/9$, and $\dU$ instead of $\dF$ only if $\Pr(r\ge3.6)>5/13$ (from
+    $q\times10.8+(1-q)\times18=14$ and $q\times7.6+(1-q)\times18=14$).
+  \item \textbf{If you see no preparation, offer the unfavourable deal.} It will be presented.
+  \item \textbf{If you cannot tell}, the equilibrium has you offering $\dF$ with probability
+    $11/36$ and $\dU$ otherwise. In practice, invest in finding out.
+  \item \textbf{Weigh precedent.} If rewarding a leaver costs you more than 5 in deterrence, refuse
+    the favourable deal, and accept that a hard Brexit follows.
+\end{enumerate}
+
+\subsection*{What a counterpart may do differently}
+A UK negotiator may skip preparation because it looks like bad faith, or threaten rejection without
+preparing. An EU negotiator may offer the neutral deal as a ``fair'' compromise, or call a bluff
+because it believes $r$ is high. Each departure maps to a parameter above ($r$, $k$, $p_d$, beliefs)
+or to the behavioural reasons in \S11. Record which one it was.
+
+%-------------------------------------------------------------------------------------------
+\section{(vii) Comparing the equilibrium with your negotiation}
+
+The SPE is a benchmark for perfectly rational, money-maximizing players with common knowledge
+of the tree. Real pairs often end elsewhere. The usual reasons:
+
+\begin{itemize}
+  \item \textbf{Fairness.} In ultimatum-game experiments, proposers typically offer 25--50\% of the
+    pie and responders usually reject offers below about 20--25\% (Tadelis, Remark pp.~223--224,
+    citing Camerer 2003; \texttt{Notas/L04/L04-05-ultimatum-game.md}~\S4). Here the ``pie'' is the
+    surplus of a deal over an unprepared hard Brexit, $53-32=21$. The deals give the UK
+    $16/21\approx76\%$ ($\dF$), $12/21\approx57\%$ ($\Nt$) and $8/21\approx38\%$ ($\dU$). By lab
+    standards even $\dU$ is not an insulting offer, so a fairness-motivated rejection of $\dU$ by an
+    unprepared UK would have to come from political humiliation (a negative component of $r$),
+    not from the split itself. Conversely, an EU player may refuse $\dF$ as ``unfair'' to the EU.
+  \item \textbf{Reputation and repeated interaction.} The EU deals with 27 members and future
+    applicants, so a concession to a leaver is read by others. This is the $k$ of \S7.3, and the
+    repeated-game logic of \texttt{Notas/L04/L04-02-carrot-and-stick.md}. The UK and the EU also
+    negotiate again (trade, security, fisheries), which may soften both sides.
+  \item \textbf{Uncertainty about $p$ and $r$.} If the EU does not know $r$, its offer is a screen
+    (thresholds $5/9$ and $5/13$ in \S10); if the UK does not know how Parliament will vote, it may
+    misjudge \eqref{eq:rule}. With private information, rational bargaining can end in breakdown
+    or delay (\texttt{Notas/L04/L04-09-bargaining-private-information.md}).
+  \item \textbf{Cheap talk versus commitment.} Statements like ``no deal is better than a bad deal''
+    change nothing in the model unless backed by preparation or by a change in $r$. Pairs in which
+    the EU believed an unprepared UK's threat played the non-credible Nash equilibrium of \S6.4.
+  \item \textbf{Deadline extensions.} The model assumes a rejection means a hard Brexit now. If a
+    rejection can instead lead to an extension and a new round, the game becomes one of
+    alternating offers (\texttt{Notas/L04/L04-07-rubinstein-infinite-horizon.md}). The split then
+    depends on patience, not only on outside options, and preparation matters less.
+  \item \textbf{Domestic politics.} Votes, party leadership and elections make $p$, $r$ and even
+    the UK's objective endogenous (\S1 remark: two-level games).
+\end{itemize}
+
+\textbf{Template: record your negotiation against the SPE.}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{4.3cm}X}
+\toprule
+Decision & SPE prediction (baseline) & What we did, and why (if different) \\
+\midrule
+UK: prepare? & Prepare, visibly & \\[14pt]
+EU: what did it observe? & Preparation & \\[14pt]
+EU: offer & $\dF$ (after $P$); $\dU$ would follow $N$ & \\[14pt]
+UK: present or reject & Present $\dF$ & \\[14pt]
+Parliament (dice / draw) & Pass with prob.\ 0.8 & \\[14pt]
+Final outcome, payoffs & $(-24,-13)$ or $(-27.5,-18)$; exp.\ $(-24.7,-14)$ & \\[14pt]
+Beliefs about $r$, $k$, $p$ & $r=0$, $k=0$, $p=0.8$ & \\[14pt]
+Main reason for any gap & --- & \\[14pt]
+\bottomrule
+\end{tabularx}
+\end{center}
+
+%-------------------------------------------------------------------------------------------
+\section{Historical note (general knowledge, not from the case)}
+
+The facts in this section are general knowledge and are not taken from the case. Boris Johnson
+became Prime Minister in July 2019. In October 2019 his government and the EU agreed a revised
+Withdrawal Agreement, which replaced the Irish ``backstop'' with the Protocol on Ireland/Northern
+Ireland. The Article~50 deadline had been extended three times during 2019. After the December 2019
+general election, Parliament approved the Withdrawal Agreement, and the UK left the EU on
+31~January~2020, entering a transition period that ended on 31~December~2020. Michel Barnier led the EU's
+side in both negotiations. The \textbf{EU--UK Trade and Cooperation Agreement} was agreed on
+24~December~2020, applied provisionally from 1~January~2021, and entered into force on 1~May~2021.
+It provides for zero tariffs and zero quotas on goods that meet its rules of origin, and covers
+much less of trade in services. Which of the model's deal types, if any, these agreements
+correspond to is a question for class discussion, not something the model settles.
+
+%-------------------------------------------------------------------------------------------
+\section*{References}
+\begin{itemize}[leftmargin=1.4em]\small\raggedright
+  \item Tadelis, S. (2013). \emph{Game Theory: An Introduction}. Princeton University Press.
+    Ch.~7, ``Preliminaries'' of dynamic games (pp.~129--150): extensive form, Nature, information
+    sets, strategies. Ch.~8, ``Credibility and Sequential Rationality'' (pp.~151--174): backward
+    induction, Proposition~8.1, subgame perfection. Ch.~6 (pp.~101--114): mixed strategies. \S11.1
+    (pp.~220--224): the ultimatum game and its experimental Remark.
+  \item Cabral, L. (2017). \emph{Introduction to Industrial Organization}, 2nd ed. MIT Press.
+    \S7.2 (pp.~167--171): credible commitment and entry deterrence.
+  \item Schelling, T. C. (1960). \emph{The Strategy of Conflict}. Harvard University Press.
+  \item Putnam, R. D. (1988). Diplomacy and domestic politics: the logic of two-level games.
+    \emph{International Organization} 42(3), 427--460.
+  \item Course notes (Lectures 2--4):
+    \begin{itemize}[leftmargin=1.2em,itemsep=0pt,topsep=1pt]
+      \item \texttt{Notas/L03/}: \texttt{L03-01-extensive-form.md}, \texttt{L03-02-strategies.md},
+        \texttt{L03-04-sequential-rationality-backward-induction.md},
+        \texttt{L03-05-subgame-perfection.md}, \texttt{L03-06-credibility-entry-commitment.md};
+      \item \texttt{Notas/L02/}: \texttt{L02-07-mixed-strategies.md};
+      \item \texttt{Notas/L04/}: \texttt{L04-02-carrot-and-stick.md},
+        \texttt{L04-05-ultimatum-game.md}, \texttt{L04-07-rubinstein-infinite-horizon.md},
+        \texttt{L04-08-legislative-bargaining.md}, \texttt{L04-09-bargaining-private-information.md};
+      \item Lecture~3 mini case ``Work or shirk?'': \texttt{Aula/Lecture03.pdf}, slides 41--42.
+    \end{itemize}
+  \item Cases: ``Boris's Brexit Dilemma (A)'' and ``(B)'', Darden UV9621 and UV9624 (figures only,
+    not reproduced).
+  \item Check script: \texttt{Cases/Brexit/brexit-check.py} (exact fractions; backward induction
+    and normal-form enumeration on the tree).
+\end{itemize}
+
+\end{document}

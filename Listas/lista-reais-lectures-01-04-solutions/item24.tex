@@ -1,0 +1,94 @@
+\begin{exsol}{24}{\MG{} Ch.~6 Exercise 8}{303}{Advanced}{L4}
+\asked In three-player Rubinstein bargaining with unanimity (proposers rotate $1, 2, 3, 1, \dots$;
+common $\delta \in (\frac12, 1)$), show that stationary strategies give a unique SPE outcome and find
+each player's share.
+
+\method The stationarity argument of Rubinstein's two-player game (Tadelis \S11.3, eqs.~(11.4)--(11.5),
+pp.~228--229; Gibbons pp.~70--71): in a stationary equilibrium each proposer offers each responder
+exactly the discounted value of what the responder gets if the game moves on, and the values
+satisfy a linear system with a unique solution. Responders' votes are taken as pivotal (see the remark).
+
+\solution
+\textbf{Notation.} Players $j = 1, 2, 3$; $j+1$ is the next proposer after $j$ (mod 3). For a
+stationary profile, $V_i(j)$ is player $i$'s payoff, valued at the start of a period in which $j$
+proposes. Write $a$ = the proposer's share, $b$ = the share of the next proposer, $d$ = the share of
+the player who proposes two periods later.
+
+\textbf{Step 1: responders.} If $j$'s proposal is rejected, play moves to a period in which $j+1$
+proposes, so responder $i$ gets $\delta V_i(j+1)$. A responder whose vote decides the outcome
+accepts $x_i$ iff
+\begin{equation}
+  x_i \;\ge\; \delta\, V_i(j+1). \label{eq:24acc}
+\end{equation}
+
+\textbf{Step 2: proposers agree at once.} Offering each responder exactly
+$\delta V_i(j+1)$ gives proposer $j$
+\[
+  1 - \delta \sum_{i \ne j} V_i(j+1) \;\ge\; 1 - \delta\,\bigl(1 - V_j(j+1)\bigr)
+  \;>\; \delta\, V_j(j+1),
+\]
+where the first step uses $\sum_i V_i(j+1) \le 1$ and the second uses $\delta < 1$. The right side is
+what $j$ gets by having the proposal rejected, so every proposer makes the cheapest acceptable
+offer and it is accepted. With agreement in every period, $\sum_i V_i(j) = 1$ for every $j$ and
+\begin{equation}
+  V_i(j) = \delta\, V_i(j+1)\ \ (i \ne j), \qquad V_j(j) = 1 - \sum_{i\ne j} V_i(j). \label{eq:24sys}
+\end{equation}
+
+\textbf{Step 3: solve.} Stationarity makes the system symmetric under the rotation, so
+$V_j(j) = a$, $V_{j+1}(j) = b$, $V_{j+2}(j) = d$ for every $j$. By \eqref{eq:24sys}, the next
+proposer $j+1$ gets, as responder to $j$, $\delta$ times his own proposer share:
+\[
+  b = V_{j+1}(j) = \delta\, V_{j+1}(j+1) = \delta\,a ,
+\]
+and the player $j+2$, who will be the next proposer's ``next proposer'', gets
+\[
+  d = V_{j+2}(j) = \delta\, V_{j+2}(j+1) = \delta\,(b) = \delta\,(\delta a) = \delta^2 a .
+\]
+Substituting into $a + b + d = 1$:
+\[
+  a + (\delta a) + (\delta^2 a) = 1 \;\Rightarrow\;
+  a = \frac{1}{1 + \delta + \delta^2},\quad b = \frac{\delta}{1 + \delta + \delta^2},\quad
+  d = \frac{\delta^2}{1 + \delta + \delta^2}.
+\]
+The nine-equation system \eqref{eq:24sys} is linear and has exactly this solution (no symmetry needs
+to be assumed; \texttt{check\_B\_L04.py} solves it without it). Hence the outcome is unique: in round
+$t = 0$ player~1 proposes
+\[
+  (x_1, x_2, x_3) = \Bigl(\frac{1}{1+\delta+\delta^2},\ \frac{\delta}{1+\delta+\delta^2},\
+  \frac{\delta^2}{1+\delta+\delta^2}\Bigr),
+\]
+and players~2 and~3 accept. For example, $\delta = 0.8$: $\bigl(\frac{25}{61}, \frac{20}{61},
+\frac{16}{61}\bigr) \approx (0.410, 0.328, 0.262)$. As $\delta \to 1$ each share tends to $\frac13$.
+
+\textbf{Remark: the pivotal-vote assumption.} With simultaneous votes and unanimity, the stationary
+profile ``every responder rejects every offer'' is also an SPE: given that the other responder
+rejects, a vote changes nothing, so rejecting is a best reply, and no agreement is ever reached
+(payoffs $0$). Uniqueness therefore requires that responders vote as if pivotal (no weakly dominated
+votes), or that responses are sequential. Under either, \eqref{eq:24acc} holds and the outcome above
+is the only one. The restriction $\delta > \frac12$ plays no role in the stationary derivation, which
+holds for every $\delta \in (0,1)$; the exercise imposes it because, without stationarity, a
+patient enough group can support many other divisions as SPE outcomes, which is why the stationarity
+restriction matters.
+
+\interp The proposer's advantage now has two layers: the next proposer can threaten to wait one period
+($\delta$), the third player only two ($\delta^2$). Shares fall geometrically with the distance to one's
+own turn to propose. With two players the same logic gives $\frac{1}{1+\delta}$ and
+$\frac{\delta}{1+\delta}$.
+
+\verify \texttt{check\_B\_L04.py} solves the nine linear equations \eqref{eq:24sys} with sympy: one
+solution, equal to $(1, \delta, \delta^2)/(1+\delta+\delta^2)$ for every proposer, with the proposer's
+gain from agreement $(1 - \delta^3)/(1+\delta+\delta^2) > 0$; it checks the $\delta = 0.8$ shares and
+the limit $\frac13$, and at $\delta = 0.8$ it tries every proposal on a grid of step $\frac1{200}$
+against the stationary acceptance rules: none beats $\frac{25}{61}$. \emph{Comparison with \MG{}'s
+answer} (pp.~303--304): same shares and the same comparative statics. The book obtains $x_{\text{two}}
+\ge \delta^2 x_{\text{prop}}$ by comparing with the share that player gets ``as a proposer two periods
+from now''; the binding comparison is with what he gets as next period's responder, $\delta\, x_{\text{next}}$,
+which equals $\delta^2 x_{\text{prop}}$ in a stationary equilibrium, so the result is unaffected. The
+book's answer does not address the ``all reject'' equilibrium of simultaneous voting described in the
+remark.
+
+\answer{Under stationary strategies (with pivotal votes) the SPE outcome is unique: player~1 offers
+$\bigl(\frac{1}{1+\delta+\delta^2}, \frac{\delta}{1+\delta+\delta^2}, \frac{\delta^2}{1+\delta+\delta^2}\bigr)$
+in round 0 and players~2 and~3 accept at once. Each proposer keeps $\frac{1}{1+\delta+\delta^2}$, gives the
+next proposer $\delta$ times that and the third player $\delta^2$ times that.}
+\end{exsol}

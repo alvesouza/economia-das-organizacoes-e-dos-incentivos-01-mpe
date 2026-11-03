@@ -1,0 +1,103 @@
+\begin{exsol}{19}{Tadelis Exercise 9.1}{186--187}{Foundations}{L4}
+\asked The $3\times3$ game is played twice with the first-period outcome observed. (a) All
+pure-strategy SPE with $\delta = 1$, with history-contingent strategies; (b) for each, the smallest
+$\delta$ that supports it.
+
+\method Multistage games (Tadelis \S9.1--9.4, pp.~175--184): period-2 play must be a stage Nash
+equilibrium after every history (Prop.~9.2, p.~181), and a non-equilibrium first-period profile
+can be supported only with a carrot (a good stage equilibrium on the path) and a stick (a bad one
+after a deviation), when $\delta \ge \delta^* = g/(c - s)$ (\texttt{Notas/L04/L04-02}). Deviations
+are checked one stage at a time (one-stage deviation principle, Thm.~9.1, p.~185).
+
+\solution
+\textbf{Notation.} $v_i = u_i(a^1) + \delta\, u_i(a^2)$, where $a^t$ is the period-$t$ action
+profile. A pure strategy for player~$i$ is a period-1 action and a map from the nine possible
+period-1 outcomes to a period-2 action. $g_i(a)$ is player~$i$'s best one-shot gain from deviating
+from $a$:
+\[
+  g_1(a) = \max_{r} u_1(r, a_2) - u_1(a), \qquad g_2(a) = \max_{c} u_2(a_1, c) - u_2(a).
+\]
+
+\textbf{Step 1: stage equilibria.} Best replies of player~1: to $L$, $B$ (13); to $C$, $M$ (5);
+to $R$, $B$ (1). Of player~2: to $T$, $R$ (13); to $M$, $C$ (5); to $B$, $R$ (1). The mutual best
+replies are
+\[
+  (M, C)\ \text{with } (5,5) \quad\text{(the carrot)}, \qquad (B, R)\ \text{with } (1,1)
+  \quad\text{(the stick)} .
+\]
+Each player gets 5 in the carrot and 1 in the stick, so the largest punishment is $c - s = 5 - 1 = 4$.
+
+\textbf{Step 2: which first-period profiles can be supported.} Period-2 play is $(M,C)$ or
+$(B,R)$ after every history. A first-period profile $a$ is supportable if and only if each player's
+gain is at most what the threat can take away:
+\begin{equation}
+  g_i(a) \;\le\; \delta\,(5 - 1) = 4\delta, \qquad i = 1, 2, \label{eq:19ic}
+\end{equation}
+using $(M,C)$ after $a$ and $(B,R)$ after any deviation. No continuation can do better, since 5 is
+the most and 1 the least a player can get in period~2. For a stage equilibrium $a$, $g_i(a) = 0$
+and any continuation works. The gains are:
+\begin{center}
+\small
+\begin{tabular}{lccccc}
+\toprule
+$a$ & $u(a)$ & $g_1(a)$ & $g_2(a)$ & supportable ($\delta=1$)? & $\delta^* = \max_i g_i/4$\\
+\midrule
+$(T,L)$ & $(10,10)$ & $13-10=3$ & $13-10=3$ & yes & $3/4$ \\
+$(T,C)$ & $(2,12)$ & $5-2=3$ & $13-12=1$ & yes & $3/4$ \\
+$(T,R)$ & $(0,13)$ & $1-0=1$ & $0$ & yes & $1/4$ \\
+$(M,L)$ & $(12,2)$ & $13-12=1$ & $5-2=3$ & yes & $3/4$ \\
+$(M,C)$ & $(5,5)$ & $0$ & $0$ & yes & $0$ \\
+$(M,R)$ & $(0,0)$ & $1-0=1$ & $5-0=5$ & no & -- \\
+$(B,L)$ & $(13,0)$ & $0$ & $1-0=1$ & yes & $1/4$ \\
+$(B,C)$ & $(0,0)$ & $5-0=5$ & $1-0=1$ & no & -- \\
+$(B,R)$ & $(1,1)$ & $0$ & $0$ & yes & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{(a) The pure SPE with $\delta = 1$.} The SPE \emph{paths} are nine:
+\begin{itemize}
+  \item the four sequences of stage equilibria, played regardless of history (Prop.~9.1, p.~180):
+  $(M,C)$ then $(M,C)$; $(M,C)$ then $(B,R)$; $(B,R)$ then $(M,C)$; $(B,R)$ then $(B,R)$;
+  \item the five carrot-and-stick paths: $a$ then $(M,C)$, for $a \in \{(T,L), (T,C), (T,R),
+  (M,L), (B,L)\}$.
+\end{itemize}
+For a carrot-and-stick path the strategies are, for $\hat a = (\hat a_1, \hat a_2)$ one of those five:
+\begin{align*}
+  s_1&:\ \text{play } \hat a_1;\ \text{in period 2 play } M \text{ if } \hat a \text{ was played, } B
+  \text{ otherwise};\\
+  s_2&:\ \text{play } \hat a_2;\ \text{in period 2 play } C \text{ if } \hat a \text{ was played, } R
+  \text{ otherwise}.
+\end{align*}
+For example, for $(T,L)$: on the path each gets $10 + 5 = 15$; player~1's best deviation ($B$) gives
+$13 + 1 = 14$, player~2's ($R$) gives $13 + 1 = 14$. In period~2 both play a stage equilibrium after
+every history, so no deviation pays there. $(M,R)$ and $(B,C)$ cannot be supported: a gain of 5
+exceeds the largest punishment 4.
+
+These strategies are not the only ones. Any assignment of $(M,C)$ or $(B,R)$ to the nine period-1 outcomes
+that satisfies \eqref{eq:19ic} for the deviations that would be profitable also works (e.g.\ for
+$(T,R)$ only player~1's deviation to $B$ must be punished). Counting every such map,
+\texttt{check\_B\_L04.py} finds 992 pure SPE strategy profiles at $\delta = 1$, all with one of the
+nine paths above.
+
+\textbf{(b) The smallest discount factor.} From \eqref{eq:19ic},
+$\delta^*(a) = \max_i g_i(a)/4$ (last column): $\frac34$ for $(T,L)$, $(T,C)$, $(M,L)$;
+$\frac14$ for $(T,R)$, $(B,L)$; and any $\delta \ge 0$ for the four sequences of stage equilibria.
+For $(T,L)$: $10 + 5\delta \ge 13 + \delta \iff \delta \ge \frac34$.
+
+\interp Two stage equilibria with different payoffs give the second period a carrot and a stick,
+and that lets the players reach $(T,L)$, which pays $(10,10)$, twice the $(5,5)$ of the good stage
+equilibrium, in the first period. Profiles with a gain above $4$ cannot be enforced by a single
+future period, however patient the players are.
+
+\verify \texttt{check\_B\_L04.py} finds the two stage equilibria, enumerates all $9 \times 2^9$
+combinations of first-period profile and continuation map at $\delta = 1$ (992 SPE, 9 paths;
+$(M,R)$ and $(B,C)$ excluded), and checks every threshold: each path is an SPE at $\delta^*$, and
+no continuation map at all supports it at $\delta^* - 0.001$. Tadelis prints no answer.
+
+\answer{Stage equilibria: $(M,C)$ $(5,5)$ and $(B,R)$ $(1,1)$. (a) Pure SPE paths with $\delta=1$:
+the four sequences of stage equilibria, and $a$ then $(M,C)$ for $a \in \{(T,L),(T,C),(T,R),
+(M,L),(B,L)\}$, supported by ``play $(M,C)$ after $a$, $(B,R)$ after any other outcome''.
+$(M,R)$ and $(B,C)$ cannot be supported. (b) $\delta^* = \frac34$ for $(T,L)$, $(T,C)$, $(M,L)$;
+$\frac14$ for $(T,R)$, $(B,L)$; $0$ for the sequences of stage equilibria.}
+\end{exsol}

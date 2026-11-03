@@ -5,6 +5,9 @@ Source: worked solutions in `Listas/pratica-lecture-01-solutions/` (checks `chec
 | Book / item | Issue |
 |---|---|
 | Muñoz-Garcia & Toro-Gonzalez Ch. 1 Ex. 2, Fig. 1.4 | Cell (L, aar) printed as (10,0); plan aar rejects after L, so it is (0,0). |
+| Muñoz-Garcia & Toro-Gonzalez Ch. 3 Ex. 1, p. 89 | Indifference condition printed $3+3q=q+2-2q$; it is $3-3q$ (as printed, $q=-1/4$). The final $q=1/2$ is right. |
+| Tadelis 5.8 | "$Q=q_i+\cdots+q_n$" should be $q_1+\cdots+q_n$. |
+| MWG solutions manual 8.D.6 (pp. 8-15–8-16) | Cases 3–4 say "Player 2" where player 1 is meant; the "all other cases" formula is 0/0 when a player is indifferent across all profiles. |
 | MWG solutions manual 8.B.1 | Ignores $h_i \ge 0$: with $\alpha \le 0$, $\beta < 0$, $h_i = 0$ is strictly dominant though $\beta \ne 0$; "iff $\beta = 0$" holds only for $\alpha > 0$. |
 | MWG solutions manual 8.B.3 | Does not prove uniqueness of the weakly dominant bid nor treat ties. |
 | MWG solutions manual 8.B.4 | Assumes an undominated dominator exists without proof. |
@@ -37,3 +40,15 @@ second reader; check against a later printing before citing in an answer.
 | Tadelis p. 81 | (M, C) is the unique *pure* NE, but the game has four more mixed NE (e.g. $(1/6, 5/6, 0)$ for both). | `Notas/L02` Nash equilibrium |
 | Tadelis p. 87, fn. 5 | Commons gain 0.051 is the base-10 value; with natural logs $\ln(9/8) \approx 0.118$. | `Notas/L02` commons |
 | Tadelis p. 93 (Remark) | Monopoly price called "45"; it is 55. | `Notas/L02` |
+
+# Found while solving `Listas/lista-reais-lectures-01-04.tex` items 13-24 (2026-10-31)
+
+Source: `Listas/lista-reais-lectures-01-04-solutions/item13`-`item24.tex`; checks `check_B_L03.py`, `check_B_L04.py` pass.
+
+| Book / item | Issue |
+|---|---|
+| Muñoz-Garcia Ch. 4 Ex. 3 (p. 162) | SPNE text calls the third component the reply "to player 1 selecting Confess (in Subgame 3)"; Subgame 3 follows Not Confess. |
+| Muñoz-Garcia Ch. 4 Ex. 12 (pp. 186-188) | Follower FOCs carry "if $q_1 > 0$" where $q_2 > 0$ is meant. Quantities (4,2) and (4,2,1) correct. |
+| Muñoz-Garcia Ch. 6 Ex. 8 (pp. 303-304) | With simultaneous unanimity votes, "everyone always rejects" is also a stationary SPE (payoff 0); uniqueness needs pivotal (undominated) votes or sequential responses. Its $x_{two} \ge \delta^2 x_{prop}$ skips the step $\delta x_{next}$; same result. |
+| Tadelis 9.4(d) (p. 188) | With $\delta = 0.4 > \delta^* = 1/16$ the monopoly split is supported, so the "if not" branch is empty. General bound: $q \ge \frac{100}{3}(1-\sqrt\delta)$. |
+| Tadelis 9.4(a) | With $\delta = 0$ literally, stage-2 actions affect no payoff, so every stage-2 profile is an equilibrium of those subgames; read as stage-2 NE. |

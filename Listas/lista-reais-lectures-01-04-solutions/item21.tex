@@ -1,0 +1,102 @@
+\begin{exsol}{21}{Tadelis Exercise 9.4}{188}{Exam}{L4}
+\asked A Cournot stage ($p = 100 - q$, zero cost) is followed by an ``access'' game with
+equilibria $(O,o)$ and $(N,n)$. (a) The Cournot equilibrium, the access game's pure equilibria and
+all pure SPE when $\delta = 0$; (b) an SPE with monopoly output split equally when $\delta = 1$;
+(c) the lowest $\delta$ for it; (d) whether it survives at $\delta = 0.4$, and if not the best
+symmetric profits.
+
+\method Multistage games with a carrot and a stick in the last stage (Tadelis \S9.4,
+pp.~180--184; threshold $\delta^* = g/(c - s)$, \texttt{Notas/L04/L04-02}); Cournot best replies
+(Tadelis \S5.2.3, pp.~87--88). Payoffs $v_i = \pi_i(q_1, q_2) + \delta\,u_i(\text{access})$.
+
+\solution
+\textbf{(a) Stage games and $\delta = 0$.}
+
+\emph{Cournot.} Firm $i$ maximizes $(100 - q_i - q_j)\,q_i$:
+\begin{equation}
+  100 - 2q_i - q_j = 0 \;\Rightarrow\; q_i = BR_i(q_j) = \frac{100 - q_j}{2}. \label{eq:21br}
+\end{equation}
+By symmetry $q_i = q_j = q$, so $q = \frac{100 - q}{2}$, i.e.\ $q^C = \frac{100}{3}$, price
+$\frac{100}{3}$, and $\pi^C = \bigl(\frac{100}{3}\bigr)^2 = \frac{10000}{9} \approx 1111.1$ each.
+
+\emph{Access game.} Payoffs (player~1 rows):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$o$} & \multicolumn{1}{c}{$n$}\\ \cline{2-3}
+$O$ & $2500,\ 2500$ & $-10,\ 0$ \\ \cline{2-3}
+$N$ & $0,\ -10$ & $0,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+$O$ is the best reply to $o$ ($2500 > 0$) and $N$ the best reply to $n$ ($0 > -10$); symmetrically
+for player~2. Pure equilibria: $(O,o)$ with $(2500, 2500)$ and $(N,n)$ with $(0,0)$.
+
+\emph{SPE with $\delta = 0$.} Stage-2 payoffs carry weight $0$, so continuation play cannot reward or
+punish anything, and stage~1 must be the Cournot equilibrium. The pure SPE are
+\[
+  s_i:\ q_i = \tfrac{100}{3};\ \text{in stage 2, after each } (q_1, q_2),\ \text{play the action
+  of } e(q_1, q_2),
+\]
+where $e$ is \emph{any} map from $\mathbb{R}_+^2$ to $\{(O,o), (N,n)\}$ (e.g.\ always $(O,o)$).
+There is a continuum of them, all with first-stage outcome $(\frac{100}{3}, \frac{100}{3})$.
+Strictly, with $\delta = 0$ the stage-2 actions do not affect any payoff, so every stage-2 profile
+is an equilibrium of those subgames; the answer above uses the standard reading that stage-2
+actions are judged by stage-2 payoffs (the limit $\delta \to 0^+$).
+
+\textbf{(b) Monopoly split with $\delta = 1$.} Joint profit $(100 - Q)Q$ is maximized at $Q = 50$;
+each firm produces $25$ and earns
+\[
+  \pi^M = 25\,(100 - 50) = 1250 .
+\]
+Strategies (for both firms):
+\[
+  s_i:\ q_i = 25;\ \text{in stage 2, open } (O / o) \text{ if } (q_1,q_2) = (25,25),\ \text{keep
+  closed } (N / n) \text{ otherwise}.
+\]
+\emph{Stage 2.} After every history the prescribed profile is an equilibrium of the access game.
+\emph{Stage 1.} The best deviation against $q_j = 25$ is, by \eqref{eq:21br},
+$q_i = \frac{100 - 25}{2} = 37.5$, with price $100 - 62.5 = 37.5$ and
+\[
+  \pi^D = 37.5 \times 37.5 = 1406.25 .
+\]
+Staying gives $1250 + \delta\,(2500)$; deviating gives $1406.25 + \delta\,(0)$. With $\delta = 1$:
+$3750 \ge 1406.25$. It is an SPE.
+
+\textbf{(c) Lowest $\delta$.}
+\begin{equation}
+  1250 + 2500\,\delta \;\ge\; 1406.25 \iff \delta \;\ge\; \delta^* = \frac{156.25}{2500} = \frac{1}{16} = 0.0625 .
+  \label{eq:21d}
+\end{equation}
+In the carrot-and-stick form: $g = 156.25$, $c - s = 2500 - 0$.
+
+\textbf{(d) $\delta = 0.4$.} Since $0.4 > \frac1{16}$, condition \eqref{eq:21d} holds:
+$1250 + 0.4\,(2500) = 2250 \ge 1406.25$. The monopoly split \emph{is} supported, with the same
+strategies as in (b), and each firm earns $2250$ in discounted total. The ``if not'' branch does not
+arise with these numbers.
+
+For completeness, when $\delta < \frac1{16}$: with symmetric output $q$ and the same threat, the
+deviation gain is
+\[
+  g(q) = \Bigl(\frac{100 - q}{2}\Bigr)^2 - q\,(100 - 2q) = \frac94\Bigl(\frac{100}{3} - q\Bigr)^2 ,
+\]
+and $g(q) \le 2500\,\delta$ holds iff $q \ge \frac{100}{3}(1 - \sqrt{\delta})$. The best symmetric
+equilibrium uses $q = \max\{25,\ \frac{100}{3}(1 - \sqrt\delta)\}$; e.g.\ at $\delta = 0.04$,
+$q = \frac{80}{3}$ and stage-1 profit $\frac{11200}{9} \approx 1244.4$ each.
+
+\interp The second stage is worth far more ($2500$) than the one-shot gain from cheating on the
+cartel ($156.25$), so even very impatient firms ($\delta \ge 0.0625$) can collude in stage~1. The
+threat is credible because $(N,n)$ is itself an equilibrium: once someone cheats, neither firm
+wants to be the only one to open. A future coordination game with a good and a bad equilibrium is
+an effective enforcement device, which is the multistage logic of Tadelis \S9.4.
+
+\verify \texttt{check\_B\_L04.py} recomputes the Cournot equilibrium ($\frac{100}{3}$,
+$\frac{10000}{9}$), the two pure equilibria of the access game, $\pi^M = 1250$,
+$\pi^D = 1406.25$, $\delta^* = \frac1{16}$, the total $2250$ at $\delta = 0.4$, the identity for
+$g(q)$, the bound $q \ge \frac{100}{3}(1 - \sqrt\delta)$ (equal to $25$ at $\delta = \frac1{16}$),
+and the $\delta = 0.04$ example. Tadelis prints no answer.
+
+\answer{(a) Cournot $q_i = \frac{100}{3}$, $\pi_i = \frac{10000}{9}$; access game pure equilibria
+$(O,o)$ and $(N,n)$; with $\delta = 0$ every pure SPE has $q_i = \frac{100}{3}$ followed by
+$(O,o)$ or $(N,n)$ after each history (any assignment). (b) $q_i = 25$; open after $(25,25)$, closed
+otherwise. (c) $\delta^* = \frac1{16}$. (d) Yes, $0.4 > \frac1{16}$: monopoly split supported,
+discounted payoff $2250$ each.}
+\end{exsol}

@@ -1,6 +1,6 @@
 ---
 tags: [map, cross-reference]
-date: 2026-10-13
+date: 2026-11-03
 ---
 
 # Class plan and study guide
@@ -27,8 +27,8 @@ the organizational and IO applications. Pages are printed pages, verified on 202
 |---|---|---|---|---|---|
 | 1 | Tue Oct 13 | Static games I: dominance, iterated elimination | Ch. 3 (43–58); §4.1–4.2 (59–69) | §1.1.A–B (2–7) | `Listas/pratica-lecture-01.md`, `Listas/lista-lecture-01.tex`, 3 quizzes, 2 audio prompts, TTS |
 | 2 | Tue Oct 20 | Static games II: Nash equilibrium, mixed strategies | §4.3 (69–76); Ch. 5 (79–100); Ch. 6 (101–126) | §1.1.C, §1.2, §1.3 (8–48) | `Listas/pratica-lecture-02.md`, 3 quizzes, 2 audio prompts, TTS |
-| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts, TTS |
-| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) · `Listas/pratica-lecture-04.md`, 3 quizzes, 2 audio prompts, TTS |
+| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | Slides `Aula/Lecture03.pdf` · mini case solved (`Resolucao/mini-case-lecture-03.pdf`, short version `-short.pdf`) · `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts, TTS |
+| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) · Brexit case (`Cases/Brexit/brexit-game.pdf`) · `Listas/pratica-lecture-04.md`, 3 quizzes, 2 audio prompts, TTS |
 | 5 | **Fri Nov 6** | Repeated games I: cooperation | §10.1–10.3 (190–201); §10.6 (209) | §2.3.A–B (82–102) | `Listas/pratica-lecture-05.md`, 3 quizzes, 2 audio prompts, TTS |
 | 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | `Listas/pratica-lecture-06.md`, 3 quizzes, 2 audio prompts, TTS |
 | 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-07.md`, 3 quizzes, 2 audio prompts, TTS |
@@ -38,6 +38,14 @@ the organizational and IO applications. Pages are printed pages, verified on 202
 
 **Tight stretch.** Lectures 4, 5 and 6 fall within eight days (Nov 3, 6, 10): read Tadelis
 Ch. 10 before Nov 3.
+
+**Per-lecture kit** (every lecture N = 1–8): notes [[Notas/00-index|`Notas/LNN/`]] and their PDF
+`Notas/LNN/LNN-notes.pdf` · narration `Leituras/lecture-NN-notes-narrated.txt` · NotebookLM audio
+`NotebookLM/audio/lecture-NN-audio-part{1,2}.md` ([[NotebookLM/README|README]]) · quizzes
+`Simulados/quiz-lectureNN-{1,2,3}-*.md` · practice list `Listas/pratica-lecture-NN.md` (book
+exercises verbatim). Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
+[[Map/exercises-index|exercises-index]]. Lectures 3–8 notes were written before their slides;
+Lecture 3's slides arrived 2026-11-03 (reconcile with `/notes 03 --reconcile`).
 
 ---
 
@@ -50,6 +58,7 @@ Ch. 10 before Nov 3.
 - **After class:** `Listas/pratica-lecture-01.md` (24 items: Tadelis 3.2–3.7, 4.1–4.7, 4.10; Gibbons 1.2; MWG 8.B.1, 8.B.3–8.B.5, 8.B.7; Muñoz-Garcia Ch. 1) · worked solutions `Listas/pratica-lecture-01-solutions.pdf` · exam-style list `Listas/lista-lecture-01.tex` · quizzes `Simulados/quiz-lecture01-{1,2,3}-*.md`
 - **Formal side:** MWG §7.D (p. 228), §8.A–8.B (pp. 235–241)
 - **Applications:** Cabral §7.1 (pp. 161–163); Hotelling's linear city, Cabral §14.2 (pp. 354, 358–360); M&R's "grabbing" game as a prisoner's dilemma, Table 5.1 (pp. 138–139)
+- **In-class mini case:** pharmacies on a 7-block avenue (slides 31–33), solved in `Resolucao/mini-case-lecture-01.pdf`
 - **Notes:** [[Notas/L01/L01-00-map|Lecture 1 notes]] (taught; figures and companions inside)
 
 ### Lecture 2 — Static games II: Nash equilibrium and mixed strategies
@@ -65,17 +74,20 @@ Ch. 10 before Nov 3.
 
 ### Lecture 3 — Dynamic games: backward induction and subgame perfection
 #lecture/3
+- **Content (slides `Aula/Lecture03.pdf`, 43 slides + appendix):** mixed strategies, the principle of indifference and Nash's existence theorem (finishing Lecture 2); extensive-form games, game trees, information sets, perfect and imperfect information; pure, mixed and behavioral strategies, perfect recall; sequential rationality, backward induction and subgame-perfect equilibrium; appendix on price competition with capacity constraints.
+- **In-class mini case:** "Work or shirk?" (slides 41–42; monitoring remote work, the Itaú case), solved in `Resolucao/mini-case-lecture-03.pdf` (detailed: indifference, comparative statics, commitment, critique) and `Resolucao/mini-case-lecture-03-short.pdf` (one-page hand-in). Answer: $p^* = h/w = 0.1$, $q^* = g/w = 0.2$.
 - **Before class:** Tadelis Ch. 7 (pp. 129–150), Ch. 8 (pp. 151–174) · Gibbons §2.1.A (p. 57), §2.2.A (p. 71), §2.4 (pp. 115–129)
 - **After class:** `Listas/pratica-lecture-03.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture03-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
 - **Formal side:** MWG §7.C (p. 221), §9.A–9.B (pp. 267–281)
 - **Applications:** Cabral §7.2 (p. 167)
-- **Notes:** [[Notas/L03/L03-00-map|Lecture 3 notes]] (estimated before the lecture; figures and companions inside)
+- **Notes:** [[Notas/L03/L03-00-map|Lecture 3 notes]] (estimated before the lecture; slides now available, not yet reconciled; figures and companions inside)
 
 ### Lecture 4 — Multistage games and bargaining
 #lecture/4
 - **Before class:** Tadelis Ch. 9 (pp. 175–189), Ch. 11 (pp. 220–237) · Gibbons §2.1.D sequential bargaining (p. 68), §2.2 (pp. 71–82)
 - **After class:** `Listas/pratica-lecture-04.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture04-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
 - **Formal side:** MWG 9.AA (p. 296)
+- **In-class case (pairs, prepare before class):** *Boris's Brexit Dilemma* (A) and (B), Darden UV9621/UV9624, task in `Cases/Brexit/intrucoes.md`: model the UK–EU negotiation as a game, solve by backward induction, compare with your negotiation. Worked model: `Cases/Brexit/brexit-game.pdf` (SPE: UK prepares, EU offers the favorable deal, UK presents it; preparation is a visible commitment that makes rejection credible).
 - **Applications and project material:** M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · `Listas/lista-aulas-01-02.tex` block 3 · [[rules/02_barganha|Topic 2]]
 - **Notes:** [[Notas/L04/L04-00-map|Lecture 4 notes]] (estimated before the lecture; figures and companions inside)
 
@@ -119,7 +131,7 @@ Ch. 10 before Nov 3.
 - Group paper: motivation, brief literature review, research question, an economic model (35% in all). Comments on another group's paper count 5%. Partial-submission dates: to be agreed in class (not yet known).
 
 ### Lecture 10 — Final exam (Tue Dec 8)
-- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture).
+- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture). Real book exercises, Lectures 1–4: `Listas/lista-reais-lectures-01-04.pdf` (24 items, statements verbatim), solutions `Listas/lista-reais-lectures-01-04-solutions.pdf`, book pages `Listas/study-pack-roteiro-lectures-01-04.pdf` (roadmap `Listas/roteiro-lectures-01-04.md`).
 
 ---
 

@@ -1,0 +1,77 @@
+\begin{exsol}{22}{Tadelis Exercise 11.2}{236}{Exam}{L4}
+\asked Player~2 invests $L$ or $H$ (cost $c_L < c_H$, pie $v_L < v_H$, $v_H - c_H > v_L - c_L$),
+then player~1 makes an ultimatum offer. (a) The unique SPE and whether it is Pareto optimal;
+(b) a Nash equilibrium better for both players.
+
+\method The ultimatum game's unique SPE (Tadelis Prop.~11.2, p.~223: the responder accepts every
+offer, the proposer offers nothing) and its many Nash equilibria (Prop.~11.1, p.~223), placed after
+an investment stage; backward induction over the two subgames (Tadelis \S8.2). This is the hold-up
+problem (\texttt{Notas/L04/L04-05}).
+
+\solution
+\textbf{Notation.} After investment $j \in \{L, H\}$ the pie is $v_j$. Player~1 offers player~2 an
+amount $y \in [0, v_j]$ and keeps $v_j - y$ (Tadelis's shares $(x, 1-x)$ scaled by $v_j$). If 2
+accepts, payoffs are $(v_j - y,\ y - c_j)$; if 2 rejects, $(0,\ -c_j)$. The investment cost is sunk
+when 2 responds.
+
+\textbf{(a) The SPE.}
+
+\emph{Step 1: each ultimatum subgame.} After $j$, accepting $y$ gives 2 $y - c_j$ and rejecting
+gives $-c_j$, so 2 accepts every $y > 0$ and is indifferent at $y = 0$. If 2 rejected $y = 0$,
+player~1 would want the smallest positive offer, which does not exist; so in every SPE 2 accepts
+every $y \ge 0$, and 1 offers $y = 0$ (Prop.~11.2). Payoffs in the subgame: $(v_j,\ -c_j)$.
+
+\emph{Step 2: investment.} Player~2 compares
+\[
+  u_2(L) = -c_L \;>\; -c_H = u_2(H),
+\]
+so she invests low. The unique SPE is
+\[
+  \text{2: } L,\ \text{accept every offer after } L \text{ and after } H; \qquad
+  \text{1: offer } y = 0 \text{ after } L \text{ and after } H,
+\]
+with outcome $L$, $y = 0$, accepted; payoffs $(v_L,\ -c_L)$.
+
+\emph{Not Pareto optimal.} Take $H$ followed by an accepted offer $y$. Both gain if
+\[
+  v_H - y > v_L \quad\text{and}\quad y - c_H > -c_L
+  \iff c_H - c_L \;<\; y \;<\; v_H - v_L .
+\]
+This interval is nonempty exactly because $v_H - c_H > v_L - c_L$. So the SPE outcome is Pareto
+dominated: the efficient investment is $H$, but its return is fully appropriated by player~1.
+
+\textbf{(b) A better Nash equilibrium.} Fix $y^* \in (c_H - c_L,\ v_H - v_L)$:
+\begin{align*}
+  \text{2}&:\ H;\ \text{after } H \text{ accept iff } y \ge y^*;\ \text{after } L \text{ accept
+  every offer};\\
+  \text{1}&:\ \text{after } H \text{ offer } y^*;\ \text{after } L \text{ offer } 0 .
+\end{align*}
+\emph{Player 1.} After $H$, offers $y \ge y^*$ give $v_H - y$, maximized at $y^*$ with
+$v_H - y^* > v_L > 0$; lower offers are rejected and give $0$. So $y^*$ is a best reply. (After $L$,
+which is off the path, offering 0 is also optimal.)
+\emph{Player 2.} $H$ yields $y^* - c_H$; switching to $L$ yields $0 - c_L$ (1 offers 0 after $L$).
+$H$ is better since $y^* > c_H - c_L$. Accepting $y^*$ beats rejecting ($y^* - c_H > -c_H$).
+Changing her rule at other offers changes nothing, because those offers are not made.
+Payoffs $(v_H - y^*,\ y^* - c_H)$ exceed $(v_L, -c_L)$ for both.
+
+It is a Nash equilibrium but not an SPE: after $H$, rejecting an offer $y \in (0, y^*)$ gives
+$-c_H < y - c_H$, so the threat that holds player~1 to $y^*$ is not credible.
+
+\interp Once the investment is sunk, the ultimatum stage gives player~1 the whole pie, so
+player~2 bears the full cost of investing and gets none of its return: she underinvests. Nash
+equilibrium can promise her a return through a threat to reject, but the threat is not credible.
+Credible fixes change the game: contracting on $y$ before the investment, giving player~2
+bargaining power ex post (alternating offers), or putting the investment and the pie under one
+owner (integration).
+
+\verify \texttt{check\_B\_L04.py} uses $v_L = 4$, $v_H = 10$, $c_L = 1$, $c_H = 3$: in the SPE
+player~2 invests low (payoffs $(4,-1)$); offers $y \in \{2.5, 4, 5.5\} \subset (2, 6)$ make both
+better off after $H$; and for those thresholds, player~1's best offer on a $0.25$ grid is exactly
+$y^*$ while player~2 prefers $H$. Tadelis prints no answer.
+
+\answer{(a) Unique SPE: player~2 invests $L$ and accepts every offer; player~1 offers $0$ after
+either investment; payoffs $(v_L, -c_L)$. Not Pareto optimal: $H$ with an accepted offer
+$y \in (c_H - c_L,\ v_H - v_L)$ makes both better off. (b) Yes: 2 plays $H$ and accepts after $H$
+only offers $y \ge y^*$, 1 offers $y^*$ after $H$ and $0$ after $L$, for any $y^* \in (c_H - c_L,\
+v_H - v_L)$; payoffs $(v_H - y^*, y^* - c_H)$. It relies on a non-credible threat to reject.}
+\end{exsol}

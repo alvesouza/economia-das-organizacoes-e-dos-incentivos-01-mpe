@@ -1,0 +1,88 @@
+\begin{exsol}{11}{Gibbons Problem 1.6}{49}{Exam}{L2}
+\asked Cournot duopoly with $P(Q) = a - Q$ and marginal costs $c_1$, $c_2$: find the NE when
+$0 < c_i < a/2$ for both firms, and when $c_1 < c_2 < a$ but $2c_2 > a + c_1$.
+
+\method Cournot equilibrium as the crossing of best responses (Gibbons \S1.2.A, pp.~14--21;
+Tadelis \S5.2.3, eq.~(5.2), p.~87; Lecture~2, slides~20--24), now with a corner: a best response
+can be $q_i = 0$.
+
+\solution
+\textbf{Notation.} $q_i \ge 0$; $P(Q) = a - Q$ for $Q < a$ and $0$ for $Q \ge a$ (the referenced
+model, Gibbons p.~15); firm~$i$'s cost $c_i q_i$, $0 \le c_i < a$; $j \ne i$.
+
+\textbf{Best responses.} For $q_i < a - q_j$ the payoff is
+\[
+  u_i(q_i, q_j) = (a - q_i - q_j - c_i)\,q_i , \tag{1}
+\]
+strictly concave in $q_i$; for $q_i \ge a - q_j$ the price is zero and $u_i = -c_i q_i \le 0$. The
+first-order condition of (1) is $a - c_i - q_j - 2q_i = 0$, so
+\[
+  BR_i(q_j) = \max\Big\{0,\ \frac{a - c_i - q_j}{2}\Big\}. \tag{2}
+\]
+The corner $BR_i = 0$ occurs exactly when $q_j \ge a - c_i$: the rival alone already pushes the
+price down to $c_i$ or below.
+
+\textbf{Interior candidate.} If both are interior, (2) gives
+$2q_1 = a - c_1 - q_2$ and $2q_2 = a - c_2 - q_1$. Substituting $q_2 = (a - c_2 - q_1)/2$ into the
+first:
+\[
+  2q_1 = a - c_1 - \Big(\frac{a - c_2 - q_1}{2}\Big)
+  \;\Longrightarrow\; 4q_1 = 2a - 2c_1 - a + c_2 + q_1
+  \;\Longrightarrow\; q_1^* = \frac{a - 2c_1 + c_2}{3}, \tag{3}
+\]
+and symmetrically
+\[
+  q_2^* = \frac{a - 2c_2 + c_1}{3}. \tag{4}
+\]
+This is a NE exactly when both (3) and (4) are positive.
+
+\textbf{Case 1: $0 < c_i < a/2$ for $i = 1,2$.} Then $a - 2c_i > 0$, so
+$a - 2c_i + c_j > c_j > 0$: (3) and (4) are positive and form a NE. No other NE exists. A corner
+NE with $q_2 = 0$ would need $q_1 = BR_1(0) = (a - c_1)/2$ and, by (2), $q_1 \ge a - c_2$, that is,
+$(a - c_1)/2 \ge a - c_2 \iff 2c_2 \ge a + c_1$, impossible because $2c_2 < a < a + c_1$. The same
+holds for $q_1 = 0$, and $(0,0)$ fails because $BR_i(0) = (a - c_i)/2 > 0$. The unique NE is
+\[
+  q_1^* = \frac{a - 2c_1 + c_2}{3}, \quad q_2^* = \frac{a - 2c_2 + c_1}{3}, \quad
+  Q^* = \frac{2a - c_1 - c_2}{3}, \quad P^* = \frac{a + c_1 + c_2}{3},
+\]
+with profits $u_i^* = (P^* - c_i)\,q_i^* = (q_i^*)^2$, because
+$P^* - c_i = (a + c_1 + c_2 - 3c_i)/3 = (a - 2c_i + c_j)/3 = q_i^*$.
+
+\textbf{Case 2: $c_1 < c_2 < a$ and $2c_2 > a + c_1$.} Now (4) is negative,
+$a - 2c_2 + c_1 < 0$, so there is no interior NE. Try firm~1 as a monopolist:
+\[
+  q_1 = BR_1(0) = \frac{a - c_1}{2}, \qquad q_2 = 0 .
+\]
+Firm~2's best response to it, by (2):
+\[
+  BR_2\Big(\frac{a - c_1}{2}\Big) = \max\Big\{0,\ \frac{a - c_2 - \frac{a - c_1}{2}}{2}\Big\}
+  = \max\Big\{0,\ \frac{a + c_1 - 2c_2}{4}\Big\} = 0 ,
+\]
+since $a + c_1 - 2c_2 < 0$. So $\big(\tfrac{a - c_1}{2}, 0\big)$ is a NE. It is the only one: the
+other corner, $q_1 = 0$ and $q_2 = (a - c_2)/2$, would need $(a - c_2)/2 \ge a - c_1$, that is,
+$2c_1 \ge a + c_2$, but $2c_1 < c_1 + c_2 < a + c_2$; and $(0,0)$ fails as before. At the NE the
+price is the monopoly price of firm~1,
+\[
+  P^* = a - \frac{a - c_1}{2} = \frac{a + c_1}{2} < c_2 ,
+\]
+so firm~2 cannot sell any unit profitably; firm~1 earns $\big(\frac{a - c_1}{2}\big)^2$.
+
+\interp With similar costs both firms produce, and the cheaper one produces more:
+$q_1^* - q_2^* = c_2 - c_1$. When firm~2's cost exceeds firm~1's monopoly price,
+$c_2 > (a + c_1)/2$, firm~2 is priced out even though it is not shut out by any rule: firm~1
+simply behaves as a monopolist and firm~2's best reply is to stay out. The condition
+$2c_2 > a + c_1$ is exactly ``$c_2$ above firm~1's monopoly price''. (Case~1 is sufficient, not
+necessary, for the interior NE: (3)--(4) are positive whenever $2c_i < a + c_j$ for both firms,
+even if some $c_i \ge a/2$.)
+
+\verify \texttt{check\_A2.py} derives (2)--(4) with sympy, checks $u_i^* = (q_i^*)^2$, and for
+random cost pairs in each case finds the NE by iterating the exact best responses (2) and confirms
+it equals the formulas above; it also checks on a fine grid that no unilateral deviation pays,
+including outputs that push $Q$ above $a$. No answer in the book. (Kumar's unofficial Gibbons
+manual, not in \texttt{Livros/}, was not consulted.)
+
+\answer{If $0 < c_i < a/2$: unique NE $q_1^* = \frac{a - 2c_1 + c_2}{3}$,
+$q_2^* = \frac{a - 2c_2 + c_1}{3}$, price $\frac{a + c_1 + c_2}{3}$, profits $(q_i^*)^2$.
+If $c_1 < c_2 < a$ and $2c_2 > a + c_1$: unique NE $q_1^* = \frac{a - c_1}{2}$, $q_2^* = 0$; firm~1
+is a monopolist at price $\frac{a + c_1}{2} < c_2$.}
+\end{exsol}

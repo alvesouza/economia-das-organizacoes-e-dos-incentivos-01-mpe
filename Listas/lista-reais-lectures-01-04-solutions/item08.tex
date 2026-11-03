@@ -1,0 +1,98 @@
+\begin{exsol}{8}{\MG{} Ch.~3, Exercise 1}{86--87}{Foundations}{L2}
+\asked For the Game of Chicken of Fig.~3.1: (a) strictly dominated strategies; (b) best
+responses; (c) pure-strategy Nash equilibria; (d) the mixed-strategy Nash equilibrium, with
+$p = \Pr(\text{player 1 plays Straight})$, $q = \Pr(\text{player 2 plays Straight})$; (e) graph
+both best-response functions and show (d) on it.
+
+\method Dominance (Lecture~1, slide~23); best responses and pure NE (Tadelis Defs.~4.7 and 5.1,
+pp.~72, 80; Lecture~2, slides~9--14); mixed NE through the principle of indifference (Tadelis
+Prop.~6.1, p.~108; Lecture~2, slides~44--46): a player mixes only if the other's mix makes him
+indifferent.
+
+\solution
+\textbf{Notation.} $St$ = Straight, $Sw$ = Swerve. Matrix (Fig.~3.1): $(St,St) = (0,0)$,
+$(St,Sw) = (3,1)$, $(Sw,St) = (1,3)$, $(Sw,Sw) = (2,2)$. The game is symmetric.
+
+\textbf{(a)} Player~1's rows over columns $(St, Sw)$: $St = (0, 3)$, $Sw = (1, 2)$. $Sw$ is better
+against $St$ ($1 > 0$), $St$ is better against $Sw$ ($3 > 2$): neither row dominates the other.
+By symmetry the same holds for player~2. No strictly dominated strategy.
+
+\textbf{(b)} $BR_1(St) = Sw$ (payoff $1 > 0$) and $BR_1(Sw) = St$ (payoff $3 > 2$). By symmetry
+$BR_2(St) = Sw$ and $BR_2(Sw) = St$. Each player wants the opposite of the other: an
+anti-coordination game.
+
+\textbf{(c)} A cell is a pure NE when both strategies are best responses to each other.
+$(St, Sw)$: $St = BR_1(Sw)$ and $Sw = BR_2(St)$, NE. $(Sw, St)$: NE by symmetry.
+$(St,St)$ and $(Sw,Sw)$ are not, since in each both players would switch. The psNE are
+$(St, Sw)$ with payoffs $(3,1)$ and $(Sw, St)$ with payoffs $(1,3)$.
+
+\textbf{(d) Mixed equilibrium.} Player~1's expected payoffs when player~2 plays $St$ with
+probability $q$:
+\begin{align*}
+  EU_1(St) &= 0\cdot q + 3(1-q) = 3 - 3q, \tag{1}\\
+  EU_1(Sw) &= 1\cdot q + 2(1-q) = 2 - q. \tag{2}
+\end{align*}
+Player~1 is willing to mix only if (1) $=$ (2):
+\[
+  3 - 3q = 2 - q \;\Longrightarrow\; 1 = 2q \;\Longrightarrow\; q^* = \tfrac12 .
+\]
+Player~2's expected payoffs when player~1 plays $St$ with probability $p$ (her payoffs are
+$0$ at $(St,St)$, $3$ at $(Sw,St)$, $1$ at $(St,Sw)$, $2$ at $(Sw,Sw)$):
+\begin{align*}
+  EU_2(St) &= 0\cdot p + 3(1-p) = 3 - 3p, \tag{3}\\
+  EU_2(Sw) &= 1\cdot p + 2(1-p) = 2 - p. \tag{4}
+\end{align*}
+Setting (3) $=$ (4): $3 - 3p = 2 - p$, so $p^* = \tfrac12$. The msNE is
+\[
+  \sigma^* = \Big(\big(\tfrac12\,St, \tfrac12\,Sw\big),\ \big(\tfrac12\,St, \tfrac12\,Sw\big)\Big),
+\]
+and each player's expected payoff is $EU_1 = 3 - 3\cdot\tfrac12 = 1.5$ (by (1) at $q^* = \tfrac12$).
+
+\textbf{(e) Best-response functions.} From (1)--(2), $EU_1(St) - EU_1(Sw) = 1 - 2q$, so
+\[
+  BR_1(q) = \begin{cases} p = 1 & q < \tfrac12,\\ p \in [0,1] & q = \tfrac12,\\ p = 0 & q > \tfrac12,\end{cases}
+  \qquad
+  BR_2(p) = \begin{cases} q = 1 & p < \tfrac12,\\ q \in [0,1] & p = \tfrac12,\\ q = 0 & p > \tfrac12.\end{cases}
+\]
+\begin{center}
+\begin{tikzpicture}[scale=3.2,>=Stealth]
+  \draw[->] (0,0) -- (1.15,0) node[right] {$p$};
+  \draw[->] (0,0) -- (0,1.15) node[above] {$q$};
+  \foreach \t in {0.5,1} {\draw (\t,0.02) -- (\t,-0.02) node[below] {\small $\t$};
+                          \draw (0.02,\t) -- (-0.02,\t) node[left] {\small $\t$};}
+  % BR_1(q): p = 1 for q < 1/2, any p at q = 1/2, p = 0 for q > 1/2
+  \draw[very thick,blue] (1,0) -- (1,0.5) -- (0,0.5) -- (0,1);
+  % BR_2(p): q = 1 for p < 1/2, any q at p = 1/2, q = 0 for p > 1/2
+  \draw[very thick,red,dashed] (0,1) -- (0.5,1) -- (0.5,0) -- (1,0);
+  \fill (1,0) circle (0.022) node[below right] {\small $(St,Sw)$};
+  \fill (0,1) circle (0.022) node[above left] {\small $(Sw,St)$};
+  \fill (0.5,0.5) circle (0.022) node[above right] {\small msNE};
+  \node[blue] at (1.35,0.62) {\small $BR_1(q)$};
+  \node[red] at (0.75,1.1) {\small $BR_2(p)$};
+\end{tikzpicture}
+\end{center}
+The two graphs cross three times: at $(p,q) = (1,0)$, i.e.\ $(St,Sw)$; at $(0,1)$, i.e.\
+$(Sw,St)$; and at $(\tfrac12,\tfrac12)$, the msNE.
+
+\interp Chicken has the shape of Hawk-Dove (item~7). In the mixed equilibrium each driver goes
+straight half of the time, so they crash with probability $\tfrac14$, and each expects $1.5$,
+less than the $2$ of mutual swerving and less than the $3$ of the favourable pure equilibrium.
+The mix is pinned by the \emph{other} player's indifference, not by one's own payoffs
+(slide~50's lesson).
+
+\verify \texttt{check\_A2.py} checks (a)--(c) by brute force, solves both indifference conditions
+with sympy ($q^* = p^* = \tfrac12$, payoff $\tfrac32$), and finds on a grid of $(p,q) \in
+\{0, \tfrac1{100}, \dots, 1\}^2$ that the mutual best responses are exactly $(1,0)$, $(0,1)$ and
+$(\tfrac12,\tfrac12)$. \emph{Comparison with the book's answer} (pp.~87--91): it agrees on all five
+parts (no dominated strategies, the same best responses, the two psNE, msNE with $p = q = \tfrac12$,
+the same best-response graph, Figs.~3.4--3.6). One typo in the book: on p.~89 the rearranged
+indifference condition is printed ``$3 + 3q = q + 2 - 2q \Rightarrow q = 1/2$''; from
+$0q + 3(1-q) = 1q + 2(1-q)$ it should read $3 - 3q = q + 2 - 2q$ (as printed, $3 + 3q = 2 - q$ gives
+$q = -\tfrac14$). The book's result $q = \tfrac12$ is correct.
+
+\answer{(a) No strictly dominated strategy for either player. (b) $BR_i(St) = Sw$,
+$BR_i(Sw) = St$. (c) psNE: $(St, Sw)$ and $(Sw, St)$. (d) msNE: each plays Straight with
+probability $\tfrac12$ ($p^* = q^* = \tfrac12$), expected payoff $1.5$ each. (e) $BR_1(q)$: $p = 1$
+for $q < \tfrac12$, $p = 0$ for $q > \tfrac12$, any $p$ at $q = \tfrac12$ (symmetric for player~2);
+the graphs cross at $(1,0)$, $(0,1)$ and $(\tfrac12,\tfrac12)$.}
+\end{exsol}

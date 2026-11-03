@@ -1,0 +1,83 @@
+\begin{exsol}{23}{Tadelis Exercise 11.5}{236--237}{Exam}{L4}
+\asked Three-period alternating-offer bargaining over a pie of 1, player~1 proposing first, with
+discount factors $\delta_1 \ne \delta_2$: (a) the SPE outcome; (b) player~1's advantage when
+$\delta_1 = \delta_2$; (c) when player~2 has the advantage, and why.
+
+\method Backward induction in finite alternating-offer bargaining (Tadelis \S11.2, pp.~224--227;
+Gibbons \S2.1.D, pp.~68--70): in the last period the proposer takes everything; in each earlier
+period the proposer offers the responder exactly the discounted value of what the responder would
+get next period, and the responder accepts at indifference (Prop.~11.2's argument, p.~223).
+
+\solution
+\textbf{Notation.} $x_t$ = player~1's share of the pie when agreement is reached in period
+$t \in \{1,2,3\}$; player $i$'s payoff from agreement $(x, 1-x)$ in period $t$ is $\delta_i^{t-1}$
+times his share. Players~1, 2, 1 propose in periods 1, 2, 3; no agreement in period~3 gives $(0,0)$.
+
+\textbf{Step 1: period 3.} Player~1 offers $x_3 = 1$ and player~2 accepts (she gets 0 either way).
+Discounted payoffs: $(\delta_1^2,\ 0)$.
+
+\textbf{Step 2: period 2.} Player~2 must give player~1 at least what he gets by rejecting:
+\begin{equation}
+  \delta_1\, x_2 \;\ge\; \delta_1^2\, x_3 = \delta_1^2 \;\Rightarrow\; x_2 = \delta_1 . \label{eq:23x2}
+\end{equation}
+Player~2 keeps $1 - x_2 = 1 - \delta_1$, worth $\delta_2(1 - \delta_1)$ in period-1 terms. (She prefers
+this to making an offer player~1 rejects, which gives her 0.)
+
+\textbf{Step 3: period 1.} Player~1 must give player~2 at least her period-2 value:
+\[
+  1 - x_1 \;\ge\; \delta_2\,(1 - x_2) = \delta_2\,(1 - (\delta_1)) ,
+\]
+so, keeping as much as possible,
+\begin{equation}
+  x_1 = 1 - \delta_2(1 - \delta_1) = 1 - \delta_2 + \delta_1\delta_2 . \label{eq:23x1}
+\end{equation}
+\textbf{(a)} The SPE outcome is immediate agreement on
+\[
+  (v_1, v_2) = \bigl(1 - \delta_2(1 - \delta_1),\ \ \delta_2(1 - \delta_1)\bigr).
+\]
+(Strategies: player~1 offers $x_1$ in period~1 and $1$ in period~3, and accepts in period~2 iff
+offered at least $\delta_1$; player~2 accepts in period~1 iff offered at least
+$\delta_2(1-\delta_1)$, offers $x_2 = \delta_1$ in period~2, accepts anything in period~3.)
+
+\textbf{(b) Equal discount factors.} Setting $\delta_1 = \delta_2 = \delta$ in \eqref{eq:23x1}:
+\[
+  v_1 = 1 - \delta + \delta^2, \qquad v_2 = \delta - \delta^2,
+\]
+\[
+  v_1 - v_2 = 1 - 2\delta + 2\delta^2 = (1 - \delta)^2 + \delta^2 \;>\; 0 .
+\]
+So player~1 gets strictly more than half for every $\delta$: he proposes first \emph{and} last.
+
+\textbf{(c) When player 2 is ahead.} Player~2 gets more than half iff
+\[
+  \delta_2\,(1 - \delta_1) > \tfrac12 \iff \delta_1 < 1 - \frac{1}{2\delta_2} ,
+\]
+which needs $\delta_2 > \frac12$ (a patient player~2) and $\delta_1$ low enough (an impatient
+player~1). Example: $\delta_1 = 0.2$, $\delta_2 = 0.9$ gives $v_2 = 0.9 \times 0.8 = 0.72$.
+\emph{Why.} Player~1's power comes from the last period, but an impatient player~1 values it at only
+$\delta_1$ from period~2's viewpoint, so player~2 keeps $1 - \delta_1$ when she proposes. A patient
+player~2 values that period-2 position almost fully ($\delta_2$), so in period~1 player~1 must
+concede $\delta_2(1 - \delta_1)$. Patience is bargaining power: $v_1$ rises with $\delta_1$
+($\partial v_1/\partial\delta_1 = \delta_2 > 0$) and falls with $\delta_2$
+($\partial v_1/\partial \delta_2 = -(1 - \delta_1) < 0$), as in the infinite-horizon formula
+$\frac{1 - \delta_2}{1 - \delta_1\delta_2}$ (Tadelis \S11.3; \texttt{Notas/L04/L04-07}).
+
+\interp First-mover and last-mover advantages favour player~1, so only a large patience gap in
+player~2's favour can overturn them. With equal patience player~1's edge $(1-\delta)^2 + \delta^2$
+is smallest at $\delta = \frac12$ (edge $\frac12$, $v_1 = \frac34$). As $\delta \to 0$ the first-mover
+advantage takes over and $v_1 \to 1$; as $\delta \to 1$ the last-mover advantage takes over and again
+$v_1 \to 1$, because waiting for period~3 costs player~1 nothing.
+
+\verify \texttt{check\_B\_L04.py} redoes the recursion symbolically ($x_1 = 1 - \delta_2 +
+\delta_1\delta_2$; $v_1 - v_2 = (1-\delta)^2 + \delta^2$), tests the condition in (c) on four
+$(\delta_1, \delta_2)$ pairs, and repeats the backward induction numerically with offers on a grid of
+step $\frac1{1000}$ for three pairs, e.g.\ $(\delta_1,\delta_2) = (0.9, 0.7)$ gives $x_1 = 0.93$, the
+value in \texttt{Notas/L04/L04-10-formulas.md}. Tadelis prints no answer.
+
+\answer{(a) Immediate agreement: player~1 gets $1 - \delta_2(1 - \delta_1)$, player~2 gets
+$\delta_2(1 - \delta_1)$. (b) With $\delta_1 = \delta_2 = \delta$: $v_1 - v_2 = (1-\delta)^2 + \delta^2
+> 0$. (c) Player~2 is ahead iff $\delta_2(1 - \delta_1) > \frac12$: player~2 patient
+($\delta_2 > \frac12$) and player~1 impatient ($\delta_1 < 1 - \frac1{2\delta_2}$), because player~1's
+last-period power is worth little to an impatient player~1, while player~2's period-2 power is worth a
+lot to a patient player~2.}
+\end{exsol}

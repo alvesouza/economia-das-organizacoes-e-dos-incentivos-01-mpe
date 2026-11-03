@@ -131,15 +131,30 @@ Anchor content and references in the course books, through `Map/` and `rules/` w
 - **Giambiagi & Garcia (2010)**: Brazilian and 2008-crisis context: Cap. 7 (incentives),
   Quadro 8.1 (S&L), Cap. 16 (Sadia). Essays only, no exercises.
 
-**Book questions used in a list, mock exam or practice plan.** Reproduce the question's text
-verbatim, every sub-item, table and number, never only its number and page. Open it with an
-explicit source line before the text: author (year), title, exercise number and name, page, and
-"reproduced verbatim". Mark anything added or changed ("Added parts (not in the book)", "numbers
-changed", "items (a)-(c) only"). Take the text from the PDF, not from the `.md` conversion,
-which garbles spacing, tables and glyphs. When the source has no exercise (an article section),
-say so in the source line and write the statement as your own. *Why:* a list that says
-"Tadelis 4.5, p. 77" cannot be worked without the book open, and the source line keeps the
-reproduced text attributed.
+**Book questions used in a list, mock exam or practice plan** (global rule "Exercise lists
+built from real exercises"; this paragraph adds detail and drops none of it). Each exercise block:
+
+1. **Opens with its source line:** author (year), title, chapter, exercise number and name,
+   printed page with the PDF page in brackets (`p. 77 [PDF 95]`, offsets in
+   `Livros/book-registry.json`), whether the source gives the answer (e.g. "worked answer in
+   the book", "answer in the MWG solutions manual", "no answer in the book"), and
+   "reproduced verbatim".
+2. **Reproduces the statement completely**, with everything needed to solve it: every part
+   (a), (b)…, every number and data table, the values of any figure the question reads from
+   (crop the figure to `Listas/figures/` or rebuild it as a table), and any earlier exercise,
+   example, equation or table it refers to ("Repeat Exercise 6 with…", "the game in
+   Figure 9.2"), copied into the same block under its own source line.
+3. **Keeps the source's wording.** No paraphrasing or trimming. Allowed edits only: math
+   re-typeset in LaTeX, tables rebuilt, hyphenation and line breaks undone, margin notes that
+   are not part of the problem dropped.
+
+Mark anything added or changed ("Added parts (not in the book)", "numbers changed", "items
+(a)-(c) only", "note: not in the book"). Take the text from the PDF, checked against the
+rendered page image, not from the `.md` conversion, which garbles spacing, tables and glyphs.
+When the source has no exercise (an article section), say so in the source line and write the
+statement as your own. *Why:* the lists are studied away from the books; a list that says
+"Tadelis 4.5, p. 77", or that sends the reader back for a missing table or a referenced
+problem, cannot be worked where it is read, and a paraphrase silently drops conditions.
 Questions you create stay original: do not disguise a book exercise as your own.
 Use `Map/` for topic weights and for pages in the `Ref:` lines.
 

@@ -1,0 +1,120 @@
+% Solutions to the 24 exercises of Listas/lista-reais-lectures-01-04.tex (Lectures 1-4).
+% Compile: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=3pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize Real exercises, Lectures 1--4: solutions}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\definecolor{hdr}{RGB}{30,80,150}
+\definecolor{ans}{RGB}{20,110,70}
+
+% \begin{exsol}{<item #>}{<source and exercise>}{<page>}{<level>}{<block>} ... \end{exsol}
+% Starts a new section-level entry for one exercise of the list.
+\newenvironment{exsol}[5]{%
+  \setcounter{section}{\numexpr #1-1\relax}% section number = the list's exercise number
+  \section[#2 (p.~#3)]{#2 \hfill{\normalsize\mdseries #4 $\cdot$ block #5}}%
+  \textbf{Source:} #2, page~#3 (statement in the book and in Exercise~#1 of the list; not
+  reproduced here).\par}{\par}
+% Fixed sub-heads, in this order inside each exsol.
+\newcommand{\asked}{\paragraph{What is asked.}}
+\newcommand{\method}{\paragraph{Method.}}
+\newcommand{\solution}{\paragraph{Solution.}}
+\newcommand{\interp}{\paragraph{Interpretation.}}
+\newcommand{\verify}{\paragraph{Verification.}}
+% Boxed final answer: \answer{...}
+\newcommand{\answer}[1]{\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.6pt,
+  left=5pt,right=5pt,top=3pt,bottom=3pt]\textbf{Answer.} #1\end{tcolorbox}}
+\newcommand{\MG}{Mu\~noz-Garcia}
+\newcommand{\Sm}{S_{-i}}
+\newcommand{\sm}{s_{-i}}
+
+\title{\textbf{Real Book Exercises, Lectures 1--4: Solutions}\\[4pt]
+  \large Economics of Organizations and Incentives (MPE Insper)}
+\author{Solutions to the 24 exercises of \texttt{Listas/lista-reais-lectures-01-04.pdf}}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent These are the solutions to the list of 24 real book exercises for Lectures 1--4, in
+the list's order and with its numbering (one block of six per lecture: two foundations, three exam
+level, one advanced). Each exercise is cited by book, number and printed page; its statement is
+reproduced verbatim in the list and is not repeated here. Books: Tadelis (2013), \MG{} \&
+Toro-Gonzalez (2019, 2nd ed.), Gibbons (1992) and Mas-Colell, Whinston \& Green (1995) (MWG).
+Notation follows the slides: a game is $G = (I, \{S_i\}_{i\in I}, \{u_i\}_{i\in I})$, $\sm$ is a
+profile of the others' strategies, $S_i^k$ is the set of player~$i$'s strategies that survive $k$
+rounds of iterated elimination of strictly dominated strategies (IESDS), with every strictly
+dominated strategy removed in each round (Lecture~1, slide~29), and $S_i^\infty = \bigcap_k
+S_i^k$. Mixed strategies are $\sigma_i \in \Sigma_i = \Delta(S_i)$ (Lecture~2). In bimatrices
+player~1 picks rows and the first payoff is player~1's. Where the book gives an answer (\MG{}'s
+worked answers, the MWG solutions manual) each item records whether it agrees. Every matrix,
+dominance claim, equilibrium and formula is checked by the Python scripts in this folder
+(\texttt{check\_A1.py}, \texttt{check\_A2.py} for items 1--12; \texttt{check\_B*.py} for items
+13--24).
+
+\tableofcontents
+\newpage
+
+\part*{Lecture 1 --- Static games I: dominance and iterated elimination}
+\addcontentsline{toc}{part}{Lecture 1 --- Static games I: dominance and iterated elimination}
+\input{item01}
+\input{item02}
+\input{item03}
+\input{item04}
+\input{item05}
+\input{item06}
+
+\part*{Lecture 2 --- Static games II: Nash equilibrium and mixed strategies}
+\addcontentsline{toc}{part}{Lecture 2 --- Static games II: Nash equilibrium and mixed strategies}
+\input{item07}
+\input{item08}
+\input{item09}
+\input{item10}
+\input{item11}
+\input{item12}
+
+\part*{Lecture 3 --- Dynamic games and subgame perfection}
+\addcontentsline{toc}{part}{Lecture 3 --- Dynamic games and subgame perfection}
+\input{item13}
+\input{item14}
+\input{item15}
+\input{item16}
+\input{item17}
+\input{item18}
+
+\part*{Lecture 4 --- Multistage games and bargaining}
+\addcontentsline{toc}{part}{Lecture 4 --- Multistage games and bargaining}
+\input{item19}
+\input{item20}
+\input{item21}
+\input{item22}
+\input{item23}
+\input{item24}
+
+\end{document}

@@ -1,0 +1,68 @@
+\begin{exsol}{20}{Gibbons Problem 2.6}{133}{Foundations}{L4}
+\asked Firm~1 chooses $q_1$; firms~2 and~3 observe it and choose $q_2, q_3$ simultaneously;
+demand $P = a - Q$, marginal cost $c$. Find the subgame-perfect outcome.
+
+\method Two-stage game of complete but imperfect information (Gibbons \S2.2.A, pp.~71--73): for each
+$q_1$ solve the second-stage simultaneous game for its Nash equilibrium, then let firm~1 optimize
+against it. The second stage is a Cournot duopoly on the residual demand (Gibbons \S1.2.A); the
+first stage is Stackelberg logic (Gibbons \S2.1.B; Tadelis \S8.3.2).
+
+\solution
+\textbf{Notation.} $a > c \ge 0$; $q_i \ge 0$; profit $\pi_i = (a - Q - c)\,q_i$ with
+$Q = q_1 + q_2 + q_3$.
+
+\textbf{Step 1: second stage, given $q_1 < a - c$.} Firm~2's and firm~3's first-order conditions:
+\begin{align}
+  \frac{\partial\pi_2}{\partial q_2} &= a - c - q_1 - 2q_2 - q_3 = 0, \label{eq:20a}\\
+  \frac{\partial\pi_3}{\partial q_3} &= a - c - q_1 - q_2 - 2q_3 = 0. \label{eq:20b}
+\end{align}
+Subtracting \eqref{eq:20b} from \eqref{eq:20a} gives $q_3 - q_2 = 0$, so $q_2 = q_3$. Substituting
+$q_3 = q_2$ into \eqref{eq:20a}:
+\[
+  a - c - q_1 - 2q_2 - (q_2) = 0 \;\Rightarrow\; q_2(q_1) = q_3(q_1) = \frac{a - c - q_1}{3}.
+\]
+This is the Cournot duopoly with demand intercept $a - q_1$; its equilibrium is unique. If
+$q_1 \ge a - c$, both followers produce $0$.
+
+\textbf{Step 2: first stage.} Substituting the followers' outputs, for $q_1 < a - c$,
+\[
+  \pi_1 = \Bigl(a - q_1 - 2\cdot\frac{a - c - q_1}{3} - c\Bigr) q_1
+        = \frac{a - c - q_1}{3}\, q_1 ,
+\]
+a strictly concave function with
+\[
+  \frac{d\pi_1}{dq_1} = \frac{a - c - 2q_1}{3} = 0 \;\Rightarrow\; q_1^* = \frac{a - c}{2}.
+\]
+For $q_1 \ge a - c$ the price is at most $c$, so $\pi_1 \le 0$; the interior choice is the global one.
+
+\textbf{Step 3: outcome.}
+\[
+  q_2^* = q_3^* = \frac{a - c - \frac{a-c}{2}}{3} = \frac{a - c}{6}, \qquad
+  Q^* = \frac{a-c}{2} + 2\cdot\frac{a-c}{6} = \frac{5(a - c)}{6},
+\]
+\[
+  P^* = a - \frac{5(a-c)}{6} = \frac{a + 5c}{6},
+\]
+\[
+  \pi_1^* = \frac{a - c}{6}\cdot\frac{a - c}{2} = \frac{(a-c)^2}{12}, \qquad
+  \pi_2^* = \pi_3^* = \frac{a-c}{6}\cdot\frac{a-c}{6} = \frac{(a-c)^2}{36}.
+\]
+The subgame-perfect outcome is $\bigl(q_1^*, q_2^*, q_3^*\bigr) = \bigl(\frac{a-c}{2},
+\frac{a-c}{6}, \frac{a-c}{6}\bigr)$. The SPE itself lists the followers' strategies
+$q_2(q_1) = q_3(q_1) = \max\{0, (a - c - q_1)/3\}$.
+
+\interp The leader again chooses the monopoly output $(a-c)/2$, as in the two-firm Stackelberg game
+(Gibbons p.~63) and in item~17: with linear demand, the followers' joint reply has slope
+$-\frac23$, and the leader's residual margin $(a - c - q_1)/3$ is a scaled copy of the monopoly
+margin. Compared with simultaneous three-firm Cournot (each $(a-c)/4$, $Q = \frac34(a-c)$), the
+leader produces more and earns more ($\frac{(a-c)^2}{12} > \frac{(a-c)^2}{16}$), the followers less,
+and total output is higher.
+
+\verify \texttt{check\_B\_L04.py} solves \eqref{eq:20a}--\eqref{eq:20b} and firm~1's problem with
+sympy and checks $Q^*$, $P^*$ and both profits; it also solves the case $a = 13$, $c = 1$ with
+the leader on a grid of step $0.05$: $q_1 = 6$, $q_2 = q_3 = 2$. Gibbons prints no answer.
+
+\answer{$q_1^* = \frac{a-c}{2}$, $q_2^* = q_3^* = \frac{a-c}{6}$ (followers' rule
+$q_j(q_1) = \max\{0, \frac{a-c-q_1}{3}\}$); $P^* = \frac{a+5c}{6}$; profits
+$\frac{(a-c)^2}{12}$ for firm~1 and $\frac{(a-c)^2}{36}$ for each follower.}
+\end{exsol}

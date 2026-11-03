@@ -1,0 +1,95 @@
+% Short hand-in solution to the Lecture 3 mini case (Aula/Lecture03.pdf, PDF pages 77-78 = deck slides 41-42).
+% Detailed version: mini-case-lecture-03.tex. Every number is asserted by mini-case-lecture-03-check.py.
+% Compile: pdflatex mini-case-lecture-03-short.tex (twice). Check: pdffonts (all Type 1).
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=2pt,itemsep=1pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{empty}
+
+\begin{document}
+
+{\large\textbf{Mini case, Lecture 3: Work or shirk?}}\hfill Lecture 3, slides 41--42
+
+Employee $W/S$ (rows), manager $M/N$ (columns); $w = 10$, $g = 2$, $v = 20$, $h = 1$.
+$p = \Pr(S)$, $q = \Pr(M)$. Numeric matrix (employee, manager):
+$(W,M) = (8, 9)$, $(W,N) = (8, 10)$, $(S,M) = (0, -1)$, $(S,N) = (10, -10)$.
+
+\textbf{(a) No pure-strategy NE.} Every cell has a profitable unilateral deviation, and the
+deviations form a cycle:
+\[
+(W,M) \xrightarrow{\ \text{Mg}: +h = 1\ } (W,N) \xrightarrow{\ \text{E}: +g = 2\ } (S,N)
+\xrightarrow{\ \text{Mg}: +(w-h) = 9\ } (S,M) \xrightarrow{\ \text{E}: +(w-g) = 8\ } (W,M).
+\]
+Best responses: employee $W$ vs $M$ ($8 > 0$), $S$ vs $N$ ($10 > 8$); manager $N$ vs $W$
+($10 > 9$), $M$ vs $S$ ($-1 > -10$). No cell is a mutual best response. In general this holds
+whenever $0 < g < w$ and $0 < h < w$.
+
+\textbf{(b) Mixed NE.} Both must mix (if one played pure, the other's unique best response is pure,
+contradicting (a)), so by the principle of indifference each is indifferent between his two actions.
+\begin{align*}
+\text{Employee:}\quad & u_E(W, q) = 8, \quad u_E(S, q) = 10(1 - q)
+  &&\Rightarrow\ 8 = 10 - 10q \ \Rightarrow\ q^* = 0.2,\\
+\text{Manager:}\quad & u_{Mg}(M, p) = 9(1 - p) - p = 9 - 10p, \quad u_{Mg}(N, p) = 10 - 20p
+  &&\Rightarrow\ 10p = 1 \ \Rightarrow\ p^* = 0.1.
+\end{align*}
+The employee shirks with probability $0.1$ and the manager monitors with probability $0.2$.
+Payoffs: employee $8$, manager $9 - 10(0.1) = 8$. This is the unique NE (the best responses cross
+once, at $(p, q) = (0.1, 0.2)$).
+
+\textbf{(c) $h = 0.5$.} The employee's condition has no $h$: $q^* = 0.2$, unchanged. Manager:
+$9.5 - 10p = 10 - 20p \Rightarrow p^* = 0.05$. Shirking halves; monitoring does not change; the
+firm's payoff rises from 8 to 9. \emph{Intuition:} each player's mix is pinned by the
+\emph{opponent's} indifference. Monitoring must keep the employee indifferent, which depends only on
+$g$ and $w$. Cheaper monitoring tempts the manager to monitor more, so employees shirk less until the
+manager is indifferent again, at $p = h/w$.
+
+\textbf{(d) $w = 20$.} Employee: $18 = 20(1 - q) \Rightarrow q^* = 0.1$. Manager:
+$u_{Mg}(M, p) = -1$, $u_{Mg}(N, p) = -20p \Rightarrow p^* = 0.05$. Both halve: a higher wage raises
+what a caught shirker loses (less monitoring needed) and what an undetected shirker costs the firm
+(less shirking needed to justify monitoring). Payoffs: employee $18$, firm $-1$. The firm buys the
+same fall in shirking as in (c) for $9$ more.
+
+\textbf{(e) General formulas and policy.} For $0 < g < w$, $0 < h < w$:
+\[
+p^* = \frac{h}{w}, \qquad q^* = \frac{g}{w}, \qquad u_E^* = w - g, \qquad
+\pi(w, h) = v - w - \frac{hv}{w}.
+\]
+Shirking depends only on the manager's trade-off ($h$ vs $w$), monitoring only on the employee's
+($g$ vs $w$); $v$ enters neither. $\partial\pi/\partial h = -v/w = -2$ and
+$\partial\pi/\partial w = -1 + hv/w^2 = -0.8 < 0$: a raise costs 1 for sure and saves only $0.2$.
+Within the model the profit-maximizing wage is $\sqrt{hv} = \sqrt{20} \approx 4.47$ ($> g$),
+leaving the employee $\approx 2.47$; the model ignores the participation constraint, which in
+practice sets the wage floor.
+
+\emph{Recommendation.} Cheaper or better monitoring, not a higher wage: halving $h$ takes the firm
+from 8 to 9, while $w = 20$ takes it to $-1$. With detection probability $\delta$,
+$\pi = v - w - hv/(\delta w)$, so what matters is the cost per detection $h/\delta$. Better still,
+\emph{commit} (Lecture 3, Stackelberg logic): announce and hard-wire random audits at rate
+$q = g/w = 0.2$; the employee then works ($p = 0$) and $\pi = v - w - hg/w = 9.8 > 8$. The
+commitment must be credible: ex post, once the employee works, monitoring costs $h$ and finds nothing,
+so a manager who can revise the promise will not monitor (time inconsistency).
+
+\emph{Assumptions to question in the Itaú case.}
+(i) Perfect detection: software measures activity, not output ($\delta < 1$ raises $p^*$ and $q^*$;
+mouse jigglers). (ii) Binary effort: real effort is continuous and multidimensional. (iii) The penalty
+is only the wage: dismissal also destroys future rents $R$, giving $q^* = g/(w + R)$; this is the
+repeated game behind efficiency wages (Lecture 6). (iv) No false positives and no legal limits:
+mistaken flags lower the return to working, and the LGPD and labour courts raise $h$ and cap
+monitoring. (v) Identical employees: heterogeneous $g$ calls for targeted, not random, audits.
+(vi) One-shot simultaneous timing: the relationship is repeated, employees know software is
+installed, and continuous automated monitoring has near-zero marginal $h$.
+
+\end{document}
