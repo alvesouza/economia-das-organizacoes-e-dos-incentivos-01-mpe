@@ -448,7 +448,7 @@ common vs. mutual knowledge).
 
 ## Integrating materials across topics
 
-- [[Cases/Brexit/brexit-game.pdf|Brexit case as a game]] (Lectures 3–4): T1, T7, T8, T9, T11 in one tree; plan in [[.agent/plans/cases-lecture-03-brexit|cases plan]].
+- [[Cases/Brexit/brexit-game.pdf|Brexit case as a game]] (Lectures 3–4): T1, T7, T8, T9, T11 in one tree; plan in `.agent/plans/cases-lecture-03-brexit.md`.
 - [[Resolucao/mini-case-lecture-01.pdf|Mini case L1, the pharmacy]]: T1, T2, T5 (and Pareto, part (d)).
 - [[Resolucao/mini-case-lecture-03.pdf|Mini case L3, work or shirk]] ([[Resolucao/mini-case-lecture-03-short.pdf|short]]): T6 with T9 (commitment variant).
 - [[Listas/lista-reais-lectures-01-04.pdf|Real-exercise list, Lectures 1–4]] (24 items, 6 per lecture; [[Listas/roteiro-lectures-01-04|roteiro]], [[Listas/lista-reais-lectures-01-04-solutions.pdf|solutions]], [[Listas/study-pack-roteiro-lectures-01-04.pdf|study pack]]): items 1–6 T2, 7–12 T4–T6, 13–18 T8–T9, 19–24 T10–T11.

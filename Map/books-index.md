@@ -457,7 +457,7 @@ Brought into scope by Lecture 6. Sections and pages from the TOC; chapter opener
 
 **Linked materials:** Rules: [[rules/05_coordenacao_management|Topic 5]] · [[rules/06_racionalidade_limitada_contratos|Topic 6]]
 
-Out of scope: Ch. 2, 8, 10–12, 14–16 (oligopoly, entry, mergers, differentiation, innovation, networks). Ch. 9 is mapped above for Lecture 6.
+Out of scope: Ch. 2, 8, 10–12, 14–16 (oligopoly, entry, mergers, differentiation, innovation, networks), except §14.2 (Hotelling's linear city, pp. 354, 358–360), used as a Lecture 1 application. Ch. 9 is mapped above for Lecture 6.
 
 ---
 
@@ -675,20 +675,33 @@ half have solutions on the publisher's web page and the rest are instructor-only
 ## Part IV — Static Games of Incomplete Information
 
 ## Ch. 12 — Bayesian Games (pp. 241–269) · Lecture 7
+**Topics:** T15 Bayesian games and BNE #topic/bayesian-games · T16 Adverse selection #topic/adverse-selection · T17 Auctions (§12.4 common values) #topic/auctions · T6 (§12.5 purification) #topic/mixed-strategies
 ### §12.1 — Strategic Representation of Bayesian Games (p. 246)
 - 12.1.1 Players, Actions, Information, and Preferences (p. 246); 12.1.2 Deriving Posteriors from a Common Prior: A Player's Beliefs (p. 247); 12.1.3 Strategies and Bayesian Nash Equilibrium (p. 249).
+**Materials:** notes [[Notas/L07/L07-01-bayesian-games-harsanyi|L07 Bayesian games]], [[Notas/L07/L07-02-bayesian-nash-equilibrium|L07 BNE]] · quiz [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#harsanyi|L7-1 harsanyi]], [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#bne|bne]] · [[Map/topics-index#Topic: Bayesian games and Bayesian Nash equilibrium|T15]]
 ### §12.2 — Examples (p. 252)
 - 12.2.1 Teenagers and the Game of Chicken (p. 252); 12.2.2 Study Groups (p. 255).
+**Materials:** notes [[Notas/L07/L07-04-threshold-strategies-purification|L07 thresholds and purification]] · quiz [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#threshold|L7-1 threshold]]
 ### §12.3 — Inefficient Trade and Adverse Selection (p. 258)
+**Materials:** notes [[Notas/L07/L07-05-adverse-selection-lemons|L07 adverse selection and lemons]] · quiz [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#lemons|L7-2 lemons]], [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#insurance|insurance]] · rules [[rules/07_selecao_adversa|Topic 7]] · [[Map/topics-index#Topic: Adverse selection|T16]]
 ### §12.4 — Committee Voting (p. 261)
+**Materials:** notes [[Notas/L07/L07-09-common-values-curses|L07 common values and curses]] · quiz [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#cv|L7-2 cv]]
 ### §12.5 — Mixed Strategies Revisited: Harsanyi's Interpretation (p. 264)
-### §12.6 — Summary (p. 266) · §12.7 — Exercises 12.1–12.9 (pp. 266–269)
+**Materials:** notes [[Notas/L07/L07-04-threshold-strategies-purification|L07 thresholds and purification]] · [[Map/topics-index#Topic: Mixed strategies and existence|T6]]
+### §12.6 — Summary (p. 266) · §12.7 — Exercises 12.1–12.10 (pp. 266–269)
+- Range corrected 2026-11-03 (was "12.1–12.9"): 12.10 Purification is on p. 269 (PDF viewer page 288), after 12.9 Grab the Dollar.
+**Materials:** items [[Listas/pratica-lecture-07#4. Tadelis 12.1|L7 #4 (12.1)]], [[Listas/pratica-lecture-07#9. Tadelis 12.2|L7 #9 (12.2)]], [[Listas/pratica-lecture-07#11. Tadelis 12.3|L7 #11 (12.3)]], [[Listas/pratica-lecture-07#13. Tadelis 12.5|L7 #13 (12.5)]], [[Listas/pratica-lecture-07#14. Tadelis 12.6|L7 #14 (12.6)]], [[Listas/pratica-lecture-07#21. Tadelis 12.7|L7 #21 (12.7)]], [[Listas/pratica-lecture-07#18. Tadelis 12.8|L7 #18 (12.8)]], [[Listas/pratica-lecture-07#12. Tadelis 12.9|L7 #12 (12.9)]] · 12.10: optional extra of [[Listas/pratica-lecture-07|list L7]]
 
 ## Ch. 13 — Auctions and Competitive Bidding (pp. 270–287) · Lecture 7
+**Topics:** T17 Auctions #topic/auctions
 ### §13.1 — Independent Private Values (p. 272)
 - 13.1.1 Second-Price Sealed-Bid Auctions (p. 272); 13.1.2 English Auctions (p. 275); 13.1.3 First-Price Sealed-Bid and Dutch Auctions (p. 276); 13.1.4 Revenue Equivalence (p. 279).
+**Materials:** notes [[Notas/L07/L07-06-second-price-english|L07 second-price and English]], [[Notas/L07/L07-07-first-price-dutch|L07 first-price and Dutch]], [[Notas/L07/L07-08-revenue-equivalence|L07 revenue equivalence]] · quiz [[Simulados/quiz-lecture07-3-auctions-2026-10-25#spa|L7-3 spa]], [[Simulados/quiz-lecture07-3-auctions-2026-10-25#fpa|fpa]], [[Simulados/quiz-lecture07-3-auctions-2026-10-25#rev|rev]] · [[Map/topics-index#Topic: Auctions|T17]]
 ### §13.2 — Common Values and the Winner's Curse (p. 282)
-### §13.3 — Summary (p. 285) · §13.4 — Exercises 13.1–13.9 (pp. 285–287)
+**Materials:** notes [[Notas/L07/L07-09-common-values-curses|L07 common values and curses]] · quiz [[Simulados/quiz-lecture07-3-auctions-2026-10-25#wc|L7-3 wc]]
+### §13.3 — Summary (p. 285) · §13.4 — Exercises 13.1–13.10 (pp. 285–287)
+- Range corrected 2026-11-03 (was "13.1–13.9"): 13.10 Common Values Linear Bidding is on p. 287 (PDF viewer page 306).
+**Materials:** items [[Listas/pratica-lecture-07#5. Tadelis 13.1|L7 #5 (13.1)]], [[Listas/pratica-lecture-07#8. Tadelis 13.2|L7 #8 (13.2)]], [[Listas/pratica-lecture-07#17. Tadelis 13.3|L7 #17 (13.3)]], [[Listas/pratica-lecture-07#23. Tadelis 13.5|L7 #23 (13.5)]], [[Listas/pratica-lecture-07#16. Tadelis 13.9|L7 #16 (13.9)]], [[Listas/pratica-lecture-07#24. Tadelis 13.10|L7 #24 (13.10)]]
 
 ## Ch. 14 — Mechanism Design (pp. 288–299) · out of scope unless a lecture brings it
 ### §14.1 — Setup: Mechanisms as Bayesian Games (p. 288)
@@ -701,17 +714,27 @@ half have solutions on the publisher's web page and the rest are instructor-only
 ## Part V — Dynamic Games of Incomplete Information
 
 ## Ch. 15 — Sequential Rationality with Incomplete Information (pp. 303–317) · Lecture 8
+**Topics:** T18 Perfect Bayesian equilibrium #topic/pbe
 ### §15.1 — The Problem with Subgame Perfection (p. 303)
+**Materials:** notes [[Notas/L08/L08-01-subgame-perfection-fails|L08 subgame perfection fails]] · quiz [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#sp|L8-1 sp]] · [[Map/topics-index#Topic: Perfect Bayesian equilibrium|T18]]
 ### §15.2 — Perfect Bayesian Equilibrium (p. 307)
+**Materials:** notes [[Notas/L08/L08-02-beliefs-and-pbe|L08 beliefs and PBE]] · quiz [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#beliefs|L8-1 beliefs]], [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#pbe|pbe]]
 ### §15.3 — Sequential Equilibrium (p. 312)
+**Materials:** notes [[Notas/L08/L08-03-sequential-equilibrium|L08 sequential equilibrium]] · quiz [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#se|L8-1 se]]
 ### §15.4 — Summary (p. 314) · §15.5 — Exercises 15.1–15.6 (pp. 314–317)
+**Materials:** items [[Listas/pratica-lecture-08#1. Tadelis 15.1|L8 #1 (15.1)]], [[Listas/pratica-lecture-08#3. Tadelis 15.3|L8 #3 (15.3)]], [[Listas/pratica-lecture-08#10. Tadelis 15.5|L8 #10 (15.5)]], [[Listas/pratica-lecture-08#18. Tadelis 15.6|L8 #18 (15.6)]]
 
 ## Ch. 16 — Signaling Games (pp. 318–338) · Lecture 8
+**Topics:** T19 Signaling and refinements #topic/signaling · T9 (limit pricing as entry deterrence) #topic/commitment
 ### §16.1 — Education Signaling: The MBA Game (p. 319)
+**Materials:** notes [[Notas/L08/L08-04-signaling-games|L08 signaling games]], [[Notas/L08/L08-05-mba-game|L08 MBA game]] · quiz [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#sig|L8-2 sig]], [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#mba|mba]] · [[Map/topics-index#Topic: Signaling and refinements|T19]]
 ### §16.2 — Limit Pricing and Entry Deterrence (p. 323)
 - 16.2.1 Separating Equilibria (p. 324); 16.2.2 Pooling Equilibria (p. 330).
+**Materials:** notes [[Notas/L08/L08-07-limit-pricing|L08 limit pricing]] · quiz [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#lp|L8-3 lp]]
 ### §16.3 — Refinements of Perfect Bayesian Equilibrium in Signaling Games (p. 332)
+**Materials:** notes [[Notas/L08/L08-08-intuitive-criterion|L08 intuitive criterion]] · quiz [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ic|L8-3 ic]], [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ref|ref]]
 ### §16.4 — Summary (p. 335) · §16.5 — Exercises 16.1–16.8 (pp. 335–338)
+**Materials:** items [[Listas/pratica-lecture-08#13. Tadelis 16.3|L8 #13 (16.3)]], [[Listas/pratica-lecture-08#12. Tadelis 16.4|L8 #12 (16.4)]], [[Listas/pratica-lecture-08#7. Tadelis 16.5|L8 #7 (16.5)]], [[Listas/pratica-lecture-08#15. Tadelis 16.6|L8 #15 (16.6)]], [[Listas/pratica-lecture-08#19. Tadelis 16.7|L8 #19 (16.7)]], [[Listas/pratica-lecture-08#16. Tadelis 16.8|L8 #16 (16.8)]]
 
 ## Ch. 17 — Building a Reputation (pp. 339–356) · background for Lectures 6 and 8
 ### §17.1 — Cooperation in a Finitely Repeated Prisoner's Dilemma (p. 339)
@@ -744,43 +767,65 @@ external, unofficial and unfinished manual described in `Livros/BOOKS.md` (Probl
 2.1–2.23, 3.1–3.8, 4.1–4.6).
 
 ## Ch. 1 — Static Games of Complete Information (pp. 1–53) · Lectures 1–2
+**Topics:** T1 Normal-form games #topic/normal-form · T2 Dominance and IESDS #topic/dominance-iesds · T4 Nash equilibrium #topic/nash-equilibrium · T5 Oligopoly #topic/oligopoly · T6 Mixed strategies #topic/mixed-strategies
 ### §1.1 — Basic Theory: Normal-Form Games and Nash Equilibrium (p. 2)
 - 1.1.A Normal-Form Representation of Games (p. 2; Prisoners' Dilemma with Mum/Fink, payoffs −1, −9, 0, −6, p. 3).
 - 1.1.B Iterated Elimination of Strictly Dominated Strategies (p. 4; Figures 1.1.1–1.1.3, pp. 6–7; common knowledge of rationality and the two drawbacks, p. 7).
 - 1.1.C Motivation and Definition of Nash Equilibrium (p. 8).
+**Materials:** notes [[Notas/L01/L01-01-games-normal-form|L01 normal form]], [[Notas/L01/L01-06-iesds|L01 IESDS]], [[Notas/L02/L02-02-nash-equilibrium|L02 Nash equilibrium]] · quiz [[Simulados/quiz-lecture01-3-iesds-2026-10-13#ck|L1-3 ck]], [[Simulados/quiz-lecture02-1-nash-equilibrium-2026-10-25#ne|L2-1 ne]] · [[Map/topics-index#Topic: Dominance and IESDS|T2]], [[Map/topics-index#Topic: Nash equilibrium|T4]]
 ### §1.2 — Applications (p. 14)
 - 1.2.A Cournot Model of Duopoly (p. 14); 1.2.B Bertrand Model of Duopoly (p. 21); 1.2.C Final-Offer Arbitration (p. 22); 1.2.D The Problem of the Commons (p. 27).
+**Materials:** notes [[Notas/L02/L02-03-cournot|L02 Cournot]], [[Notas/L02/L02-04-bertrand|L02 Bertrand]], [[Notas/L02/L02-05-commons|L02 commons]] · quiz [[Simulados/quiz-lecture02-2-cournot-bertrand-2026-10-25#cournot|L2-2 cournot]], [[Simulados/quiz-lecture02-2-cournot-bertrand-2026-10-25#bertrand|bertrand]] · [[Map/topics-index#Topic: Oligopoly and continuous games (Cournot, Bertrand, commons, Hotelling)|T5]]
 ### §1.3 — Advanced Theory: Mixed Strategies and Existence of Equilibrium (p. 29)
 - 1.3.A Mixed Strategies (p. 29); 1.3.B Existence of Nash Equilibrium (p. 33).
+**Materials:** notes [[Notas/L02/L02-07-mixed-strategies|L02 mixed strategies]], [[Notas/L02/L02-09-existence|L02 existence]] · quiz [[Simulados/quiz-lecture02-3-mixed-strategies-2026-10-25#exist|L2-3 exist]] · [[Map/topics-index#Topic: Mixed strategies and existence|T6]]
 ### §1.4 — Further Reading (p. 48) · §1.5 — Problems 1.1–1.14 (pp. 48–51; Section 1.1: 1.1–1.3; 1.8 is the Hotelling voting problem, p. 50) · §1.6 — References (p. 51)
+**Materials:** items [[Listas/pratica-lecture-01#7. Gibbons 1.2|L1 #7 (1.2)]], [[Listas/pratica-lecture-02#4. Gibbons 1.3|L2 #4 (1.3)]], [[Listas/pratica-lecture-02#13. Gibbons 1.5|L2 #13 (1.5)]], [[Listas/pratica-lecture-02#14. Gibbons 1.6|L2 #14 (1.6)]], [[Listas/pratica-lecture-02#15. Gibbons 1.7|L2 #15 (1.7)]], [[Listas/pratica-lecture-02#8. Gibbons 1.12|L2 #8 (1.12)]], [[Listas/pratica-lecture-02#20. Gibbons 1.14|L2 #20 (1.14)]] · real #2 (1.2), #11 (1.6)
 
 ## Ch. 2 — Dynamic Games of Complete Information (pp. 55–141) · Lectures 3–6
+**Topics:** T7 Extensive form #topic/extensive-form · T8 Subgame perfection #topic/spe · T9 Commitment #topic/commitment · T10 Multistage games #topic/multistage · T11 Bargaining #topic/bargaining · T12 Repeated games #topic/repeated-games · T13 Collusion #topic/collusion · T14 Reputation and relational contracts #topic/reputation
 ### §2.1 — Dynamic Games of Complete and Perfect Information (p. 57)
 - 2.1.A Theory: Backwards Induction (p. 57); 2.1.B Stackelberg Model of Duopoly (p. 61); 2.1.C Wages and Employment in a Unionized Firm (p. 64); 2.1.D Sequential Bargaining (p. 68).
+**Materials:** notes [[Notas/L03/L03-04-sequential-rationality-backward-induction|L03 backward induction]], [[Notas/L03/L03-07-stackelberg|L03 Stackelberg]], [[Notas/L04/L04-06-finite-alternating-offers|L04 finite alternating offers]] · quiz [[Simulados/quiz-lecture03-3-commitment-stackelberg-2026-10-25#stack|L3-3 stack]], [[Simulados/quiz-lecture04-2-ultimatum-finite-offers-2026-10-25#fin|L4-2 fin]] · [[Map/topics-index#Topic: Backward induction and subgame perfection|T8]], [[Map/topics-index#Topic: Strategic bargaining|T11]]
 ### §2.2 — Two-Stage Games of Complete but Imperfect Information (p. 71)
 - 2.2.A Theory: Subgame Perfection (p. 71); 2.2.B Bank Runs (p. 73); 2.2.C Tariffs and Imperfect International Competition (p. 75); 2.2.D Tournaments (p. 79).
+**Materials:** notes [[Notas/L04/L04-04-two-stage-applications|L04 two-stage applications]] · quiz [[Simulados/quiz-lecture04-1-multistage-carrot-stick-2026-10-25#app|L4-1 app]] · [[Map/topics-index#Topic: Multistage games (carrot and stick, one-stage deviation)|T10]]
 ### §2.3 — Repeated Games (p. 82)
 - 2.3.A Theory: Two-Stage Repeated Games (p. 82); 2.3.B Theory: Infinitely Repeated Games (p. 88); 2.3.C Collusion between Cournot Duopolists (p. 102); 2.3.D Efficiency Wages (p. 107); 2.3.E Time-Consistent Monetary Policy (p. 112).
+**Materials:** notes [[Notas/L05/L05-02-two-stage-carrot-stick|L05 two-stage carrot and stick]], [[Notas/L05/L05-04-grim-trigger-spe|L05 grim trigger]], [[Notas/L06/L06-02-cournot-collusion|L06 Cournot collusion]], [[Notas/L06/L06-04-punishments-price-wars|L06 price wars]], [[Notas/L06/L06-07-efficiency-wages|L06 efficiency wages]] · quiz [[Simulados/quiz-lecture05-1-finite-horizon-2026-10-25#carrot|L5-1 carrot]], [[Simulados/quiz-lecture06-2-bertrand-price-wars-2026-10-25#wars|L6-2 wars]], [[Simulados/quiz-lecture06-3-reputation-wages-2026-10-25#wages|L6-3 wages]] · [[Map/topics-index#Topic: Repeated games and the folk theorem|T12]], [[Map/topics-index#Topic: Collusion and price wars|T13]], [[Map/topics-index#Topic: Reputation and relational contracts|T14]]
 ### §2.4 — Dynamic Games of Complete but Imperfect Information (p. 115)
 - 2.4.A Extensive-Form Representation of Games (p. 115); 2.4.B Subgame-Perfect Nash Equilibrium (p. 122).
+**Materials:** notes [[Notas/L03/L03-01-extensive-form|L03 extensive form]], [[Notas/L03/L03-05-subgame-perfection|L03 subgame perfection]] · quiz [[Simulados/quiz-lecture03-2-backward-induction-spe-2026-10-25#subg|L3-2 subg]] · [[Map/topics-index#Topic: Extensive form, strategies and information|T7]]
 ### §2.5 — Further Reading (p. 129) · §2.6 — Problems 2.1–2.23 (pp. 130–138) · §2.7 — References (p. 138)
+**Materials:** items [[Listas/pratica-lecture-03#24. Gibbons 2.1|L3 #24 (2.1)]], [[Listas/pratica-lecture-04#4. Gibbons 2.6|L4 #4 (2.6)]], [[Listas/pratica-lecture-04#20. Gibbons 2.8|L4 #20 (2.8)]], [[Listas/pratica-lecture-05#7. Gibbons 2.10|L5 #7 (2.10)]], [[Listas/pratica-lecture-05#8. Gibbons 2.11|L5 #8 (2.11)]], [[Listas/pratica-lecture-05#1. Gibbons 2.12|L5 #1 (2.12)]], [[Listas/pratica-lecture-06#4. Gibbons 2.13|L6 #4 (2.13)]], [[Listas/pratica-lecture-06#21. Gibbons 2.14|L6 #21 (2.14)]], [[Listas/pratica-lecture-06#13. Gibbons 2.15|L6 #13 (2.15)]], [[Listas/pratica-lecture-05#15. Gibbons 2.16|L5 #15 (2.16)]], [[Listas/pratica-lecture-06#24. Gibbons 2.17|L6 #24 (2.17)]], [[Listas/pratica-lecture-04#17. Gibbons 2.19|L4 #17 (2.19)]], [[Listas/pratica-lecture-04#21. Gibbons 2.20|L4 #21 (2.20)]], [[Listas/pratica-lecture-04#3. Gibbons 2.22|L4 #3 (2.22)]] · real #18 (2.1), #20 (2.6)
 
 ## Ch. 3 — Static Games of Incomplete Information (pp. 143–172) · Lecture 7
+**Topics:** T15 Bayesian games #topic/bayesian-games · T16 Adverse selection #topic/adverse-selection · T17 Auctions #topic/auctions
 ### §3.1 — Theory: Static Bayesian Games and Bayesian Nash Equilibrium (p. 144)
 - 3.1.A An Example: Cournot Competition under Asymmetric Information (p. 144); 3.1.B Normal-Form Representation of Static Bayesian Games (p. 146); 3.1.C Definition of Bayesian Nash Equilibrium (p. 149).
+**Materials:** notes [[Notas/L07/L07-01-bayesian-games-harsanyi|L07 Bayesian games]], [[Notas/L07/L07-03-cournot-private-costs|L07 Cournot with private costs]] · quiz [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#cournot|L7-1 cournot]] · [[Map/topics-index#Topic: Bayesian games and Bayesian Nash equilibrium|T15]]
 ### §3.2 — Applications (p. 152)
 - 3.2.A Mixed Strategies Revisited (p. 152); 3.2.B An Auction (p. 155); 3.2.C A Double Auction (p. 158).
+**Materials:** notes [[Notas/L07/L07-04-threshold-strategies-purification|L07 purification]], [[Notas/L07/L07-07-first-price-dutch|L07 first-price]], [[Notas/L07/L07-05-adverse-selection-lemons|L07 adverse selection]] · quiz [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#double|L7-2 double]] · [[Map/topics-index#Topic: Auctions|T17]], [[Map/topics-index#Topic: Adverse selection|T16]]
 ### §3.3 — The Revelation Principle (p. 164)
+- Mechanism design: out of scope unless a lecture brings it.
 ### §3.4 — Further Reading (p. 168) · §3.5 — Problems 3.1–3.8 (pp. 169–171) · §3.6 — References (p. 172)
+**Materials:** items [[Listas/pratica-lecture-07#1. Gibbons 3.1|L7 #1 (3.1)]], [[Listas/pratica-lecture-07#10. Gibbons 3.3|L7 #10 (3.3)]], [[Listas/pratica-lecture-07#3. Gibbons 3.4|L7 #3 (3.4)]], [[Listas/pratica-lecture-07#15. Gibbons 3.6|L7 #15 (3.6)]], [[Listas/pratica-lecture-07#22. Gibbons 3.8|L7 #22 (3.8)]]
 
 ## Ch. 4 — Dynamic Games of Incomplete Information (pp. 173–255) · Lecture 8
+**Topics:** T18 PBE #topic/pbe · T19 Signaling and refinements #topic/signaling · T11/T14 (§4.3.B–C) #topic/bargaining #topic/reputation
 ### §4.1 — Introduction to Perfect Bayesian Equilibrium (p. 175)
+**Materials:** notes [[Notas/L08/L08-02-beliefs-and-pbe|L08 beliefs and PBE]] · quiz [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#pbe|L8-1 pbe]] · [[Map/topics-index#Topic: Perfect Bayesian equilibrium|T18]]
 ### §4.2 — Signaling Games (p. 183)
 - 4.2.A Perfect Bayesian Equilibrium in Signaling Games (p. 183); 4.2.B Job-Market Signaling (p. 190); 4.2.C Corporate Investment and Capital Structure (p. 205); 4.2.D Monetary Policy (p. 208).
+**Materials:** notes [[Notas/L08/L08-04-signaling-games|L08 signaling games]], [[Notas/L08/L08-06-spence-job-market|L08 Spence]] · quiz [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#spence|L8-2 spence]] · audio [[NotebookLM/audio/lecture-08-audio-part2|L8 part 2]] · [[Map/topics-index#Topic: Signaling and refinements|T19]]
 ### §4.3 — Other Applications of Perfect Bayesian Equilibrium (p. 210)
 - 4.3.A Cheap-Talk Games (p. 210); 4.3.B Sequential Bargaining under Asymmetric Information (p. 218); 4.3.C Reputation in the Finitely Repeated Prisoners' Dilemma (p. 224).
+**Materials:** notes [[Notas/L04/L04-09-bargaining-private-information|L04 bargaining with private information]] (4.3.B) · quiz [[Simulados/quiz-lecture04-3-rubinstein-legislative-2026-10-25#inf|L4-3 inf]] · cheap talk (4.3.A) out of scope
 ### §4.4 — Refinements of Perfect Bayesian Equilibrium (p. 233)
+**Materials:** notes [[Notas/L08/L08-08-intuitive-criterion|L08 intuitive criterion]] · quiz [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ic|L8-3 ic]], [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ref|ref]]
 ### §4.5 — Further Reading (p. 244) · §4.6 — Problems 4.1–4.16 (pp. 245–253) · §4.7 — References (p. 253)
+**Materials:** items [[Listas/pratica-lecture-08#2. Gibbons 4.1|L8 #2 (4.1)]], [[Listas/pratica-lecture-08#9. Gibbons 4.2|L8 #9 (4.2)]], [[Listas/pratica-lecture-08#5. Gibbons 4.3|L8 #5 (4.3)]], [[Listas/pratica-lecture-08#6. Gibbons 4.4|L8 #6 (4.4)]], [[Listas/pratica-lecture-08#20. Gibbons 4.7|L8 #20 (4.7)]], [[Listas/pratica-lecture-08#17. Gibbons 4.16|L8 #17 (4.16)]]
 
 Index (p. 257).
 
@@ -797,20 +842,41 @@ difficulty (A easy, B intermediate, C hard). Chapter pages and exercise ranges f
 preface says 153). The PDF offset changes by chapter (registry entries `Munoz-Garcia Ch. …`).
 
 ## Ch. 1 — Dominance Solvable Games (pp. 1–36) · Lecture 1 · Exercises 1–17
+**Topics:** T1 Normal-form games #topic/normal-form · T2 Dominance and IESDS #topic/dominance-iesds
 - From extensive to normal form (Ex. 1–4, pp. 2–8); Prisoners' Dilemma (Ex. 5, p. 8); IDSDS (Ex. 6–13, pp. 11–26); applications and continuous strategies (Ex. 14–15, pp. 28–29); IDSDS vs. IDWDS (Ex. 16–17, pp. 31–33).
+**Materials:** items [[Listas/pratica-lecture-01#3. Muñoz-Garcia Ex. 2|L1 #3 (Ex. 2)]], [[Listas/pratica-lecture-01#4. Muñoz-Garcia Ex. 5|L1 #4 (Ex. 5)]], [[Listas/pratica-lecture-01#8. Muñoz-Garcia Ex. 9|L1 #8 (Ex. 9)]], [[Listas/pratica-lecture-01#14. Muñoz-Garcia Ex. 12|L1 #14 (Ex. 12)]], [[Listas/pratica-lecture-01#5. Muñoz-Garcia Ex. 13|L1 #5 (Ex. 13)]], [[Listas/pratica-lecture-01#19. Muñoz-Garcia Ex. 16|L1 #19 (Ex. 16)]] · real #5 (Ex. 12) · [[Map/topics-index#Topic: Dominance and IESDS|T2]]
 ## Ch. 2 — Pure Strategy Nash Equilibrium and Simultaneous-Move Games with Complete Information (pp. 37–84) · Lecture 2 · Exercises 1–17
+**Topics:** T4 Nash equilibrium #topic/nash-equilibrium · T5 Oligopoly #topic/oligopoly
 - Includes Ex. 12 Political Competition (Hotelling model) (p. 64).
+**Materials:** items [[Listas/pratica-lecture-02#1. Muñoz-Garcia Ex. 2 (Ch. 2)|L2 #1 (Ex. 2)]], [[Listas/pratica-lecture-02#5. Muñoz-Garcia Ex. 7 (Ch. 2)|L2 #5 (Ex. 7)]] · [[Map/topics-index#Topic: Nash equilibrium|T4]]
 ## Ch. 3 — Mixed Strategies, Strictly Competitive Games, and Correlated Equilibria (pp. 85–151) · Lecture 2 · Exercises 1–18
+**Topics:** T6 Mixed strategies #topic/mixed-strategies
+**Materials:** item [[Listas/pratica-lecture-02#6. Muñoz-Garcia Ex. 1 (Ch. 3)|L2 #6 (Ex. 1)]] · real #8 (Ex. 1) · [[Map/topics-index#Topic: Mixed strategies and existence|T6]]
 ## Ch. 4 — Sequential-Move Games with Complete Information (pp. 153–214) · Lectures 3–4 · Exercises 1–21
+**Topics:** T8 Subgame perfection #topic/spe · T9 Commitment #topic/commitment · T10 Multistage games #topic/multistage · T11 Bargaining #topic/bargaining
 - Bargaining: Ex. 1 ultimatum (p. 154), Ex. 16–17 alternating offers (pp. 198–199).
+**Materials:** items [[Listas/pratica-lecture-03#3. Muñoz-Garcia Ex. 3|L3 #3 (Ex. 3)]], [[Listas/pratica-lecture-03#4. Muñoz-Garcia Ex. 4|L3 #4 (Ex. 4)]], [[Listas/pratica-lecture-03#7. Muñoz-Garcia Ex. 9|L3 #7 (Ex. 9)]], [[Listas/pratica-lecture-03#8. Muñoz-Garcia Ex. 11|L3 #8 (Ex. 11)]], [[Listas/pratica-lecture-03#17. Muñoz-Garcia Ex. 12|L3 #17 (Ex. 12)]], [[Listas/pratica-lecture-04#7. Muñoz-Garcia Ex. 1|L4 #7 (Ex. 1)]], [[Listas/pratica-lecture-04#8. Muñoz-Garcia Ex. 16|L4 #8 (Ex. 16)]], [[Listas/pratica-lecture-04#9. Muñoz-Garcia Ex. 17|L4 #9 (Ex. 17)]], [[Listas/pratica-lecture-04#5. Muñoz-Garcia Ex. 18|L4 #5 (Ex. 18)]] · real #14 (Ex. 3), #17 (Ex. 12) · [[Map/topics-index#Topic: Backward induction and subgame perfection|T8]], [[Map/topics-index#Topic: Strategic bargaining|T11]]
 ## Ch. 5 — Applications to Industrial Organization (pp. 215–271) · Lectures 2–3, 6 · Exercises 1–16
+**Topics:** T5 Oligopoly #topic/oligopoly · T13 Collusion #topic/collusion
 - One-shot cartels: Ex. 4–5 (pp. 228–231), Ex. 8 (p. 239).
+**Materials:** items [[Listas/pratica-lecture-06#1. Muñoz-Garcia Ch. 5 Ex. 4|L6 #1 (Ex. 4)]], [[Listas/pratica-lecture-06#2. Muñoz-Garcia Ch. 5 Ex. 5|L6 #2 (Ex. 5)]], [[Listas/pratica-lecture-06#9. Muñoz-Garcia Ch. 5 Ex. 8|L6 #9 (Ex. 8)]] · [[Map/topics-index#Topic: Collusion and price wars|T13]]
 ## Ch. 6 — Repeated Games and Correlated Equilibria (pp. 273–316) · Lectures 5–6 · Exercises 1–10
+**Topics:** T12 Repeated games #topic/repeated-games · T13 Collusion #topic/collusion · T11 (Ex. 8, three-player bargaining; Lecture 4) #topic/bargaining
 - Infinitely repeated PD (Ex. 1, p. 274); collusion (Ex. 2–5, pp. 278–290); imperfect monitoring (Ex. 10, p. 310).
+**Materials:** items [[Listas/pratica-lecture-05#6. Muñoz-Garcia Ex. 1|L5 #6 (Ex. 1)]], [[Listas/pratica-lecture-05#11. Muñoz-Garcia Ex. 6|L5 #11 (Ex. 6)]], [[Listas/pratica-lecture-05#13. Muñoz-Garcia Ex. 9|L5 #13 (Ex. 9)]], [[Listas/pratica-lecture-06#3. Muñoz-Garcia Ch. 6 Ex. 2|L6 #3 (Ex. 2)]], [[Listas/pratica-lecture-06#11. Muñoz-Garcia Ch. 6 Ex. 3|L6 #11 (Ex. 3)]], [[Listas/pratica-lecture-06#12. Muñoz-Garcia Ch. 6 Ex. 4|L6 #12 (Ex. 4)]], [[Listas/pratica-lecture-06#18. Muñoz-Garcia Ch. 6 Ex. 5|L6 #18 (Ex. 5)]], [[Listas/pratica-lecture-06#20. Muñoz-Garcia Ch. 6 Ex. 10|L6 #20 (Ex. 10)]], [[Listas/pratica-lecture-04#24. Muñoz-Garcia Ch. 6 Ex. 8|L4 #24 (Ex. 8)]] · real #24 (Ex. 8) · [[Map/topics-index#Topic: Repeated games and the folk theorem|T12]]
 ## Ch. 7 — Simultaneous-Move Games with Incomplete Information (pp. 317–347) · Lecture 7 · Exercises 1–7
+**Topics:** T15 Bayesian games #topic/bayesian-games
+**Materials:** item [[Listas/pratica-lecture-07#2. Muñoz-Garcia Ch. 7 Ex. 1|L7 #2 (Ex. 1)]] · [[Map/topics-index#Topic: Bayesian games and Bayesian Nash equilibrium|T15]]
 ## Ch. 8 — Auctions (pp. 349–373) · Lecture 7 · Exercises 1–8
+**Topics:** T17 Auctions #topic/auctions
+**Materials:** items [[Listas/pratica-lecture-07#7. Muñoz-Garcia Ch. 8 Ex. 1|L7 #7 (Ex. 1)]], [[Listas/pratica-lecture-07#6. Muñoz-Garcia Ch. 8 Ex. 4|L7 #6 (Ex. 4)]] · [[Map/topics-index#Topic: Auctions|T17]]
 ## Ch. 9 — Perfect Bayesian Equilibrium and Signaling Games (pp. 375–451) · Lecture 8 · Exercises 1–9
+**Topics:** T18 PBE #topic/pbe · T19 Signaling #topic/signaling
+**Materials:** items [[Listas/pratica-lecture-08#4. Muñoz-Garcia Ch. 9 Ex. 1|L8 #4 (Ex. 1)]], [[Listas/pratica-lecture-08#8. Muñoz-Garcia Ch. 9 Ex. 2|L8 #8 (Ex. 2)]], [[Listas/pratica-lecture-08#11. Muñoz-Garcia Ch. 9 Ex. 5|L8 #11 (Ex. 5)]] · [[Map/topics-index#Topic: Signaling and refinements|T19]]
 ## Ch. 10 — Cheap Talk Games (pp. 453–479) · Exercises 1–5
+- Cheap talk: out of scope (no topic tag).
 ## Ch. 11 — More Advanced Signaling Games (pp. 481–520) · Lecture 8 · Exercises 1–6
+**Topics:** T19 Signaling and refinements #topic/signaling · T9 (entry deterrence) #topic/commitment
+**Materials:** items [[Listas/pratica-lecture-08#21. Muñoz-Garcia Ch. 11 Ex. 4|L8 #21 (Ex. 4)]], [[Listas/pratica-lecture-08#14. Muñoz-Garcia Ch. 11 Ex. 5|L8 #14 (Ex. 5)]] · [[Map/topics-index#Topic: Signaling and refinements|T19]]
 
 Index (p. 521).
