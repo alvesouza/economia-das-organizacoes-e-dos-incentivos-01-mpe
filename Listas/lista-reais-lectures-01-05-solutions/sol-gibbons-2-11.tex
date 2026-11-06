@@ -1,0 +1,108 @@
+% Solution: Gibbons (1992) Problem 2.11. Input by \solitem.
+% New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Gibbons Problem 2.11}{135}{Exam level}{4}
+\asked For the $3\times3$ game played twice without discounting, decide whether $(4,4)$ can be
+obtained in the first stage of a pure-strategy SPE, and give the strategies or a proof.
+
+\method Two-stage repeated game with several stage equilibria (Gibbons \S2.3.A, pp.~82--88,
+especially the three-strategy example of pp.~84--87; Tadelis \S9.4, pp.~180--184, and \S10.1,
+p.~191). In the second stage a stage Nash equilibrium must be played after every history (Tadelis
+Prop.~9.2, p.~181). A first-stage profile that is not a stage equilibrium is supported by a
+\emph{reward} equilibrium after it and a \emph{punishment} equilibrium after deviations. Deviations
+are checked one stage at a time (Tadelis Thm.~9.1, p.~185). Slides: Lecture~4, slide~22
+($G(T,\delta)$, each period starts a subgame) and slide~17 (SPE). Notation as in
+\texttt{Notas/L05/L05-02-two-stage-carrot-stick.md}.
+
+\solution
+\textbf{Notation.} $v_i = u_i(a^1) + u_i(a^2)$ (no discounting). Best replies are underlined:
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $\br{3},\ \br{1}$ & $0,\ 0$ & $\br{5},\ 0$ \\ \cline{2-4}
+$M$ & $2,\ 1$ & $\br{1},\ \br{2}$ & $3,\ 1$ \\ \cline{2-4}
+$B$ & $1,\ 2$ & $0,\ 1$ & $4,\ \br{4}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: stage equilibria.} Player~1's best replies: to $L$, $T$ (3); to $C$, $M$ (1); to $R$,
+$T$ (5). Player~2's: to $T$, $L$ (1); to $M$, $C$ (2); to $B$, $R$ (4). The mutual best replies are
+\[
+  (T,L)\ \text{with } (3,1), \qquad (M,C)\ \text{with } (1,2).
+\]
+$(B,R)$ is \emph{not} a stage equilibrium: against $R$, player~1 prefers $T$ ($5 > 4$). Since the
+question asks for a pure-strategy SPE, second-stage play must be one of these two pure equilibria
+after every history.
+
+\textbf{Step 2: who must be deterred.} At $(B,R)$, player~2 is already best-responding ($4$ is the
+most she can get against $B$), so only player~1 has a profitable one-stage deviation: to $T$, gaining
+$5 - 4 = 1$ (to $M$ he would get $3 < 4$). Player~1 gets $3$ in $(T,L)$ and $1$ in $(M,C)$, so the
+second stage can reward him with $3$ and punish him with $1$: a swing of $2 > 1$.
+
+\textbf{Step 3: the strategies.}
+\begin{itemize}
+  \item Player~1: play $B$ in stage~1; in stage~2 play $T$ if the stage-1 outcome was $(B,R)$, and
+  $M$ otherwise.
+  \item Player~2: play $R$ in stage~1; in stage~2 play $L$ if the stage-1 outcome was $(B,R)$, and
+  $C$ otherwise.
+\end{itemize}
+
+\textbf{Step 4: one-stage deviation checks.}
+\emph{Stage 2 (every history).} The prescribed profile is $(T,L)$ or $(M,C)$, a stage equilibrium,
+and nothing follows, so no deviation pays.
+
+\emph{Stage 1, player~1.} On the path he gets $4 + 3 = 7$. Deviating to $T$ gives $5$ now and
+then $(M,C)$, so $5 + 1 = 6 < 7$; deviating to $M$ gives $3 + 1 = 4 < 7$.
+
+\emph{Stage 1, player~2.} On the path she gets $4 + 1 = 5$. Deviating to $L$ gives $2$ now and then
+$(M,C)$, so $2 + 2 = 4 < 5$; deviating to $C$ gives $1 + 2 = 3 < 5$. (The ``punishment'' $(M,C)$ is
+actually better for player~2 than $(T,L)$, but she has nothing to gain in stage~1, so it does not
+matter.)
+
+All one-stage deviations lose, so the profile is a pure-strategy SPE and the answer is \textbf{yes}:
+$(4,4)$ is reached in the first stage, with total payoffs $(7, 5)$.
+
+\textbf{How much room there is.} With a discount factor $\delta$, player~1's constraint is
+$4 + 3\delta \ge 5 + \delta \iff \delta \ge \frac12$, so the construction survives some impatience;
+player~2's constraint, $4 + \delta \ge 2 + 2\delta \iff \delta \le 2$, holds for every
+$\delta \in [0,1]$. Among all $2^9 = 512$
+assignments of $(T,L)$ or $(M,C)$ to the nine stage-1 outcomes, exactly $128 = 2^7$ support $(B,R)$
+first: those with $(T,L)$ after $(B,R)$ and $(M,C)$ after player~1's deviation to $T$. The other
+seven outcomes can be assigned either way.
+
+\interp The second stage offers two equilibria that player~1 ranks differently, and that difference
+is a credible incentive. The players can coordinate on the efficient $(B,R)$ today because both
+expect player~1 to be ``paid'' with his preferred equilibrium $(T,L)$ tomorrow if he behaves, and
+pushed to $(M,C)$ if he grabs the extra $1$. Gibbons (pp.~87--88) warns that such
+threats may be renegotiated when the punishment equilibrium is Pareto-dominated by the reward
+equilibrium. That is not the case here: player~2 prefers $(M,C)$ to $(T,L)$, so after player~1's
+deviation she would not agree to forgive him, and the threat survives that critique.
+
+\verify \texttt{check\_C\_L05.py} finds the two pure stage equilibria, confirms that player~1's best
+reply to $R$ is $T$, and enumerates all 512 continuation maps with $(B,R)$ first at $\delta = 1$. It
+finds 128 SPE, all with $(T,L)$ after $(B,R)$ and $(M,C)$ after $(T,R)$. It checks the payoffs
+$7$ against $6$, and on the grid $\delta = k/1000$ that the constructed profile works exactly for
+$\delta \ge \frac12$. Output: ``Gibbons 2.11: stage NE (T,L),(M,C); (B,R) first is a pure SPE: 128 of
+512 maps work, all with (T,L) after (B,R) and (M,C) after (T,R)''. Gibbons prints no answer.
+\emph{Comparison with \MG{} Ch.~6 Ex.~7} (pp.~299--303, the same game): the same answer (yes, $(B,R)$
+then $(T,L)$, with $7 > 6$ for player~1). Two differences. (i) The book punishes with the stage game's
+mixed equilibrium (each player mixes $\frac12$--$\frac12$ over $\{T,M\}$ and $\{L,C\}$, payoffs
+$(\frac32, 1)$), giving $5 + \frac32 = 6.5 < 7$. That works as an SPE, but it is not a
+\emph{pure-strategy} SPE as the question asks; the pure equilibrium $(M,C)$ is both admissible and a
+harsher punishment. (ii) The book lists $BR_1(R) = B$; in fact $BR_1(R) = T$ ($5 > 4$), which is
+exactly why $(B,R)$ needs support. Its list of pure equilibria, $(T,L)$ and $(M,C)$, is right.
+
+\mistakes
+\begin{itemize}
+  \item Answering ``no, because $(B,R)$ is not a Nash equilibrium of the stage game''. In a repeated
+  game with several stage equilibria, non-equilibrium play \emph{can} be supported in early stages.
+  \item Using a mixed equilibrium as the punishment when the question restricts to pure strategies,
+  or a non-equilibrium profile (e.g.\ $(B,C)$) in the last stage.
+  \item Checking only player~2 (whose payoff 4 is high) and missing that player~1 is the one tempted.
+\end{itemize}
+
+\answer{Yes. Stage equilibria: $(T,L)$ $(3,1)$ and $(M,C)$ $(1,2)$. Strategies: play $(B,R)$ in stage~1;
+in stage~2 play $(T,L)$ if stage~1 was $(B,R)$ and $(M,C)$ otherwise. Player~1: $4+3=7>5+1=6$
+(deviation to $T$) and $>3+1$ (to $M$); player~2: $4+1=5>2+2$ (to $L$) and $>1+2$ (to $C$); stage~2 is
+always a stage equilibrium. This is a pure-strategy SPE with $(4,4)$ in the first stage (it would
+survive discounting down to $\delta=\frac12$).}
+\end{exsol}

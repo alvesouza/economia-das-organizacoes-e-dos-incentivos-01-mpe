@@ -1,0 +1,83 @@
+% Solution: Tadelis (2013) Exercise 4.1 "Prove Proposition 4.1". Input by \solitem.
+% New in the 50-item list. Check: check_A1.py.
+\begin{exsol}{Tadelis Exercise 4.1}{76}{Exam}{2}
+\asked Prove that a strictly dominant strategy equilibrium, when it exists, is the only dominant
+strategy equilibrium.
+
+\method Definitions only: strict dominance (Tadelis Def.~4.1, p.~60), strictly dominant strategy
+(Def.~4.2, p.~61), strict dominant strategy equilibrium (Def.~4.3, p.~61) and Proposition~4.1
+itself (p.~61); in the slides, Lecture~1, slides~23 and~25. The proof is by contradiction, one
+player at a time. The statement says ``the unique dominant strategy equilibrium'' without the word
+``strict'', so the proof also rules out a second profile of \emph{weakly} dominant strategies
+(Lecture~1, slide~23), which is the stronger reading.
+
+\solution
+\textbf{Notation.} $\Gamma = \langle N, \{S_i\}_{i=1}^n, \{v_i\}_{i=1}^n\rangle$; for a profile
+$s$, $s_{-i}$ is the profile of the others. Every $S_j$ is non-empty, so $S_{-i}$ is non-empty.
+$s_i$ is \emph{strictly dominant} if $v_i(s_i, s_{-i}) > v_i(s'_i, s_{-i})$ for all
+$s'_i \ne s_i$ and all $s_{-i}$; it is \emph{weakly dominant} if $v_i(s_i, s_{-i}) \ge
+v_i(s'_i, s_{-i})$ for all $s'_i$ and all $s_{-i}$, with strict inequality somewhere for each
+$s'_i \ne s_i$. A (strict, weak) dominant strategy equilibrium is a profile in which every player
+uses a (strictly, weakly) dominant strategy.
+
+\textbf{Step 1: a player has at most one dominant strategy when one of them is strictly
+dominant.} Let $s_i^D$ be strictly dominant for player~$i$ and let $t_i \ne s_i^D$. By
+Def.~4.2, for every $s_{-i} \in S_{-i}$,
+\[
+  v_i(s_i^D, s_{-i}) > v_i(t_i, s_{-i}). \tag{1}
+\]
+Suppose $t_i$ were also dominant, strictly or weakly. Then, in particular,
+\[
+  v_i(t_i, s_{-i}) \ge v_i(s_i^D, s_{-i}) \quad \text{for every } s_{-i} \in S_{-i}. \tag{2}
+\]
+Pick any $\hat s_{-i} \in S_{-i}$ (possible because $S_{-i} \ne \emptyset$). Then (1) and (2) give
+$v_i(s_i^D, \hat s_{-i}) > v_i(t_i, \hat s_{-i}) \ge v_i(s_i^D, \hat s_{-i})$, a contradiction.
+So no $t_i \ne s_i^D$ is dominant in either sense.
+
+\textbf{Step 2: the proposition.} Let $s^D$ be a strict dominant strategy equilibrium, and suppose
+some profile $s' \ne s^D$ is also a dominant strategy equilibrium. Since $s' \ne s^D$, there is a
+player $i$ with $s'_i \ne s_i^D$. In $s'$, player~$i$'s strategy $s'_i$ is dominant; but $s_i^D$ is
+strictly dominant for $i$ (because $s^D$ is a strict dominant strategy equilibrium), so by Step~1
+no strategy other than $s_i^D$ can be dominant for $i$. This contradicts $s'_i \ne s_i^D$. Hence
+$s^D$ is the unique dominant strategy equilibrium. $\blacksquare$
+
+\textbf{Two remarks that complete the picture.}
+\begin{itemize}
+  \item The proposition does not claim existence: Battle of the Sexes has no dominant strategy
+  equilibrium (Tadelis p.~62).
+  \item Uniqueness extends to the other solution concepts of the course: $s^D$ is the unique
+  profile that survives IESDS (Lecture~1, slide~29: in round~1 every $s'_i \ne s_i^D$ is strictly
+  dominated by $s_i^D$) and hence the unique Nash equilibrium (Lecture~2, slide~17). Without
+  strictness uniqueness can fail: if dominance only required ``$\ge$ against every $s_{-i}$'', a
+  player whose payoffs are all equal would have every strategy dominant, and every profile of such
+  players would be a dominant strategy equilibrium.
+\end{itemize}
+
+\interp A strictly dominant strategy is a best reply that does not depend on beliefs. Two such
+strategies for the same player would each have to do strictly better than the other against the
+same opponents, which is impossible. That is why the dominant-strategy prediction, when it exists,
+is a single profile, and why it needs only rationality, not common knowledge of it.
+
+\verify \texttt{check\_A1.py} draws 3{,}000 random finite games (two or three players, two to four
+strategies each, integer payoffs), plants a strictly dominant strategy for every player in half of
+them, and checks in each game that, whenever a strict dominant strategy equilibrium exists, no
+other profile consists of weakly or strictly dominant strategies, and that it is the only IESDS
+survivor. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Proving only that there is no second \emph{strict} dominant strategy equilibrium. The
+  proposition says ``dominant'', and the same two-line argument rules out weakly dominant ones.
+  \item Comparing the two profiles $s^D$ and $s'$ as a whole. Dominance is a property of one
+  player's strategy against all of the others' profiles; the contradiction comes from a single
+  player whose strategies differ.
+  \item Forgetting that $S_{-i}$ must be non-empty for the contradiction (one $\hat s_{-i}$ is
+  needed). It always is in a game, but the step should be stated.
+\end{itemize}
+
+\answer{If $s^D$ is a strict dominant strategy equilibrium and $s' \ne s^D$, some player has
+$s'_i \ne s_i^D$. Strict dominance of $s_i^D$ gives $v_i(s_i^D, s_{-i}) > v_i(s'_i, s_{-i})$ for
+every $s_{-i}$, so $s'_i$ cannot be dominant, strictly or weakly (that would need
+$v_i(s'_i, s_{-i}) \ge v_i(s_i^D, s_{-i})$ for every $s_{-i}$). Hence $s'$ is not a dominant
+strategy equilibrium, and $s^D$ is the unique one.}
+\end{exsol}

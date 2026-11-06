@@ -1,0 +1,131 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 8.B.4. Input by \solitem.
+% New in the 50-item list. Check: check_A1.py.
+\begin{exsol}{MWG Exercise 8.B.4}{262}{Advanced}{4}
+\asked Prove that, in iterated deletion of strictly dominated strategies, the set of surviving
+strategies does not depend on the order in which dominated strategies are deleted.
+
+\method Strict dominance and its iterated deletion (MWG \S8.B, Defs.~8.B.2--8.B.4 and the
+iterated procedure, pp.~236--241; Lecture~1, slides~23 and~29; Tadelis \S4.2, pp.~63--65). Two
+facts carry the proof: (i) dominance is \emph{inherited} when the opponents' strategy sets shrink;
+(ii) in a finite game, a dominated strategy has a dominator that is itself undominated, and such a
+dominator is never deleted. The game is finite, as in MWG \S8.B (finite $S_i$); a final remark
+shows why finiteness is needed.
+
+\solution
+\textbf{Setting.} $\Gamma = [I, \{S_i\}, \{u_i\}]$ with every $S_i$ finite. For a product set
+$T = \prod_i T_i \subseteq S$, say that $s_i \in T_i$ is \emph{strictly dominated in $T$ by}
+$t_i \in S_i$ if $u_i(t_i, s_{-i}) > u_i(s_i, s_{-i})$ for every $s_{-i} \in T_{-i}$; it is
+\emph{dominated in $T$} if this holds for some $t_i \in T_i$.
+
+A \emph{deletion sequence} is a chain $S = T^0 \supseteq T^1 \supseteq \dots \supseteq T^K$ of
+product sets in which each $T^{k+1}$ is obtained from $T^k$ by deleting a non-empty set of
+strategies (of one or several players) each of which is dominated in $T^k$, and which stops only
+when $T^K$ contains no dominated strategy. ``Order of deletion'' means the choice of which
+dominated strategies to delete at each step; the lecture's procedure (Lecture~1, slide~29) is the
+sequence that deletes all of them at once. Since $S$ is finite and each step deletes something,
+every deletion sequence ends after finitely many steps. Claim: all deletion sequences end at the
+same $T^K$.
+
+\textbf{Lemma 1 (inheritance).} If $X \subseteq Y$ (that is, $X_j \subseteq Y_j$ for all $j$),
+$s_i \in X_i$, and $s_i$ is strictly dominated by $t_i$ in $Y$, then $s_i$ is strictly dominated
+by $t_i$ in $X$.
+
+\emph{Proof.} The inequality $u_i(t_i, s_{-i}) > u_i(s_i, s_{-i})$ holds for every
+$s_{-i} \in Y_{-i}$, hence for every $s_{-i} \in X_{-i} \subseteq Y_{-i}$. $\square$
+
+\textbf{Lemma 2 (an undominated dominator).} Fix a product set $X$ and a player~$i$. If
+$s_i \in X_i$ is strictly dominated in $X$ by some strategy in $S_i$, then there is a $t_i^* \in
+S_i$ that strictly dominates $s_i$ in $X$ and is itself not strictly dominated in $X$ by any
+strategy in $S_i$.
+
+\emph{Proof.} Let $D = \{t \in S_i : t$ strictly dominates $s_i$ in $X\}$, non-empty and finite.
+``$r$ strictly dominates $t$ in $X$'' is irreflexive and transitive (if
+$u_i(r,\cdot) > u_i(t,\cdot)$ and $u_i(t,\cdot) > u_i(s_i,\cdot)$ on $X_{-i}$, then
+$u_i(r,\cdot) > u_i(s_i,\cdot)$ there), so it is a strict partial order, and the finite set $D$ has
+an element $t_i^*$ not dominated by any other element of $D$. If some $r \in S_i$ strictly
+dominated $t_i^*$ in $X$, then by transitivity $r$ would dominate $s_i$, so $r \in D$, a
+contradiction. $\square$
+
+\textbf{Lemma 3 (the end point of any sequence is contained in every set of any other
+sequence).} Let $(T^k)_{k=0}^K$ and $(R^l)_{l=0}^L$ be two deletion sequences, with end points
+$T = T^K$ and $R = R^L$. Then $T \subseteq R^l$ for every $l$; in particular $T \subseteq R$.
+
+\emph{Proof}, by induction on $l$. For $l = 0$, $T \subseteq S = R^0$. Suppose $T \subseteq R^l$,
+and suppose, for a contradiction, that some $s_i \in T_i$ is deleted at step $l+1$ of the second
+sequence. Then $s_i$ is strictly dominated in $R^l$ by some $t_i \in R^l_i$. Since
+$T \subseteq R^l$, Lemma~1 shows that $s_i$ is strictly dominated in $T$ by $t_i$. By Lemma~2
+(with $X = T$) there is a $t_i^* \in S_i$ that strictly dominates $s_i$ in $T$ and is not strictly
+dominated in $T$ by any strategy in $S_i$.
+
+Now $t_i^* \in T_i$. Indeed, if $t_i^*$ had been deleted at some step $k+1$ of the first
+sequence, it would be strictly dominated in $T^k$ by some $r \in T^k_i$; since $T \subseteq T^k$,
+Lemma~1 makes $r$ strictly dominate $t_i^*$ in $T$, contradicting the choice of $t_i^*$.
+
+So $s_i \in T_i$ is strictly dominated in $T$ by $t_i^* \in T_i$: $s_i$ is dominated in $T$. But
+$T$ is the end point of a deletion sequence and contains no dominated strategy. This contradiction
+shows that no strategy of $T$ is deleted at step $l+1$, so $T \subseteq R^{l+1}$. $\square$
+
+\textbf{The theorem.} Apply Lemma~3 twice: $T \subseteq R$, and, exchanging the roles of the two
+sequences, $R \subseteq T$. Hence $T = R$: every order of deletion ends at the same set, which is
+the set $S^\infty$ produced by deleting everything dominated in each round. $\blacksquare$
+
+(No $T^k_i$ ever becomes empty: dominance in $T^k$ is a strict partial order on the finite set
+$T^k_i$, so $T^k_i$ has an element that no other element of $T^k_i$ dominates, and that element is
+not deleted at step $k+1$.)
+
+\textbf{Why finiteness matters.} Take one player with $S = [0,1]$ and $u(s) = s$ for $s < 1$,
+$u(1) = 0$. Every $s < 1$ is strictly dominated by $(1+s)/2$, and $s = 1$ by $s = \tfrac12$.
+Deleting everything dominated at once leaves the empty set. Deleting only the interval $(0,1)$
+first leaves $\{0, 1\}$, where $u(0) = u(1) = 0$ and nothing is dominated, so the process stops at
+$\{0,1\}$. Lemma~2 is what fails: the set of dominators of a strategy has no undominated element.
+
+\textbf{Why ``strictly'' matters} (the manual's note, made concrete).
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$T$ & $1,\ 1$ & $0,\ 0$ \\ \cline{2-3}
+$M$ & $1,\ 1$ & $2,\ 1$ \\ \cline{2-3}
+$B$ & $0,\ 0$ & $2,\ 1$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+With weak dominance: deleting $T$ (weakly dominated by $M$) first makes $L$ weakly dominated by $R$
+on rows $\{M,B\}$, and the process ends at $\{M,B\}\times\{R\}$ with payoffs $(2,1)$. Deleting $B$
+(weakly dominated by $M$) first makes $R$ weakly dominated by $L$ on rows $\{T,M\}$, and it ends at
+$\{T,M\}\times\{L\}$ with payoffs $(1,1)$. Lemma~1 fails for weak dominance: removing opponent
+strategies can remove the only profile where the inequality was strict.
+
+\interp IESDS is a well-defined solution concept: what common knowledge of rationality rules out
+does not depend on the order in which an analyst (or the players) notices dominated strategies.
+That is why the slides can delete everything at once and why textbook solutions that delete one
+strategy at a time reach the same answer. Weak dominance does not have this property, which is one
+reason the course does not iterate it.
+
+\verify \texttt{check\_A1.py} draws 2{,}000 random finite games (two or three players, up to four
+strategies each, small integer payoffs so that ties are common), runs 20 random deletion orders in
+each (at each step a random non-empty subset of the currently dominated strategies is deleted) and
+checks that all of them end at the maximal-deletion set; it also checks the weak-dominance example
+(two orders, two different end points) and the one-player continuum example on a grid of exact
+rationals. \emph{Comparison with the MWG solutions manual} (pp.~8-2--8-3): it gives the same key idea in
+two lines (a dominated $s_i$ has a dominator that is not itself dominated; if $s_i$ is not deleted
+now it is still dominated, and deleted, later) and the same remark that order matters for weak
+dominance. It does not show that the undominated dominator survives every later round, nor where
+finiteness enters; Lemmas~2--3 supply both. The conclusion agrees.
+
+\mistakes
+\begin{itemize}
+  \item Arguing ``a dominated strategy stays dominated, so it is deleted eventually'' without
+  checking that its dominator is still there. The dominator may be deleted; Lemma~2 picks one that
+  cannot be.
+  \item Proving only that the maximal procedure deletes more at each round. The claim is about
+  the end points of \emph{every} order, including orders that delete one strategy at a time.
+  \item Extending the result to weak dominance, or to infinite games without further
+  assumptions; both counterexamples above show it fails.
+\end{itemize}
+
+\answer{In a finite game, strict dominance is inherited by smaller games (Lemma~1), and every
+dominated strategy has a dominator that is itself undominated (Lemma~2), which no deletion
+sequence ever removes. So the end point $T$ of any deletion sequence is contained in every stage
+of any other sequence (Lemma~3), hence in its end point $R$; by symmetry $R \subseteq T$. All
+orders give the same surviving set $S^\infty$. (False for weak dominance and, in general, for
+infinite games: examples above.)}
+\end{exsol}

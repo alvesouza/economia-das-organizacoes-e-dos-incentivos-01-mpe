@@ -1,0 +1,82 @@
+% Item order of the solutions, one macro per lecture; order and combined numbers from
+% Listas/lista-reais-lectures-01-05/order.md. Input by main.tex and lecture-0N.tex.
+\newcommand{\lectureititle}{Lecture 1 --- Static games I: dominance and iterated elimination}
+\newcommand{\lectureiititle}{Lecture 2 --- Static games II: Nash equilibrium and mixed strategies}
+\newcommand{\lectureiiititle}{Lecture 3 --- Dynamic games: extensive form, backward induction, SPE}
+\newcommand{\lectureivtitle}{Lecture 4 --- Credible threats and subgame perfection}
+\newcommand{\lecturevtitle}{Lecture 5 --- Repeated games and bargaining}
+
+\newcommand{\itemsi}{%
+\solitem{1}{tadelis-4-5}
+\solitem{2}{munoz-garcia-1-13}
+\solitem{3}{gibbons-1-2}
+\solitem{4}{tadelis-4-1}
+\solitem{5}{munoz-garcia-1-12}
+\solitem{6}{tadelis-4-7}
+\solitem{7}{tadelis-4-3}
+\solitem{8}{tadelis-4-6}
+\solitem{9}{mwg-8-b-4}
+\solitem{10}{mwg-8-b-5}}
+\newcommand{\itemsii}{%
+\solitem{11}{tadelis-5-6}
+\solitem{12}{munoz-garcia-2-2}
+\solitem{13}{munoz-garcia-3-1}
+\solitem{14}{gibbons-1-12}
+\solitem{15}{tadelis-5-8}
+\solitem{16}{gibbons-1-6}
+\solitem{17}{gibbons-1-7}
+\solitem{18}{tadelis-6-8}
+\solitem{19}{mwg-8-d-2}
+\solitem{20}{mwg-8-d-6}}
+\newcommand{\itemsiii}{%
+\solitem{21}{tadelis-7-1}
+\solitem{22}{munoz-garcia-4-3}
+\solitem{23}{tadelis-7-2}
+\solitem{24}{tadelis-8-5}
+\solitem{25}{tadelis-8-10}
+\solitem{26}{tadelis-7-4}
+\solitem{27}{tadelis-7-9}
+\solitem{28}{tadelis-7-10}
+\solitem{29}{mwg-9-b-4}
+\solitem{30}{gibbons-2-1}}
+\newcommand{\itemsiv}{%
+\solitem{31}{gibbons-2-12}
+\solitem{32}{tadelis-7-6}
+\solitem{33}{tadelis-8-8}
+\solitem{34}{tadelis-8-6}
+\solitem{35}{munoz-garcia-4-11}
+\solitem{36}{tadelis-8-11}
+\solitem{37}{tadelis-8-4}
+\solitem{38}{tadelis-8-13}
+\solitem{39}{tadelis-8-7}
+\solitem{40}{mwg-9-b-5}}
+\newcommand{\itemsv}{%
+\solitem{41}{cabral-7-13}
+\solitem{42}{tadelis-10-2}
+\solitem{43}{munoz-garcia-6-1}
+\solitem{44}{munoz-garcia-6-9}
+\solitem{45}{tadelis-10-3}
+\solitem{46}{tadelis-9-1}
+\solitem{47}{gibbons-2-11}
+\solitem{48}{tadelis-11-5}
+\solitem{49}{tadelis-10-7}
+\solitem{50}{gibbons-2-20}}
+
+% Short intro shared by every driver.
+\newcommand{\solintro}{\sloppy These are detailed solutions to the real book exercises of
+the list \texttt{lista-reais-lectures-01-05.pdf} in \texttt{Listas/} (one block of ten per lecture). Within each lecture
+the items run from easy to hard, in the list's order, and each heading shows the item's number in
+the lecture, its number in the combined list, its level and its difficulty from 1 (apply a
+definition) to 5 (graduate level). Statements are reproduced verbatim in the list and are not
+repeated here. Every solution has the same six parts: (a) what is asked, in one line; (b) the
+method, with the book section and page and the lecture slide; (c) the solution, every step shown
+(for matrices, the full dominance comparisons or best-response marking); (d) the economic
+interpretation; (e) the verification, by the Python check scripts in this folder and against the
+book's worked answer or the MWG solutions manual where one exists; (f) common mistakes. Books:
+Tadelis (2013), \MG{} \& Toro-Gonzalez (2019, 2nd ed.), Gibbons (1992), Mas-Colell, Whinston \&
+Green (1995) (MWG) and Cabral (2017). Notation follows the slides: a game is
+$G = (I, \{S_i\}_{i\in I}, \{u_i\}_{i\in I})$, $\sm$ is a profile of the others' strategies, $S_i^k$
+is the set of player~$i$'s strategies that survive $k$ rounds of IESDS with every strictly
+dominated strategy removed in each round (Lecture~1, slide~29), and $\sigma_i \in \Delta(S_i)$ is a
+mixed strategy. In bimatrices player~1 picks rows and the first payoff is player~1's;
+\underline{underlined} payoffs are best replies.}

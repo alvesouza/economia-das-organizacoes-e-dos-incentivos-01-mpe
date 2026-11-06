@@ -26,6 +26,11 @@ item 14 of `Listas/pratica-lecture-03.md`, `lista-reais #13` is item 13 of
 `Listas/lista-reais-lectures-01-04.tex`, and `(sol.)` means a worked solution exists. "—" means no
 list uses the exercise yet.
 
+**The 50-exercise real list, Lectures 1–5 (2026-11-06)** is not repeated row by row here: its
+items (exercise ID, combined and per-lecture number, difficulty 1–5) are in
+`Listas/lista-reais-lectures-01-05/order.md`, and every one of the 50 has a detailed solution in
+`Listas/lista-reais-lectures-01-05-solutions.pdf` (per lecture: `lista-reais-lecture-0N-solutions.pdf`).
+
 ## Game-theory books (Tadelis, Gibbons, Muñoz-Garcia & Toro-Gonzalez, MWG Ch. 7–9, 12–13)
 
 Rows parsed from the tier tables and "Optional extras" paragraphs of

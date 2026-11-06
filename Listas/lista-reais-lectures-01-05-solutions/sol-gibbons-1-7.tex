@@ -1,0 +1,85 @@
+% Solution: Gibbons (1992) Problem 1.7 (homogeneous Bertrand). Input by \solitem.
+% New in the 50-item list. Check: check_A2.py.
+\begin{exsol}{Gibbons Problem 1.7}{49--50}{Exam}{3}
+\asked Show that in homogeneous-good Bertrand duopoly with unit cost $c < a$ the unique Nash
+equilibrium is $p_1 = p_2 = c$.
+
+\method Nash equilibrium (Gibbons \S1.1.C, pp.~7--12; Lecture~2, slide~14) in a game with a
+discontinuous payoff, so there is no first-order condition: existence by checking every
+deviation, uniqueness by showing that every other profile has a profitable deviation. Gibbons
+\S1.2.B (pp.~21--22) treats the differentiated case; the slides prove this exact result (Lecture~2,
+slides~29--39, ``$(c,c)$ is the unique equilibrium''), and the case split below follows them.
+
+\solution
+\textbf{The game.} Players $1, 2$; strategies $p_i \in [0, \infty)$. Demand for firm~$i$ is
+\[
+  D_i(p_i, p_j) = \begin{cases} a - p_i & p_i < p_j,\\ \tfrac12(a - p_i) & p_i = p_j,\\ 0 & p_i > p_j,\end{cases}
+\]
+read as $\max\{0, \cdot\}$ when $p_i > a$ (no negative sales), and profit is
+$\pi_i = (p_i - c)\,D_i(p_i, p_j)$, with $0 \le c < a$.
+
+\textbf{Step 1: $(c,c)$ is a Nash equilibrium.} At $(c,c)$ each firm sells $(a-c)/2$ at margin
+$0$ and earns $0$. Fix $p_j = c$ and let firm~$i$ deviate.
+\begin{itemize}
+  \item $p_i > c$: $D_i = 0$, so $\pi_i = 0$. Not better.
+  \item $p_i < c$: firm~$i$ takes the whole market, $D_i = a - p_i > 0$ (because $p_i < c < a$), at
+  a negative margin: $\pi_i = (p_i - c)(a - p_i) < 0$. Worse.
+\end{itemize}
+No deviation is profitable, so $(c,c)$ is a Nash equilibrium.
+
+\textbf{Step 2: no other profile is a Nash equilibrium.} Take $(p_1, p_2) \ne (c, c)$ and label the
+firms so that $p_1 \le p_2$ (the game is symmetric). Every such profile falls in exactly one case.
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{$p_1 < c$.} Firm~1 sells a positive amount ($a - p_1$ or $(a-p_1)/2$, both $> 0$
+  because $p_1 < c < a$) at a negative margin, so $\pi_1 < 0$. Deviating to any $p'_1 > p_2$ gives
+  $D_1 = 0$ and $\pi_1 = 0 > \pi_1$. Not NE.
+  \item \emph{$p_1 = c < p_2$.} Firm~1 earns $0$. Let $\bar p = \min\{p_2, a\} > c$ and deviate to
+  $p'_1 = (c + \bar p)/2 \in (c, \bar p)$: still below $p_2$, so firm~1 keeps the whole market,
+  $D_1 = a - p'_1 > 0$, and $\pi_1 = (p'_1 - c)(a - p'_1) > 0$. Not NE.
+  \item \emph{$c < p_1 < p_2$.} Firm~2 sells nothing and earns $0$. Let
+  $\bar p = \min\{p_1, a\} > c$ and let firm~2 deviate to $p'_2 = (c + \bar p)/2 \in (c, \bar p)$:
+  it undercuts firm~1, sells $a - p'_2 > 0$ at a positive margin, $\pi_2 > 0$. Not NE.
+  \item \emph{$c < p_1 = p_2 = p$.} If $p \ge a$, demand is $0$ and both earn $0$; firm~1 deviating
+  to $(c + a)/2$ sells $(a - c)/2 > 0$ at margin $(a-c)/2 > 0$. Not NE. If $c < p < a$, each earns
+  $\pi_1 = \tfrac12 (p - c)(a - p) > 0$. Firm~1 undercuts to the midpoint $p' = (p + c)/2$, which is
+  in $(c, p)$, takes the whole market and earns
+  \[
+    (p' - c)(a - p') = \frac{p - c}{2}\Big(a - p + \frac{p - c}{2}\Big)
+    = \frac12 (p - c)(a - p) + \frac{(p - c)^2}{4} > \frac12 (p - c)(a - p).
+  \]
+  Not NE.
+\end{enumerate}
+The cases cover every profile with $p_1 \le p_2$ other than $(c,c)$: $p_1 < c$ is~(i); $p_1 = c$
+forces $p_2 > c$, case~(ii); $p_1 > c$ is~(iii) or~(iv). With Step~1, $(c, c)$ is the unique Nash
+equilibrium. $\blacksquare$
+
+\interp With identical products and constant marginal cost, whoever is cheaper takes the whole
+market, so any price above cost invites a slight undercut that roughly doubles the undercutter's
+sales. Competition drives price to marginal cost and profits to zero with only two firms: the
+\emph{Bertrand paradox} (Lecture~2, slide~39), in sharp contrast with Cournot, where two firms keep
+a markup of $(a-c)/3$ (the $n$-firm exercise, Tadelis 5.8). The result rests on the continuous
+price grid, unlimited capacity and homogeneous goods; relaxing any of them (a smallest currency
+unit, capacity constraints, differentiation as in Gibbons \S1.2.B) restores positive margins.
+
+\verify \texttt{check\_A2.py} works in exact rational arithmetic with $a = 10$, $c = 2$: it checks
+that no deviation on a fine price grid (including prices above $a$) improves on $(c,c)$, and, for
+3{,}000 random profiles $(p_1,p_2) \ne (c,c)$, that the deviation named in the case that applies is
+strictly profitable. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Using a first-order condition. Profit jumps at $p_i = p_j$, so the best response does not
+  exist when $p_j > c$ (one always wants to be slightly below $p_j$); the argument must be by
+  deviations.
+  \item Forgetting case (ii): $p_1 = c < p_2$ looks ``competitive'', but firm~1 can raise its price
+  toward $p_2$ and earn a positive profit.
+  \item Undercutting by ``$\varepsilon$'' without checking the gain. The midpoint deviation in (iv)
+  shows explicitly that the undercutter earns more than its half of the market.
+\end{itemize}
+
+\answer{At $(c,c)$ both earn $0$; raising the price loses all sales and cutting it sells at a loss,
+so no deviation pays. Any other profile has a profitable deviation: a firm below cost raises its
+price above the rival's; a firm at cost facing a higher rival price raises its price toward the
+rival's; a firm priced out undercuts; and at a common price above cost a firm undercuts slightly
+and nearly doubles its profit. Hence $p_1 = p_2 = c$ is the unique Nash equilibrium.}
+\end{exsol}

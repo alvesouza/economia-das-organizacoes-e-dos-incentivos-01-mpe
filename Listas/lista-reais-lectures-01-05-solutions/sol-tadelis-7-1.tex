@@ -1,0 +1,58 @@
+% Solution: Tadelis (2013) Exercise 7.1 "Strategies". Input by \solitem.
+% New in the 50-item list. Check: check_B_L03.py.
+\begin{exsol}{Tadelis Exercise 7.1}{147}{Foundations}{1}
+\asked Count player~$i$'s pure strategies when he has $K$ information sets with (a) $m$ actions
+at each, (b) $m_k$ actions at information set $k$.
+
+\method A pure strategy is a complete plan: one action at \emph{every} information set,
+including those the plan itself never reaches (Lecture~3, slide~25; Tadelis \S7.2.1, Def.~7.4,
+pp.~137--138). So the set of pure strategies is the Cartesian product of the action sets,
+$S_i = \times_{h_i \in H_i} A_i(h_i)$, and its size is the product of their sizes (counting
+principle).
+
+\solution
+\textbf{(a)} Label player~$i$'s information sets $h^1, \dots, h^K$. A pure strategy is a list
+$s_i = (s_i(h^1), \dots, s_i(h^K))$ with $s_i(h^k) \in A_i(h^k)$ and $|A_i(h^k)| = m$. The choice
+at $h^1$ can be made in $m$ ways; for each of them the choice at $h^2$ in $m$ ways, and so on:
+\[
+  |S_i| = \underbrace{m \cdot m \cdots m}_{K \text{ times}} = m^K .
+\]
+\textbf{(b)} The same argument with $|A_i(h^k)| = m_k$:
+\[
+  |S_i| = m_1 \cdot m_2 \cdots m_K = \prod_{k=1}^{K} m_k .
+\]
+\textbf{Examples.} In the sequential battle of the sexes (Lecture~3, slide~26) the follower has
+$K = 2$ information sets with $m = 2$ actions, so $2^2 = 4$ strategies ($OO, OF, FO, FF$). A
+player with information sets of sizes $(2, 3, 4)$ has $2\cdot3\cdot4 = 24$ pure strategies.
+
+\textbf{Mixed versus behavioral strategies.} The count also measures how large the two kinds
+of randomization are (Lecture~3, slide~27; Tadelis \S7.2.2, Defs.~7.5--7.6, pp.~139--140). A mixed
+strategy is a point in the simplex over $\prod_k m_k$ pure strategies, which has dimension
+$\prod_k m_k - 1$; a behavioral strategy picks one distribution per information set, dimension
+$\sum_k (m_k - 1)$. With $(m_k) = (2, 3, 4)$ these are $23$ and $6$. Under perfect recall the
+smaller space already generates every distribution over outcomes (Kuhn's theorem, Lecture~3,
+slide~28; Tadelis p.~142).
+
+\interp The count grows exponentially in the number of information sets: what makes a dynamic
+game ``big'' is the number of contingencies, not the number of moves actually played. This is
+why the normal form of even a small tree (the Brexit game of Lecture~4, slides~7--8, gives the
+EU nine strategies) is cumbersome, and why backward induction, which works node by node, is
+the practical tool.
+
+\verify \texttt{check\_B\_L03.py} enumerates every plan with \texttt{itertools.product} for
+$(m_k) = (2,2), (3,2,2), (2,3,4), (5)$ and for $m=3$, $K=4$, and compares the count with the
+formulas; it also checks the two dimensions $23$ and $6$. Output line:
+\texttt{tadelis-7-1: m\^{}K and prod m\_k confirmed by enumeration}. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Adding instead of multiplying ($Km$ or $\sum_k m_k$): that counts \emph{actions}, which
+  is the dimension count of behavioral strategies plus $K$, not the number of plans.
+  \item Leaving out information sets that a plan makes unreachable. A strategy specifies an
+  action there too (the off-path parts are exactly what subgame perfection tests).
+  \item Counting decision nodes instead of information sets: nodes in the same information set
+  share one action choice.
+\end{itemize}
+
+\answer{(a) $m^K$. (b) $\prod_{k=1}^{K} m_k$.}
+\end{exsol}

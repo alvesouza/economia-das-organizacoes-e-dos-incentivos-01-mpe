@@ -1,0 +1,108 @@
+% Solution: Tadelis (2013) Exercise 4.6 "Roommates". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (Tadelis 4.6), deepened. Check: check_A1.py.
+\begin{exsol}{Tadelis Exercise 4.6}{77}{Exam}{4}
+\asked For cleaning times $t_i \ge 0$ with payoff $(10 - t_j)t_i - t_i^2$, find the best response,
+the survivors of one round of IESDS, and the survivors of IESDS.
+
+\method Best response (Lecture~2, slide~10; Tadelis \S4.3.1, p.~69) and IESDS with a continuum of
+strategies (Lecture~1, slide~29), done exactly as in Tadelis's Cournot example (\S4.2.2,
+pp.~65--67, Fig.~4.1) and in the slides' Cournot remark (Lecture~2, slide~24): bound the set of
+possible best replies and show that every action outside it is strictly dominated by the nearest
+end of the range.
+
+\solution
+\textbf{(a) Best response.} Fix $t_j \ge 0$ and maximise $u_i(t_i, t_j) = (10 - t_j)t_i - t_i^2$
+over $t_i \ge 0$.
+\begin{itemize}
+  \item $\partial u_i/\partial t_i = 10 - t_j - 2t_i$ and $\partial^2 u_i/\partial t_i^2 = -2 < 0$:
+  $u_i$ is strictly concave, so the first-order condition with the constraint $t_i \ge 0$ gives the
+  unique maximiser.
+  \item If $t_j < 10$, the FOC $10 - t_j - 2t_i = 0$ gives $t_i = (10 - t_j)/2 > 0$.
+  \item If $t_j \ge 10$, $\partial u_i/\partial t_i = 10 - t_j - 2t_i < 0$ for every $t_i > 0$, so
+  the maximum is at the corner $t_i = 0$.
+\end{itemize}
+\[
+  BR_i(t_j) = \max\Big\{0,\ 5 - \frac{t_j}{2}\Big\}.
+\]
+It is single-valued and decreasing in $t_j$: cleaning is a strategic substitute.
+
+\textbf{Dominance lemma.} Write $x = (10 - t_j)/2$ for the unconstrained peak, so
+$u_i(t, t_j) = 2xt - t^2 = t(2x - t)$. For any two times $a$ and $t$,
+\[
+  u_i(a, t_j) - u_i(t, t_j) = 2x(a - t) - (a^2 - t^2) = (a - t)(2x - a - t)
+  = (t - a)(t + a - 2x). \tag{1}
+\]
+If $t > a \ge x$, both factors on the right are positive; if $t < a \le x$, both are negative. So:
+if every peak $x$ that the opponent's surviving strategies can generate lies in
+$[\underline a, \bar a]$, then every $t > \bar a$ is strictly dominated by $\bar a$ and every
+$t < \underline a$ by $\underline a$. Conversely, a $t$ that is the unique best reply to some
+surviving $t_j$ is never strictly dominated.
+
+\textbf{(b) One round.} With $t_j \in [0, \infty)$, the best replies range over $[0, 5]$
+($BR_i(0) = 5$, $BR_i(t_j) = 0$ for $t_j \ge 10$), and the peaks $x = 5 - t_j/2$ are all
+$\le 5$.
+\begin{itemize}
+  \item Every $t_i > 5$ is strictly dominated by $5$: by (1) with $a = 5 \ge x$, for every $t_j$
+  (if $x < 0$ the inequality still holds because $t + a - 2x > 0$).
+  \item Every $t_i \in [0, 5]$ is the unique best reply to $t_j = 10 - 2t_i \in [0, 10]$, so it is
+  not dominated.
+\end{itemize}
+Hence $S_i^1 = [0, 5]$ for both roommates.
+
+\textbf{(c) Iterating.} Suppose $S_j^k = [L_k, U_k]$. Because $BR_i$ is continuous and decreasing,
+the best replies to $t_j \in [L_k, U_k]$ fill exactly $[BR_i(U_k), BR_i(L_k)]$; by (1) everything
+outside that interval is strictly dominated by its nearer endpoint, and everything inside is a best
+reply. So
+\[
+  L_{k+1} = 5 - \frac{U_k}{2}, \qquad U_{k+1} = 5 - \frac{L_k}{2}, \qquad (L_1, U_1) = (0, 5).
+\]
+(The $\max\{0,\cdot\}$ never binds from round~2 on because $U_k \le 5 < 10$.)
+\begin{center}
+\begin{tabular}{c|cccccc}
+$k$ & 1 & 2 & 3 & 4 & 5 & $\infty$ \\ \hline
+$L_k$ & $0$ & $5 - 5/2 = 2.5$ & $2.5$ & $5 - 3.75/2 = 3.125$ & $3.125$ & $10/3$ \\
+$U_k$ & $5$ & $5 - 0/2 = 5$ & $5 - 2.5/2 = 3.75$ & $3.75$ & $5 - 3.125/2 = 3.4375$ & $10/3$
+\end{tabular}
+\end{center}
+\emph{Convergence.} Subtracting the two recursions,
+$U_{k+1} - L_{k+1} = \tfrac12 (U_k - L_k)$, so $U_k - L_k = 5/2^{k-1} \to 0$. Adding them, the
+midpoint $M_k = (L_k + U_k)/2$ satisfies $M_{k+1} = 5 - M_k/2$. Its fixed point solves
+$M = 5 - M/2$, i.e.\ $M = 10/3$, and
+\[
+  M_k - \tfrac{10}{3} = \big(-\tfrac12\big)^{k-1}\big(M_1 - \tfrac{10}{3}\big)
+  = \big(-\tfrac12\big)^{k-1}\big(\tfrac52 - \tfrac{10}{3}\big)
+  = \big(-\tfrac12\big)^{k-1}\big(-\tfrac56\big) \to 0 .
+\]
+The intervals are nested, their widths go to zero and their midpoints go to $10/3$, so
+$S_i^\infty = \bigcap_k S_i^k = \{10/3\}$ for both roommates. IESDS predicts the unique profile
+$t_1 = t_2 = 10/3$. It is also the Nash equilibrium: $t = 5 - t/2$ gives $t = 10/3$.
+
+\interp Each round uses one more layer of knowledge: round~1, ``I am rational'' (never clean more
+than 5 hours); round~2, ``I know you are rational'' (you clean at most 5, so I clean at least
+2.5); and so on (Lecture~2, slide~7). Each roommate gets
+$u_i = (10 - 10/3)(10/3) - (10/3)^2 = 200/9 - 100/9 = 100/9 \approx 11.1$. Joint welfare
+$2[(10 - t)t - t^2] = 2(10t - 2t^2)$ is maximised at $10 - 4t = 0$, i.e.\ $t = 2.5$, where each
+gets $(7.5)(2.5) - 6.25 = 12.5 > 100/9$. The IESDS outcome over-cleans relative to the joint
+optimum: each roommate ignores that his cleaning lowers the value of the other's (a negative
+externality, $\partial u_j/\partial t_i = -t_j < 0$).
+
+\verify \texttt{check\_A1.py} checks the best reply and the factorization (1) with sympy, runs the
+interval recursion for 40 rounds in exact arithmetic (the table, width $5/2^{k-1}$ and the
+midpoint formula at every round), checks the payoffs $100/9$ and $12.5$ and the joint optimum
+$2.5$, and, as a second route, runs brute-force IESDS on the grid $\{0, \tfrac16, \dots, 10\}$,
+which leaves exactly $t_1 = t_2 = 10/3$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Answering (b) with $[0, \infty)$ minus nothing, or with $[0, 10]$. The bound comes from
+  the best replies, which never exceed $5$, not from where the payoff is positive.
+  \item Writing $L_{k+1} = 5 - L_k/2$: the \emph{upper} bound of the opponent gives the
+  \emph{lower} bound of the best reply, because $BR_i$ is decreasing.
+  \item Claiming that a $t$ outside the best-reply range is ``dominated'' without naming the
+  dominating strategy. Lemma (1) supplies it: the nearer endpoint.
+\end{itemize}
+
+\answer{(a) $BR_i(t_j) = \max\{0, 5 - t_j/2\}$. (b) $S_i^1 = [0, 5]$: any $t_i > 5$ is strictly
+dominated by $5$. (c) Rounds give $[2.5, 5]$, $[2.5, 3.75]$, $[3.125, 3.75]$, $[3.125, 3.4375]$,
+\dots, with widths $5/2^{k-1}$; only $t_1 = t_2 = 10/3$ survives IESDS.}
+\end{exsol}

@@ -1,0 +1,159 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Exercise 9 "Representing Feasible,
+% Individually Rational Payoffs". Input by \solitem. New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{\MG{} Ch.~6 Exercise 9}{305}{Exam level}{3}
+\asked For the infinitely repeated $2\times2$ game of Table~6.6: (a) the stage Nash equilibrium;
+(b) the feasible payoff set and the normalization used; (c) the feasible, individually rational
+set; (d) a Nash equilibrium that gives $(9,9)$ every period, and the condition it needs on $\delta$.
+
+\method Stage equilibrium by strict dominance (Tadelis \S4.1). Feasible payoffs as the convex hull
+of the stage payoffs (Tadelis Defs.~10.6--10.7, p.~209--210) with payoffs measured as average
+discounted payoffs (Def.~10.3, p.~194). Individual rationality relative to the minimax payoff, and
+the folk theorem (Theorem~10.1, p.~211; MWG Prop.~12.AA.5, p.~422, for the minimax version). Part
+(d) uses grim trigger and the threshold (10.5), p.~202, checked by the one-stage deviation principle
+(Prop.~10.3, p.~198). Lecture~5 has no slides yet; the repeated-game set-up is Lecture~4,
+slides~21--22. Notation as in \texttt{Notas/L05/L05-06-folk-theorem.md}.
+
+\solution
+\textbf{Notation.} $q = \Pr(L)$ in a mixed strategy of player~2, $p = \Pr(U)$ for player~1. The
+average payoff of a stream is $\bar v_i = (1-\delta)\sum_{t\ge1}\delta^{t-1}u_i(a^t)$. Best replies
+are underlined:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $9,\ 9$ & $1,\ \br{10}$ \\ \cline{2-3}
+$D$ & $\br{10},\ 1$ & $\br{7},\ \br{7}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(a) Stage equilibrium.} For player~1, $D$ beats $U$ against both columns ($10>9$, $7>1$),
+so $D$ is strictly dominant; by symmetry $R$ is strictly dominant for player~2. The only outcome
+consistent with Nash equilibrium play is $(D,R)$, payoffs $(7,7)$. There is no mixed equilibrium:
+for every $q$, $u_1(D,q) = 10q + 7(1-q) = 7 + 3q$ exceeds $u_1(U,q) = 9q + 1(1-q) = 1 + 8q$, because
+$(7+3q) - (1+8q) = 6 - 5q > 0$ on $[0,1]$. The game is a Prisoner's Dilemma: $(U,L)$ gives both
+$9 > 7$.
+
+\textbf{(b) Feasible payoffs.} \emph{Normalization.} Repeated-game payoffs are measured as
+average discounted payoffs, $\bar v_i = (1-\delta)v_i$. With this scaling a constant stream $x$ is
+worth $x$ (Tadelis (10.2), p.~195), so repeated-game payoffs are in the same units as stage payoffs
+and can be drawn in the same plane. \emph{Convexification.} The four pure payoff vectors are
+$(9,9)$, $(1,10)$, $(10,1)$, $(7,7)$. Every point of their convex hull is reached by playing the
+outcomes with the corresponding long-run frequencies (exactly with a public randomization device, as
+in the book, or approximately for $\delta$ near 1 with deterministic sequences). The feasible set is
+\[
+  V = \mathrm{CoHull}\{(9,9), (1,10), (10,1), (7,7)\}.
+\]
+\emph{Its shape.} $(7,7)$ lies strictly inside the triangle with vertices $(1,10)$, $(10,1)$,
+$(9,9)$, since
+\[
+  (7,7) = \tfrac37(9,9) + \tfrac27(1,10) + \tfrac27(10,1),
+\]
+with all weights positive. So $V$ is that triangle. Its edges are: $v_1 + v_2 = 11$ from $(1,10)$ to
+$(10,1)$; $v_2 = 10 - \frac{v_1 - 1}{8}$ from $(1,10)$ to $(9,9)$; and $v_1 = 10 - \frac{v_2-1}{8}$
+from $(10,1)$ to $(9,9)$.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+  \draw[->] (0,0) -- (11,0) node[right] {$\bar v_1$};
+  \draw[->] (0,0) -- (0,11) node[above] {$\bar v_2$};
+  \foreach \x in {1,7,9,10} {\draw (\x,0.12) -- (\x,-0.12) node[below] {\scriptsize \x};}
+  \foreach \y in {1,7,9,10} {\draw (0.12,\y) -- (-0.12,\y) node[left] {\scriptsize \y};}
+  \fill[blue!8] (1,10) -- (9,9) -- (10,1) -- cycle;
+  \draw[thick, blue!60!black] (1,10) -- (9,9) -- (10,1) -- cycle;
+  \fill[ans!35] (7,7) -- (9.25,7) -- (9,9) -- (7,9.25) -- cycle;
+  \draw[dashed] (7,0) -- (7,10.5); \draw[dashed] (0,7) -- (10.5,7);
+  \foreach \p/\l/\a in {(1,10)/{(1,10)}/above, (10,1)/{(10,1)}/right, (9,9)/{(9,9)}/above right,
+    (7,7)/{(7,7)}/below left} {\fill \p circle (3pt); \node[\a] at \p {\scriptsize \l};}
+\end{tikzpicture}
+\end{center}
+\vspace{-4pt}\centerline{\small Feasible set $V$ (triangle) and the FIR set (shaded, without its
+edges on $\bar v_1 = 7$ and $\bar v_2 = 7$).}
+
+\textbf{(c) Individually rational payoffs.} Player~1's minimax payoff is
+\[
+  \underline v_1 = \min_{q\in[0,1]}\ \max\{u_1(U,q),\, u_1(D,q)\}
+  = \min_{q}\ (7 + 3q) = 7 \quad (q = 0,\ \text{i.e.\ } R),
+\]
+because $D$ is the best reply for every $q$. By symmetry $\underline v_2 = 7$ (player~1 plays $D$).
+Here the minimax payoff equals the stage Nash payoff. The feasible, individually rational (FIR) set is
+\[
+  \{\bar v \in V : \bar v_1 > 7,\ \bar v_2 > 7\}.
+\]
+Cutting the triangle with $\bar v_1 = 7$ (on the edge $(1,10)$--$(9,9)$: $\bar v_2 = 10 - \frac68 =
+\frac{37}{4}$) and with $\bar v_2 = 7$ (on the edge $(10,1)$--$(9,9)$: $\bar v_1 = \frac{37}{4}$)
+gives the quadrilateral with corners
+\[
+  (7,7),\quad \bigl(\tfrac{37}{4}, 7\bigr),\quad (9,9),\quad \bigl(7, \tfrac{37}{4}\bigr),
+\]
+without its two sides on $\bar v_1 = 7$ and $\bar v_2 = 7$. Its area is $\frac92$.
+
+\textbf{(d) A Nash equilibrium with $(9,9)$ every period.} Grim trigger:
+\begin{itemize}
+  \item player~1 plays $U$ in period~1 and as long as every past outcome was $(U,L)$; after any other
+  history, $D$ forever;
+  \item player~2 plays $L$ in period~1 and as long as every past outcome was $(U,L)$; after any other
+  history, $R$ forever.
+\end{itemize}
+\emph{Cooperation phase.} Staying gives $9 + 9\delta + 9\delta^2 + \dots = \frac{9}{1-\delta}$. The best
+deviation is $D$ (10 against $L$), followed by $(D,R)$ forever:
+$10 + \frac{7\delta}{1-\delta}$. No deviation pays iff
+\[
+  \frac{9}{1-\delta} \ge 10 + \frac{7\delta}{1-\delta}
+  \iff 9 \ge 10(1-\delta) + 7\delta = 10 - 3\delta
+  \iff \delta \ge \frac13 .
+\]
+(In average payoffs: $9 \ge (1-\delta)10 + \delta\, 7$.) By (10.5), $\delta^* = \frac{10-9}{10-7} =
+\frac13$. Player~2's problem is identical by symmetry.
+\emph{Punishment phase.} $(D,R)$ is a stage equilibrium and the continuation does not depend on
+today's action, so deviating to $U$ (or $L$) loses $7 - 1 = 6$ today and changes nothing later. Both
+checks pass, so the profile is a subgame-perfect equilibrium, and therefore a Nash equilibrium,
+for $\delta \ge \frac13$.
+
+\emph{The restriction is necessary.} In any Nash equilibrium with path $(U,L)$ forever, player~1 can
+deviate to $D$ in period~1 and keep playing $D$. Since $u_1(D,\cdot)\ge 7$, this gives at least
+$10 + \frac{7\delta}{1-\delta}$ whatever player~2 does. So $\delta \ge \frac13$ is needed for every
+Nash equilibrium, not just for grim trigger: the punishment already pushes the deviator down to his
+minimax payoff of 7.
+
+\interp $(9,9)$ is feasible and gives each player more than the minimax 7, so the folk theorem says
+it can be sustained by patient enough players. The exercise puts a number on ``patient enough'':
+the one-period gain from defecting is $1$, the per-period loss from punishment is $9 - 7 = 2$, so
+$\delta^* = 1/(1+2) = \frac13$. The FIR quadrilateral also contains asymmetric outcomes, e.g.\ near
+$(\frac{37}{4}, 7)$, which favour player~1 heavily. The folk theorem says these are sustainable too,
+which is why it explains how cooperation is possible rather than predicting which outcome occurs.
+
+\verify \texttt{check\_C\_L05.py} confirms that $(D,R)$ is the unique stage equilibrium and that
+$u_1(D,q) > u_1(U,q)$ for every $q$ on a grid of step $\frac1{1000}$, with
+$\min_q\max = 7$. With sympy it computes the convex hull of the four payoff vectors (the triangle
+$(1,10)$, $(10,1)$, $(9,9)$, with $(7,7)$ strictly inside), the corners $(7,\frac{37}4)$ and
+$(\frac{37}4,7)$ and the area $\frac92$. It solves $\frac9{1-\delta} = 10 + \frac{7\delta}{1-\delta}$ to
+get $\delta = \frac13$ and tests the inequality on the grid $k/1000$ and at $\frac13 \pm
+\frac1{1000}$. Output: ``Munoz-Garcia 6.9: stage NE (D,R) (7,7) = minimax; hull = triangle
+(1,10),(10,1),(9,9); FIR corners (7,7),(37/4,7),(9,9),(7,37/4); delta* = 1/3 (book: 1/3)''.
+\emph{Comparison with \MG{}'s answer} (pp.~305--309): the same stage equilibrium, minimax $(7,7)$,
+FIR set and threshold $\delta \ge \frac13$, and the book also shows the strategies are subgame
+perfect. Three slips in the book: (i) it calls the feasible set ``not convex'' (p.~307). The convex
+hull is convex by definition; what is not convex is the set of the four pure payoff vectors, which
+is what the public randomization device fills in. (ii) It writes $u_2(L;p) = 9p + 1(1-p) = 7 + 3p$
+(p.~306); the sum is $1 + 8p$, and $7 + 3p$ is $u_2(R;p)$. (iii) It refers to ``Fig.~6.7'' for the
+figure it has just drawn (Fig.~6.11). The book takes the public randomization device as the
+normalization of part (b); the average-payoff scaling above is the normalization usually meant, and
+both are needed to draw $V$ in stage-payoff units.
+
+\mistakes
+\begin{itemize}
+  \item Drawing the four points, or the quadrilateral with $(7,7)$ as a vertex, as the feasible set.
+  $(7,7)$ is inside the triangle, so it is not a vertex of $V$; it is, however, a corner of the FIR set.
+  \item Using $\ge 7$ instead of $> 7$ for individual rationality, or using pure-strategy minimax
+  without checking mixed strategies. Here both give 7, but the definition uses mixed strategies.
+  \item Mixing present values and averages in one inequality, e.g.\ $9 \ge 10 + \frac{7\delta}{1-\delta}$.
+  Both sides must use the same scaling.
+\end{itemize}
+
+\answer{(a) $D$ and $R$ are strictly dominant: the only stage equilibrium is $(D,R)$, payoffs
+$(7,7)$. (b) With average payoffs $(1-\delta)\sum\delta^{t-1}u_i$ and public randomization, $V$ is the
+convex hull of the four payoff vectors, the triangle $(1,10)$, $(10,1)$, $(9,9)$; $(7,7)$ is inside
+it. (c) Minimax $= (7,7)$; FIR set $=\{\bar v\in V:\bar v_1>7,\bar v_2>7\}$, the quadrilateral
+$(7,7)$, $(\frac{37}4,7)$, $(9,9)$, $(7,\frac{37}4)$. (d) Grim trigger (play $(U,L)$ until any
+deviation, then $(D,R)$ forever) is an SPE, hence a Nash equilibrium, iff $\frac9{1-\delta}\ge
+10+\frac{7\delta}{1-\delta}$, i.e.\ $\delta\ge\frac13$ (book: $\frac13$). The same bound is
+necessary for any Nash equilibrium.}
+\end{exsol}

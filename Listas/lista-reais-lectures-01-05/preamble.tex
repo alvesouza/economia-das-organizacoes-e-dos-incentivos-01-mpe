@@ -1,0 +1,189 @@
+% =============================================================================
+% Shared preamble of the real-exercise list for Lectures 1--5 (real schedule).
+% Input by Listas/lista-reais-lectures-01-05.tex (all blocks) and by
+% Listas/lista-reais-lecture-0N.tex (one block). The driver defines \listatema before
+% \input-ing this file; a per-lecture driver then sets \perlecturetrue and \blockoffset
+% (number of items in the earlier blocks) so items are numbered 1--10 and also cite their
+% number in the combined list. Rules: rules/00_estilo_avaliacao.md §5.
+% =============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{needspace}
+
+\newcommand{\disciplina}{Economia das Organizações e dos Incentivos --- MPE Insper}
+\newcommand{\espacoresol}{3.5cm}   % height of the resolution space after each exercise
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize\disciplina}
+\rhead{\footnotesize \listatema}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\setlist{topsep=2pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\newcounter{questao}
+
+% Per-lecture mode: items numbered 1--10, with their number in the combined list.
+\newif\ifperlecture
+\newcommand{\blockoffset}{0}
+\newcommand{\rownum}[1]{\ifperlecture\the\numexpr#1-\blockoffset\relax\ (#1)\else#1\fi}
+
+% Block header: number, lecture title, coverage.
+\newcommand{\bloco}[3]{\bigskip\noindent
+  {\large\bfseries\color{blue!55!black}Block #1 --- #2}\hfill\textit{(#3)}\par
+  \noindent\rule{\linewidth}{0.3pt}\smallskip}
+% Exercise header: [#1] difficulty 1--5, #2 short name, #3 level, #4 source line.
+\newcommand{\exercicio}[4][]{\needspace{12\baselineskip}\refstepcounter{questao}\medskip\noindent
+  \textbf{Exercise \thequestao.}\ifperlecture~{\small(item
+  \the\numexpr\value{questao}+\blockoffset\relax\ of the combined list)}\fi~\textit{#2}%
+  % keeps the [level; difficulty] tag whole, right-aligned on the last line (TeXbook \signed)
+  {\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill\mbox{\small[#3; difficulty #1/5]}}\par
+  \noindent{\small\color{black!70}\textbf{Source.} #4}\par\smallskip}
+% Material an exercise refers to, copied in under its own source line.
+\newenvironment{referencia}[1]{\par\smallskip\noindent
+  \begin{minipage}{\linewidth}\small\leftskip=1.2em
+  \noindent\textbf{Referenced material.} {\color{black!70}\textbf{Source.} #1}\par\smallskip}%
+  {\end{minipage}\par}
+% Book's exercise label inside the statement, e.g. "4.5".
+\newcommand{\rot}[1]{\textbf{#1}\quad}
+\newcommand{\resolespaco}{\par\textit{Resolution:}\vspace{\espacoresol}\par}
+% Payoff matrix: #1 row-player label, #2 column-player label, #3 inner tabular.
+\newcommand{\jogo}[3]{\begin{center}\begin{tabular}{@{}r@{\hspace{6pt}}c@{}}
+  & #2\\[2pt] #1 & #3\end{tabular}\end{center}}
+\newcommand{\hd}[1]{\multicolumn{1}{c}{#1}}
+\newenvironment{partes}{\begin{enumerate}[label=\alph*.,leftmargin=2em]}{\end{enumerate}}
+
+% ----------------------------------------------------------------------------- front page
+\newcommand{\titulo}{\begin{center}
+  {\Large\bfseries \disciplina}\\[2pt]
+  {\large Exercise List: \listatema}
+\end{center}}
+
+\newcommand{\howtouse}{{\small\noindent\textbf{How to use this list.} Every exercise below is a
+real exercise from one of the course books, reproduced verbatim: the source line gives author,
+book, chapter, exercise, the printed page and, in brackets, the page your PDF viewer shows for the
+file in \texttt{Livros/}, and whether the source gives the answer. Muñoz-Garcia \& Toro-Gonzalez
+print a worked answer right after each exercise; MWG answers are in the MWG solutions manual in
+\texttt{Livros/}; Tadelis, Gibbons and Cabral give no answer in the book. When an exercise refers
+to a model, game or figure stated elsewhere in its book, that material is copied into the same
+block under ``Referenced material'', so every exercise can be solved where it is printed. There is
+one block per lecture of the real schedule. Each block has ten exercises in strictly rising
+difficulty, rated from 1 (apply a definition) to 5 (graduate level) next to each heading: three
+foundations, five exam level, two advanced. Try each exercise in the space provided before opening
+the book's answer.\par}}
+
+% Selection table; #1 = the rows of one block (\rowsi ... \rowsv).
+\newcommand{\selectiontable}[1]{\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{@{}c r l r l >{\raggedright\arraybackslash}p{4.0cm} c c@{}}
+\toprule
+Block & \# & Source & p. [PDF] & Level & What it trains & Diff. & Answer \\
+\midrule
+#1
+\bottomrule
+\end{tabular}
+\end{center}}
+
+\newcommand{\tablenote}{{\footnotesize \ifperlecture \#: item number in this lecture's list,
+then its number in the combined list (\texttt{lista-reais-lectures-01-05.pdf}) in brackets.
+\fi Items not in the list for Lectures 1--4 (\texttt{lista-reais-lectures-01-04.tex}) are marked:
+$^\dagger$\,added in the 30-item version, $^\ddagger$\,added in the 50-item version. Every other
+item is reused from that list with its statement unchanged, some in a different block or position.
+``Diff.'': difficulty from 1 (apply a definition) to 5 (graduate level). Pages: printed page, then
+the PDF viewer page in brackets (offsets in \texttt{Livros/book-registry.json}; MWG is a
+two-pages-per-sheet scan). ``Answer'': \emph{book} = worked answer printed after the exercise;
+\emph{manual} = MWG solutions manual in \texttt{Livros/}; \emph{none} = no answer in the book.
+Books: Tadelis (2013), \emph{Game Theory: An Introduction}; Gibbons (1992), \emph{Game Theory for
+Applied Economists}; Muñoz-Garcia \& Toro-Gonzalez (2019), \emph{Strategy and Game Theory: Practice
+Exercises with Answers}, 2nd ed.; Mas-Colell, Whinston \& Green (1995), \emph{Microeconomic Theory}
+(MWG); Cabral (2017), \emph{Introduction to Industrial Organization}, 2nd ed.\par}}
+
+\newcommand{\rowsi}{%
+L1 & \rownum{1} & Tadelis 4.5 & 77 [96] & Found. & IESDS round by round, $3\times3$ matrix & 1 & none \\
+   & \rownum{2} & Muñoz-Garcia Ch.~1 Ex.~13$^\ddagger$ & 26 [39] & Found. & Dominant and dominated strategies, then IDSDS & 1 & book \\
+   & \rownum{3} & Gibbons 1.2 & 48 [56] & Found. & IESDS, then pure Nash equilibria & 2 & none \\
+   & \rownum{4} & Tadelis 4.1$^\ddagger$ & 76 [95] & Exam & Proof: a strictly dominant-strategy equilibrium is unique & 2 & none \\
+   & \rownum{5} & Muñoz-Garcia Ch.~1 Ex.~12 & 23 [36] & Exam & Rationality vs.\ common knowledge of it & 2 & book \\
+   & \rownum{6} & Tadelis 4.7 & 77--78 [96--97] & Exam & Story to matrix, then elimination & 3 & none \\
+   & \rownum{7} & Tadelis 4.3$^\ddagger$ & 76 [95] & Exam & Discrete first-price auction: matrix, IESDS & 3 & none \\
+   & \rownum{8} & Tadelis 4.6 & 77 [96] & Exam & IESDS with continuous strategies & 4 & none \\
+   & \rownum{9} & MWG 8.B.4$^\ddagger$ & 262 [142] & Adv. & Proof: the order of strict deletion does not matter & 4 & manual \\
+   & \rownum{10} & MWG 8.B.5 & 262 [142] & Adv. & Cournot by IESDS: two firms vs.\ three & 5 & manual \\}
+\newcommand{\rowsii}{%
+L2 & \rownum{11} & Tadelis 5.6 & 96 [115] & Found. & Hawk-dove: matrix, pure equilibria & 1 & none \\
+   & \rownum{12} & Muñoz-Garcia Ch.~2 Ex.~2$^\ddagger$ & 41 [54] & Found. & Battle of the sexes: pure equilibria & 1 & book \\
+   & \rownum{13} & Muñoz-Garcia Ch.~3 Ex.~1 & 86--87 [99--100] & Found. & Chicken: pure and mixed equilibria & 2 & book \\
+   & \rownum{14} & Gibbons 1.12$^\ddagger$ & 51 [59] & Exam & A mixed equilibrium by indifference & 2 & none \\
+   & \rownum{15} & Tadelis 5.8 & 96--97 [115--116] & Exam & Cournot with $n$ firms; competitive limit & 3 & none \\
+   & \rownum{16} & Gibbons 1.6 & 49 [57] & Exam & Cournot, asymmetric costs; corner case & 3 & none \\
+   & \rownum{17} & Gibbons 1.7$^\ddagger$ & 49--50 [57--58] & Exam & Homogeneous Bertrand: $p_1 = p_2 = c$ is the unique equilibrium & 3 & none \\
+   & \rownum{18} & Tadelis 6.8 & 125 [144] & Exam & Three-player entry; symmetric mixing & 4 & none \\
+   & \rownum{19} & MWG 8.D.2$^\ddagger$ & 263 [142] & Adv. & Proof: a unique IESDS survivor is a Nash equilibrium & 4 & manual \\
+   & \rownum{20} & MWG 8.D.6 & 264 [143] & Adv. & A mixed equilibrium exists in every $2\times2$ game & 5 & manual \\}
+\newcommand{\rowsiii}{%
+L3 & \rownum{21} & Tadelis 7.1$^\ddagger$ & 147 [166] & Found. & Counting pure strategies over information sets & 1 & none \\
+   & \rownum{22} & Muñoz-Garcia Ch.~4 Ex.~3 & 160 [172] & Found. & Sequential prisoner's dilemma & 1 & book \\
+   & \rownum{23} & Tadelis 7.2$^\dagger$ & 147 [166] & Found. & Story to tree; strategies; an ``unappealing'' Nash equilibrium & 2 & none \\
+   & \rownum{24} & Tadelis 8.5$^\dagger$ & 170 [189] & Exam & A simultaneous game behind an adoption choice: SPE & 3 & none \\
+   & \rownum{25} & Tadelis 8.10 & 172 [191] & Exam & Subgames with a simultaneous stage & 3 & none \\
+   & \rownum{26} & Tadelis 7.4$^\ddagger$ & 148 [167] & Exam & Four-move centipede: strategies, Nash equilibria, outcomes & 3 & none \\
+   & \rownum{27} & Tadelis 7.9$^\ddagger$ & 149--150 [168--169] & Exam & A move of Nature and an information set & 4 & none \\
+   & \rownum{28} & Tadelis 7.10$^\dagger$ & 150 [169] & Exam & Mixed vs.\ behavioral strategies; perfect recall & 4 & none \\
+   & \rownum{29} & MWG 9.B.4$^\ddagger$ & 302 [162] & Adv. & Proof: unique SPNE payoffs in zero-sum games of perfect information & 4 & manual \\
+   & \rownum{30} & Gibbons 2.1 & 130 [137] & Adv. & Rotten Kid theorem (continuous actions) & 5 & none \\}
+\newcommand{\rowsiv}{%
+L4 & \rownum{31} & Gibbons 2.12$^\dagger$ & 135 [142] & Found. & Strategy, subgame and SPE in a repeated game & 1 & none \\
+   & \rownum{32} & Tadelis 7.6$^\ddagger$ & 148--149 [167--168] & Found. & Entry game: payoffs from preferences, all Nash equilibria & 1 & none \\
+   & \rownum{33} & Tadelis 8.8 & 171--172 [190--191] & Found. & Entry deterrence: a non-credible threat & 2 & none \\
+   & \rownum{34} & Tadelis 8.6$^\dagger$ & 170--171 [189--190] & Exam & Sunk investment before Cournot; threshold $F^*$ & 3 & none \\
+   & \rownum{35} & Muñoz-Garcia Ch.~4 Ex.~11$^\ddagger$ & 180 [192] & Exam & Stackelberg, asymmetric costs; vs.\ monopoly, Cournot, Bertrand & 3 & book \\
+   & \rownum{36} & Tadelis 8.11$^\ddagger$ & 172--173 [191--192] & Exam & Sequential vetoes; Nash equilibria that are not SPE; removing an option & 3 & none \\
+   & \rownum{37} & Tadelis 8.4$^\dagger$ & 170 [189] & Exam & Leader, two followers: subgames; a Nash equilibrium that is not SPE & 4 & none \\
+   & \rownum{38} & Tadelis 8.13 & 173--174 [192--193] & Exam & Hold-up; a posted price as commitment & 4 & none \\
+   & \rownum{39} & Tadelis 8.7$^\ddagger$ & 171 [190] & Adv. & Credibility of suing; design of the legal system & 4 & none \\
+   & \rownum{40} & MWG 9.B.5$^\dagger$ & 302 [162] & Adv. & Observation, multiple SPNE, when moving first pays & 5 & manual \\}
+\newcommand{\rowsv}{%
+L5 & \rownum{41} & Cabral 7.13$^\dagger$ & 182 [194] & Found. & Finitely repeated PD unravels & 1 & none \\
+   & \rownum{42} & Tadelis 10.2$^\dagger$ & 215 [234] & Found. & Grim trigger; threshold $\delta$ for two paths & 2 & none \\
+   & \rownum{43} & Muñoz-Garcia Ch.~6 Ex.~1$^\ddagger$ & 274 [285] & Found. & One-, two- and ten-period punishments & 2 & book \\
+   & \rownum{44} & Muñoz-Garcia Ch.~6 Ex.~9$^\dagger$ & 305 [316] & Exam & Feasible, individually rational payoffs; folk theorem & 3 & book \\
+   & \rownum{45} & Tadelis 10.3$^\ddagger$ & 215--216 [234--235] & Exam & Length-$T$ punishments: $\delta_1$ vs.\ $\delta_2$ & 3 & none \\
+   & \rownum{46} & Tadelis 9.1 & 186--187 [205--206] & Exam & Stage game played twice: all SPE, carrot and stick & 4 & none \\
+   & \rownum{47} & Gibbons 2.11$^\ddagger$ & 135 [142] & Exam & A non-Nash first-stage payoff in a twice-played game & 4 & none \\
+   & \rownum{48} & Tadelis 11.5 & 236--237 [255--256] & Exam & Three periods with $\delta_1\neq\delta_2$ & 4 & none \\
+   & \rownum{49} & Tadelis 10.7$^\ddagger$ & 217--218 [236--237] & Adv. & Quality: ten days vs.\ forever, in parameters & 4 & none \\
+   & \rownum{50} & Gibbons 2.20$^\dagger$ & 137--138 [144--145] & Adv. & Rubinstein strategies are an SPE (one-stage deviations) & 5 & none \\}
+
+% Difficulty path: what makes each block's last item hard.
+\newcommand{\pathi}{\textbf{Lecture 1}: from one $3\times3$ elimination (1) through two short proofs
+about dominance (Tadelis 4.1, MWG 8.B.4) to MWG 8.B.5 (5), where elimination over a continuum of
+quantities must be shown to converge with two firms and to stall with three.}
+\newcommand{\pathii}{\textbf{Lecture 2}: from writing a matrix (1) through the Bertrand uniqueness
+proof and MWG 8.D.2 to MWG 8.D.6 (5), a proof that every $2\times2$ game, with arbitrary payoffs,
+has a mixed-strategy equilibrium.}
+\newcommand{\pathiii}{\textbf{Lecture 3}: from counting strategies (1) through Nature, imperfect
+recall and the zero-sum proof (MWG 9.B.4) to Gibbons 2.1 (5), a proof with general concave income
+and utility functions and continuous actions.}
+\newcommand{\pathiv}{\textbf{Lecture 4}: from definitions (1) through entry, Stackelberg, hold-up and
+the legal-system game (Tadelis 8.7) to MWG 9.B.5 (5), a five-part general-payoff argument on
+strategy counts, multiple SPNE and when moving first guarantees the simultaneous-move payoff, with
+counterexamples.}
+\newcommand{\pathv}{\textbf{Lecture 5}: from unraveling (1) through punishments of finite length,
+carrot and stick and the both-horizons bar game (Tadelis 10.7) to Gibbons 2.20 (5), a proof that
+Rubinstein's stationary strategies are a Nash equilibrium and are subgame-perfect, checking every
+history of an infinite game.}

@@ -1,0 +1,100 @@
+% Solution: Gibbons (1992) Problem 1.2. Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (Gibbons 1.2), deepened. Check: check_A1.py.
+\begin{exsol}{Gibbons Problem 1.2}{48}{Foundations}{2}
+\asked Which strategies of the $3\times3$ game survive IESDS, and which profiles are pure-strategy
+Nash equilibria?
+
+\method IESDS (Gibbons \S1.1.B, pp.~4--7; Lecture~1, slides~28--29) and pure-strategy Nash
+equilibrium (Gibbons \S1.1.C, pp.~7--12; Lecture~2, slide~14), found by marking best responses
+(Lecture~2, slide~10). Gibbons's Proposition~B (p.~12; Lecture~2, Proposition~1, slide~16): every
+Nash equilibrium survives IESDS, so after the elimination only the surviving cells need to be
+searched. The full marking below confirms it independently.
+
+\solution
+The matrix as printed (the top-left cell reads ``2.0'' in the scan; it is $(2,0)$):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $2,\ 0$ & $1,\ 1$ & $4,\ 2$ \\ \cline{2-4}
+$M$ & $3,\ 4$ & $1,\ 2$ & $2,\ 3$ \\ \cline{2-4}
+$B$ & $1,\ 3$ & $0,\ 2$ & $3,\ 0$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Payoff vectors: player~1's rows over $(L,C,R)$ are $T = (2,1,4)$, $M = (3,1,2)$, $B = (1,0,3)$;
+player~2's columns over $(T,M,B)$ are $L = (0,4,3)$, $C = (1,2,2)$, $R = (2,3,0)$.
+
+\textbf{Round 1.} All pairs:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Player & Pair & Componentwise comparison & Verdict \\
+\midrule
+1 & $T$ vs $M$ & $2<3$, $1=1$, $4>2$ & not ranked \\
+1 & $T$ vs $B$ & $2>1$, $1>0$, $4>3$ & $B$ strictly dominated by $T$ \\
+1 & $M$ vs $B$ & $3>1$, $1>0$, $2<3$ & not ranked \\
+2 & $L$ vs $C$ & $0<1$, $4>2$, $3>2$ & not ranked \\
+2 & $L$ vs $R$ & $0<2$, $4>3$, $3>0$ & not ranked \\
+2 & $C$ vs $R$ & $1<2$, $2<3$, $2>0$ & not ranked \\
+\bottomrule
+\end{tabular}
+\end{center}
+$C$ is \emph{not} dominated yet: row $B$ is what keeps it alive ($2 > 0$ against $R$).
+$S_1^1 = \{T, M\}$, $S_2^1 = \{L, C, R\}$.
+
+\textbf{Round 2.} Player~2 on rows $(T, M)$: $L = (0,4)$, $C = (1,2)$, $R = (2,3)$.
+$C$ vs $R$: $1 < 2$ and $2 < 3$, so $C$ is strictly dominated by $R$. $L$ vs $C$
+($0<1$, $4>2$) and $L$ vs $R$ ($0<2$, $4>3$) are not ranked. Player~1 on all three columns:
+$T$ vs $M$ unchanged, not ranked. $S_1^2 = \{T,M\}$, $S_2^2 = \{L, R\}$.
+
+\textbf{Round 3.} Player~1 on $(L, R)$: $T = (2, 4)$, $M = (3, 2)$, not ranked. Player~2 on
+$(T, M)$: $L = (0, 4)$, $R = (2, 3)$, not ranked. Stop:
+\[
+  S^\infty = \{T, M\} \times \{L, R\}.
+\]
+
+\textbf{Pure Nash equilibria: best-response marking of the whole matrix.}
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $2,\ 0$ & $\br{1},\ 1$ & $\br{4},\ \br{2}$ \\ \cline{2-4}
+$M$ & $\br{3},\ \br{4}$ & $\br{1},\ 2$ & $2,\ 3$ \\ \cline{2-4}
+$B$ & $1,\ \br{3}$ & $0,\ 2$ & $3,\ 0$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Player~1: $BR_1(L) = \{M\}$ ($3 > 2 > 1$), $BR_1(C) = \{T, M\}$ (tie at 1), $BR_1(R) = \{T\}$
+($4 > 3 > 2$). Player~2: $BR_2(T) = \{R\}$ ($2 > 1 > 0$), $BR_2(M) = \{L\}$ ($4 > 3 > 2$),
+$BR_2(B) = \{L\}$ ($3 > 2 > 0$). Both payoffs are underlined only in $(T,R)$ and $(M,L)$. Cell by
+cell inside $S^\infty$:
+\begin{itemize}
+  \item $(T, L)$: player~1 would switch to $M$ ($3 > 2$). Not NE.
+  \item $(T, R)$: $T \in BR_1(R)$ and $R \in BR_2(T)$. NE, payoffs $(4,2)$.
+  \item $(M, L)$: $M \in BR_1(L)$ and $L \in BR_2(M)$. NE, payoffs $(3,4)$.
+  \item $(M, R)$: player~1 would switch to $T$ ($4 > 2$). Not NE.
+\end{itemize}
+
+\interp $C$ is a sensible reply only to beliefs that put weight on $B$; once player~2 knows that
+player~1 is rational, $C$ goes (Lecture~2, slide~7). IESDS stops at four profiles because each
+surviving strategy is a best reply to one of the opponent's surviving strategies. Nash
+equilibrium adds the requirement that beliefs be correct and cuts the four to two. The two
+equilibria are ranked differently by the players ($(T,R)$ favours player~1, $(M,L)$ player~2), so
+the game has a coordination problem that neither IESDS nor Nash equilibrium resolves.
+
+\verify \texttt{check\_A1.py} reproduces the rounds (round~1: $B$; round~2: $C$), checks that $C$
+is not dominated in the full game, and finds by brute force over all nine cells that the pure Nash
+equilibria are exactly $(T,R)$ and $(M,L)$. Gibbons gives no answer. Kumar's unofficial Gibbons
+manual (Answer~1.2, not in \texttt{Livros/}) gives the same deletions and equilibria; it writes the
+survivors as ``(T,M) and (L,R)'', meaning $\{T,M\}$ for player~1 and $\{L,R\}$ for player~2.
+
+\mistakes
+\begin{itemize}
+  \item Deleting $C$ in round~1 because it looks poor. In the full game $C$ beats $R$ in row $B$
+  and $L$ in row $T$; it is dominated only once $B$ is gone.
+  \item Reading ``2.0'' as the number two and leaving player~2's payoff blank. It is the pair
+  $(2,0)$; with any other reading the column comparisons change.
+  \item Calling $(T,L)$ or $(M,R)$ an equilibrium because they survive IESDS. Survival is
+  necessary for Nash equilibrium, not sufficient.
+\end{itemize}
+
+\answer{IESDS: delete $B$ (by $T$), then $C$ (by $R$); survivors $\{T, M\} \times \{L, R\}$.
+Pure Nash equilibria: $(T, R)$ with payoffs $(4,2)$ and $(M, L)$ with payoffs $(3,4)$.}
+\end{exsol}

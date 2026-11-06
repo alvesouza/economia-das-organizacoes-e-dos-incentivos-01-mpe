@@ -1,0 +1,105 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 8.D.2. Input by \solitem.
+% New in the 50-item list. Check: check_A2.py.
+\begin{exsol}{MWG Exercise 8.D.2}{263}{Advanced}{4}
+\asked Prove that if exactly one strategy profile survives iterated removal of strictly dominated
+strategies, that profile is a Nash equilibrium.
+
+\method Iterated deletion of strictly dominated strategies (MWG \S8.B, pp.~236--241; Lecture~1,
+slide~29) and Nash equilibrium (MWG Def.~8.D.1, pp.~246--247; Lecture~2, slide~14). The proof is
+the slides' Proposition~2 (Lecture~2, slide~17): follow a chain of dominating strategies, along
+which the payoff against the survivor's profile strictly rises, until it reaches the surviving
+strategy. The game is finite (MWG \S8.B). The same chain works whether the dominators are pure
+strategies (MWG Def.~8.B.2) or mixed (Def.~8.B.4); both versions are proved.
+
+\solution
+\textbf{Setting.} $\Gamma = [I, \{S_i\}, \{u_i\}]$, every $S_i$ finite. $S^0 = S$, and $S^{k+1}$
+removes from $S^k$ every strategy strictly dominated given $S^k$ (by a pure strategy in $S^k_i$,
+or by a mixed strategy $\sigma_i \in \Delta(S^k_i)$). The process stops after finitely many rounds
+at $S^\infty$. Hypothesis: $S^\infty = \{s^*\}$.
+
+\textbf{Claim.} For every player $i$ and every $s_i \in S_i$, $u_i(s_i^*, s_{-i}^*) \ge
+u_i(s_i, s_{-i}^*)$.
+
+\textbf{Step 1: one link of the chain.} Let $s_i \ne s_i^*$. Then $s_i \notin S^\infty_i$, so
+$s_i$ was deleted in some round, say round $k+1$: there is a dominator, pure $t_i \in S^k_i$ or mixed
+$\sigma_i \in \Delta(S^k_i)$, with
+\[
+  u_i(\sigma_i, s_{-i}) > u_i(s_i, s_{-i}) \quad \text{for every } s_{-i} \in S^k_{-i}. \tag{1}
+\]
+Since $s^*$ is never deleted, $s^*_{-i} \in S^k_{-i}$, and (1) holds at $s_{-i} = s^*_{-i}$:
+\[
+  \sum_{t_i \in S^k_i} \sigma_i(t_i)\, u_i(t_i, s^*_{-i}) = u_i(\sigma_i, s^*_{-i}) > u_i(s_i, s^*_{-i}).
+\]
+A weighted average exceeds $u_i(s_i, s^*_{-i})$ only if at least one of its terms does, so there is
+a pure $t_i$ with $\sigma_i(t_i) > 0$ (in the pure case, $t_i$ itself) such that
+\[
+  t_i \in S^k_i \quad \text{and} \quad u_i(t_i, s^*_{-i}) > u_i(s_i, s^*_{-i}). \tag{2}
+\]
+Call $t_i$ a \emph{successor} of $s_i$. Since $t_i \in S^k_i$, it survived at least until the round
+in which $s_i$ was deleted.
+
+\textbf{Step 2: the chain.} Start at any $s_i^{(0)} = s_i \ne s_i^*$. While the current strategy
+is not $s_i^*$, it was deleted at some round, so by Step~1 it has a successor; let $s_i^{(m+1)}$
+be a successor of $s_i^{(m)}$. By (2),
+\[
+  u_i(s_i^{(0)}, s^*_{-i}) < u_i(s_i^{(1)}, s^*_{-i}) < u_i(s_i^{(2)}, s^*_{-i}) < \cdots
+\]
+The payoffs strictly increase, so no strategy appears twice; $S_i$ is finite, so the chain cannot go
+on forever. It stops only at a strategy with no successor, that is, at a strategy that is never
+deleted: $s_i^*$, the only one in $S^\infty_i$. Hence
+\[
+  u_i(s_i, s^*_{-i}) < u_i(s_i^*, s^*_{-i}) \quad \text{for every } s_i \ne s_i^*.
+\]
+
+\textbf{Step 3: conclusion.} No player gains by a unilateral pure deviation from $s^*$, so $s^*$ is
+a Nash equilibrium (in fact a \emph{strict} one). Mixed deviations do not help either, since
+$u_i(\sigma_i, s^*_{-i})$ is a weighted average of the pure payoffs, each at most
+$u_i(s^*)$. $\blacksquare$
+
+\textbf{Remarks.}
+\begin{itemize}
+  \item \emph{Uniqueness.} Every Nash equilibrium survives IESDS (Lecture~2, Proposition~1,
+  slide~16), so $s^*$ is also the only pure Nash equilibrium; and in any mixed equilibrium every
+  strategy in the support survives (MWG manual's argument below), so $s^*$ is the only Nash
+  equilibrium of any kind.
+  \item \emph{Finiteness} is used in Step~2: in an infinite game the chain of successors need not
+  end at $s^*$, and a unique survivor need not be an equilibrium. (Outside the course books:
+  Dufwenberg and Stegeman, \emph{Econometrica} 2002, study this.) Infinite games in the course where
+  IESDS has a unique survivor, such as the Cournot duopoly of MWG 8.B.5, satisfy the conclusion by
+  direct computation.
+\end{itemize}
+
+\interp If common knowledge of rationality alone pins down a single profile, that profile is
+self-enforcing: no player can do better against what the others are predicted to do. Nash
+equilibrium is weaker than IESDS in what it assumes about beliefs, and this result says the two
+agree whenever IESDS is decisive, as in the campaigning game (Tadelis 4.7) or the discrete auction
+(Tadelis 4.3).
+
+\verify \texttt{check\_A2.py} generates random finite games (two players, two to four strategies,
+integer payoffs) until it has 1{,}000 with a unique IESDS survivor under pure dominance, and checks
+that each survivor is a strict Nash equilibrium and the only pure one; it also builds the chain of
+Step~2 explicitly in each game and checks that payoffs rise along it and that it ends at $s^*_i$.
+\emph{Comparison with the MWG solutions manual} (p.~8-9): the manual proves the converse
+inclusion, that every (mixed) Nash equilibrium survives iterated strict dominance, and concludes
+that the equilibrium must be the unique survivor. That route needs an equilibrium to exist in the
+first place, which in a finite game is Nash's theorem (MWG Prop.~8.D.2) but is not stated in the
+manual's answer. The direct chain argument above needs no existence theorem. The conclusions
+agree.
+
+\mistakes
+\begin{itemize}
+  \item Proving the converse (every Nash equilibrium survives IESDS) and stopping. That shows the
+  survivor is the only \emph{candidate}; existence of an equilibrium is a separate step.
+  \item Assuming the strategy that dominated $s_i$ survives to the end. It may itself be deleted
+  later; the chain handles this.
+  \item Comparing payoffs against all $s_{-i}$ instead of against $s^*_{-i}$. Only the inequality
+  at $s^*_{-i}$ is needed, and it holds because $s^*_{-i}$ is never deleted.
+\end{itemize}
+
+\answer{Let $s^*$ be the unique survivor and $s_i \ne s_i^*$. When $s_i$ was deleted, its
+dominator (or a pure strategy in its support) $t_i$ was still present and, since $s^*_{-i}$ was also
+present, $u_i(t_i, s^*_{-i}) > u_i(s_i, s^*_{-i})$. Repeating from $t_i$ gives a chain with strictly
+rising payoffs against $s^*_{-i}$; in a finite game it ends at a never-deleted strategy, $s_i^*$.
+So $u_i(s_i^*, s^*_{-i}) > u_i(s_i, s^*_{-i})$ for all $s_i \ne s_i^*$ and all $i$: $s^*$ is a
+(strict) Nash equilibrium.}
+\end{exsol}

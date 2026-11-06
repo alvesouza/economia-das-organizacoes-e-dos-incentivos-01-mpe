@@ -1,0 +1,48 @@
+%% Real book exercises, Lectures 1--5: all 50 items.
+%% Layout: preamble and blocks in Listas/lista-reais-lectures-01-05/ (order in order.md).
+%% Compile from Listas/: pdflatex lista-reais-lectures-01-05.tex (2x); pdffonts lista-reais-lectures-01-05.pdf (all Type 1).
+\documentclass[11pt,a4paper]{article}
+\newcommand{\listatema}{Real Book Exercises, Lectures 1--5}
+\input{lista-reais-lectures-01-05/preamble}
+
+\begin{document}
+\titulo
+\howtouse
+
+\medskip
+{\small\noindent\textbf{Difficulty path} (what makes each block's last items hard):
+\begin{itemize}[leftmargin=1.4em,itemsep=0pt]
+\item \pathi
+\item \pathii
+\item \pathiii
+\item \pathiv
+\item \pathv
+\end{itemize}\par}
+
+\medskip
+{\small\noindent\textbf{Selection tables} (one per lecture, next pages).\par}
+\tablenote
+
+\newpage
+\selectiontable{\rowsi}
+\selectiontable{\rowsii}
+\selectiontable{\rowsiii}
+\selectiontable{\rowsiv}
+\selectiontable{\rowsv}
+
+\newpage
+\input{lista-reais-lectures-01-05/block1}
+
+\newpage
+\input{lista-reais-lectures-01-05/block2}
+
+\newpage
+\input{lista-reais-lectures-01-05/block3}
+
+\newpage
+\input{lista-reais-lectures-01-05/block4}
+
+\newpage
+\input{lista-reais-lectures-01-05/block5}
+
+\end{document}

@@ -1,0 +1,93 @@
+% Solution: Tadelis (2013) Exercise 5.6 "Hawk-Dove". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (Tadelis 5.6), deepened. Check: check_A2.py.
+\begin{exsol}{Tadelis Exercise 5.6}{96}{Foundations}{1}
+\asked Write Hawk-Dove as a matrix in $(v,k,d)$, then find its pure-strategy Nash equilibria at
+$v = 10$, $k = 6$, $d = 4$.
+
+\method Building a matrix from a story (Lecture~1, slides~17--19); pure-strategy Nash equilibrium
+(Tadelis \S5.1, p.~80; Lecture~2, slide~14), found by marking best responses cell by cell
+(Lecture~2, slide~10; Tadelis \S5.1.1, p.~81). The mixed equilibrium mentioned at the end uses the
+principle of indifference (Lecture~2, slide~44).
+
+\solution
+\textbf{Notation.} $v > 0$: value of the resource; $k$: injury cost when both fight, $k > v/2$;
+$d$: display cost when both display, $d < v/2$ (and $d \ge 0$, a cost). $S_1 = S_2 = \{H, D\}$.
+
+\textbf{(a) The matrix.} Each cell from the story:
+\begin{itemize}
+  \item both $H$: they split $v$ and each loses $k$: $v/2 - k$ each;
+  \item both $D$: they split $v$ and each pays $d$: $v/2 - d$ each;
+  \item one $H$, one $D$: the hawk gets all of $v$, the dove leaves with no benefit and no cost,
+  $0$.
+\end{itemize}
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$H$} & \multicolumn{1}{c}{$D$}\\ \cline{2-3}
+$H$ & $\frac v2 - k,\ \frac v2 - k$ & $v,\ 0$ \\ \cline{2-3}
+$D$ & $0,\ v$ & $\frac v2 - d,\ \frac v2 - d$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(b) Pure equilibria at $v = 10$, $k = 6$, $d = 4$.} Substituting,
+$v/2 - k = 5 - 6 = -1$ and $v/2 - d = 5 - 4 = 1$. Best responses underlined:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$H$} & \multicolumn{1}{c}{$D$}\\ \cline{2-3}
+$H$ & $-1,\ -1$ & $\br{10},\ \br{0}$ \\ \cline{2-3}
+$D$ & $\br{0},\ \br{10}$ & $1,\ 1$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+\begin{itemize}
+  \item Player~1 against $H$: $u_1(D,H) = 0 > -1 = u_1(H,H)$, so $BR_1(H) = \{D\}$.
+  \item Player~1 against $D$: $u_1(H,D) = 10 > 1 = u_1(D,D)$, so $BR_1(D) = \{H\}$.
+  \item Player~2, by symmetry: $BR_2(H) = \{D\}$, $BR_2(D) = \{H\}$.
+\end{itemize}
+Cell by cell:
+\begin{itemize}
+  \item $(H,H)$: each would switch to $D$ ($0 > -1$). Not NE.
+  \item $(D,D)$: each would switch to $H$ ($10 > 1$). Not NE.
+  \item $(H,D)$: $H \in BR_1(D)$ and $D \in BR_2(H)$. NE, payoffs $(10, 0)$.
+  \item $(D,H)$: by symmetry, NE, payoffs $(0, 10)$.
+\end{itemize}
+
+\textbf{The same holds for every admissible $(v,k,d)$.} Against $H$, $D$ is strictly better because
+$0 > v/2 - k \iff k > v/2$. Against $D$, $H$ is strictly better because
+$v > v/2 - d \iff d > -v/2$, true for any $d \ge 0$. So the two asymmetric profiles are the only
+pure equilibria under the book's assumptions; the numbers only make it concrete.
+
+\textbf{Beyond what is asked: the symmetric mixed equilibrium.} Let each play $H$ with probability
+$p$. A player is indifferent when
+\[
+  \underbrace{p\big(\tfrac v2 - k\big) + (1-p)v}_{EU(H)} = \underbrace{(1-p)\big(\tfrac v2 - d\big)}_{EU(D)}
+  \;\Longleftrightarrow\; v - p\big(\tfrac v2 + k\big) = \tfrac v2 - d - p\big(\tfrac v2 - d\big)
+  \;\Longleftrightarrow\; p^* = \frac{v/2 + d}{k + d}.
+\]
+At $(10,6,4)$: $p^* = 9/10$, and each expects $EU(D) = (1 - 0.9)(1) = 0.1$.
+
+\interp Hawk-Dove is an anti-coordination game (the same structure as Chicken, \MG{} Ch.~3
+Ex.~1): each player wants to do the opposite of the other. The two pure equilibria are
+asymmetric: one animal takes everything, the other backs off. Nothing in the symmetric game says
+\emph{which} animal is the hawk, which is why the biology literature looks at the symmetric mixed
+(population) answer: a share $p^* = 0.9$ of hawks, where hawks and doves do equally well.
+Fighting is frequent because the prize ($v = 10$) is large relative to the injury loss
+($k - v/2 = 1$).
+
+\verify \texttt{check\_A2.py} builds the matrix from the story with symbols, checks that
+$BR(H) = D$ and $BR(D) = H$ for 2{,}000 random admissible $(v,k,d)$, finds by brute force that the
+pure NE at $(10,6,4)$ are exactly $(H,D)$ and $(D,H)$, and checks the general formula for $p^*$,
+$p^* = 9/10$ and the payoff $1/10$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Giving the dove a negative payoff when it meets a hawk. The story says it leaves ``with no
+  benefits and no costs'': $0$.
+  \item Forgetting that both $H$ and both $D$ split $v$: the cells are $v/2 - k$ and $v/2 - d$, not
+  $v - k$ and $-d$.
+  \item Answering ``$(H,D)$'' only. The game is symmetric, so $(D,H)$ is an equilibrium too.
+\end{itemize}
+
+\answer{(a) $(H,H)$: $(\frac v2 - k, \frac v2 - k)$; $(H,D)$: $(v, 0)$; $(D,H)$: $(0, v)$;
+$(D,D)$: $(\frac v2 - d, \frac v2 - d)$. (b) With $v = 10$, $k = 6$, $d = 4$ the matrix is
+$\begin{psmallmatrix}-1,-1 & 10,0\\ 0,10 & 1,1\end{psmallmatrix}$; the pure-strategy Nash
+equilibria are $(H,D)$ and $(D,H)$, with payoffs $(10,0)$ and $(0,10)$.}
+\end{exsol}

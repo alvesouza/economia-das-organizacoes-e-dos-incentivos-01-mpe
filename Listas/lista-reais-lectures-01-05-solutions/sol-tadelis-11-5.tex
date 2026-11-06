@@ -1,0 +1,126 @@
+% Solution: Tadelis (2013) Exercise 11.5 "Asymmetric Patience 1". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (item 23), deepened. Check: check_C_L05.py.
+\begin{exsol}{Tadelis Exercise 11.5}{236--237}{Exam level}{4}
+\asked In three-period alternating-offer bargaining over a pie of 1, with player~1 proposing first
+and discount factors $\delta_1 \ne \delta_2$: (a) the SPE outcome; (b) player~1's advantage when
+$\delta_1 = \delta_2$; (c) when player~2 has the advantage, and why.
+
+\method Backward induction in finite alternating-offer bargaining (Tadelis \S11.2, pp.~224--227;
+Gibbons \S2.1.D, pp.~68--70). In the last period the proposer takes everything. In each earlier
+period the proposer offers the responder exactly the discounted value of what the responder would
+get next period, and the responder accepts at indifference (the argument of Prop.~11.2, p.~223;
+agreement in round one, Prop.~11.3, p.~226). Slides: Lecture~4, slides~9--10 (backward induction)
+and slide~17 (SPE). Lecture~5's bargaining part has no slides yet. Notation as in
+\texttt{Notas/L04/L04-06-finite-alternating-offers.md}.
+
+\solution
+\textbf{Notation.} $x_t$ = player~1's share of the pie when agreement is reached in period
+$t \in \{1,2,3\}$, so player~2 gets $1 - x_t$. Player~$i$'s payoff from agreement $(x, 1-x)$ in
+period $t$ is $\delta_i^{t-1}$ times his share. Players~1, 2, 1 propose in periods 1, 2, 3, and no
+agreement in period~3 gives $(0,0)$. ``Advantage'' means a share above $\frac12$.
+
+\textbf{Step 1: period 3 (player~1 proposes, last period).} Player~2 compares accepting $1-x$ with
+rejecting, which gives $0$. She accepts every $x < 1$ strictly. At $x = 1$ she is indifferent, and
+in an SPE she must accept: if she rejected $x = 1$, player~1 would want the largest $x < 1$, which
+does not exist, so he would have no best offer. Player~1 offers $x_3 = 1$. Period-3 values:
+player~1 gets $1$, player~2 gets $0$; in period-1 terms, $(\delta_1^2,\ 0)$.
+
+\textbf{Step 2: period 2 (player~2 proposes).} Player~1 accepts $x$ iff $x$ is at least what
+rejecting gives him, namely $1$ one period later, worth $\delta_1 \cdot 1$ today:
+\begin{equation}
+  x \;\ge\; \delta_1\, x_3 = \delta_1 . \label{eq:tadelis-11-5-x2}
+\end{equation}
+Player~2 keeps the most she can by offering exactly $x_2 = \delta_1$ (by the same argument as in
+Step~1, player~1 accepts at equality). She then gets $1 - \delta_1$. Making an offer player~1 rejects
+gives her $\delta_2 \cdot 0 = 0 < 1 - \delta_1$, so she makes the acceptable offer.
+
+\textbf{Step 3: period 1 (player~1 proposes).} Player~2 accepts $x$ iff her share now is at least
+the value of rejecting, i.e.\ $1 - x_2$ one period later, discounted by her own $\delta_2$:
+\[
+  1 - x \;\ge\; \delta_2\,(1 - x_2) = \delta_2\,(1 - \delta_1) .
+\]
+Player~1 keeps as much as possible:
+\begin{equation}
+  x_1 = 1 - \delta_2(1 - \delta_1) = 1 - \delta_2 + \delta_1\delta_2 . \label{eq:tadelis-11-5-x1}
+\end{equation}
+He prefers this to a rejected offer, which gives him $\delta_1 x_2 = \delta_1^2$: indeed
+$x_1 - \delta_1^2 = (1 - \delta_1)(1 + \delta_1 - \delta_2) > 0$.
+
+\textbf{(a) The SPE.} Strategies at every node:
+\begin{itemize}
+  \item player~1: offer $x_1 = 1 - \delta_2(1-\delta_1)$ in period~1; in period~2 accept iff
+  offered $x \ge \delta_1$; in period~3 offer $x_3 = 1$;
+  \item player~2: in period~1 accept iff $1 - x \ge \delta_2(1-\delta_1)$; in period~2 offer
+  $x_2 = \delta_1$; in period~3 accept every offer.
+\end{itemize}
+Each acceptance rule holds after every possible offer, including offers never made on the path, so
+every subgame is played optimally. The outcome is immediate agreement:
+\[
+  (v_1, v_2) = \bigl(1 - \delta_2(1 - \delta_1),\ \ \delta_2(1 - \delta_1)\bigr).
+\]
+The tie-breaking argument of Step~1 applies at every round, so this SPE is unique.
+
+\textbf{(b) Equal discount factors.} Setting $\delta_1 = \delta_2 = \delta$ in
+\eqref{eq:tadelis-11-5-x1}:
+\[
+  v_1 = 1 - \delta + \delta^2, \qquad v_2 = \delta - \delta^2,
+\]
+\[
+  v_1 - v_2 = 1 - 2\delta + 2\delta^2 = (1 - \delta)^2 + \delta^2 \;>\; 0 .
+\]
+Player~1 gets strictly more than half for every $\delta$. He proposes both first and last. The
+edge $(1-\delta)^2 + \delta^2$ is smallest at $\delta = \frac12$ (derivative $-2(1-\delta) + 2\delta =
+0$), where it equals $\frac12$ and $v_1 = \frac34$.
+
+\textbf{(c) When player 2 is ahead.} Player~2 gets more than half iff
+\[
+  \delta_2\,(1 - \delta_1) > \tfrac12 \iff \delta_1 < 1 - \frac{1}{2\delta_2} .
+\]
+This needs $\delta_2 > \frac12$ (otherwise $\delta_2(1-\delta_1) \le \frac12$ for every $\delta_1$) and
+$\delta_1$ low enough. Example: $\delta_2 = 0.9$ gives the cut-off $\delta_1 < 1 - \frac{1}{1.8} =
+\frac49$; with $\delta_1 = 0.2$, $v_2 = 0.9 \times 0.8 = 0.72$.
+\emph{Why.} Player~1's power comes from the last period. An impatient player~1 values it at only
+$\delta_1$ from period~2's viewpoint, so player~2 keeps $1 - \delta_1$ when she proposes. A patient
+player~2 values that period-2 position almost fully ($\delta_2$), so in period~1 player~1 must
+concede $\delta_2(1 - \delta_1)$. Patience is bargaining power:
+\[
+  \frac{\partial v_1}{\partial \delta_1} = \delta_2 > 0, \qquad
+  \frac{\partial v_1}{\partial \delta_2} = -(1 - \delta_1) < 0 .
+\]
+The infinite-horizon formula $v_1 = \frac{1 - \delta_2}{1 - \delta_1\delta_2}$ (Tadelis \S11.3;
+\texttt{Notas/L04/L04-07}) has the same signs.
+
+\interp First-mover and last-mover advantages both favour player~1, so only a large patience gap
+in player~2's favour can overturn them. As $\delta \to 0$ (equal patience) the first-mover
+advantage takes over and $v_1 \to 1$. As $\delta \to 1$ the last-mover advantage takes over and again
+$v_1 \to 1$, because waiting for period~3 costs player~1 nothing. Patience matters because each
+player's threat to reject is worth what the next round is worth \emph{to him}: the more patient
+player loses less by waiting, so the other side must pay him more to settle now.
+
+\verify \texttt{check\_C\_L05.py} redoes the recursion symbolically ($x_1 = 1 - \delta_2 +
+\delta_1\delta_2$; $v_1 - v_2 = (1-\delta)^2 + \delta^2$ with minimum $\frac12$ at $\delta = \frac12$; limits
+1 at both ends; the two derivatives). It tests the condition in (c) at the boundary $\delta_1 =
+\frac49$ for $\delta_2 = \frac9{10}$ and at $\frac49 \pm \frac1{1000}$, confirms that player~2 can never be
+ahead when $\delta_2 \le \frac12$ (grid of step $\frac1{100}$), and repeats the backward induction
+numerically with offers on a grid of step $\frac1{1000}$ for three pairs; e.g.\ $(\delta_1,\delta_2) =
+(0.9, 0.7)$ gives $x_1 = 0.93$. Output: ``Tadelis 11.5: v1 = 1 - d2(1 - d1), v2 = d2(1 - d1); equal
+delta edge (1-d)\^{}2 + d\^{}2 >= 1/2; P2 ahead iff d2(1-d1) > 1/2 (boundary 4/9 at d2 = 9/10 checked
++-1/1000)''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Discounting player~2's continuation with $\delta_1$ (or with a common $\delta$). Each player
+  values the future with \emph{his own} factor: player~2's period-1 threat is $\delta_2(1-\delta_1)$.
+  \item Letting player~2 reject at indifference in period~3 (or player~1 in period~2). Then the
+  proposer has no best offer and there is no SPE; acceptance at indifference is forced.
+  \item Answering (b) with ``player~1 moves first'' only. With three periods he also moves last, which
+  is why his edge does not vanish as $\delta \to 1$.
+\end{itemize}
+
+\answer{(a) Immediate agreement: player~1 gets $1 - \delta_2(1 - \delta_1)$, player~2 gets
+$\delta_2(1 - \delta_1)$ (offers: $x_3 = 1$, $x_2 = \delta_1$, $x_1 = 1-\delta_2+\delta_1\delta_2$). (b) With
+$\delta_1 = \delta_2 = \delta$: $v_1 - v_2 = (1-\delta)^2 + \delta^2 > 0$ (at least $\frac12$). (c) Player~2 is
+ahead iff $\delta_2(1 - \delta_1) > \frac12$, which needs player~2 patient ($\delta_2 > \frac12$) and
+player~1 impatient ($\delta_1 < 1 - \frac1{2\delta_2}$). Player~1's last-period power is worth little to an
+impatient player~1, while player~2's period-2 power is worth a lot to a patient player~2.}
+\end{exsol}

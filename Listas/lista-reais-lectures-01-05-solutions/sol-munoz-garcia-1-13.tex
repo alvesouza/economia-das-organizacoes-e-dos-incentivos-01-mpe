@@ -1,0 +1,106 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 1, Exercise 13 "Iterated Deletion of Strictly
+% Dominated Strategies (IDSDS)". Input by \solitem. New in the 50-item list. Check: check_A1.py.
+\begin{exsol}{\MG{} Ch.~1, Exercise 13}{26}{Foundations}{1}
+\asked For the $3\times2$ game of Fig.~1.33, find strictly dominant and strictly dominated
+strategies, then run IDSDS and explain each step.
+
+\method Strictly dominant and strictly dominated strategies (Tadelis Defs.~4.1--4.2, pp.~60--61;
+Lecture~1, slide~23) and iterated deletion (\MG{}'s ``IDSDS'' is the slides' IESDS: Lecture~1,
+slides~28--29; Tadelis \S4.2, pp.~63--65). The point of the exercise is the difference between
+strict and weak dominance: only strict dominance is used.
+
+\solution
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $-10,\ 10$ & $0,\ 12$ \\ \cline{2-3}
+$M$ & $-12,\ 0$ & $2,\ 2$ \\ \cline{2-3}
+$D$ & $-9,\ 0$ & $1,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+($U$, $M$, $D$, $L$, $R$ abbreviate Up, Middle, Down, Left, Right.) Payoff vectors: player~1's rows
+over $(L, R)$ are $U = (-10, 0)$, $M = (-12, 2)$, $D = (-9, 1)$; player~2's columns over
+$(U, M, D)$ are $L = (10, 0, 0)$, $R = (12, 2, 0)$.
+
+\textbf{(a) Strictly dominant strategies.} A strictly dominant strategy must beat every other
+strategy of the player against every opponent strategy.
+\begin{itemize}
+  \item Player~1: against $L$ the best row is $D$ ($-9 > -10 > -12$); against $R$ it is $M$
+  ($2 > 1 > 0$). No row is best against both columns, so player~1 has no strictly dominant
+  strategy.
+  \item Player~2: $R$ beats $L$ in row $U$ ($12 > 10$) and row $M$ ($2 > 0$) but ties in row $D$
+  ($0 = 0$). So $R$ is weakly, not strictly, dominant. Player~2 has no strictly dominant
+  strategy.
+\end{itemize}
+
+\textbf{(b) Strictly dominated strategies.} All pairs:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Player & Pair & Componentwise comparison & Verdict \\
+\midrule
+1 & $U$ vs $M$ & $-10 > -12$, $0 < 2$ & not ranked \\
+1 & $U$ vs $D$ & $-10 < -9$, $0 < 1$ & $U$ strictly dominated by $D$ \\
+1 & $M$ vs $D$ & $-12 < -9$, $2 > 1$ & not ranked \\
+2 & $L$ vs $R$ & $10 < 12$, $0 < 2$, $0 = 0$ & $L$ only weakly dominated by $R$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The only strictly dominated strategy is player~1's $U$ (by $D$). Player~2 has none.
+
+\textbf{(c) IDSDS.}
+\begin{itemize}
+  \item \emph{Step 1.} Delete $U$: player~1 is rational and $D$ pays more than $U$ whatever
+  player~2 does.
+  \item \emph{Step 2.} In the reduced game (rows $M$, $D$), player~2 knows player~1 is rational,
+  so she compares columns on rows $(M, D)$ only: $L = (0, 0)$, $R = (2, 0)$. $R$ is better in row
+  $M$ and ties in row $D$: weak dominance only, so nothing is deleted. Player~1 on columns
+  $(L, R)$: $M = (-12, 2)$, $D = (-9, 1)$, not ranked.
+\end{itemize}
+Nothing else can be deleted, and the surviving pairs are
+\[
+  \text{IDSDS} = \{M, D\} \times \{L, R\} = \{(M,L), (M,R), (D,L), (D,R)\}.
+\]
+
+\textbf{Beyond what is asked: best-response marking and Nash equilibria.}
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $-10,\ 10$ & $0,\ \br{12}$ \\ \cline{2-3}
+$M$ & $-12,\ 0$ & $\br{2},\ \br{2}$ \\ \cline{2-3}
+$D$ & $\br{-9},\ \br{0}$ & $1,\ \br{0}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+$BR_1(L) = \{D\}$, $BR_1(R) = \{M\}$; $BR_2(U) = \{R\}$, $BR_2(M) = \{R\}$, $BR_2(D) = \{L, R\}$.
+The pure Nash equilibria are $(M, R)$, payoffs $(2, 2)$, and $(D, L)$, payoffs $(-9, 0)$. The second
+one uses player~2's weakly dominated $L$, which is why it survives IDSDS but would be removed by
+weak dominance.
+
+\interp Rationality alone removes $U$. A second layer of reasoning does not help, because
+player~2 is indifferent between $L$ and $R$ exactly when player~1 plays $D$, and $D$ survives.
+The prediction is the four profiles $\{M,D\}\times\{L,R\}$. If player~2 broke ties toward $R$ (weak
+dominance), player~1 would play $M$ and the outcome would be $(M,R)$; that is a stronger assumption
+than IDSDS makes. The book's own remark makes the same point: if player~2's payoff at $(D,R)$ were
+$1$ instead of $0$, $R$ would be strictly dominant.
+
+\verify \texttt{check\_A1.py} checks every pairwise comparison in the table, that IESDS deletes
+only $U$ (round~1) and then stops at $\{M,D\}\times\{L,R\}$, that $R$ weakly dominates $L$, and
+that the pure Nash equilibria are $(M,R)$ and $(D,L)$. \emph{Comparison with the book's answer}
+(pp.~26--28): it agrees on all three parts (no strictly dominant strategy; only $U$ strictly
+dominated, by $D$; IDSDS $= \{(M,L), (M,R), (D,L), (D,R)\}$). One slip: part~(c) opens ``As shown
+in part (a) of the exercise, strategy U is strictly dominated'', but that was shown in part~(b).
+
+\mistakes
+\begin{itemize}
+  \item Deleting $L$ because $R$ is ``always at least as good''. The tie in row $D$ makes it weak
+  dominance, which IDSDS does not use.
+  \item Calling $D$ strictly dominant for player~1 because it dominates $U$. A dominant strategy
+  must beat \emph{every} other strategy, and $M$ beats $D$ against $R$.
+  \item Giving the answer as payoffs ($(2,2)$, \dots) instead of strategy pairs.
+\end{itemize}
+
+\answer{(a) Neither player has a strictly dominant strategy ($R$ is only weakly dominant for
+player~2). (b) Only player~1's $U$ is strictly dominated (by $D$); player~2 has no strictly
+dominated strategy. (c) Delete $U$; then nothing else is strictly dominated:
+$\{(M,L), (M,R), (D,L), (D,R)\}$ survive.}
+\end{exsol}

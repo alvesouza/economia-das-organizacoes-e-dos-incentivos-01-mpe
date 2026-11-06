@@ -1,0 +1,165 @@
+% Solution: Tadelis (2013) Exercise 9.1 "Multistage Practice". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (item 19), deepened. Check: check_C_L05.py.
+\begin{exsol}{Tadelis Exercise 9.1}{186--187}{Exam level}{4}
+\asked For the $3\times3$ game played twice with the first-period outcome observed: (a) all
+pure-strategy SPE with $\delta = 1$, with history-contingent strategies; (b) for each, the smallest
+$\delta$ that supports it.
+
+\method Multistage games (Tadelis \S9.1--9.4, pp.~175--184) and the finitely repeated game
+$G(2,\delta)$ (\S10.1, pp.~190--192). Period-2 play must be a stage Nash equilibrium after every
+history (Prop.~9.2, p.~181). A first-period profile that is not a stage equilibrium can be
+supported only by a carrot (a good stage equilibrium on the path) and a stick (a bad one after a
+deviation), and only when $\delta \ge \delta^* = g/(c - s)$ (\texttt{Notas/L04/L04-02},
+\texttt{Notas/L05/L05-02}; Tadelis's own two-stage example, p.~191). Deviations are checked one
+stage at a time (one-stage deviation principle, Thm.~9.1, p.~185). Slides: Lecture~4, slide~22
+($G(T,\delta)$, payoff $\sum_t \delta^{t-1}u_i^t$, each period starts a subgame) and slide~17 (SPE).
+
+\solution
+\textbf{Notation.} $v_i = u_i(a^1) + \delta\, u_i(a^2)$, where $a^t$ is the period-$t$ action
+profile. A pure strategy for player~$i$ is a period-1 action and a map from the nine possible
+period-1 outcomes to a period-2 action. $g_i(a)$ is player~$i$'s best one-shot gain from deviating
+from $a$:
+\[
+  g_1(a) = \max_{r} u_1(r, a_2) - u_1(a), \qquad g_2(a) = \max_{c} u_2(a_1, c) - u_2(a).
+\]
+Best replies are underlined:
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $10,\ 10$ & $2,\ 12$ & $0,\ \br{13}$ \\ \cline{2-4}
+$M$ & $12,\ 2$ & $\br{5},\ \br{5}$ & $0,\ 0$ \\ \cline{2-4}
+$B$ & $\br{13},\ 0$ & $0,\ 0$ & $\br{1},\ \br{1}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: stage equilibria.} Player~1's best replies: to $L$, $B$ (13); to $C$, $M$ (5); to
+$R$, $B$ (1). Player~2's: to $T$, $R$ (13); to $M$, $C$ (5); to $B$, $R$ (1). The mutual best
+replies are
+\[
+  (M, C)\ \text{with } (5,5) \quad\text{(the carrot)}, \qquad (B, R)\ \text{with } (1,1)
+  \quad\text{(the stick)} .
+\]
+Each player gets 5 in the carrot and 1 in the stick, so the largest punishment one period can
+deliver is $c - s = 5 - 1 = 4$.
+
+\textbf{Step 2: period 2 (the last phase).} After any first-period outcome the subgame is the stage
+game (plus a sunk constant), so it must be $(M,C)$ or $(B,R)$. No one-stage deviation in period~2
+pays, because both are stage equilibria and nothing follows.
+
+\textbf{Step 3: period 1 (which profiles can be supported).} A first-period profile $a$ is
+supportable if and only if each player's gain is at most what the threat can take away:
+\begin{equation}
+  g_i(a) \;\le\; \delta\,(5 - 1) = 4\delta, \qquad i = 1, 2, \label{eq:tadelis-9-1-ic}
+\end{equation}
+using $(M,C)$ after $a$ and $(B,R)$ after any deviation. No continuation can do better, since 5 is
+the most and 1 the least a player can get in period~2. For a stage equilibrium $a$, $g_i(a) = 0$
+and any continuation works. The gains are:
+\begin{center}
+\small
+\begin{tabular}{lccccc}
+\toprule
+$a$ & $u(a)$ & $g_1(a)$ & $g_2(a)$ & supportable ($\delta=1$)? & $\delta^* = \max_i g_i/4$\\
+\midrule
+$(T,L)$ & $(10,10)$ & $13-10=3$ & $13-10=3$ & yes & $3/4$ \\
+$(T,C)$ & $(2,12)$ & $5-2=3$ & $13-12=1$ & yes & $3/4$ \\
+$(T,R)$ & $(0,13)$ & $1-0=1$ & $0$ & yes & $1/4$ \\
+$(M,L)$ & $(12,2)$ & $13-12=1$ & $5-2=3$ & yes & $3/4$ \\
+$(M,C)$ & $(5,5)$ & $0$ & $0$ & yes & $0$ \\
+$(M,R)$ & $(0,0)$ & $1-0=1$ & $5-0=5$ & no & -- \\
+$(B,L)$ & $(13,0)$ & $0$ & $1-0=1$ & yes & $1/4$ \\
+$(B,C)$ & $(0,0)$ & $5-0=5$ & $1-0=1$ & no & -- \\
+$(B,R)$ & $(1,1)$ & $0$ & $0$ & yes & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{(a) The pure SPE with $\delta = 1$.} There are nine SPE \emph{paths}:
+\begin{itemize}
+  \item the four sequences of stage equilibria, played regardless of history (Prop.~9.1, p.~180):
+  $(M,C)$ then $(M,C)$; $(M,C)$ then $(B,R)$; $(B,R)$ then $(M,C)$; $(B,R)$ then $(B,R)$;
+  \item the five carrot-and-stick paths: $a$ then $(M,C)$, for $a \in \{(T,L), (T,C), (T,R),
+  (M,L), (B,L)\}$.
+\end{itemize}
+For a carrot-and-stick path the strategies are, for $\hat a = (\hat a_1, \hat a_2)$ one of those five:
+\begin{align*}
+  s_1&:\ \text{play } \hat a_1;\ \text{in period 2 play } M \text{ if } \hat a \text{ was played, } B
+  \text{ otherwise};\\
+  s_2&:\ \text{play } \hat a_2;\ \text{in period 2 play } C \text{ if } \hat a \text{ was played, } R
+  \text{ otherwise}.
+\end{align*}
+\emph{One-stage deviation checks for each path} (with $\delta = 1$; path payoff against best deviation):
+\begin{center}
+\small
+\begin{tabular}{lcccc}
+\toprule
+$\hat a$ & P1: path & P1: best deviation & P2: path & P2: best deviation\\
+\midrule
+$(T,L)$ & $10+5=15$ & $B$: $13+1=14$ & $10+5=15$ & $R$: $13+1=14$\\
+$(T,C)$ & $2+5=7$ & $M$: $5+1=6$ & $12+5=17$ & $R$: $13+1=14$\\
+$(T,R)$ & $0+5=5$ & $B$: $1+1=2$ & $13+5=18$ & none (best reply)\\
+$(M,L)$ & $12+5=17$ & $B$: $13+1=14$ & $2+5=7$ & $C$: $5+1=6$\\
+$(B,L)$ & $13+5=18$ & none (best reply) & $0+5=5$ & $R$: $1+1=2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In period~2 both players play a stage equilibrium after every history, so no deviation pays there.
+$(M,R)$ and $(B,C)$ cannot be supported: a gain of 5 exceeds the largest punishment, 4. For instance,
+at $(M,R)$ player~2 gets $0 + 5 = 5$ on the path but $5 + 1 = 6$ by deviating to $C$.
+
+These strategies are not the only ones. Any assignment of $(M,C)$ or $(B,R)$ to the nine period-1
+outcomes that satisfies \eqref{eq:tadelis-9-1-ic} for the deviations that would be profitable also
+works (e.g.\ for $(T,R)$ only player~1's deviation to $B$ must be punished). Counting every such map,
+\texttt{check\_C\_L05.py} finds 992 pure SPE strategy profiles at $\delta = 1$, all with one of the nine
+paths above.
+
+\textbf{(b) The smallest discount factor.} From \eqref{eq:tadelis-9-1-ic},
+$\delta^*(a) = \max_i g_i(a)/4$ (last column of the first table). Solving each binding inequality:
+\begin{itemize}
+  \item $(T,L)$: $10 + 5\delta \ge 13 + \delta \iff 4\delta \ge 3 \iff \delta \ge \frac34$ (both players);
+  \item $(T,C)$: player~1 binds, $2 + 5\delta \ge 5 + \delta \iff \delta \ge \frac34$; player~2 needs
+  $12 + 5\delta \ge 13 + \delta \iff \delta \ge \frac14$;
+  \item $(M,L)$: the mirror image of $(T,C)$, $\delta \ge \frac34$;
+  \item $(T,R)$: only player~1, $0 + 5\delta \ge 1 + \delta \iff \delta \ge \frac14$;
+  \item $(B,L)$: only player~2, $0 + 5\delta \ge 1 + \delta \iff \delta \ge \frac14$;
+  \item the four sequences of stage equilibria: any $\delta \ge 0$.
+\end{itemize}
+Below $\delta^*$ no continuation map works, because $(M,C)$ after $\hat a$ and $(B,R)$ after the
+deviation is already the largest reward gap available.
+
+\textbf{A caveat: renegotiation.} The stick $(B,R)$ is Pareto-dominated by $(M,C)$. After a
+deviation both players would like to ``forgive'' and play $(M,C)$ in period~2, and if they can
+renegotiate the threat fails (Gibbons \S2.3.A, pp.~87--88; \texttt{Notas/L05/L05-02}). The SPE
+above take the threat as given.
+
+\interp Two stage equilibria with different payoffs give the second period a carrot and a stick.
+That lets the players reach $(T,L)$, which pays $(10,10)$, twice the $(5,5)$ of the good stage
+equilibrium, in the first period. Profiles with a gain above $4$ cannot be enforced by a single
+future period, however patient the players are. This is the finite-horizon version of the logic
+of Lecture~5: what can be sustained today is limited by how much the future can reward and punish.
+With a unique stage equilibrium (item Cabral~7.13) that gap is zero and nothing can be sustained.
+
+\verify \texttt{check\_C\_L05.py} finds the two stage equilibria and enumerates all
+$9 \times 2^9$ combinations of first-period profile and continuation map at $\delta = 1$ (992 SPE,
+9 paths; $(M,R)$ and $(B,C)$ excluded). For every threshold it checks that each path is an SPE at
+$\delta^*$ and at $\delta^* + \frac1{1000}$, that no continuation map at all supports it at $\delta^* -
+\frac1{1000}$, and that on the grid $\delta = k/1000$ the carrot-and-stick map works exactly when
+$\delta \ge \delta^*$. Output: ``Tadelis 9.1: stage NE (M,C),(B,R); 992 pure SPE at delta=1 on 9 paths;
+delta* = 3/4 (TL, TC, ML), 1/4 (TR, BL); grid and +-1/1000 pass''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Listing only the outcome ``$(T,L)$ then $(M,C)$'' without the off-path play. The question asks
+  for history-contingent strategies, and the threat to play $(B,R)$ after a deviation is the whole
+  point.
+  \item Using the smallest gain instead of the largest: the threshold is $\max_i g_i/4$, so in $(T,C)$
+  player~1's gain of 3 binds, not player~2's gain of 1.
+  \item Claiming $(M,R)$ or $(B,C)$ can be sustained with enough patience. With one period left the
+  punishment is capped at $5 - 1 = 4$, which is below the gain of $5$ even at $\delta = 1$.
+\end{itemize}
+
+\answer{Stage equilibria: $(M,C)$ $(5,5)$ and $(B,R)$ $(1,1)$. (a) Pure SPE paths with $\delta=1$:
+the four sequences of stage equilibria, and $a$ then $(M,C)$ for $a \in \{(T,L),(T,C),(T,R),
+(M,L),(B,L)\}$, supported by ``play $(M,C)$ after $a$, $(B,R)$ after any other outcome''.
+$(M,R)$ and $(B,C)$ cannot be supported. (b) $\delta^* = \frac34$ for $(T,L)$, $(T,C)$, $(M,L)$;
+$\frac14$ for $(T,R)$, $(B,L)$; $0$ for the sequences of stage equilibria.}
+\end{exsol}

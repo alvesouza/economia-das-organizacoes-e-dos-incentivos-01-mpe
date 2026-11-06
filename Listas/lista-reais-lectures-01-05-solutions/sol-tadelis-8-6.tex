@@ -1,0 +1,114 @@
+% Solution: Tadelis (2013) Exercise 8.6 "Investment in the Future". Input by \solitem.
+% New in the 30-item list. Check: check_B_L04.py.
+\begin{exsol}{Tadelis Exercise 8.6}{170--171}{Exam}{3}
+\asked Firm~1 may pay $F$ to cut its unit cost from 10 to 5 before a Cournot duopoly with
+$p = 100 - q$: (a) the threshold $F^*$ below which the unique SPE has firm~1 investing; (b) for
+$F > F^*$, a Nash equilibrium that is not subgame perfect.
+
+\method A two-stage game: an observed investment decision, then a simultaneous Cournot game
+(Gibbons \S2.2.A, pp.~71--73; Tadelis \S8.2). SPE: solve the Cournot subgame after each investment
+decision, then compare at the root (Lecture~4, slide~17; Tadelis Def.~8.3, p.~157). Cournot with
+asymmetric linear costs: first-order conditions, as in Lecture~2 and Gibbons \S1.2.A. Non-SPE Nash
+equilibria by off-path threats (Lecture~4, slides~8 and~13).
+
+\solution
+\textbf{Notation.} Firm~1 chooses $I$ (invest) or $N$; both firms observe it, then choose $q_1, q_2
+\ge 0$. Profits $\pi_i = (100 - q_1 - q_2 - c_i)q_i$, minus $F$ for firm~1 after $I$.
+
+\textbf{Step 1: Cournot subgame with costs $(c_1, c_2)$.} The first-order conditions are
+\[
+  100 - 2q_1 - q_2 - c_1 = 0, \qquad 100 - q_1 - 2q_2 - c_2 = 0 ,
+\]
+so the best replies are $q_1 = \frac{100 - c_1 - q_2}{2}$, $q_2 = \frac{100 - c_2 - q_1}{2}$, and
+\begin{equation}
+  q_1 = \frac{100 - 2c_1 + c_2}{3}, \qquad q_2 = \frac{100 - 2c_2 + c_1}{3}, \qquad \pi_i = q_i^2 .
+  \label{eq:tadelis-8-6-cournot}
+\end{equation}
+(The last equality uses $p - c_i = q_i$ from the first-order condition.) The subgame equilibrium is
+unique (the best replies have slope $-\frac12$ and cross once).
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Subgame & $q_1$ & $q_2$ & $p$ & $(\pi_1, \pi_2)$ before $F$ \\
+\midrule
+$N$: $c_1 = c_2 = 10$ & $30$ & $30$ & $40$ & $(900,\ 900)$ \\
+$I$: $c_1 = 5$, $c_2 = 10$ & $\frac{100}{3}$ & $\frac{85}{3}$ & $\frac{115}{3}$ & $\bigl(\frac{10000}{9},\ \frac{7225}{9}\bigr)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Check for $I$: $q_1 = \frac{100 - 10 + 10}{3} = \frac{100}{3}$, $q_2 = \frac{100 - 20 + 5}{3} = \frac{85}{3}$,
+$p = 100 - \frac{185}{3} = \frac{115}{3}$, $p - 5 = \frac{100}{3} = q_1$.
+
+\textbf{(a) The threshold.} Replace each subgame by its value. At the root firm~1 compares
+$\frac{10000}{9} - F$ (invest) with $900$ (not):
+\[
+  F^* = \frac{10000}{9} - 900 = \frac{10000 - 8100}{9} = \frac{1900}{9} \approx 211.1 .
+\]
+For $F < F^*$ the unique SPE is: firm~1 invests; in each subgame both firms play the Cournot
+quantities of that subgame. For $F > F^*$ the unique SPE has no investment; at $F = F^*$ both choices
+are optimal and there are two SPE.
+
+\emph{Decomposition (deepening).} If firm~2 kept $q_2 = 30$, firm~1's best reply with cost 5 would be
+$\frac{95 - 30}{2} = 32.5$, profit $32.5^2 = \frac{4225}{4}$: a \emph{direct} gain of $\frac{4225}{4} -
+900 = \frac{625}{4} = 156.25$. Firm~2 in fact cuts its output to $\frac{85}{3}$, adding a
+\emph{strategic} gain of $\frac{10000}{9} - \frac{4225}{4} = \frac{1975}{36} \approx 54.9$. So
+$F^* = \frac{625}{4} + \frac{1975}{36} = \frac{1900}{9}$: about a quarter of the value of the
+investment comes from its effect on the rival.
+
+\textbf{(b) A Nash equilibrium that is not subgame perfect, for $F > F^*$.} A strategy of firm~1 is
+$(\text{invest?}, q_1^N, q_1^I)$; of firm~2, $(q_2^N, q_2^I)$. Consider
+\[
+  \text{firm 1: } \bigl(I,\ q_1^N = 0,\ q_1^I = \tfrac{100}{3}\bigr), \qquad
+  \text{firm 2: } \bigl(q_2^N = 90,\ q_2^I = \tfrac{85}{3}\bigr).
+\]
+Firm~2 threatens to flood the market if firm~1 does not invest.
+\begin{itemize}
+  \item \emph{Firm~2:} on the path ($I$) it plays its best reply $\frac{85}{3}$ to $\frac{100}{3}$; its
+  plan after $N$ is never reached, so changing it does not change its payoff.
+  \item \emph{Firm~1:} on the path it earns $\frac{10000}{9} - F$. If it deviates to $N$, it faces
+  $q_2 = 90$, and its best reply earns $\max_{q_1} (100 - 90 - q_1 - 10)q_1 = \max_{q_1} (-q_1^2) = 0$.
+  So the profile is a Nash equilibrium whenever $\frac{10000}{9} - F \ge 0$.
+\end{itemize}
+For $F \in (F^*, \frac{10000}{9}]$ this is a Nash equilibrium in which firm~1 invests although the SPE
+has no investment. It is not subgame perfect: in the subgame after $N$, $q_2 = 90$ is not a best reply
+(against $q_1 = 0$ firm~2's best reply is $45$), so the flood is not credible.
+
+For \emph{any} $F > F^*$ (including $F > \frac{10000}{9}$) another example works: firm~1 plays
+$(N,\ 30,\ 0)$, firm~2 plays $(30,\ 90)$, i.e.\ it threatens to flood if firm~1 invests. On the path
+both play Cournot $(30,30)$; deviating to $I$ would earn at most
+$\max_{q_1}(100 - 90 - q_1 - 5)q_1 - F = \frac{25}{4} - F < 900$. It is Nash, but the
+subgame after $I$ is played at $(0, 90)$, which is not a Nash equilibrium of that subgame.
+
+\interp The investment is a sunk, observable commitment, the Brexit lesson of Lecture~4 (slide~11):
+it pays partly because it changes the rival's behavior (firm~2 retreats from 30 to $\frac{85}{3}$),
+not only because it lowers firm~1's cost. Because firm~2 cannot credibly promise to respond
+differently, firm~1's decision depends only on the Cournot continuation values; the non-SPE equilibria
+show how a non-credible threat by the \emph{rival} could otherwise push firm~1 into, or away from,
+investment.
+
+\verify \texttt{check\_B\_L04.py} solves both Cournot subgames with sympy (quantities, profits
+$900$ and $\frac{10000}{9}, \frac{7225}{9}$), computes $F^* = \frac{1900}{9}$ and its decomposition
+$\frac{625}{4} + \frac{1975}{36}$, and for $F = \frac{1000}{3} \in (F^*, \frac{10000}{9}]$ checks the
+threat profile: firm~1's best payoff after $N$ against $q_2 = 90$ is $0$ (grid of step $\frac14$),
+investing is a best reply, firm~2's on-path output is its best reply, and its best reply after $N$
+would be 45, not 90; for the second example, firm~1's best payoff after investing against
+$q_2 = 90$ is $\frac{25}{4}$ before $F$. Output line: \texttt{tadelis-8-6: F* = 1900/9; flood threat supports investing
+for F in (F*, 10000/9]}. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Computing $F^*$ with firm~2's output held at 30 ($F^* = 156.25$): firm~2 re-optimizes in the
+  new subgame.
+  \item Writing strategies without the off-path quantities: firm~2's strategy must say what it produces
+  after $I$ \emph{and} after $N$, or no threat can even be stated.
+  \item Giving as a ``non-SPE Nash equilibrium'' a profile in which a firm is not best-replying on the
+  path (e.g.\ firm~1 investing when $F > \frac{10000}{9}$).
+\end{itemize}
+
+\answer{(a) $F^* = \frac{10000}{9} - 900 = \frac{1900}{9} \approx 211.1$: for $F < F^*$ the unique SPE
+has firm~1 investing, then $(q_1,q_2) = (\frac{100}{3}, \frac{85}{3})$; without investment the
+Cournot play is $(30,30)$. (b) For $F \in (F^*, \frac{10000}{9}]$: firm~1 invests and plays
+$\frac{100}{3}$ (and 0 after $N$); firm~2 plays $\frac{85}{3}$ after $I$ and threatens $q_2 = 90$
+after $N$. Nash, not subgame perfect. (For any $F > F^*$: no investment, Cournot $(30,30)$, with
+firm~2 threatening 90 after investment.)}
+\end{exsol}

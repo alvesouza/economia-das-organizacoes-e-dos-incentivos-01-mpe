@@ -1,0 +1,87 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 2, Exercise 2 "Battle of the Sexes".
+% Input by \solitem. New in the 50-item list. Check: check_A2.py.
+\begin{exsol}{\MG{} Ch.~2, Exercise 2}{41}{Foundations}{1}
+\asked Find the set of Nash equilibria of the Battle of the Sexes in Fig.~2.4.
+
+\method Pure-strategy Nash equilibrium by best-response marking (Tadelis \S5.1, pp.~80--81;
+Lecture~2, slides~10 and~14; the slides' own Battle of the Sexes, slide~9). \MG{}'s Chapter~2
+covers pure strategies only, so the book's ``set of Nash Equilibria'' is the pure set; for
+completeness the mixed equilibrium is added by the principle of indifference (Tadelis \S6.2 and
+Prop.~6.1, pp.~107--108; Lecture~2, slides~44--50, where the same game is solved in mixed
+strategies).
+
+\solution
+\textbf{Notation.} Husband $H$ (rows), wife $W$ (columns); $F$ = Football, $O$ = Opera.
+
+\textbf{Best responses}, underlined:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{$H \backslash W$} & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$O$}\\ \cline{2-3}
+$F$ & $\br{3},\ \br{1}$ & $0,\ 0$ \\ \cline{2-3}
+$O$ & $0,\ 0$ & $\br{1},\ \br{3}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+\begin{itemize}
+  \item Husband: against $F$, $3 > 0$, so $BR_H(F) = \{F\}$; against $O$, $1 > 0$, so
+  $BR_H(O) = \{O\}$.
+  \item Wife: against $F$, $1 > 0$, so $BR_W(F) = \{F\}$; against $O$, $3 > 0$, so
+  $BR_W(O) = \{O\}$.
+\end{itemize}
+Each player's best reply is to go where the other goes.
+
+\textbf{Pure equilibria}, cell by cell:
+\begin{itemize}
+  \item $(F,F)$: $F \in BR_H(F)$ and $F \in BR_W(F)$. NE, payoffs $(3,1)$.
+  \item $(O,O)$: NE by the same check, payoffs $(1,3)$.
+  \item $(F,O)$: the husband would switch to $O$ ($1 > 0$). Not NE.
+  \item $(O,F)$: the husband would switch to $F$ ($3 > 0$). Not NE.
+\end{itemize}
+$\text{psNE} = \{(F,F), (O,O)\}$.
+
+\textbf{The mixed equilibrium.} Let $p = \Pr(H \text{ plays } F)$ and $q = \Pr(W \text{ plays } F)$.
+\begin{itemize}
+  \item Husband indifferent: $EU_H(F) = 3q$, $EU_H(O) = 1\cdot(1-q)$, so $3q = 1 - q$ and
+  $q^* = \tfrac14$.
+  \item Wife indifferent: $EU_W(F) = 1\cdot p$, $EU_W(O) = 3(1-p)$, so $p = 3 - 3p$ and
+  $p^* = \tfrac34$.
+\end{itemize}
+At $(p^*, q^*) = (\tfrac34, \tfrac14)$ each player is indifferent between both pure strategies,
+so each mix is a best reply to the other (Lecture~2, slide~44). Expected payoffs:
+$EU_H = 3q^* = \tfrac34$ and $EU_W = p^* = \tfrac34$. The full set of Nash equilibria is
+\[
+  \Big\{(F,F),\ (O,O),\ \big((\tfrac34 F, \tfrac14 O),\ (\tfrac14 F, \tfrac34 O)\big)\Big\}.
+\]
+There are no others: $BR_H(q)$ is $p = 1$ for $q > \tfrac14$, $p = 0$ for $q < \tfrac14$ and all
+of $[0,1]$ at $q = \tfrac14$; $BR_W(p)$ is $q = 1$ for $p > \tfrac34$, $q = 0$ for $p < \tfrac34$ and
+$[0,1]$ at $p = \tfrac34$; the two graphs cross only at $(0,0)$, $(1,1)$ and $(\tfrac34,\tfrac14)$.
+
+\interp A coordination game with conflict: both want to be together, but they disagree on where.
+Nash equilibrium identifies the two conventions but cannot say which one the couple will use;
+that needs something outside the game (a focal point, a habit, who argued last night). In the mixed
+equilibrium each goes to his or her \emph{own} favourite event with probability $\tfrac34$, they
+end up apart with probability $\tfrac34\cdot\tfrac34 + \tfrac14\cdot\tfrac14 = \tfrac58$, and each
+expects $\tfrac34$, less than the $1$ either gets in the worse pure equilibrium.
+
+\verify \texttt{check\_A2.py} finds by brute force that the pure equilibria are exactly $(F,F)$
+and $(O,O)$, solves both indifference conditions ($q^* = \tfrac14$, $p^* = \tfrac34$), checks the
+payoffs $\tfrac34$ and the miscoordination probability $\tfrac58$, and finds on a grid of mixed
+profiles that the mutual best responses are exactly $(0,0)$, $(1,1)$ and $(\tfrac34, \tfrac14)$.
+\emph{Comparison with the book's answer} (pp.~41--42): it finds the same best responses and
+$\text{psNE} = \{(F,F), (O,O)\}$; it does not report the mixed equilibrium, which belongs to its
+Chapter~3. The row label ``Housband'' in Fig.~2.4 is the book's typo.
+
+\mistakes
+\begin{itemize}
+  \item Swapping the mixes: the husband's indifference pins down the \emph{wife's} probability
+  ($q^* = \tfrac14$), not his own.
+  \item Reading the answer as ``the husband goes to football'': an equilibrium is a profile, here
+  $(F,F)$ or $(O,O)$, not one player's choice.
+  \item Claiming the mixed equilibrium is ``fairer'' and therefore better. Both players get
+  $\tfrac34$, less than in either pure equilibrium.
+\end{itemize}
+
+\answer{Best replies: each goes where the other goes. Pure Nash equilibria: $(F,F)$ with payoffs
+$(3,1)$ and $(O,O)$ with payoffs $(1,3)$ (the book's answer). Including mixed strategies, there
+is one more: the husband plays $F$ with probability $\tfrac34$, the wife plays $F$ with probability
+$\tfrac14$, each expecting $\tfrac34$.}
+\end{exsol}

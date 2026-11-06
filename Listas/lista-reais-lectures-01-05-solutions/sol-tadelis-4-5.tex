@@ -1,0 +1,109 @@
+% Solution: Tadelis (2013) Exercise 4.5 "Iterated Elimination". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (Tadelis 4.5), deepened. Check: check_A1.py.
+\begin{exsol}{Tadelis Exercise 4.5}{77}{Foundations}{1}
+\asked Which strategy profiles of the $3\times3$ game survive IESDS?
+
+\method Strict dominance (Lecture~1, slide~23; Tadelis \S4.1, pp.~59--61) and IESDS round by round
+(Lecture~1, slides~28--29; Tadelis \S4.2, pp.~63--65). In each round $k$ a strategy of player~$i$ is
+deleted if some other surviving strategy of $i$ gives a strictly higher payoff against
+\emph{every} surviving strategy of the opponent; all such strategies are deleted at once. The
+procedure stops when a round deletes nothing. A best-response marking is added at the end to
+show how the survivors relate to Nash equilibrium (Lecture~2, slides~14--17).
+
+\solution
+Matrix as printed in the book (p.~77):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$U$ & $6,\ 8$ & $2,\ 6$ & $8,\ 2$ \\ \cline{2-4}
+$M$ & $8,\ 2$ & $4,\ 4$ & $9,\ 5$ \\ \cline{2-4}
+$D$ & $8,\ 10$ & $4,\ 6$ & $6,\ 7$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Write each strategy as its payoff vector against the opponent's strategies: player~1's rows over
+columns $(L,C,R)$ are $U = (6,2,8)$, $M = (8,4,9)$, $D = (8,4,6)$; player~2's columns over rows
+$(U,M,D)$ are $L = (8,2,10)$, $C = (6,4,6)$, $R = (2,5,7)$.
+
+\textbf{Round 1} ($S^0$ = the whole game). Every pair of strategies is compared.
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Player & Pair & Componentwise comparison & Verdict \\
+\midrule
+1 & $U$ vs $M$ & $6<8$, $2<4$, $8<9$ & $U$ strictly dominated by $M$ \\
+1 & $U$ vs $D$ & $6<8$, $2<4$, $8>6$ & not ranked \\
+1 & $M$ vs $D$ & $8=8$, $4=4$, $9>6$ & $D$ only weakly dominated by $M$ \\
+2 & $L$ vs $C$ & $8>6$, $2<4$, $10>6$ & not ranked \\
+2 & $L$ vs $R$ & $8>2$, $2<5$, $10>7$ & not ranked \\
+2 & $C$ vs $R$ & $6>2$, $4<5$, $6<7$ & not ranked \\
+\bottomrule
+\end{tabular}
+\end{center}
+Only $U$ is deleted: $S_1^1 = \{M, D\}$, $S_2^1 = \{L, C, R\}$.
+
+\textbf{Round 2.} Player~2 now compares columns on the surviving rows $(M, D)$ only:
+$L = (2, 10)$, $C = (4, 6)$, $R = (5, 7)$.
+\begin{itemize}
+  \item $C$ vs $R$: $4 < 5$ and $6 < 7$, so $C$ is strictly dominated by $R$.
+  \item $L$ vs $C$: $2 < 4$ but $10 > 6$; $L$ vs $R$: $2 < 5$ but $10 > 7$. Not ranked.
+\end{itemize}
+Player~1 still faces all three columns: $M = (8,4,9)$ and $D = (8,4,6)$ tie against $L$ and $C$,
+so neither strictly dominates the other. $S_1^2 = \{M, D\}$, $S_2^2 = \{L, R\}$.
+
+\textbf{Round 3.} Player~1 on $(L, R)$: $M = (8, 9)$, $D = (8, 6)$, a tie against $L$, so no
+strict dominance. Player~2 on $(M, D)$: $L = (2, 10)$, $R = (5, 7)$, not ranked. Nothing is
+deleted and the process stops:
+\[
+  S^\infty = \{M, D\} \times \{L, R\} = \{(M,L), (M,R), (D,L), (D,R)\}.
+\]
+
+\textbf{Why no mixed strategy deletes more.} In the final game each surviving strategy is a best
+reply to some surviving strategy of the opponent: $L$ is the unique best reply to $D$
+($10 > 7$), $R$ the unique best reply to $M$ ($5 > 2$), $M$ the unique best reply to $R$
+($9 > 6$), and $D$ a best reply to $L$ (tie at 8). A strategy that is a best reply to some
+belief cannot be strictly dominated by any pure or mixed strategy, so the answer does not depend
+on whether mixtures are allowed as dominators.
+
+\textbf{Best-response marking} (underlined: the payoff is a best reply of its player to the
+other's strategy).
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$U$ & $6,\ \br{8}$ & $2,\ 6$ & $8,\ 2$ \\ \cline{2-4}
+$M$ & $\br{8},\ 2$ & $\br{4},\ 4$ & $\br{9},\ \br{5}$ \\ \cline{2-4}
+$D$ & $\br{8},\ \br{10}$ & $\br{4},\ 6$ & $6,\ 7$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Player~1: $BR_1(L) = \{M, D\}$, $BR_1(C) = \{M, D\}$, $BR_1(R) = \{M\}$. Player~2:
+$BR_2(U) = \{L\}$, $BR_2(M) = \{R\}$, $BR_2(D) = \{L\}$. Both payoffs are underlined in exactly
+two cells, $(M,R)$ and $(D,L)$: these are the pure Nash equilibria, and both lie in $S^\infty$,
+as Lecture~2's Proposition~1 (slide~16) requires.
+
+\interp Round~1 uses only player~1's rationality: $U$ is worse than $M$ whatever player~2 does.
+Round~2 uses player~2's knowledge that player~1 is rational: $C$ is a sensible reply only to
+beliefs that put weight on $U$, and once $U$ is gone $R$ beats it everywhere (Lecture~2,
+slide~7). After that, no further layer of knowledge helps. The iterated-elimination equilibrium
+is a set of four profiles, not a point; Nash equilibrium, which adds correct beliefs, cuts it to
+$(M,R)$ with payoffs $(9,5)$ and $(D,L)$ with $(8,10)$. Deleting the weakly dominated $D$ would
+single out $(M,R)$, but weak dominance is not part of IESDS and its outcome can depend on the
+order of deletion.
+
+\verify \texttt{check\_A1.py} runs IESDS with the lecture's definition and finds exactly these
+rounds (round~1: $U$; round~2: $C$; then stop), that $U$ is dominated only by $M$ and $C$ only by
+$R$, that $D$ is weakly dominated by $M$ in the final set, and, by brute force over the nine
+cells, that the pure Nash equilibria are $(M,R)$ and $(D,L)$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Deleting $D$ because ``$M$ is at least as good everywhere''. The ties against $L$ and $C$
+  make that weak dominance, which IESDS does not use.
+  \item Deleting $C$ in round~1. Against $U$ it beats $R$ ($6 > 2$); it becomes dominated only
+  after $U$ is gone, which is why the order of rounds matters for the explanation.
+  \item Reporting the answer as one profile. The question asks for the surviving profiles: all
+  four in $\{M,D\}\times\{L,R\}$.
+\end{itemize}
+
+\answer{Round~1: delete $U$ (dominated by $M$). Round~2: delete $C$ (dominated by $R$ once $U$ is
+gone). Nothing else is strictly dominated: $S^\infty = \{M, D\} \times \{L, R\}$, four profiles.
+(Of these, $(M,R)$ and $(D,L)$ are the pure Nash equilibria.)}
+\end{exsol}

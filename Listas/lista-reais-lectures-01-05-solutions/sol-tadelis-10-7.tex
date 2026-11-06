@@ -1,0 +1,126 @@
+% Solution: Tadelis (2013) Exercise 10.7 "Diluted Happiness". Input by \solitem.
+% New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Tadelis Exercise 10.7}{217--218}{Advanced}{4}
+\asked In the bartender--customer game: (a) all stage Nash equilibria; (b) all SPE when it is played
+on 10 evenings without discounting; (c) with infinite repetition, the prices $p$ at which an SPE has
+$x = 1$ and a purchase every day; (d) the values of $\delta$ for which that price range is non-empty.
+
+\method (a) Strict dominance (Tadelis \S4.1). (b) Finite repetition of a game with a unique stage
+equilibrium: Prop.~10.1, p.~192 (\S10.1). (c)--(d) Grim trigger and the one-stage deviation principle
+(Prop.~10.3, p.~198; (10.3) p.~200; (10.5) p.~202), applied to each player separately because the
+game is asymmetric, plus the minimax argument showing the punishment is the harshest available
+(\texttt{Notas/L05/L05-05-critical-discount-factor.md}, \S1 and \S5). Slides: Lecture~4, slides~21--22
+(repeated games, $G(T,\delta)$) and slide~17 (SPE). Lecture~5 has no slides yet.
+
+\solution
+\textbf{Notation.} The bartender (B) chooses $x \in [0,1]$; the customer (K) buys with probability
+$\beta \in [0,1]$, without seeing $x$, so within a day the moves are effectively simultaneous. Stage
+payoffs:
+\[
+  u_B(x,\beta) = \beta p - c x, \qquad u_K(x, \beta) = \beta (v x - p),
+\]
+with $v > c > 0$. The price $p$ is fixed by the market; take $p > 0$ (the case $p = 0$ is noted where
+it matters). The customer learns $x$ only if he buys. $\delta \in (0,1)$ is the discount factor
+(the book's ``discount rate'').
+
+\textbf{(a) Stage Nash equilibria.} For the bartender, $\partial u_B/\partial x = -c < 0$ whatever
+$\beta$ is, so $x = 0$ is strictly dominant: a diluted drink is cheaper, and the customer cannot see it
+before paying. Against $x = 0$, buying gives the customer $v\cdot 0 - p = -p < 0$ and not buying gives
+$0$, so he does not buy ($\beta = 0$). The unique Nash equilibrium is
+\[
+  (x, \beta) = (0, 0), \qquad \text{payoffs } (u_B, u_K) = (0, 0).
+\]
+(If $p = 0$ the customer is indifferent, and every $\beta \in [0,1]$ with $x = 0$ is an equilibrium,
+all with payoffs $(0,0)$.) The efficient outcome, $x = 1$ with a purchase, creates surplus $v - c > 0$
+but is not an equilibrium: this is a one-sided Prisoner's Dilemma (a trust game).
+
+\textbf{(b) Ten evenings.} The stage game has a unique Nash equilibrium, so by backward induction
+(Prop.~10.1) the unique SPE is $x = 0$ and no purchase on every evening after every history.
+Step by step: on evening~10 nothing follows, $x = 0$ is strictly dominant and so the customer does not
+buy, whatever he knows about earlier evenings. On evening $k < 10$, by induction play from $k+1$ on is
+$(0, \text{no purchase})$ whatever happens on evening $k$, so evening~$k$ is the stage game plus a
+constant, and the same argument applies. The customer's imperfect information about $x$ on days he
+does not buy does not matter, because $x = 0$ is strictly dominant at every information set.
+(With $p = 0$ the bartender's payoff on every evening is $-cx$ whatever the customer does, so he
+still chooses $x = 0$ every evening, and the customer may buy or not.) Payoffs: $(0,0)$.
+
+\textbf{(c) Infinite repetition: the price range.} Strategies (grim trigger):
+\begin{itemize}
+  \item bartender: $x = 1$ on day~1 and as long as every past day had $x = 1$ and a purchase;
+  otherwise $x = 0$ forever;
+  \item customer: buy on day~1 and as long as every past day had $x = 1$ and a purchase; otherwise
+  never buy again.
+\end{itemize}
+On the path the customer buys every day, so he observes every $x$ and any dilution is detected; a
+refusal to buy is seen by the bartender. In the punishment phase the customer no longer observes $x$,
+but nothing there depends on it.
+
+\emph{Bartender, cooperation phase.} Staying gives $p - c$ every day: $\frac{p - c}{1-\delta}$. The
+customer buys today without seeing $x$, so the best deviation is $x = 0$ (any $x \in (0,1)$ earns
+$p - cx < p$). It pays $p$ today and $0$ forever after:
+\[
+  \frac{p - c}{1 - \delta} \;\ge\; p \iff p - c \ge (1-\delta)p \iff \delta p \ge c \iff
+  p \;\ge\; \frac{c}{\delta} .
+\]
+\emph{Customer, cooperation phase.} Staying gives $v - p$ every day: $\frac{v - p}{1-\delta}$. The
+deviation, not buying, gives $0$ today and $0$ forever:
+\[
+  \frac{v - p}{1-\delta} \;\ge\; 0 \iff p \;\le\; v .
+\]
+\emph{Punishment phase.} The prescribed play is the stage equilibrium $(0, \text{no purchase})$ and
+the future does not depend on today's action, so a deviation only changes today's payoff: the
+bartender would pay $cx > 0$ for nothing, and the customer would pay $p$ for a drink with $x = 0$.
+Neither gains.
+
+So the grim-trigger profile is an SPE with $x = 1$ and a purchase every day iff
+\[
+  \frac{c}{\delta} \;\le\; p \;\le\; v .
+\]
+\emph{No other SPE does better.} The bartender can guarantee himself $0$ every day by choosing
+$x = 0$ (his minimax payoff, reached when the customer stops buying), and the customer can guarantee
+$0$ by not buying. Grim trigger already pushes each deviator to $0$, so no other punishment can widen
+the range: $[c/\delta, v]$ is the set of prices for which \emph{any} SPE with this path exists.
+
+\textbf{(d) When the range is non-empty.}
+\[
+  \frac{c}{\delta} \le v \iff \delta \ge \frac{c}{v} .
+\]
+Because $v > c$, $\frac{c}{v} < 1$, so the condition holds for all $\delta \in [\frac{c}{v}, 1)$. At
+$\delta = \frac{c}{v}$ the only price is $p = v$, which leaves the customer no surplus. For example,
+with $c = 1$, $v = 3$, $\delta = \frac12$: $p \in [2, 3]$.
+
+\interp Honest service is sustained by the value of the relationship, and that value has to come from
+the price. The bartender must earn a premium, $p - c \ge \frac{1-\delta}{\delta}c$ above cost, large
+enough that losing a regular customer outweighs the one-time saving $c$ from watering one drink. A
+tourist, on a known finite visit, is cheated on every drink and so never buys; a local, valued as a
+long-term customer, is served full drinks at a price above cost. This is the logic of
+quality-assuring prices and relational contracts (Cabral \S7.3, p.~174): with $p$ too low there is
+no rent to lose, and with $p$ above $v$ the customer would rather not buy. The more patient the
+bartender, the smaller the premium needed.
+
+\verify \texttt{check\_C\_L05.py} checks with sympy that $u_B$ falls in $x$ for every $\beta$ (so $x = 0$
+is strictly dominant) and that the bartender's condition reduces to $\delta p - c \ge 0$. For
+$(v,c) = (3,1)$ and $(10,9)$ and $\delta \in \{\frac12, \frac9{10}, \frac{c}{v}, \frac{c}{v} +
+\frac1{1000}\}$ it confirms in exact fractions that both incentive constraints hold at $p = c/\delta$
+and $p = v$ and fail at $c/\delta - \frac1{1000}$ and $v + \frac1{1000}$, or that no price works when
+$c/\delta > v$. On the grid $\delta = k/1000$ it checks that the range is non-empty exactly when
+$\delta \ge c/v$. Output: ``Tadelis 10.7: stage NE x = 0, no purchase (p > 0); SPE price range c/delta
+<= p <= v; non-empty iff delta >= c/v (checked at c/v and +-1/1000)''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Letting the customer react to $x$ on the same day. He pays before he tastes, so the
+  bartender's deviation earns the full price $p$ that day; the payoff from deviating is $p$, not $0$.
+  \item Giving only the bartender's constraint ($p \ge c/\delta$) and forgetting the customer's
+  ($p \le v$), or the reverse; the game is asymmetric and each player has his own condition.
+  \item In (b), arguing that ten evenings is ``long enough'' for reputation to work. With a known last
+  evening and a unique stage equilibrium the game unravels completely.
+\end{itemize}
+
+\answer{(a) $x=0$ is strictly dominant, so for $p>0$ the unique NE is $x=0$ and no purchase, payoffs
+$(0,0)$ (for $p=0$, $x=0$ with any purchase probability). (b) Unique SPE: $x=0$ and no purchase on all
+10 evenings after every history. (c) With grim trigger, the bartender needs $\frac{p-c}{1-\delta}\ge p$,
+i.e.\ $p\ge c/\delta$, and the customer needs $p\le v$; since these punishments are each player's
+minimax, the range is exactly $\frac{c}{\delta}\le p\le v$. (d) It is non-empty iff $\delta\ge c/v$
+(which is below 1 because $v>c$).}
+\end{exsol}

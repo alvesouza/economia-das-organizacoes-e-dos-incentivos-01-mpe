@@ -1,0 +1,84 @@
+% Solution: Gibbons (1992) Problem 2.12 (repeated-game definitions). Input by \solitem.
+% New in the 30-item list. Check: check_B_L04.py.
+\begin{exsol}{Gibbons Problem 2.12}{135}{Foundations}{1}
+\asked Define a strategy, a subgame and a subgame-perfect Nash equilibrium in a repeated game.
+
+\method The definitions of Gibbons \S2.3.B (pp.~93--95), stated for the finitely repeated game
+$G(T)$ and the infinitely repeated game $G(\infty, \delta)$; the matching definitions in the slides
+(Lecture~4, slides~21--22: repeated game, $G(T,\delta)$, ``a strategy says what to play in each
+period after each possible history'', ``each period starts a new subgame''; SPE, slide~17) and in
+Tadelis \S9.3--9.4 (pp.~178--182). Each definition is illustrated with the two-stage Prisoners'
+Dilemma of Gibbons Fig.~2.3.1 (p.~82).
+
+\solution
+\textbf{Setting.} A stage game $G = \{A_1, \dots, A_n;\ u_1, \dots, u_n\}$ is played in periods
+$t = 1, 2, \dots$; before each period all players observe all past actions. The \emph{history} through
+period $t$ is $h^t = (a^1, \dots, a^t)$, with $a^s = (a_1^s, \dots, a_n^s)$ the action profile of
+period $s$; $h^0 = \varnothing$. $H^t$ is the set of histories through $t$.
+
+\textbf{1. Strategy.} A strategy of player~$i$ specifies the action he will take in each stage, for
+each possible history of play through the previous stage (Gibbons p.~94):
+\[
+  s_i = \bigl(s_i^1, s_i^2, \dots\bigr), \qquad s_i^{t}: H^{t-1} \to A_i .
+\]
+It is a complete contingent plan, including histories that the plan itself would never produce.
+\emph{Example.} In the two-stage Prisoners' Dilemma (actions $L_i$, $R_i$) there are four
+first-stage outcomes, so a strategy has five instructions $(v, w, x, y, z)$: a first-stage action
+and a second-stage action after each of $(L_1,L_2)$, $(L_1,R_2)$, $(R_1,L_2)$, $(R_1,R_2)$
+(Gibbons p.~93). Each player has $2^5 = 32$ pure strategies. In general, with a $2\times2$ stage
+game played $T$ times, player~$i$ has $1 + 4 + \dots + 4^{T-1} = \frac{4^T - 1}{3}$ information
+sets and $2^{(4^T-1)/3}$ pure strategies.
+
+\textbf{2. Subgame.} A subgame is the piece of the game that remains to be played from any point at
+which the complete history so far is common knowledge (Gibbons p.~94). In $G(T)$ a subgame beginning
+at stage $t+1$ is the repeated game in which $G$ is played $T - t$ times, $G(T-t)$, following one
+particular history $h^t$; there is one such subgame for each $h^t \in H^t$. In $G(\infty,\delta)$ each
+subgame beginning at stage $t+1$ is identical to $G(\infty,\delta)$ itself, and again there is one for
+each history through $t$. \emph{Not} a subgame: stage $t$ taken on its own, for $t < T$; a subgame
+includes all the moves that follow its starting point (Gibbons p.~95). \emph{Example.} The
+two-stage Prisoners' Dilemma has four proper subgames after period~1 (one per first-stage outcome),
+each a one-shot Prisoners' Dilemma, plus the whole game.
+
+\textbf{3. Subgame-perfect Nash equilibrium.} A Nash equilibrium is subgame-perfect if the players'
+strategies constitute a Nash equilibrium in every subgame (Selten 1965; Gibbons p.~95; Lecture~4,
+slide~17 states it for general extensive forms: the restriction of the profile to every proper
+subgame is a Nash equilibrium of that subgame). In a repeated game this means: after \emph{every}
+history $h^t$, on or off the equilibrium path, the continuation strategies $s|_{h^t}$ form a Nash
+equilibrium of the continuation game.
+
+\emph{Example (computed).} In the two-stage Prisoners' Dilemma ($u(L,L) = (1,1)$,
+$u(L,R) = (5,0)$, $u(R,L) = (0,5)$, $u(R,R) = (4,4)$, payoffs summed over the two stages),
+enumerating all $32 \times 32$ profiles gives 16 Nash equilibria; all of them have the outcome
+$(L_1,L_2)$ in both stages, payoffs $(2,2)$, but they differ in what is planned after unreached
+first-stage outcomes. Exactly one is subgame perfect: each player plays $L$ in stage~1 and $L$ after
+every history, $(L,L,L,L,L)$, because each of the four second-stage subgames is a one-shot Prisoners'
+Dilemma whose only Nash equilibrium is $(L_1, L_2)$.
+
+\interp Three ideas carry over from Lectures~3--4 to repeated games. A strategy must say what happens
+after deviations, because those plans are what make promises and threats; a subgame starts after each
+observed history; and subgame perfection requires the punishments and rewards to be ones players would
+actually carry out. This is the toolkit for the carrots-and-sticks and folk-theorem arguments of
+Lecture~5: cooperation can be sustained only by continuation play that is itself an equilibrium.
+
+\verify \texttt{check\_B\_L04.py} enumerates the 32 strategies $(v,w,x,y,z)$ of each player in the
+two-stage Prisoners' Dilemma, computes all Nash equilibria of the $32\times32$ game and keeps those
+that play a stage Nash equilibrium in every second-stage subgame; it also checks the count
+$\frac{4^T-1}{3}$ for $T = 1, 2, 3$ and the $3^{10}$ strategies of the $3\times3$ two-stage game
+of Gibbons Fig.~2.3.3. Output line: \texttt{gibbons-2-12: 32 strategies each, 16 NE profiles, 1 SPE
+(L,L,L,L,L) each}. Gibbons prints no separate answer; the definitions are those of pp.~94--95.
+
+\mistakes
+\begin{itemize}
+  \item Defining a strategy as a sequence of actions, one per period (``play $b$, then $c$''): it must
+  be contingent on the history.
+  \item Calling the stage game played in period $t$ a subgame: a subgame includes all later periods.
+  \item Checking Nash behavior only on the equilibrium path: subgame perfection is about every
+  history, including those after deviations.
+\end{itemize}
+
+\answer{A strategy assigns an action in every period to every possible history of play through the
+previous period. A subgame is the remainder of the repeated game after a given history (in $G(T)$,
+the game $G(T-t)$ after one history $h^t$; in $G(\infty,\delta)$, a copy of the whole game). A
+subgame-perfect Nash equilibrium is a strategy profile whose restriction to every subgame, after
+every history, is a Nash equilibrium of that subgame.}
+\end{exsol}

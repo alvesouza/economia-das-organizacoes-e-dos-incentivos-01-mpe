@@ -1,0 +1,100 @@
+% Solution: Cabral (2017) Exercise 7.13 "Finitely repeated game". Input by \solitem.
+% New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Cabral Exercise 7.13}{182}{Foundations}{1}
+\asked Prove that when Cabral's Prisoner's Dilemma (Figure~7.1) is repeated a known number $T$ of
+times, the only subgame-perfect equilibrium (SPE) has $(B,R)$ played in every period.
+
+\method Backward induction on the finitely repeated game $G(T,\delta)$ (Lecture~4, slide~22: each
+period starts a new subgame; slide~17: an SPE is a Nash equilibrium in every subgame; slides~9--10:
+backward induction). The result is Tadelis Prop.~10.1 (\S10.1, p.~192), a special case of
+Prop.~9.3 (\S9.4, p.~181): if the stage game has a unique Nash equilibrium, the finitely repeated
+game has a unique SPE, the stage equilibrium in every period after every history. Cabral sets up
+the repeated Prisoner's Dilemma in \S7.3 (pp.~172--174). The proof is an induction on the number of
+periods left.
+
+\solution
+\textbf{Notation.} Periods $t = 1, \dots, T$; $h^{t-1}$ is the history of action profiles before
+period~$t$; player~$i$'s payoff is $\sum_{t=1}^{T} \delta^{t-1} u_i(a^t)$ with $\delta \in (0,1]$
+(slide~22). Stage payoffs (Figure~7.1, player~1 first):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$T$ & $5,\ 5$ & $3,\ \br{6}$ \\ \cline{2-3}
+$B$ & $\br{6},\ 3$ & $\br{4},\ \br{4}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: the stage game.} For player~1, $B$ beats $T$ against both columns: $6 > 5$ against
+$L$ and $4 > 3$ against $R$. So $B$ is strictly dominant; by symmetry $R$ is strictly dominant for
+player~2. The stage game therefore has exactly one Nash equilibrium, $(B,R)$ with payoffs $(4,4)$,
+and no mixed equilibrium (a strictly dominated action gets zero weight in any equilibrium).
+
+\textbf{Step 2: the last period, $t = T$.} Take any history $h^{T-1}$. The payoffs already earned,
+$\sum_{t<T}\delta^{t-1}u_i(a^t)$, are fixed and nothing follows period~$T$. So the subgame after
+$h^{T-1}$ is the stage game with every payoff multiplied by $\delta^{T-1} > 0$ and a constant added.
+Neither operation changes best replies, so the only Nash equilibrium of that subgame is $(B,R)$.
+An SPE must therefore play $(B,R)$ in period~$T$ after \emph{every} history.
+
+\textbf{Step 3: the induction step.} Suppose that in every SPE, $(B,R)$ is played in periods
+$k+1, \dots, T$ after every history. Take any history $h^{k-1}$. Whatever is played in period~$k$,
+the continuation from $k+1$ on is $(B,R)$ in each of the $T - k$ remaining periods, worth
+\[
+  W \;=\; \sum_{t=k+1}^{T} \delta^{t-1} \cdot 4 ,
+\]
+the same constant for both players and independent of the period-$k$ action. Period~$k$'s subgame
+therefore reduces to the stage game scaled by $\delta^{k-1}$ plus the constant $W$ (plus the sunk
+past payoffs). Its unique Nash equilibrium is again $(B,R)$. The claim holds for period $k$ after
+every history.
+
+\textbf{Step 4: conclusion.} By induction from $k = T$ down to $k = 1$, the unique SPE is: each
+player plays $B$ (player~1) and $R$ (player~2) in every period after every history. Its payoff is
+$4\sum_{t=1}^{T}\delta^{t-1}$ for each player. The argument uses neither the value of $\delta$ nor
+the value of $T$, only that $T$ is finite and known.
+
+\textbf{One-stage deviation check.} At any history in period~$k$, a single deviation to $T$ (or
+$L$) changes only the period-$k$ payoff, from 4 to 3 if the opponent plays $R$, while the
+continuation stays $(B,R)$. The deviation loses $\delta^{k-1}$, so no one-stage deviation pays
+(Tadelis Thm.~9.1, p.~185).
+
+\textbf{A stronger statement (Nash equilibrium paths).} Even without subgame perfection, every
+Nash equilibrium of the repeated game has the \emph{path} $(B,R)$ in every period. Player~1 can
+always play $B$, which gives him at least $4$ per period (row $B$ pays 6 or 4), and $4$ is also
+what $(B,R)$ pays. Going backwards along the path: if the path had $T$ (or $L$) in some period, the
+player could switch to $B$ (or $R$) there and in every later period, earn one more in that period,
+and get at least 4 later, which is what the path gives later by the induction. The punishment
+threats that could deter this are worth nothing, because the minimax payoff, 4, equals the
+equilibrium payoff. \texttt{check\_C\_L05.py} confirms this for $T=2$ by brute force.
+
+\interp Cooperation in a finitely repeated game needs a threat for the future, and here there is
+none. In the last period there is no future, so the players defect. In the second-to-last period
+the last period's outcome is already fixed, so there is again nothing to protect, and the argument
+unravels back to period~1. Cabral's point in \S7.3 is that an \emph{indefinitely} repeated game,
+one that ends after each period with probability $1-\alpha$ (Cabral's notation, p.~172) and so has no known last period, is needed for
+retaliation to sustain $(T,L)$. A known end date, however distant, removes it.
+
+\verify \texttt{check\_C\_L05.py} checks that $B$ and $R$ are strictly dominant and that $(B,R)$ is
+the unique Nash equilibrium of the stage game and of the folded game with any added constant. For
+$T = 2$ it enumerates all $32 \times 32 = 1024$ pure strategy profiles (a period-1 action and a map
+from the four period-1 outcomes to a period-2 action) at $\delta \in \{\frac1{10}, \frac12, 1\}$. It
+finds exactly one SPE (always $B$, always $R$), and every Nash equilibrium has the path
+$(B,R),(B,R)$. Output: ``Cabral 7.13: unique stage NE (B,R); T=2 brute force (1024 profiles x 3
+deltas): 1 SPE, all NE paths (B,R),(B,R)''. Cabral prints no answer; the result matches Tadelis
+Prop.~10.1.
+
+\mistakes
+\begin{itemize}
+  \item Showing only the outcome, ``$(B,R)$ every period'', and not the strategy ``$(B,R)$ after
+  \emph{every} history''. An SPE prescribes play off the path too, and the induction must cover every
+  history.
+  \item Arguing that $\delta$ large enough or $T$ long enough allows cooperation. With a known last
+  period and a unique stage equilibrium, neither matters.
+  \item Folding the game forward (``if they cooperate today they will cooperate tomorrow'') instead
+  of starting at period~$T$. Backward induction runs from the end.
+\end{itemize}
+
+\answer{$B$ and $R$ are strictly dominant, so $(B,R)$ is the unique stage equilibrium. In period
+$T$ every subgame is the stage game, so $(B,R)$ is played after every history; given that, the
+continuation from any period $k$ on does not depend on period-$k$ actions, so period $k$ is again
+the stage game plus a constant and $(B,R)$ is played. By induction the unique SPE plays $(B,R)$ in
+every period after every history, for any $T$ and any $\delta$.}
+\end{exsol}

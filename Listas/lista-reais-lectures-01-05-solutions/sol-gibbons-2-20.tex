@@ -1,0 +1,134 @@
+% Solution: Gibbons (1992) Problem 2.20 (Rubinstein's strategies are subgame-perfect).
+% Input by \solitem. New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Gibbons Problem 2.20}{137--138}{Advanced}{5}
+\asked Show that the stationary strategies given in the problem (player~1 offers $(s^*, 1-s^*)$ and
+accepts iff $s \ge \delta s^*$; player~2 offers $(1-s^*, s^*)$ and accepts iff $1-s \ge \delta s^*$,
+with $s^* = 1/(1+\delta)$) are first a Nash equilibrium and then a subgame-perfect equilibrium of the
+infinite-horizon Rubinstein game.
+
+\method Nash equilibrium: bound each player's payoff over every possible agreement date against
+the opponent's fixed strategy. Subgame perfection: the one-stage deviation principle (Tadelis
+Thm.~9.1, p.~185; its infinite-horizon form, Prop.~10.3, p.~198). It applies because payoffs are
+discounted and bounded, so a deviation's effect far in the future is negligible. Because the
+strategies ignore history, there are only four kinds of subgame to check. Model: Gibbons
+\S2.1.D, pp.~68--71 (the infinite-horizon value $1/(1+\delta)$ and the Shaked--Sutton argument,
+pp.~70--71); Tadelis \S11.3, pp.~228--229 (eqs.~(11.4)--(11.5)). Slides: Lecture~4, slide~17 (SPE:
+Nash equilibrium in \emph{every} subgame) and slides~9--10 (backward induction). Notation as in
+\texttt{Notas/L04/L04-07-rubinstein-infinite-horizon.md}.
+
+\solution
+\textbf{Notation and two identities.} $s$ is always player~1's share. In period $t$ an agreement
+$(s, 1-s)$ is worth $\delta^{t-1}s$ to player~1 and $\delta^{t-1}(1-s)$ to player~2; perpetual
+disagreement gives $(0,0)$. Player~1 proposes in odd periods, player~2 in even ones. With
+$s^* = \frac1{1+\delta}$,
+\begin{equation}
+  1 - s^* = \frac{\delta}{1+\delta} = \delta s^*, \qquad 1 - \delta s^* = \frac{1}{1+\delta} = s^* .
+  \label{eq:gibbons-2-20-id}
+\end{equation}
+So player~2's offer $(1-s^*, s^*)$ gives player~1 exactly $\delta s^*$, his acceptance threshold, and
+player~1's offer gives player~2 exactly $1 - s^* = \delta s^*$, her threshold. On the path, player~1
+offers $(s^*, 1-s^*)$ in period~1 and player~2 accepts: payoffs $(s^*, 1-s^*) =
+\bigl(\frac1{1+\delta}, \frac\delta{1+\delta}\bigr)$.
+
+\textbf{Part 1: Nash equilibrium.}
+\emph{Player~1's best response.} Fix player~2's strategy. Whatever player~1 does, any agreement
+happens either in an odd period $t$, on an offer of player~1 that player~2 accepts, so
+$1 - s \ge \delta s^*$, i.e.\ $s \le 1 - \delta s^* = s^*$ by \eqref{eq:gibbons-2-20-id}; or in an even
+period $t$, on player~2's only offer, $s = 1 - s^* = \delta s^*$. Player~1's payoff is therefore at most
+\[
+  \max\Bigl\{\ \max_{t\ \text{odd}} \delta^{t-1}s^*,\ \ \max_{t\ \text{even}} \delta^{t-1}\,\delta s^*,\
+  \ 0\ \Bigr\} \;=\; \max\{s^*,\ \delta^2 s^*,\ 0\} = s^* ,
+\]
+reached at $t=1$, and his strategy gets exactly $s^*$. It is a best response.
+
+\emph{Player~2's best response.} Fix player~1's strategy. Agreement in an odd period $t$ is on
+player~1's only offer, giving player~2 $\delta^{t-1}(1 - s^*)$. Agreement in an even period $t$ needs an
+offer player~1 accepts, $s \ge \delta s^*$, so player~2 gets at most $\delta^{t-1}(1 - \delta s^*) =
+\delta^{t-1}s^*$. The best she can do is
+\[
+  \max\{\,1 - s^*\ (t=1),\ \ \delta s^*\ (t=2),\ \text{smaller values later}\,\} = 1 - s^* = \delta s^* ,
+\]
+the two candidates being equal by \eqref{eq:gibbons-2-20-id}. Her strategy (accept in period~1) gets
+$1 - s^*$, so it is a best response. She is indifferent between accepting now and rejecting to
+propose next period, which is the property that pins down $s^*$. So the strategies form a Nash
+equilibrium.
+
+\textbf{Part 2: subgame perfection.} The strategies do not depend on history, so a subgame is
+characterized only by whose move it is and, for a responder, by the offer on the table. Up to the
+common factor $\delta^{t-1}$ there are four types:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{player~1 about to propose} (odd period);
+  \item \emph{player~2 responding to an arbitrary offer $(s, 1-s)$} (odd period);
+  \item \emph{player~2 about to propose} (even period);
+  \item \emph{player~1 responding to an arbitrary offer $(s, 1-s)$} (even period).
+\end{enumerate}
+\emph{Continuation values.} Starting a type-(i) subgame, the strategies give agreement at once on
+$(s^*, 1-s^*)$. Starting a type-(iii) subgame, they give agreement at once on $(1-s^*, s^*)$: player~2
+gets $s^*$ and player~1 gets $1-s^* = \delta s^*$. By the one-stage deviation principle it is enough
+to check single deviations at each type.
+
+\emph{(ii) Player~2 responding to $(s, 1-s)$.} Accepting gives $1-s$. Rejecting leads to a type-(iii)
+subgame next period, where she gets $s^*$, worth $\delta s^*$ now. Accepting is optimal iff
+$1 - s \ge \delta s^*$, which is exactly her rule (at equality she is indifferent and accepting is a best
+reply). No one-stage deviation pays, for \emph{every} offer $s$, on or off the path.
+
+\emph{(iv) Player~1 responding to $(s, 1-s)$.} Accepting gives $s$. Rejecting leads to a type-(i)
+subgame next period, worth $\delta s^*$. Accepting is optimal iff $s \ge \delta s^*$: his rule.
+
+\emph{(i) Player~1 proposing.} If he offers $s \le s^*$, player~2 accepts ($1 - s \ge 1 - s^* = \delta
+s^*$) and he gets $s \le s^*$. If he offers $s > s^*$, player~2 rejects; next period player~2 offers
+$(\delta s^*, \cdot)$, he accepts, and he gets $\delta \cdot \delta s^* = \delta^2 s^* < s^*$. The best
+offer is $s = s^*$, as prescribed.
+
+\emph{(iii) Player~2 proposing.} Symmetrically, offering player~1 $s \ge \delta s^*$ is accepted and
+leaves her $1 - s \le 1 - \delta s^* = s^*$; offering less is rejected; player~1 then proposes $(s^*, 1-s^*)$, she
+accepts, and she gets $\delta(1 - s^*) = \delta^2 s^* < s^*$. Her best offer is $s = 1 - s^* = \delta s^*$, as prescribed.
+
+No player gains from a single deviation in any subgame, so by the one-stage deviation principle the
+strategy profile is a Nash equilibrium in every subgame: it is subgame perfect.
+
+\textbf{Why $s^*$ and not another number.} The two indifference conditions are $1 - s_1 = \delta(1 -
+s_2)$ (player~2 indifferent in odd periods) and $s_2 = \delta s_1$ (player~1 indifferent in even
+periods). Substituting, $s_1 = 1 - \delta(1 - \delta s_1)$, whose only solution is $s_1 =
+\frac{1}{1+\delta} = s^*$. The same fixed point appears in Gibbons's backward-induction argument,
+pp.~70--71. The problem does not ask for uniqueness; Rubinstein (1982), via the Shaked--Sutton
+argument in Gibbons, shows this is the \emph{only} SPE.
+
+\interp With an infinite horizon there is no last period to anchor backward induction, but the game
+looks the same every time a given player proposes. Each proposer offers the responder exactly what
+the responder could get by waiting one period and proposing himself, $\delta s^*$, and keeps the rest.
+The first proposer's advantage is $s^* - (1 - s^*) = \frac{1-\delta}{1+\delta}$, the cost of one period of
+delay, and it vanishes as $\delta \to 1$, where the split tends to $(\frac12, \frac12)$. Off the path the
+strategies tell each responder to accept anything at least as good as the value of waiting: these
+threats are credible, which is exactly what subgame perfection requires beyond Nash.
+
+\verify \texttt{check\_C\_L05.py} verifies the identities \eqref{eq:gibbons-2-20-id} and the unique
+solution $s^* = 1/(1+\delta)$ of $s = 1 - \delta(1 - \delta s)$ with sympy. Then, for $\delta \in \{\frac12,
+\frac34, \frac9{10}, \frac{99}{100}\}$ in exact fractions, it checks: each responder accepts at the
+threshold and switches exactly at threshold $\pm\frac1{1000}$; the proposers' best one-stage offers,
+on a grid of step $\frac1{1000}$ plus $s^*\pm\frac1{1000}$, are the prescribed ones, and a rejected offer
+yields $\delta^2 s^*$; and the best agreement date against the opponent's strategy is $t = 1$ for player~1
+and $t = 1$ (tied with $t = 2$) for player~2, over 59 periods. Output: ``Gibbons 2.20: s* = 1/(1+delta),
+1 - s* = delta s*; one-stage deviations by proposers and responders unprofitable for delta in \{1/2,
+3/4, 9/10, 99/100\}; cutoffs +-1/1000 pass''. Gibbons prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Proving only the Nash part, or checking only on-path behaviour. Subgame perfection needs the
+  responder's rule to be optimal after \emph{every} offer, including offers never made.
+  \item Valuing a rejection by the responder's share of the \emph{current} offer, or forgetting to
+  discount: rejecting today is worth $\delta s^*$ (the proposer's share next period, one period later),
+  not $s^*$.
+  \item Applying the one-stage deviation principle without saying why it holds in an infinite game:
+  it needs discounting with bounded payoffs (continuity at infinity).
+\end{itemize}
+
+\answer{With $s^* = \frac1{1+\delta}$ we have $1 - s^* = \delta s^*$ and $1 - \delta s^* = s^*$. Nash:
+against player~2's strategy, player~1 can get at most $s^*$ (odd periods) or $\delta^2 s^*$ (even
+periods), and his strategy gets $s^*$; against player~1's strategy, player~2 can get at most $1 - s^* =
+\delta s^*$, and accepting in period~1 gets it. SPE: in each of the four subgame types (proposer 1,
+responder 2, proposer 2, responder 1), no one-stage deviation pays, because each responder accepts
+exactly when the offer is worth at least waiting ($\delta s^*$) and each proposer's best offer is the
+prescribed one (a rejected offer gives $\delta^2 s^* < s^*$). By the one-stage deviation principle the
+profile is subgame perfect, with immediate agreement on $(\frac1{1+\delta}, \frac\delta{1+\delta})$.}
+\end{exsol}

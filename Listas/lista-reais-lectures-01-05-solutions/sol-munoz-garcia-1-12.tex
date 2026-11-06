@@ -1,0 +1,114 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 1, Exercise 12 "IDSDS and Rationality".
+% Input by \solitem. Reused from lista-reais-lectures-01-04-solutions, deepened. Check: check_A1.py.
+\begin{exsol}{\MG{} Ch.~1, Exercise 12}{23}{Exam}{2}
+\asked For the $3\times3$ game of Fig.~1.30, find dominant and dominated strategies, then what is
+deleted under rationality alone and under common knowledge of rationality.
+
+\method Strict dominance and dominant strategies (Lecture~1, slides~23 and~25; Tadelis \S4.1,
+pp.~59--61) and the epistemic reading of IESDS (Lecture~2, slide~7;
+Tadelis \S4.2.1, pp.~63--65). Round~1 of IESDS uses only each player's own rationality; round~2
+adds ``each knows the other is rational''; round~$k$ adds $k-1$ layers of that knowledge. Part~(c)
+stops after round~1, part~(d) runs IESDS to the end (Lecture~1, slide~29).
+
+\solution
+Matrix from the book (p.~23):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$B$}\\ \cline{2-4}
+$F$ & $0,\ 5$ & $2,\ 4$ & $2,\ 3$ \\ \cline{2-4}
+$C$ & $2,\ 3$ & $0,\ 5$ & $3,\ 2$ \\ \cline{2-4}
+$B$ & $5,\ 0$ & $2,\ 4$ & $2,\ 3$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Payoff vectors: player~1's rows over columns $(F,C,B)$ are $F = (0,2,2)$, $C = (2,0,3)$,
+$B = (5,2,2)$; player~2's columns over rows $(F,C,B)$ are $F = (5,3,0)$, $C = (4,5,4)$,
+$B = (3,2,3)$.
+
+\textbf{Best-response marking} (used in (a) and at the end).
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$B$}\\ \cline{2-4}
+$F$ & $0,\ \br{5}$ & $\br{2},\ 4$ & $2,\ 3$ \\ \cline{2-4}
+$C$ & $2,\ 3$ & $0,\ \br{5}$ & $\br{3},\ 2$ \\ \cline{2-4}
+$B$ & $\br{5},\ 0$ & $\br{2},\ \br{4}$ & $2,\ 3$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+$BR_1(F) = \{B\}$, $BR_1(C) = \{F, B\}$, $BR_1(B) = \{C\}$; $BR_2(F) = \{F\}$, $BR_2(C) = \{C\}$,
+$BR_2(B) = \{C\}$.
+
+\textbf{(a) Strictly dominant strategies.} A strictly dominant strategy would be the unique best
+reply to every strategy of the opponent. Player~1's best reply changes with the column ($B$, then
+$\{F,B\}$, then $C$), and player~2's changes with the row ($F$, then $C$). Neither player has a
+strictly dominant strategy.
+
+\textbf{(b) Strictly dominated strategies.} All pairs:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Player & Pair & Componentwise comparison & Verdict \\
+\midrule
+1 & $F$ vs $C$ & $0<2$, $2>0$, $2<3$ & not ranked \\
+1 & $F$ vs $B$ & $0<5$, $2=2$, $2=2$ & $F$ only weakly dominated by $B$ \\
+1 & $C$ vs $B$ & $2<5$, $0<2$, $3>2$ & not ranked \\
+2 & $F$ vs $C$ & $5>4$, $3<5$, $0<4$ & not ranked \\
+2 & $F$ vs $B$ & $5>3$, $3>2$, $0<3$ & not ranked \\
+2 & $C$ vs $B$ & $4>3$, $5>2$, $4>3$ & $B$ strictly dominated by $C$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+No mixed strategy dominates anything else either: $F$, $C$, $B$ of player~1 and $F$, $C$ of
+player~2 are each a best reply to some opponent strategy (marking above). The only strictly
+dominated strategy is player~2's $B$.
+
+\textbf{(c) Rationality, no common knowledge.} Each player deletes his own strictly dominated
+strategies but does not use the fact that the other does the same. Player~2 drops $B$; player~1
+has nothing to drop and still evaluates his rows against all three columns. The surviving
+profiles are
+\[
+  \{F, C, B\} \times \{F, C\} = \{(F,F), (F,C), (C,F), (C,C), (B,F), (B,C)\}.
+\]
+
+\textbf{(d) Common knowledge of rationality.}
+\begin{itemize}
+  \item Round~2: player~1 knows player~2 is rational, so he compares rows on columns $\{F,C\}$
+  only: $F = (0, 2)$, $C = (2, 0)$, $B = (5, 2)$. $C$ vs $B$: $2 < 5$, $0 < 2$, so $C$ is strictly
+  dominated by $B$. $F$ vs $B$: $0 < 5$, $2 = 2$, only weak. $F$ vs $C$: not ranked. Player~2
+  still faces all three rows; $F$ vs $C$ is not ranked. $S_1^2 = \{F,B\}$, $S_2^2 = \{F,C\}$.
+  \item Round~3: player~2 on rows $(F, B)$: $F = (5, 0)$, $C = (4, 4)$, not ranked. Player~1 on
+  columns $(F,C)$: $F = (0,2)$, $B = (5,2)$, only weak. Stop.
+\end{itemize}
+\[
+  S^\infty = \{F, B\} \times \{F, C\} = \{(F,F), (F,C), (B,F), (B,C)\}.
+\]
+\emph{Beyond what is asked.} In the marking, both payoffs are underlined only in $(B,C)$: it is
+the unique pure-strategy Nash equilibrium, with payoffs $(2,4)$, and it lies in $S^\infty$.
+
+\interp Rationality alone removes only strategies that are bad against \emph{everything}.
+Player~1's $C$ is the best reply to player~2's $B$, so it can be discarded only by someone who knows
+that player~2 will not play $B$, that is, by someone who uses player~2's rationality. Each extra
+layer of ``I know that you know'' can remove more strategies; here the second layer removes $C$
+and the third removes nothing. The difference between (c) and (d) is the difference between
+$S^1$ and $S^\infty$ in the slides.
+
+\verify \texttt{check\_A1.py} checks the dominance statements in (a)--(b), that IESDS removes $B$
+for player~2 in round~1 and $C$ for player~1 in round~2, that $F$ is only weakly dominated by $B$,
+and that $(B,C)$ is the only pure Nash equilibrium. The book's answer (pp.~23--26) agrees with
+(a)--(d). Its text for (b) and (d) describes the comparisons loosely (for example, it says
+player~1 deletes $C$ because his payoff ``is higher from $B$ \dots when player 2 plays $F$''), but
+the deletions and the final sets are the same as ours. The figure caption ``three-players game''
+is a slip in the book: the game has two players.
+
+\mistakes
+\begin{itemize}
+  \item Deleting player~1's $F$ in (b) because $B$ is never worse. The ties against $C$ and $B$
+  make it weak dominance only; $F$ survives IESDS.
+  \item In (c), letting player~1 compare rows only on $\{F, C\}$. That already uses player~2's
+  rationality, which is the step (c) forbids.
+  \item Thinking that ``no dominant strategy'' implies ``no dominated strategy'': (a) and (b) are
+  separate questions, and player~2's $B$ is dominated although no strategy is dominant.
+\end{itemize}
+
+\answer{(a) None. (b) Only player~2's $B$ (strictly dominated by $C$). (c) Rationality alone:
+$\{F, C, B\} \times \{F, C\}$, six profiles. (d) With common knowledge, player~1 then drops $C$
+(dominated by $B$ on $\{F, C\}$): $S^\infty = \{F, B\} \times \{F, C\}$, four profiles.}
+\end{exsol}

@@ -1,0 +1,90 @@
+% Solution: Tadelis (2013) Exercise 6.8 "Market Entry". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions (Tadelis 6.8), deepened. Check: check_A2.py.
+\begin{exsol}{Tadelis Exercise 6.8}{125}{Exam}{4}
+\asked Find all pure Nash equilibria of the three-firm entry game, and the symmetric mixed equilibrium.
+
+\method Pure NE by checking unilateral deviations (Tadelis Def.~5.1, p.~80); mixed NE by the
+principle of indifference (Tadelis Prop.~6.1, p.~108; Lecture~2, slides~44--46), here with three
+players.
+
+\solution
+\textbf{Notation.} $I = \{1,2,3\}$, $S_i = \{E, O\}$ (enter, stay out). With $n$ entrants an
+entrant's payoff is $\pi(n) = 150/n - 62$; staying out pays $0$:
+\[
+  \pi(1) = 150 - 62 = 88, \qquad \pi(2) = 75 - 62 = 13, \qquad \pi(3) = 50 - 62 = -12 .
+\]
+
+\textbf{(a) Pure equilibria.} Classify profiles by the number $n$ of entrants.
+\begin{itemize}
+  \item $n = 0$: any firm that enters gets $\pi(1) = 88 > 0$. Not NE.
+  \item $n = 1$: an outsider that enters gets $\pi(2) = 13 > 0$. Not NE.
+  \item $n = 2$: each entrant gets $13 > 0$, so it does not want to leave; the outsider would get
+  $\pi(3) = -12 < 0$ by entering, so it stays out. NE.
+  \item $n = 3$: each gets $-12 < 0$ and would rather stay out. Not NE.
+\end{itemize}
+The pure NE are the three profiles in which exactly two firms enter:
+$(E,E,O)$, $(E,O,E)$, $(O,E,E)$, each with payoffs $13$ to the entrants and $0$ to the outsider.
+
+\textbf{(b) Symmetric mixed equilibrium.} Let each firm enter with probability $p$. The pure
+symmetric profiles are not NE (by (a), $p = 0$ and $p = 1$ fail), so $p \in (0,1)$ and every firm
+must be indifferent between $E$ and $O$. Fix firm~$i$. The number of other entrants is $0$, $1$ or
+$2$ with probabilities $(1-p)^2$, $2p(1-p)$, $p^2$, so
+\[
+  u_i(E, p) = (1-p)^2\cdot 88 + 2p(1-p)\cdot 13 + p^2\cdot(-12), \qquad u_i(O, p) = 0. \tag{1}
+\]
+Expanding the first expression in (1):
+\[
+  88(1 - 2p + p^2) + 26(p - p^2) - 12p^2 = 88 - 176p + 88p^2 + 26p - 26p^2 - 12p^2
+  = 88 - 150p + 50p^2 .
+\]
+Indifference, $u_i(E,p) = 0$, gives
+\[
+  50p^2 - 150p + 88 = 0 \;\Longleftrightarrow\; 25p^2 - 75p + 44 = 0,
+\]
+\[
+  p = \frac{75 \pm \sqrt{75^2 - 4\cdot 25\cdot 44}}{2\cdot 25}
+    = \frac{75 \pm \sqrt{5625 - 4400}}{50} = \frac{75 \pm 35}{50} \in \Big\{\frac45,\ \frac{11}{5}\Big\}.
+\]
+Only $p = 4/5$ is a probability. The symmetric mixed NE has each firm entering with probability
+$p^* = \tfrac45$, and each firm's expected payoff is $0$ (the payoff of staying out).
+
+Check: at $p = 0.8$, $(0.2)^2\cdot 88 + 2(0.8)(0.2)\cdot 13 + (0.8)^2\cdot(-12)
+= 3.52 + 4.16 - 7.68 = 0$. Why only interior $p$ can work: $u_i(E,p) = 88 - 150p + 50p^2$ is
+positive for $p < \tfrac45$ (every firm would enter for sure) and negative for $p \in (\tfrac45, 1]$
+(every firm would stay out), so $p^* = \tfrac45$ is the only symmetric equilibrium.
+
+\textbf{The number of entrants at $p^* = \tfrac45$.} It is binomial with $n = 3$:
+$\Pr(0) = 0.2^3 = 0.008$, $\Pr(1) = 3(0.8)(0.2)^2 = 0.096$, $\Pr(2) = 3(0.8)^2(0.2) = 0.384$,
+$\Pr(3) = 0.8^3 = 0.512$; the expected number of entrants is $3p^* = 2.4$.
+
+\textbf{Beyond what is asked: an asymmetric mixed equilibrium.} Let firm~1 enter for sure and
+firms~2 and~3 enter with probability $r$ each. Firm~2 faces one sure entrant and firm~3 mixing, so
+it is indifferent when $(1-r)\cdot 13 + r\cdot(-12) = 0$, i.e.\ $r = \tfrac{13}{25}$; the same holds
+for firm~3. Firm~1 must prefer entering: $(1-r)^2\cdot 88 + 2r(1-r)\cdot 13 + r^2\cdot(-12)
+= 88 - 150r + 50r^2 = 88 - 78 + 13.52 = 23.52 > 0$ at $r = 0.52$. So firm~1 entering and
+firms~2,~3 entering with probability $\tfrac{13}{25}$ (and the two permutations) are also Nash
+equilibria.
+
+\interp Entry is a coordination problem over \emph{who} enters: the market supports two firms, not
+three. The pure equilibria solve it but need the firms to know who stays out. Without such a
+convention, the symmetric equilibrium has each firm entering with probability $0.8$. Then all three
+enter with probability $0.8^3 = 0.512$ and lose money, and the expected profit of the industry is
+zero: all the rents of the two-firm market are dissipated by miscoordination.
+
+\verify \texttt{check\_A2.py} brute-forces the $2^3$ profiles (pure NE are exactly the three
+two-entrant profiles), solves the indifference condition with sympy (roots $\tfrac45$ and
+$\tfrac{11}{5}$), and checks that at $p = \tfrac45$ entering and staying out both pay $0$ while
+$u_i(E,p)$ is positive for $p < \tfrac45$ and negative for $p \in (\tfrac45, 1]$. No answer in the
+book.
+
+\mistakes
+\begin{itemize}
+  \item Using a binomial over \emph{three} firms in the indifference condition. Firm $i$'s payoff depends on how many of the \emph{other two} enter; the firm's own choice is what is being compared.
+  \item Keeping the root $p = \tfrac{11}{5}$, or discarding $\tfrac45$ because the expected payoff is zero. A zero expected payoff is exactly what indifference with staying out requires.
+  \item Concluding that the symmetric equilibrium is the only mixed one. The question restricts attention to it; asymmetric mixed equilibria exist (see above).
+\end{itemize}
+
+\answer{(a) The three profiles with exactly two entrants, $(E,E,O)$, $(E,O,E)$, $(O,E,E)$: each
+entrant earns $75 - 62 = 13$, and the outsider would earn $50 - 62 = -12$ by entering. (b) Each
+firm enters with probability $p^* = \tfrac45$ (from $50p^2 - 150p + 88 = 0$); expected payoff $0$.}
+\end{exsol}

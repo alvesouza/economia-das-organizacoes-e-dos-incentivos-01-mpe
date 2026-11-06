@@ -1,0 +1,112 @@
+% Solution: Tadelis (2013) Exercise 10.3 "Not-So-Grim Trigger". Input by \solitem.
+% New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Tadelis Exercise 10.3}{215--216}{Exam level}{3}
+\asked In Tadelis's repeated Prisoner's Dilemma, find the critical discount factor for $(M,m)$
+every period under a length-$T$ punishment, (a) for $T = 1$ and (b) for $T = 2$, and (c) compare the
+two and explain the difference.
+
+\method Length-$T$ punishments checked with the one-stage deviation principle (Prop.~10.3,
+p.~198), against the grim-trigger benchmark (10.3), p.~200 ($\delta \ge \frac14$ in this game) and
+(10.5), p.~202. The cooperation-phase test compares the two streams only over the periods in which
+they differ. Lecture~5 has no slides yet; the repeated-game set-up is Lecture~4, slides~21--22, and
+the SPE definition is slide~17. Notation as in \texttt{Notas/L05/L05-04-grim-trigger-spe.md} and
+\texttt{L05-05-critical-discount-factor.md}.
+
+\solution
+\textbf{Notation.} Stage payoffs: $(M,m) = (4,4)$, $(M,f) = (-1,5)$, $(F,m) = (5,-1)$, $(F,f) =
+(1,1)$. $F$ and $f$ are strictly dominant ($5 > 4$, $1 > -1$), so $(F,f)$ with $(1,1)$ is the unique
+stage equilibrium. Strategies with a length-$T$ punishment:
+\begin{itemize}
+  \item \emph{cooperation phase}: play $M$ (player~1) and $m$ (player~2);
+  \item \emph{punishment phase}: after any deviation from the prescribed actions, play $(F,f)$ for
+  $T$ periods, then return to the cooperation phase (a deviation during the punishment restarts it).
+\end{itemize}
+Present values are measured from the period of the deviation (period 0).
+
+\textbf{Step 1: the general cooperation-phase condition.} Cooperating gives $4$ in periods
+$0, 1, \dots, T$; deviating gives $5$ in period 0 and $1$ in periods $1, \dots, T$. From period $T+1$
+on both streams give $4$ forever. So no deviation pays iff
+\[
+  4 + 4\sum_{j=1}^{T}\delta^j \;\ge\; 5 + \sum_{j=1}^{T}\delta^j
+  \iff 3\sum_{j=1}^{T}\delta^j \;\ge\; 1 .
+\]
+The one-period gain is $5 - 4 = 1$ and each punishment period costs $4 - 1 = 3$.
+
+\textbf{Step 2: the punishment phase.} The prescribed action $F$ is a stage best reply to $f$.
+Deviating to $M$ pays $-1 < 1$ today and does not shorten the punishment (with the restart rule it
+lengthens it, and punishment periods pay $1 < 4$). So no one-stage deviation pays in the punishment
+phase, for any $\delta$ and any $T$. Only Step~1 binds.
+
+\textbf{(a) $T = 1$.} Using present values, as the book's hint suggests:
+\[
+  \frac{4}{1-\delta} \;\ge\; 5 + \delta\cdot 1 + \frac{4\delta^2}{1-\delta}.
+\]
+Multiplying by $1 - \delta > 0$: $4 \ge 5(1-\delta) + \delta(1-\delta) + 4\delta^2 = 5 - 4\delta +
+3\delta^2$, i.e.\ $3\delta^2 - 4\delta + 1 \le 0$, i.e.\ $(3\delta - 1)(\delta - 1) \le 0$. With
+$\delta < 1$ this is $\delta \ge \frac13$. Step~1 gives the same: $3\delta \ge 1$. So
+\[
+  \delta_1 = \frac13 .
+\]
+
+\textbf{(b) $T = 2$.} Present values:
+\[
+  \frac{4}{1-\delta} \;\ge\; 5 + \delta + \delta^2 + \frac{4\delta^3}{1-\delta}.
+\]
+Multiplying by $1 - \delta$: $4 \ge 5(1-\delta) + (\delta + \delta^2)(1 - \delta) + 4\delta^3 = 5 - 4\delta +
+3\delta^3$, i.e.
+\[
+  3\delta^3 - 4\delta + 1 \;\le\; 0 .
+\]
+This is the hint's cubic $a\delta^3 - (a+1)\delta + 1$ with $a = 3$. Since $\delta = 1$ is a root,
+\[
+  3\delta^3 - 4\delta + 1 = (\delta - 1)(3\delta^2 + 3\delta - 1).
+\]
+For $\delta < 1$ the first factor is negative, so the inequality holds iff $3\delta^2 + 3\delta - 1 \ge 0$
+(the same as Step~1: $3(\delta + \delta^2) \ge 1$). The positive root is
+\[
+  \delta_2 = \frac{-3 + \sqrt{9 + 12}}{6} = \frac{\sqrt{21} - 3}{6} \approx 0.2638 ,
+\]
+and $(M,m)$ in every period is sustained iff $\delta \ge \delta_2$. (The other root,
+$\frac{-3 - \sqrt{21}}{6} < 0$, is irrelevant.)
+
+\textbf{(c) Comparison.}
+\[
+  \delta_1 = \tfrac13 \approx 0.333 \;>\; \delta_2 \approx 0.264 \;>\; \delta_\infty = \tfrac14 ,
+\]
+where $\delta_\infty$ is the grim-trigger threshold ((10.3): $\frac{5-4}{5-1} = \frac14$). A longer
+punishment costs the deviator more: with $T = 1$ the loss is $3\delta$, with $T = 2$ it is $3(\delta +
+\delta^2)$, with grim trigger $3\delta/(1-\delta)$. The gain is $1$ in every case. A bigger loss covers
+the same gain at a lower $\delta$, so the critical value falls as $T$ grows, and it falls by less and
+less because later punishment periods are discounted more (here $\delta_1 - \delta_2 \approx 0.070$ but
+$\delta_2 - \delta_\infty \approx 0.014$).
+
+\interp Punishments need not be eternal. In this game the stage gain from cheating is small
+relative to the loss of a punished period ($1$ against $3$), so even a one-period punishment works for
+moderately patient players, and two periods already get close to what grim trigger achieves. Short
+punishments are less costly if a ``deviation'' was in fact a mistake or a misread signal, since
+cooperation resumes after $T$ periods. The price is a higher patience requirement.
+
+\verify \texttt{check\_C\_L05.py} derives the condition $3\sum_{j=1}^T\delta^j \ge 1$ symbolically
+for $T = 1, 2, 5$. It checks $\delta_1 = \frac13$ at the threshold and at $\pm\frac1{1000}$. It
+rebuilds the book's cubic from the present values ($3\delta^3 - 4\delta + 1$), checks the
+factorization and the root $\frac{\sqrt{21}-3}{6} = 0.263763$, brackets that root to $10^{-6}$ in exact
+fractions, tests the grid $\delta = j/1000$, and checks the ordering $\frac13 > \delta_2 > \frac14$. Output:
+``Tadelis 10.3: delta\_1 = 1/3; delta\_2 = (sqrt(21) - 3)/6 = 0.263763; grim 1/4''. Tadelis prints
+no answer.
+
+\mistakes
+\begin{itemize}
+  \item Forgetting that cooperation \emph{resumes}: writing the deviation stream as $5 + \delta + \delta^2$
+  and stopping there, or as $5 + \frac{\delta}{1-\delta}$ (which is grim trigger).
+  \item Keeping the root $\delta = 1$ of the cubic as the answer. It is the trivial root that the
+  hint tells you to factor out; the threshold is the root of the quadratic factor.
+  \item Saying that a shorter punishment is ``more lenient, so cooperation is easier''. It is the
+  opposite: a weaker threat needs more patience.
+\end{itemize}
+
+\answer{With a length-$T$ reversion to $(F,f)$, $(M,m)$ forever is an SPE iff
+$3\sum_{j=1}^{T}\delta^j\ge1$ (the punishment phase never binds). (a) $T=1$: $\delta_1=\frac13$. (b)
+$T=2$: $3\delta^3-4\delta+1=(\delta-1)(3\delta^2+3\delta-1)\le0$, so $\delta_2=\frac{\sqrt{21}-3}{6}\approx0.264$.
+(c) $\delta_1>\delta_2>\frac14$ (grim trigger): a longer punishment makes deviating costlier for the same
+one-period gain, so less patience is needed, with diminishing effect as $T$ grows.}
+\end{exsol}

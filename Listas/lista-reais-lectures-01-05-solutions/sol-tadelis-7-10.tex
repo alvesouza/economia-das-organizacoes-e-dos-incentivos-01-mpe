@@ -1,0 +1,132 @@
+% Solution: Tadelis (2013) Exercise 7.10 "Perfect and Imperfect Recall". Input by \solitem.
+% New in the 30-item list. Check: check_B_L03.py.
+\begin{exsol}{Tadelis Exercise 7.10}{150}{Exam}{4}
+\asked In the game of Figure~7.14: (a) pure-strategy sets; (b) every behavioral strategy of
+player~1 has an outcome-equivalent mixed strategy; (c) the same for player~2; (d) whether (c)
+fails once player~2's two bottom information sets are merged.
+
+\method Pure, mixed and behavioral strategies (Lecture~3, slides~25 and~27; Tadelis \S7.2.1--7.2.2,
+Defs.~7.4--7.6, pp.~137--140); perfect recall and Kuhn's equivalence theorem (Lecture~3, slide~28;
+Tadelis Def.~7.7 and the discussion on pp.~141--142). Outcome equivalence is checked node by node:
+two strategies of a player are equivalent if, against every pure strategy of the opponent (and
+then, by linearity, every mixed one), they put the same probability on each terminal node.
+
+\solution
+\textbf{The game.} Player~2 moves first ($a$ or $b$). After $a$, player~1 chooses $L$ or $R$;
+after $b$, he chooses $W$ or $E$. Player~2 then moves again without seeing player~1's choice: at
+information set $h_a = \{aL, aR\}$ with actions $t, z$, and at $h_b = \{bW, bE\}$ with actions
+$x, y$. Payoffs $(u_1,u_2)$: $(2,1)$ after $Lt$ and $Wx$, $(1,2)$ after $Rz$ and $Ey$, $(0,0)$
+otherwise.
+
+\textbf{(a) Pure strategies.} Player~1 has two information sets (after $a$, after $b$), each with
+two actions:
+\[
+  S_1 = \{L, R\} \times \{W, E\} = \{LW, LE, RW, RE\} \quad (4).
+\]
+Player~2 has three information sets (the root, $h_a$, $h_b$):
+\[
+  S_2 = \{a, b\} \times \{t, z\} \times \{x, y\} \quad (2^3 = 8),
+\]
+e.g.\ $(a, t, x)$, $(a, t, y)$, \dots, $(b, z, y)$.
+
+\textbf{(b) Player 1: behavioral $\Rightarrow$ mixed.} A behavioral strategy is $\beta_1 = (\lambda,
+\omega)$, with $\lambda = \Pr(L)$ at the left node and $\omega = \Pr(W)$ at the right node. Define
+the mixed strategy as the product
+\[
+  \sigma_1(LW) = \lambda\omega,\quad \sigma_1(LE) = \lambda(1-\omega),\quad
+  \sigma_1(RW) = (1-\lambda)\omega,\quad \sigma_1(RE) = (1-\lambda)(1-\omega).
+\]
+Fix any pure $s_2 = (r, m_a, m_b)$. If $r = a$, the play reaches player~1's left node and ends at
+$(a, L, m_a)$ or $(a, R, m_a)$. Under $\beta_1$ these have probabilities $\lambda$ and $1-\lambda$.
+Under $\sigma_1$, $(a, L, m_a)$ occurs iff the drawn plan starts with $L$:
+\[
+  \sigma_1(LW) + \sigma_1(LE) = \lambda\omega + \lambda(1-\omega) = \lambda,
+\]
+and $(a, R, m_a)$ has probability $1 - \lambda$. The case $r = b$ is symmetric with $\omega$. All other
+terminal nodes have probability 0 under both. So $\beta_1$ and $\sigma_1$ induce the same distribution
+against every pure $s_2$, hence (expected values are linear in $\sigma_2$) against every mixed
+$\sigma_2$ too. Since player~1 is called once per play, only the marginals matter: any $\sigma_1$ with
+$\sigma_1(LW) = \mu$, $\sigma_1(LE) = \lambda - \mu$, $\sigma_1(RW) = \omega - \mu$,
+$\sigma_1(RE) = 1 - \lambda - \omega + \mu$, $\mu \in [\max\{0, \lambda+\omega-1\}, \min\{\lambda,
+\omega\}]$, also works.
+
+\textbf{(c) Player 2: behavioral $\Rightarrow$ mixed.} A behavioral strategy is $\beta_2 = (\alpha,
+\tau, \xi)$: $\Pr(a)$ at the root, $\Pr(t)$ at $h_a$, $\Pr(x)$ at $h_b$. Define the product mixed
+strategy
+\[
+  \sigma_2(r, m_a, m_b) = \Pr\nolimits_\alpha(r)\cdot \Pr\nolimits_\tau(m_a) \cdot \Pr\nolimits_\xi(m_b),
+\]
+e.g.\ $\sigma_2(a,t,x) = \alpha\tau\xi$. Fix any pure $s_1 = (\ell, m)$ with $\ell \in \{L,R\}$,
+$m \in \{W,E\}$. Under $\beta_2$, terminal node $(a, \ell, t)$ has probability $\alpha\tau$. Under
+$\sigma_2$ it occurs iff the drawn plan has $r = a$ and $m_a = t$ (any $m_b$):
+\[
+  \sum_{m_b \in\{x,y\}} \sigma_2(a, t, m_b) = \alpha\tau\xi + \alpha\tau(1-\xi) = \alpha\tau .
+\]
+The same computation gives $\alpha(1-\tau)$ for $(a, \ell, z)$, $(1-\alpha)\xi$ for $(b, m, x)$ and
+$(1-\alpha)(1-\xi)$ for $(b, m, y)$; nodes off $s_1$'s choices have probability 0 under both.
+So the two strategies are outcome-equivalent against every $s_1$, hence against every $\sigma_1$.
+What makes this work is \emph{perfect recall}: at $h_a$ player~2 remembers she chose $a$, so her
+bottom move can be drawn independently of, and after, her root move, and the product of independent
+draws reproduces it.
+
+\textbf{(d) Imperfect recall.} Merge $h_a$ and $h_b$ into one information set $h$. Actions at the
+nodes of an information set must be the same, so identify $x \equiv t$ and $y \equiv z$. Player~2
+now has $S_2' = \{a, b\} \times \{t, z\}$ (4 pure strategies); a behavioral strategy is $(\alpha,
+\tau)$; she has \emph{forgotten} her own first move.
+
+\emph{The claim of (c) survives.} The product mixed strategy $\sigma_2(r, m) = \Pr_\alpha(r)
+\Pr_\tau(m)$ still reproduces $(\alpha, \tau)$: each play passes through $h$ at most once, so the
+probability of a terminal node $(r, \ell, m)$ is $\Pr_\alpha(r)\Pr_\tau(m)$ under both. No example
+can break (c) in this game. (Behavioral $\Rightarrow$ mixed fails only when one play can cross the
+same information set twice, as in the absent-minded driver, Tadelis p.~142.)
+
+\emph{What fails is the converse} (mixed $\Rightarrow$ behavioral, the other half of Kuhn's
+theorem). Take
+\[
+  \sigma_2 = \tfrac12\,(a, t) + \tfrac12\,(b, z)
+\]
+(``go left and then play $t$, or go right and then play $z$'': the plan coordinates the bottom move
+with the root move she no longer remembers). Against $s_1 = LW$ it gives $\Pr(a,L,t) = \frac12$,
+$\Pr(b,W,z) = \frac12$, $\Pr(a,L,z) = 0$. A behavioral $(\alpha, \tau)$ gives
+\[
+  \Pr(a, L, t) = \alpha\tau, \qquad \Pr(a, L, z) = \alpha(1 - \tau), \qquad
+  \Pr(b, W, z) = (1-\alpha)(1-\tau).
+\]
+$\Pr(a,L,z) = 0$ forces $\alpha = 0$ or $\tau = 1$; the first makes $\Pr(a,L,t) = 0$, the second
+makes $\Pr(b,W,z) = 0$, contradicting $\frac12$ in either case. So this mixed strategy has no
+outcome-equivalent behavioral strategy. It also matters for payoffs: against $LW$, $\sigma_2$ gives
+player~2 $\frac12 \cdot 1 + \frac12 \cdot 0 = \frac12$, and against $RE$ it gives $\frac12\cdot 0 +
+\frac12 \cdot 2 = 1$; behavioral strategies cannot replicate this coordination.
+
+\interp Mixed strategies are plans chosen before the game; behavioral strategies are choices made
+at each information set. With perfect recall the two are interchangeable, which is why the course
+(and Tadelis) can analyze dynamic games with behavioral strategies and define SPE with them
+(Lecture~3, slide~34). Without recall a player who randomizes ``in the moment'' cannot correlate
+her later move with an earlier one she has forgotten, while a plan made in advance can.
+
+\verify \texttt{check\_B\_L03.py} computes with sympy, for each pure strategy of the opponent and
+each of the eight terminal nodes, the probability under the behavioral strategy and under the
+product mixed strategy, for player~1 (b) and player~2 (c); all differences simplify to 0. For (d)
+it confirms the product construction still works and that the system $\alpha\tau = \frac12$,
+$\alpha(1-\tau) = 0$, $(1-\alpha)(1-\tau) = \frac12$ has no solution. Output line:
+\texttt{tadelis-7-10: (b), (c) equivalences hold symbolically; (d) mixed->behavioral fails}.
+Tadelis prints no answer. \textbf{Note on the statement:} read literally, (d) asks for a failure of
+behavioral $\Rightarrow$ mixed, which cannot fail here (each play crosses the merged set once); the
+example above shows the failure of the converse, which is the equivalence that perfect recall
+protects in this game.
+
+\mistakes
+\begin{itemize}
+  \item Giving player~2 only $2 \times 2 = 4$ strategies in (a): with perfect recall she has two
+  separate bottom information sets, so $2^3 = 8$.
+  \item Proving (b) only against one strategy of player~2: equivalence must hold against all of them.
+  \item In (d), claiming that the product construction breaks. It does not; the coordination of a
+  mixed plan is what behavioral strategies lose.
+\end{itemize}
+
+\answer{(a) $S_1 = \{LW, LE, RW, RE\}$; $S_2 = \{a,b\}\times\{t,z\}\times\{x,y\}$ (8 strategies).
+(b), (c) The product of the behavioral probabilities is a mixed strategy with the same distribution
+over terminal nodes against every opponent strategy. (d) Behavioral $\Rightarrow$ mixed still holds
+(each play crosses the merged set once); the equivalence that fails is mixed $\Rightarrow$
+behavioral: $\frac12(a,t) + \frac12(b,z)$ has no behavioral equivalent.}
+\end{exsol}

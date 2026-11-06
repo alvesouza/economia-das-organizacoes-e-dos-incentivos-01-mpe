@@ -1,0 +1,189 @@
+% Block 1 of lista-reais-lectures-01-05 (input by the drivers in Listas/).
+% Order and ratings: lista-reais-lectures-01-05/order.md.
+\bloco{1}{Static games I: dominance and iterated elimination}{Lecture 1}
+
+% ---------------------------------------------------------------------------
+\exercicio[1]{Iterated Elimination}{Foundations}{Tadelis (2013), \emph{Game Theory: An
+Introduction}, Ch.~4 ``Rationality and Common Knowledge'', Exercise 4.5 ``Iterated
+Elimination'', p.~77 [PDF 96]. No answer in the book. Reproduced verbatim.}
+
+\rot{4.5}\textbf{Iterated Elimination:} In the following normal-form game, which strategy profiles
+survive iterated elimination of strictly dominated strategies?
+\jogo{Player 1}{Player 2}{\begin{tabular}{c|c|c|c|}
+\hd{} & \hd{$L$} & \hd{$C$} & \hd{$R$}\\\cline{2-4}
+$U$ & 6, 8 & 2, 6 & 8, 2\\\cline{2-4}
+$M$ & 8, 2 & 4, 4 & 9, 5\\\cline{2-4}
+$D$ & 8, 10 & 4, 6 & 6, 7\\\cline{2-4}
+\end{tabular}}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[1]{Iterated Deletion of Strictly Dominated Strategies (IDSDS)}{Foundations}{Muñoz-Garcia \&
+Toro-Gonzalez (2019), \emph{Strategy and Game Theory: Practice Exercises with Answers}, 2nd ed.,
+Ch.~1 ``Dominance Solvable Games'', Exercise 13 ``Iterated Deletion of Strictly Dominated Strategies
+(IDSDS)''$^{\mathrm{A}}$, p.~26 [PDF 39]. Worked answer in the book, right after the statement.
+Reproduced verbatim (statement only); Fig.~1.33, printed inside the answer on the same page,
+rebuilt.}
+
+Consider the following normal form game (Fig.~1.33)
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item Find strictly dominant strategies (if any) for player 1 and for player 2.
+\item Find strictly dominated strategies (if any) for player 1 and for player 2.
+\item If you apply iterative deletion of strictly dominated strategies (IDSDS), what is the surviving
+strategy pair (or pairs)? Explain the steps you use in IDSDS, and why you use them.
+\end{enumerate}
+\jogo{Player 1}{Player 2}{\begin{tabular}{c|c|c|}
+\hd{} & \hd{\emph{Left}} & \hd{\emph{Right}}\\\cline{2-3}
+\emph{Up} & -10, 10 & 0, 12\\\cline{2-3}
+\emph{Middle} & -12, 0 & 2, 2\\\cline{2-3}
+\emph{Down} & -9, 0 & 1, 0\\\cline{2-3}
+\end{tabular}}
+\vspace{-6pt}\begin{center}\small\textit{Fig.~1.33} Normal-form game\end{center}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[2]{IESDS and pure-strategy Nash equilibria}{Foundations}{Gibbons (1992), \emph{Game Theory
+for Applied Economists}, Ch.~1 ``Static Games of Complete Information'', \S1.5 Problems
+(Section 1.1), Problem 1.2, p.~48 [PDF 56]. No answer in the book. Reproduced verbatim; the payoff
+pair in cell $(T,L)$ is printed ``2.0'' (comma typo) and is typeset ``2, 0''.}
+
+\rot{1.2.}In the following normal-form game, what strategies survive iterated elimination of
+strictly dominated strategies? What are the pure-strategy Nash equilibria?
+\begin{center}\begin{tabular}{c|c|c|c|}
+\hd{} & \hd{$L$} & \hd{$C$} & \hd{$R$}\\\cline{2-4}
+$T$ & 2, 0 & 1, 1 & 4, 2\\\cline{2-4}
+$M$ & 3, 4 & 1, 2 & 2, 3\\\cline{2-4}
+$B$ & 1, 3 & 0, 2 & 3, 0\\\cline{2-4}
+\end{tabular}\end{center}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[2]{Prove Proposition 4.1}{Exam level}{Tadelis (2013), \emph{Game Theory: An Introduction},
+Ch.~4 ``Rationality and Common Knowledge'', Exercise 4.1, p.~76 [PDF 95]. No answer in the book.
+Reproduced verbatim. The exercise states the proposition it asks to prove.}
+
+\rot{4.1}\textbf{Prove Proposition 4.1:} If the game
+$\Gamma = \langle N, \{S_i\}_{i=1}^{n}, \{v_i\}_{i=1}^{n} \rangle$ has a strictly dominant strategy
+equilibrium $s^D$, then $s^D$ is the unique dominant strategy equilibrium.
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[2]{IDSDS and Rationality}{Exam level}{Muñoz-Garcia \& Toro-Gonzalez (2019), \emph{Strategy
+and Game Theory: Practice Exercises with Answers}, 2nd ed., Ch.~1 ``Dominance Solvable Games'',
+Exercise 12 ``IDSDS and Rationality''$^{\mathrm{A}}$, p.~23 [PDF 36]. Worked answer in the book,
+right after the statement. Reproduced verbatim (statement only).}
+
+Consider the following $3 \times 3$ matrix (Fig.~1.30):
+\jogo{Player 1}{Player 2}{\begin{tabular}{c|c|c|c|}
+\hd{} & \hd{$F$} & \hd{$C$} & \hd{$B$}\\\cline{2-4}
+$F$ & 0, 5 & 2, 4 & 2, 3\\\cline{2-4}
+$C$ & 2, 3 & 0, 5 & 3, 2\\\cline{2-4}
+$B$ & 5, 0 & 2, 4 & 2, 3\\\cline{2-4}
+\end{tabular}}
+\vspace{-6pt}\begin{center}\small\textit{Fig.~1.30} Normal-form representation of a three-players game\end{center}
+\begin{partes}
+\item Does any player have a strictly dominant strategy?
+\item Does any player have a strictly dominated strategy?
+\item Use your results from part (b) to delete players' strictly dominated strategies assuming
+rationality, but not assuming common knowledge of rationality. [Hint: This means that every player
+can delete the strategies he finds to be strictly dominated but cannot put himself in the shoes of
+his opponent to delete the strategies his opponent finds to be strictly dominated.]
+\item Use your results from part (b) to delete players' strictly dominated strategies assuming
+common knowledge of rationality. [Hint: This means that players can put themselves in the shoes of
+their opponents to delete strategies each other finds to be strictly dominated, as in the standard
+approach of IDSDS.]
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[3]{Campaigning}{Exam level}{Tadelis (2013), \emph{Game Theory: An Introduction}, Ch.~4
+``Rationality and Common Knowledge'', Exercise 4.7 ``Campaigning'', pp.~77--78 [PDF 96--97]. No
+answer in the book. Reproduced verbatim.}
+
+\rot{4.7}\textbf{Campaigning:} Two candidates, 1 and 2, are running for office. Each has one of
+three choices in running his campaign: focus on the positive aspects of one's own platform (call
+this a positive campaign [$P$]), focus on the positive aspects of one's own platform while
+attacking one's opponent's campaign (call this a balanced campaign [$B$]), or finally focus only on
+attacking one's opponent (call this a negative campaign [$N$]). All a candidate cares about is the
+probability of winning, so assume that if a candidate expects to win with probability
+$\pi \in [0, 1]$, then his payoff is $\pi$. The probability that a candidate wins depends on his
+choice of campaign and his opponent's choice. The probabilities of winning are given as follows:
+
+If both choose the same campaign then each wins with probability 0.5.
+
+If candidate $i$ uses a positive campaign while $j \neq i$ uses a balanced one then $i$ loses for
+sure.
+
+If candidate $i$ uses a positive campaign while $j \neq i$ uses a negative one then $i$ wins with
+probability 0.3.
+
+If candidate $i$ uses a negative campaign while $j \neq i$ uses a balanced one then $i$ wins with
+probability 0.6.
+\begin{partes}
+\item Model this story as a normal-form game. (It suffices to be specific about the payoff function
+of one player and to explain how the other player's payoff function is different and why.)
+\item Write down the game in matrix form.
+\item What happens at each stage of elimination of strictly dominated strategies? Will this
+procedure lead to a clear prediction?
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[3]{Discrete First-Price Auction}{Exam level}{Tadelis (2013), \emph{Game Theory: An
+Introduction}, Ch.~4 ``Rationality and Common Knowledge'', Exercise 4.3 ``Discrete First-Price
+Auction'', p.~76 [PDF 95]. No answer in the book. Reproduced verbatim.}
+
+\rot{4.3}\textbf{Discrete First-Price Auction:} An item is up for auction. Player 1 values the item
+at 3 while player 2 values the item at 5. Each player can bid either 0, 1, or 2. If player $i$ bids
+more than player $j$ then $i$ wins the good and pays his bid, while the loser does not pay. If both
+players bid the same amount then a coin is tossed to determine who the winner is, and the winner
+gets the good and pays his bid while the loser pays nothing.
+\begin{partes}
+\item Write down the game in matrix form.
+\item Does any player have a strictly dominated strategy?
+\item Which strategies survive IESDS?
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[4]{Roommates}{Exam level}{Tadelis (2013), \emph{Game Theory: An Introduction}, Ch.~4
+``Rationality and Common Knowledge'', Exercise 4.6 ``Roommates'', p.~77 [PDF 96]. No answer in the
+book. Reproduced verbatim.}
+
+\rot{4.6}\textbf{Roommates:} Two roommates each need to choose to clean their apartment, and each
+can choose an amount of time $t_i \ge 0$ to clean. If their choices are $t_i$ and $t_j$, then
+player $i$'s payoff is given by $(10 - t_j)t_i - t_i^2$. (This payoff function implies that the more
+one roommate cleans, the less valuable is cleaning for the other roommate.)
+\begin{partes}
+\item What is the best response correspondence of each player $i$?
+\item Which choices survive one round of IESDS?
+\item Which choices survive IESDS?
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[4]{Order of deletion}{Advanced}{Mas-Colell, Whinston \& Green (1995), \emph{Microeconomic
+Theory}, Ch.~8 ``Simultaneous-Move Games'', Exercises, Exercise 8.B.4$^{\mathrm{C}}$, p.~262 [PDF
+142, left half]. Answer in the MWG solutions manual (\texttt{Livros/}). Reproduced verbatim.}
+
+\rot{8.B.4$^{\mathrm{C}}$}Show that the order of deletion does not matter for the set of strategies
+surviving a process of iterated deletion of strictly dominated strategies.
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[5]{Cournot by successive elimination}{Advanced}{Mas-Colell, Whinston \& Green (1995),
+\emph{Microeconomic Theory}, Ch.~8 ``Simultaneous-Move Games'', Exercises, Exercise
+8.B.5$^{\mathrm{C}}$, p.~262 [PDF 142, left half]. Answer in the MWG solutions manual
+(\texttt{Livros/}; 8.B.5 is there). Reproduced verbatim. The pointer to Chapter~12 is context; the
+statement defines the whole model.}
+
+\rot{8.B.5$^{\mathrm{C}}$}Consider the Cournot duopoly model (discussed extensively in Chapter 12)
+in which two firms, 1 and 2, simultaneously choose the quantities they will sell on the market,
+$q_1$ and $q_2$. The price each receives for each unit given these quantities is
+$P(q_1, q_2) = a - b(q_1 + q_2)$. Their costs are $c$ per unit sold.
+
+\textbf{(a)} Argue that successive elimination of strictly dominated strategies yields a unique
+prediction in this game.
+
+\textbf{(b)} Would this be true if there were three firms instead of two?
+\resolespaco

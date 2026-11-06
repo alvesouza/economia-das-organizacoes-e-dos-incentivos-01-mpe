@@ -1,0 +1,149 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 9.B.5 (E. Maskin). Input by \solitem.
+% New in the 30-item list. Check: check_B_L04.py. Compared with the MWG solutions manual.
+\begin{exsol}{MWG Exercise 9.B.5}{302}{Advanced}{5}
+\asked For a finite two-player game played simultaneously or with player~1 moving first and
+observed: (a), (b) count strategies; (c) multiple SPNE imply a payoff tie; (d) without ties for
+player~2, moving first guarantees player~1 at least any pure Nash payoff of the simultaneous game,
+in every SPNE (and whether in every Nash equilibrium); (e) examples where (d) fails with ties for
+player~2 or with a mixed Nash equilibrium.
+
+\method Strategies as complete plans (MWG \S7.D; Lecture~3, slide~25); SPNE and backward induction in
+finite games of perfect information (MWG \S9.B, Prop.~9.B.1 (Zermelo), p.~272, and Prop.~9.B.2;
+Lecture~3, slides~30 and~35; Lecture~4, slide~17). The sequential game in (b) has perfect information,
+so its SPNE are the backward-induction profiles; with no ties they are unique. Non-credible threats in
+Nash equilibrium: Lecture~4, slides~8 and~13.
+
+\solution
+\textbf{Notation.} As in the statement, $m_i$ is both the number of actions and (from (c) on) a typical
+action; write $|M_i|$ for the number to avoid confusion. In the sequential game a strategy of
+player~2 is a function $s_2: M_1 \to M_2$.
+
+\textbf{(a) Simultaneous moves.} Each player has one information set, so player~$i$ has $|M_i| = m_i$
+pure strategies (and the mixed strategies $\Delta(M_i)$, a simplex of dimension $m_i - 1$).
+
+\textbf{(b) Player 1 first, observed.} Player~1 still has one information set: $m_1$ pure strategies.
+Player~2 has one information set for each of player~1's moves, each with $m_2$ actions, so
+$m_2^{\,m_1}$ pure strategies (the functions $M_1 \to M_2$; item ``Tadelis 7.1'').
+
+\textbf{(c) Multiple SPNE imply a tie.} Suppose, to the contrary, that no player is indifferent between
+any two distinct pairs: $\phi_i(m_1, m_2) \ne \phi_i(m_1', m_2')$ for $i = 1,2$ whenever
+$(m_1,m_2) \ne (m_1',m_2')$.
+\begin{itemize}
+  \item \emph{Player~2's subgames.} After each $m_1$, the subgame is a one-player decision; any SPNE
+  must play a best reply there. Since $\phi_2(m_1, \cdot)$ takes $m_2$ distinct values, the best reply
+  $b(m_1)$ is unique and played with probability 1. So player~2's SPNE strategy is the unique
+  function $b$.
+  \item \emph{Player~1.} Given $b$, choosing $m_1$ yields $\phi_1(m_1, b(m_1))$. The pairs
+  $(m_1, b(m_1))$ differ across $m_1$ (their first components differ), so by assumption these
+  $m_1$ payoffs are distinct, and the maximizer $m_1^*$ is unique; any SPNE puts probability 1 on it.
+\end{itemize}
+So the SPNE is unique, $(m_1^*, b)$, contradicting multiplicity. Hence if there are multiple SPNE,
+some player has a tie: (i) or (ii) holds for two distinct pairs. (In fact more is shown: either
+player~2 has a tie \emph{within} some $\phi_2(m_1, \cdot)$, or player~1 has a tie between two pairs
+with different $m_1$.) $\square$
+
+\textbf{(d) Moving first does not hurt player 1 (in SPNE).} Assume (ii) never holds: player~2 has no
+ties. Let $(\hat m_1, \hat m_2)$ be a pure Nash equilibrium of the simultaneous game with
+$\pi_1 = \phi_1(\hat m_1, \hat m_2)$.
+\begin{enumerate}[label=(\roman*)]
+  \item In the simultaneous game $\hat m_2$ is a best reply to $\hat m_1$: $\phi_2(\hat m_1, \hat m_2)
+  \ge \phi_2(\hat m_1, m_2)$ for all $m_2$. With no ties, it is the \emph{unique} best reply, so
+  $b(\hat m_1) = \hat m_2$.
+  \item In any SPNE of the sequential game, player~2 plays $b(m_1)$ after every $m_1$ (with
+  probability 1, since best replies are unique). In particular she plays $\hat m_2$ after $\hat m_1$.
+  \item An SPNE is a Nash equilibrium, so player~1's equilibrium payoff is at least what he gets by
+  deviating to $\hat m_1$, which is $\phi_1(\hat m_1, b(\hat m_1)) = \phi_1(\hat m_1, \hat m_2) =
+  \pi_1$.
+\end{enumerate}
+So in every SPNE player~1 gets at least $\pi_1$ (for every pure Nash equilibrium of (a), hence at least
+the largest such $\pi_1$). $\square$
+
+\emph{Not for every Nash equilibrium of (b).} A Nash equilibrium of the sequential game may use a
+non-credible threat by player~2 after moves that player~1 does not make. Example (no ties for
+player~2; rows player~1, columns player~2, both choose $O$ or $F$):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$O$} & \multicolumn{1}{c}{$F$}\\ \cline{2-3}
+$O$ & $2,\ 1$ & $0,\ 0$ \\ \cline{2-3}
+$F$ & $0,\ -1$ & $1,\ 2$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Player~2's payoffs $1, 0, -1, 2$ are all distinct. The simultaneous game has the pure equilibrium
+$(O, O)$ with $\pi_1 = 2$ (and $(F,F)$ with 1). In the sequential game the unique SPNE is
+$(O,\ s_2 = (O \text{ after } O, F \text{ after } F))$, payoff 2 to player~1, as (d) predicts. But
+$(F,\ s_2 = (F, F))$ is also a Nash equilibrium: against ``always $F$'', player~1 gets $0$ from $O$ and
+$1$ from $F$; against $F$, player~2's on-path choice $F$ is optimal ($2 > -1$). Player~1 gets
+$1 < 2 = \pi_1$. The threat ``$F$ after $O$'' ($0 < 1$ for player~2) is not credible.
+
+\textbf{(e) Two ways the conclusion of (d) fails.}
+
+\emph{(e.1) Player~2 has ties.} Take the game of the MWG manual, with player~2's payoff depending
+only on player~1's move:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $0,\ 1$ & $1,\ 1$ \\ \cline{2-3}
+$D$ & $0,\ 0$ & $1,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+$(U, R)$ is a pure Nash equilibrium of the simultaneous game with $\pi_1 = 1$ (player~1: $1 \ge 1$;
+player~2: $1 \ge 1$). In the sequential game player~2 is indifferent at both nodes, so every reply is
+sequentially rational, and $(U, (L \text{ after } U, L \text{ after } D))$ is an SPNE (player~1 gets 0
+from either move). Player~1's SPNE payoff is $0 < 1 = \pi_1$.
+
+\emph{(e.2) A mixed Nash equilibrium instead of a pure one.} Matching pennies:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $1,\ 0$ & $0,\ 1$ \\ \cline{2-3}
+$D$ & $0,\ 1$ & $1,\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Player~2 has no ties within either row. The simultaneous game has no pure equilibrium; its mixed
+equilibrium $(\frac12,\frac12)$ gives player~1 $\frac12$. In the sequential game player~2 replies $R$
+after $U$ and $L$ after $D$, so player~1 gets 0 whatever he does: the SPNE are $(U, (R, L))$ and
+$(D, (R, L))$, both with payoff $0 < \frac12$. Moving first and being observed is a
+\emph{disadvantage} when player~1 wants to be unpredictable.
+
+\interp Moving first helps when it is a commitment the follower must respond to (Stackelberg, entry
+deterrence); (d) makes this precise: if the follower's reply to each move is pinned down, the leader
+can always reproduce any pure Nash outcome of the simultaneous game by playing his part of it, so he
+cannot lose by moving first. The two failures in (e) mark the limits: if the follower is indifferent,
+her tie-breaking can punish the leader at no cost to herself; and if the leader's simultaneous-move
+advantage comes from being unpredictable (mixing), observation destroys it. The Nash-but-not-SPNE
+example in (d) is the Lecture~4 point once more: threats off the path can make the leader look worse
+off, but they are not credible.
+
+\verify \texttt{check\_B\_L04.py} enumerates all pure SPNE (a strategy $s_2: M_1 \to M_2$ that best
+replies in every subgame, and a best $m_1$) of 3000 random games with $m_1, m_2 \in \{2, 3\}$ and
+integer payoffs in $\{0, \dots, 4\}$ (fixed seed). In each of the 1795 games with several SPNE a tie
+(i) or (ii) is present; in each of the 166 games without ties for player~2, every SPNE gives player~1
+at least the payoff of every pure Nash equilibrium of the simultaneous game. It confirms the
+counterexample in (d) (unique SPNE pays 2, the Nash equilibrium $(F, (F,F))$ pays 1), (e.1) (SPNE
+$(U, (L,L))$ pays 0 against $\pi_1 = 1$) and (e.2) (SPNE $(U,(R,L))$, $(D,(R,L))$ pay 0; mixed value
+$\frac12$). Output line: \texttt{mwg-9-b-5: (c) on 1795 random games with multiple SPNE, (d) on 166
+games; examples (d), (e1), (e2) confirmed}. \emph{Comparison with the MWG solutions manual}
+(Exercise 9.B.5, pp.~9-2 to 9-4; label OCR'd as ``9.8.5''): (a) $m_i$ pure strategies; (b) $m_1$ and
+$m_2^{m_1}$; (c) proof by contradiction, as here; (d) the same argument, and ``low payoffs for player~1
+could be sustained in a NE with incredible threats by player~2''; (e) the same two examples (the
+indifferent follower of Fig.~9.B.5(e.1) and matching pennies, Fig.~9.B.5(e.2)). \textbf{Agreement on
+every part.} One slip in the manual (or its OCR): the SPNE of the pennies game are written
+``$(U,(R,L))$ and $(L,(R,L))$''; the second must be $(D, (R,L))$, since $L$ is not a move of player~1.
+
+\mistakes
+\begin{itemize}
+  \item Giving player~2 $m_1 m_2$ strategies in (b) (pairs) instead of $m_2^{m_1}$ (functions).
+  \item In (d), forgetting that the argument needs player~2's best reply to $\hat m_1$ to be
+  \emph{unique}: with a tie she might answer $\hat m_1$ differently in the sequential game, which is
+  exactly example (e.1).
+  \item Claiming that moving first is always an advantage: (e.2) shows it can be strictly worse.
+\end{itemize}
+
+\answer{(a) $m_1$ and $m_2$. (b) $m_1$ for player~1, $m_2^{\,m_1}$ for player~2. (c) Without ties
+player~2's reply to each move is unique and then player~1's best move is unique, so the SPNE is unique;
+multiple SPNE therefore require (i) or (ii). (d) In any SPNE player~2 answers $\hat m_1$ with her
+unique best reply $\hat m_2$, so player~1 can secure $\pi_1$ by playing $\hat m_1$; not for every Nash
+equilibrium (e.g.\ $(F, (F,F))$ in the example above gives $1 < 2$). (e) Indifferent follower:
+$(U,(L,L))$ is an SPNE with payoff $0 < 1$; matching pennies: SPNE payoff $0 <$ mixed Nash payoff
+$\frac12$.}
+\end{exsol}

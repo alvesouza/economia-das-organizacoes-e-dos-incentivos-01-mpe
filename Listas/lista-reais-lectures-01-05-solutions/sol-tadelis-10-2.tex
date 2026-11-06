@@ -1,0 +1,130 @@
+% Solution: Tadelis (2013) Exercise 10.2 "Grim Trigger". Input by \solitem.
+% New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{Tadelis Exercise 10.2}{215}{Foundations}{2}
+\asked In the infinitely repeated $3\times3$ Prisoner's Dilemma variant, find the discount factors
+for which $(M,C)$ in every period, and then $(T,L)$ in every period, can be sustained, and explain
+why the two answers differ.
+
+\method Grim-trigger strategies and the one-stage deviation principle (Tadelis \S10.3,
+pp.~197--200: grim trigger p.~198, Prop.~10.3 p.~198, condition (10.3) p.~200), and the general
+threshold (10.5), p.~202:
+\[
+  \delta \;\ge\; \delta^* = \frac{v_i^d - v_i^c}{v_i^d - v_i^*},
+\]
+with $v_i^c$ the cooperative stage payoff, $v_i^d$ the best one-period deviation payoff, and $v_i^*$
+the stage Nash payoff used as punishment (\texttt{Notas/L05/L05-05}). Lecture~5 has no slides yet; the
+repeated-game set-up is Lecture~4, slides~21--22, and the SPE definition is slide~17.
+
+\solution
+\textbf{Notation.} Present value $v_i = \sum_{t\ge1}\delta^{t-1}u_i(a^t)$ (Tadelis Def.~10.2,
+p.~193). Best replies are underlined:
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$T$ & $6,\ 6$ & $-1,\ 7$ & $-2,\ \br{8}$ \\ \cline{2-4}
+$M$ & $7,\ -1$ & $4,\ 4$ & $-1,\ \br{5}$ \\ \cline{2-4}
+$B$ & $\br{8},\ -2$ & $\br{5},\ -1$ & $\br{0},\ \br{0}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{Step 1: the stage equilibrium.} Row $B$ beats $T$ ($8>6$, $5>-1$, $0>-2$) and $M$ ($8>7$,
+$5>4$, $0>-1$) against every column, so $B$ is strictly dominant for player~1. The game is
+symmetric, so $R$ is strictly dominant for player~2. The unique stage Nash equilibrium is $(B,R)$,
+with $v_i^* = 0$. It is also each player's minimax payoff: player~2 can hold player~1 to
+$\min_{c}\max_{r} u_1(r,c) = \min\{8, 5, 0\} = 0$ by playing $R$, and $B$ guarantees player~1 at least
+$\min\{8,5,0\} = 0$.
+
+\textbf{Step 2: the strategies.} For a target profile $(a_1, a_2)$, grim trigger is:
+\begin{itemize}
+  \item \emph{cooperation phase}: in period~1, and after any history in which $(a_1,a_2)$ was played
+  in every period, player~1 plays $a_1$ and player~2 plays $a_2$;
+  \item \emph{punishment phase}: after any other history, player~1 plays $B$ and player~2 plays $R$
+  forever.
+\end{itemize}
+By Prop.~10.3 this is an SPE if and only if no player gains from a single deviation at a single
+history. There are two kinds of histories, so there are two checks.
+
+\textbf{Step 3: punishment phase (both parts).} The continuation is $(B,R)$ forever whatever is
+played today, so a one-period deviation changes only today's payoff. Against $R$, player~1 gets
+$0$ with $B$, $-1$ with $M$ and $-2$ with $T$. Deviating loses, for every $\delta$, and player~2 is
+symmetric.
+
+\textbf{(a) $(M,C)$.} Cooperation phase. Staying gives $4$ every period:
+\[
+  v_1^{\text{coop}} = \frac{4}{1-\delta} .
+\]
+The best one-period deviation against $C$ is $B$ ($5 > 4 > -1$), and it starts the punishment
+phase, which pays $0$ forever:
+\[
+  v_1^{\text{dev}} = 5 + \delta\cdot\frac{0}{1-\delta} = 5 .
+\]
+No deviation pays iff
+\[
+  \frac{4}{1-\delta} \ge 5 \iff 4 \ge 5 - 5\delta \iff 5\delta \ge 1 \iff \delta \ge \frac15 .
+\]
+Check with (10.5): $\delta^* = \frac{5-4}{5-0} = \frac15$. Player~2's problem is the same by
+symmetry. So $(M,C)$ in every period is an SPE outcome iff $\delta \ge \frac15$.
+
+\textbf{(b) $(T,L)$.} Staying gives $\frac{6}{1-\delta}$. Against $L$, player~1's best deviation is
+$B$ (payoff $8$), not $M$ (payoff $7$). It is followed by $0$ forever:
+\[
+  \frac{6}{1-\delta} \ge 8 \iff 6 \ge 8 - 8\delta \iff 8\delta \ge 2 \iff \delta \ge \frac14 .
+\]
+Check: $\delta^* = \frac{8-6}{8-0} = \frac14$. The same holds for player~2. So $(T,L)$ in every
+period is an SPE outcome iff $\delta \ge \frac14$.
+
+\textbf{These thresholds cannot be beaten.} The punishment $(B,R)$ forever holds the deviator to
+$0$, his minimax payoff, and he can guarantee $0$ in every period by playing $B$. So in \emph{any}
+equilibrium (any punishment, even a Nash equilibrium that is not subgame perfect) a deviation from
+the stationary path is worth at least $5$ in (a) and $8$ in (b). The thresholds $\frac15$ and $\frac14$
+are therefore necessary as well as sufficient.
+
+\textbf{Why the answers differ.} Write (10.5) as $\delta^* = g/(g + \ell)$, with $g = v^d - v^c$ the
+one-period gain and $\ell = v^c - v^*$ the per-period loss once punished:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+target & $g$ & $\ell$ & $g/\ell$ & $\delta^*$\\
+\midrule
+$(M,C)$ & $5-4 = 1$ & $4-0 = 4$ & $1/4$ & $1/5$\\
+$(T,L)$ & $8-6 = 2$ & $6-0 = 6$ & $1/3$ & $1/4$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Moving from $(M,C)$ to $(T,L)$ raises the value of cooperating (the loss $\ell$ rises from 4 to 6), but
+it raises the temptation more in proportion (the gain $g$ doubles, from 1 to 2). The ratio $g/\ell$
+rises, so more patience is needed. For $\delta \in [\frac15, \frac14)$ the moderate outcome $(M,C)$
+can be sustained and the efficient $(T,L)$ cannot.
+
+\interp More ambitious cooperation is harder to sustain when it also creates a bigger temptation.
+$(T,L)$ is better for both players than $(M,C)$, but at $(T,L)$ each player gives up a lot today by
+not grabbing the $8$. Between moderately patient partners the self-enforcing agreement is the
+modest one. The same trade-off runs through collusion (Tadelis \S10.4): higher collusive prices
+raise both the gain from undercutting and the value of the cartel.
+
+\verify \texttt{check\_C\_L05.py} confirms that $B$ and $R$ are strictly dominant, that $(B,R)$ is
+the unique stage equilibrium with payoff $0 =$ minimax, and that the best deviations are $B$ against
+$C$ (5) and $B$ against $L$ (8, versus 7 for $M$). Using exact fractions it tests the
+cooperation-phase inequality at $\delta^*$, $\delta^* \pm \frac1{1000}$ and on the grid
+$\delta = k/1000$: it holds exactly for $\delta \ge \frac15$ in (a) and $\delta \ge \frac14$ in (b). The
+punishment phase has no profitable deviation. Output: ``Tadelis 10.2: stage NE (B,R) (0,0); (a)
+delta* = 1/5, (b) delta* = 1/4; grid k/1000 and +-1/1000 around each cutoff pass''. Tadelis prints no
+answer.
+
+\mistakes
+\begin{itemize}
+  \item Using $M$ as the deviation from $(T,L)$, because it is ``next door''. That gives
+  $\frac{7-6}{7-0} = \frac17$, which is wrong: the deviation to use is the \emph{best} reply, $B$.
+  \item Checking only the cooperation phase. Prop.~10.3 needs the punishment phase too; here it holds
+  because $(B,R)$ is a stage equilibrium, and that must be said.
+  \item Reading ``$(T,L)$ is better for both'' as ``$(T,L)$ is easier to sustain''. The threshold
+  depends on the ratio of temptation to loss, not on how good the outcome is.
+\end{itemize}
+
+\answer{Unique stage equilibrium $(B,R)$, payoff $(0,0)$ (also the minimax). With grim trigger
+(revert to $(B,R)$ forever): (a) $(M,C)$ is sustained iff $\frac{4}{1-\delta}\ge5$, i.e.\
+$\delta\ge\frac15$; (b) $(T,L)$ is sustained iff $\frac{6}{1-\delta}\ge8$, i.e.\ $\delta\ge\frac14$. Since
+the punishment is the minimax, no other strategies do better. The answers differ because
+$\delta^* = g/(g+\ell)$: at $(T,L)$ the temptation doubles ($g = 2$ against $1$) while the loss from
+punishment rises only from $4$ to $6$.}
+\end{exsol}

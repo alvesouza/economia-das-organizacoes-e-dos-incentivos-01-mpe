@@ -1,0 +1,101 @@
+% Solution: Tadelis (2013) Exercise 4.3 "Discrete First-Price Auction". Input by \solitem.
+% New in the 50-item list. Check: check_A1.py.
+\begin{exsol}{Tadelis Exercise 4.3}{76}{Exam}{3}
+\asked Write the two-bidder first-price auction with bids $\{0,1,2\}$ as a matrix, find the
+strictly dominated strategies, and run IESDS.
+
+\method Building the normal form from the rules (Lecture~1, slides~13--19; Tadelis \S3.1,
+pp.~46--50); strict dominance (Tadelis Def.~4.1, p.~60; Lecture~1, slide~23); IESDS with every
+dominated strategy removed in each round (Lecture~1, slide~29; Tadelis \S4.2, pp.~63--65). Ties are
+broken by a fair coin, so a tie gives each bidder half of (value $-$ bid): payoffs are expected
+payoffs over the coin toss.
+
+\solution
+\textbf{(a) The matrix.} Player~1 values the item at $3$, player~2 at $5$; $b_i \in \{0,1,2\}$.
+Player~$i$'s payoff is $\theta_i - b_i$ if $b_i > b_j$, $0$ if $b_i < b_j$, and
+$\tfrac12(\theta_i - b_i)$ if $b_i = b_j$, with $\theta_1 = 3$, $\theta_2 = 5$. Cell by cell:
+\begin{itemize}
+  \item ties: $(0,0)$: $(\tfrac32, \tfrac52)$; $(1,1)$: $(\tfrac{3-1}{2}, \tfrac{5-1}{2}) = (1, 2)$;
+  $(2,2)$: $(\tfrac12, \tfrac32)$;
+  \item player~1 wins: $(1,0)$: $(3-1, 0) = (2,0)$; $(2,0)$ and $(2,1)$: $(3-2, 0) = (1, 0)$;
+  \item player~2 wins: $(0,1)$: $(0, 5-1) = (0,4)$; $(0,2)$ and $(1,2)$: $(0, 5-2) = (0, 3)$.
+\end{itemize}
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$0$} & \multicolumn{1}{c}{$1$} & \multicolumn{1}{c}{$2$}\\ \cline{2-4}
+$0$ & $1.5,\ 2.5$ & $0,\ 4$ & $0,\ 3$ \\ \cline{2-4}
+$1$ & $2,\ 0$ & $1,\ 2$ & $0,\ 3$ \\ \cline{2-4}
+$2$ & $1,\ 0$ & $1,\ 0$ & $0.5,\ 1.5$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Payoff vectors: player~1's rows over $b_2 = (0,1,2)$ are $0 \mapsto (1.5, 0, 0)$,
+$1 \mapsto (2, 1, 0)$, $2 \mapsto (1, 1, 0.5)$; player~2's columns over $b_1 = (0,1,2)$ are
+$0 \mapsto (2.5, 0, 0)$, $1 \mapsto (4, 2, 0)$, $2 \mapsto (3, 3, 1.5)$.
+
+\textbf{(b) Strictly dominated strategies} (by pure strategies). All pairs:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Player & Pair & Componentwise comparison & Verdict \\
+\midrule
+1 & $0$ vs $1$ & $1.5<2$, $0<1$, $0=0$ & $0$ only weakly dominated by $1$ \\
+1 & $0$ vs $2$ & $1.5>1$, $0<1$, $0<0.5$ & not ranked \\
+1 & $1$ vs $2$ & $2>1$, $1=1$, $0<0.5$ & not ranked \\
+2 & $0$ vs $1$ & $2.5<4$, $0<2$, $0=0$ & $0$ only weakly dominated by $1$ \\
+2 & $0$ vs $2$ & $2.5<3$, $0<3$, $0<1.5$ & $0$ strictly dominated by $2$ \\
+2 & $1$ vs $2$ & $4>3$, $2<3$, $0<1.5$ & not ranked \\
+\bottomrule
+\end{tabular}
+\end{center}
+Yes: player~2's bid $0$ is strictly dominated by bid $2$. Player~1 has no strategy strictly
+dominated by another pure strategy. (\emph{Remark, mixed dominators}, Tadelis \S6.1 and
+Lecture~2, slide~42: player~1's bid $0$ \emph{is} strictly dominated by the mixed strategy
+$\tfrac34\cdot 1 + \tfrac14\cdot 2$, which pays $(1.75,\ 1,\ 0.125) > (1.5,\ 0,\ 0)$. With
+Chapter~4's pure-strategy definition this does not count, and it does not change the answer to
+(c).)
+
+\textbf{(c) IESDS.}
+\begin{itemize}
+  \item \emph{Round 1.} Delete player~2's $0$ (by $2$). Nothing for player~1.
+  $S_1^1 = \{0,1,2\}$, $S_2^1 = \{1,2\}$.
+  \item \emph{Round 2.} Player~1 over $b_2 \in \{1,2\}$: $0 \mapsto (0,0)$, $1 \mapsto (1,0)$,
+  $2 \mapsto (1, 0.5)$. $0$ vs $2$: $0 < 1$, $0 < 0.5$, so $0$ is strictly dominated by $2$.
+  $1$ vs $2$: $1 = 1$, only weak. Player~2 over $b_1 \in \{0,1,2\}$: $1 \mapsto (4,2,0)$,
+  $2 \mapsto (3,3,1.5)$, not ranked. $S_1^2 = \{1,2\}$, $S_2^2 = \{1,2\}$.
+  \item \emph{Round 3.} Player~2 over $b_1 \in \{1,2\}$: $1 \mapsto (2, 0)$,
+  $2 \mapsto (3, 1.5)$: $1$ is strictly dominated by $2$. Player~1 over $b_2 \in \{1,2\}$:
+  $1 \mapsto (1,0)$, $2 \mapsto (1,0.5)$, only weak. $S_1^3 = \{1,2\}$, $S_2^3 = \{2\}$.
+  \item \emph{Round 4.} Player~1 against $b_2 = 2$ only: bid $1$ pays $0$, bid $2$ pays $0.5$, so
+  $1$ is strictly dominated by $2$. $S_1^4 = \{2\}$, $S_2^4 = \{2\}$.
+\end{itemize}
+$S^\infty = \{(2, 2)\}$: both bid $2$, each wins with probability $\tfrac12$, and the expected
+payoffs are $(0.5, 1.5)$. Since the survivor is unique, it is the unique Nash equilibrium
+(Lecture~2, slide~17); the best-response marking confirms it: $BR_1(2) = \{2\}$ and
+$BR_2(2) = \{2\}$, while every other cell has a profitable deviation.
+
+\interp Each round adds one layer of ``I know that you know'': player~2 never bids $0$ (her value
+is high enough that bidding $2$ is always better); knowing that, player~1 never bids $0$ either;
+then player~2 bids $2$ to avoid losing ties at $1$; then player~1 matches. The coarse bid grid
+matters: the high-value bidder wins only half the time, so the item goes to the bidder who values
+it less with probability $\tfrac12$, an inefficiency created by the tie rule and the bid cap.
+
+\verify \texttt{check\_A1.py} builds the matrix from the auction rules in exact arithmetic,
+checks the dominance table, runs IESDS and finds the four rounds above (player~2's $0$; player~1's
+$0$; player~2's $1$; player~1's $1$), confirms that $(2,2)$ is the only pure Nash equilibrium, and
+checks that $\tfrac34\cdot1 + \tfrac14\cdot2$ strictly dominates player~1's bid $0$. Tadelis gives
+no answer.
+
+\mistakes
+\begin{itemize}
+  \item Giving the tie winner the whole surplus or splitting the item rather than the expected
+  payoff. With a fair coin each tied bidder gets $\tfrac12(\theta_i - b_i)$.
+  \item Charging the loser his bid. In a first-price auction only the winner pays.
+  \item Stopping after round~1 or~2. The deletions alternate between the players, and only the
+  fourth round leaves a single profile.
+\end{itemize}
+
+\answer{(a) Matrix above (rows: player~1's bid; columns: player~2's bid). (b) Player~2's bid $0$ is
+strictly dominated by bid $2$; player~1 has no strictly dominated pure strategy (his bid $0$ is
+only weakly dominated by $1$). (c) IESDS deletes, in order, player~2's $0$, player~1's $0$,
+player~2's $1$, player~1's $1$; only $(2, 2)$ survives, with expected payoffs $(0.5, 1.5)$.}
+\end{exsol}

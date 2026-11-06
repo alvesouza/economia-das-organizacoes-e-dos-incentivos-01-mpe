@@ -5,6 +5,9 @@ Source: worked solutions in `Listas/pratica-lecture-01-solutions/` (checks `chec
 | Book / item | Issue |
 |---|---|
 | Muñoz-Garcia & Toro-Gonzalez Ch. 1 Ex. 2, Fig. 1.4 | Cell (L, aar) printed as (10,0); plan aar rejects after L, so it is (0,0). |
+| Muñoz-Garcia & Toro-Gonzalez Ch. 6 Ex. 1(c) | Threshold printed $\delta \ge 0.76$ (rounded down: at 0.76 the sum is ≈2.963 < 3, cooperation fails); exact 0.7627. Part (a) says the punisher plays "NC" (means C) and calls (NC,NC) "competitive"; the punishment phase is never checked and the strategies are called "tit-for-tat" (they are not). |
+| Muñoz-Garcia & Toro-Gonzalez Ch. 6 Ex. 9, pp. 306–307 | $u_2(L;p)$ printed $7+3p$, is $1+8p$; the convex hull is called "not convex"; cites "Fig. 6.7" for Fig. 6.11. Final $\delta \ge 1/3$ correct. |
+| Muñoz-Garcia & Toro-Gonzalez Ch. 6 Ex. 7 (= Gibbons 2.11) | Punishes with the mixed equilibrium, so it is not the pure-strategy SPE asked for (pure (M,C) works); states $BR_1(R)=B$, is $T$. |
 | Muñoz-Garcia & Toro-Gonzalez Ch. 3 Ex. 1, p. 89 | Indifference condition printed $3+3q=q+2-2q$; it is $3-3q$ (as printed, $q=-1/4$). The final $q=1/2$ is right. |
 | Tadelis 5.8 | "$Q=q_i+\cdots+q_n$" should be $q_1+\cdots+q_n$. |
 | MWG solutions manual 8.D.6 (pp. 8-15–8-16) | Cases 3–4 say "Player 2" where player 1 is meant; the "all other cases" formula is 0/0 when a player is indifferent across all profiles. |

@@ -15,10 +15,22 @@ for the formal side, Muñoz-Garcia & Toro-Gonzalez for drill with worked answers
 slides and notes; step 3 the rules and formula sheet; steps 4–5 practice-list items
 (`Listas/pratica-lecture-NN.md`, linked by item number and exercise ID; "L3 #6" = Lecture 3
 list, item 6); step 6 the quiz sections (tag and number of questions); step 7 the audio
-prompts and narrations; step 8 cases. Slides exist only for Lectures 1–3
-([[Aula/Lecture01.pdf|L1]], [[Aula/Lecture02.pdf|L2]], [[Aula/Lecture03.pdf|L3]]); the
-notes for Lectures 4–8 were written from the books before the slides
-([[Notas/00-index|notes index]]).
+prompts and narrations; step 8 cases. Slides exist for Lectures 1–4
+([[Aula/Lecture01.pdf|L1]], [[Aula/Lecture02.pdf|L2]], [[Aula/Lecture03.pdf|L3]],
+[[Aula/Lecture04.pdf|L4]]); the notes units L03–L08 were written from the books before the
+slides ([[Notas/00-index|notes index]]).
+
+**Where each topic is actually taught (2026-11-06).** "L3 #6"-style references and the notes
+units keep the estimated numbering; the real lectures run about half a lecture behind it:
+
+| Topics | Real lecture | Slides |
+|---|---|---|
+| T1 Normal form, T2 Dominance and IESDS | 1 | [[Aula/Lecture01.pdf\|L1]] |
+| T3 Rationalizability, T4 Nash equilibrium, T5 Oligopoly | 2 | [[Aula/Lecture02.pdf\|L2]] |
+| T6 Mixed strategies (finished), T7 Extensive form, T8 Backward induction and SPE | 3 | [[Aula/Lecture03.pdf\|L3]] |
+| T8 SPE and subgames, T9 Commitment and credibility (Brexit case), T12 repeated games: definition | 4 | [[Aula/Lecture04.pdf\|L4]] |
+| T12 Repeated games and the folk theorem, T10 one-stage deviation, T11 Bargaining | 5 | — (L4 wrap-up) |
+| T13–T19 | 6–8, estimate | — |
 
 Shared rules for every topic: [[rules/game-theory|Game theory rules]] (specify the game
 completely, name the solution concept, check existence and multiplicity, repeated ≠ one-shot,

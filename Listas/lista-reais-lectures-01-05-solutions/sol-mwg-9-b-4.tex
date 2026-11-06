@@ -1,0 +1,105 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 9.B.4. Input by \solitem.
+% New in the 50-item list. Check: check_B_L03.py. Compared with the MWG solutions manual.
+\begin{exsol}{MWG Exercise 9.B.4}{302}{Advanced}{4}
+\asked Prove that in a finite zero-sum game of perfect information all subgame-perfect Nash
+equilibria give the same payoffs.
+
+\method Backward induction and Zermelo's theorem (MWG \S9.B, Prop.~9.B.1, p.~272; Lecture~3,
+slide~30, whose corollary gives uniqueness only when no player has equal payoffs at two terminal
+nodes); subgames and SPNE (MWG Defs.~9.B.1--9.B.2, pp.~274--275; Lecture~3, slides~32--34); in a
+finite game of perfect information the SPNE are exactly the backward-induction profiles (MWG
+Prop.~9.B.2; Lecture~3, slide~35). The proof is an induction on subgames that tracks
+\emph{values}, not strategies: ties may create many SPNE, and the point is that they cannot create
+different payoffs.
+
+\solution
+\textbf{Setting.} Two players; a finite tree in which every information set is a single node;
+$u_1(z) + u_2(z) = 0$ at every terminal node $z$, so we can track $v(z) = u_1(z)$ and $u_2(z) =
+-v(z)$. For a decision node $x$, $\Gamma_x$ is the subgame starting at $x$ (every node starts one,
+by perfect information), and $C(x)$ is the set of its immediate successors. An SPNE may use
+behavioral strategies.
+
+\textbf{Claim.} For every node $x$ there is a number $V(x)$ such that \emph{every} SPNE of
+$\Gamma_x$ gives player~1 the payoff $V(x)$ (and player~2 $-V(x)$).
+
+\textbf{Proof by induction on the length of the longest path from $x$ to a terminal node.}
+
+\emph{Base.} If $x$ is terminal, $V(x) = v(x)$.
+
+\emph{Step.} Let $x$ be a decision node of player~$i$ and suppose the claim holds for every
+$y \in C(x)$. Take any SPNE $\sigma$ of $\Gamma_x$.
+\begin{enumerate}[label=(\roman*)]
+  \item For each $y \in C(x)$, the restriction of $\sigma$ to $\Gamma_y$ is an SPNE of $\Gamma_y$ (a
+  subgame of $\Gamma_y$ is a subgame of $\Gamma_x$). By the induction hypothesis it gives player~1
+  exactly $V(y)$. So if play moves from $x$ to $y$, the continuation pays $(V(y), -V(y))$, whatever
+  $\sigma$ prescribes inside $\Gamma_y$.
+  \item The restriction of $\sigma$ to $\Gamma_x$ is a Nash equilibrium of $\Gamma_x$. Player~$i$ could
+  change only his action at $x$, keeping the rest of $\sigma$; moving to $y$ would give him
+  $V(y)$ if $i = 1$, or $-V(y)$ if $i = 2$. Therefore every action played with positive probability at
+  $x$ must lead to a maximizer:
+  \[
+    i = 1:\ \ y \in \arg\max_{y' \in C(x)} V(y'), \qquad
+    i = 2:\ \ y \in \arg\max_{y' \in C(x)} \bigl(-V(y')\bigr) = \arg\min_{y' \in C(x)} V(y').
+  \]
+  \item All the successors in the support therefore have the same value, so the payoff of $\sigma$ in
+  $\Gamma_x$ is
+  \[
+    V(x) = \max_{y \in C(x)} V(y) \ \text{ if } i = 1, \qquad V(x) = \min_{y \in C(x)} V(y) \ \text{ if } i = 2,
+  \]
+  a number that does not depend on which SPNE $\sigma$ we took.
+\end{enumerate}
+Applying the claim at the root: every SPNE of the game gives $(V(x_0), -V(x_0))$. SPNE exist by
+Zermelo's theorem, so the set of SPNE payoffs is exactly $\{(V(x_0), -V(x_0))\}$. $\square$
+
+\textbf{Where zero-sum is used.} In step~(iii). When player~$i$ is indifferent among several
+successors, they give \emph{him} the same payoff, and in a two-player zero-sum game they then give
+the opponent the same payoff too. Without zero-sum, the opponent's payoff can differ across the
+tied successors. Counterexample: player~1 chooses $l \mapsto (0,1)$ or $r \mapsto (0,2)$; both
+$l$ and $r$ are SPNE, with different payoffs for player~2.
+
+\textbf{Two remarks.}
+\begin{itemize}
+  \item \emph{Two players are needed.} With three players and $u_1 + u_2 + u_3 = 0$ the result fails:
+  player~1 choosing between $(0, 1, -1)$ and $(0, -1, 1)$ has two SPNE with different payoffs for
+  players~2 and~3. ``Zero-sum'' in the exercise means two-player zero-sum.
+  \item \emph{Chance moves.} If the tree has moves of Nature with known probabilities, define $V(x)$ at
+  a chance node as the expected value of its successors' values; the same induction goes through.
+  By the minimax theorem $V(x_0)$ is also the value of the game, and every Nash equilibrium, not
+  only every SPNE, yields it.
+\end{itemize}
+
+\interp In a pure conflict, ties are harmless: if I am indifferent between two moves, so are you,
+so my tie-breaking cannot be used to help or hurt you. That is why chess-like games have a
+well-defined value even though the backward-induction strategies are far from unique. In the
+non-zero-sum games of Lecture~4 (entry, Brexit) a follower's indifference \emph{is} strategically
+important: how she breaks it can change the leader's payoff (compare MWG 9.B.5, item ``MWG 9.B.5'',
+part (e)).
+
+\verify \texttt{check\_B\_L03.py} draws 400 random two-player zero-sum trees (depth up to 4, two or
+three moves per node, integer payoffs in $\{-2, \dots, 2\}$, fixed seed), computes the set of pure
+SPNE payoff vectors over all tie-breakings, and finds exactly one in each tree; 151 of the trees have
+more than one SPNE, so ties do occur. It also confirms the two counterexamples (non-zero-sum and
+three-player zero-sum) have two SPNE payoff vectors. Output line: \texttt{mwg-9-b-4: 400 random
+zero-sum trees, unique SPNE payoffs (151 with several SPNE)}.
+\emph{Comparison with the MWG solutions manual} (Exercise 9.B.4, p.~9-2 of the manual; label read
+as ``9.8.4'' in the OCR): it argues that if a player has equal payoffs at two terminal nodes, the
+zero-sum property makes the other player indifferent too, so ``there may exist many different
+\dots{} SPNE \dots{} but all of them will yield the same payoffs''. \textbf{Agreement} on the result;
+the manual's argument speaks of terminal nodes only, and the induction above extends it to ties
+between subgame values, which is where it is actually needed.
+
+\mistakes
+\begin{itemize}
+  \item Proving that the SPNE is unique: it need not be (ties); only the payoffs are.
+  \item Using Zermelo's theorem's uniqueness clause, which requires no ties at all, instead of an
+  argument that allows ties.
+  \item Forgetting that SPNE may be mixed at tied nodes; the argument must cover any probability on
+  the maximizers, which (ii)--(iii) do.
+\end{itemize}
+
+\answer{By induction on subgames: if every subgame after $x$ has a unique SPNE value $V(y)$ for
+player~1, then at $x$ any SPNE puts weight only on successors that maximize the mover's payoff,
+$\max_y V(y)$ for player~1 or $\min_y V(y)$ for player~2, so $V(x)$ is unique. At the root all SPNE
+pay $(V(x_0), -V(x_0))$. Zero-sum (with two players) is what makes the mover's ties irrelevant for
+the opponent.}
+\end{exsol}

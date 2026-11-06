@@ -1,0 +1,118 @@
+% Solution: Tadelis (2013) Exercise 8.4 "Industry Leader". Input by \solitem.
+% New in the 30-item list; part (c) builds on lista-reais-lectures-01-04-solutions/item20.tex
+% (Gibbons 2.6, the same game), deepened with (a), (b), uniqueness and (d). Check: check_B_L04.py.
+\begin{exsol}{Tadelis Exercise 8.4}{170}{Exam}{4}
+\asked Leader firm~1 chooses $q_1$; firms~2 and~3 observe it and choose $q_2, q_3$ simultaneously;
+$P = a - Q$, marginal cost $c$. (a) Number of proper subgames; (b) perfect or imperfect
+information; (c) the SPE and its uniqueness; (d) a Nash equilibrium that is not subgame perfect.
+
+\method Proper subgames and perfect information (Lecture~4, slides~14--16; Lecture~3, slide~24;
+Tadelis Defs.~7.3 and~8.2, pp.~136 and~154). Two-stage game with a simultaneous second stage
+(Gibbons \S2.2.A, pp.~71--73): for each $q_1$ solve the followers' Cournot game, then let firm~1
+optimize (Stackelberg logic, Lecture~3, slide~37; Tadelis \S8.3.2, pp.~160--163). Non-SPE Nash
+equilibria by off-path threats (Lecture~4, slides~8 and~13).
+
+\solution
+\textbf{Notation.} $a > c \ge 0$; $q_i \ge 0$; profit $\pi_i = (a - Q - c)\,q_i$ with
+$Q = q_1 + q_2 + q_3$. A strategy of follower $j \in \{2,3\}$ is a function $q_j(\cdot)$ of the
+observed $q_1$.
+
+\textbf{(a) Proper subgames.} After each $q_1 \ge 0$ the game reaches a node at which firm~2 moves;
+that node is a singleton information set (everyone knows $q_1$), and the simultaneous choice of firm~3
+lies in an information set contained in what follows it. So every $q_1$ starts a proper subgame: there
+is a \textbf{continuum} of them (one for each $q_1 \in [0, \infty)$), plus the whole game. No other node
+starts one: firm~3's nodes belong to an information set that pools all of firm~2's quantities.
+
+\textbf{(b) Imperfect information.} Firms~2 and~3 move simultaneously, so one of them (say firm~3)
+does not observe the other's choice: its information set contains many nodes. The game has
+\textbf{imperfect information} (complete information, but not perfect).
+
+\textbf{(c) SPE and uniqueness.}
+
+\emph{Step 1: the subgame after $q_1$.} If $q_1 < a - c$, the followers' first-order conditions are
+\begin{align}
+  \frac{\partial\pi_2}{\partial q_2} &= a - c - q_1 - 2q_2 - q_3 = 0, \label{eq:tadelis-8-4-a}\\
+  \frac{\partial\pi_3}{\partial q_3} &= a - c - q_1 - q_2 - 2q_3 = 0. \label{eq:tadelis-8-4-b}
+\end{align}
+Subtracting \eqref{eq:tadelis-8-4-b} from \eqref{eq:tadelis-8-4-a} gives $q_3 = q_2$; substituting,
+$a - c - q_1 - 3q_2 = 0$, so
+\[
+  q_2(q_1) = q_3(q_1) = \frac{a - c - q_1}{3}.
+\]
+\emph{Uniqueness in the subgame.} Each profit is strictly concave in the firm's own output, so best
+replies are $q_j = \max\{0, \frac{a - c - q_1 - q_k}{2}\}$. The system \eqref{eq:tadelis-8-4-a}--%
+\eqref{eq:tadelis-8-4-b} has determinant $2\cdot 2 - 1 = 3 \neq 0$, so the interior solution is
+unique; a corner with $q_2 = 0 < q_3$ would need $q_3 = \frac{a-c-q_1}{2}$ and $0 \ge
+\frac{a-c-q_1-q_3}{2} = \frac{a - c - q_1}{4} > 0$, impossible. The best-reply map has slope
+$-\frac12$, a contraction, so there is no other (also no mixed) equilibrium: the subgame Cournot game
+is dominance solvable. If $q_1 \ge a - c$, both followers' unique best reply is $0$.
+
+\emph{Step 2: the leader.} For $q_1 < a - c$,
+\[
+  \pi_1 = \Bigl(a - q_1 - 2\cdot\frac{a - c - q_1}{3} - c\Bigr) q_1 = \frac{a - c - q_1}{3}\, q_1 ,
+\]
+strictly concave, with
+\[
+  \frac{d\pi_1}{dq_1} = \frac{a - c - 2q_1}{3} = 0 \;\Rightarrow\; q_1^* = \frac{a - c}{2}.
+\]
+For $q_1 \ge a - c$ the price is at most $c$, so $\pi_1 \le 0$; the interior choice is the unique
+global maximum.
+
+\emph{Step 3: the SPE.}
+\[
+  q_1^* = \frac{a - c}{2}, \qquad q_2^*(q_1) = q_3^*(q_1) = \max\Bigl\{0,\ \frac{a - c - q_1}{3}\Bigr\}.
+\]
+On the path $q_2 = q_3 = \frac{a-c}{6}$, $Q^* = \frac{5(a-c)}{6}$, $P^* = \frac{a + 5c}{6}$,
+$\pi_1^* = \frac{(a-c)^2}{12}$, $\pi_2^* = \pi_3^* = \frac{(a-c)^2}{36}$. \emph{Uniqueness:} every subgame
+has a unique Nash equilibrium (Step~1), so in any SPE the followers must use exactly these functions;
+given them, firm~1's problem has a unique solution (Step~2).
+
+\textbf{(d) A Nash equilibrium that is not subgame perfect.} Let $\hat q = \frac{a-c}{4}$ and consider
+\[
+  q_1 = \hat q, \qquad
+  q_2(q_1) = q_3(q_1) = \begin{cases} \hat q, & q_1 = \hat q,\\ a - c, & q_1 \ne \hat q. \end{cases}
+\]
+\begin{itemize}
+  \item \emph{Followers:} on the path $q_1 = \hat q$, each best reply to $(\hat q, \hat q)$ is
+  $\frac{a - c - 2\hat q}{2} = \frac{a-c}{4} = \hat q$. Their plans after other $q_1$ are off the
+  path and do not affect their payoffs.
+  \item \emph{Leader:} on the path the outcome is three-firm Cournot, $\pi_1 = \frac{(a-c)^2}{16} > 0$.
+  Any $q_1 \ne \hat q$ triggers $q_2 = q_3 = a - c$, so $Q \ge 2(a-c)$ and $P - c \le -(a - c) < 0$:
+  profit $\le 0$. So $\hat q$ is a best reply.
+\end{itemize}
+It is a Nash equilibrium with outcome $(\frac{a-c}{4}, \frac{a-c}{4}, \frac{a-c}{4})$, not the SPE
+outcome. It is not subgame perfect: after any $q_1 \ne \hat q$ (with $q_1 < a - c$) the pair
+$(a-c, a-c)$ is not a Nash equilibrium of the subgame (each follower's best reply to $a-c$ is $0$).
+
+\interp Moving first and being observed is a commitment: firm~1 produces the monopoly output
+$\frac{a-c}{2}$ and the followers' joint reply (slope $-\frac23$) absorbs part of it, so the leader earns
+$\frac{(a-c)^2}{12}$ instead of the Cournot $\frac{(a-c)^2}{16}$, and total output rises. The non-SPE
+equilibrium in (d) shows how the followers could ``undo'' leadership with a threat to flood the market,
+but the threat is not credible once $q_1$ is sunk: this is the Lecture~4 contrast between Nash
+equilibria held up by threats and the subgame-perfect prediction.
+
+\verify \texttt{check\_B\_L04.py} solves \eqref{eq:tadelis-8-4-a}--\eqref{eq:tadelis-8-4-b} and the
+leader's problem with sympy (determinant 3; $q_1^* = \frac{a-c}{2}$, $q_j^* = \frac{a-c}{6}$, second
+derivative negative); with $a = 13$, $c = 1$ it iterates the followers' best replies from three starting
+points for six values of $q_1$ (including $q_1 \ge a - c$) and always converges to
+$\max\{0, \frac{a-c-q_1}{3}\}$; it checks the threat profile of (d): on-path profit 9, every deviation
+on a grid of step $\frac14$ earns $\le 0$, the followers' on-path reply is 3, and flooding is not a best
+reply. Output line: \texttt{tadelis-8-4: SPE q1 = (a-c)/2, q2 = q3 = (a-c)/6; flood-threat NE gives
+Cournot (a-c)/4 each}. Tadelis prints no answer. The SPE outcome agrees with the 01-04 solution of
+Gibbons 2.6 (same game).
+
+\mistakes
+\begin{itemize}
+  \item Counting ``two'' subgames (one per stage): every value of $q_1$ starts its own subgame.
+  \item Giving the followers' equilibrium \emph{quantities} $\frac{a-c}{6}$ as their strategies: an SPE
+  needs the reply functions $q_j(q_1)$.
+  \item Solving the followers' problem as a Stackelberg chain (firm~2 before firm~3): here they move
+  simultaneously, so the second stage is a Cournot duopoly on residual demand $a - q_1$.
+\end{itemize}
+
+\answer{(a) A continuum: one proper subgame for each $q_1 \ge 0$, plus the whole game. (b) Imperfect
+information (firms~2 and~3 move simultaneously). (c) Unique SPE: $q_1^* = \frac{a-c}{2}$,
+$q_2(q_1) = q_3(q_1) = \max\{0, \frac{a-c-q_1}{3}\}$; outcome $(\frac{a-c}{2}, \frac{a-c}{6},
+\frac{a-c}{6})$, $P = \frac{a+5c}{6}$. (d) $q_1 = \frac{a-c}{4}$; followers play $\frac{a-c}{4}$ if
+$q_1 = \frac{a-c}{4}$ and $a - c$ otherwise: Nash, not subgame perfect.}
+\end{exsol}

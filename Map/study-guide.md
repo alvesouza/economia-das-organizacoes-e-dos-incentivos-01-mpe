@@ -27,25 +27,36 @@ the organizational and IO applications. Pages are printed pages, verified on 202
 |---|---|---|---|---|---|
 | 1 | Tue Oct 13 | Static games I: dominance, iterated elimination | Ch. 3 (43–58); §4.1–4.2 (59–69) | §1.1.A–B (2–7) | `Listas/pratica-lecture-01.md`, `Listas/lista-lecture-01.tex`, 3 quizzes, 2 audio prompts, TTS |
 | 2 | Tue Oct 20 | Static games II: Nash equilibrium, mixed strategies | §4.3 (69–76); Ch. 5 (79–100); Ch. 6 (101–126) | §1.1.C, §1.2, §1.3 (8–48) | `Listas/pratica-lecture-02.md`, 3 quizzes, 2 audio prompts, TTS |
-| 3 | Tue Oct 27 | Dynamic games: backward induction, subgame perfection | Ch. 7 (129–150); Ch. 8 (151–174) | §2.1.A, §2.2.A, §2.4 | Slides `Aula/Lecture03.pdf` · mini case solved (`Resolucao/mini-case-lecture-03.pdf`, short version `-short.pdf`) · `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts, TTS |
-| 4 | Tue Nov 3 | Multistage games and bargaining | Ch. 9 (175–189); Ch. 11 (220–237) | §2.1.D (68); §2.2 (71–82) | Aula 2 notes §5; `lista-aulas-01-02` block 3 ([[rules/02_barganha\|Topic 2]]) · Brexit case (`Cases/Brexit/brexit-game.pdf`) · `Listas/pratica-lecture-04.md`, 3 quizzes, 2 audio prompts, TTS |
-| 5 | **Fri Nov 6** | Repeated games I: cooperation | §10.1–10.3 (190–201); §10.6 (209) | §2.3.A–B (82–102) | `Listas/pratica-lecture-05.md`, 3 quizzes, 2 audio prompts, TTS |
+| 3 | Tue Oct 27 | Mixed strategies and dynamic games (slides) | §6.1–6.4 (101–123); Ch. 7 (129–150); §8.1–8.2 (151–159) | §1.3, §2.1.A, §2.4 | Slides `Aula/Lecture03.pdf` · mini case solved (`Resolucao/mini-case-lecture-03.pdf`, short version `-short.pdf`) · notes units L02 §07–09 + L03 · `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts (from the slides), TTS |
+| 4 | Tue Nov 3 | Credible threats and subgame perfection (slides) | Ch. 8 (151–174); §10.1–10.2 (190–196) | §2.1.A–B, §2.4 (115–129) | Slides `Aula/Lecture04.pdf` · Brexit case (`Cases/Brexit/brexit-game.pdf`, short `-short.pdf`) · notes units L03 §05–06 + L05 §01, §03 · 2 audio prompts (from the slides) |
+| 5 | **Fri Nov 6** | Repeated games and bargaining (per L4 wrap-up; no slides yet) | Ch. 9 (175–189); Ch. 10 (190–219); Ch. 11 (220–237) | §2.1.D (68), §2.2, §2.3.A–B (82–102) | notes units L05 + L04 §03, §05–07 · `Listas/pratica-lecture-0{4,5}.md`, quizzes `quiz-lecture0{4,5}-*`, 2 audio prompts (estimated) · real-exercise list `Listas/lista-reais-lectures-01-05.pdf` |
 | 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | `Listas/pratica-lecture-06.md`, 3 quizzes, 2 audio prompts, TTS |
 | 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-07.md`, 3 quizzes, 2 audio prompts, TTS |
 | 8 | Tue Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-08.md`, 3 quizzes, 2 audio prompts, TTS |
 | 9 | Tue Dec 1 | Short-paper presentations | — | — | — |
 | 10 | Tue Dec 8 | Final exam (55%) | — | — | — |
 
+**Real schedule vs. the estimate (2026-11-06).** The slides run about half a lecture behind the
+estimated plan: Lecture 3 finished mixed strategies before dynamic games, Lecture 4 taught
+credibility, subgames and SPE through the Brexit case and only defined repeated games, and
+Lecture 5 (per the Lecture 4 wrap-up) takes finitely and infinitely repeated games, the
+one-stage deviation principle, the folk theorem *and* bargaining, i.e. the old estimated units
+L04 and L05 together. The notes units `Notas/LNN/` keep their estimated numbering; each lecture
+row says which units it draws on. Lectures 6–8 below are still the estimate and may shift.
+
 **Tight stretch.** Lectures 4, 5 and 6 fall within eight days (Nov 3, 6, 10): read Tadelis
-Ch. 10 before Nov 3.
+Ch. 9–11 before Nov 6.
 
 **Per-lecture kit** (every lecture N = 1–8): notes [[Notas/00-index|`Notas/LNN/`]] and their PDF
 `Notas/LNN/LNN-notes.pdf` · narration `Leituras/lecture-NN-notes-narrated.txt` · NotebookLM audio
 `NotebookLM/audio/lecture-NN-audio-part{1,2}.md` ([[NotebookLM/README|README]]) · quizzes
 `Simulados/quiz-lectureNN-{1,2,3}-*.md` · practice list `Listas/pratica-lecture-NN.md` (book
-exercises verbatim). Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
-[[Map/exercises-index|exercises-index]]. Lectures 3–8 notes were written before their slides;
-Lecture 3's slides arrived 2026-11-03 (reconcile with `/notes 03 --reconcile`).
+exercises verbatim) · for Lectures 1–5, a 10-exercise real list with detailed solutions,
+`Listas/lista-reais-lecture-0N.pdf` and `-solutions.pdf`. Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
+[[Map/exercises-index|exercises-index]]. The kit files follow the estimated units (audio prompts
+for Lectures 3–5 were rewritten on 2026-11-06 to follow the real lectures). Notes units L03–L08
+were written before any slides; Lecture 3's slides arrived 2026-11-03 and Lecture 4's on
+2026-11-06 (reconcile with `/notes`).
 
 ---
 
@@ -72,7 +83,7 @@ Lecture 3's slides arrived 2026-11-03 (reconcile with `/notes 03 --reconcile`).
 
 ## Dynamic games of complete information
 
-### Lecture 3 — Dynamic games: backward induction and subgame perfection
+### Lecture 3 — Mixed strategies and dynamic games
 #lecture/3
 - **Content (slides `Aula/Lecture03.pdf`, 43 slides + appendix):** mixed strategies, the principle of indifference and Nash's existence theorem (finishing Lecture 2); extensive-form games, game trees, information sets, perfect and imperfect information; pure, mixed and behavioral strategies, perfect recall; sequential rationality, backward induction and subgame-perfect equilibrium; appendix on price competition with capacity constraints.
 - **In-class mini case:** "Work or shirk?" (slides 41–42; monitoring remote work, the Itaú case), solved in `Resolucao/mini-case-lecture-03.pdf` (detailed: indifference, comparative statics, commitment, critique) and `Resolucao/mini-case-lecture-03-short.pdf` (one-page hand-in). Answer: $p^* = h/w = 0.1$, $q^* = g/w = 0.2$.
@@ -80,24 +91,26 @@ Lecture 3's slides arrived 2026-11-03 (reconcile with `/notes 03 --reconcile`).
 - **After class:** `Listas/pratica-lecture-03.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture03-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 (pp. 153–214) · Tadelis Ch. 7–8 exercises
 - **Formal side:** MWG §7.C (p. 221), §9.A–9.B (pp. 267–281)
 - **Applications:** Cabral §7.2 (p. 167)
-- **Notes:** [[Notas/L03/L03-00-map|Lecture 3 notes]] (estimated before the lecture; slides now available, not yet reconciled; figures and companions inside)
+- **Notes:** [[Notas/L02/L02-00-map|Lecture 2 notes]] §07–09 (mixed strategies, existence) and [[Notas/L03/L03-00-map|L03 unit]] (extensive form to SPE; estimated, not yet reconciled with the slides)
 
-### Lecture 4 — Multistage games and bargaining
+### Lecture 4 — Credible threats and subgame perfection
 #lecture/4
-- **Before class:** Tadelis Ch. 9 (pp. 175–189), Ch. 11 (pp. 220–237) · Gibbons §2.1.D sequential bargaining (p. 68), §2.2 (pp. 71–82)
-- **After class:** `Listas/pratica-lecture-04.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture04-{1,2,3}-*.md` · Muñoz-Garcia Ch. 4 Ex. 1 (p. 154), Ex. 16–18 (pp. 198–200); Ch. 6 Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
-- **Formal side:** MWG 9.AA (p. 296)
-- **In-class case (pairs, prepare before class):** *Boris's Brexit Dilemma* (A) and (B), Darden UV9621/UV9624, task in `Cases/Brexit/intrucoes.md`: model the UK–EU negotiation as a game, solve by backward induction, compare with your negotiation. Worked model: `Cases/Brexit/brexit-game.pdf` (SPE: UK prepares, EU offers the favorable deal, UK presents it; preparation is a visible commitment that makes rejection credible).
-- **Applications and project material:** M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · `Listas/lista-aulas-01-02.tex` block 3 · [[rules/02_barganha|Topic 2]]
-- **Notes:** [[Notas/L04/L04-00-map|Lecture 4 notes]] (estimated before the lecture; figures and companions inside)
+- **Content (slides `Aula/Lecture04.pdf`, 23 slides):** the Brexit case as a game (data, extensive form, replacing Nature by expected payoffs, strategic form, too many Nash equilibria, backward induction, lessons: sunk investments can be strategic, observability matters, talk is cheap); Nash equilibrium is not enough: non-credible threats; subgames (counting them) and subgame-perfect equilibrium, back to the Brexit game; repeated games: definition and payoffs, finitely repeated games.
+- **In-class case (pairs, prepared before class):** *Boris's Brexit Dilemma* (A) and (B), Darden UV9621/UV9624, task in `Cases/Brexit/intrucoes.md`. Worked model `Cases/Brexit/brexit-game.pdf` (14 pp.) and `brexit-game-short.pdf` (3 pp.); it matches the slides' numbers and solution (UK prepares; EU offers favorable if prepared, unfavorable otherwise; payoffs (−24.7, −14)).
+- **Before class:** Tadelis Ch. 8 (pp. 151–174), §10.1–10.2 (pp. 190–196) · Gibbons §2.1.A–B, §2.4 (pp. 115–129)
+- **After class:** `Listas/pratica-lecture-03.md` (credibility, entry, Stackelberg items) · quizzes `Simulados/quiz-lecture03-{2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 4
+- **Formal side:** MWG §9.A–9.B (pp. 267–281)
+- **Applications:** Cabral §7.2 (p. 167, entry and commitment)
+- **Notes:** [[Notas/L03/L03-00-map|L03 unit]] §05–06 (subgame perfection, credibility and commitment) and [[Notas/L05/L05-00-map|L05 unit]] §01, §03 (finite repetition, discounting and strategies); estimated units
 
-### Lecture 5 — Repeated games I: cooperation
+### Lecture 5 — Repeated games and bargaining
 #lecture/5
-- **Before class:** Tadelis §10.1–10.3 (pp. 190–201), folk theorem §10.6 (p. 209) · Gibbons §2.3.A–B (pp. 82–102)
-- **After class:** `Listas/pratica-lecture-05.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture05-{1,2,3}-*.md` · Muñoz-Garcia Ch. 6 Ex. 1 (p. 274) · Tadelis Ch. 10 exercises
-- **Formal side:** MWG §12.D (p. 400), App. 12.A "Infinitely Repeated Games and the Folk Theorem" (p. 417)
-- **Applications:** Cabral §7.3 (p. 172)
-- **Notes:** [[Notas/L05/L05-00-map|Lecture 5 notes]] (estimated before the lecture; figures and companions inside)
+- **Content (from the Lecture 4 wrap-up; no slides yet):** finitely repeated games: unraveling, carrots and sticks; infinitely repeated games, the one-stage deviation principle and the folk theorem; bargaining.
+- **Before class:** Tadelis Ch. 9 (pp. 175–189, one-stage deviation §9.5 p. 184), Ch. 10 (pp. 190–219, folk theorem §10.6 p. 209), Ch. 11 (pp. 220–237) · Gibbons §2.1.D (p. 68), §2.3.A–B (pp. 82–102)
+- **After class:** `Listas/pratica-lecture-05.md` and `Listas/pratica-lecture-04.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture05-{1,2,3}-*.md`, `quiz-lecture04-{1,2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 5 · Muñoz-Garcia Ch. 6 Ex. 1 (p. 274), Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
+- **Formal side:** MWG 9.AA (p. 296), §12.D (p. 400), App. 12.A (p. 417)
+- **Applications and project material:** Cabral §7.3 (p. 172) · M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · [[rules/02_barganha|Topic 2]]
+- **Notes:** [[Notas/L05/L05-00-map|L05 unit]] (repeated games) and [[Notas/L04/L04-00-map|L04 unit]] §03 (one-stage deviation), §05–07 (bargaining); estimated units
 
 ### Lecture 6 — Repeated games II: collusion and relational contracts
 #lecture/6
@@ -131,7 +144,7 @@ Lecture 3's slides arrived 2026-11-03 (reconcile with `/notes 03 --reconcile`).
 - Group paper: motivation, brief literature review, research question, an economic model (35% in all). Comments on another group's paper count 5%. Partial-submission dates: to be agreed in class (not yet known).
 
 ### Lecture 10 — Final exam (Tue Dec 8)
-- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture). Real book exercises, Lectures 1–4: `Listas/lista-reais-lectures-01-04.pdf` (24 items, statements verbatim), solutions `Listas/lista-reais-lectures-01-04-solutions.pdf`, book pages `Listas/study-pack-roteiro-lectures-01-04.pdf` (roadmap `Listas/roteiro-lectures-01-04.md`).
+- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture). **Real book exercises, Lectures 1–5 (current, 2026-11-06):** 50 exercises, 10 per lecture, each block ordered easy → graduate-level (difficulty 1–5) and following the real schedule: combined `Listas/lista-reais-lectures-01-05.pdf` with detailed solutions `Listas/lista-reais-lectures-01-05-solutions.pdf`; per lecture `Listas/lista-reais-lecture-0N.pdf` and `Listas/lista-reais-lecture-0N-solutions.pdf` (order: `Listas/lista-reais-lectures-01-05/order.md`). Earlier version (old plan's blocks), Lectures 1–4: `Listas/lista-reais-lectures-01-04.pdf` (24 items, statements verbatim), solutions `Listas/lista-reais-lectures-01-04-solutions.pdf`, book pages `Listas/study-pack-roteiro-lectures-01-04.pdf` (roadmap `Listas/roteiro-lectures-01-04.md`).
 
 ---
 

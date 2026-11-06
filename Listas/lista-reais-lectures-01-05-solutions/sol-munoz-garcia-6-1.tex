@@ -1,0 +1,110 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Exercise 1 "Infinitely Repeated Prisoner's
+% Dilemma Game". Input by \solitem. New for the 01-05 list. Check: check_C_L05.py.
+\begin{exsol}{\MG{} Ch.~6 Exercise 1}{274}{Foundations}{2}
+\asked In the infinitely repeated Prisoner's Dilemma of Table~6.1, can $(NC,NC)$ be an SPE outcome
+when a deviation is punished by $(C,C)$ for (a) one period, (b) two periods, and (c) for ten
+periods, what is the threshold $\delta$?
+
+\method Temporary Nash reversion (``length-$k$ punishment'') and the one-stage deviation principle
+(Tadelis Prop.~10.3, p.~198; grim trigger and (10.3), pp.~198--200; the general threshold (10.5),
+p.~202). Compare the stream from cooperating with the stream from deviating once and then being
+punished for $k$ periods; the two streams coincide from period $k+2$ on. Lecture~5 has no slides
+yet; the repeated-game set-up is Lecture~4, slides~21--22. Notation as in
+\texttt{Notas/L05/L05-04-grim-trigger-spe.md}.
+
+\solution
+\textbf{Notation.} Stage payoffs (player~1 first): $(C,C) = (2,2)$, $(C,NC) = (6,0)$, $(NC,C) =
+(0,6)$, $(NC,NC) = (3,3)$. Present values $\sum_{t\ge0}\delta^t u_i^t$, measured from the period in
+which a player considers deviating. A length-$k$ punishment strategy has two phases:
+\begin{itemize}
+  \item \emph{cooperation}: play $NC$ in period~1 and as long as no deviation from the prescribed
+  actions has occurred;
+  \item \emph{punishment}: after a deviation, play $C$ for $k$ periods, then return to cooperation
+  (a deviation during the punishment restarts it).
+\end{itemize}
+
+\textbf{Step 1: the stage game.} $C$ is strictly dominant ($2 > 0$ against $C$, $6 > 3$ against
+$NC$), so $(C,C)$, with $(2,2)$, is the unique stage equilibrium. The deviation gain is
+$g = 6 - 3 = 3$; each punishment period costs $\ell = 3 - 2 = 1$.
+
+\textbf{Step 2: the general condition.} Cooperating gives $3 + 3\delta + \dots$. Deviating gives
+$6$ now, $2$ in each of the next $k$ periods, then $3$ forever. From period $k+1$ on (counting the
+current period as 0) the streams are equal, so the comparison is over periods $0, \dots, k$:
+\[
+  3 + 3\sum_{j=1}^{k}\delta^j \;\ge\; 6 + 2\sum_{j=1}^{k}\delta^j
+  \iff \sum_{j=1}^{k}\delta^j \;\ge\; 3
+  \iff \frac{\delta(1-\delta^k)}{1-\delta} \;\ge\; 3 .
+\]
+In words: the one-period gain, $3$, must be covered by $k$ discounted losses of $1$ each. Since
+$\sum_{j=1}^k \delta^j < k$ for $\delta < 1$, no punishment of length $k \le 3$ can ever work.
+
+\textbf{(a) One period ($k=1$).} The condition is $\delta \ge 3$: impossible for $\delta < 1$.
+Explicitly, $3 + 3\delta \ge 6 + 2\delta \iff \delta \ge 3$. Cooperation cannot be supported.
+
+\textbf{(b) Two periods ($k=2$).} The condition is
+\[
+  \delta + \delta^2 \ge 3 \iff \delta^2 + \delta - 3 \ge 0 .
+\]
+The roots are $\delta = \frac{-1\pm\sqrt{13}}{2} \approx -2.30,\ 1.30$; the quadratic is negative on
+$(0,1)$ (at most $1 + 1 - 3 = -1$). Cooperation cannot be supported.
+
+\textbf{(c) Ten periods ($k=10$).} The condition is
+\[
+  \delta + \delta^2 + \dots + \delta^{10} \ge 3 .
+\]
+The left side rises from $0$ to $10$ on $[0,1]$, so there is exactly one root in $(0,1)$. Numerically
+(bisection or a polynomial root-finder),
+\[
+  \delta_{10} \approx 0.7627 .
+\]
+Cooperation is an SPE outcome iff $\delta \ge \delta_{10}$. For comparison, the thresholds for other
+lengths are $\delta_4 \approx 0.888$, $\delta_5 \approx 0.834$, $\delta_6 \approx 0.805$, $\delta_8 \approx
+0.775$, $\delta_{20} \approx 0.7506$, and grim trigger ($k = \infty$) needs $\frac{\delta}{1-\delta} \ge 3$,
+i.e.\ $\delta \ge \frac34$ ((10.5): $\frac{6-3}{6-2} = \frac34$).
+
+\textbf{Step 3: the punishment phase.} In a punishment period the prescribed action is $C$, a stage
+best reply to $C$. Deviating to $NC$ pays $0 < 2$ today and either leaves the future unchanged or,
+with the restart rule, lengthens the punishment, which pays $2 < 3$ per period. Either way the
+deviation loses, for every $\delta$. So the only binding constraint is Step~2's, and the profile is an
+SPE exactly when that holds.
+
+\interp A punishment deters only if the deviator loses more than he grabs. Here the grab is $3$
+and each period of punishment costs only $1$, so at least four periods are needed, and even then only
+very patient players are deterred. Longer punishments lower the threshold, with grim trigger as the
+limit. Short, forgiving punishments are attractive (mistakes are not punished forever), but they
+need a punishment phase that hurts much more per period than reverting to the Nash equilibrium does
+here.
+
+\verify \texttt{check\_C\_L05.py} confirms that $(C,C)$ is the unique stage equilibrium and derives
+the condition $\sum_{j=1}^k\delta^j \ge 3$ symbolically for $k = 1, 2, 3, 4, 10$. It shows (a), (b),
+and also $k = 3$ fail on the grid $\delta = j/1000$. For (c) it finds the single root in $(0,1)$,
+$0.762700984\ldots$, and brackets it in exact fractions: the condition fails at $0.762700$, holds at
+$0.762701$, fails at $0.76$ and holds at $0.77$. It also checks that the thresholds decrease in $k$
+towards $\frac34$. Output: ``Munoz-Garcia 6.1: k=1 and k=2 never work (k=3 needs delta=1); k=10:
+delta >= 0.762701 (book: 0.76, which fails); grim: 3/4; k=4: 0.8882''.
+\emph{Comparison with \MG{}'s answer} (pp.~275--278): the same conditions and conclusions for (a)
+and (b) ($\delta \ge 3$; $\delta^2 + \delta - 3 \ge 0$ with roots $-2.3$ and $1.3$). For (c) the book
+reports $\delta \ge 0.76$, which is the threshold rounded \emph{down}: at $\delta = 0.76$ the sum is
+about $2.963 < 3$, so cooperation fails. The correct statement is $\delta \ge 0.7627$. Two slips in
+the book's text for (a): it says the punisher finds ``$NC$ a best response to player~$i$ playing
+$NC$'', meaning $C$ against $C$; and it calls $(NC,NC)$ the ``competitive outcome'' where it means the
+cooperative one. The book does not check the punishment phase.
+
+\mistakes
+\begin{itemize}
+  \item Calling these strategies ``tit-for-tat''. True tit-for-tat copies the opponent's last move,
+  which is not the same as ``both play $C$ for $k$ periods''. Tit-for-tat proper is generally
+  \emph{not} subgame perfect, because after a deviation it requires a player to punish while being
+  punished. The book uses the name loosely.
+  \item Comparing the streams only up to period~1 (``$6 + 2\delta$ versus $3 + 3\delta$'') when
+  $k > 1$. All $k$ punishment periods enter the comparison.
+  \item Rounding the threshold to $0.76$. A threshold must be rounded up, or stated as the exact
+  root.
+\end{itemize}
+
+\answer{With a $k$-period reversion to $(C,C)$, cooperation is an SPE iff $\sum_{j=1}^{k}\delta^j\ge3$
+(the punishment phase never binds). (a) $k=1$: $\delta\ge3$, impossible. (b) $k=2$: $\delta^2+\delta-3\ge0$,
+root $\frac{-1+\sqrt{13}}2\approx1.30>1$, impossible. (c) $k=10$: $\delta+\delta^2+\dots+\delta^{10}\ge3$,
+i.e.\ $\delta\ge\delta_{10}\approx0.7627$ (the book's $0.76$ is slightly too low). Grim trigger would need
+$\delta\ge\frac34$.}
+\end{exsol}

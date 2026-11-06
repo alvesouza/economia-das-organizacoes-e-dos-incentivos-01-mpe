@@ -1,0 +1,201 @@
+% Block 2 of lista-reais-lectures-01-05 (input by the drivers in Listas/).
+% Order and ratings: lista-reais-lectures-01-05/order.md.
+\bloco{2}{Static games II: Nash equilibrium and mixed strategies}{Lecture 2}
+
+% ---------------------------------------------------------------------------
+\exercicio[1]{Hawk-Dove}{Foundations}{Tadelis (2013), \emph{Game Theory: An Introduction}, Ch.~5
+``Pinning Down Beliefs: Nash Equilibrium'', Exercise 5.6 ``Hawk-Dove'', p.~96 [PDF 115]. No answer
+in the book. Reproduced verbatim, with the book's footnote 12.}
+
+\rot{5.6}\textbf{Hawk-Dove:} The following game has been widely used in evolutionary biology to
+understand how fighting and display strategies by animals could coexist in a population. For a
+typical Hawk-Dove game there are resources to be gained (e.g., food, mates, territories), denoted as
+$v$. Each of two players can choose to be aggressive, as Hawk ($H$), or compromising, as Dove ($D$).
+If both players choose $H$ then they split the resources but lose some payoff from injuries,
+denoted as $k$. Assume that $k > \frac{v}{2}$. If both choose $D$ then they split the resources but
+engage in some display of power that carries a display cost $d$, with $d < \frac{v}{2}$. Finally, if
+player $i$ chooses $H$ while $j$ chooses $D$ then $i$ gets all the resources while $j$ leaves with no
+benefits and no costs.
+\begin{partes}
+\item Describe this game in a matrix.
+\item Assume that $v = 10$, $k = 6$, and $d = 4$. What outcomes can be supported as pure-strategy
+Nash equilibria?$^{12}$
+\end{partes}
+{\small $^{12}$\,In the evolutionary biology literature, the analysis performed is of a very
+different nature. Instead of considering the Nash equilibrium analysis of a static game, the
+analysis is a dynamic one in which successful strategies ``replicate'' in a large population. This
+analysis is part of a methodology called evolutionary game theory. For more on the subject see
+Gintis (2000).\par}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[1]{Battle of the Sexes}{Foundations}{Muñoz-Garcia \& Toro-Gonzalez (2019), \emph{Strategy
+and Game Theory: Practice Exercises with Answers}, 2nd ed., Ch.~2 ``Pure Strategy Nash
+Equilibrium and Simultaneous-Move Games with Complete Information'', Exercise 2 ``Battle of the
+Sexes''$^{\mathrm{A}}$, p.~41 [PDF 54]. Worked answer in the book, right after the statement.
+Reproduced verbatim (statement only); Fig.~2.4, printed inside the answer on the same page,
+rebuilt, with the book's row label ``Housband'' kept as printed.}
+
+A husband and a wife are leaving work, and do not remember which event they are attending to
+tonight. Both of them, however, remember that last night's argument was about either attending to
+the football game (the most preferred event for the husband) or the opera (the most preferred event
+for the wife). To make matters worse, their cell phones broke, so they cannot call each other to
+confirm which event they are attending to. As a consequence, they must simultaneously and
+independently decide whether to attend to the football game or the opera.
+
+The payoff matrix in Fig.~2.4 describes the preference of the husband (wife) for the football game
+(opera, respectively), but also indicates that both players prefer to be together rather than being
+alone (even if they are alone at their most preferred event). Find the set of Nash Equilibria of
+this game.
+\jogo{Housband}{Wife}{\begin{tabular}{c|c|c|}
+\hd{} & \hd{\emph{Football}} & \hd{\emph{Opera}}\\\cline{2-3}
+\emph{Football} & 3, 1 & 0, 0\\\cline{2-3}
+\emph{Opera} & 0, 0 & 1, 3\\\cline{2-3}
+\end{tabular}}
+\vspace{-6pt}\begin{center}\small\textit{Fig.~2.4} Battle of the sexes game (Normal-form
+representation)\end{center}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[2]{Game of Chicken}{Foundations}{Muñoz-Garcia \& Toro-Gonzalez (2019), \emph{Strategy and
+Game Theory: Practice Exercises with Answers}, 2nd ed., Ch.~3 ``Mixed Strategies, Strictly
+Competitive Games, and Correlated Equilibria'', Exercise 1 ``Game of Chicken''$^{\mathrm{A}}$,
+pp.~86--87 [PDF 99--100]. Worked answer in the book, right after the statement. Reproduced
+verbatim (statement only).}
+
+Consider the game of Chicken (depicted in Fig.~3.1), in which two players driving their cars
+against each other must decide whether or not to swerve.
+
+\textbf{Part (a)} Is there any strictly dominated strategy for Player 1? And for Player 2?
+
+\textbf{Part (b)} What are the best responses for Player 1? And for Player 2?
+
+\textbf{Part (c)} Can you find any pure strategy Nash Equilibrium (psNE) in this game?
+
+\textbf{Part (d)} Find the mixed strategy Nash Equilibrium (msNE) of the game. \emph{Hint}: denote by
+$p$ the probability that Player 1 chooses Straight and by $(1 - p)$ the probability that he chooses
+to Swerve. Similarly, let $q$ denote the probability that Player 2 chooses Straight and $(1 - q)$
+the probability that she chooses to Swerve.
+
+\textbf{Part (e)} Show your result of part (d) by graphically representing every player $i$'s best
+response function $BRF_i(s_j)$, where $s_j = \{Swerve, Straight\}$ is the strategy selected by player
+$j \neq i$.
+\jogo{\emph{Player 1}}{\emph{Player 2}}{\begin{tabular}{c|c|c|}
+\hd{} & \hd{Straight} & \hd{Swerve}\\\cline{2-3}
+Straight & 0,0 & 3,1\\\cline{2-3}
+Swerve & 1,3 & 2,2\\\cline{2-3}
+\end{tabular}}
+\vspace{-6pt}\begin{center}\small\textit{Fig.~3.1} Game of Chicken\end{center}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[2]{A mixed equilibrium by indifference}{Exam level}{Gibbons (1992), \emph{Game Theory for
+Applied Economists}, Ch.~1 ``Static Games of Complete Information'', \S1.5 Problems (Section 1.3),
+Problem 1.12, p.~51 [PDF 59]. No answer in the book. Reproduced verbatim.}
+
+\rot{1.12.}Find the mixed-strategy Nash equilibrium of the following normal-form game.
+\begin{center}\begin{tabular}{c|c|c|}
+\hd{} & \hd{$L$} & \hd{$R$}\\\cline{2-3}
+$T$ & 2, 1 & 0, 2\\\cline{2-3}
+$B$ & 1, 2 & 3, 0\\\cline{2-3}
+\end{tabular}\end{center}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[3]{The $n$-Firm Cournot Model}{Exam level}{Tadelis (2013), \emph{Game Theory: An
+Introduction}, Ch.~5 ``Pinning Down Beliefs: Nash Equilibrium'', Exercise 5.8 ``The $n$-Firm
+Cournot Model'', pp.~96--97 [PDF 115--116]. No answer in the book. Reproduced verbatim (the printed
+``$Q = q_i + \cdots + q_n$'' is kept as printed).}
+
+\rot{5.8}\textbf{The $n$-Firm Cournot Model:} Suppose there are $n$ firms in the Cournot oligopoly
+model. Let $q_i$ denote the quantity produced by firm $i$, and let $Q = q_i + \cdots + q_n$ denote
+the aggregate production. Let $P(Q)$ denote the market clearing price (when demand equals $Q$) and
+assume that the inverse demand function is given by $P(Q) = a - Q$, where $Q \le a$. Assume that
+firms have no fixed cost and that the cost of producing quantity $q_i$ is $cq_i$ (all firms have the
+same marginal cost, and assume that $c < a$).
+\begin{partes}
+\item Model this as a normal-form game.
+\item What is the Nash (Cournot) equilibrium of the game in which firms choose their quantities
+simultaneously?
+\item What happens to the equilibrium price as $n$ approaches infinity? Is this familiar?
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[3]{Cournot with asymmetric costs}{Exam level}{Gibbons (1992), \emph{Game Theory for Applied
+Economists}, Ch.~1 ``Static Games of Complete Information'', \S1.5 Problems (Section 1.2), Problem
+1.6, p.~49 [PDF 57]. No answer in the book. Reproduced verbatim.}
+
+\rot{1.6.}Consider the Cournot duopoly model where inverse demand is $P(Q) = a - Q$ but firms have
+asymmetric marginal costs: $c_1$ for firm 1 and $c_2$ for firm 2. What is the Nash equilibrium if
+$0 < c_i < a/2$ for each firm? What if $c_1 < c_2 < a$ but $2c_2 > a + c_1$?
+
+\begin{referencia}{``the Cournot duopoly model'': Gibbons (1992), \S1.2.A ``Cournot Model of
+Duopoly'', p.~15 [PDF 23], the paragraph that sets up the model. Reproduced verbatim; footnote~6
+(a pointer to later sections) omitted.}
+Let $q_1$ and $q_2$ denote the quantities (of a homogeneous product) produced by firms 1 and 2,
+respectively. Let $P(Q) = a - Q$ be the market-clearing price when the aggregate quantity on the
+market is $Q = q_1 + q_2$. (More precisely, $P(Q) = a - Q$ for $Q < a$, and $P(Q) = 0$ for
+$Q \ge a$.) Assume that the total cost to firm $i$ of producing quantity $q_i$ is $C_i(q_i) = cq_i$.
+That is, there are no fixed costs and the marginal cost is constant at $c$, where we assume
+$c < a$. Following Cournot, suppose that the firms choose their quantities simultaneously.
+\end{referencia}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[3]{Homogeneous Bertrand}{Exam level}{Gibbons (1992), \emph{Game Theory for Applied
+Economists}, Ch.~1 ``Static Games of Complete Information'', \S1.5 Problems (Section 1.2), Problem
+1.7, pp.~49--50 [PDF 57--58]. No answer in the book. Reproduced verbatim. The pointer to Section
+1.2.B (Bertrand with differentiated products) is context; the statement defines the whole
+homogeneous-products model.}
+
+\rot{1.7.}In Section 1.2.B, we analyzed the Bertrand duopoly model with differentiated products. The
+case of homogeneous products yields a stark conclusion. Suppose that the quantity that consumers
+demand from firm $i$ is $a - p_i$ when $p_i < p_j$, 0 when $p_i > p_j$, and $(a - p_i)/2$ when
+$p_i = p_j$. Suppose also that there are no fixed costs and that marginal costs are constant at
+$c$, where $c < a$. Show that if the firms choose prices simultaneously, then the unique Nash
+equilibrium is that both firms charge the price $c$.
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[4]{Market Entry}{Exam level}{Tadelis (2013), \emph{Game Theory: An Introduction}, Ch.~6
+``Mixed Strategies'', Exercise 6.8 ``Market Entry'', p.~125 [PDF 144]. No answer in the book.
+Reproduced verbatim.}
+
+\rot{6.8}\textbf{Market Entry:} Three firms are considering entering a new market. The payoff for
+each firm that enters is $\frac{150}{n}$, where $n$ is the number of firms that enter. The cost of
+entering is 62.
+\begin{partes}
+\item Find all the pure-strategy Nash equilibria.
+\item Find the symmetric mixed-strategy equilibrium in which all three players enter with the same
+probability.
+\end{partes}
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[4]{A unique IESDS survivor is a Nash equilibrium}{Advanced}{Mas-Colell, Whinston \& Green
+(1995), \emph{Microeconomic Theory}, Ch.~8 ``Simultaneous-Move Games'', Exercises, Exercise
+8.D.2$^{\mathrm{B}}$, p.~263 [PDF 142, right half]. Answer in the MWG solutions manual
+(\texttt{Livros/}). Reproduced verbatim.}
+
+\rot{8.D.2$^{\mathrm{B}}$}Show that if there is a unique profile of strategies that survives iterated
+removal of strictly dominated strategies, this profile is a Nash equilibrium.
+\resolespaco
+
+% ---------------------------------------------------------------------------
+\exercicio[5]{Existence in $2\times2$ games}{Advanced}{Mas-Colell, Whinston \& Green (1995),
+\emph{Microeconomic Theory}, Ch.~8 ``Simultaneous-Move Games'', Exercises, Exercise
+8.D.6$^{\mathrm{B}}$, p.~264 [PDF 143, left half]. Answer in the MWG solutions manual
+(\texttt{Livros/}; 8.D.6 is there). Reproduced verbatim.}
+
+\rot{8.D.6$^{\mathrm{B}}$}Consider any two-player game of the following form (where letters
+indicate arbitrary payoffs):
+\jogo{Player 1}{Player 2}{\begin{tabular}{c|c|c|}
+\hd{} & \hd{$b_1$} & \hd{$b_2$}\\\cline{2-3}
+$a_1$ & $u, v$ & $\ell, m$\\\cline{2-3}
+$a_2$ & $w, x$ & $y, z$\\\cline{2-3}
+\end{tabular}}
+Show that a mixed strategy Nash equilibrium always exists in this game. [\emph{Hint:} Define player
+1's strategy to be his probability of choosing action $a_1$ and player 2's to be his probability of
+choosing $b_1$; then examine the best-response correspondences of the two players.]
+\resolespaco

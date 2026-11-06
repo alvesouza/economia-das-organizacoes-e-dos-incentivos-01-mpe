@@ -12,6 +12,11 @@ self-test) and `-python`. Figures: `python Notas/LNN/figures/make_figures.py`. C
 local HTML pages, opened by double-click; each unit's `companions/check_companions.py`
 verifies them against Python.
 
+**Units vs. real lectures (2026-11-06).** The units keep the estimated numbering, but the
+lectures run about half a lecture behind it: Lecture 3 = L02 §07–09 + L03; Lecture 4 = L03
+§05–06 + L05 §01, §03 (slides `Aula/Lecture04.pdf`, the Brexit case); Lecture 5 = L05 + L04
+§03, §05–07. See [[../Map/study-guide|study guide]].
+
 **Estimated** units were written from `Map/study-guide.md` and the books before the lecture.
 When the slides arrive, run `/notes NN --reconcile`.
 

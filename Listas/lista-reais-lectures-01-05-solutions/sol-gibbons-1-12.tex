@@ -1,0 +1,79 @@
+% Solution: Gibbons (1992) Problem 1.12. Input by \solitem.
+% New in the 50-item list. Check: check_A2.py.
+\begin{exsol}{Gibbons Problem 1.12}{51}{Exam}{2}
+\asked Find the mixed-strategy Nash equilibrium of the $2\times2$ game with $T$, $B$ against
+$L$, $R$.
+
+\method Mixed strategies and expected payoffs (Gibbons \S1.3.A, pp.~29--33; Lecture~2,
+slides~42--43); mixed Nash equilibrium through the principle of indifference (Gibbons \S1.3.B,
+pp.~33--44; Tadelis Prop.~6.1, p.~108; Lecture~2, slides~44--46). First check that there is no pure
+equilibrium, so any equilibrium must have both players mixing.
+
+\solution
+\textbf{Best responses}, underlined:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$T$ & $\br{2},\ 1$ & $0,\ \br{2}$ \\ \cline{2-3}
+$B$ & $1,\ \br{2}$ & $\br{3},\ 0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+$BR_1(L) = \{T\}$ ($2 > 1$), $BR_1(R) = \{B\}$ ($3 > 0$); $BR_2(T) = \{R\}$ ($2 > 1$),
+$BR_2(B) = \{L\}$ ($2 > 0$). No cell has both payoffs underlined: the best responses cycle
+$(T,L) \to (T,R) \to (B,R) \to (B,L) \to (T,L)$, so there is no pure-strategy Nash equilibrium.
+
+\textbf{No equilibrium with only one player mixing.} If player~2 played a pure strategy, player~1's
+best reply would be unique and pure, and then player~2's best reply to it would be the other
+column; so in equilibrium player~2 mixes, and by the same argument so does player~1. Both must be
+indifferent between their two pure strategies (Lecture~2, slide~44).
+
+\textbf{Player~2's mix, from player~1's indifference.} Let $q = \Pr(L)$.
+\[
+  EU_1(T) = 2q + 0(1-q) = 2q, \qquad EU_1(B) = 1\cdot q + 3(1-q) = 3 - 2q .
+\]
+\[
+  2q = 3 - 2q \;\Longrightarrow\; 4q = 3 \;\Longrightarrow\; q^* = \tfrac34 .
+\]
+\textbf{Player~1's mix, from player~2's indifference.} Let $p = \Pr(T)$.
+\[
+  EU_2(L) = 1\cdot p + 2(1-p) = 2 - p, \qquad EU_2(R) = 2p + 0(1-p) = 2p .
+\]
+\[
+  2 - p = 2p \;\Longrightarrow\; 3p = 2 \;\Longrightarrow\; p^* = \tfrac23 .
+\]
+\textbf{Equilibrium and payoffs.}
+\[
+  \sigma^* = \Big(\big(\tfrac23\,T,\ \tfrac13\,B\big),\ \big(\tfrac34\,L,\ \tfrac14\,R\big)\Big),
+  \qquad u_1^* = 2q^* = \tfrac32, \qquad u_2^* = 2p^* = \tfrac43 .
+\]
+\textbf{Uniqueness.} $EU_1(T) - EU_1(B) = 4q - 3$, so $BR_1(q)$ is $p = 1$ for $q > \tfrac34$,
+$p = 0$ for $q < \tfrac34$, and $[0,1]$ at $q = \tfrac34$. $EU_2(L) - EU_2(R) = 2 - 3p$, so
+$BR_2(p)$ is $q = 1$ for $p < \tfrac23$, $q = 0$ for $p > \tfrac23$, and $[0,1]$ at
+$p = \tfrac23$. The graphs cross only at $(p,q) = (\tfrac23, \tfrac34)$: it is the unique Nash
+equilibrium.
+
+\interp This is a Matching-Pennies-like game (Gibbons \S1.3.A): player~1 wants to match
+($T$ with $L$, $B$ with $R$), player~2 wants to mismatch. Each player randomises so as to leave the
+\emph{other} indifferent, which is why player~1's probabilities come from player~2's payoffs. For
+instance, raising player~1's payoff at $(B,R)$ from $3$ to $4$ would leave $p^*$ unchanged and
+raise $q^*$ to $\tfrac45$ (from $2q = 4 - 3q$).
+
+\verify \texttt{check\_A2.py} confirms by brute force that there is no pure equilibrium, solves both
+indifference conditions with sympy ($q^* = \tfrac34$, $p^* = \tfrac23$), checks the payoffs
+$\tfrac32$ and $\tfrac43$ and the comparative-statics remark, and finds on a grid of mixed profiles
+that $(\tfrac23, \tfrac34)$ is the only mutual best response. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Solving player~1's indifference for $p$. The condition $EU_1(T) = EU_1(B)$ contains only
+  $q$, player~2's probability.
+  \item Reporting $(\tfrac34, \tfrac23)$ in the wrong order. State which probability belongs to
+  which player and which strategy.
+  \item Stopping at ``no pure NE''. Nash's theorem (Lecture~2, slide~51) guarantees a mixed one, and
+  the question asks for it.
+\end{itemize}
+
+\answer{No pure-strategy equilibrium. The unique (mixed) Nash equilibrium: player~1 plays $T$ with
+probability $\tfrac23$ and $B$ with $\tfrac13$; player~2 plays $L$ with probability $\tfrac34$ and
+$R$ with $\tfrac14$. Expected payoffs $\tfrac32$ for player~1 and $\tfrac43$ for player~2.}
+\end{exsol}

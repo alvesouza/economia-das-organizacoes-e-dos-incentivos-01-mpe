@@ -1,0 +1,77 @@
+% =============================================================================
+% Shared preamble of the solutions to the real-exercise list for Lectures 1--5.
+% Input by main.tex (all lectures) and lecture-0N.tex (one lecture). The driver defines
+% \soltema (running head) before \input-ing this file. Layout copied from
+% Listas/lista-reais-lectures-01-04-solutions/main.tex.
+% Compile from this folder: pdflatex <driver>.tex (twice); pdffonts <driver>.pdf (all Type 1).
+% =============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=3pt,itemsep=2pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize \soltema}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\definecolor{hdr}{RGB}{30,80,150}
+\definecolor{ans}{RGB}{20,110,70}
+
+% ----------------------------------------------------------------------------- numbering
+% Item files carry no numbers. A driver calls \solitem{<combined n>}{<slug>}: it steps the
+% per-lecture counter ItemNo, sets \CombNo and inputs sol-<slug>.tex (skipped with a log
+% message if the file does not exist yet). \sollecture{<title>} opens a lecture and resets
+% ItemNo, so items are numbered 1--k within each lecture in every driver.
+\newcounter{ItemNo}
+\newcommand{\CombNo}{0}
+\newcommand{\solitem}[2]{\stepcounter{ItemNo}\renewcommand{\CombNo}{#1}%
+  \IfFileExists{sol-#2.tex}{\input{sol-#2}}{\typeout{solitem: sol-#2.tex missing, skipped}}}
+% The page break sits here, so a lecture's first item follows its heading on the same page.
+\newif\ifafterlecture
+\newcommand{\sollecture}[1]{\clearpage\phantomsection\part*{#1}\addcontentsline{toc}{part}{#1}%
+  \setcounter{ItemNo}{0}\afterlecturetrue}
+
+% \begin{exsol}{<source and exercise>}{<printed page>}{<level>}{<difficulty 1-5>} ... \end{exsol}
+% One exercise of the list; the heading shows its number in the lecture and in the combined list.
+\newenvironment{exsol}[4]{%
+  \ifafterlecture\global\afterlecturefalse\else\clearpage\fi\phantomsection
+  \addcontentsline{toc}{section}{Item \theItemNo\ (\CombNo): #1 (p.~#2)}%
+  \section*{\large Item \theItemNo\ {\normalsize\mdseries(item \CombNo\ of the combined list)}:
+    #1\hfill{\normalsize\mdseries #3 $\cdot$ difficulty #4/5}}%
+  \textbf{Source:} #1, page~#2. The statement is reproduced verbatim in the list (item
+  \CombNo); it is not repeated here.\par}{\par}
+% Fixed sub-heads, in this order inside each exsol.
+\newcommand{\asked}{\paragraph{(a) What is asked.}}
+\newcommand{\method}{\paragraph{(b) Method.}}
+\newcommand{\solution}{\paragraph{(c) Solution.}}
+\newcommand{\interp}{\paragraph{(d) Interpretation.}}
+\newcommand{\verify}{\paragraph{(e) Verification.}}
+\newcommand{\mistakes}{\paragraph{(f) Common mistakes.}}
+% Boxed final answer: \answer{...}
+\newcommand{\answer}[1]{\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.6pt,
+  left=5pt,right=5pt,top=3pt,bottom=3pt]\textbf{Answer.} #1\end{tcolorbox}}
+% Best-response mark in a payoff matrix: \br{8} = payoff 8 is a best reply of its player.
+\newcommand{\br}[1]{\underline{#1}}
+\newcommand{\MG}{Mu\~noz-Garcia}
+\newcommand{\Sm}{S_{-i}}
+\newcommand{\sm}{s_{-i}}

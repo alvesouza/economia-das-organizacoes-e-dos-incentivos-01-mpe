@@ -1,0 +1,114 @@
+% Solution: Gibbons (1992) Problem 2.1 "The Rotten Kid Theorem". Input by \solitem.
+% Reused from lista-reais-lectures-01-04-solutions/item18.tex, deepened (exact worked example,
+% role of each assumption, common mistakes). Check: check_B_L03.py.
+\begin{exsol}{Gibbons Problem 2.1}{130}{Advanced}{5}
+\asked Prove Becker's Rotten Kid theorem: when a child's action $A$ produces incomes
+$I_C(A)$, $I_P(A)$ and an altruistic parent then chooses a bequest $B$, the backwards-induction
+outcome has the child choosing the $A$ that maximizes $I_C(A) + I_P(A)$.
+
+\method Backward induction in a two-stage game of perfect information with continuous actions
+(Lecture~3, slides~29--30; Gibbons \S2.1.A, pp.~57--61; Tadelis \S8.3.2): solve the parent's
+problem for every pair of incomes, then the child's problem given the parent's reply. The key step
+is that the parent's reply depends on the incomes only through their sum, and raises the child's
+consumption when the sum rises.
+
+\solution
+\textbf{Notation and assumptions.} $A \ge 0$ the child's action; $I_C, I_P$ strictly concave with
+maximizers $A_C, A_P > 0$; $B \in \mathbb{R}$ the bequest; $U, V$ increasing and strictly concave;
+$k > 0$. Write $Y = I_C + I_P$ (family income) and $x = I_C + B$ (the child's consumption), so the
+parent consumes $I_P - B = Y - x$. As is standard for this problem, $U$ and $V$ are
+differentiable and the parent's problem has a solution.
+
+\textbf{Step 1: the parent's problem depends only on $Y$.} Given $(I_C, I_P)$ the parent solves
+\[
+  \max_{B \in \mathbb{R}}\ V(I_P - B) + k\,U(I_C + B).
+\]
+Because $B$ is unrestricted in sign, choosing $B$ is the same as choosing $x = I_C + B \in \mathbb{R}$,
+and the problem becomes
+\begin{equation}
+  \max_{x \in \mathbb{R}}\ W(x; Y) = V(Y - x) + k\,U(x). \label{eq:gibbons-2-1-W}
+\end{equation}
+$W$ is strictly concave in $x$ (a sum of strictly concave functions), so the maximizer $x^*(Y)$ is
+unique and satisfies the first-order condition
+\begin{equation}
+  V'(Y - x^*) = k\,U'(x^*). \label{eq:gibbons-2-1-foc}
+\end{equation}
+The bequest is $B^*(I_C, I_P) = x^*(I_C + I_P) - I_C$: it depends on both incomes, but the child's
+consumption depends only on their sum.
+
+\textbf{Step 2: $x^*$ is strictly increasing in $Y$.} Take $Y' > Y$ and suppose
+$x' = x^*(Y') \le x = x^*(Y)$. Then $Y' - x' > Y - x$. Strict concavity makes $V'$ strictly
+decreasing and $U'$ decreasing, so
+\[
+  V'(Y' - x') < V'(Y - x) \qquad\text{and}\qquad k\,U'(x') \ge k\,U'(x).
+\]
+Applying \eqref{eq:gibbons-2-1-foc} at $Y$ and at $Y'$:
+\[
+  V'(Y' - x') = k\,U'(x') \;\ge\; k\,U'(x) = V'(Y - x) \;>\; V'(Y' - x'),
+\]
+a contradiction. Hence $x^*(Y') > x^*(Y)$. (With $U, V$ twice differentiable,
+$dx^*/dY = V''/(V'' + kU'') \in (0,1)$: the parent passes part, not all, of an income gain to the
+child.)
+
+\textbf{Step 3: the child's problem.} Anticipating $B^*$, the child chooses $A \ge 0$ to maximize
+\[
+  U\bigl(I_C(A) + B^*(I_C(A), I_P(A))\bigr) = U\bigl(x^*(I_C(A) + I_P(A))\bigr) = U\bigl(x^*(Y(A))\bigr).
+\]
+$U \circ x^*$ is strictly increasing (Steps~1--2 and $U$ increasing), so $A$ maximizes the child's
+payoff if and only if it maximizes $Y(A) = I_C(A) + I_P(A)$.
+
+\textbf{Step 4: the maximizer exists and is unique.} $Y$ is strictly concave. For
+$A < \min\{A_C, A_P\}$ both incomes are increasing, and for $A > \max\{A_C, A_P\}$ both are
+decreasing, so $Y$ attains its maximum on the compact interval $[\min\{A_C,A_P\}, \max\{A_C,A_P\}]
+\subset (0, \infty)$, at a unique point $A^*$. The backwards-induction outcome is
+\[
+  \bigl(A^*,\ B^*(I_C(A^*), I_P(A^*))\bigr), \qquad A^* = \arg\max_{A \ge 0}\ [\,I_C(A) + I_P(A)\,].
+  \qquad\square
+\]
+
+\textbf{Worked example (exact).} $U = V = \ln$, $k = 2$, $I_C = 4A - A^2$ ($A_C = 2$),
+$I_P = 10A - A^2$ ($A_P = 5$). The parent's condition \eqref{eq:gibbons-2-1-foc} reads
+$\frac{1}{Y - x} = \frac{2}{x}$, so $x^*(Y) = \frac{2Y}{3}$ (in general $x^* = \frac{kY}{1+k}$).
+The child maximizes $\ln\bigl(\frac23(14A - 2A^2)\bigr)$: $14 - 4A = 0$, $A^* = \frac72$, between
+$A_C = 2$ and $A_P = 5$. There $Y = \frac{49}{2}$, $x^* = \frac{49}{3}$, $I_C = \frac74$, so the
+bequest is $B^* = \frac{49}{3} - \frac74 = \frac{175}{12}$. Had the child chosen its own income
+maximizer $A_C = 2$, family income would be $Y(2) = 20 < \frac{49}{2}$ and its consumption only
+$\frac{40}{3} < \frac{49}{3}$.
+
+\interp The child is selfish but faces a parent who ``taxes'' any loss of family income: if the
+child raised $I_C$ at a larger cost to $I_P$, the parent, who cares about the split, would cut the
+bequest by more than the child gained. Altruism on one side, plus the parent's last move, aligns
+the first mover's incentives with joint surplus. Each assumption has a role:
+\begin{itemize}
+  \item \emph{the parent moves last}: it is the parent's credible, sequentially rational reply that
+  disciplines the child (Lecture~4's theme: what matters is what a player will actually do when the
+  moment comes);
+  \item \emph{$B$ unrestricted}: if $B \ge 0$ were imposed and binding, the child's consumption would
+  be $I_C$ alone over a range and Step~1 fails;
+  \item \emph{the child moves first and cannot commit the parent}: if the bequest were fixed before
+  $A$, the child would simply choose $A_C$.
+\end{itemize}
+
+\verify \texttt{check\_B\_L03.py} checks with sympy that $dx^*/dY = V''/(V''+kU'') \in (0,1)$ for
+several negative $(V'', U'')$ and positive $k$; derives $x^* = kY/(1+k)$ for log utility (second
+derivative negative) and $x^* = (Y + \ln k)/2$ for CARA utility $-e^{-x}$; solves the child's problem
+in the log example ($A^* = \frac72$), confirms on an exact grid of step $\frac1{20}$ that the
+maximizer of $\frac23 Y(A)$ is $\frac72$ while $I_C$ alone peaks at $2$, and recomputes
+$B^* = \frac{175}{12}$. Output line: \texttt{gibbons-2-1: x*(Y) increasing; child picks A* = 7/2 =
+argmax(I\_C + I\_P), not A\_C = 2}. Gibbons prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Assuming the child maximizes $I_C$: its payoff depends on the bequest, which reacts to $A$.
+  \item Treating the bequest as a fixed number instead of a function $B^*(I_C, I_P)$ (a strategy of
+  the parent in the second stage).
+  \item Proving only that $x^*$ is weakly increasing, or skipping existence/uniqueness of $A^*$;
+  the strict monotonicity in Step~2 is what makes ``maximize $U(x^*(Y))$'' equivalent to
+  ``maximize $Y$''.
+\end{itemize}
+
+\answer{The parent's best bequest gives the child consumption $x^*(I_C + I_P)$ that solves
+$V'(Y - x) = kU'(x)$; it depends only on family income $Y$ and is strictly increasing in it. So the
+child's payoff $U(x^*(Y(A)))$ is a strictly increasing function of $Y(A)$, and the child chooses
+$A^* = \arg\max_A [I_C(A) + I_P(A)]$, which exists and is unique by strict concavity.}
+\end{exsol}

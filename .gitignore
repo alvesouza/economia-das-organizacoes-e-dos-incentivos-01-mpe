@@ -11,6 +11,9 @@ Livros/*
 # Copies of the same files prepared for NotebookLM upload
 NotebookLM/sources/
 
+# Licensed case PDFs (Darden/HBSP: no reproduction or transmission); our own write-ups stay versioned
+Cases/**/_UV*.pdf
+
 # --- LaTeX build artefacts ---
 *.aux
 *.bbl

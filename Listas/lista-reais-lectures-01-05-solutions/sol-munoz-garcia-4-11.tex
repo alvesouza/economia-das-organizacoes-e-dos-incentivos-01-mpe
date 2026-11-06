@@ -1,0 +1,153 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 4, Exercise 11 "Stackelberg with Two Firms".
+% Input by \solitem. New in the 50-item list. Check: check_D.py.
+\begin{exsol}{\MG{} Ch.~4, Exercise 11}{180}{Exam}{3}
+\asked Stackelberg duopoly with $p = 1-Q$ and costs $c_L \le c_F < 1$: (a) the follower's best
+response; (b) the SPNE strategies; (c) when both outputs are positive; (d) with $c_L = c_F = c$,
+total output and price, compared with monopoly, Cournot and Bertrand.
+
+\method Backward induction in a perfect-information game with a continuum of actions: solve the
+follower's problem for \emph{every} $q_L$, substitute into the leader's problem (Tadelis \S8.3.2,
+``Stackelberg Competition'', pp.~160--163; SPE Def.~8.3, p.~157). The Cournot benchmark is Tadelis
+\S5.2.3, p.~87. Lecture~4: SPE definition and the backward-induction fact, slide~17; sunk,
+observable commitments, slide~11.
+
+\solution
+\textbf{(a) Follower.} Given $q_L$, firm $F$ solves $\max_{q_F\ge0}\ (1 - q_L - q_F)q_F - c_Fq_F$.
+The objective is strictly concave (second derivative $-2$), and the first-order condition
+$1 - q_L - 2q_F - c_F = 0$ gives
+\begin{equation}
+  q_F(q_L) \;=\; \max\Bigl\{\frac{1 - c_F - q_L}{2},\ 0\Bigr\}
+  \;=\; \frac{1-c_F}{2} - \frac{q_L}{2} \quad\text{for } q_L \le 1 - c_F .
+  \label{eq:munoz-garcia-4-11-br}
+\end{equation}
+The best response falls with the leader's output (slope $-\frac12$) and shifts down when $c_F$
+rises. For $q_L \ge 1 - c_F$ the residual demand no longer covers the follower's cost, and it
+produces nothing.
+
+\textbf{(b) Leader.} On $q_L \le 1-c_F$, substituting \eqref{eq:munoz-garcia-4-11-br}, the price is
+$1 - q_L - \frac{1-c_F-q_L}{2} = \frac{1+c_F}{2} - \frac{q_L}{2}$, and the leader solves
+\[
+  \max_{q_L}\ \Bigl(\frac{1+c_F}{2} - \frac{q_L}{2} - c_L\Bigr)q_L
+  \quad\Longrightarrow\quad \frac{1+c_F}{2} - q_L - c_L = 0
+  \quad\Longrightarrow\quad q_L^* = \frac{1 + c_F - 2c_L}{2}.
+\]
+The objective is strictly concave (second derivative $-1$). Then
+\[
+  q_F^* = \frac{1-c_F}{2} - \frac{1+c_F-2c_L}{4} = \frac{1 - 3c_F + 2c_L}{4},
+  \qquad p^* = 1 - q_L^* - q_F^* = \frac{1 + c_F + 2c_L}{4}.
+\]
+The SPNE is the \emph{pair of strategies}
+\[
+  \Bigl(q_L^* = \tfrac{1+c_F-2c_L}{2},\ \ q_F(q_L) = \max\bigl\{\tfrac{1-c_F-q_L}{2}, 0\bigr\}
+  \text{ for every } q_L \ge 0\Bigr),
+\]
+not just the two numbers: the follower's plan covers every output the leader could choose, on and
+off the path. Each firm's output falls with its own cost and rises with the rival's.
+
+\emph{When the formula applies.} $q_L^* \le 1 - c_F$ iff $c_L \ge \frac{3c_F-1}{2}$, i.e.\ exactly when
+$q_F^* \ge 0$. Otherwise the leader's optimum is not interior and the follower is out of the market.
+For $q_L \ge 1-c_F$ the leader is a monopolist with profit $(1 - q_L - c_L)q_L$, maximized at
+$\frac{1-c_L}{2}$. Then:
+\begin{itemize}
+  \item $c_L > \frac{3c_F-1}{2}$: interior, as above, both firms produce;
+  \item $2c_F - 1 < c_L \le \frac{3c_F-1}{2}$: \emph{limit output}, $q_L^* = 1 - c_F$, $q_F^* = 0$ (the
+  leader's profit rises up to $1-c_F$ on the left piece and falls beyond it on the right piece,
+  because $\frac{1-c_L}{2} < 1 - c_F$);
+  \item $c_L \le 2c_F - 1$: \emph{blockaded entry}, $q_L^* = \frac{1-c_L}{2}$ (monopoly), $q_F^* = 0$.
+\end{itemize}
+For example $(c_L,c_F) = (\frac14,\frac12)$ gives limit output $q_L^* = \frac12$, and
+$(\frac1{10},\frac7{10})$ gives blockaded entry $q_L^* = \frac9{20}$.
+
+\textbf{(c) Both outputs positive.}
+\[
+  q_F^* > 0 \iff 1 - 3c_F + 2c_L > 0 \iff c_L > \frac{3c_F - 1}{2}.
+\]
+The leader's condition $q_L^* > 0 \iff c_L < \frac{1+c_F}{2}$ never binds: with $c_L \le c_F < 1$,
+$q_L^* \ge \frac{1-c_F}{2} > 0$. So both firms produce iff
+\[
+  \frac{3c_F - 1}{2} < c_L \le c_F ,
+\]
+a non-empty band because $\frac{3c_F-1}{2} < c_F \iff c_F < 1$. If $c_F \le \frac13$ the lower bound
+is not positive, so every $c_L \in (0, c_F]$ works. The leader's cost advantage must not be too large.
+
+\textbf{(d) Symmetric costs, $c_L = c_F = c$.} The condition in (c) holds ($c > \frac{3c-1}{2}$),
+so the interior formulas apply:
+\[
+  q_L^* = \frac{1-c}{2},\qquad q_F^* = \frac{1-c}{4},\qquad
+  Q^{S} = \frac{3(1-c)}{4},\qquad p^{S} = 1 - Q^S = \frac{1+3c}{4}.
+\]
+The follower produces half of the leader's output. Benchmarks:
+\begin{itemize}
+  \item \emph{Monopoly}: $\max_Q (1-Q-c)Q$ gives $Q^M = \frac{1-c}{2}$, $p^M = \frac{1+c}{2}$.
+  \item \emph{Cournot}: $q_i = \frac{1-c-q_j}{2}$ for both firms gives $q_i = \frac{1-c}{3}$,
+  $Q^C = \frac{2(1-c)}{3}$, $p^C = \frac{1+2c}{3}$.
+  \item \emph{Bertrand} (= perfect competition with equal costs): $p^B = c$, $Q^B = 1-c$.
+\end{itemize}
+Because $\frac12 < \frac23 < \frac34 < 1$,
+\[
+  Q^M < Q^C < Q^S < Q^B \qquad\text{and}\qquad p^M > p^C > p^S > p^B .
+\]
+\begin{center}
+\begin{tikzpicture}[xscale=9,yscale=5.2,every node/.style={font=\small}]
+  \draw[->] (0,0) -- (1.08,0) node[right] {$Q$};
+  \draw[->] (0,0) -- (0,1.08) node[above] {$p$};
+  \draw[thick] (0,1) -- (1,0) node[below] {$1$};
+  \node[left] at (0,1) {$1$};
+  \draw[dashed] (0,0.2) -- (1,0.2); \node[left] at (0,0.2) {$c$};
+  \foreach \q/\n/\a in {0.4/M/below, 0.5333/C/below, 0.6/S/below, 0.8/B/below} {
+    \draw[densely dotted] (\q,0) -- (\q,1-\q) -- (0,1-\q);
+    \fill (\q,1-\q) circle[x radius=0.2pt,y radius=0.35pt];
+    \node[above right] at (\q,1-\q) {\scriptsize $\n$};
+    \node[\a] at (\q,0) {\scriptsize $Q^{\n}$};}
+\end{tikzpicture}\\[2pt]
+{\footnotesize Demand $p = 1-Q$ drawn for $c = 0.2$: $Q^M = 0.4$, $Q^C \approx 0.53$, $Q^S = 0.6$,
+$Q^B = 0.8$; prices $\frac{1+c}{2}$, $\frac{1+2c}{3}$, $\frac{1+3c}{4}$, $c$.}
+\end{center}
+Profits: the leader earns $(p^S - c)q_L^* = \frac{(1-c)^2}{8}$, more than its Cournot profit
+$\frac{(1-c)^2}{9}$; the follower earns $\frac{(1-c)^2}{16}$, less.
+
+\interp The leader's advantage comes from commitment, not from information: its output is
+observed and cannot be revised, so the follower takes it as given and contracts. The leader
+expands past its Cournot output ($\frac{1-c}{2} > \frac{1-c}{3}$) because it knows the follower will
+respond by cutting back. The follower would like to threaten ``I produce $\frac{1-c}{3}$ whatever you
+do''. Against that plan, $q_L = \frac{1-c}{3}$ is a best reply, so the Cournot outcome is a Nash
+equilibrium of the sequential game (Tadelis p.~162). The threat is not credible: once $q_L$ is
+sunk, $\frac{1-c}{3}$ is not the follower's best response to any $q_L \ne \frac{1-c}{3}$. Subgame
+perfection removes it (slide~17). The cost regimes in (b) carry the same idea: a large enough cost
+advantage lets the leader commit to the output $1-c_F$, which leaves the follower no room to
+produce (limit output). This is the quantity version of entry deterrence through
+an observable, irreversible commitment (slide~11). For consumers, sequential quantity competition
+is more competitive than Cournot: total output rises from $\frac23$ to $\frac34$ of the competitive
+level.
+
+\verify \texttt{check\_D.py} derives $BR_F$, $q_L^*$, $q_F^*$, $p^*$ and the cutoff
+$c_L = \frac{3c_F-1}{2}$ with sympy. For six cost pairs covering the three regimes it finds the
+leader's best output by exact search over $q_L \in \{k/2000\}$, using the truncated best response,
+and confirms the regime formula each time. It also checks the four symmetric totals, prices and
+profits, the strict ranking at four values of $c$, and that the Cournot outcome is a Nash but not a
+subgame-perfect profile. Output: ``Munoz-Garcia 4.11: BR\_F = (1-cF-qL)/2; qL* = (1+cF-2cL)/2,
+qF* = (1-3cF+2cL)/4; both > 0 iff cL > (3cF-1)/2; Q: monopoly (1-c)/2 < Cournot 2(1-c)/3 <
+Stackelberg 3(1-c)/4 < Bertrand 1-c (book: same)''.
+\emph{Comparison with \MG{}'s answer} (pp.~181--185): the same best response, SPNE, cutoffs (the
+book's $C_A$: $c_L > -\frac12 + \frac32c_F$; $C_B$: $c_L < \frac12 + \frac12c_F$, not binding below
+the $45^\circ$ line), symmetric quantities and the ranking in its Fig.~4.34. The book omits the
+truncation at $q_F = 0$, so its best response and SPNE formula are valid only inside the region
+of part (c). The limit-output and blockaded regimes above are not in the book.
+
+\mistakes
+\begin{itemize}
+  \item Reporting the SPNE as the numbers $(q_L^*, q_F^*)$. The follower's strategy is the whole
+  function $q_F(q_L)$; the numbers are the equilibrium outcome.
+  \item Solving both first-order conditions simultaneously, which gives the Cournot quantities
+  $\frac{1-c}{3}$, instead of substituting the follower's response into the leader's profit first.
+  \item Using the interior formula $q_F^* = \frac{1-3c_F+2c_L}{4}$ when it is negative. When it is,
+  the follower produces zero and the leader's problem changes.
+\end{itemize}
+
+\answer{(a) $q_F(q_L) = \max\{\frac{1-c_F-q_L}{2}, 0\}$. (b) SPNE:
+$q_L^* = \frac{1+c_F-2c_L}{2}$ and the follower plays $q_F(q_L)$ after every $q_L$; outcome
+$q_F^* = \frac{1-3c_F+2c_L}{4}$, $p^* = \frac{1+c_F+2c_L}{4}$ (valid when $q_F^* \ge 0$). (c) Both
+produce iff $c_L > \frac{3c_F-1}{2}$; $q_L^* > 0$ always. (d) $Q^S = \frac{3(1-c)}{4}$,
+$p^S = \frac{1+3c}{4}$; $Q^M = \frac{1-c}{2} < Q^C = \frac{2(1-c)}{3} < Q^S < Q^B = 1-c$, and prices
+in the reverse order (book: same).}
+\end{exsol}
