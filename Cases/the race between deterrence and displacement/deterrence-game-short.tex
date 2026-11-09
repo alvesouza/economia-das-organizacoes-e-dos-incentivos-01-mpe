@@ -1,0 +1,121 @@
+% Short class version (at most 3 pages) of deterrence-game.tex: model, two-bank game, four-bank example, repeated game.
+% Compile: pdflatex deterrence-game-short.tex (twice). Check: pdffonts (all Type 1, uni = yes).
+% Every number is copied from deterrence-game.tex, which deterrence-check.py asserts; none is new here.
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage[a4paper,margin=1.8cm,top=1.6cm,bottom=1.6cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=2pt,itemsep=1pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Economics of Organizations and Incentives --- MPE Insper}
+\rhead{\footnotesize Case: deterrence and displacement (short version)}
+\cfoot{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{13pt}
+
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}{6pt plus 2pt}{2pt}{\normalfont\large\bfseries}}
+\makeatother
+
+\definecolor{ans}{RGB}{20,110,70}
+\definecolor{src}{RGB}{30,80,150}
+\newcommand{\eur}{\texteuro{}}
+\newcommand{\Dl}{\Delta}
+\newcommand{\paper}{\textbf{[Paper]}}
+\newcommand{\ours}{\textbf{[Ours]}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Bank Guards as a Coordination Game --- class version}\\[2pt]
+{\small Lecture 5 case. Maheshri \& Mastrobuoni (2021), \emph{REStat} 103(3), 547--562. Short version of
+\texttt{deterrence-game.pdf}, where every step is derived. \paper{} = the paper; \ours{} = our analysis.
+Costs in \eur; payoff $=-$cost.}
+\end{center}
+
+\section*{1. The model as a game \paper{} (pp.\ 548--550) with our payoffs \ours{}}
+Banks $i=1,\dots,N$ choose $g_i\in\{0,1\}$ (guard or not). A guard costs $c_i$; a robbery costs $L_i$; the
+robbery probability is $p(g_i,g_{-i})$. Robbers are implicit: displacement is their best response to
+visible guards. Payoff $u_i=-(p\,L_i+c_i g_i)$. Bank $i$ hires iff
+\[
+  \Dl(g_{-i})=p(0,g_{-i})-p(1,g_{-i})\;>\;\theta_i=c_i/L_i \qquad\text{(eq.\ 5)}.
+\]
+Displacement falls on unguarded banks, so $\Dl$ \emph{rises} with the others' guards: \textbf{strategic complements},
+hence a coordination game. Order banks $\theta_1\le\dots\le\theta_N$; every equilibrium is ``the first $e$ banks guard''
+(Lemma, Prop.\ 1, p.\ 549).
+
+\textbf{Calibration} (Table 3 col.\ 7, pp.\ 555--556; base risk 0.07): $p(g,x)=0.07-0.0318\,g+0.0169\,x-0.0336\,g\,x$, with
+$x$ the share of neighbours guarded. So $\Dl(0)=0.0318$, $\Dl(1)=0.0654$, and $0.531$ of the deterrence effect is displaced.
+
+\section*{2. Two banks, $c=40{,}000$ \ours{}}
+Best responses: guard against an unguarded neighbour iff $L>c/\Dl(0)=1{,}257{,}862$; against a guarded one iff
+$L>c/\Dl(1)=611{,}621$. Below 611,621 the unique equilibrium is $NN$; above 1,257,862 it is $GG$; in between both are equilibria.
+Costs in \eur\ thousand (row, column), $L=1{,}000{,}000$ ($\theta=0.04$):
+\begin{center}\small
+\begin{tabular}{c|cc}
+ & $G$ & $N$\\\hline
+$G$ & $\mathbf{61.5},\ \mathbf{61.5}$ & $78.2,\ 86.9$\\
+$N$ & $86.9,\ 78.2$ & $\mathbf{70.0},\ \mathbf{70.0}$
+\end{tabular}
+\end{center}
+Pure equilibria $GG$ and $NN$; mixed: each guards with probability $0.244$, which is worse for both banks (expected cost 74,124 euros). A \textbf{stag hunt}: $GG$ is Pareto better (123.0 against 140.0 in total) but $NN$ is self-confirming: ``too few guards''.
+At $L=700{,}000$ ($\theta=0.0571$) the costs are $NN$ 49.0, $GG$ 55.05, mixed $\Pr(G)=0.754$ and $GG$ is the Pareto-dominated
+equilibrium: ``too many guards'' (\paper{} Prop.\ 2, p.\ 550). Cutoffs: $GG$ is Pareto better iff $\theta<0.0485$ ($L>824{,}742$) and risk
+dominant iff $\theta<0.0486$; they nearly coincide because $\beta_2\approx-\beta_3/2$.
+
+\textbf{Discrepancy.} The paper's 1.37M and 662k (p.\ 557) reproduce with $c=44{,}000$ and Table 4 col.\ 2, not with the stated 40,000
+(which gives 1,257,862 and 611,621; footnote 24 mentions 44,000).
+
+\section*{3. Four banks \ours{}}
+$\theta=(0.020,0.044,0.050,0.068)$, $c=40{,}000$, so $\Dl(k/3)=0.0318,\ 0.0430,\ 0.0542,\ 0.0654$ for $k=0,\dots,3$ guarded others.
+Enumerating all 16 profiles: pure equilibria $\{1\}$ (total cost 290,154) and $\{1,2,3\}$ (271,510). The social optimum, all four
+(252,393), is \emph{not} an equilibrium: bank 4 pays 52,647 but only 51,118 if it fires (gain 1,529). A ban (nobody) costs 300,813.
+A requirement gives 252,393. A subsidy $s=1{,}529.4$ makes bank 4 indifferent; $s=1{,}600$ gives the unique equilibrium all four.
+\paper{} Price instruments are ill suited (p.\ 550); here the subsidy works only because $\theta_4$ is close to $\Dl(1)$.
+A Figure 1-style market $\theta=(0.025,0.035,0.058,0.060)$ has equilibria $\{1,2\}$ and all four.
+
+\section*{4. Lecture 5: the repeated game \ours{}}
+The 2000--2009 panel is a finitely repeated game, $T=10$. \textbf{Any sequence of stage equilibria is an SPE:} a one-stage deviation changes
+only the stage payoff, and the stage payoff cannot rise because the profile is a stage NE (one-stage deviation principle).
+
+\textbf{Carrot and stick, two periods.} Play all four in $t=1$; in $t=2$ play $\{1\}$ if bank 4 complied (its cost 44,490: the carrot is
+\emph{fewer guards around the unguarded bank}) and $\{1,2,3\}$ if it fired (its cost 51,118: the stick, itself a stage NE). Bank 4 complies iff
+\[
+  52{,}647+\delta\cdot44{,}490\le 51{,}118+\delta\cdot51{,}118\iff \delta\ge\frac{1{,}529}{6{,}628}=0.2307 .
+\]
+Banks 1--3 do not want to fire at $t=1$ for any $\delta$. \textbf{Nash reversion fails forever:} both stage NE are cheaper for bank 4
+(44,490 and 51,118) than all four (52,647), so deviating always pays. Hence quantity regulation (a requirement), or a
+coordination device such as the Italian Banking Association (\ours{} suggestion), beats relying on repetition.
+
+\textbf{Evidence \paper{}} (pp.\ 552--553, Figs.\ 3--5): neighbours increasingly make the same guard decision (over 40\% of pairs with a
+guard have both guarded in 2000, against about 20\% by chance), and firings outnumber hirings.
+
+\section*{5. Observability, in one line}
+Guards are visible (p.\ 548), which is what lets robbers displace; unobservable devices (LoJack, Ayres--Levitt) give a positive
+externality instead. Link to Lecture 4: \emph{observability matters}.
+
+\begin{tcolorbox}[colback=ans!5,colframe=ans,boxrule=0.6pt,left=5pt,right=5pt,top=3pt,bottom=3pt,title={Takeaway}]
+\begin{itemize}[leftmargin=1.2em]
+  \item Visible guards displace crime onto unguarded banks, so guarding decisions are strategic complements: a stag hunt with two equilibria, either of which can be the efficient one.
+  \item Whether policy should promote or restrict guards is therefore ambiguous (Prop.\ 2); a requirement or ban forces a profile, while a subsidy tips the market only when $\theta$'s sit near the thresholds.
+  \item Repetition (carrot and stick) can sustain all four for two periods when $\delta\ge0.2307$, but Nash reversion cannot sustain it forever.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

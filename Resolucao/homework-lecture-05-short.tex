@@ -1,0 +1,73 @@
+% Short hand-in solution to the Lecture 5 homework (Aula/Lecture05.pdf, slide 34).
+% Detailed version: homework-lecture-05.tex. Every number is asserted by homework-lecture-05-check.py.
+% Compile: pdflatex homework-lecture-05-short.tex (twice). Check: pdffonts (all Type 1).
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{topsep=2pt,itemsep=1pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{empty}
+
+\begin{document}
+
+{\large\textbf{Homework, Lecture 5: Tacit collusion in oligopoly}}\hfill Lecture 5, slide 34
+
+Two firms, $P = 100 - q_1 - q_2$, $C(q_i) = 10q_i$, repeated forever with discount factor $\delta$.
+Payoffs are normalised by $(1-\delta)$ (slide 21).
+
+\textbf{1. Stage game.} $BR(q_j) = (90 - q_j)/2$. Cournot-Nash: $q_N = 30$, price $40$,
+$\pi_N = 900$. Monopoly: $Q^m = 45$, price $55$, profit $2025$. Cartel: $q_C = 22.5$ each,
+$\pi_C = 1012.5$.
+
+\textbf{2. Best deviation.} Against $q_C = 22.5$: $q_D = (90 - 22.5)/2 = 33.75$, price $43.75$,
+$\pi_D = 33.75^2 = 1139.0625$. So $\pi_D > \pi_C > \pi_N$.
+
+\textbf{3. Grim trigger.} $s_i(h) = 22.5$ if $h = \varnothing$ or both always produced $22.5$; $s_i(h) = 30$
+otherwise. One-stage deviation principle, two states.
+\emph{Collusion state:}
+\[
+\pi_C \ge (1-\delta)\pi_D + \delta\pi_N \iff
+\delta \ge \frac{\pi_D - \pi_C}{\pi_D - \pi_N} = \frac{126.5625}{239.0625} = \frac{9}{17} \approx 0.529 .
+\]
+\emph{Punishment state (off path):} play is $30$ forever and $30$ is a best response to $30$ (stage-game
+Nash equilibrium), so no one-shot deviation pays, for any $\delta$. Hence grim trigger is an SPE iff
+$\delta \ge 9/17$. (For example, at $\delta = 1/2$ compliance gives $1012.5$ against $1019.53125$ from
+cheating; at $\delta = 0.6$ compliance wins.)
+
+\textbf{4. General case.} $P = a - bQ$, cost $c < a$, $k = (a-c)^2/b$: $q_N = (a-c)/3b$, $\pi_N = k/9$;
+$q_C = (a-c)/4b$, $\pi_C = k/8$; $q_D = 3(a-c)/8b$, $\pi_D = 9k/64$. Then
+$\pi_D - \pi_C = k/64$ and $\pi_D - \pi_N = 17k/576$, so $\delta^* = 576/(64\cdot17) = 9/17$.
+The parameters only scale all profits by $k$, which cancels in the ratio.
+
+\textbf{5. What makes collusion easier.} Collusion holds iff
+$(1-\delta)(\pi_D - \pi_C) \le \delta(\pi_C - \pi_N)$: gain from cheating today against loss from
+punishment tomorrow.
+\begin{itemize}
+\item \emph{Few firms.} With $n$ firms, $\delta^*(n) = (n+1)^2/(n^2 + 6n + 1)$: $9/17$, $4/7$, $25/41$,
+$9/14$ for $n = 2, \dots, 5$ and $121/161$ at $n = 10$; increasing in $n$, tending to $1$.
+\item \emph{Frequent interaction, patience.} $\delta = e^{-r\Delta t}$; the duopoly needs
+$r\Delta t \le \ln(17/9) \approx 0.636$.
+\item \emph{Observability, fast detection.} A long detection lag raises the gain from cheating; noisy
+signals force price wars (Green--Porter) and lower the value of collusion.
+\item \emph{Growing demand} acts like a higher $\delta$; declining demand, a known last period, or booms
+make cheating more tempting.
+\item \emph{Symmetry}, so a single threshold binds; \emph{multimarket contact}, since a deviation is punished
+in all markets; \emph{capacity} matched to the cartel output.
+\end{itemize}
+A less harsh or shorter punishment (Abreu's carrot and stick) can lower the threshold below $9/17$.
+
+\textit{Sources:} Lecture 5 slides 21, 25, 28--29, 34; Tadelis (2013) \S10.4, p.~201; Cabral (2017) Ch.~9;
+Gibbons (1992) \S2.3.C, p.~102. Numbers checked by \texttt{homework-lecture-05-check.py}.
+
+\end{document}
