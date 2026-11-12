@@ -91,7 +91,30 @@ for A, B, C in [(100, 1, 10), (50, 2, 5), (7, F(1, 3), 0), (1000, 10, 999), (13,
     r = stage_numbers(A, B, C)
     assert delta_star(r[1], r[3], r[5]) == F(9, 17), (A, B, C)
     assert (r[1], r[3], r[5]) == tuple(F(x) * F((A - C) ** 2) / F(B) for x in (F(1, 9), F(1, 8), F(9, 64)))
+# Item 4 step by step (prices, margins, shortcut pi = b q^2 at a best response, rival, common denominator)
+P = lambda Q: a - b * Q
+z = sp.simplify
+assert z(P(2 * qN_s) - (a + 2 * c) / 3) == 0 and z(P(2 * qN_s) - c - (a - c) / 3) == 0
+assert z(P(Qm_s) - (a + c) / 2) == 0 and z(profit(a, b, c, Qm_s, Qm_s) - k / 4) == 0
+assert z(qD_s + qC_s - 5 * (a - c) / (8 * b)) == 0 and z(P(qD_s + qC_s) - (3 * a + 5 * c) / 8) == 0
+assert z(P(qD_s + qC_s) - c - 3 * (a - c) / 8) == 0 and z(P(qD_s + qC_s) - c - b * qD_s) == 0
+assert z(piN_s - b * qN_s**2) == 0 and z(piD_s - b * qD_s**2) == 0          # shortcut at a best response
+assert z(b * qC_s**2 - k / 16) == 0 and z(piC_s - b * qC_s**2) != 0          # fails at the cartel output
+rival_s = z(profit(a, b, c, qC_s, qD_s + qC_s))
+assert z(rival_s - 6 * k / 64) == 0 and z(rival_s - 3 * (a - c) ** 2 / (32 * b)) == 0
+assert z(piD_s + rival_s - 15 * k / 64) == 0                                 # joint 15 vs 16 (units k/64)
+assert z(qD_s / qC_s) == sp.Rational(3, 2) and sp.Rational(3, 8) > sp.Rational(1, 3)
+assert [z(x * 576 / k) for x in (piN_s, piC_s, piD_s)] == [64, 72, 81]
+assert z(piC_s - piN_s - k / 72) == 0
+assert sp.solve(sp.Eq(72, 81 * (1 - d) + 64 * d), d) == [sp.Rational(9, 17)]
+# second market of the table: a = 50, b = 2, c = 5
+r2 = stage_numbers(50, 2, 5)
+assert r2 == (F(15, 2), F(225, 2), F(45, 8), F(2025, 16), F(135, 16), F(18225, 128))
+assert (float(r2[3]), float(r2[5]), float(r2[5] - r2[3]), float(r2[5] - r2[1])) == (126.5625, 142.3828125, 15.8203125, 29.8828125)
+assert F((50 - 5) ** 2, 2) == F(2025, 2)                                     # k = 1012.5
+assert profit(F(100), F(1), F(10), F(45, 2), F(45, 2) + F(135, 4)) == F(759.375)
 print("(4) pi_N = (a-c)^2/9b, pi_C = (a-c)^2/8b, pi_D = 9(a-c)^2/64b; delta* =", ds_s, "for all a, b, c<a (symbolic + 5 triples)")
+print("    deviation: q_D = 3(a-c)/8b, P_D = (3a+5c)/8, margin 3(a-c)/8, rival 6k/64; 576-units 64/72/81; 72 >= 81 - 17 delta")
 
 # ---- item 5: n firms from first principles ---------------------------------------------------
 def n_firm(nn, a=F(100), b=F(1), c=F(10)):

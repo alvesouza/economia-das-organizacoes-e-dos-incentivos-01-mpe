@@ -205,31 +205,180 @@ which dominates, and the break-even is $\delta^* = 9/17$.}
 
 \section{Item 4: general demand and cost}
 
-Let $P = a - bQ$ with $b > 0$ and marginal cost $c < a$, and write $k = (a-c)^2/b$.
-\begin{itemize}
-\item \emph{Best response:} $\max_{q_i}(a - b(q_i + q_j) - c)q_i$ gives $BR(q_j) = \dfrac{a - c - b\,q_j}{2b}$.
-\item \emph{Cournot:} $q = BR(q)$ gives $q_N = \dfrac{a-c}{3b}$ and
-$\pi_N = \dfrac{(a-c)^2}{9b} = \dfrac{k}{9}$.
-\item \emph{Cartel:} $Q^m = \dfrac{a-c}{2b}$, so $q_C = \dfrac{a-c}{4b}$ and
-$\pi_C = \dfrac{(a-c)^2}{8b} = \dfrac{k}{8}$ (half of the monopoly profit $k/4$).
-\item \emph{Deviation:} $q_D = BR(q_C) = \dfrac{3(a-c)}{8b}$. The margin is $a - b(q_D + q_C) - c =
-\dfrac{3(a-c)}{8}$, so $\pi_D = \dfrac{9(a-c)^2}{64\,b} = \dfrac{9k}{64}$.
-\end{itemize}
-Every profit is proportional to the single scale factor $k$. Hence
+Let $P = a - bQ$, $Q = q_1 + q_2$, with $b > 0$ and constant marginal cost $c$, $0 \le c < a$. The plan
+is to redo items 1--3 symbol by symbol and watch $a$, $b$ and $c$ collapse into one scale factor,
 \[
-\pi_D - \pi_C = \Bigl(\tfrac{9}{64} - \tfrac{8}{64}\Bigr)k = \frac{k}{64}, \qquad
-\pi_D - \pi_N = \Bigl(\tfrac{9}{64} - \tfrac{1}{9}\Bigr)k = \frac{17\,k}{576},
+k \;=\; \frac{(a-c)^2}{b} \;>\; 0 .
 \]
-\[
-\delta^* = \frac{\pi_D - \pi_C}{\pi_D - \pi_N} = \frac{k/64}{17k/576} = \frac{576}{64\cdot17} = \frac{9}{17}.
-\]
-The off-path check is unchanged: Cournot-Nash is a stage-game equilibrium whatever $(a, b, c)$. The
-parameters only rescale the profit units, and the threshold is a ratio of profit differences, so the scale
-cancels. With $a = 100$, $b = 1$, $c = 10$: $k = 8100$ and the profits are $900$, $1012.5$, $1139.0625$, as
-in items 1--2. What does matter is the \emph{structure} (linear demand, constant marginal cost, two
-symmetric firms, Cournot punishment); the next item changes it.
+$k$ is positive because $c < a$ and $b > 0$. Positivity matters in Step 6, where we divide an
+inequality by $k$.
 
-\answer{$\pi_N = (a-c)^2/9b$, $\pi_C = (a-c)^2/8b$, $\pi_D = 9(a-c)^2/64b$, and $\delta^* = 9/17$ for every
+\subsection*{Step 1: stage profit and the best response}
+
+Firm $i$'s stage profit when the rival produces $q_j$ is
+\[
+\pi_i(q_i, q_j) = \bigl(a - b(q_i + q_j)\bigr)q_i - c\,q_i = \bigl(a - c - b q_j\bigr)q_i - b q_i^2 .
+\]
+It is a concave parabola in $q_i$: $\partial^2\pi_i/\partial q_i^2 = -2b < 0$, so the first-order
+condition gives the maximum:
+\[
+\frac{\partial \pi_i}{\partial q_i} = a - c - b q_j - 2b\,q_i = 0
+\quad\Longrightarrow\quad
+BR(q_j) = \frac{a - c - b\,q_j}{2b} \qquad \bigl(\text{for } q_j \le (a-c)/b\bigr).
+\]
+\textbf{A shortcut used below.} Rewrite the first-order condition as
+$a - c - b(q_i + q_j) = b\,q_i$. The left side is the price-cost margin $P - c$. So, \emph{at any best
+response}, the margin equals $b q_i$, and profit is margin times output:
+\[
+\pi_i\bigl(BR(q_j), q_j\bigr) = (P - c)\,q_i = b\,q_i^2 .
+\]
+This holds for the Cournot output and for the deviation, both of which are best responses, but
+\emph{not} for the cartel output, which is not one.
+
+\subsection*{Step 2: the Cournot-Nash equilibrium}
+
+In a symmetric equilibrium $q_1 = q_2 = q$ with $q = BR(q)$:
+\[
+2b\,q = a - c - b\,q \;\Longrightarrow\; 3b\,q = a - c \;\Longrightarrow\; q_N = \frac{a - c}{3b}.
+\]
+Industry output is $Q_N = \dfrac{2(a-c)}{3b}$, so the price and margin are
+\[
+P_N = a - b\cdot\frac{2(a-c)}{3b} = \frac{a + 2c}{3}, \qquad P_N - c = \frac{a - c}{3}.
+\]
+Profit is margin times output, which equals $b q_N^2$ as the shortcut predicts:
+\[
+\pi_N = \frac{a-c}{3}\cdot\frac{a-c}{3b} = \frac{(a-c)^2}{9b} = \frac{k}{9}.
+\]
+
+\subsection*{Step 3: the cartel}
+
+A monopolist maximises $(a - bQ - c)Q$. The first-order condition is $a - c - 2bQ = 0$ (the
+second-order condition is $-2b < 0$), so
+\[
+Q^m = \frac{a-c}{2b}, \qquad P^m = a - \frac{a-c}{2} = \frac{a+c}{2}, \qquad P^m - c = \frac{a-c}{2},
+\]
+\[
+\Pi^m = \frac{a-c}{2}\cdot\frac{a-c}{2b} = \frac{(a-c)^2}{4b} = \frac{k}{4}.
+\]
+Each firm produces half and earns half:
+\[
+q_C = \frac{a-c}{4b}, \qquad \pi_C = \frac{a-c}{2}\cdot\frac{a-c}{4b} = \frac{(a-c)^2}{8b} = \frac{k}{8}.
+\]
+Check: $b q_C^2 = k/16 \neq k/8$. The shortcut fails, as it should, because $q_C$ is not a best
+response to $q_C$. Here the margin $(a-c)/2$ exceeds $b q_C = (a-c)/4$, which is exactly why each firm
+wants to expand.
+
+\subsection*{Step 4: the best deviation, in detail}
+
+Suppose the rival sticks to $q_C = \dfrac{a-c}{4b}$. Firm $i$'s best one-period deviation is its best
+response to that output. Substitute $q_j = q_C$ into $BR$:
+\[
+q_D = BR(q_C) = \frac{a - c - b\cdot\dfrac{a-c}{4b}}{2b}
+= \frac{(a - c) - \dfrac{a-c}{4}}{2b}
+= \frac{\tfrac34\,(a-c)}{2b}
+= \frac{3(a-c)}{8b}.
+\]
+\begin{itemize}
+\item \emph{Size of the deviation.} $q_D = \tfrac{3}{8}\tfrac{a-c}{b}$ against $q_C = \tfrac{2}{8}\tfrac{a-c}{b}$:
+the cheater raises its output by $50\%$. Since $\tfrac38 > \tfrac13$, it also produces more than its
+Cournot output $q_N = \tfrac13\tfrac{a-c}{b}$. The best response slopes down, so a restrained rival
+leaves a larger residual demand $a - b q_C - bq_i$ to exploit.
+\item \emph{Industry output and price.}
+\[
+Q_D = q_D + q_C = \frac{3(a-c)}{8b} + \frac{2(a-c)}{8b} = \frac{5(a-c)}{8b},
+\]
+\[
+P_D = a - b\cdot\frac{5(a-c)}{8b} = \frac{8a - 5a + 5c}{8} = \frac{3a + 5c}{8}.
+\]
+\item \emph{Margin.}
+\[
+P_D - c = \frac{3a + 5c - 8c}{8} = \frac{3(a-c)}{8}.
+\]
+This equals $b\,q_D = b\cdot\tfrac{3(a-c)}{8b}$, as the shortcut requires at a best response.
+\item \emph{Deviator's profit.}
+\[
+\pi_D = (P_D - c)\,q_D = \frac{3(a-c)}{8}\cdot\frac{3(a-c)}{8b} = \frac{9(a-c)^2}{64\,b} = \frac{9k}{64}
+\qquad\bigl(= b\,q_D^2\bigr).
+\]
+\item \emph{The cheated rival's profit.} The rival still sells $q_C$, at the deviation margin:
+\[
+\pi_{\text{rival}} = (P_D - c)\,q_C = \frac{3(a-c)}{8}\cdot\frac{a-c}{4b} = \frac{3(a-c)^2}{32\,b} = \frac{6k}{64}.
+\]
+\item \emph{Who gains and who loses.} In units of $k/64$: cartel $8$ and $8$ (joint $16$, the monopoly
+profit $k/4$); deviation $9$ and $6$ (joint $15$). The deviator gains $1$, the rival loses $2$, and joint
+profit falls by $1$. Cheating is privately profitable but destroys surplus, the prisoner's-dilemma
+structure of item 2 in general form.
+\end{itemize}
+With $a = 100$, $b = 1$, $c = 10$: $q_D = 270/8 = 33.75$, $P_D = 350/8 = 43.75$, margin $33.75$,
+$\pi_D = 1139.0625$ and $\pi_{\text{rival}} = 759.375$, as in item 2 and Figure~1.
+
+\subsection*{Step 5: the three profits on a common denominator}
+
+The least common multiple of $9$, $8$ and $64$ is $576$:
+\[
+\pi_N = \frac{k}{9} = \frac{64\,k}{576}, \qquad
+\pi_C = \frac{k}{8} = \frac{72\,k}{576}, \qquad
+\pi_D = \frac{9k}{64} = \frac{81\,k}{576}.
+\]
+So $\pi_D > \pi_C > \pi_N$ for every admissible $(a, b, c)$. The one-shot gain from cheating is
+$\pi_D - \pi_C = 9k/576 = k/64$, and the per-period loss from punishment is
+$\pi_C - \pi_N = 8k/576 = k/72$.
+
+\subsection*{Step 6: the grim-trigger condition, solved directly}
+
+The strategy is the one in item 3, with $q_C$ and $q_N$ in place of $22.5$ and $30$. In the collusion
+state, the one-stage deviation principle requires (normalised payoffs)
+\[
+\pi_C \;\ge\; (1-\delta)\,\pi_D + \delta\,\pi_N
+\quad\Longleftrightarrow\quad
+\frac{72\,k}{576} \;\ge\; (1-\delta)\frac{81\,k}{576} + \delta\,\frac{64\,k}{576}.
+\]
+Multiply both sides by $576/k$. This is allowed, and keeps the direction of the inequality,
+because $k > 0$:
+\[
+72 \;\ge\; 81(1-\delta) + 64\,\delta = 81 - 17\,\delta
+\quad\Longleftrightarrow\quad 17\,\delta \ge 9
+\quad\Longleftrightarrow\quad \delta \;\ge\; \frac{9}{17}.
+\]
+The same number comes out of the formula of item 3:
+\[
+\delta^* = \frac{\pi_D - \pi_C}{\pi_D - \pi_N} = \frac{(81 - 72)\,k/576}{(81 - 64)\,k/576} = \frac{9}{17}.
+\]
+In words: cheating gains $9$ units once and costs $8$ units in every later period, so the threshold
+solves $(1-\delta)\cdot 9 = \delta\cdot 8$.
+
+\textbf{Off the path.} After a deviation, both firms produce $q_N$ forever. Against a rival producing
+$q_N$, a one-shot deviation $x$ earns at most $\pi_i(BR(q_N), q_N) = \pi_N$, because $BR(q_N) = q_N$.
+So no deviation is profitable for any $\delta$, whatever $(a, b, c)$.
+
+\subsection*{Step 7: why the parameters disappear}
+
+Every profit in the problem has the form (pure number)$\times k$: $\tfrac19 k$, $\tfrac18 k$, $\tfrac{9}{64}k$.
+The intercept $a$ and the cost $c$ enter only through the gap $a - c$, and $b$ only rescales units of
+quantity. The threshold is a ratio of profit differences, so $k$ cancels. Two very different markets
+give the same $\delta^*$:
+
+\begin{center}
+\begin{tabular}{lccccccc}
+\toprule
+Market & $k$ & $q_N$ & $\pi_N$ & $q_C$ & $\pi_C$ & $q_D$ & $\pi_D$ \\
+\midrule
+$a=100,\ b=1,\ c=10$ & $8100$ & $30$ & $900$ & $22.5$ & $1012.5$ & $33.75$ & $1139.0625$ \\
+$a=50,\ b=2,\ c=5$ & $1012.5$ & $7.5$ & $112.5$ & $5.625$ & $126.5625$ & $8.4375$ & $142.3828125$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the second market,
+\[
+\delta^* = \frac{142.3828125 - 126.5625}{142.3828125 - 112.5} = \frac{15.8203125}{29.8828125} = \frac{9}{17}.
+\]
+What does matter is the \emph{structure}: linear demand, constant
+marginal cost, two symmetric firms and Cournot punishment. Item 5 changes it.
+
+\answer{With $k = (a-c)^2/b$: $\pi_N = k/9$, $\pi_C = k/8$, and the best deviation
+$q_D = 3(a-c)/8b$ at price $(3a+5c)/8$ yields $\pi_D = 9k/64$, leaving the rival $6k/64$. On the
+common denominator $576$, the condition is $72 \ge 81 - 17\delta$, so $\delta^* = 9/17$ for every
 $b > 0$ and $c < a$.}
 
 \section{Item 5: what makes tacit collusion easier}
