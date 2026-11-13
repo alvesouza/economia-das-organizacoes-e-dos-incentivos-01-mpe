@@ -4,3 +4,45 @@
 \begin{quote}
 2.8. Modify the tournament model in Section 2.2.D so that worker \(i\)'s output is \(y_i = e_i - (1/2)s_j + \varepsilon_i\), where \(s_j \ge 0\) represents sabotage by worker \(j\), and worker \(i\)'s disutility of (productive and destructive) effort is \(g(e_i) + g(s_i)\), as in Lazear (1989). Show that the optimal prize \(w_H - w_L\) is smaller than when there is no possibility of sabotage (as in the text).
 \end{quote}
+
+\textbf{Referred to in the statement.} The tournament model of Section 2.2.D and its optimal prize (Gibbons pp.~79--82 {[}PDF p.~86--89{]}) (reproduced from the book):
+
+\begin{quote}
+Consider two workers and their boss. Worker \(i\) (where \(i = 1\) or 2) produces output \(y_i = e_i + \varepsilon_i\), where \(e_i\) is effort and \(\varepsilon_i\) is noise. Production proceeds as follows. First, the workers simultaneously choose nonnegative effort levels: \(e_i \ge 0\). Second, the noise terms \(\varepsilon_1\) and \(\varepsilon_2\) are independently drawn from a density \(f(\varepsilon)\) with zero mean. Third, the workers' outputs are observed but their effort choices are not. The workers' wages therefore can depend on their outputs but not (directly) on their efforts.
+
+Suppose the workers' boss decides to induce effort from the workers by having them compete in a tournament, as first analyzed by Lazear and Rosen (1981). The wage earned by the winner of the tournament (i.e., the worker with the higher output) is \(w_H\); the wage earned by the loser is \(w_L\). The payoff to a worker from earning wage \(w\) and expending effort \(e\) is \(u(w, e) = w - g(e)\), where the disutility of effort, \(g(e)\), is increasing and convex (i.e., \(g'(e) > 0\) and \(g''(e) > 0\)). The payoff to the boss is \(y_1 + y_2 - w_H - w_L\).
+
+{[}\ldots{]} Suppose the boss has chosen the wages \(w_H\) and \(w_L\). If the effort pair \((e_1^*, e_2^*)\) is to be a Nash equilibrium of the remaining game between the workers then, for each \(i\), \(e_i^*\) must maximize worker \(i\)'s expected wage, net of the disutility of effort: \(e_i^*\) must solve
+
+\[\begin{aligned} \max_{e_i \ge 0}\; & w_H \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} + w_L \operatorname{Prob}\{y_i(e_i) \le y_j(e_j^*)\} - g(e_i) \\ &= (w_H - w_L)\operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} + w_L - g(e_i), \end{aligned} \tag{2.2.4}\]
+
+where \(y_i(e_i) = e_i + \varepsilon_i\). The first-order condition for (2.2.4) is
+
+\[(w_H - w_L)\frac{\partial \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\}}{\partial e_i} = g'(e_i). \tag{2.2.5}\]
+
+{[}\ldots{]} By Bayes' rule,
+
+\[\begin{aligned} \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} &= \operatorname{Prob}\{\varepsilon_i > e_j^* + \varepsilon_j - e_i\} \\ &= \int_{\varepsilon_j} \operatorname{Prob}\{\varepsilon_i > e_j^* + \varepsilon_j - e_i \mid \varepsilon_j\} f(\varepsilon_j)\, d\varepsilon_j \\ &= \int_{\varepsilon_j} [1 - F(e_j^* - e_i + \varepsilon_j)] f(\varepsilon_j)\, d\varepsilon_j, \end{aligned}\]
+
+so the first-order condition (2.2.5) becomes
+
+\[(w_H - w_L)\int_{\varepsilon_j} f(e_j^* - e_i + \varepsilon_j) f(\varepsilon_j)\, d\varepsilon_j = g'(e_i).\]
+
+In a symmetric Nash equilibrium (i.e., \(e_1^* = e_2^* = e^*\)), we have
+
+\[(w_H - w_L)\int_{\varepsilon_j} f(\varepsilon_j)^2\, d\varepsilon_j = g'(e^*). \tag{2.2.6}\]
+
+{[}\ldots{]} We now work backwards to the first stage of the game. Suppose that if the workers agree to participate in the tournament (rather than accept alternative employment) then they will respond to the wages \(w_H\) and \(w_L\) by playing the symmetric Nash equilibrium characterized by (2.2.6). (We thus ignore the possibilities of asymmetric equilibria and of an equilibrium in which the workers' effort choices are given by the corner solution \(e_1 = e_2 = 0\), rather than by the first-order condition (2.2.5).) Suppose also that the workers' alternative employment opportunity would provide utility \(U_a\). Since in the symmetric Nash equilibrium each worker wins the tournament with probability one-half (i.e., \(\operatorname{Prob}\{y_i(e^*) > y_j(e^*)\} = 1/2\)), if the boss intends to induce the workers to participate in the tournament then she must choose wages that satisfy
+
+\[\tfrac{1}{2}w_H + \tfrac{1}{2}w_L - g(e^*) \ge U_a. \tag{2.2.7}\]
+
+Assuming that \(U_a\) is low enough that the boss wants to induce the workers to participate in the tournament, she therefore chooses wages to maximize expected profit, \(2e^* - w_H - w_L\), subject to (2.2.7). At the optimum, (2.2.7) holds with equality:
+
+\[w_L = 2U_a + 2g(e^*) - w_H. \tag{2.2.8}\]
+
+Expected profit then becomes \(2e^* - 2U_a - 2g(e^*)\), so the boss wishes to choose wages such that the induced effort, \(e^*\), maximizes \(e^* - g(e^*)\). The optimal induced effort therefore satisfies the first-order condition \(g'(e^*) = 1\). Substituting this into (2.2.6) implies that the optimal prize, \(w_H - w_L\), solves
+
+\[(w_H - w_L)\int_{\varepsilon_j} f(\varepsilon_j)^2\, d\varepsilon_j = 1,\]
+
+and (2.2.8) then determines \(w_H\) and \(w_L\) themselves.
+\end{quote}

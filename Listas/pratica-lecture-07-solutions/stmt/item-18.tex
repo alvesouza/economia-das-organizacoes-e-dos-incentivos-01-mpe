@@ -15,6 +15,22 @@
 \end{enumerate}
 \end{quote}
 
+\textbf{Referred to in the statement.} The jury voting game of Section 12.4 (Tadelis pp.~261--262 {[}PDF p.~280--281{]}) (reproduced from the book):
+
+\begin{quote}
+As an example, consider a jury made up of two players (jurors) who must collectively decide whether to acquit (\(A\)) or to convict (\(C\)) a defendant. The process calls for each player to cast a sealed vote, and the defendant is convicted only if both vote \(C\). The problem is that there is uncertainty about whether the defendant is guilty (\(G\)) or innocent (\(I\)). The prior probability that the defendant is guilty is given by \(q > \frac{1}{2}\) and is common knowledge. Assume that each player cares about making the right decision, so that if the defendant is guilty then each player receives a payoff of 1 from a conviction and 0 from an acquittal. If instead the defendant is innocent then each player receives a payoff of 0 from a conviction and 1 from an acquittal.
+
+{[}\ldots{]} Now imagine that things are a bit more complex. Each player \(i\) has a different expertise and, when observing the evidence, gets a private signal \(\theta_i \in \{\theta_G, \theta_I\}\) that contains valuable information. In particular when the defendant is guilty player \(i\) is more likely to receive the signal \(\theta_i = \theta_G\) than when the defendant is innocent, and vice versa for \(\theta_i = \theta_I\). Assume that the signals are independent: the probability of receiving the signal \(\theta_G\) when the defendant is guilty is equal to the probability of receiving the signal \(\theta_I\) when the defendant is innocent, so that
+
+\[\Pr\{\theta_i = \theta_G \mid G\} = \Pr\{\theta_i = \theta_I \mid I\} = p > \tfrac{1}{2} \quad \text{for } i \in \{1, 2\}\]
+
+and
+
+\[\Pr\{\theta_i = \theta_G \mid I\} = \Pr\{\theta_i = \theta_I \mid G\} = 1 - p < \tfrac{1}{2} \quad \text{for } i \in \{1, 2\}.\]
+
+{[}\ldots{]} With this information structure in place we have a Bayesian game of incomplete information in which each player \(i\) will choose a signal-dependent action to maximize the probability that a guilty defendant is convicted while an innocent one is acquitted. Because each player has two types, given by the signal he observes, each player will have four pure strategies, \(s_i \in \{AA, AC, CA, CC\}\), where strategy \(xy\) means that he chooses \(x\) when his signal is \(\theta_G\) and he chooses \(y\) when his signal is \(\theta_I\).
+\end{quote}
+
 \textbf{Note on the book (item 18).} Part (a) is true only for \(p \le q\) (the signal precision does not exceed the
 prior): against a juror who always convicts, a juror who sees \(\theta_I\) is pivotal and acquits when \(p > q\).
 The book (p.~264) states \(CC\) as an equilibrium without the condition. See the solutions PDF, item 18.

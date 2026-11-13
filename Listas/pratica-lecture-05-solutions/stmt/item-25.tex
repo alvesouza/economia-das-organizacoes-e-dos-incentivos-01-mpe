@@ -3,8 +3,20 @@
 
 \begin{quote}
 \textbf{12.AA.2\^{}C} Prove Proposition 12.AA.4. {[}\emph{Hint:} Consider a strategy profile of the following form: the players are to play an outcome path involving some pair \((q_1, q_2)\) in period 1 and \((q_1^*, q_2^*)\) in every period thereafter. If either player deviates, this outcome path is restarted.{]}
+\end{quote}
 
-\emph{Added from p.~421.} To consider this issue, it is useful to let \(\underline{\pi}_i = \operatorname{Min}_{q_j}\left[\operatorname{Max}_{q_i} \pi_i(q_i, q_j)\right]\) denote player \(i\)'s \emph{minimax payoff}.
+\textbf{Referred to in the statement.} The model of Appendix A, ``Infinitely Repeated Games and the Folk Theorem'' (MWG pp.~417--418 {[}PDF p.~219--220{]}), and the minimax payoff and Proposition 12.AA.4 (p.~421 {[}PDF p.~221{]}) (reproduced from the book; footnote 31 dropped):
+
+\begin{quote}
+An infinitely repeated game consists of an infinite sequence of repetitions of a one-period simultaneous-move game, known as the \emph{stage game}. For expositional simplicity, we focus here on the case in which there are two players.
+
+In the one-period stage game, each player \(i\) has a compact strategy set \(S_i\); \(q_i \in S_i\) is a particular feasible action for player \(i\). Denote \(q = (q_1, q_2)\) and \(S = S_1 \times S_2\). Player \(i\)'s payoff function is \(\pi_i(q_i, q_j)\). We restrict our attention throughout to pure strategies. It will be convenient to define player \(i\)'s one-period best-response payoff given that his rival plays \(q_j\) by \(\hat{\pi}_i(q_j) = \operatorname{Max}_{q \in S_i} \pi_i(q, q_j)\). We assume that the stage game has a unique pure strategy Nash equilibrium \(q^* = (q_1^*, q_2^*)\) (the assumption of uniqueness is for expositional simplicity only).
+
+In the infinitely repeated game, actions are taken and payoffs are earned at the beginning of each period. The players discount payoffs with discount factor \(\delta < 1\). Players observe each other's action choices in each period and have perfect recall. A pure strategy in this game for player \(i\), \(s_i\), is a sequence of functions \(\{s_{it}(\cdot)\}_{t=1}^{\infty}\) mapping from the history of previous action choices (denoted \(H_{t-1}\)) to his action choice in period \(t\), \(s_{it}(H_{t-1}) \in S_i\). The set of all such pure strategies for player \(i\) is denoted by \(\Sigma_i\), and \(s = (s_1, s_2) \in \Sigma_1 \times \Sigma_2\) is a profile of pure strategies for the two players.
+
+Any pure strategy profile \(s = (s_1, s_2)\) induces an \emph{outcome path} \(Q(s)\), an infinite sequence of actions \(\{q_t = (q_{1t}, q_{2t})\}_{t=1}^{\infty}\) that will actually be played when the players follow strategies \(s_1\) and \(s_2\). Player \(i\)'s discounted payoff from outcome path \(Q\) is given by \(v_i(Q) = \sum_{t=0}^{\infty} \delta^t \pi_i(q_{1+t})\). We also define player \(i\)'s \emph{average payoff} from outcome path \(Q\) to be \((1 - \delta)v_i(Q)\): this is the per-period payoff that, if infinitely repeated, would give player \(i\) a discounted payoff of \(v_i(Q)\). Finally, it is also useful to define the discounted continuation payoff from outcome path \(Q\) from some period \(t\) onward (discounted to period \(t\)) by \(v_i(Q, t) = \sum_{\tau=0}^{\infty} \delta^\tau \pi_i(q_{t+\tau})\).
+
+{[}\ldots{]} To consider this issue, it is useful to let \(\underline{\pi}_i = \operatorname{Min}_{q_j}\left[\operatorname{Max}_{q_i} \pi_i(q_i, q_j)\right]\) denote player \(i\)'s \emph{minimax payoff}.
 
 \textbf{Proposition 12.AA.4:} Consider an infinitely repeated game with \(\delta > 0\) and \(S_i \subset \mathbb{R}\) for \(i = 1, 2\). Suppose also that \(\pi_i(q)\) is differentiable at \(q^* = (q_1^*, q_2^*)\), with \(\partial \pi_i(q_i^*, q_j^*)/\partial q_j \neq 0\) for \(j \neq i\) and \(i = 1, 2\), and that \(\pi_i(q_1^*, q_2^*) > \underline{\pi}_i\) for \(i = 1, 2\). Then there is some SPNE with discounted payoffs to the two players of \((v_1', v_2')\) such that \((1 - \delta)v_i' < \pi_i(q_1^*, q_2^*)\) for \(i = 1, 2\).
 \end{quote}

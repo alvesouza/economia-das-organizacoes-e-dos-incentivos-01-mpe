@@ -44,7 +44,7 @@ def to_latex(md: str) -> str:
     """Convert one Markdown block to a LaTeX fragment with pandoc."""
     out = subprocess.run(
         ["pandoc", "-f", "markdown+tex_math_dollars+raw_tex-implicit_figures-auto_identifiers",
-         "-t", "latex", "--wrap=preserve"],
+         "-t", "latex", "--wrap=preserve", "--columns=10000"],  # plain l/c/r tables, no p{} widths
         input=md.encode("utf-8"), capture_output=True, check=True)
     return out.stdout.decode("utf-8")
 

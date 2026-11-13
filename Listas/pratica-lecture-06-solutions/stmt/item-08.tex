@@ -4,3 +4,73 @@
 \begin{quote}
 \textbf{Even/Odd Symmetry:} In Section 11.2 we analyzed the alternating-offer bargaining game for a finite number of periods when \(T\) was odd. Repeat the analysis for \(T\) even.
 \end{quote}
+
+\textbf{Referred to in the statement.} The alternating-offer bargaining game (Tadelis Ch. 11 opening, pp.~220--221 {[}PDF p.~239--240{]}) and its analysis for odd \(T\) in Section 11.2 (pp.~225--226 {[}PDF p.~244--245{]}) (reproduced from the book):
+
+\begin{quote}
+The simple framework considers two players that need to split a ``pie'' (representing the surplus from an agreement or the gains from trade). The pie is assumed to have a total value that is normalized to equal 1, and then the parties bargain on how to split the pie. {[}\ldots{]} we can summarize the game as follows.
+
+In the first round:
+
+\begin{itemize}
+\tightlist
+\item
+  Player 1 offers shares \((x, 1 - x)\), where player 1 receives \(x\) and player 2 receives \(1 - x\).
+\item
+  Player 2 then chooses to accept, causing the game to end with payoffs \(v_1 = x\) and \(v_2 = 1 - x\), or reject, causing the game to move to the second round.
+\end{itemize}
+
+In the second round:
+
+\begin{itemize}
+\tightlist
+\item
+  A share \(1 - \delta\) of the pie is dissipated (the pie is discounted with discount factor \(0 < \delta < 1\)).
+\item
+  Player 2 offers shares \((x, 1 - x)\), where player 1 receives \(x\) and player 2 receives \(1 - x\).
+\item
+  Player 1 chooses to accept, causing the game to end with payoffs \(v_1 = \delta x\) and \(v_2 = \delta(1 - x)\), or reject, causing the game to move to the third round.
+\end{itemize}
+
+In the third round and beyond:
+
+\begin{itemize}
+\tightlist
+\item
+  The game continues in the same way, where following rejection in an odd period player 2 gets to offer in the next even period, and vice versa.
+\item
+  Each period has further discounting of the pie, so that in period \(t\) the total pie is worth \(\delta^{t-1}\).
+\end{itemize}
+
+From the specification of the bargaining procedure we see that once a player agrees to the offer made by his opponent, the game will end with an agreement. If instead the players keep rejecting offers then the game may continue either indefinitely or until some prespecified deadline is reached. Assume for now that the game ends in some prespecified final period \(T\), which will be reached if the players did not reach an agreement in the \(T - 1\) periods that preceded \(T\). Furthermore assume that period \(T\) is a ``hard deadline,'' so that both players receive a payoff of zero if they fail to reach an agreement in this last period. {[}\ldots{]}
+
+Consider the case with an odd number of rounds \(T < \infty\), implying that player 1 has both the first-mover and last-mover advantages. The following backward induction argument applies:
+
+\begin{itemize}
+\tightlist
+\item
+  In period \(T\) player 2 accepts any offer, so player 1 offers \(x = 1\) and payoffs are \(v_1 = \delta^{T-1}\) and \(v_2 = 0\).
+\item
+  In period \(T - 1\) (even period, player 2 offers), by backward induction player 1 should accept anything resulting in a payoff of \(v_1 \ge \delta^{T-1}\). If player 1 is offered \(x\) in period \(T - 1\) then \(v_1 = \delta^{T-2}x\). This implies that in period \(T - 1\) player 1 will accept any \(x \ge \delta\) and by backward induction player 2 should offer \(x = \delta\), which yields player 1 a payoff of \(v_1 = \delta \times \delta^{T-2} = \delta^{T-1}\). Payoffs are then \(v_1 = \delta^{T-1}\) and \(v_2 = \delta^{T-2}(1 - \delta)\).
+\item
+  In period \(T - 2\) (odd period), conditional on the analysis for \(T - 1\), player 2's best response is to accept any \(x\) that gives him \(\delta^{T-3}(1 - x) \ge \delta^{T-2}(1 - \delta)\). Player 1's best response to this is to offer the largest \(x\) that satisfies this inequality, and solving it with equality yields player 1's best response: \(x = 1 - \delta + \delta^2\). This offer followed by player 2's acceptance yields \(v_1 = \delta^{T-3}x = \delta^{T-3} - \delta^{T-2} + \delta^{T-1}\) and \(v_2 = \delta^{T-2} - \delta^{T-1}\).
+\item
+  In period \(T - 3\) (even period), using the same backward induction argument, player 1's best response is to accept any \(x\) that satisfies \(\delta^{T-4}x \ge \delta^{T-3} - \delta^{T-2} + \delta^{T-1}\), and player 2 then makes an offer that satisfies this constraint with equality, \(x = \delta - \delta^2 + \delta^3\), yielding \(v_1 = \delta^{T-3} - \delta^{T-2} + \delta^{T-1}\) and \(v_2 = \delta^{T-4}(1 - x) = \delta^{T-4} - \delta^{T-3} + \delta^{T-2} - \delta^{T-1}\).
+\end{itemize}
+
+We can continue with this tedious exercise only to realize that a simple pattern emerges. If we consider the solution for an odd period \(T - s\) (\(s\) being even because \(T\) is assumed to be odd) then the backward induction argument leads to the sequentially rational offer
+
+\[x_{T-s} = 1 - \delta + \delta^2 - \delta^3 + \cdots + \delta^s,\]
+
+while for an even period \(T - s\) (\(s\) being odd) then the backward induction argument leads to the sequentially rational offer
+
+\[x_{T-s} = \delta - \delta^2 + \delta^3 - \delta^4 + \cdots + \delta^s.\]
+
+We can use this pattern to solve for the subgame-perfect equilibrium offer in the first period, \(x_1\), which by backward induction must be accepted by player 2 and it is equal to
+
+\[\begin{aligned} x_1 &= 1 - \delta + \delta^2 - \delta^3 + \delta^4 + \cdots + \delta^{T-1} \\ &= (1 + \delta^2 + \delta^4 + \cdots + \delta^{T-1}) - (\delta + \delta^3 + \delta^5 + \cdots + \delta^{T-2}) \\ &= \frac{1 - \delta^{T+1}}{1 - \delta^2} - \frac{\delta - \delta^T}{1 - \delta^2} \\ &= \frac{1 + \delta^T}{1 + \delta}, \end{aligned}\]
+
+and this in turn implies that
+
+\[v_1^* = x_1 = \frac{1 + \delta^T}{1 + \delta} \quad \text{and} \quad v_2^* = (1 - x_1) = \frac{\delta - \delta^T}{1 + \delta}. \tag{11.1}\]
+\end{quote}

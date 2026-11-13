@@ -136,6 +136,28 @@ Weight = share of the 30 content slides (5–34) that teach the block; the slide
 
 > 2.22. Give the extensive- and normal-form representations of the bank-runs game discussed in Section 2.2.B. What are the pure-strategy subgame-perfect Nash equilibria?
 
+**Referred to in the statement.** The bank-runs game of Section 2.2.B (Gibbons pp. 73–74 [PDF p. 80–81]) (reproduced from the book):
+
+> Two investors have each deposited $D$ with a bank. The bank has invested these deposits in a long-term project. If the bank is forced to liquidate its investment before the project matures, a total of $2r$ can be recovered, where $D > r > D/2$. If the bank allows the investment to reach maturity, however, the project will pay out a total of $2R$, where $R > D$.
+>
+> There are two dates at which the investors can make withdrawals from the bank: date 1 is before the bank's investment matures; date 2 is after. For simplicity, assume that there is no discounting. If both investors make withdrawals at date 1 then each receives $r$ and the game ends. If only one investor makes a withdrawal at date 1 then that investor receives $D$, the other receives $2r - D$, and the game ends. Finally, if neither investor makes a withdrawal at date 1 then the project matures and the investors make withdrawal decisions at date 2. If both investors make withdrawals at date 2 then each receives $R$ and the game ends. If only one investor makes a withdrawal at date 2 then that investor receives $2R - D$, the other receives $D$, and the game ends. Finally, if neither investor makes a withdrawal at date 2 then the bank returns $R$ to each investor and the game ends.
+>
+> In Section 2.4 we will discuss how to represent this game formally. For now, however, we will proceed informally. Let the payoffs to the two investors at dates 1 and 2 (as a function of their withdrawal decisions at these dates) be represented by the following pair of normal-form games. Note well that the normal-form game for date 1 is nonstandard: if both investors choose not to withdraw at date 1 then no payoff is specified; rather, the investors proceed to the normal-form game at date 2.
+>
+> *Date 1*
+>
+> |   | withdraw | don't |
+> |---|---|---|
+> | withdraw | $r, r$ | $D, 2r - D$ |
+> | don't | $2r - D, D$ | next stage |
+>
+> *Date 2*
+>
+> |   | withdraw | don't |
+> |---|---|---|
+> | withdraw | $R, R$ | $2R - D, D$ |
+> | don't | $D, 2R - D$ | $R, R$ |
+
 #### 5. Tadelis 10.2
 
 <!-- id: Tadelis 10.2 -->
@@ -522,6 +544,46 @@ Weight = share of the 30 content slides (5–34) that teach the block; the slide
 
 > 2.8. Modify the tournament model in Section 2.2.D so that worker $i$'s output is $y_i = e_i - (1/2)s_j + \varepsilon_i$, where $s_j \ge 0$ represents sabotage by worker $j$, and worker $i$'s disutility of (productive and destructive) effort is $g(e_i) + g(s_i)$, as in Lazear (1989). Show that the optimal prize $w_H - w_L$ is smaller than when there is no possibility of sabotage (as in the text).
 
+**Referred to in the statement.** The tournament model of Section 2.2.D and its optimal prize (Gibbons pp. 79–82 [PDF p. 86–89]) (reproduced from the book):
+
+> Consider two workers and their boss. Worker $i$ (where $i = 1$ or 2) produces output $y_i = e_i + \varepsilon_i$, where $e_i$ is effort and $\varepsilon_i$ is noise. Production proceeds as follows. First, the workers simultaneously choose nonnegative effort levels: $e_i \ge 0$. Second, the noise terms $\varepsilon_1$ and $\varepsilon_2$ are independently drawn from a density $f(\varepsilon)$ with zero mean. Third, the workers' outputs are observed but their effort choices are not. The workers' wages therefore can depend on their outputs but not (directly) on their efforts.
+>
+> Suppose the workers' boss decides to induce effort from the workers by having them compete in a tournament, as first analyzed by Lazear and Rosen (1981). The wage earned by the winner of the tournament (i.e., the worker with the higher output) is $w_H$; the wage earned by the loser is $w_L$. The payoff to a worker from earning wage $w$ and expending effort $e$ is $u(w, e) = w - g(e)$, where the disutility of effort, $g(e)$, is increasing and convex (i.e., $g'(e) > 0$ and $g''(e) > 0$). The payoff to the boss is $y_1 + y_2 - w_H - w_L$.
+>
+> […] Suppose the boss has chosen the wages $w_H$ and $w_L$. If the effort pair $(e_1^*, e_2^*)$ is to be a Nash equilibrium of the remaining game between the workers then, for each $i$, $e_i^*$ must maximize worker $i$'s expected wage, net of the disutility of effort: $e_i^*$ must solve
+>
+> $$\begin{aligned} \max_{e_i \ge 0}\; & w_H \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} + w_L \operatorname{Prob}\{y_i(e_i) \le y_j(e_j^*)\} - g(e_i) \\ &= (w_H - w_L)\operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} + w_L - g(e_i), \end{aligned} \tag{2.2.4}$$
+>
+> where $y_i(e_i) = e_i + \varepsilon_i$. The first-order condition for (2.2.4) is
+>
+> $$(w_H - w_L)\frac{\partial \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\}}{\partial e_i} = g'(e_i). \tag{2.2.5}$$
+>
+> […] By Bayes' rule,
+>
+> $$\begin{aligned} \operatorname{Prob}\{y_i(e_i) > y_j(e_j^*)\} &= \operatorname{Prob}\{\varepsilon_i > e_j^* + \varepsilon_j - e_i\} \\ &= \int_{\varepsilon_j} \operatorname{Prob}\{\varepsilon_i > e_j^* + \varepsilon_j - e_i \mid \varepsilon_j\} f(\varepsilon_j)\, d\varepsilon_j \\ &= \int_{\varepsilon_j} [1 - F(e_j^* - e_i + \varepsilon_j)] f(\varepsilon_j)\, d\varepsilon_j, \end{aligned}$$
+>
+> so the first-order condition (2.2.5) becomes
+>
+> $$(w_H - w_L)\int_{\varepsilon_j} f(e_j^* - e_i + \varepsilon_j) f(\varepsilon_j)\, d\varepsilon_j = g'(e_i).$$
+>
+> In a symmetric Nash equilibrium (i.e., $e_1^* = e_2^* = e^*$), we have
+>
+> $$(w_H - w_L)\int_{\varepsilon_j} f(\varepsilon_j)^2\, d\varepsilon_j = g'(e^*). \tag{2.2.6}$$
+>
+> […] We now work backwards to the first stage of the game. Suppose that if the workers agree to participate in the tournament (rather than accept alternative employment) then they will respond to the wages $w_H$ and $w_L$ by playing the symmetric Nash equilibrium characterized by (2.2.6). (We thus ignore the possibilities of asymmetric equilibria and of an equilibrium in which the workers' effort choices are given by the corner solution $e_1 = e_2 = 0$, rather than by the first-order condition (2.2.5).) Suppose also that the workers' alternative employment opportunity would provide utility $U_a$. Since in the symmetric Nash equilibrium each worker wins the tournament with probability one-half (i.e., $\operatorname{Prob}\{y_i(e^*) > y_j(e^*)\} = 1/2$), if the boss intends to induce the workers to participate in the tournament then she must choose wages that satisfy
+>
+> $$\tfrac{1}{2}w_H + \tfrac{1}{2}w_L - g(e^*) \ge U_a. \tag{2.2.7}$$
+>
+> Assuming that $U_a$ is low enough that the boss wants to induce the workers to participate in the tournament, she therefore chooses wages to maximize expected profit, $2e^* - w_H - w_L$, subject to (2.2.7). At the optimum, (2.2.7) holds with equality:
+>
+> $$w_L = 2U_a + 2g(e^*) - w_H. \tag{2.2.8}$$
+>
+> Expected profit then becomes $2e^* - 2U_a - 2g(e^*)$, so the boss wishes to choose wages such that the induced effort, $e^*$, maximizes $e^* - g(e^*)$. The optimal induced effort therefore satisfies the first-order condition $g'(e^*) = 1$. Substituting this into (2.2.6) implies that the optimal prize, $w_H - w_L$, solves
+>
+> $$(w_H - w_L)\int_{\varepsilon_j} f(\varepsilon_j)^2\, d\varepsilon_j = 1,$$
+>
+> and (2.2.8) then determines $w_H$ and $w_L$ themselves.
+
 #### 24. Gibbons 2.16
 
 <!-- id: Gibbons 2.16 -->
@@ -532,6 +594,26 @@ Weight = share of the 30 content slides (5–34) that teach the block; the slide
 >
 > This problem derives conditions under which a subgame-perfect Nash equilibrium in the infinitely repeated game is Pareto-superior to the backwards-induction outcome of the one-shot game. Denote the union's utility and the firm's profit in the backwards-induction outcome of the one-shot game by $U^*$ and $\pi^*$, respectively. Consider an alternative utility-profit pair $(U, \pi)$ associated with an alternative wage-employment pair $(w, L)$. Suppose that the parties share the discount factor $\delta$ (per three-year period). Derive conditions on $(w, L)$ such that (1) $(U, \pi)$ Pareto-dominates $(U^*, \pi^*)$ and (2) $(U, \pi)$ is the outcome of a subgame-perfect Nash equilibrium of the infinitely repeated game, where $(U^*, \pi^*)$ is played forever following a deviation.
 
+**Referred to in the statement.** The model of wages and employment of Section 2.1.C (Gibbons pp. 64–66 [PDF p. 71–73]) (reproduced from the book):
+
+> In Leontief's (1946) model of the relationship between a firm and a monopoly union (i.e., a union that is the monopoly seller of labor to the firm), the union has exclusive control over wages, but the firm has exclusive control over employment. (Similar qualitative conclusions emerge in a more realistic model in which the firm and the union bargain over wages but the firm retains exclusive control over employment.) The union's utility function is $U(w, L)$, where $w$ is the wage the union demands from the firm and $L$ is employment. Assume that $U(w, L)$ increases in both $w$ and $L$. The firm's profit function is $\pi(w, L) = R(L) - wL$, where $R(L)$ is the revenue the firm can earn if it employs $L$ workers (and makes the associated production and product-market decisions optimally). Assume that $R(L)$ is increasing and concave.
+>
+> Suppose the timing of the game is: (1) the union makes a wage demand, $w$; (2) the firm observes (and accepts) $w$ and then chooses employment, $L$; (3) payoffs are $U(w, L)$ and $\pi(w, L)$. […]
+>
+> First, we can characterize the firm's best response in stage (2), $L^*(w)$, to an arbitrary wage demand by the union in stage (1), $w$. Given $w$, the firm chooses $L^*(w)$ to solve
+>
+> $$\max_{L \ge 0} \pi(w, L) = \max_{L \ge 0} R(L) - wL,$$
+>
+> the first-order condition for which is
+>
+> $$R'(L) - w = 0.$$
+>
+> […] To guarantee that the first-order condition $R'(L) - w = 0$ has a solution, assume that $R'(0) = \infty$ and that $R'(\infty) = 0$ […]
+>
+> We turn next to the union's problem at stage (1). Since the union can solve the firm's second-stage problem as well as the firm can solve it, the union should anticipate that the firm's reaction to the wage demand $w$ will be to choose the employment level $L^*(w)$. Thus, the union's problem at the first stage amounts to
+>
+> $$\max_{w \ge 0} U(w, L^*(w)).$$
+
 #### 25. MWG 12.AA.2
 
 <!-- id: MWG 12.AA.2 -->
@@ -539,8 +621,18 @@ Weight = share of the 30 content slides (5–34) that teach the block; the slide
 **Moved here from** the Lecture 5 list (old numbering), item 17.
 
 > **12.AA.2^C** Prove Proposition 12.AA.4. [*Hint:* Consider a strategy profile of the following form: the players are to play an outcome path involving some pair $(q_1, q_2)$ in period 1 and $(q_1^*, q_2^*)$ in every period thereafter. If either player deviates, this outcome path is restarted.]
+
+**Referred to in the statement.** The model of Appendix A, "Infinitely Repeated Games and the Folk Theorem" (MWG pp. 417–418 [PDF p. 219–220]), and the minimax payoff and Proposition 12.AA.4 (p. 421 [PDF p. 221]) (reproduced from the book; footnote 31 dropped):
+
+> An infinitely repeated game consists of an infinite sequence of repetitions of a one-period simultaneous-move game, known as the *stage game*. For expositional simplicity, we focus here on the case in which there are two players.
 >
-> *Added from p. 421.* To consider this issue, it is useful to let $\underline{\pi}_i = \operatorname{Min}_{q_j}\left[\operatorname{Max}_{q_i} \pi_i(q_i, q_j)\right]$ denote player $i$'s *minimax payoff*.
+> In the one-period stage game, each player $i$ has a compact strategy set $S_i$; $q_i \in S_i$ is a particular feasible action for player $i$. Denote $q = (q_1, q_2)$ and $S = S_1 \times S_2$. Player $i$'s payoff function is $\pi_i(q_i, q_j)$. We restrict our attention throughout to pure strategies. It will be convenient to define player $i$'s one-period best-response payoff given that his rival plays $q_j$ by $\hat{\pi}_i(q_j) = \operatorname{Max}_{q \in S_i} \pi_i(q, q_j)$. We assume that the stage game has a unique pure strategy Nash equilibrium $q^* = (q_1^*, q_2^*)$ (the assumption of uniqueness is for expositional simplicity only).
+>
+> In the infinitely repeated game, actions are taken and payoffs are earned at the beginning of each period. The players discount payoffs with discount factor $\delta < 1$. Players observe each other's action choices in each period and have perfect recall. A pure strategy in this game for player $i$, $s_i$, is a sequence of functions $\{s_{it}(\cdot)\}_{t=1}^{\infty}$ mapping from the history of previous action choices (denoted $H_{t-1}$) to his action choice in period $t$, $s_{it}(H_{t-1}) \in S_i$. The set of all such pure strategies for player $i$ is denoted by $\Sigma_i$, and $s = (s_1, s_2) \in \Sigma_1 \times \Sigma_2$ is a profile of pure strategies for the two players.
+>
+> Any pure strategy profile $s = (s_1, s_2)$ induces an *outcome path* $Q(s)$, an infinite sequence of actions $\{q_t = (q_{1t}, q_{2t})\}_{t=1}^{\infty}$ that will actually be played when the players follow strategies $s_1$ and $s_2$. Player $i$'s discounted payoff from outcome path $Q$ is given by $v_i(Q) = \sum_{t=0}^{\infty} \delta^t \pi_i(q_{1+t})$. We also define player $i$'s *average payoff* from outcome path $Q$ to be $(1 - \delta)v_i(Q)$: this is the per-period payoff that, if infinitely repeated, would give player $i$ a discounted payoff of $v_i(Q)$. Finally, it is also useful to define the discounted continuation payoff from outcome path $Q$ from some period $t$ onward (discounted to period $t$) by $v_i(Q, t) = \sum_{\tau=0}^{\infty} \delta^\tau \pi_i(q_{t+\tau})$.
+>
+> […] To consider this issue, it is useful to let $\underline{\pi}_i = \operatorname{Min}_{q_j}\left[\operatorname{Max}_{q_i} \pi_i(q_i, q_j)\right]$ denote player $i$'s *minimax payoff*.
 >
 > **Proposition 12.AA.4:** Consider an infinitely repeated game with $\delta > 0$ and $S_i \subset \mathbb{R}$ for $i = 1, 2$. Suppose also that $\pi_i(q)$ is differentiable at $q^* = (q_1^*, q_2^*)$, with $\partial \pi_i(q_i^*, q_j^*)/\partial q_j \neq 0$ for $j \neq i$ and $i = 1, 2$, and that $\pi_i(q_1^*, q_2^*) > \underline{\pi}_i$ for $i = 1, 2$. Then there is some SPNE with discounted payoffs to the two players of $(v_1', v_2')$ such that $(1 - \delta)v_i' < \pi_i(q_1^*, q_2^*)$ for $i = 1, 2$.
 

@@ -4,3 +4,43 @@
 \begin{quote}
 2.22. Give the extensive- and normal-form representations of the bank-runs game discussed in Section 2.2.B. What are the pure-strategy subgame-perfect Nash equilibria?
 \end{quote}
+
+\textbf{Referred to in the statement.} The bank-runs game of Section 2.2.B (Gibbons pp.~73--74 {[}PDF p.~80--81{]}) (reproduced from the book):
+
+\begin{quote}
+Two investors have each deposited \(D\) with a bank. The bank has invested these deposits in a long-term project. If the bank is forced to liquidate its investment before the project matures, a total of \(2r\) can be recovered, where \(D > r > D/2\). If the bank allows the investment to reach maturity, however, the project will pay out a total of \(2R\), where \(R > D\).
+
+There are two dates at which the investors can make withdrawals from the bank: date 1 is before the bank's investment matures; date 2 is after. For simplicity, assume that there is no discounting. If both investors make withdrawals at date 1 then each receives \(r\) and the game ends. If only one investor makes a withdrawal at date 1 then that investor receives \(D\), the other receives \(2r - D\), and the game ends. Finally, if neither investor makes a withdrawal at date 1 then the project matures and the investors make withdrawal decisions at date 2. If both investors make withdrawals at date 2 then each receives \(R\) and the game ends. If only one investor makes a withdrawal at date 2 then that investor receives \(2R - D\), the other receives \(D\), and the game ends. Finally, if neither investor makes a withdrawal at date 2 then the bank returns \(R\) to each investor and the game ends.
+
+In Section 2.4 we will discuss how to represent this game formally. For now, however, we will proceed informally. Let the payoffs to the two investors at dates 1 and 2 (as a function of their withdrawal decisions at these dates) be represented by the following pair of normal-form games. Note well that the normal-form game for date 1 is nonstandard: if both investors choose not to withdraw at date 1 then no payoff is specified; rather, the investors proceed to the normal-form game at date 2.
+
+\emph{Date 1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& withdraw & don't \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+withdraw & \(r, r\) & \(D, 2r - D\) \\
+don't & \(2r - D, D\) & next stage \\
+\end{longtable}
+}
+
+\emph{Date 2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& withdraw & don't \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+withdraw & \(R, R\) & \(2R - D, D\) \\
+don't & \(D, 2R - D\) & \(R, R\) \\
+\end{longtable}
+}
+\end{quote}

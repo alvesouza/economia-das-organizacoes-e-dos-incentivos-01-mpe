@@ -181,6 +181,51 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 
 > **Even/Odd Symmetry:** In Section 11.2 we analyzed the alternating-offer bargaining game for a finite number of periods when $T$ was odd. Repeat the analysis for $T$ even.
 
+**Referred to in the statement.** The alternating-offer bargaining game (Tadelis Ch. 11 opening, pp. 220–221 [PDF p. 239–240]) and its analysis for odd $T$ in Section 11.2 (pp. 225–226 [PDF p. 244–245]) (reproduced from the book):
+
+> The simple framework considers two players that need to split a "pie" (representing the surplus from an agreement or the gains from trade). The pie is assumed to have a total value that is normalized to equal 1, and then the parties bargain on how to split the pie. […] we can summarize the game as follows.
+>
+> In the first round:
+>
+> - Player 1 offers shares $(x, 1 - x)$, where player 1 receives $x$ and player 2 receives $1 - x$.
+> - Player 2 then chooses to accept, causing the game to end with payoffs $v_1 = x$ and $v_2 = 1 - x$, or reject, causing the game to move to the second round.
+>
+> In the second round:
+>
+> - A share $1 - \delta$ of the pie is dissipated (the pie is discounted with discount factor $0 < \delta < 1$).
+> - Player 2 offers shares $(x, 1 - x)$, where player 1 receives $x$ and player 2 receives $1 - x$.
+> - Player 1 chooses to accept, causing the game to end with payoffs $v_1 = \delta x$ and $v_2 = \delta(1 - x)$, or reject, causing the game to move to the third round.
+>
+> In the third round and beyond:
+>
+> - The game continues in the same way, where following rejection in an odd period player 2 gets to offer in the next even period, and vice versa.
+> - Each period has further discounting of the pie, so that in period $t$ the total pie is worth $\delta^{t-1}$.
+>
+> From the specification of the bargaining procedure we see that once a player agrees to the offer made by his opponent, the game will end with an agreement. If instead the players keep rejecting offers then the game may continue either indefinitely or until some prespecified deadline is reached. Assume for now that the game ends in some prespecified final period $T$, which will be reached if the players did not reach an agreement in the $T - 1$ periods that preceded $T$. Furthermore assume that period $T$ is a "hard deadline," so that both players receive a payoff of zero if they fail to reach an agreement in this last period. […]
+>
+> Consider the case with an odd number of rounds $T < \infty$, implying that player 1 has both the first-mover and last-mover advantages. The following backward induction argument applies:
+>
+> - In period $T$ player 2 accepts any offer, so player 1 offers $x = 1$ and payoffs are $v_1 = \delta^{T-1}$ and $v_2 = 0$.
+> - In period $T - 1$ (even period, player 2 offers), by backward induction player 1 should accept anything resulting in a payoff of $v_1 \ge \delta^{T-1}$. If player 1 is offered $x$ in period $T - 1$ then $v_1 = \delta^{T-2}x$. This implies that in period $T - 1$ player 1 will accept any $x \ge \delta$ and by backward induction player 2 should offer $x = \delta$, which yields player 1 a payoff of $v_1 = \delta \times \delta^{T-2} = \delta^{T-1}$. Payoffs are then $v_1 = \delta^{T-1}$ and $v_2 = \delta^{T-2}(1 - \delta)$.
+> - In period $T - 2$ (odd period), conditional on the analysis for $T - 1$, player 2's best response is to accept any $x$ that gives him $\delta^{T-3}(1 - x) \ge \delta^{T-2}(1 - \delta)$. Player 1's best response to this is to offer the largest $x$ that satisfies this inequality, and solving it with equality yields player 1's best response: $x = 1 - \delta + \delta^2$. This offer followed by player 2's acceptance yields $v_1 = \delta^{T-3}x = \delta^{T-3} - \delta^{T-2} + \delta^{T-1}$ and $v_2 = \delta^{T-2} - \delta^{T-1}$.
+> - In period $T - 3$ (even period), using the same backward induction argument, player 1's best response is to accept any $x$ that satisfies $\delta^{T-4}x \ge \delta^{T-3} - \delta^{T-2} + \delta^{T-1}$, and player 2 then makes an offer that satisfies this constraint with equality, $x = \delta - \delta^2 + \delta^3$, yielding $v_1 = \delta^{T-3} - \delta^{T-2} + \delta^{T-1}$ and $v_2 = \delta^{T-4}(1 - x) = \delta^{T-4} - \delta^{T-3} + \delta^{T-2} - \delta^{T-1}$.
+>
+> We can continue with this tedious exercise only to realize that a simple pattern emerges. If we consider the solution for an odd period $T - s$ ($s$ being even because $T$ is assumed to be odd) then the backward induction argument leads to the sequentially rational offer
+>
+> $$x_{T-s} = 1 - \delta + \delta^2 - \delta^3 + \cdots + \delta^s,$$
+>
+> while for an even period $T - s$ ($s$ being odd) then the backward induction argument leads to the sequentially rational offer
+>
+> $$x_{T-s} = \delta - \delta^2 + \delta^3 - \delta^4 + \cdots + \delta^s.$$
+>
+> We can use this pattern to solve for the subgame-perfect equilibrium offer in the first period, $x_1$, which by backward induction must be accepted by player 2 and it is equal to
+>
+> $$\begin{aligned} x_1 &= 1 - \delta + \delta^2 - \delta^3 + \delta^4 + \cdots + \delta^{T-1} \\ &= (1 + \delta^2 + \delta^4 + \cdots + \delta^{T-1}) - (\delta + \delta^3 + \delta^5 + \cdots + \delta^{T-2}) \\ &= \frac{1 - \delta^{T+1}}{1 - \delta^2} - \frac{\delta - \delta^T}{1 - \delta^2} \\ &= \frac{1 + \delta^T}{1 + \delta}, \end{aligned}$$
+>
+> and this in turn implies that
+>
+> $$v_1^* = x_1 = \frac{1 + \delta^T}{1 + \delta} \quad \text{and} \quad v_2^* = (1 - x_1) = \frac{\delta - \delta^T}{1 + \delta}. \tag{11.1}$$
+
 ## Tier 2 — Exam level
 
 | # | Block | Source | Ch./Sec. | Exercise | Page | What it trains |
@@ -239,6 +284,28 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 
 > 2.19. In the three-period version of Rubinstein's bargaining model analyzed in Section 2.1.D, we solved for the backwards-induction outcome. What is the subgame-perfect Nash equilibrium?
 
+**Referred to in the statement.** The three-period bargaining model of Section 2.1.D and its backwards-induction outcome (Gibbons pp. 68–70 [PDF p. 75–77]) (reproduced from the book):
+
+> Players 1 and 2 are bargaining over one dollar. They alternate in making offers: first player 1 makes a proposal that player 2 can accept or reject; if 2 rejects then 2 makes a proposal that 1 can accept or reject; and so on. Once an offer has been rejected, it ceases to be binding and is irrelevant to the subsequent play of the game. Each offer takes one period, and the players are impatient: they discount payoffs received in later periods by the factor $\delta$ per period, where $0 < \delta < 1$.
+>
+> A more detailed description of the timing of the three-period bargaining game is as follows.
+>
+> (1a) At the beginning of the first period, player 1 proposes to take a share $s_1$ of the dollar, leaving $1 - s_1$ for player 2.
+>
+> (1b) Player 2 either accepts the offer (in which case the game ends and the payoffs $s_1$ to player 1 and $1 - s_1$ to player 2 are immediately received) or rejects the offer (in which case play continues to the second period).
+>
+> (2a) At the beginning of the second period, player 2 proposes that player 1 take a share $s_2$ of the dollar, leaving $1 - s_2$ for player 2. (Note the convention that $s_t$ always goes to player 1, regardless of who made the offer.)
+>
+> (2b) Player 1 either accepts the offer (in which case the game ends and the payoffs $s_2$ to player 1 and $1 - s_2$ to player 2 are immediately received) or rejects the offer (in which case play continues to the third period).
+>
+> (3) At the beginning of the third period, player 1 receives a share $s$ of the dollar, leaving $1 - s$ for player 2, where $0 < s < 1$.
+>
+> In this three-period model, the third-period settlement $(s, 1 - s)$ is given exogenously. […]
+>
+> To solve for the backwards-induction outcome of this three-period game, we first compute player 2's optimal offer if the second period is reached. Player 1 can receive $s$ in the third period by rejecting player 2's offer of $s_2$ this period, but the value this period of receiving $s$ next period is only $\delta s$. Thus, player 1 will accept $s_2$ if and only if $s_2 \ge \delta s$. (We assume that each player will accept an offer if indifferent between accepting and rejecting.) Player 2's second-period decision problem therefore amounts to choosing between receiving $1 - \delta s$ this period (by offering $s_2 = \delta s$ to player 1) and receiving $1 - s$ next period (by offering player 1 any $s_2 < \delta s$). The discounted value of the latter option is $\delta(1 - s)$, which is less than the $1 - \delta s$ available from the former option, so player 2's optimal second-period offer is $s_2^* = \delta s$. Thus, if play reaches the second period, player 2 will offer $s_2^*$ and player 1 will accept.
+>
+> Since player 1 can solve player 2's second-period problem as well as player 2 can, player 1 knows that player 2 can receive $1 - s_2^*$ in the second period by rejecting player 1's offer of $s_1$ this period, but the value this period of receiving $1 - s_2^*$ next period is only $\delta(1 - s_2^*)$. Thus, player 2 will accept $1 - s_1$ if and only if $1 - s_1 \ge \delta(1 - s_2^*)$, or $s_1 \le 1 - \delta(1 - s_2^*)$. Player 1's first-period decision problem therefore amounts to choosing between receiving $1 - \delta(1 - s_2^*)$ this period (by offering $1 - s_1 = \delta(1 - s_2^*)$ to player 2) and receiving $s_2^*$ next period (by offering any $1 - s_1 < \delta(1 - s_2^*)$ to player 2). The discounted value of the latter option is $\delta s_2^* = \delta^2 s$, which is less than the $1 - \delta(1 - s_2^*) = 1 - \delta(1 - \delta s)$ available from the former option, so player 1's optimal first-period offer is $s_1^* = 1 - \delta(1 - s_2^*) = 1 - \delta(1 - \delta s)$. Thus, in the backwards-induction outcome of this three-period game, player 1 offers the settlement $(s_1^*, 1 - s_1^*)$ to player 2, who accepts.
+
 #### 12. Tadelis 11.5
 
 <!-- id: Tadelis 11.5 -->
@@ -283,6 +350,16 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 **Moved here from.** Previous Lecture 6 list, item 13.
 
 > 2.15. Suppose there are $n$ firms in a Cournot oligopoly. Inverse demand is given by $P(Q) = a - Q$, where $Q = q_1 + \cdots + q_n$. Consider the infinitely repeated game based on this stage game. What is the lowest value of $\delta$ such that the firms can use trigger strategies to sustain the monopoly output level in a subgame-perfect Nash equilibrium? How does the answer vary with $n$, and why? If $\delta$ is too small for the firms to use trigger strategies to sustain the monopoly output, what is the most-profitable symmetric subgame-perfect Nash equilibrium that can be sustained using trigger strategies?
+
+**Referred to in the statement.** The Cournot stage game and the trigger strategy of Section 2.3.C (Gibbons pp. 102–103 [PDF p. 109–110]) (reproduced from the book):
+
+> Friedman (1971) was the first to show that cooperation could be achieved in an infinitely repeated game by using trigger strategies that switch forever to the stage-game Nash equilibrium following any deviation. The original application was to collusion in a Cournot oligopoly, as follows.
+>
+> Recall the static Cournot game from Section 1.2.A: If the aggregate quantity on the market is $Q = q_1 + q_2$, then the market-clearing price is $P(Q) = a - Q$, assuming $Q < a$. Each firm has a marginal cost of $c$ and no fixed costs. The firms choose quantities simultaneously. In the unique Nash equilibrium, each firm produces the quantity $(a - c)/3$, which we will call the Cournot quantity and denote by $q_C$. Since the equilibrium aggregate quantity, $2(a - c)/3$, exceeds the monopoly quantity, $q_m \equiv (a - c)/2$, both firms would be better off if each produced half the monopoly quantity, $q_i = q_m/2$.
+>
+> Consider the infinitely repeated game based on this Cournot stage game when both firms have the discount factor $\delta$. We now compute the values of $\delta$ for which it is a subgame-perfect Nash equilibrium of this infinitely repeated game for both firms to play the following trigger strategy:
+>
+> > Produce half the monopoly quantity, $q_m/2$, in the first period. In the $t^{\text{th}}$ period, produce $q_m/2$ if both firms have produced $q_m/2$ in each of the $t - 1$ previous periods; otherwise, produce the Cournot quantity, $q_C$.
 
 #### 15. Tadelis 10.4
 
@@ -385,6 +462,16 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 >
 > Determine the minimum value of the discount factor such that the optimal collusive solution is stable.
 
+**Referred to in the statement.** The model of multimarket contact in Section 9.3 (Cabral pp. 228–229 [PDF p. 240–241]) (reproduced from the book; the side note it cites is kept):
+
+> Consider a price-setting homogeneous-product duopoly where marginal cost is constant and the same for both firms. If firms set prices at the monopoly level, $p^M$, then each receives $\frac{1}{2}\pi^M$, where $\pi^M$ is monopoly profits. If one of the firms were to set a slightly lower price, then it would receive all of the monopoly profits, that is, twice as much. The worse price war to punish such deviation would consist of setting price at marginal cost forever, that is, zero profits. […]
+>
+> Now suppose that each firm has a cost advantage in one of the markets. For example, in Market 1 Firm 1's cost is $\underline{c}$, whereas Firm 2's is $\overline{c} > \underline{c}$; and in Market 2 Firm 2's cost is $\underline{c}$, whereas Firm 1's is $\overline{c}$. One possible interpretation is that each firm is located in a different country and $\overline{c} = \underline{c} + t$, where $t$ is the transportation cost from one country to the other.
+>
+> As seen in the previous subsection, the efficient collusive agreement in Market 1 is for Firm 1 to set its monopoly price and for Firm 2 to set a higher price and sell zero. The reverse is true in Market 2. Taken in isolation, such agreements are clearly not stable. However, if we consider the two markets together, then the situation is quite different. Firm 1 might be able to convince Firm 2 not to undercut its monopoly price in Market 1 with the threat that it would undercut Firm 2 in the latter's market if that were to happen. In fact, suppose that the punishment from deviation would be for firms to engage in a price war whereby price equals the high marginal cost, $\overline{c}$.$^{j}$ One can easily show that if the discount factor is sufficiently high, then firms will be able to collude and set prices at the monopoly level (see Exercise 9.18). Multimarket contact matters.
+>
+> *j.* It can be shown that this constitutes an equilibrium of the static price game.
+
 #### 22. Muñoz-Garcia Ch. 6 Ex. 10
 
 <!-- id: Muñoz-Garcia Ch. 6 Ex. 10 -->
@@ -411,6 +498,10 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 
 > 2.14. Suppose that demand fluctuates randomly in the infinitely repeated Bertrand game described in Problem 2.13: in each period, the demand intercept is $a_H$ with probability $\pi$ and $a_L$ ($< a_H$) with probability $1 - \pi$; demands in different periods are independent. Suppose that each period the level of demand is revealed to both firms before they choose their prices for that period. What are the monopoly price levels ($p_H$ and $p_L$) for the two levels of demand? Solve for $\delta^*$, the lowest value of $\delta$ such that the firms can use trigger strategies to sustain these monopoly price levels (i.e., to play $p_i$ when demand is $a_i$, for $i = H, L$) in a subgame-perfect Nash equilibrium. For each value of $\delta$ between 1/2 and $\delta^*$, find the highest price $p(\delta)$ such that the firms can use trigger strategies to sustain the price $p(\delta)$ when demand is high and the price $p_L$ when demand is low in a subgame-perfect Nash equilibrium. (See Rotemburg and Saloner 1986.)
 
+**Referred to in the statement.** Problem 2.13 (Gibbons §2.3 Problems, p. 135 [PDF p. 142]) (reproduced from the book):
+
+> 2.13. Recall the static Bertrand duopoly model (with homogeneous products) from Problem 1.7: the firms name prices simultaneously; demand for firm $i$'s product is $a - p_i$ if $p_i < p_j$, is 0 if $p_i > p_j$, and is $(a - p_i)/2$ if $p_i = p_j$; marginal costs are $c < a$. Consider the infinitely repeated game based on this stage game. Show that the firms can use trigger strategies (that switch forever to the stage-game Nash equilibrium after any deviation) to sustain the monopoly price level in a subgame-perfect Nash equilibrium if and only if $\delta \ge 1/2$.
+
 #### 24. Tadelis 11.7
 
 <!-- id: Tadelis 11.7 -->
@@ -427,6 +518,36 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 > c. Compare what the first period's proposer receives in the subgame-perfect equilibrium you found in (b) to what a first-period proposer receives in the two-period, two-person Rubinstein-Ståhl bargaining game. What intuitively accounts for the difference?
 >
 > d. Compare the subgame-perfect equilibrium you found in (b) to the solution of the infinite-horizon model in Section 11.4.1. What intuitively accounts for the similarity?
+
+**Referred to in the statement.** The Baron and Ferejohn closed-rule game and its infinite-horizon solution (Tadelis §11.4 and §11.4.1, pp. 229–231 [PDF p. 248–250]) and the two-period, two-person game of Section 11.2 (pp. 224–225 [PDF p. 243–244]) (reproduced from the book):
+
+> In an important contribution, Baron and Ferejohn (1989) build on the Rubinstein-Ståhl model of bargaining and offer a framework for analyzing multilateral bargaining with a simple majority rule. The two main departures from the two-player model are as follows: First, there is an odd number $N$ of players, where $\frac{N+1}{2}$ votes are needed to secure an agreement. Second, instead of players alternating their roles in a prespecified order, the bargaining protocol follows a random-assignment rule: in every period each player has an equal probability of being the proposer.
+>
+> Baron and Ferejohn consider two bargaining rules that to a large extent mimic common practices: the closed rule, under which proposals cannot be amended, and the open rule, under which they can. […]
+>
+> **11.4.1 Closed-Rule Bargaining.** The closed-rule setting is very much an $N$-player version of the Rubinstein infinite-horizon model. When called upon to propose, the proposer makes an offer to the legislative body of the form $x = (x_1, x_2, \ldots, x_N)$, where $x_i$ is the share of surplus offered to player $i$, with $\sum_{i=1}^{n} x_i \le 1$. If a majority accepts the proposal then the game ends, and if not then the current "pie" is discounted according to the discount factor $\delta$.
+>
+> It turns out that when there are three or more players in an $N$-player version of the Rubinstein infinite-horizon bargaining game then there are many possible subgame-perfect equilibria. What Baron and Ferejohn suggest is a simple way around this indeterminacy. They focus attention on *symmetric stationary equilibria* in which first, each player proposes the same split of the pie every time he is called to propose, regardless of the history of the game, and second, the respondents vote based only on the current proposal as it compares to their expectations about future proposals. […]
+>
+> Let $v$ be the expected payoff for any player $i$ to play the subgame-perfect equilibrium of this game at the beginning of any stage, and consider a player $i$ who is choosing to respond to a proposal that awards him $x_i$. If he rejects the proposal then he expects to get $v$ in the next period, and hence he will accept the proposal if and only if $x_i \ge \delta v$. As a consequence, any player who plays the role of a proposer anticipates that he must propose at least $\delta v$ to at least $\frac{N+1}{2}$ other players.
+>
+> Given this observation, the proposer's best response is to choose exactly $\frac{N-1}{2}$ other players and offer them exactly $\delta v$ each, keeping the rest of the pie for himself. […] Hence the portion of the pie that the proposer keeps for himself in the symmetric subgame-perfect equilibrium is
+>
+> $$k = 1 - \frac{N-1}{2}\delta v. \tag{11.6}$$
+>
+> To maintain symmetry, each proposer chooses his $\frac{N-1}{2}$ coalition partners randomly from the remaining $N - 1$ players, implying that each of the $N - 1$ responders gets chosen to be part of the coalition with probability $\frac{1}{2}$.
+>
+> The equilibrium analysis leads to the computation of $v$. At the beginning of the game (and of every stage after rejection), each player expects to play in one of three roles. He can either be the proposer and receive $k$, which occurs with probability $\frac{1}{N}$, or be a responder, which occurs with probability $\frac{N-1}{N}$. If he is a responder, then with probability $\frac{1}{2}$ he will be in the winning coalition and receive $\delta v$, or he can be outside the coalition and receive zero. This implies that
+>
+> $$v = \frac{k}{N} + \frac{N-1}{2N}\delta v. \tag{11.7}$$
+>
+> Combining (11.6) and (11.7) we obtain that $v = \frac{1}{N}$. […]
+>
+> It is more interesting to focus attention on the value of $k$, the share obtained by the proposer, which is
+>
+> $$k(N) = 1 - \delta\left(\frac{N-1}{2N}\right). \tag{11.8}$$
+>
+> *The two-period, two-person game (Section 11.2).* As Figure 11.2 demonstrates, the second round is a one-round bargaining game, which implies that if it is reached then player 2 gets the whole pie in any subgame-perfect equilibrium. Continuing with backward induction, and assuming that $\delta \le 1$, we can find the subgame-perfect equilibrium for the two-round game as follows. In the first round player 2 knows that in the next (and last) round he will receive the whole pie, which will be worth only $\delta$ because of discounting. Thus if he is offered less than $\delta$ for himself (player 1 offers $x > 1 - \delta$) then player 2 should reject the offer and get the whole pie in the next period. Hence the unique sequentially rational strategy for player 2 at the accept/reject stage of the first round is to accept any offer of $x \le 1 - \delta$. Moving up the tree to the node at which player 1 makes his first offer, he realizes that any offer $x > 1 - \delta$ will be rejected, while any offer $x \le 1 - \delta$ will be accepted. Thus player 1's best response is to offer $x = 1 - \delta$, leading to a division of surplus equal to $(v_1, v_2) = (1 - \delta, \delta)$.
 
 #### 25. Cabral 9.19
 
@@ -492,6 +613,20 @@ Ch. 5 Ex. 8 (a static asymmetric Cournot cartel: the same algebra as item 1 and 
 > Suppose now that the threat of a takeover or bankruptcy endangers the employee's future with the firm, so that the employee now expects to be employed only one more year. Will the contract you found above still deter cheating? Why or why not?
 >
 > More generally, show that in the efficiency wage model, a lengthened horizon allows providing incentives with a lower wage. That is, show that the optimal wage level $w^*(N)$ is a nonincreasing function of $N$ provided the marginal cost of monitoring is positive and increasing in $p$, that is, provided $M'(p) > 0$ and $M''(p) > 0$ for all $p$.
+
+**Referred to in the statement.** The efficiency wage model of Chapter 8: "The Shapiro-Stiglitz Model" and "A Mathematical Example: Comparative Statics for Efficiency Wages" (Milgrom & Roberts pp. 250–251 and 254 [PDF p. 265–266 and 269]) (reproduced from the book):
+
+> Let $w$ be the wage the employee is paid in his or her current job (say, \$50,000), and let $\overline{w}$ be the wage the employee could get if he or she looked for another job in the market after being fired from the current job (say, \$40,000). The wage $\overline{w}$ is assumed to be discounted to take into account the cost of searching for a new job, including any period of unemployment during the search, the cost of submitting applications, and so on. Let $g$ be the amount that the employee could gain by cheating on the job, regardless of whether he or she is detected. […] Let $p$ be the probability that the cheating, whatever form it may take, is detected. Let $N$ be the multiplier to express the long-term value of this relationship, adjusting for both interest and the number of periods during which the worker is employed by the firm if not caught cheating. If the employment relation lasts only one period and is never repeated, then $N = 1$. If the employee is hired from time to time and expects to be rehired in the future only if he or she has never cheated the employer, then $N$ is larger than 1. If there is a continuing employment relation between the worker and the employer, then $N$ may be much larger than 1.
+>
+> Putting ethics and morality aside momentarily, it will serve the employee's narrow personal interest to cheat if
+>
+> $$g > p(w - \overline{w})N \tag{8.1}$$
+>
+> that is, if the gain from cheating exceeds the probability that the cheating is detected times loss of income from being fired. […]
+>
+> Let $M(p)$ be the monitoring cost incurred in every accounting period when the probability of detection is $p$. If the company wants to deter cheating, it can minimize its total cost in each period by choosing its wage and monitoring policy to solve:
+>
+> $$\begin{aligned} &\underset{p,\,w}{\text{Minimize}}\; M(p) + w \\ &\text{subject to } p(w - \overline{w})N \ge g \end{aligned} \tag{8.2}$$
 
 **Further practice (not in the tiers).** Source lines only; the statements are in the previous
 Lecture 4 list (`git show fe47ead:Listas/pratica-lecture-04.md`), where they were verified.

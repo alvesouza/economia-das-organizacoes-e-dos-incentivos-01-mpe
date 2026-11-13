@@ -133,6 +133,34 @@ than the lecture uses.
 
 > **Chicken Revisited:** Consider the game of chicken in Section 12.2.1 with the parameters $R = 8$, $H = 16$, and $L = 0$ as described there. A preacher, who knows some game theory, decides to use this model to claim that moving to a society in which all parents are lenient will have detrimental effects on the behavior of teenagers. Does equilibrium analysis support this claim? What if $R = 8$, $H = 0$, and $L = 16$?
 
+**Referred to in the statement.** The game of chicken of Section 12.2.1 (Tadelis pp. 252–254 [PDF p. 271–273]) (reproduced from the book; Figure 12.3, the game tree, is replaced by the matrix the book derives from it):
+
+> Two teenagers, players 1 and 2, have borrowed their parents' cars and decided to play the game of chicken as follows: They drive toward each other in the middle of a street, and just before impact they must simultaneously choose whether to be chicken and swerve to the right, or continue driving head on. If both are chicken then both gain no respect from their friends but suffer no losses; thus both get a payoff of 0. If $i$ continues to drive while $j \neq i$ plays chicken then $i$ gains all the respect, which is a payoff of $R$, and $j$ gets no respect, which is worth 0. In this case both players suffer no additional losses. Finally if both continue to drive head on then they split the respect (because respect is considered to be relative), but an accident is bound to happen and they will at least be reprimanded by their parents, if not seriously injured. An accident imposes a personal loss of $k$ on each player, so the payoff to each one is $\frac{R}{2} - k$.
+>
+> There is, however, a potential difference between these two youngsters: The punishment, $k$, depends on the type of parents they have. For each kid, parents can be either harsh ($H$) or lenient ($L$) with equal probability, and the draws from Nature on the types of parents are independently distributed. This means that the likelihood that player $i$'s parents are harsh is equal to $\frac{1}{2}$ and is independent of the type of parents that player $j$ has. If player $i$'s parents are harsh then they will beat the living daylights out of their child, which imposes a high cost of an accident, denoted by $k = H$. If instead the parents are lenient then they will give their child a long lecture on why his behavior is unacceptable, which imposes a lower cost of an accident, denoted by $k = L < H$. Each kid knows the type of his parents but does not know the type of his opponent's parents. The distribution of types is common knowledge (this is the common prior assumption).
+>
+> […] The action sets of each player are $A_1 = \{C, D\}$ and $A_2 = \{c, d\}$, where $C$ (or $c$) stands for "chicken" and $D$ (or $d$) stands for "drive."
+>
+> From the extensive form in Figure 12.3 we can derive the matrix form as follows. A strategy for player 1 is denoted by $xy \in S_1 = \{CC, CD, DC, DD\}$, where $x$ is what he does if he is an $L$ type and $y$ is what he does if he is an $H$ type. Similarly $S_2 = \{cc, cd, dc, dd\}$. […] This results in the following matrix-form Bayesian game:
+>
+> | Player 1 \ Player 2 | $cc$ | $cd$ | $dc$ | $dd$ |
+> |---|---|---|---|---|
+> | $CC$ | $0, 0$ | $0, \frac{R}{2}$ | $0, \frac{R}{2}$ | $0, R$ |
+> | $CD$ | $\frac{R}{2}, 0$ | $\frac{3R}{8} - \frac{H}{4}, \frac{3R}{8} - \frac{H}{4}$ | $\frac{3R}{8} - \frac{H}{4}, \frac{3R}{8} - \frac{L}{4}$ | $\frac{R}{4} - \frac{H}{2}, \frac{3R}{4} - \frac{L}{4} - \frac{H}{4}$ |
+> | $DC$ | $\frac{R}{2}, 0$ | $\frac{3R}{8} - \frac{L}{4}, \frac{3R}{8} - \frac{H}{4}$ | $\frac{3R}{8} - \frac{L}{4}, \frac{3R}{8} - \frac{L}{4}$ | $\frac{R}{4} - \frac{L}{2}, \frac{3R}{4} - \frac{L}{4} - \frac{H}{4}$ |
+> | $DD$ | $R, 0$ | $\frac{3R}{4} - \frac{L}{4} - \frac{H}{4}, \frac{R}{4} - \frac{H}{2}$ | $\frac{3R}{4} - \frac{L}{4} - \frac{H}{4}, \frac{R}{4} - \frac{L}{2}$ | $\frac{R}{2} - \frac{L}{2} - \frac{H}{2}, \frac{R}{2} - \frac{L}{2} - \frac{H}{2}$ |
+>
+> To solve for the Bayesian Nash equilibria we need to have more information about the parameters $R$, $H$, and $L$. Assume that $R = 8$, $H = 16$, and $L = 0$, which results in the following matrix-form game:
+>
+> | Player 1 \ Player 2 | $cc$ | $cd$ | $dc$ | $dd$ |
+> |---|---|---|---|---|
+> | $CC$ | $0, 0$ | $0, 4$ | $0, 4$ | $0, 8$ |
+> | $CD$ | $4, 0$ | $-1, -1$ | $-1, 3$ | $-6, 2$ |
+> | $DC$ | $4, 0$ | $3, -1$ | $3, 3$ | $2, 2$ |
+> | $DD$ | $8, 0$ | $2, -6$ | $2, 2$ | $-4, -4$ |
+>
+> A quick analysis reveals that the game has a unique pure-strategy Bayesian Nash equilibrium: $(DC, dc)$.
+
 #### 5. Tadelis 13.1
 
 <!-- id: Tadelis 13.1 -->
@@ -304,6 +332,20 @@ than the lecture uses.
 >
 > c. Consider a three-player game in which the defendant is convicted if at least two players vote to convict him, and acquitted otherwise (i.e., majority voting determines the defendant's fate). Assume that the informational structure is the same as in the two-player game. Are there conditions in which voting according to one's signal ($C$ if $\theta_i = \theta_G$ and $A$ if $\theta_i = \theta_I$) is a Bayesian Nash equilibrium?
 
+**Referred to in the statement.** The jury voting game of Section 12.4 (Tadelis pp. 261–262 [PDF p. 280–281]) (reproduced from the book):
+
+> As an example, consider a jury made up of two players (jurors) who must collectively decide whether to acquit ($A$) or to convict ($C$) a defendant. The process calls for each player to cast a sealed vote, and the defendant is convicted only if both vote $C$. The problem is that there is uncertainty about whether the defendant is guilty ($G$) or innocent ($I$). The prior probability that the defendant is guilty is given by $q > \frac{1}{2}$ and is common knowledge. Assume that each player cares about making the right decision, so that if the defendant is guilty then each player receives a payoff of 1 from a conviction and 0 from an acquittal. If instead the defendant is innocent then each player receives a payoff of 0 from a conviction and 1 from an acquittal.
+>
+> […] Now imagine that things are a bit more complex. Each player $i$ has a different expertise and, when observing the evidence, gets a private signal $\theta_i \in \{\theta_G, \theta_I\}$ that contains valuable information. In particular when the defendant is guilty player $i$ is more likely to receive the signal $\theta_i = \theta_G$ than when the defendant is innocent, and vice versa for $\theta_i = \theta_I$. Assume that the signals are independent: the probability of receiving the signal $\theta_G$ when the defendant is guilty is equal to the probability of receiving the signal $\theta_I$ when the defendant is innocent, so that
+>
+> $$\Pr\{\theta_i = \theta_G \mid G\} = \Pr\{\theta_i = \theta_I \mid I\} = p > \tfrac{1}{2} \quad \text{for } i \in \{1, 2\}$$
+>
+> and
+>
+> $$\Pr\{\theta_i = \theta_G \mid I\} = \Pr\{\theta_i = \theta_I \mid G\} = 1 - p < \tfrac{1}{2} \quad \text{for } i \in \{1, 2\}.$$
+>
+> […] With this information structure in place we have a Bayesian game of incomplete information in which each player $i$ will choose a signal-dependent action to maximize the probability that a guilty defendant is convicted while an innocent one is acquitted. Because each player has two types, given by the signal he observes, each player will have four pure strategies, $s_i \in \{AA, AC, CA, CC\}$, where strategy $xy$ means that he chooses $x$ when his signal is $\theta_G$ and he chooses $y$ when his signal is $\theta_I$.
+
 **Note on the book (item 18).** Part (a) is true only for $p \le q$ (the signal precision does not exceed the
 prior): against a juror who always convicts, a juror who sees $\theta_I$ is pivotal and acquits when $p > q$.
 The book (p. 264) states $CC$ as an equilibrium without the condition. See the solutions PDF, item 18.
@@ -363,6 +405,26 @@ The book (p. 264) states $CC$ as an equilibrium without the condition. See the s
 >
 > *Game II*: Before the parties learn their private information, they sign a contract specifying that the following dynamic game will be used to determine whether the worker joins the firm and if so at what wage. (Strictly speaking, this game belongs in Chapter 4. We will anticipate the spirit of Chapter 4 by arguing that this game can be solved by combining the lessons of this chapter with those of Chapter 2.) After the parties learn the values of their respective pieces of private information, the firm chooses a wage $w$ to offer the worker, which the worker then accepts or rejects. Try to analyze this game using backwards induction, as we did for the analogous complete-information games in Section 2.1.A, as follows. Given $w$ and $v$, what will the worker do? If the firm anticipates what the worker will do, then given $m$ what will the firm do? What is the sum of the players' expected payoffs?
 
+**Referred to in the statement.** The double auction of Section 3.2.C, its linear equilibrium and Figure 3.2.3 (Gibbons pp. 159, 161 and 163 [PDF p. 165, 167 and 169]) (reproduced from the book; the figure is described in words):
+
+> We analyze a trading game called a double auction. The seller names an asking price, $p_s$, and the buyer simultaneously names an offer price, $p_b$. If $p_b \ge p_s$, then trade occurs at price $p = (p_b + p_s)/2$; if $p_b < p_s$, then no trade occurs.
+>
+> The buyer's valuation for the seller's good is $v_b$, the seller's is $v_s$. These valuations are private information and are drawn from independent uniform distributions on $[0, 1]$. If the buyer gets the good for price $p$, then the buyer's utility is $v_b - p$; if there is no trade, then the buyer's utility is zero. If the seller sells the good for price $p$, then the seller's utility is $p - v_s$; if there is no trade, then the seller's utility is zero. (Each of these utility functions measures the change in the party's utility. If there is no trade, then there is no change in utility. It would make no difference to define, say, the seller's utility to be $p$ if there is trade at price $p$ and $v_s$ if there is no trade.)
+>
+> […] Therefore, the linear equilibrium strategies are
+>
+> $$p_b(v_b) = \frac{2}{3}v_b + \frac{1}{12} \tag{3.2.7}$$
+>
+> and
+>
+> $$p_s(v_s) = \frac{2}{3}v_s + \frac{1}{4}, \tag{3.2.8}$$
+>
+> as shown in Figure 3.2.2.
+>
+> Recall that trade occurs in the double auction if and only if $p_b \ge p_s$. Manipulating (3.2.7) and (3.2.8) shows that trade occurs in the linear equilibrium if and only if $v_b \ge v_s + (1/4)$, as shown in Figure 3.2.3.
+>
+> *Figure 3.2.3 (described):* the unit square with $v_s$ on the horizontal axis and $v_b$ on the vertical axis; it draws the line $v_b = v_s$ and the line $v_b = v_s + (1/4)$, and labels the region above $v_b = v_s + (1/4)$ "TRADE".
+
 #### 23. Tadelis 13.5
 
 <!-- id: Tadelis 13.5 -->
@@ -394,6 +456,14 @@ $(b-4)/(8-b)$ on $[4,6]$, whose revenue equals the English auction's $5$. See th
 > b. What is the expected payoff of a player if his type is $\theta_i$?
 >
 > c. Show that for each value of $\theta_i$ the equilibrium bid of player $i$ is less than what you found in (a) of the previous exercise.
+
+**Referred to in the statement.** The previous exercise, Exercise 13.9 "Private Value Linear Bidding" (Tadelis p. 287 [PDF p. 306]) (reproduced from the book):
+
+> **Private Value Linear Bidding:** Two players participate in a first-price sealed-bid auction in an IPV setting. The value of the good for each player is given by $0.5 + \theta_i$, where $\theta_i$ is observed only by player $i$ and is uniformly distributed over the interval $[0, 1]$.
+>
+> a. Show that there is a symmetric Bayesian Nash equilibrium in which each bidder $i$'s bidding strategy is of the form $s_i^*(\theta_i) = a + b\theta_i$.
+>
+> b. What is the expected payoff of a player if his type is $\theta_i$?
 
 
 **Optional extras.**

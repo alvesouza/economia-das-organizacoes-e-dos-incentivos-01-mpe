@@ -4,3 +4,33 @@
 \begin{quote}
 2.19. In the three-period version of Rubinstein's bargaining model analyzed in Section 2.1.D, we solved for the backwards-induction outcome. What is the subgame-perfect Nash equilibrium?
 \end{quote}
+
+\textbf{Referred to in the statement.} The three-period bargaining model of Section 2.1.D and its backwards-induction outcome (Gibbons pp.~68--70 {[}PDF p.~75--77{]}) (reproduced from the book):
+
+\begin{quote}
+Players 1 and 2 are bargaining over one dollar. They alternate in making offers: first player 1 makes a proposal that player 2 can accept or reject; if 2 rejects then 2 makes a proposal that 1 can accept or reject; and so on. Once an offer has been rejected, it ceases to be binding and is irrelevant to the subsequent play of the game. Each offer takes one period, and the players are impatient: they discount payoffs received in later periods by the factor \(\delta\) per period, where \(0 < \delta < 1\).
+
+A more detailed description of the timing of the three-period bargaining game is as follows.
+
+(1a) At the beginning of the first period, player 1 proposes to take a share \(s_1\) of the dollar, leaving \(1 - s_1\) for player 2.
+
+(1b) Player 2 either accepts the offer (in which case the game ends and the payoffs \(s_1\) to player 1 and \(1 - s_1\) to player 2 are immediately received) or rejects the offer (in which case play continues to the second period).
+
+(2a) At the beginning of the second period, player 2 proposes that player 1 take a share \(s_2\) of the dollar, leaving \(1 - s_2\) for player 2. (Note the convention that \(s_t\) always goes to player 1, regardless of who made the offer.)
+
+(2b) Player 1 either accepts the offer (in which case the game ends and the payoffs \(s_2\) to player 1 and \(1 - s_2\) to player 2 are immediately received) or rejects the offer (in which case play continues to the third period).
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  At the beginning of the third period, player 1 receives a share \(s\) of the dollar, leaving \(1 - s\) for player 2, where \(0 < s < 1\).
+\end{enumerate}
+
+In this three-period model, the third-period settlement \((s, 1 - s)\) is given exogenously. {[}\ldots{]}
+
+To solve for the backwards-induction outcome of this three-period game, we first compute player 2's optimal offer if the second period is reached. Player 1 can receive \(s\) in the third period by rejecting player 2's offer of \(s_2\) this period, but the value this period of receiving \(s\) next period is only \(\delta s\). Thus, player 1 will accept \(s_2\) if and only if \(s_2 \ge \delta s\). (We assume that each player will accept an offer if indifferent between accepting and rejecting.) Player 2's second-period decision problem therefore amounts to choosing between receiving \(1 - \delta s\) this period (by offering \(s_2 = \delta s\) to player 1) and receiving \(1 - s\) next period (by offering player 1 any \(s_2 < \delta s\)). The discounted value of the latter option is \(\delta(1 - s)\), which is less than the \(1 - \delta s\) available from the former option, so player 2's optimal second-period offer is \(s_2^* = \delta s\). Thus, if play reaches the second period, player 2 will offer \(s_2^*\) and player 1 will accept.
+
+Since player 1 can solve player 2's second-period problem as well as player 2 can, player 1 knows that player 2 can receive \(1 - s_2^*\) in the second period by rejecting player 1's offer of \(s_1\) this period, but the value this period of receiving \(1 - s_2^*\) next period is only \(\delta(1 - s_2^*)\). Thus, player 2 will accept \(1 - s_1\) if and only if \(1 - s_1 \ge \delta(1 - s_2^*)\), or \(s_1 \le 1 - \delta(1 - s_2^*)\). Player 1's first-period decision problem therefore amounts to choosing between receiving \(1 - \delta(1 - s_2^*)\) this period (by offering \(1 - s_1 = \delta(1 - s_2^*)\) to player 2) and receiving \(s_2^*\) next period (by offering any \(1 - s_1 < \delta(1 - s_2^*)\) to player 2). The discounted value of the latter option is \(\delta s_2^* = \delta^2 s\), which is less than the \(1 - \delta(1 - s_2^*) = 1 - \delta(1 - \delta s)\) available from the former option, so player 1's optimal first-period offer is \(s_1^* = 1 - \delta(1 - s_2^*) = 1 - \delta(1 - \delta s)\). Thus, in the backwards-induction outcome of this three-period game, player 1 offers the settlement \((s_1^*, 1 - s_1^*)\) to player 2, who accepts.
+\end{quote}

@@ -9,6 +9,15 @@
 \@ifundefined{c@none}{\newcounter{none}}{}  % pandoc's uncaptioned tables use \LTcaptype{none}
 \providecommand{\pandocbounded}[1]{\begingroup
   \setkeys{Gin}{width=0.75\linewidth,height=0.32\textheight,keepaspectratio}#1\endgroup}
+% Unicode characters that appear in the lists' Markdown text (pdflatex has no glyph mapping for them).
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{03A0}{\ensuremath{\Pi}}
+\DeclareUnicodeCharacter{03A6}{\ensuremath{\Phi}}
+\DeclareUnicodeCharacter{0392}{B}
+\DeclareUnicodeCharacter{00B9}{\textsuperscript{1}}
+\DeclareUnicodeCharacter{00B2}{\textsuperscript{2}}
+\DeclareUnicodeCharacter{00B3}{\textsuperscript{3}}
+\DeclareUnicodeCharacter{2076}{\textsuperscript{6}}
 \definecolor{stmtrule}{RGB}{30,80,150}
 % \statementboxn{<item number>}: the statement between two rules; warns if the fragment is missing.
 \newcommand{\statementboxn}[1]{%
@@ -16,7 +25,7 @@
   \IfFileExists{\stmt@file}{%
     \par\smallskip\noindent{\color{stmtrule}\rule{\linewidth}{0.6pt}}\par\nopagebreak
     \noindent{\color{stmtrule}\textbf{Statement}} {\small(verbatim from the list, item~#1)}\par
-    \nopagebreak{\small\input{\stmt@file}}\par
+    \nopagebreak{\small\sloppy\input{\stmt@file}}\par
     \noindent{\color{stmtrule}\rule{\linewidth}{0.6pt}}\par\medskip}%
     {\PackageWarning{statement-hook}{No statement file for item #1}}}
 \makeatother

@@ -16,3 +16,35 @@
   Compare the subgame-perfect equilibrium you found in (b) to the solution of the infinite-horizon model in Section 11.4.1. What intuitively accounts for the similarity?
 \end{enumerate}
 \end{quote}
+
+\textbf{Referred to in the statement.} The Baron and Ferejohn closed-rule game and its infinite-horizon solution (Tadelis §11.4 and §11.4.1, pp.~229--231 {[}PDF p.~248--250{]}) and the two-period, two-person game of Section 11.2 (pp.~224--225 {[}PDF p.~243--244{]}) (reproduced from the book):
+
+\begin{quote}
+In an important contribution, Baron and Ferejohn (1989) build on the Rubinstein-Ståhl model of bargaining and offer a framework for analyzing multilateral bargaining with a simple majority rule. The two main departures from the two-player model are as follows: First, there is an odd number \(N\) of players, where \(\frac{N+1}{2}\) votes are needed to secure an agreement. Second, instead of players alternating their roles in a prespecified order, the bargaining protocol follows a random-assignment rule: in every period each player has an equal probability of being the proposer.
+
+Baron and Ferejohn consider two bargaining rules that to a large extent mimic common practices: the closed rule, under which proposals cannot be amended, and the open rule, under which they can. {[}\ldots{]}
+
+\textbf{11.4.1 Closed-Rule Bargaining.} The closed-rule setting is very much an \(N\)-player version of the Rubinstein infinite-horizon model. When called upon to propose, the proposer makes an offer to the legislative body of the form \(x = (x_1, x_2, \ldots, x_N)\), where \(x_i\) is the share of surplus offered to player \(i\), with \(\sum_{i=1}^{n} x_i \le 1\). If a majority accepts the proposal then the game ends, and if not then the current ``pie'' is discounted according to the discount factor \(\delta\).
+
+It turns out that when there are three or more players in an \(N\)-player version of the Rubinstein infinite-horizon bargaining game then there are many possible subgame-perfect equilibria. What Baron and Ferejohn suggest is a simple way around this indeterminacy. They focus attention on \emph{symmetric stationary equilibria} in which first, each player proposes the same split of the pie every time he is called to propose, regardless of the history of the game, and second, the respondents vote based only on the current proposal as it compares to their expectations about future proposals. {[}\ldots{]}
+
+Let \(v\) be the expected payoff for any player \(i\) to play the subgame-perfect equilibrium of this game at the beginning of any stage, and consider a player \(i\) who is choosing to respond to a proposal that awards him \(x_i\). If he rejects the proposal then he expects to get \(v\) in the next period, and hence he will accept the proposal if and only if \(x_i \ge \delta v\). As a consequence, any player who plays the role of a proposer anticipates that he must propose at least \(\delta v\) to at least \(\frac{N+1}{2}\) other players.
+
+Given this observation, the proposer's best response is to choose exactly \(\frac{N-1}{2}\) other players and offer them exactly \(\delta v\) each, keeping the rest of the pie for himself. {[}\ldots{]} Hence the portion of the pie that the proposer keeps for himself in the symmetric subgame-perfect equilibrium is
+
+\[k = 1 - \frac{N-1}{2}\delta v. \tag{11.6}\]
+
+To maintain symmetry, each proposer chooses his \(\frac{N-1}{2}\) coalition partners randomly from the remaining \(N - 1\) players, implying that each of the \(N - 1\) responders gets chosen to be part of the coalition with probability \(\frac{1}{2}\).
+
+The equilibrium analysis leads to the computation of \(v\). At the beginning of the game (and of every stage after rejection), each player expects to play in one of three roles. He can either be the proposer and receive \(k\), which occurs with probability \(\frac{1}{N}\), or be a responder, which occurs with probability \(\frac{N-1}{N}\). If he is a responder, then with probability \(\frac{1}{2}\) he will be in the winning coalition and receive \(\delta v\), or he can be outside the coalition and receive zero. This implies that
+
+\[v = \frac{k}{N} + \frac{N-1}{2N}\delta v. \tag{11.7}\]
+
+Combining (11.6) and (11.7) we obtain that \(v = \frac{1}{N}\). {[}\ldots{]}
+
+It is more interesting to focus attention on the value of \(k\), the share obtained by the proposer, which is
+
+\[k(N) = 1 - \delta\left(\frac{N-1}{2N}\right). \tag{11.8}\]
+
+\emph{The two-period, two-person game (Section 11.2).} As Figure 11.2 demonstrates, the second round is a one-round bargaining game, which implies that if it is reached then player 2 gets the whole pie in any subgame-perfect equilibrium. Continuing with backward induction, and assuming that \(\delta \le 1\), we can find the subgame-perfect equilibrium for the two-round game as follows. In the first round player 2 knows that in the next (and last) round he will receive the whole pie, which will be worth only \(\delta\) because of discounting. Thus if he is offered less than \(\delta\) for himself (player 1 offers \(x > 1 - \delta\)) then player 2 should reject the offer and get the whole pie in the next period. Hence the unique sequentially rational strategy for player 2 at the accept/reject stage of the first round is to accept any offer of \(x \le 1 - \delta\). Moving up the tree to the node at which player 1 makes his first offer, he realizes that any offer \(x > 1 - \delta\) will be rejected, while any offer \(x \le 1 - \delta\) will be accepted. Thus player 1's best response is to offer \(x = 1 - \delta\), leading to a division of surplus equal to \((v_1, v_2) = (1 - \delta, \delta)\).
+\end{quote}

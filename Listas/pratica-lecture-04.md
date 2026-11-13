@@ -219,6 +219,20 @@ slides; they stay in this list as reading, as the plan assigns them.
 >
 > b. Let $K_2$ be the amount left from the solution to (a) after player 1 consumes his planned choice of $x_1^*$. Given $K_2$, what is the optimal plan of player 2? In what way does it differ from the optimal plan set out by player 1?
 
+**Referred to in the statement.** The three-period example of Section 8.3.4 (Tadelis pp. 166 and 168 [PDF p. 185 and 187]) (reproduced from the book):
+
+> Consider a player with $u(x) = \ln(x)$ who needs to allocate a fixed budget $K$ across three periods. Since he will not waste any of his budget, it follows that $x_1 = K - x_2 - x_3$ […]
+>
+> To model this idea consider a different discounting rule known as *hyperbolic discounting*. The player uses the discount rate $\delta$ for the future periods as in exponential discounting, but he uses an *additional* discount factor $\beta \in (0, 1)$ to discount all of the future compared to present consumption. Using our three-period example, the player's modified discounted present-value problem is given by
+>
+> $$\max_{x_2, x_3} v(K - x_2 - x_3, x_2, x_3) = \ln(K - x_2 - x_3) + \beta\delta \ln(x_2) + \beta\delta^2 \ln(x_3). \tag{8.9}$$
+>
+> Simply put, when the player is looking toward the future, the discount factor he uses between periods $t = 1$ and $t = 2$ is stronger than the one he uses between periods $t = 2$ and $t = 3$. In particular, at any period and looking forward, the player uses $\beta\delta < \delta$ to discount between the current period and the next, while he uses only $\delta$ to discount between any two consecutive future periods.$^4$ As we will now see, hyperbolic discounting will cause problems of self-control, in that a player will plan to do one thing but later choose to revise his plan.
+>
+> Imagine that the player is very well aware of his self-control problem—at period $t = 1$ he discounts between periods $t = 2$ and $t = 3$ at the rate of $\delta$, but he knows that when tomorrow ($t = 2$) comes around, he will discount $t = 3$ at a rate of $\beta\delta$. In other words, the player at $t = 1$ (call him player 1) is aware that he is playing a game with his "future self" at $t = 2$ (call him player 2), who will exhibit different preferences over time. In this case a rational, forward-looking player 1 will solve his problem using backward induction; in other words he will solve for the subgame-perfect equilibrium of the implied dynamic game.
+>
+> 4. More generally the discounted present value of a player who uses hyperbolic discounting is given by $u(x_1) + \beta \sum_{t=2}^{T} \delta^{t-1} u(x_t)$.
+
 
 ---
 
@@ -293,6 +307,40 @@ slides; they stay in this list as reading, as the plan assigns them.
 > a. Imagine that an external entity can enforce any plan of action that player 1 chooses in $t = 1$ and will prevent player 2 from modifying it. What is the plan that player 1 would choose to enforce?
 >
 > b. Assume that $K = 90$. Up to how much of his initial budget $K$ will player 1 be willing to pay the external entity in order to enforce the plan you found in (a)?
+
+**Referred to in the statement.** The three-period example of Section 8.3.4 and its sophisticated solution (Tadelis pp. 166 and 168–169 [PDF p. 185 and 187–188]) (reproduced from the book; the source note above flags the printed $x_1(K) = \frac{2}{3}K$):
+
+> Consider a player with $u(x) = \ln(x)$ who needs to allocate a fixed budget $K$ across three periods. Since he will not waste any of his budget, it follows that $x_1 = K - x_2 - x_3$ […]
+>
+> To model this idea consider a different discounting rule known as *hyperbolic discounting*. The player uses the discount rate $\delta$ for the future periods as in exponential discounting, but he uses an *additional* discount factor $\beta \in (0, 1)$ to discount all of the future compared to present consumption. Using our three-period example, the player's modified discounted present-value problem is given by
+>
+> $$\max_{x_2, x_3} v(K - x_2 - x_3, x_2, x_3) = \ln(K - x_2 - x_3) + \beta\delta \ln(x_2) + \beta\delta^2 \ln(x_3). \tag{8.9}$$
+>
+> […] Imagine that the player is very well aware of his self-control problem—at period $t = 1$ he discounts between periods $t = 2$ and $t = 3$ at the rate of $\delta$, but he knows that when tomorrow ($t = 2$) comes around, he will discount $t = 3$ at a rate of $\beta\delta$. In other words, the player at $t = 1$ (call him player 1) is aware that he is playing a game with his "future self" at $t = 2$ (call him player 2), who will exhibit different preferences over time. In this case a rational, forward-looking player 1 will solve his problem using backward induction; in other words he will solve for the subgame-perfect equilibrium of the implied dynamic game.
+>
+> To make things simple, fix $\delta = 1$. Recall from equations (8.4)–(8.6) that a player who uses exponential discounting with $\delta = 1$ will choose to equalize his consumption over time, so that $x_t = \frac{K}{3}$ for all $t \in \{1, 2, 3\}$. Now consider a sophisticated player with hyperbolic discounting with $\delta = 1$ and $\beta = \frac{1}{2}$ (you are asked to solve for the more general problem in exercise 8.15). Looking forward to his future self, he knows that player 2, who is left with a budget of $K_2$, will solve the following problem (remember that $\delta = 1$ and $\beta = \frac{1}{2}$):
+>
+> $$\max_{x_2} v_2(x_2, K_2 - x_2) = \ln(x_2) + \tfrac{1}{2}\ln(K_2 - x_2),$$
+>
+> for which the first-order condition is
+>
+> $$\frac{dv_2}{dx_2} = \frac{1}{x_2} - \frac{0.5}{K_2 - x_2} = 0,$$
+>
+> which in turn implies that player 2's best-response function is
+>
+> $$x_2(K_2) = \tfrac{2}{3}K_2.$$
+>
+> As a consequence $x_3(K_2) = \frac{1}{3}K_2$. Hence the choices $x_2(K_2)$ and $x_3(K_2)$ made by player 2 are the solution to any of the (infinitely many) subgames that start at the node at which player 2 is left with a budget of $K_2$. Now moving up to the root of the game, where player 1 decides how much to allocate between his own consumption and that of player 2, he must solve the following problem:
+>
+> $$\max_{x_1} v_1\left(x_1, \tfrac{2}{3}(K - x_1), \tfrac{1}{3}(K - x_1)\right) = \ln(x_1) + \tfrac{1}{2}\ln\left(\tfrac{2}{3}(K - x_1)\right) + \tfrac{1}{2}\ln\left(\tfrac{1}{3}(K - x_1)\right),$$
+>
+> for which the first-order condition is
+>
+> $$\frac{dv_1}{dx_1} = \frac{1}{x_1} - \frac{2}{3} \times \frac{0.5}{K - x_1} - \frac{1}{3} \times \frac{0.5}{K - x_1} = 0,$$
+>
+> which in turn implies that player 1's best-response function is
+>
+> $$x_1(K) = \tfrac{2}{3}K.$$
 
 **Optional extras.**
 - Tadelis 8.1 and 8.2 (p. 170): mixed-strategy SPE of the voluntary Battle of the Sexes (read Fig. 8.2, p. 154; the slides' Example 2) and of mutually assured destruction (read §8.3.3, pp. 163–166, Fig. 8.11).

@@ -13,4 +13,26 @@
 \end{enumerate}
 \end{quote}
 
+\textbf{Referred to in the statement.} The three-period example of Section 8.3.4 (Tadelis pp.~166 and 168 {[}PDF p.~185 and 187{]}) (reproduced from the book):
+
+\begin{quote}
+Consider a player with \(u(x) = \ln(x)\) who needs to allocate a fixed budget \(K\) across three periods. Since he will not waste any of his budget, it follows that \(x_1 = K - x_2 - x_3\) {[}\ldots{]}
+
+To model this idea consider a different discounting rule known as \emph{hyperbolic discounting}. The player uses the discount rate \(\delta\) for the future periods as in exponential discounting, but he uses an \emph{additional} discount factor \(\beta \in (0, 1)\) to discount all of the future compared to present consumption. Using our three-period example, the player's modified discounted present-value problem is given by
+
+\[\max_{x_2, x_3} v(K - x_2 - x_3, x_2, x_3) = \ln(K - x_2 - x_3) + \beta\delta \ln(x_2) + \beta\delta^2 \ln(x_3). \tag{8.9}\]
+
+Simply put, when the player is looking toward the future, the discount factor he uses between periods \(t = 1\) and \(t = 2\) is stronger than the one he uses between periods \(t = 2\) and \(t = 3\). In particular, at any period and looking forward, the player uses \(\beta\delta < \delta\) to discount between the current period and the next, while he uses only \(\delta\) to discount between any two consecutive future periods.\(^4\) As we will now see, hyperbolic discounting will cause problems of self-control, in that a player will plan to do one thing but later choose to revise his plan.
+
+Imagine that the player is very well aware of his self-control problem---at period \(t = 1\) he discounts between periods \(t = 2\) and \(t = 3\) at the rate of \(\delta\), but he knows that when tomorrow (\(t = 2\)) comes around, he will discount \(t = 3\) at a rate of \(\beta\delta\). In other words, the player at \(t = 1\) (call him player 1) is aware that he is playing a game with his ``future self'' at \(t = 2\) (call him player 2), who will exhibit different preferences over time. In this case a rational, forward-looking player 1 will solve his problem using backward induction; in other words he will solve for the subgame-perfect equilibrium of the implied dynamic game.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  More generally the discounted present value of a player who uses hyperbolic discounting is given by \(u(x_1) + \beta \sum_{t=2}^{T} \delta^{t-1} u(x_t)\).
+\end{enumerate}
+\end{quote}
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
