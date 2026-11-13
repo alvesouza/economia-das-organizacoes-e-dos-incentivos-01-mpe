@@ -1,0 +1,66 @@
+% Solution: Gibbons (1992) Problem 2.15. Input by \solitem. Check: check_T2.py (item 14).
+\begin{exsol}{Gibbons Problem 2.15}{136}{Exam level}{4}
+\asked In an infinitely repeated Cournot oligopoly with $n$ firms and $P(Q) = a - Q$: (i) the lowest $\delta$
+for which trigger strategies sustain the monopoly output; (ii) how it varies with $n$, and why; (iii) if $\delta$
+is lower, the most profitable symmetric SPNE that trigger strategies can sustain.
+
+\method Grim trigger with reversion to the stage Nash equilibrium (Gibbons \S2.3.C, pp.~102--104). The
+statement gives no cost, so $c = 0$ (a positive $c$ replaces $a$ by $a - c$ throughout). For a symmetric
+output $q$, the profit is $\pi(q) = (a - nq)q$, the best deviation against the others' $q$ is
+$q_D(q) = \frac{a - (n-1)q}{2}$ with profit $q_D^2$, and the punishment payoff is the Cournot profit.
+
+\solution
+\textbf{Stage values.} Cournot: $q^C = \frac{a}{n+1}$, $\pi^C = \frac{a^2}{(n+1)^2}$. Monopoly output
+split equally: $q^m = \frac{a}{2n}$, $\pi^m = \frac{a^2}{4n}$. Deviation against $q^m$: $q_D = \frac{a - (n-1)a/(2n)}{2} =
+\frac{a(n+1)}{4n}$ and $\pi^D = \frac{a^2(n+1)^2}{16 n^2}$.
+
+\textbf{(i) The cutoff.} Cooperation is an SPNE iff $\frac{\pi^m}{1-\delta} \ge \pi^D + \frac{\delta\,\pi^C}{1-\delta}$, i.e.
+$\delta \ge \delta^* = \frac{\pi^D - \pi^m}{\pi^D - \pi^C}$. With $\pi^D - \pi^m = \frac{a^2(n-1)^2}{16n^2}$ and
+$\pi^D - \pi^C = \frac{a^2(n-1)^2(n^2+6n+1)}{16n^2(n+1)^2}$,
+\[
+  \delta^*(n) = \frac{(n+1)^2}{n^2 + 6n + 1} = 1 - \frac{4n}{n^2 + 6n + 1} .
+\]
+For $n = 2$ this is $\frac{9}{17}$.
+
+\textbf{(ii) Variation with $n$.} $\frac{4n}{n^2+6n+1} = \frac{4}{n + 6 + 1/n}$ falls in $n$ for $n \ge 1$, so $\delta^*$
+\emph{rises} with $n$ and tends to $1$ ($n=2$: $0.529$; $n=3$: $0.571$; $n=5$: $0.643$; $n = 10$: $0.752$). With more
+firms, each firm's share of the cartel profit shrinks ($\pi^m \propto 1/n$), while the temptation to expand output
+stays large and the punishment (Cournot profit) is already small, so collusion needs more patience.
+
+\textbf{(iii) Below $\delta^*$.} Consider symmetric output $q \in [q^m, q^C]$ and the same trigger. No deviation
+pays iff $g(q) = \pi(q) - (1-\delta)q_D(q)^2 - \delta\pi^C \ge 0$, a concave quadratic in $q$ with $g(q^C) = 0$
+(at $q^C$ deviating gains nothing). Writing it as $-(Aq^2 + Bq + C)$ with
+\[
+  A = n + \frac{(1-\delta)(n-1)^2}{4}, \quad C = a^2\Bigl[\frac{1-\delta}{4} + \frac{\delta}{(n+1)^2}\Bigr],
+\]
+$q^C$ is one root and the other, by the product of roots $C/A$, is
+\[
+  \underline q(\delta) = \frac{C}{A\,q^C} = \frac{(n+1)\bigl[\frac{1-\delta}{4} + \frac{\delta}{(n+1)^2}\bigr]}
+  {n + \frac{(1-\delta)(n-1)^2}{4}}\; a .
+\]
+Every $q \in [\underline q(\delta), q^C]$ is sustainable. Profit is decreasing in $q$ above $q^m$, so the most
+profitable symmetric SPNE with trigger strategies has output $\underline q(\delta)$, which equals $q^C$ at
+$\delta = 0$ and $q^m$ at $\delta = \delta^*$. Example: $n = 3$, $\delta = \frac12$: $\underline q = \frac{5}{28}a$,
+between $q^m = \frac{a}{6}$ and $q^C = \frac{a}{4}$.
+
+\interp More firms make a price-fixing cartel harder (Cabral's structural factor: fewer, similar firms).
+Between $0$ and $\delta^*$ partial collusion survives: the trigger can support output closer to the
+Cournot level the less patient the firms are.
+
+\verify \texttt{check\_T2.py} (item~14) derives $\delta^*(n)$ symbolically, checks $\delta^*(2) = \frac9{17}$,
+monotonicity for $n = 2,\dots,11$ and the limit $1$. It also verifies $\underline q(\delta^*) = \frac1{2n}$ and
+$\underline q(0) = \frac1{n+1}$, and, for $n = 3$ and $\delta = \frac12$, that the smallest output on a grid of
+step $10^{-5}$ satisfying the no-deviation constraint is $\frac5{28}$. Gibbons's unofficial manual is not copied.
+
+\mistakes
+\begin{itemize}
+  \item Using $q_D = q^C$ as the deviation output: a deviator best-replies to $q^m$ of the others.
+  \item Choosing the lowest sustainable profit in (iii). Since profit falls in $q$ above $q^m$, the \emph{smallest}
+  feasible output is the best.
+\end{itemize}
+
+\answer{(i) $\delta^* = \frac{(n+1)^2}{n^2+6n+1}$ (so $\frac9{17}$ for $n = 2$). (ii) It increases with $n$ and tends
+to $1$: more firms mean a smaller cartel share against an unchanged temptation. (iii) For $\delta < \delta^*$ the
+best symmetric trigger SPNE has output $\underline q(\delta) = \frac{(n+1)[(1-\delta)/4 + \delta/(n+1)^2]}{n +
+(1-\delta)(n-1)^2/4}\,a \in (q^m, q^C)$.}
+\end{exsol}

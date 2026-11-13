@@ -1,0 +1,39 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 8 Exercise 4 "Second Price Auction". Input by \solitem.
+% Check: check_E1.py.
+\begin{exsol}{\MG{} Ch.~8, Exercise 4}{362}{Foundations}{2}
+\asked (a) Bidding one's value is weakly dominant in the second-price auction with $N$ bidders.
+(b) Whether correlated values change optimal bids. (c) Whether $N$ or risk aversion changes them.
+
+\method Let $r=\max_{j\ne i}b_j$. A weakly dominant strategy is optimal against \emph{every}
+profile of rivals, hence against every belief about them (Tadelis \S13.1.1, pp.~271--273).
+
+\solution
+\textbf{(a)} Compare $b_i=v_i$ with $b_i\ne v_i$ for each $r$. If $b_i>v_i$: for $r<v_i$ both win
+at price $r$; for $v_i<r<b_i$ the deviation wins and earns $v_i-r<0$ against $0$; for $r>b_i$ both
+lose. If $b_i<v_i$: for $r<b_i$ both win at $r$; for $b_i<r<v_i$ the deviation loses and earns $0$
+against $v_i-r>0$; for $r>v_i$ both lose. A tie at $r=b_i$ pays no more than $v_i-r$ times the
+winning probability, never more than bidding $v_i$. So $b_i=v_i$ is never worse and is strictly
+better in one state: weak dominance.
+
+\textbf{(b) No.} Correlation changes $i$'s belief about $r$, but dominance holds state by state,
+so it holds under any joint distribution of $(v_{-i},b_{-i})$: positive or negative
+correlation, or any $N$-dimensional dependence, leave $b_i=v_i$ optimal.
+
+\textbf{(c) No, to both.} $N$ enters only through the distribution of $r$, which is irrelevant for a
+dominant strategy. Risk aversion: for any strictly increasing utility $u$ with $u(0)=0$, the
+state-by-state ranking of $u(v_i-r)$ vs.\ $u(0)$ is the same as for money, since $v_i-r\gtrless 0$
+decides each comparison. The bidding function is the $45^\circ$ line $b_i(v_i)=v_i$ whatever
+$N$ and preferences.
+
+\interp Contrast with the first-price auction (items~7, 15): there the bid trades off winning
+probability against the price paid, so it depends on $N$, the value distribution and risk
+attitude. In the second-price auction the price paid does not depend on one's own bid.
+
+\verify \texttt{check\_E1.py}: (i) pointwise dominance on a $13^3$ grid for three utilities
+(linear, concave, convex with $u(0)=0$); (ii) for $N=2,3,5$ and 200 arbitrary joint laws of
+rival bids, expected payoff from $b=v$ is at least that from every grid bid. M\&R's printed
+answer is the same on all three parts.
+
+\answer{(a) $b_i=v_i$ is weakly dominant. (b) No: dominance is independent of how rivals' values
+are distributed or correlated. (c) No: neither $N$ nor risk aversion affects the optimal bid.}
+\end{exsol}

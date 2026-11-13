@@ -55,3 +55,28 @@ Source: `Listas/lista-reais-lectures-01-04-solutions/item13`-`item24.tex`; check
 | Muñoz-Garcia Ch. 6 Ex. 8 (pp. 303-304) | With simultaneous unanimity votes, "everyone always rejects" is also a stationary SPE (payoff 0); uniqueness needs pivotal (undominated) votes or sequential responses. Its $x_{two} \ge \delta^2 x_{prop}$ skips the step $\delta x_{next}$; same result. |
 | Tadelis 9.4(d) (p. 188) | With $\delta = 0.4 > \delta^* = 1/16$ the monopoly split is supported, so the "if not" branch is empty. General bound: $q \ge \frac{100}{3}(1-\sqrt\delta)$. |
 | Tadelis 9.4(a) | With $\delta = 0$ literally, stage-2 actions affect no payoff, so every stage-2 profile is an equilibrium of those subgames; read as stage-2 NE. |
+
+## Found while solving the re-aligned practice lists, Lectures 2–8 (2026-11-12)
+
+Source: `Listas/pratica-lecture-0{2..8}-solutions/` (all check scripts pass). Each item is also
+flagged inside its solution and, where the statement itself is at fault, in a note under the
+verbatim statement in the list.
+
+| Book / item | Issue |
+|---|---|
+| Tadelis 5.3(a) | "Unique NE ⇒ IESDS leaves it alone" fails with payoff ties (e.g. (1,1),(1,0)/(1,0),(0,1): unique NE (U,L), IESDS deletes nothing; 6,912 of 65,536 ordinal 2×2 games). Holds without ties. |
+| Gibbons 1.5 (second part) | No $q'$ makes $(q_c,q_c)$ the unique NE with no strictly dominated strategy; $q'=5(a-c)/12$ is the closest (two extra weak NE). |
+| Tadelis 9.3 | As printed has no answer for $\delta\le1$: stage-1 gain 3 vs. stage-2 swing at most $2\delta$ (verified on PDF p. 206–207). |
+| Cabral 7.12 | As printed $H$ is dominant and $(H,H)$ efficient (5 > 4, 8 > 4): no cooperation problem (verified on PDF p. 193). |
+| MWG 12.AA.1 | False as printed; the MWG solutions manual (p. 12-46) lists it as a first-printing erratum. |
+| Muñoz-Garcia Ch. 6 Ex. 3(c) | Prints $\delta \ge 0.901$; its own numbers (1012.5, 1139.06, 900) give $9/17 \approx 0.529$. |
+| Muñoz-Garcia Ch. 6 Ex. 10 | Text layer shows collusive profit $a^2/(8(b+d))$; derivation gives $a^2/(4(b+d))$ (scan-dependent, stated "as extracted"). |
+| Cabral 9.1 | Ambiguous discount: eq. (9.5) as written gives $\delta_A=0.80$, $\delta_B=0.694$; a monthly reading of −30% flips the ranking. |
+| Tadelis 8.12 | No SPE unless player 2 accepts at the tie $x=2$. |
+| Tadelis 8.16 | Sophisticated plan is $(K/2, K/3, K/6)$; the book's printed $2K/3$ plan is wrong. |
+| Muñoz-Garcia Ch. 4 Ex. 9 | Statement text and figure disagree on who moves at stage 100 (solution follows the figure). |
+| Tadelis 12.8(a) (and p. 264) | $CC,CC$ is a BNE only if $p\le q$; for $p>q$ the pure BNE are $AA,AA$, $CA,CC$, $CC,CA$. |
+| Tadelis 13.5(c) | "High type uniform on [4,6]" is not an equilibrium; the indifference cdf is $G(b)=(b-4)/(8-b)$, revenue 5 (= English). |
+| MWG solutions manual 13.C.4 | Drops $w(0)=\underline\theta$: correct $w(e)=\sqrt{2e^2+\underline\theta^2}$; the manual's $\sqrt2\,e$ is the case $\underline\theta=0$. |
+| Tadelis Def. 16.1 | Prints $v_2$ where the sender's $v_1$ belongs (intuitive criterion). |
+| Muñoz-Garcia Ch. 9 Ex. 1 | Extracted text garbles the pooling-belief condition; best reply gives $q\le1/3$. |

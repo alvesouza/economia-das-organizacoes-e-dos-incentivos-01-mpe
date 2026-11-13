@@ -1,0 +1,46 @@
+% Detailed solutions to the 12 items of Listas/pratica-lecture-04.md (Lecture 4: credible threats and
+% subgame perfection). Item order: sol-items.tex. Seven items are reused from
+% ../lista-reais-lectures-01-05-solutions/ (\solitemr); five are new here (\solitem).
+% Compile here: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+\documentclass[11pt,a4paper]{article}
+\newcommand{\soltema}{Practice list, Lecture 4: detailed solutions}
+\input{../lista-reais-lectures-01-05-solutions/sol-preamble}
+\input{sol-items}
+
+% The shared exsol heading says "of the combined list"; here the item number is the list's own.
+\renewenvironment{exsol}[4]{%
+  \ifafterlecture\global\afterlecturefalse\else\clearpage\fi\phantomsection
+  \addcontentsline{toc}{section}{Item \theItemNo: #1 (p.~#2)}%
+  \section*{\large Item \theItemNo: #1\hfill{\normalsize\mdseries #3 $\cdot$ difficulty #4/5}}%
+  \textbf{Source:} #1, page~#2. The statement is reproduced verbatim in
+  \texttt{Listas/pratica-lecture-04.md} (item \theItemNo); it is not repeated here.\par}{\par}
+
+\title{\textbf{Practice List, Lecture 4: Detailed Solutions}\\[4pt]
+  \large Economics of Organizations and Incentives (MPE Insper)}
+\author{Solutions to the 12 exercises of \texttt{Listas/pratica-lecture-04.md}}
+\date{November 2026}
+
+\input{../statement-hook}  % statement of each item before its solution
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent\sloppy These are detailed solutions to the 12 book exercises of the list
+\texttt{pratica-lecture-04.md} (Lecture~4: credible threats, subgames, subgame-perfect equilibrium, the
+definition of a repeated game; Stackelberg and time-inconsistency exercises), in the list's order from easy to
+hard; each heading shows the item's number, level and difficulty from 1 (apply a definition) to 5 (graduate
+level). Statements are in the list and are not repeated here. Every solution has the same six parts: (a) what is
+asked; (b) the method, with book section, page and lecture slide; (c) the solution, every step shown; (d) the economic
+interpretation; (e) the verification, by \texttt{check\_L04.py} in this folder (new items) or the check scripts of
+\texttt{lista-reais-lectures-01-05-solutions/} (reused items), and against the book's worked answer where one
+exists; (f) common mistakes. Slide numbers in the reused solutions refer to the drafts of the earlier
+real-exercise list and may differ by a few slides from the final \texttt{Aula/Lecture04.pdf}. Items~9 and~12
+(time inconsistency, Tadelis \S8.3.4) are reading: they are not in the slides of Lecture~4.
+
+\tableofcontents
+
+\sollecture{\lectureivtitle}
+\itemsiv
+
+\end{document}

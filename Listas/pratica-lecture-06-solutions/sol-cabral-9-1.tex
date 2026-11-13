@@ -1,0 +1,45 @@
+% Solution: Cabral (2017) Ch. 9 Exercise 9.1 "Tacit collusion". Input by \solitem. Check: check_T1.py (item 2).
+\begin{exsol}{Cabral Exercise 9.1}{242}{Foundations}{1}
+\asked Two industries with $n = 8$ firms and $r = 10\%$ differ in the frequency $f$ of interaction, the
+growth rate $g$ and the survival probability $1 - h$. In which is tacit collusion more likely?
+
+\method Collusion by grim trigger holds iff the effective discount factor is high enough
+(Cabral \S9.1, pp.~218--222). Cabral's expression (9.5) is
+$\delta = \dfrac{(1+g)(1-h)}{1 + r/f}$: $\delta$ rises with $f$ and $g$ and falls with $h$ and $r$. With
+$n$ symmetric firms the monopoly price is sustained iff $\delta \ge 1 - \frac1n$ (Cabral p.~227, the
+$n$-firm version of (9.4)).
+
+\solution
+\textbf{Industry A} ($f = 1$, $g = 10\%$, continuation $80\%$ so $h = 20\%$):
+\[
+  \delta_A = \frac{1.1 \times 0.8}{1 + 0.10/1} = \frac{0.88}{1.10} = 0.80 .
+\]
+\textbf{Industry B} ($f = 12$, $g = -30\%$, continuation $100\%$ so $h = 0$):
+\[
+  \delta_B = \frac{0.7 \times 1}{1 + 0.10/12} = \frac{0.7}{1.00833} \approx 0.694 .
+\]
+\textbf{Threshold.} For $n = 8$: $1 - \frac18 = 0.875$. Both $\delta_A$ and $\delta_B$ fall short, so full
+monopoly pricing is sustainable in neither. Comparing them, $\delta_A = 0.80 > \delta_B = 0.69$, so
+industry~A is closer to the threshold and collusion is more likely there. The fast frequency of B
+($f = 12$) helps, but the market shrinks by 30\% a year, so tomorrow's profits are worth little, and this
+dominates the benefit of frequent interaction.
+
+\textbf{Reading of $g$.} Formula (9.5) takes $g$ and $h$ as per-period values. If instead $-30\%$ is an
+\emph{annual} rate with monthly interaction, the monthly growth factor is $0.7^{1/12} \approx 0.971$ and
+$\delta_B \approx 0.971/1.00833 \approx 0.963 > 0.875$: the ranking reverses and B would sustain
+collusion. The exercise lists $g$ next to $r$ (annual) and applies $f$ only to $r$, so we follow (9.5)
+as written and flag the dependence.
+
+\interp The discount factor combines three forces: impatience ($r/f$), growth and survival. An
+industry that is declining or likely to disappear (pharmaceuticals with fast obsolescence; Cabral's
+example) cannot hold a cartel together even when firms meet often, since the cost of a price war is
+paid in the future. Eight firms make the cutoff demanding (0.875): the profit from undercutting is
+the whole market, whereas the cartel profit is $\frac18$ of it.
+
+\verify \texttt{check\_T1.py} computes $\delta_A = \frac45$, $\delta_B = 0.6942$, the cutoff $\frac78$, the
+alternative reading ($0.9627$) and the monotonicity of (9.5) in $f$, $g$, $h$. Cabral prints no answer.
+
+\answer{$\delta_A = 0.80$ and $\delta_B = 0.694$; the cutoff for $n = 8$ is $0.875$. Neither industry
+sustains full collusion at (9.5) as written, but A (higher $\delta$) is the more likely. Reading the
+$-30\%$ as annual would reverse this ($\delta_B = 0.963$).}
+\end{exsol}

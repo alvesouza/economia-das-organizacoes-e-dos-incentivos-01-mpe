@@ -1,0 +1,51 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.C.4. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{MWG Exercise 13.C.4}{475}{Advanced}{4}
+\asked With types distributed on $[\underline{\theta}, \bar{\theta}]$ with a strictly positive density and cost
+$c(e, \theta) = e^2/\theta$, derive the (unique) separating PBE.
+
+\method A continuum of types: in a separating PBE the wage schedule $w(e)$ must make each type's best choice
+reveal it, which gives a differential equation from the first-order condition plus the zero-profit
+condition $w(e(\theta)) = \theta$ (MWG \S13.C, pp.~454--459 for the two-type version). The boundary
+condition comes from the lowest type. (The statement as printed says ``perfect Bayesian equilibrium''; the
+MWG solutions manual notes in its first-printing errata that ``separating'' is meant.)
+
+\solution Let $w(\cdot)$ be the firms' wage schedule and $e(\theta)$ the education of type $\theta$, taken
+differentiable and increasing as in the text (separation requires different types to choose different $e$).
+\begin{enumerate}[label=\arabic*.]
+  \item \emph{First-order condition.} Type $\theta$ maximizes $w(e) - e^2/\theta$, so
+  $w'(e(\theta)) = \dfrac{2e(\theta)}{\theta}$.
+  \item \emph{Zero profit.} Competition implies $w(e(\theta)) = \theta$ (a revealed type is paid its
+  productivity). Substituting $\theta = w(e)$ in the first-order condition:
+  \[
+    w(e)\,w'(e) = 2e \iff \frac{d}{de}\, w(e)^2 = 4e \iff w(e)^2 = 2e^2 + k .
+  \]
+  \item \emph{Boundary condition.} The lowest type is paid $\underline{\theta}$ whatever he does (any belief
+  gives at least $\underline{\theta}$), so he chooses $e(\underline{\theta}) = 0$ and $w(0) = \underline{\theta}$, so
+  $k = \underline{\theta}^2$.
+\end{enumerate}
+\[
+  \boxed{\ w(e) = \sqrt{2e^2 + \underline{\theta}^2}, \qquad e(\theta) = \sqrt{\frac{\theta^2 - \underline{\theta}^2}{2}}\ }
+\]
+with zero profit $w(e(\theta)) = \theta$. Sufficiency: type $\theta$'s utility $w(e') - e'^2/\theta$ has derivative
+$2e'\bigl(1/w(e') - 1/\theta\bigr)$, positive for $w(e') < \theta$, i.e.\ $e' < e(\theta)$, and negative afterwards:
+$e(\theta)$ is the global maximizer. Beliefs: $\mu(e) = $ the type with $e(\theta) = e$ (for $e$ in the range) and,
+off the range ($e > e(\bar{\theta})$), the belief $\bar{\theta}$ (wage $\bar{\theta}$), which no one wants.
+Uniqueness: the ODE $w w' = 2e$ has the one-parameter family of solutions above and the boundary
+condition fixes it (the lowest type cannot choose $e > 0$, otherwise he would deviate to $0$).
+
+\emph{Compare with the manual.} The MWG solutions manual writes $w(e) = \sqrt2\, e$ and
+$e(\theta) = \theta/\sqrt2$. That is the solution with $k = 0$, which satisfies $w(0) = 0$; it coincides with the
+formula above only if $\underline{\theta} = 0$ (it satisfies the differential equation and the first-order
+condition, but not the lowest type's boundary condition $w(0) = \underline{\theta} > 0$). With $\underline{\theta}>0$
+the formula above is the one that satisfies all conditions.
+
+\verify \texttt{check\_T3.py} solves the ODE with sympy (the family $w^2 = 2e^2 + C_1$), checks that the boxed
+$w$ satisfies $w w' = 2e$, $w(0) = \underline{\theta}$, $w(e(\theta)) = \theta$, $e(\underline{\theta}) = 0$, that
+$e(\theta)$ solves the first-order condition, that it is the global maximizer for three
+$(\underline{\theta}, \theta)$ pairs on a grid of step $0.005$, and that $w = \sqrt2 e$ is the case
+$\underline{\theta} = 0$.
+
+\answer{$w(e) = \sqrt{2e^2 + \underline{\theta}^2}$ and $e(\theta) = \sqrt{(\theta^2 - \underline{\theta}^2)/2}$; the
+lowest type chooses $e = 0$ and the education level rises with ability. (The manual's $w = \sqrt2 e$,
+$e = \theta/\sqrt2$ is the case $\underline{\theta} = 0$.)}
+\end{exsol}

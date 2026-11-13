@@ -1,0 +1,40 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 8 Exercise 1. Input by \solitem. Check: check_E1.py.
+\begin{exsol}{\MG{} Ch.~8, Exercise 1}{350}{Foundations}{2}
+\asked First-price auction, two bidders, $v_i\sim U[0,1]$ independent: (a) set up bidder~$i$'s
+expected-utility problem; (b) find the symmetric BNE bidding function.
+
+\method Look for $b_i(v_i)=\alpha v_i$ with $\alpha\in(0,1)$ (Gibbons \S3.2.B, pp.~155--158;
+Tadelis \S13.1.3, pp.~276--279). A bid $x$ wins iff the rival's bid is below $x$.
+
+\solution
+\textbf{(a)} If $i$ bids $x$ and the rival uses $b_j=\alpha v_j$, then
+$\Pr(\text{win})=\Pr(\alpha v_j<x)=\Pr(v_j<x/\alpha)=x/\alpha$ (for $x\le\alpha$). So
+\[
+  EU_i(x\mid v_i)=\underbrace{\frac{x}{\alpha}}_{\Pr(\text{win})}\,(v_i-x)\;+\;\Bigl(1-\frac{x}{\alpha}\Bigr)\cdot 0
+  =\frac{x\,(v_i-x)}{\alpha}.
+\]
+Interpretation: bidding more raises the probability of winning but lowers the margin $v_i-x$
+earned on a win; bids above $v_i$ give a negative margin, so $\alpha<1$ (bid shading).
+
+\textbf{(b)} First-order condition: $\dfrac{\partial EU_i}{\partial x}=\dfrac{v_i-2x}{\alpha}=0\Rightarrow
+x=\dfrac{v_i}{2}$; second derivative $-2/\alpha<0$. Consistency with the assumed form
+$x=\alpha v_i$ requires $\alpha=\tfrac12$. Hence
+\[
+  b_i^*(v_i)=\tfrac12\,v_i,\qquad EU_i^*(v_i)=\frac{(v_i/2)(v_i/2)}{1/2}=\frac{v_i^2}{2}.
+\]
+Example: $v_i=\tfrac23$ gives the bid $\tfrac13$, as in the book.
+
+\textbf{Revenue.} The winner's bid is $\tfrac12\max(v_1,v_2)$; $E[\max]=\tfrac23$, so expected
+revenue is $\tfrac13$, equal to the second-price revenue $E[\min(v_1,v_2)]=\tfrac13$ (revenue
+equivalence).
+
+\interp Half of the value is ``paid'' for the competition of a single rival; with $n$ bidders the
+shading falls to $v/n$ (item~15).
+
+\verify \texttt{check\_E1.py}: sympy solves the FOC ($x=v/2$, then $\alpha=\tfrac12$); scipy
+maximizes $\min(2x,1)(v-x)$ numerically for five values of $v$ and returns $v/2$ with value $v^2/2$;
+sympy integrates both revenues to $\tfrac13$. Matches M\&R's printed $x(v_i)=\tfrac12v_i$.
+
+\answer{(a) $EU_i(x\mid v_i)=\frac{x}{\alpha}(v_i-x)$ against the rival's $b_j=\alpha v_j$. (b)
+$b_i^*(v_i)=v_i/2$ for both bidders.}
+\end{exsol}

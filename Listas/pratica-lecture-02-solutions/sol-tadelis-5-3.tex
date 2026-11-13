@@ -1,0 +1,100 @@
+% Solution: Tadelis (2013) Exercise 5.3 "Nash and IESDS". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.3}{95--96}{Exam}{4}
+\asked (a) Show that in an $m\times m$ game with $m = 2$ and a unique pure-strategy Nash
+equilibrium, that equilibrium is the unique IESDS survivor. (b) Show that for $m = 3$ it need not
+be.
+
+\method The relation between Nash equilibrium and IESDS (Lecture~2, slides~15--17). By
+Proposition~1 (slide~16) every Nash equilibrium survives IESDS, so the question is whether
+\emph{more} than the equilibrium survives. In a $2\times2$ game a strategy is strictly dominated iff
+the other one is a strictly better reply to \emph{both} opponent strategies, so everything can be
+read off the best replies $b_1(L), b_1(R)$ of player~1 and $b_2(U), b_2(D)$ of player~2.
+
+\textbf{A caveat on part (a).} As literally stated (payoffs with possible ties) part (a) is not
+true. The $2\times2$ game with payoffs
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $\br{1},\ \br{1}$ & $\br{1},\ 0$ \\ \cline{2-3}
+$D$ & $\br{1},\ 0$ & $0,\ \br{1}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+has the unique pure-strategy Nash equilibrium $(U, L)$: at $(U, R)$ player~2 earns $0$ and $L$ gives
+$1$; at $(D, L)$ player~2 earns $0$ and $R$ gives $1$; at $(D, R)$ player~1 earns $0$ and $U$ gives $1$.
+Yet neither $U$ nor $D$ is strictly dominated (they tie against $L$), and neither $L$ nor $R$ is
+dominated ($L$ is better against $U$, $R$ against $D$), so IESDS deletes nothing and all four
+profiles survive. The proof below therefore
+assumes the generic case with no ties between a player's payoffs from his two strategies
+against the same opponent strategy, which is what the exercise intends (it is also the case in
+which best replies are unique); the counterexample shows the assumption is needed.
+
+\solution
+\textbf{(a) The proof, with no ties.} Write the rows $U, D$ and the columns $L, R$. With no ties, each
+player has a unique best reply to each strategy of the opponent.
+\begin{itemize}
+  \item \emph{Case 1: $b_1(L) = b_1(R) = \hat r$.} Then $\hat r$ is strictly better than the other row against both
+  columns, so the other row is deleted in round~1. Player~2 now faces one row, so one of his
+  columns, $\hat c = b_2(\hat r)$, is strictly better than the other and the other is deleted in round~2. IESDS
+  ends at the single profile $(\hat r, \hat c)$, which is a Nash equilibrium ($\hat r$ is a best reply
+  to $\hat c$ and $\hat c$ to $\hat r$). By uniqueness it is the given equilibrium.
+  \item \emph{Case 2: $b_2(U) = b_2(D)$.} Symmetric: a column is strictly dominant, then a row.
+  \item \emph{Case 3: $b_1(L) \ne b_1(R)$ and $b_2(U) \ne b_2(D)$.} Then neither player has a
+  strictly dominated strategy and the game is not reduced. But $b_1$ and $b_2$ are bijections between
+  $\{U,D\}$ and $\{L,R\}$, so the composition $\varphi = b_2 \circ b_1$ is a permutation of $\{L,R\}$.
+  A profile $(b_1(c), c)$ is a Nash equilibrium iff $b_2(b_1(c)) = c$, i.e.\ iff $c$ is a fixed point of
+  $\varphi$. A permutation of two elements is the identity (two fixed points: two equilibria) or the
+  swap (none). So the game has $0$ or $2$ pure equilibria and cannot have exactly one.
+\end{itemize}
+Hence, when the equilibrium is unique, only Cases 1--2 occur, and IESDS leaves exactly the
+equilibrium. $\blacksquare$
+
+\textbf{(b) A $3\times3$ game.} Rows $a, b, c$; columns $L, M, R$.
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$a$ & $\br{2},\ \br{2}$ & $0,\ 0$ & $0,\ 0$ \\ \cline{2-4}
+$b$ & $0,\ 0$ & $\br{2},\ 0$ & $0,\ \br{2}$ \\ \cline{2-4}
+$c$ & $0,\ 0$ & $0,\ \br{2}$ & $\br{2},\ 0$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+\textbf{Best replies.} Player~1: $b_1(L) = a$, $b_1(M) = b$, $b_1(R) = c$. Player~2: $b_2(a) = L$,
+$b_2(b) = R$, $b_2(c) = M$. Every best reply is unique (payoff $2$ against $0$).
+
+\textbf{Unique pure Nash equilibrium.} A profile is an equilibrium iff it is underlined for both players:
+only $(a, L)$ has both payoffs underlined. For the other eight cells check one deviation: at $(b,M)$
+player~2 prefers $R$; at $(b,R)$ player~1 prefers $c$; at $(c,M)$ player~1 prefers $b$; at $(c,R)$
+player~2 prefers $M$; and in the first row and column, $(a, M)$ and $(a,R)$ have player~2 preferring $L$,
+and $(b,L)$ and $(c,L)$ have player~1 preferring $a$.
+
+\textbf{IESDS deletes nothing.} Every strategy is the unique best reply to some pure strategy of the
+opponent ($a$ to $L$, $b$ to $M$, $c$ to $R$, and $L$ to $a$, $R$ to $b$, $M$ to $c$). A strategy that is a best
+reply to some belief cannot be strictly dominated, by a pure or a mixed strategy. So all nine profiles
+survive, although only $(a, L)$ is a Nash equilibrium.
+
+\answer{(a) With no ties, a $2\times2$ game with exactly one pure Nash equilibrium is dominance-solvable
+(Cases 1--2) or has $0$ or $2$ pure equilibria (Case 3), so the equilibrium is the unique IESDS survivor;
+with ties the claim can fail (the counterexample above). (b) In the $3\times3$ game above, $(a,L)$
+is the unique pure Nash equilibrium, yet no strategy is strictly dominated, so all nine profiles survive IESDS.}
+
+\interp Nash equilibrium refines IESDS (Proposition~1), and in $2\times2$ games the refinement is
+all-or-nothing: either dominance solves the game, or the best replies form a ``cycle'' with an even
+number of fixed points. With three strategies a best-reply \emph{cycle} (the sub-game in $\{b,c\}\times\{M,R\}$
+is matching pennies) can sit beside an equilibrium, and IESDS cannot touch it. The game of (b) also
+has a mixed equilibrium in that cycle, so the unique \emph{pure} equilibrium is not the unique
+equilibrium; the exercise only asks about pure ones.
+
+\verify \texttt{check\_L2.py} enumerates all $4^8 = 65{,}536$ ordinal $2\times2$ games (payoffs in
+$\{0,1,2,3\}$): every pure equilibrium survives IESDS; among games with no ties of the kind above,
+no game with exactly one equilibrium keeps more than one profile, and Case~3 games always have $0$ or
+$2$ equilibria; among games with ties there are games that violate (a) (the counterexample is one).
+For (b) it checks the equilibrium set, the best-reply bijections, and, by linear programming, that no strategy is
+strictly dominated even by a mixture. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Arguing (a) only through the Case~1 pattern (dominance-solvable) and forgetting Case~3.
+  \item In (b), producing a game with several equilibria: the exercise wants \emph{one} pure
+  equilibrium and extra survivors.
+  \item Using weak dominance to prune in (b); IESDS is strict.
+\end{itemize}
+\end{exsol}

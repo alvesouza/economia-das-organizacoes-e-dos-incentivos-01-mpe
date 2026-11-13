@@ -1,0 +1,54 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 7 Exercise 1. Input by \solitem. Check: check_E1.py.
+\begin{exsol}{\MG{} Ch.~7, Exercise 1}{318--319}{Foundations}{1}
+\asked (a) The pure Nash equilibria of the matrix in Fig.~7.1 when $x=15$ and when $x=4$ is
+common knowledge. (b) The BNE when only player~1 observes $x$ (prior $\tfrac12,\tfrac12$): strategy
+spaces, Bayesian normal form, best-response underlining.
+
+\method (a) Underline best replies in each $2\times 2$ matrix. (b) Player~1 has two types
+($x=15$, $x=4$) and two actions, so four strategies $s_1=(a^{15},a^{4})$; player~2 has one type
+and two actions. Expected payoffs: average the two realizations of $x$ with weight $\tfrac12$
+(Tadelis \S12.1; Gibbons \S3.1.B).
+
+\solution
+\textbf{(a) Complete information.} Player~2's payoffs do not depend on $x$: $BR_2(A)=C$ ($18>7$)
+and $BR_2(B)=D$ ($11>0$). For player~1, $BR_1(D)=B$ ($8>6$) for every $x$; against $C$ he
+compares $x$ with $8$:
+\begin{itemize}
+  \item $x=15$: $BR_1(C)=A$ ($15>8$). Nash equilibria $(A,C)$ and $(B,D)$.
+  \item $x=4$: $BR_1(C)=B$ ($8>4$). The only Nash equilibrium is $(B,D)$.
+\end{itemize}
+
+\textbf{(b) Incomplete information.} $S_1=\{A^{15}A^{4},A^{15}B^{4},B^{15}A^{4},B^{15}B^{4}\}$
+(superscript = value of $x$ observed), $S_2=\{C,D\}$. The Bayesian normal form has
+$EU_1=\tfrac12 u_1(\cdot;15)+\tfrac12 u_1(\cdot;4)$ and $EU_2$ the average over the realized
+$x$ of player~2's payoff; e.g.\ $EU_1(A^{15}B^{4},C)=\tfrac12\cdot15+\tfrac12\cdot 8=11.5$ and
+$EU_2(A^{15}B^{4},C)=\tfrac12\cdot 18+\tfrac12\cdot 0=9$. Best replies underlined:
+\begin{center}
+\begin{tabular}{l|cc}
+ & $C$ & $D$\\\hline
+$A^{15}A^{4}$ & $9.5,\ \br{18}$ & $6,\ 7$\\
+$A^{15}B^{4}$ & $\br{11.5},\ \br{9}$ & $7,\ \br{9}$\\
+$B^{15}A^{4}$ & $6,\ \br{9}$ & $7,\ \br{9}$\\
+$B^{15}B^{4}$ & $8,\ 0$ & $\br{8},\ \br{11}$
+\end{tabular}
+\end{center}
+Player~1 best-replies $A^{15}B^{4}$ to $C$ (11.5) and $B^{15}B^{4}$ to $D$ (8). Player~2 is
+indifferent between $C$ and $D$ ($9$ vs.\ $9$) against $A^{15}B^{4}$ and against $B^{15}A^{4}$,
+and strictly prefers $C$ against $A^{15}A^{4}$ and $D$ against $B^{15}B^{4}$. Cells where both
+payoffs are underlined: $(A^{15}B^{4},C)$ and $(B^{15}B^{4},D)$.
+
+\textbf{Interim check.} In $(A^{15}B^{4},C)$: type $15$ plays $A$ ($15>8$ against $C$), type $4$
+plays $B$ ($8>4$), and player~2 earns $9$ from either action. In $(B^{15}B^{4},D)$: both types of
+player~1 play $B$ ($8>6$ against $D$) and player~2 earns $11>0$ from $D$.
+
+\interp The first BNE reproduces the informative case: player~1's action reveals his type, and
+player~2, who cannot condition on it, happens to be indifferent. The second is the
+complete-information equilibrium $(B,D)$ that survives for both values of $x$.
+
+\verify \texttt{check\_E1.py} recomputes the eight cells and compares them with the book's
+Fig.~7.5 ($9.5,18$; $6,7$; $11.5,9$; $7,9$; $6,9$; $7,9$; $8,0$; $8,11$), and enumerates all
+$4\times 2$ profiles: exactly two BNE.
+
+\answer{(a) $x=15$: $(A,C),(B,D)$; $x=4$: $(B,D)$. (b) BNE: $(A^{15}B^{4},C)$ and
+$(B^{15}B^{4},D)$.}
+\end{exsol}

@@ -12,6 +12,21 @@
 
 Both belong upstream in `../Efficient Token/tools/adopt.py`.
 
+## Sync check against the global setup (2026-11-12): up to date, nothing copied
+
+- `~/.claude/commands/*.md` (24) = `.claude/commands/*.md`, byte-identical. `templates/` is used
+  from the global path by the commands and is not meant to be copied wholesale.
+- Project copies of global templates: `quiz.html` and `.claude/quiz-validate.py` identical;
+  `Listas/lista-exam.tex` identical; `rules/00_estilo_avaliacao.md` is a course adaptation of
+  `templates/styles/macro-1.md` (local Oct 31, newer than the global Oct 18), so it differs on purpose.
+- `../Efficient Token` (last commit 76dbdef, 2026-08-15): every adopted hook, agent, skill, tool
+  and rule is byte-identical; non-adopted packs are out of profile. `settings.json` differs only
+  in the `$CLAUDE_PROJECT_DIR` hook fix above and in extra local `allow` entries (PDF/LaTeX tools).
+- `python tools/sync_rules.py --check`: in sync (7/7 packs). The 11 course rule files are
+  skipped for lacking a frontmatter `id`, which is expected: they are content, not packs.
+- Re-run with the two scratch scripts' logic (filecmp over both trees) rather than `find`,
+  which `guard_context.py` blocks as an unscoped search.
+
 ## Permissions
 
 The pack's deny rule `Read(**/.env.*)` also blocks the Write tool on `.env.example` (a key-free

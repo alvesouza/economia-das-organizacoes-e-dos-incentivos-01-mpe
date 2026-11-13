@@ -1,0 +1,74 @@
+% Solution: Tadelis (2013) Exercise 11.7 "Legislative Bargaining Revisited". Input by \solitem. Check: check_T3.py (item 24).
+\begin{exsol}{Tadelis Exercise 11.7}{237}{Advanced}{4}
+\asked In a $T$-period Baron--Ferejohn game with an odd number $N$ of players and a closed rule: (a) the SPE for
+$T = 1$ and a Nash equilibrium that is not subgame perfect; (b) the same for $T = 2$ with discount factor
+$\delta \in (0, 1]$; (c) compare the first proposer's share with two-person Rubinstein--St\aa hl bargaining; (d) compare
+with the infinite-horizon solution of Section~11.4.1 and explain the similarity.
+
+\method Tadelis \S11.4.1 (pp.~229--232). Each period a proposer is drawn uniformly, proposes shares
+$x = (x_1,\dots,x_N)$ with $\sum x_i \le 1$, and a majority of $\frac{N+1}{2}$ votes (the proposer's included) passes it.
+Otherwise the game moves to the next period with the pie discounted by $\delta$. If the last period fails, all get $0$.
+A voter accepts iff his share is at least the discounted value $\delta v$ of waiting, where $v$ is his expected
+payoff at the start of a period.
+
+\solution
+\textbf{(a) $T = 1$.} A voter who is offered $x_i \ge 0$ accepts (rejecting gives $0$). The proposer needs $\frac{N-1}{2}$
+other votes and buys them with $0$ each, keeping the whole pie: proposer $1$, everybody else $0$. Each player's
+expected payoff is $v_1 = \frac1N$ (he is the proposer with probability $\frac1N$).
+
+\emph{A non-subgame-perfect Nash equilibrium.} Every proposer offers the equal split $\frac1N$ to all, and every voter
+votes yes iff the proposal is \emph{exactly} the equal split. On the path the equal split passes. A proposer who
+deviates to any other division gets at most his own vote ($1 < \frac{N+1}{2}$ for $N \ge 3$), so it fails and
+pays $0 < \frac1N$. No voter's vote changes the outcome, so no one deviates. It is Nash, with expected payoff
+$\frac1N$ to everyone. It is not subgame perfect: a voter offered a positive amount (or any $x \ne \frac1N$)
+who votes no gets $0 < x$ in the last period, so rejecting is not a best reply there.
+
+\textbf{(b) $T = 2$.} After a failure in period~1 each player expects $v_1 = \frac1N$ from period~2, so a voter
+accepts iff $x_i \ge \frac{\delta}{N}$. The proposer chooses $\frac{N-1}{2}$ others at random and offers
+$\frac{\delta}{N}$ to each, keeping
+\[
+  k_2 = 1 - \frac{N-1}{2}\cdot\frac{\delta}{N} = 1 - \frac{\delta(N-1)}{2N} .
+\]
+It passes in period~1. Expected payoff of a player: $\frac1N k_2 + \frac{N-1}{N}\cdot\frac12\cdot\frac\delta N = \frac1N$,
+the same $v_2 = \frac1N$.
+
+\emph{A non-SPE Nash equilibrium.} The equal-split rule of (a) in period~1 (voters accept only the equal split) and
+the SPE of $T = 1$ in period~2. A deviating proposer's offer is rejected and he gets $\delta\cdot\frac1N < \frac1N$;
+voters are not pivotal. It is not subgame perfect, for the same reason as before: a voter offered
+$x_i > \frac\delta N$ rejects it, though waiting is worth only $\frac\delta N$.
+
+\textbf{(c) Comparison with two-person bargaining.} With $T = 2$ and two players the proposer gets $1 - \delta$. Here the
+proposer keeps $1 - \frac{\delta(N-1)}{2N} > 1 - \delta$ for $N \ge 3$, because $\frac{N-1}{2N} < \frac12 < 1$. In the
+two-person game the responder who rejects becomes the sole proposer and takes everything in period~2, which makes him
+expensive to satisfy. In the legislature a voter who rejects is only the proposer with probability $\frac1N$, so
+his continuation value is $\frac\delta N$ and each needed vote is cheap, and the proposer needs only a bare
+majority.
+
+\textbf{(d) Comparison with the infinite horizon.} The symmetric stationary equilibrium has $v = \frac1N$ and the
+proposer keeps $k = 1 - \frac{N-1}{2}\delta v = 1 - \frac{\delta(N-1)}{2N}$, identical to $k_2$. By symmetry and random
+recognition, every player's expected payoff at the start of \emph{any} period is $\frac1N$, whatever the horizon, so the
+price of a vote ($\delta v = \frac\delta N$) does not depend on how many periods remain. A longer horizon changes
+nothing that matters to the voters' reservation values, which is why $T = 2$ already reproduces the infinite-horizon
+split.
+
+\interp Random recognition spreads the proposer power evenly, making the continuation value independent of the horizon.
+In the two-person game, who proposes last decides everything, which is why finite and infinite horizons differ.
+
+\verify \texttt{check\_T3.py} (item~24) iterates $v_T = \frac{k}{N} + \frac{N-1}{N}\cdot\frac12\delta v_{T-1}$ for
+$N \in \{3,5,7,9\}$, $\delta \in \{\frac12, \frac9{10}, 1\}$ and $T \le 7$ and finds $v_T = \frac1N$ each time, that the
+shares add to $1$, that the infinite-horizon fixed point is $\frac1N$ with $k_\infty = k_2$, and that $k_2 > 1 - \delta$.
+Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Offering votes the whole current share or an equal share: the price of a vote is the discounted continuation
+  value $\frac\delta N$, not $\frac1N$.
+  \item Buying more than $\frac{N-1}{2}$ votes. A minimal winning coalition is the cheapest.
+\end{itemize}
+
+\answer{(a) $T = 1$: proposer takes $1$, others $0$; each player expects $\frac1N$; a non-SPE Nash equilibrium is
+``everybody offers and votes for the equal split only''. (b) $T = 2$: the proposer offers $\frac\delta N$ to $\frac{N-1}{2}$
+others and keeps $1 - \frac{\delta(N-1)}{2N}$; each player expects $\frac1N$. (c) That exceeds $1 - \delta$ in the
+two-person game, as the votes are cheaper. (d) It equals the infinite-horizon proposer share, because every player's
+continuation value is $\frac1N$ at any horizon.}
+\end{exsol}

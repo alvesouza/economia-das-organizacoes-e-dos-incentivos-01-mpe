@@ -1,0 +1,53 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.B.2. Input by \solitem. Check: check_E3.py.
+\begin{exsol}{MWG Exercise 13.B.2}{473}{Advanced}{4}
+\asked With $r(\cdot)$ continuous and strictly increasing, $r(\theta)>\theta$ for $\theta>\theta^\circ$ and
+$r(\theta)<\theta$ for $\theta<\theta^\circ$ (the exercise's $\hat\theta$, renamed to avoid clashing
+with the cutoff), and $f>0$: show that any competitive equilibrium with unobservable types is
+Pareto inefficient.
+
+\method The Pareto optimal allocation maximizes aggregate surplus (quasilinear preferences):
+workers with $r(\theta)\le\theta$ work, i.e.\ $\theta\le\theta^\circ$ (by continuity $r(\theta^\circ)=\theta^\circ$)
+(MWG pp.~438--439). A competitive equilibrium has a wage $w$ and an accepting set
+$\{\theta:r(\theta)\le w\}=[\underline\theta,\hat\theta]$ with $w=E[\theta\mid\theta\le\hat\theta]$ (Def.~13.B.1).
+Show that every equilibrium has $\hat\theta<\theta^\circ$ and compare the two sets.
+
+\solution
+Because $f>0$, $E[\theta\mid\theta\le\hat\theta]<\hat\theta$ for every $\hat\theta>\underline\theta$. Consider
+the possible equilibria.
+\begin{itemize}
+  \item \emph{Interior cutoff $\hat\theta\in(\underline\theta,\bar\theta)$,} $w=r(\hat\theta)$: the break-even condition gives
+  $r(\hat\theta)=E[\theta\mid\theta\le\hat\theta]<\hat\theta$, hence $r(\hat\theta)<\hat\theta$, hence
+  $\hat\theta<\theta^\circ$ (since $r\ge\theta$ for $\theta\ge\theta^\circ$).
+  \item \emph{Everybody works,} $\hat\theta=\bar\theta$, $w=E[\theta]$: needs $r(\bar\theta)\le E[\theta]$; but
+  $\bar\theta>\theta^\circ$ gives $r(\bar\theta)>\bar\theta>E[\theta]$. Impossible.
+  \item \emph{Only the lowest type (a null set) or nobody works:} the employed set has measure zero.
+\end{itemize}
+So in every equilibrium the set of workers employed by firms is $[\underline\theta,\hat\theta]$ with
+$\hat\theta<\theta^\circ$ (or a null set), while efficiency requires $[\underline\theta,\theta^\circ]$.
+The types in $(\hat\theta,\theta^\circ)$, a set of positive measure because $f>0$, are worth more at
+a firm ($\theta>r(\theta)$) but stay at home. Aggregate surplus falls short of the maximum by
+\[
+  N\int_{\hat\theta}^{\theta^\circ}\bigl(\theta-r(\theta)\bigr)f(\theta)\,d\theta>0 .
+\]
+With quasilinear utility, transfers can redistribute any surplus gain, so some allocation makes
+everybody weakly better off and somebody strictly: the equilibrium is not Pareto optimal.
+
+\textbf{Example.} $\theta\sim U[1,2]$, $r(\theta)=2\theta-\tfrac32$ (so $\theta^\circ=\tfrac32$). The
+crossing $r(\hat\theta)=\tfrac{1+\hat\theta}2$ gives $\hat\theta=\tfrac43<\tfrac32$, wage $\tfrac76$;
+the types in $(\tfrac43,\tfrac32)$ are lost, and the surplus loss per worker is
+$\int_{4/3}^{3/2}(\tfrac32-\theta)\,d\theta=\tfrac1{72}$.
+
+\interp The failure is driven by adverse selection: the wage can only equal the \emph{average}
+productivity of the accepting set, which is below the productivity of the marginal worker, so
+the marginal worker is never attracted. The situation is the opposite of Fig.~13.B.1--13.B.3
+(there all types should work); here only those below $\theta^\circ$ should, and still too few do.
+
+\verify \texttt{check\_E3.py}: the example (root $\tfrac43$, loss $\tfrac1{72}$, corners fail); and 200 random
+draws of a positive piecewise-constant density and a linear increasing $r$ crossing $\theta$ once:
+every interior crossing of $r$ and $E[\theta\mid\theta\le\hat\theta]$ lies strictly below $\theta^\circ$, and the all-work
+corner fails. MWG's manual had no OCR text for 13.B.2.
+
+\answer{Every equilibrium has cutoff $\hat\theta<\theta^\circ$ (or employs a null set), so the types in
+$(\hat\theta,\theta^\circ)$ with $\theta>r(\theta)$ do not work at a firm; aggregate surplus is strictly below
+the maximum, hence the equilibrium is Pareto inefficient.}
+\end{exsol}

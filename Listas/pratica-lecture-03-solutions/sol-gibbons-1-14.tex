@@ -1,0 +1,92 @@
+% Solution: Gibbons (1992) Problem 1.14. Input by \solitem.
+% New in the Lecture 3 practice list. Check: check_L03.py.
+\begin{exsol}{Gibbons Problem 1.14}{51}{Advanced}{4}
+\asked Show that Proposition~B of Appendix~1.1.C, which says that a pure-strategy Nash equilibrium
+survives iterated elimination of strictly dominated strategies, holds for mixed equilibria too:
+every strategy played with positive probability in a mixed-strategy Nash equilibrium survives IESDS.
+
+\method Induction on the rounds of elimination, with the principle of indifference (Lecture~3,
+slides~21--26) as the key step; the pure-strategy case is the same argument (Lecture~2, slide~16).
+Notation: $S_i^0 = S_i$ and $S_i^{k+1}$ is the set of $s_i \in S_i^k$ that no mixed strategy
+$\sigma_i \in \Delta(S_i^k)$ strictly dominates on $S_{-i}^k$, i.e.\ with
+$u_i(\sigma_i, s_{-i}) > u_i(s_i, s_{-i})$ for every $s_{-i} \in S_{-i}^k$. The survivors are
+$\bigcap_k S_i^k$. Dominating strategies may be mixed (Tadelis \S6.3, pp.~114--117; the slides' IESDS
+of Lecture~1).
+
+\solution
+Let $\sigma^* = (\sigma_1^*, \dots, \sigma_n^*)$ be a mixed-strategy Nash equilibrium and
+$\operatorname{supp}\sigma_i^* = \{s_i : \sigma_i^*(s_i) > 0\}$.
+
+\textbf{Claim.} $\operatorname{supp}\sigma_i^* \subseteq S_i^k$ for every player $i$ and every $k \ge 0$.
+
+\textbf{Base, $k = 0$.} $S_i^0 = S_i$.
+
+\textbf{Step, $k \to k+1$.} Assume $\operatorname{supp}\sigma_j^* \subseteq S_j^k$ for all $j$. Suppose
+some $s_i \in \operatorname{supp}\sigma_i^*$ is not in $S_i^{k+1}$. Since $s_i \in S_i^k$ by assumption,
+some $\sigma_i' \in \Delta(S_i^k)$ strictly dominates it on $S_{-i}^k$:
+\[
+  u_i(\sigma_i', s_{-i}) > u_i(s_i, s_{-i}) \quad\text{for every } s_{-i} \in S_{-i}^k .
+\]
+By the induction hypothesis the mixed profile $\sigma_{-i}^*$ puts probability one on $S_{-i}^k$.
+Averaging the strict inequality with its weights $\sigma_{-i}^*(s_{-i})$, which are non-negative and
+sum to one,
+\begin{equation}
+  u_i(\sigma_i', \sigma_{-i}^*) \;=\; \sum_{s_{-i} \in S_{-i}^k} \sigma_{-i}^*(s_{-i})\,u_i(\sigma_i', s_{-i})
+  \;>\; \sum_{s_{-i} \in S_{-i}^k} \sigma_{-i}^*(s_{-i})\,u_i(s_i, s_{-i}) \;=\; u_i(s_i, \sigma_{-i}^*).
+  \label{eq:gibbons-1-14-avg}
+\end{equation}
+Now use equilibrium. By the principle of indifference, a strategy in the support earns the equilibrium
+payoff: $u_i(s_i, \sigma_{-i}^*) = u_i(\sigma^*)$. And since $\sigma^*$ is a Nash equilibrium,
+$u_i(\sigma^*) \ge u_i(\sigma_i', \sigma_{-i}^*)$ for every $\sigma_i'$. Together,
+\[
+  u_i(s_i, \sigma_{-i}^*) = u_i(\sigma^*) \;\ge\; u_i(\sigma_i', \sigma_{-i}^*),
+\]
+which contradicts \eqref{eq:gibbons-1-14-avg}. Hence every $s_i \in \operatorname{supp}\sigma_i^*$ is in
+$S_i^{k+1}$, which completes the induction. Since the claim holds for every $k$, the support lies in
+$\bigcap_k S_i^k$. \hfill $\blacksquare$
+
+\textbf{Where each assumption is used.} (i) Independence across players makes $\sigma_{-i}^*$ a
+probability distribution on $S_{-i}$, so that the expectation \eqref{eq:gibbons-1-14-avg} is a weighted
+average. (ii) The induction hypothesis puts that distribution inside $S_{-i}^k$, where the dominance
+inequality holds; without it the inequality need not hold at the profiles that $\sigma_{-i}^*$ uses.
+(iii) Indifference over the support is what turns ``$s_i$ is a best reply'' into
+$u_i(s_i, \sigma_{-i}^*) = u_i(\sigma^*)$ for each $s_i$ in the support, not just on average.
+
+\textbf{Why only the support.} Strategies outside the support may be eliminated or not; the
+statement is about those played with positive probability. A strategy outside the support can be
+strictly dominated, and the proof says nothing about it.
+
+\textbf{Example.} In matching pennies no strategy is ever dominated, so IESDS removes nothing and
+the support $\{H, T\}$ of the mixed equilibrium $(\frac12,\frac12)$ survives. In the game with payoffs
+$u(a, L) = 3$, $u(a, R) = 0$, $u(b, L) = 0$, $u(b, R) = 3$, $u(c, \cdot) = 1$ for the row player, the
+strategy $c$ is not strictly dominated by a pure strategy but is by the mix $\frac12 a + \frac12 b$
+(payoff $\frac32 > 1$ against each column), so $c$ cannot be in the support of any equilibrium.
+
+\interp Mixed equilibrium puts weight only on strategies that are rationalizable by iterated
+dominance. So IESDS is a necessary filter for Nash equilibria in mixed as well as in pure strategies:
+if IESDS leaves a single profile it is the unique Nash equilibrium (the converse direction of
+Lecture~2, slide~17), and if a strategy is eliminated it never appears in the support of any equilibrium.
+
+\verify \texttt{check\_L03.py} draws 300 random $3\times3$ bimatrix games with integer payoffs,
+enumerates every equilibrium by support enumeration with exact fractions (checking each candidate
+against all pure deviations), computes the IESDS survivors with strict dominance by mixed
+strategies (linear programming) and asserts that every support lies inside the survivors; it also
+checks the example above. Output line: \texttt{gibbons-1-14: 521 NE (119 with a mixed player) in 300
+random games, every support inside the IESDS survivors}. Gibbons prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Taking the dominating strategy $\sigma_i'$ to be pure: then the argument misses strategies
+  dominated only by a mix.
+  \item Forgetting the induction: dominance in the \emph{original} game is not the same as dominance
+  in the reduced game $S^k$, and $\sigma_{-i}^*$ is known to live in $S_{-i}^k$ only because the
+  opponents' supports have already been shown to survive $k$ rounds.
+  \item Using only $u_i(\sigma^*) \ge u_i(s_i', \sigma_{-i}^*)$ for pure $s_i'$: the contradiction needs
+  the equality $u_i(s_i, \sigma_{-i}^*) = u_i(\sigma^*)$ for the particular strategy $s_i$ in the support.
+\end{itemize}
+
+\answer{Induction on $k$: if all supports lie in $S^k$, a support strategy $s_i$ eliminated at round
+$k+1$ would be strictly dominated by some $\sigma_i'$ on $S_{-i}^k$, hence against $\sigma_{-i}^*$:
+$u_i(\sigma_i', \sigma_{-i}^*) > u_i(s_i, \sigma_{-i}^*) = u_i(\sigma^*)$, contradicting that $\sigma^*$ is a
+Nash equilibrium. So all support strategies survive every round.}
+\end{exsol}

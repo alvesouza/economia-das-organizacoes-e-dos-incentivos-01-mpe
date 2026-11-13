@@ -1,0 +1,43 @@
+% Solution: Gibbons (1992) Problem 3.4. Input by \solitem. Check: check_E1.py.
+\begin{exsol}{Gibbons Problem 3.4}{169--170}{Foundations}{2}
+\asked All pure-strategy BNE when Nature picks Game~1 or Game~2 with probability $\tfrac12$,
+player~1 observes which, player~2 does not.
+
+\method Player~1's strategy is a pair $(s_1(G_1),s_1(G_2))\in\{T,B\}^2$; player~2 chooses $L$ or $R$
+with belief $\tfrac12$ on each game. Find the type-by-type best replies of player~1, then
+player~2's expected payoffs from $L$ and $R$ (Gibbons \S3.1.B, pp.~149--151).
+
+\solution
+\textbf{Player~1 (each type).} In Game~1: against $L$, $T$ (payoff $1$) beats $B$ ($0$); against
+$R$ he is indifferent ($0$ either way). In Game~2: against $L$ he is indifferent ($0,0$);
+against $R$, $B$ ($2$) beats $T$ ($0$).
+
+\textbf{Player~2.} Given $s_1$, with $\mathbf 1[\cdot]$ an indicator,
+\[
+  EU_2(L)=\tfrac12\,\mathbf 1[s_1(G_1)=T]\cdot 1 + \tfrac12\cdot 0,\qquad
+  EU_2(R)=\tfrac12\cdot 0+\tfrac12\,\mathbf 1[s_1(G_2)=B]\cdot 2 .
+\]
+So $L$ is a best reply iff $\tfrac12\mathbf 1[s_1(G_1)=T]\ge\mathbf 1[s_1(G_2)=B]$, and $R$ iff
+the reverse.
+\begin{itemize}
+  \item \emph{Player~2 plays $L$.} Player~1 must play $T$ in $G_1$; in $G_2$ any action is a
+  best reply to $L$. $L$ is optimal for 2 only if $\tfrac12\ge \mathbf 1[s_1(G_2)=B]$, i.e.\
+  $s_1(G_2)=T$. Profile $(TT,L)$: $EU_2(L)=\tfrac12>0=EU_2(R)$. \checkmark
+  \item \emph{Player~2 plays $R$.} Player~1 must play $B$ in $G_2$; in $G_1$ any action is
+  a best reply. $R$ is optimal for 2 iff $\mathbf 1[s_1(G_2)=B]=1\ge\tfrac12\mathbf 1[s_1(G_1)=T]$,
+  which holds. Profiles $(TB,R)$ and $(BB,R)$. \checkmark
+\end{itemize}
+The remaining profiles fail: $BT$ is never a best reply of player~1 (against $L$ it plays $B$ in
+$G_1$, strictly worse than $T$; against $R$ it plays $T$ in $G_2$, strictly worse than $B$), and
+$(TB,L)$ gives $EU_2(L)=\tfrac12<1=EU_2(R)$.
+
+\interp Two equilibria are payoff-dominant in different games: $(TT,L)$ pays $(1,1)$ in $G_1$
+and $(0,0)$ in $G_2$, $(BB,R)$ pays $(0,0)$ in $G_1$ and $(2,2)$ in $G_2$. Player~2's ignorance
+creates a coordination problem.
+
+\verify \texttt{check\_E1.py} enumerates the $4\times 2$ Bayesian normal form: exactly three pure
+BNE, $\{(TT,L),(TB,R),(BB,R)\}$. Gibbons gives no answer.
+
+\answer{Three pure-strategy BNE: $(TT,L)$, $(TB,R)$, $(BB,R)$, writing player~1's strategy as
+(action in Game~1, action in Game~2).}
+\end{exsol}

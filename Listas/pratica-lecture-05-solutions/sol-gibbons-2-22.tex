@@ -1,0 +1,98 @@
+% Solution: Gibbons (1992) Problem 2.22 (bank runs). Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Gibbons Problem 2.22}{138}{Foundations}{2}
+\asked Write the bank-runs game of Section~2.2.B in extensive and normal form and find its pure-strategy
+SPNE.
+
+\method Gibbons \S2.2.B (pp.~73--75) and the definitions of \S2.4.A--B (pp.~115--128): a strategy specifies
+an action at every information set, including those a player's own earlier action rules out; an SPNE
+is a Nash equilibrium of every subgame. Solve date~2 first (slide~14: last stage first).
+
+\solution
+\textbf{The game.} Two investors each deposited $D$; liquidation at date~1 yields a total $2r$ with
+$D > r > D/2$, maturity yields $2R$ with $R > D$. Each investor chooses $w$ (withdraw) or $n$ (do not),
+simultaneously, at date~1 and, if the game has not ended, at date~2. There is no discounting.
+
+\textbf{Extensive form.} Dashed lines join the nodes of one information set (a player does not see
+the other's simultaneous choice). Payoffs: investor~1 first.
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,
+  nd/.style={circle,fill,inner sep=1.4pt}, lab/.style={font=\footnotesize}]
+  % date 1
+  \node[nd,label=above:{\footnotesize 1}] (r) at (0,0) {};
+  \node[nd,label=left:{\footnotesize 2}] (a) at (-3,-1.4) {};
+  \node[nd,label=right:{\footnotesize 2}] (b) at (3,-1.4) {};
+  \draw (r) -- node[lab,above left]{$w$} (a);
+  \draw (r) -- node[lab,above right]{$n$} (b);
+  \draw[dashed] (a) -- (b);
+  \node[lab] at (0,-1.1) {date 1};
+  % after w
+  \node[lab] (t1) at (-4.4,-3.0) {$(r,\,r)$};
+  \node[lab] (t2) at (-1.8,-3.0) {$(D,\,2r-D)$};
+  \draw (a) -- node[lab,left]{$w$} (t1);
+  \draw (a) -- node[lab,right]{$n$} (t2);
+  % after n
+  \node[lab] (t3) at (1.8,-3.0) {$(2r-D,\,D)$};
+  \draw (b) -- node[lab,left]{$w$} (t3);
+  \node[nd,label=above:{\footnotesize 1}] (c) at (4.3,-3.0) {};
+  \draw (b) -- node[lab,right]{$n$} (c);
+  \node[lab,right] at (4.6,-3.0) {date 2 \;(after $n,n$)};
+  \node[nd,label=left:{\footnotesize 2}] (d1) at (3.1,-4.5) {};
+  \node[nd,label=right:{\footnotesize 2}] (d2) at (5.5,-4.5) {};
+  \draw (c) -- node[lab,left]{$w$} (d1);
+  \draw (c) -- node[lab,right]{$n$} (d2);
+  \draw[dashed] (d1) -- (d2);
+  \node[lab] at (2.0,-6.0) {$(R,R)$};   \draw (d1) -- node[lab,left]{$w$} (2.3,-5.7);
+  \node[lab] at (3.9,-6.0) {$(2R-D,\,D)$}; \draw (d1) -- node[lab,right]{$n$} (3.6,-5.7);
+  \node[lab] at (6.0,-6.0) {$(D,\,2R-D)$}; \draw (d2) -- node[lab,left]{$w$} (5.4,-5.7);
+  \node[lab] at (7.9,-6.0) {$(R,R)$}; \draw (d2) -- node[lab,right]{$n$} (7.0,-5.7);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Normal form.} A strategy is a pair (date-1 action, date-2 action); the second letter is used
+only after $(n,n)$. There are four strategies: $ww$, $wn$, $nw$, $nn$. If either investor
+withdraws at date~1 the date-2 letter is irrelevant, so the matrix has a block structure (underlined payoffs are best replies):
+\begin{center}
+\small
+\begin{tabular}{r|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$ww$} & \multicolumn{1}{c}{$wn$} & \multicolumn{1}{c}{$nw$} & \multicolumn{1}{c}{$nn$}\\ \cline{2-5}
+$ww$ & $\br{r},\br{r}$ & $\br{r},\br{r}$ & $D,\,2r-D$ & $D,\,2r-D$ \\ \cline{2-5}
+$wn$ & $\br{r},\br{r}$ & $\br{r},\br{r}$ & $D,\,2r-D$ & $D,\,2r-D$ \\ \cline{2-5}
+$nw$ & $2r-D,\,D$ & $2r-D,\,D$ & $\br{R},\br{R}$ & $\br{2R-D},\,D$ \\ \cline{2-5}
+$nn$ & $2r-D,\,D$ & $2r-D,\,D$ & $D,\,\br{2R-D}$ & $R,\,R$ \\ \cline{2-5}
+\end{tabular}
+\end{center}
+\emph{Best replies.} Use $D > r > D/2$ (so $2r - D < r$) and $R > D$ (so $2R - D > R > D$).
+Against a rival who withdraws at date~1 ($ww$ or $wn$), withdrawing gives $r$ and waiting gives
+$2r - D < r$: withdraw. Against $nw$, withdrawing at date~1 gives $D < R$, playing $nw$ gives $R$ and $nn$
+gives $D$: the best reply is $nw$. Against $nn$, $nw$ gives $2R - D$, the largest payoff in the column.
+
+\textbf{Nash equilibria.} Reading the matrix: the four profiles in which both investors withdraw at
+date~1 ($ww$ or $wn$ for each) are equilibria with payoff $(r,r)$, and $(nw, nw)$ is an equilibrium
+with payoff $(R,R)$. $(nn,nn)$ is not (either investor gains by switching to $nw$), nor are
+$(nw,nn)$ and $(nn,nw)$. So there are five Nash equilibria.
+
+\textbf{Subgames and SPNE.} The only proper subgame is the date-2 game after $(n,n)$, where
+$w$ is strictly dominant ($2R - D > R$ against $w$ and $R > D$ against $n$): its unique Nash
+equilibrium is $(w,w)$. An SPNE must play it, so the date-2 letter must be $w$. That removes every
+equilibrium that uses $n$ at date~2, namely $(wn,\cdot)$ and $(\cdot,wn)$. The pure-strategy SPNE are
+\[
+  (ww,\,ww) \ \text{ with payoff } (r,r) \quad\text{(a run on the bank)}, \qquad
+  (nw,\,nw) \ \text{ with payoff } (R,R).
+\]
+Profiles such as $(wn,wn)$ are Nash equilibria but not subgame perfect: they are supported by the
+threat of not withdrawing at date~2, which is not credible.
+
+\interp This is the one-period game with two equilibria after substituting the date-2 equilibrium
+$(R,R)$ for the continuation (Gibbons, Figure~2.2.1). A run is self-fulfilling: if investor~1 expects
+investor~2 to withdraw at date~1, withdrawing is a best reply although both would be better off
+waiting. Unlike the prisoner's dilemma, the bad outcome is one of two equilibria, not the only one.
+
+\verify \texttt{check\_L05.py} builds the $4\times4$ normal form for four parameter sets satisfying
+$D > r > D/2$ and $R > D$, finds five Nash equilibria, and the two SPNE above, and confirms that
+$(wn,wn)$ is Nash but not subgame perfect.
+
+\answer{Extensive form: date~1 simultaneous move, date~2 simultaneous move after $(n,n)$ (tree above);
+normal form: the $4\times4$ matrix above. There are two pure SPNE: both withdraw at date~1 with payoff $(r,r)$,
+and both wait at date~1 and withdraw at date~2 with payoff $(R,R)$. In both, the date-2 action is $w$.}
+\end{exsol}

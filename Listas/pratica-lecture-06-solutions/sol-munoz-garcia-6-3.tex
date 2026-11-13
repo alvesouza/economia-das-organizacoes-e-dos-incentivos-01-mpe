@@ -1,0 +1,67 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Ex. 3 "Temporary Punishments from Deviation".
+% Input by \solitem. Check: check_T2.py (item 13).
+\begin{exsol}{\MG{} Ch.~6, Exercise 3}{282--283}{Exam level}{4}
+\asked A Cournot duopoly with $p = 100 - Q$ and $c = 10$ is repeated forever. Find (a) the one-shot Cournot
+outcome; (b) the collusive outcome; the minimum discount factor for the collusive output under (c) a
+permanent Cournot punishment and (d), (e), (f) a Cournot punishment lasting one, two and three periods.
+
+\method One-stage deviation principle with a length-$T$ punishment (Tadelis \S10.2--10.4; the grim-trigger
+case is $T = \infty$). The punishment phase is a static Nash equilibrium, so it is automatically optimal. Only
+the cooperation phase can be profitably deviated from. Notation: $\pi^m$ collusive profit, $\pi^D$ best
+deviation profit, $\pi^C$ Cournot profit.
+
+\solution
+\textbf{(a)} The best response is $q_i = 45 - q_j/2$, so $q^C = 30$ and $\pi^C = (40 - 10)\cdot 30 = 900$.
+
+\textbf{(b)} Joint profit $(90 - Q)Q$ is maximised at $Q = 45$, $q^m = 22.5$; price $55$ and $\pi^m = 45\cdot
+22.5 = 1\,012.5$.
+
+\textbf{Best deviation.} Against $q_j = 22.5$, firm~$i$ produces $45 - 11.25 = 33.75$ at price $43.75$, so
+$\pi^D = (43.75 - 10)\cdot 33.75 = 1\,139.0625 = \frac{18\,225}{16}$.
+
+\textbf{General condition for a punishment of $T$ periods.} Cooperation yields $\pi^m$ in periods $0,\dots,T$
+and deviation yields $\pi^D$ in period~0 and $\pi^C$ in periods $1,\dots,T$; afterwards both return to $\pi^m$
+and the streams cancel. No deviation pays iff
+\[
+  \sum_{j=1}^{T}\delta^j\,(\pi^m - \pi^C) \;\ge\; \pi^D - \pi^m
+  \iff \sum_{j=1}^{T}\delta^j \;\ge\; \frac{126.5625}{112.5} = \frac98 .
+\]
+\textbf{(c) Permanent punishment.} $T = \infty$: $\dfrac{\delta}{1-\delta} \ge \dfrac98 \iff \delta \ge
+\dfrac{9}{17} = \dfrac{\pi^D - \pi^m}{\pi^D - \pi^C} \approx 0.529$.
+
+\textbf{(d) One period.} $\delta \ge \frac98 > 1$: impossible, so no $\delta \in (0,1)$ sustains cooperation.
+The loss from one Cournot period ($112.5\,\delta$) is smaller than the one-period gain ($126.56$) even at
+$\delta = 1$.
+
+\textbf{(e) Two periods.} $\delta + \delta^2 \ge \frac98$, i.e.\ $\delta \ge \dfrac{-1 + \sqrt{1 + 4.5}}{2} =
+0.6726$.
+
+\textbf{(f) Three periods.} $\delta + \delta^2 + \delta^3 \ge \frac98$ gives $\delta \ge 0.5842$.
+
+\textbf{Pattern.} $\infty$: $0.529$; three periods: $0.584$; two: $0.673$; one: no $\delta$. Longer punishments
+need less patience; each added period helps less, because it is discounted more.
+
+\interp The punishment must be long enough for its discounted cost to cover the one-period gain from cheating.
+A single period of competition costs too little in this game. Temporary punishments are attractive in practice
+when there is some chance of a mistaken signal, because cooperation resumes, but they require patient firms
+or longer wars.
+
+\verify \texttt{check\_T2.py} (item~13) recomputes $\pi^C = 900$, $\pi^m = 1\,012.5$, $\pi^D = 1\,139.0625$, the ratio
+$\frac98$, the roots $1.125$, $0.67260$, $0.58424$ of $\sum\delta^j = \frac98$ and $\frac9{17}$ for grim trigger, and
+compares truncated present values on both sides of $0.6726$ (e.g.\ $\delta = 0.68$ cooperates, $0.67$ does not).
+\textbf{Cross-check with the book.} The printed answers to (d), (e), (f) are the same ($\delta \ge 1.125$,
+$0.67$, $0.58$). The printed answer to (c), $\delta \ge 0.901$, does not match: the same inequality
+$1\,012.5 \ge 1\,139.06(1-\delta) + 900\,\delta$ gives $\delta \ge 126.56/239.06 = 0.529$, the standard
+Cournot cutoff $\frac9{17}$ (it is also the answer of item~9(b)), so we treat $0.901$ as an error.
+
+\mistakes
+\begin{itemize}
+  \item Writing the deviation stream as $\pi^D + \pi^C\,\delta/(1-\delta)$ for $T < \infty$. Cooperation resumes
+  after $T$ periods.
+  \item Using $\pi^m$ instead of $\pi^D$ as the one-period gain: the gain is $\pi^D - \pi^m$.
+\end{itemize}
+
+\answer{(a) $q^C = 30$, $\pi^C = 900$. (b) $q^m = 22.5$, $\pi^m = 1\,012.5$ (deviation: $33.75$, profit
+$1\,139.06$). (c) $\delta \ge \frac9{17} \approx 0.529$. (d) $\delta \ge 1.125$: impossible. (e) $\delta \ge
+0.673$. (f) $\delta \ge 0.584$. The book's $0.901$ in (c) is inconsistent with its own numbers.}
+\end{exsol}

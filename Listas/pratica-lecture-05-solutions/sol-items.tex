@@ -1,0 +1,51 @@
+% Item order of the solutions to Listas/pratica-lecture-05.md (25 items, in the list's order).
+% \reuse{n}{slug} inputs a solution already written for lista-reais-lectures-01-05-solutions;
+% \solitem{n}{slug} inputs a new sol-<slug>.tex of this folder.
+\newcommand{\lecturevtitle}{Lecture 5 --- Repeated games}
+
+\newcommand{\itemsv}{%
+% Tier 1 --- Foundations
+\reuse{1}{cabral-7-13}
+\solitem{2}{cabral-7-8}
+\solitem{3}{munoz-garcia-4-18}
+\solitem{4}{gibbons-2-22}
+\reuse{5}{tadelis-10-2}
+\reuse{6}{munoz-garcia-6-1}
+\solitem{7}{tadelis-10-9}
+\solitem{8}{tadelis-9-3}
+% Tier 2 --- Exam level
+\solitem{9}{cabral-7-12}
+\reuse{10}{tadelis-10-3}
+\solitem{11}{gibbons-2-10}
+\solitem{12}{tadelis-9-2}
+\solitem{13}{tadelis-9-4}
+\solitem{14}{munoz-garcia-6-6}
+\reuse{15}{munoz-garcia-6-9}
+\reuse{16}{gibbons-2-11}
+\reuse{17}{tadelis-9-1}
+\solitem{18}{tadelis-10-5}
+\solitem{19}{tadelis-9-6}
+% Tier 3 --- Advanced
+\solitem{20}{mwg-12-aa-1}
+\reuse{21}{tadelis-10-7}
+\solitem{22}{tadelis-9-5}
+\solitem{23}{gibbons-2-8}
+\solitem{24}{gibbons-2-16}
+\solitem{25}{mwg-12-aa-2}}
+
+\newcommand{\solintro}{\sloppy These are detailed solutions to the 25 exercises of
+\texttt{Listas/pratica-lecture-05.md} (Lecture~5, \emph{Repeated games}), in the list's order: three tiers (Foundations,
+Exam level, Advanced) with the difficulty rising from 1 (apply a definition) to 5 (graduate level). Each heading shows the
+item's number in the list, its level and its difficulty. Statements are reproduced verbatim in the list and are not repeated
+here. Each solution has the same parts: (a) what is asked; (b) the method, with the book section and page and the Lecture~5 slide;
+(c) the solution, every step shown; (d) the economic interpretation; (e) the verification, by \texttt{check\_L05.py} in this folder
+(new solutions) or \texttt{check\_C\_L05.py} in \texttt{lista-reais-lectures-01-05-solutions/} (the eight reused ones: items 1, 5, 6,
+10, 15, 16, 17, 21), and against the book's worked answer where one exists; (f) common mistakes. Method of the slides: payoffs of
+infinitely repeated games are normalised, $U_i = (1-\delta)\sum_t \delta^{t-1}u_i^t$; the one-stage deviation principle is checked history by history,
+on and off the path; thresholds follow $\delta^* = (v^d - v^c)/(v^d - v^*)$ (Tadelis (10.5)). In the finitely repeated games (two stages) payoffs are
+$u_i^1 + \delta u_i^2$. Three items deserve a warning: item~8 (Tadelis 9.3) has no solution for $\delta \le 1$ as printed, item~9
+(Cabral 7.12) has no tension as printed, and item~20 (MWG 12.AA.1) is false as printed (the MWG manual's erratum); each solution says
+what is true and why. Books: Tadelis (2013), \MG{} \& Toro-Gonzalez (2019, 2nd ed.), Gibbons (1992), Mas-Colell, Whinston \& Green (1995)
+(MWG), and Cabral (2017). In bimatrices player~1 picks rows and the first payoff is player~1's; \underline{underlined} payoffs are
+best replies. The eight reused solutions were written before the slides existed and cite ``Lecture~4, slides~21--22'' for the
+repeated-game set-up; the matching slides of the real lecture are Lecture~5, slides~17--26.}

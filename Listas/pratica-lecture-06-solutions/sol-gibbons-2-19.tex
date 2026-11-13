@@ -1,0 +1,52 @@
+% Solution: Gibbons (1992) Problem 2.19. Input by \solitem. Check: check_T2.py (item 11).
+\begin{exsol}{Gibbons Problem 2.19}{137}{Exam level}{3}
+\asked In the three-period Rubinstein model of Section 2.1.D, whose backward-induction outcome we solved, what
+is the subgame-perfect Nash equilibrium?
+
+\method Gibbons \S2.1.D (pp.~68--70). The pie is $1$ and the discount factor $\delta$. Period~1: player~1
+proposes $(s_1, 1-s_1)$ and player~2 accepts or rejects. Period~2: player~2 proposes $(s_2, 1-s_2)$ and
+player~1 accepts or rejects. Period~3: player~1 receives $s$ and player~2 receives $1-s$, with $0 < s < 1$.
+The backward-induction outcome is the \emph{path}; the SPNE is the complete strategy of each player, that is, an
+action at every history, including those that never occur.
+
+\solution
+\textbf{Backward induction.} In period~2 player~1 accepts $s_2$ iff $s_2 \ge \delta s$ (rejecting gives him $s$
+one period later). Player~2 proposes $s_2^* = \delta s$ and keeps $1 - \delta s$. In period~1 player~2
+accepts $s_1$ iff $1 - s_1 \ge \delta(1 - s_2^*) = \delta(1 - \delta s)$. Player~1 proposes
+\[
+  s_1^* = 1 - \delta(1 - \delta s) = 1 - \delta + \delta^2 s ,
+\]
+and it is accepted: payoffs $\bigl(1 - \delta + \delta^2 s,\ \delta - \delta^2 s\bigr)$.
+
+\textbf{The SPNE.}
+\begin{itemize}
+  \item \emph{Player~1:} in period~1 propose $s_1^* = 1 - \delta(1 - \delta s)$; in period~2, after any
+  proposal $s_2$ by player~2, accept iff $s_2 \ge \delta s$.
+  \item \emph{Player~2:} in period~1, after any proposal $s_1$, accept iff $1 - s_1 \ge \delta(1 - \delta s)$,
+  i.e.\ iff $s_1 \le s_1^*$; in period~2 propose $s_2^* = \delta s$.
+\end{itemize}
+Both strategies specify behaviour after every proposal, not only the equilibrium one. This is what makes it an
+SPNE rather than just a description of the outcome.
+
+\textbf{Verification (one-stage deviations).} \emph{Period~2.} If player~1 rejects $s_2 \ge \delta s$
+he gets $\delta s \le s_2$ in value. If player~2 offers $s_2 < \delta s$ it is rejected and she gets
+$\delta(1 - s) < 1 - \delta s$ (the last inequality is $1 - \delta s - \delta + \delta s = 1 - \delta > 0$), and
+if she offers more than $\delta s$ she gives away surplus. \emph{Period~1.} Player~2 compares accepting
+$1 - s_1$ with rejecting and getting $\delta(1 - \delta s)$ in value. Player~1 compares demanding $s_1 \le
+s_1^*$ (accepted, payoff $s_1 \le s_1^*$) with demanding more (rejected, payoff $\delta^2 s$). Since
+$s_1^* - \delta^2 s = 1 - \delta > 0$, the best demand is $s_1^*$. At all histories the strategies are best
+replies, so the profile is subgame perfect.
+
+\interp The backward-induction outcome only says that agreement occurs immediately at $(s_1^*, 1 - s_1^*)$.
+The SPNE adds the threats and acceptance rules that make this outcome optimal, and they hold also after
+off-path offers. Such rules are the content of Rubinstein's argument (item~19 verifies the stationary
+version in the infinite horizon).
+
+\verify \texttt{check\_T2.py} (item~11) tests the formulas for three parameter pairs ($\delta = 0.9$, $s = 0.5$;
+$\delta = 0.5$, $s = 0.3$; $\delta = 0.8$, $s = 0.9$): $s_2 = \delta s$, $s_1 = 1 - \delta + \delta^2 s$, player~2 indifferent at $s_1^*$, and on a grid
+of step $\frac1{1000}$ no demand by player~1 beats $s_1^*$ given the acceptance rule. Gibbons prints no answer.
+
+\answer{Player~1: propose $s_1^* = 1 - \delta(1 - \delta s)$ in period~1; in period~2 accept iff $s_2 \ge \delta s$.
+Player~2: in period~1 accept iff $1 - s_1 \ge \delta(1 - \delta s)$; in period~2 propose $s_2^* = \delta s$. On the
+path player~2 accepts $s_1^*$ and the payoffs are $(1 - \delta + \delta^2 s,\ \delta - \delta^2 s)$.}
+\end{exsol}

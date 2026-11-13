@@ -1,0 +1,66 @@
+% Solution: Tadelis (2013) Exercise 8.15 "Time Inconsistency". Input by \solitem.
+% New in the Lecture 4 practice list. Check: check_L04.py.
+\begin{exsol}{Tadelis Exercise 8.15}{174}{Exam}{3}
+\asked Three periods, utility $\ln x$ in each, budget $K$, $\delta = 1$, $\beta = \frac12$. (a) The plan
+$(x_1^*, x_2^*, x_3^*)$ of a \emph{naive} player~1, who ignores that her future self will change it; (b) with $K_2$
+the budget left after $x_1^*$, the plan player~2 actually chooses, and how it differs.
+
+\method Present-biased (quasi-hyperbolic) discounting, Tadelis \S8.3.4, pp.~166--169: in period $t$ the self
+maximizes $u(x_t) + \beta\sum_{s>t}\delta^{s-t}u(x_s)$, so the weights of periods $2, 3$ seen from period~1 are
+$\beta\delta = \frac12$ and $\beta\delta^2 = \frac12$, and seen from period~2 the weight of period~3 is
+$\beta\delta = \frac12$. A naive player optimizes today's objective over the whole plan (a one-person decision
+problem); then the next self re-optimizes, which is the single-agent version of ``a plan that is not credible''
+(Lecture~4, slides~22--23, applied to one's own future choices). This is reading, not in the slides of Lecture~4.
+
+\solution
+\textbf{(a) Player~1's plan.} She maximizes $\ln x_1 + \frac12\ln x_2 + \frac12\ln x_3$ subject to
+$x_1 + x_2 + x_3 = K$. With the budget substituted, $x_1 = K - x_2 - x_3$, the first-order conditions are
+\[
+  -\frac{1}{K - x_2 - x_3} + \frac{1/2}{x_2} = 0, \qquad -\frac{1}{K - x_2 - x_3} + \frac{1/2}{x_3} = 0 ,
+\]
+so $x_2 = x_3 = \frac12 x_1$. The budget gives $x_1 + \frac12 x_1 + \frac12 x_1 = K$, hence
+\[
+  x_1^* = \frac{K}{2}, \qquad x_2^* = \frac{K}{4}, \qquad x_3^* = \frac{K}{4}.
+\]
+(The objective is strictly concave, so this stationary point is the maximum.)
+
+\textbf{(b) Player~2's plan.} After consuming $x_1^*$, the budget is $K_2 = K - x_1^* = \frac{K}{2}$. Player~2
+maximizes $\ln x_2 + \frac12\ln x_3$ with $x_3 = K_2 - x_2$: the first-order condition
+$\frac{1}{x_2} - \frac{1/2}{K_2 - x_2} = 0$ gives $K_2 - x_2 = \frac12 x_2$, so
+\[
+  x_2 = \frac23 K_2 = \frac{K}{3}, \qquad x_3 = \frac13 K_2 = \frac{K}{6}.
+\]
+\emph{Difference.} Player~1 planned $(\frac{K}{4}, \frac{K}{4})$, an equal split of what remains, because from
+her viewpoint periods 2 and 3 are equally discounted ($\delta = 1$). Player~2 consumes more now,
+$\frac K3 > \frac K4$, and leaves $\frac K6 < \frac K4$ for period~3, because for her period~3 is the
+discounted future ($\beta\delta = \frac12$) and period~2 is the present. The plan is time-inconsistent:
+player~1's plan is not carried out.
+
+\textbf{Benchmark.} With exponential discounting ($\beta = 1$, $\delta = 1$) the plan is $K/3$ in every
+period, and the period-2 self would carry it out.
+
+\interp The two selves disagree about the split of the future. The disagreement arises from $\beta < 1$
+alone: it makes the \emph{current} self weigh today against all later dates, and later selves repeat
+the same bias when they become the current self. A naive planner is surprised again and again; a
+sophisticated one (Tadelis 8.16) foresees the revision and may want to commit.
+
+\verify \texttt{check\_L04.py} maximizes the three objectives with sympy (the $\delta=1$, $\beta = \frac12$
+case and the exponential benchmark), confirms $(\frac K2, \frac K4, \frac K4)$, then
+$K_2 = \frac K2$, player~2's plan $(\frac K3, \frac K6)$, and checks by a grid search at $K = 90$ that
+these are the maximizers. Output line: \texttt{tadelis-8-15: naive plan (K/2, K/4, K/4); self-2 plan
+(K/3, K/6)}. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Solving the \emph{sophisticated} problem (substituting player~2's reply into player~1's objective, which
+  gives $(\frac K2, \frac K3, \frac K6)$): part~(a) asks for the naive plan, in which player~1 ignores the
+  revision.
+  \item Weighting period~3 by $\beta\delta^2$ in player~2's problem: from period~2 the weight is
+  $\beta\delta$.
+  \item Using $\beta = \frac12$ for the first term as well: today's utility has weight~1.
+\end{itemize}
+
+\answer{(a) $x_1^* = \frac K2$, $x_2^* = x_3^* = \frac K4$. (b) $K_2 = \frac K2$; player~2 chooses
+$x_2 = \frac K3$, $x_3 = \frac K6$: she consumes more in period~2 and leaves less for period~3 than
+player~1 planned.}
+\end{exsol}

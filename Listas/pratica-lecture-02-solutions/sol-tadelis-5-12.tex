@@ -1,0 +1,78 @@
+% Solution: Tadelis (2013) Exercise 5.12 "Asymmetric Bertrand". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.12}{98}{Advanced}{4}
+\asked In the Bertrand game with $c_1(q_1) = q_1$, $c_2(q_2) = 2q_2$, demand $p = 100 - q$ and prices in
+increments of $\varepsilon = \$0.01$: (a) show there are Nash equilibria other than $(1.99, 2.00)$;
+(b) how many Nash equilibria are there?
+
+\method Bertrand competition with differentiated costs (Lecture~2, slides~29--39; Tadelis
+\S5.2.4, pp.~88--91), where the proof of uniqueness of $p_1 = p_2 = c$ used undercutting; here the
+undercut is by one grid step. Work case by case on the order of the two prices, giving for
+each profile either a profitable deviation or a proof that none exists. Prices are multiples of
+$\varepsilon$ in $[0, \infty)$; a price of $100$ or more sells nothing.
+
+\solution
+\textbf{Payoffs.} Let $D_i = 100 - p_i$ if $p_i < p_j$, $\tfrac12(100 - p_i)$ if $p_i = p_j$ and $0$ if $p_i > p_j$ (zero too if $p_i \ge 100$).
+Then $\pi_1 = (p_1 - 1) D_1$ and $\pi_2 = (p_2 - 2) D_2$.
+
+\textbf{Lemma (undercutting beats a tie).} For $1.02 \le p < 100$, a firm with marginal cost $1$ tied at $p$
+earns strictly more by cutting to $p - \varepsilon$. Write $m = p - 1$ and $d = 100 - p > 0$. The tie pays $\tfrac12 m d$;
+the undercut pays $(m - \varepsilon)(d + \varepsilon)$; the difference is
+\[
+  (m - \varepsilon)(d + \varepsilon) - \tfrac12 m d = \Bigl(\tfrac m2 - \varepsilon\Bigr) d + \varepsilon(m - \varepsilon) > 0,
+\]
+since $m \ge 2\varepsilon$ makes the first term non-negative and $m > \varepsilon$ makes the second positive.
+
+\textbf{Profitable deviations, by case.}
+\begin{itemize}
+  \item \emph{$p_1 = p_2 = p$.} If $p < 2$, firm~2 sells $\tfrac12(100 - p) > 0$ at a negative margin; raising its price above $p$
+  gives $0$, better. If $2 \le p < 100$, firm~1 undercuts, strictly better by the Lemma. If $p \ge 100$ firm~1 earns $0$ and gains by
+  charging $50.50$. Never an equilibrium.
+  \item \emph{$p_1 > p_2$.} Firm~1 sells nothing. If $p_2 < 2$, firm~2 sells $100 - p_2 > 0$ at margin $p_2 - 2 < 0$; raising its price
+  above $p_1$ earns $0$, better. If $p_2 \ge 2$, firm~1 charges $\min\{p_2 - \varepsilon, 50.50\}$, which wins the market at a margin of
+  at least $0.99$, a strictly positive profit. Never an equilibrium.
+\end{itemize}
+
+\textbf{$p_1 < p_2$: the equilibria.} Firm~2 sells nothing and earns $0$.
+\begin{itemize}
+  \item \emph{Firm~2 has no profitable deviation iff $p_1 \le 2.00$ (and $p_1 < 100$).} If $p_1 \ge 2.01$ and $p_1 < 100$, matching $p_1$ gives it
+  the half market at margin $p_1 - 2 > 0$. If $p_1 \le 2.00$, any price $\le p_1$ has margin $\le 0$ and any price above $p_1$ sells nothing:
+  no gain. (If $p_1 \ge 100$, firm~1 earns $0$ and gains by charging $50.50$, so this is not an equilibrium either.)
+  \item \emph{Firm~1, with $p_1 \le 2.00$.} It earns $\pi_1(p_1) = (p_1 - 1)(100 - p_1)$, which \emph{increases} in $p_1$ up to $50.50$. It would
+  raise the price to $\min\{p_2 - \varepsilon, 50.50\}$ if that exceeds $p_1$, so it needs $p_2 - \varepsilon \le p_1$: $p_2 = p_1 + \varepsilon$.
+  \item \emph{The ends.} If $p_1 \le 1.00$, then $\pi_1 \le 0$: for $p_1 < 1.00$ raising the price above $p_2$ gives $0$, better; for $p_1 = 1.00$,
+  $p_2 = 1.01$ and matching $1.01$ pays $\tfrac12(0.01)(98.99) > 0$, better. So $p_1 \ge 1.01$.
+  \item \emph{All these are equilibria.} For $1.01 \le p_1 \le 2.00$ and $p_2 = p_1 + \varepsilon$: firm~1 earns $\pi_1 > 0$; a lower price earns less
+  (monotonicity), matching $p_2$ earns less (Lemma, because $p_2 \ge 1.02$), a higher price earns $0$. Firm~2 has no profitable deviation
+  because $p_1 \le 2.00$.
+\end{itemize}
+
+\textbf{(a)} Besides $(1.99, 2.00)$: for instance $(1.01, 1.02)$, $(1.50, 1.51)$, $(2.00, 2.01)$.
+
+\textbf{(b)} Exactly the profiles $(p_1, p_2) = (p_1, p_1 + 0.01)$ with $p_1 \in \{1.01, 1.02, \dots, 2.00\}$.
+
+\answer{(a) For example $(1.50, 1.51)$ or $(2.00, 2.01)$: firm~1 prices one cent below firm~2 and firm~2 earns zero but cannot
+profitably undercut. (b) There are exactly $100$ pure-strategy Nash equilibria: $(p_1, p_1 + 0.01)$ for
+$p_1 = 1.01, 1.02, \dots, 2.00$, which includes the book's $(1.99, 2.00)$.}
+
+\interp The low-cost firm is the only one that sells, and it sets the highest price that still undercuts the rival; the
+rival's price only needs to be one cent above, and the rival cannot match without losing money
+as long as $p_1 \le 2.00 = c_2$. The range $[1.01, 2.00]$ is the set of prices between the two marginal
+costs that firm~1 can hold against the price-taking rival. With continuous prices the candidate limit
+$(2,2)$ is not an equilibrium (Tadelis \S5.2.4): there is no ``one cent below'' on a continuum, so
+firm~1 always wants to move closer to $p_2$. The grid model therefore has a multiplicity that the
+continuous model lacks; with symmetric costs on the grid, by contrast, Tadelis \S5.2.4 finds just two
+equilibria, at $c$ and at $c + \varepsilon$.
+
+\verify \texttt{check\_L2.py} computes the best-reply sets of both firms on the full grid $0.00, 0.01, \dots, 100.00$ in integer
+arithmetic and intersects them: the equilibria are exactly the $100$ pairs $(k, k+1)$ cents for $k = 101, \dots, 200$.
+It also checks the book's $(1.99, 2.00)$ and $(2.00, 2.01)$, the non-equilibria $(1.00, 1.01)$ and $(2.01, 2.02)$,
+and the Lemma for every integer price from $2.00$ to $99.99$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Stating that $(1.99, 2.00)$ is the only equilibrium because ``firm~2 charges its cost''. Firm~2 can charge anything
+  that leaves it with zero sales; equilibrium pins $p_2$ only through firm~1's best reply.
+  \item Taking $p_1 = p_2 = 2.00$ as an equilibrium: firm~1 gains by undercutting by one cent.
+  \item Forgetting the lower end: $(1.00, 1.01)$ is not an equilibrium, since firm~1 earns $0$ and prefers to match $1.01$.
+\end{itemize}
+\end{exsol}

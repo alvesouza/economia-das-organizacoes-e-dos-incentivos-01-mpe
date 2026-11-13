@@ -1,0 +1,72 @@
+% Solution: Tadelis (2013) Exercise 12.8 "Jury Voting". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.8}{268--269}{Exam}{4}
+\asked In the jury game of \S12.4 (prior $q>\tfrac12$ of guilt, signals with precision $p>\tfrac12$,
+payoff $1$ for a correct verdict): (a) show that $CC$ for both is a BNE of the two-juror
+(unanimity) game; (b) compare with a single decider; (c) three jurors, majority rule: when is
+voting by signal a BNE?
+
+\method A juror's vote matters only when he is \emph{pivotal}; he must condition his belief
+about guilt on being pivotal (the swing voter's curse, Tadelis pp.~262--264). Strategy $xy$:
+$x$ after signal $\theta_G$, $y$ after $\theta_I$. Posteriors by Bayes' rule:
+$\Pr(G\mid\theta_G)=\dfrac{qp}{qp+(1-q)(1-p)}>q$ and $\Pr(G\mid\theta_I)=\dfrac{q(1-p)}{q(1-p)+(1-q)p}<q$.
+
+\solution
+\textbf{(a)} If juror $j$ plays $CC$, $i$ is pivotal in every state and decides alone. He convicts iff
+$\Pr(G\mid\theta_i)\ge\tfrac12$. After $\theta_G$ this holds; after $\theta_I$ it holds iff
+$q(1-p)\ge(1-q)p$, i.e.\ iff
+\[
+  p\le q .
+\]
+So $(CC,CC)$ is a BNE \emph{if and only if $p\le q$}; for $p\le q$ even the innocent-looking signal is
+too weak to overturn the prior $q$, so everyone convicts. \emph{This is a point where the
+book's statement (``both choosing $CC$ is a BNE'', p.~264) needs the condition $p\le q$:}
+for $p>q$ a juror with $\theta_I$ facing a sure convictor is pivotal and strictly prefers $A$.
+For $p>q$ the pure BNE are $(AA,AA)$ (nobody can change an acquittal) and the asymmetric
+$(CA,CC)$, $(CC,CA)$ (one juror always convicts and the other votes by his signal, being
+pivotal in every state); voting by signal for both, $(CA,CA)$, is not a BNE for any $p$, because
+a juror with $\theta_I$ who is pivotal knows the other saw $\theta_G$ and, with
+$\Pr(G\mid\theta_I,\theta_G)=\dfrac{q(1-p)p}{q(1-p)p+(1-q)p(1-p)}=q>\tfrac12$, prefers $C$.
+
+\textbf{(b)} Payoff = probability of a correct verdict. A single decider who votes by signal gets
+$p$ (the verdict equals his signal, correct with probability $p$ in each state); always
+convicting gives $q$; so he does best with $\max\{p,q\}$: by signal iff $p>q$. In the
+two-juror game: $(CC,CC)$ gives $q$ (when $p\le q$), $(AA,AA)$ gives $1-q<q$ and $(CA,CC)$ gives $p$
+(when $p>q$). So a single decider is never worse than any equilibrium of the two-juror game
+($\max\{p,q\}\ge q,\,p,\,1-q$) and is strictly better when $p>q$ than every \emph{symmetric}
+equilibrium (the only one is $(AA,AA)$, paying $1-q$); if one reads the book's $(CC,CC)$ as the
+equilibrium, the single decider's $p$ beats its $q$ when $p>q$. The reason: under unanimity a
+juror is pivotal only when the other convicts, so the two jurors cannot both use their
+information (swing voter's curse), while one decider faces no such problem. The only two-juror
+equilibria that use information, $(CA,CC)$ and $(CC,CA)$, simply make one juror the single decider.
+
+\textbf{(c)} Three jurors, conviction iff at least two votes $C$. Suppose the others vote by signal ($CA$).
+Juror $i$ is pivotal iff the others split, one $\theta_G$ and one $\theta_I$ (one votes $C$, one $A$): probability $2p(1-p)$
+in both states of the world, so the split carries no information about $G$. Then
+\[
+  \Pr(G\mid\theta_i=\theta_G,\text{split})=\frac{qp}{qp+(1-q)(1-p)}>q>\tfrac12,\qquad
+  \Pr(G\mid\theta_i=\theta_I,\text{split})=\frac{q(1-p)}{q(1-p)+(1-q)p}.
+\]
+After $\theta_G$ convicting is optimal; after $\theta_I$ acquitting is optimal iff the second
+posterior is at most $\tfrac12$, i.e.\ $p\ge q$. So $(CA,CA,CA)$ is a BNE iff
+\[
+  p\ \ge\ q,
+\]
+the same condition as for a single decider: when the others' split cancels out, a pivotal juror
+reads only his own signal.
+
+\interp Unanimity makes the pivotal event ``the other juror voted $C$'', which erases the juror's
+own contrary signal; majority of three makes it ``the others disagree'', which is uninformative.
+This is why Feddersen--Pesendorfer find that more than two jurors can restore informative voting.
+
+\verify \texttt{check\_E2.py} enumerates all pure profiles of the two-juror game for
+$(q,p)=(\tfrac35,\tfrac45)$, $(\tfrac45,\tfrac35)$, $(\tfrac35,\tfrac35)$: $p>q$: $\{AA,AA;\,CA,CC;\,CC,CA\}$;
+$p<q$: $\{AA,AA;\,CC,CC\}$; $p=q$: all four. It asserts that $(CC,CC)$ is a BNE iff $p\le q$, that $(CA,CA)$ never is,
+the single-decider payoffs $p$ and $q$ and, on an 81-point grid of $(q,p)$, that $(CA,CA,CA)$ is a
+BNE of the three-juror majority game iff $p\ge q$. Tadelis gives no answer.
+
+\answer{(a) $(CC,CC)$ is a BNE iff $p\le q$ (for $p>q$ it fails). (b) A single decider gets
+$\max\{p,q\}$: at least as much as any equilibrium of the two-juror game, and strictly more
+than the symmetric ones when $p>q$ (the unanimity rule wastes the jurors' information through the
+swing voter's curse). (c) Voting by signal is a BNE of the three-juror majority game iff
+$p\ge q$.}
+\end{exsol}

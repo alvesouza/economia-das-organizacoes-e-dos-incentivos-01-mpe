@@ -1,0 +1,84 @@
+% Solution: Tadelis (2013) Exercise 9.6 "Augmented Competition". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 9.6}{189}{Exam level}{4}
+\asked A Cournot game ($c = 10$, $p = 100 - q$) followed by a standard-setting game: find the stage
+equilibria and the symmetric Pareto-optimal outcomes, the $\delta$ that support them, the best symmetric SPE
+at $\delta = 0.5$, and what happens as $\delta \to 0$.
+
+\method Carrot and stick over a continuous first stage (Tadelis \S9.4, pp.~180--184; Thm.~9.1, p.~185).
+Stage~2 supplies the carrot $(B,b)$ and the stick $(A,a)$; the stage-1 constraint is
+\emph{(stage-1 gain from deviating)} $\le \delta\,[\text{carrot} - \text{stick}]$ (Lecture~5, slide~15). The
+Cournot model is the one of the slides' homework (slide~34).
+
+\solution
+\textbf{(a) Stage equilibria.} \emph{Stage~1:} $\pi_i = (90 - q_i - q_j)q_i$, best response $q_i = \frac{90 - q_j}{2}$,
+equilibrium $q_1 = q_2 = 30$, price $40$, profit $900$ each. \emph{Stage~2:}
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$a$} & \multicolumn{1}{c}{$b$}\\ \cline{2-3}
+$A$ & $\br{100},\ \br{100}$ & $0,\ 0$ \\ \cline{2-3}
+$B$ & $0,\ 0$ & $\br{300},\ \br{300}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+The two pure equilibria are $(A,a)$ with $(100,100)$ and $(B,b)$ with $(300,300)$.
+
+\textbf{(b) Pareto-optimal symmetric outcomes.} \emph{Stage~1:} joint profit $(90 - Q)Q$ is maximal at $Q = 45$
+(price $55$, profit $2025$), so $q_i = 22.5$ and $\pi_i = 1012.5 > 900$. \emph{Stage~2:} $(B,b)$ with $(300,300)$.
+
+\textbf{(c) Support.} Strategies: $q_i = 22.5$ in stage~1; in stage~2 play $(B,b)$ after $(22.5,22.5)$ and $(A,a)$ after
+any other history. Stage~2 is a stage equilibrium after every history, so only stage~1 needs checking. The best
+deviation against $22.5$ is $q_i = \frac{90 - 22.5}{2} = 33.75$, with profit $33.75^2 = 1139.0625$, followed by $(A,a)$
+worth $100$:
+\[
+  1012.5 + 300\,\delta \;\ge\; 1139.0625 + 100\,\delta
+  \iff 200\,\delta \ge 126.5625 \iff \delta \;\ge\; \frac{81}{128} \approx 0.633 .
+\]
+For $\delta \ge \frac{81}{128}$ the Pareto-optimal outcomes of both stages are an SPE path.
+
+\textbf{(d) $\delta = 0.5 < \frac{81}{128}$.} The monopoly split is not supportable. The best symmetric SPE keeps
+$(B,b)$ in stage~2 after the path and $(A,a)$ after deviations, and chooses the lowest symmetric $q$ whose
+deviation is deterred. A symmetric $q$ earns $\pi(q) = (90 - 2q)q$ and the best deviation earns
+$\bigl(\frac{90 - q}{2}\bigr)^2$, so the constraint is
+\[
+  \Bigl(\tfrac{90 - q}{2}\Bigr)^{2} - (90 - 2q)q \;\le\; \delta\,(300 - 100) = 100
+  \iff \tfrac94\,q^2 - 135\,q + 2025 \le 100 ,
+\]
+whose solutions are $q \in [\frac{70}{3},\, \frac{110}{3}]$ (roots $\frac{135 \pm 30}{4.5}$). Profit falls as $q$
+rises above $22.5$, so the best symmetric SPE has
+\[
+  q_1 = q_2 = \tfrac{70}{3} \approx 23.33, \qquad \pi_i = \tfrac{130}{3}\cdot\tfrac{70}{3} = \tfrac{9100}{9} \approx 1011.1,
+\]
+followed by $(B,b)$: total value $1011.1 + 0.5\cdot300 \approx 1161.1$. At this $q$ the incentive
+constraint holds with equality.
+
+\textbf{(e) As $\delta \to 0$.} The same constraint with $\delta$ in place of $\frac12$ reads
+$\frac94q^2 - 135q + 2025 \le 200\delta$, with lower root
+\[
+  q_{\min}(\delta) = 30 - \frac{20\sqrt2}{3}\sqrt{\delta} .
+\]
+It equals $\frac{70}{3}$ at $\delta = \frac12$, $22.5$ at $\delta = \frac{81}{128}$, and tends to the Cournot quantity $30$
+as $\delta \to 0$. So the first-stage profit of the best symmetric SPE falls continuously to $900$, while
+stage~2 still reaches $(B,b)$ (the efficient stage equilibrium needs no future: it is a Nash equilibrium of
+the last stage on its own).
+
+\interp The standard-setting game is a carrot for the Cournot game. With patience the firms restrain
+output to earn $(B,b)$ later; with none, they play the Cournot equilibrium in stage~1 and still coordinate
+on the better standard in stage~2, because that is an equilibrium whatever happens.
+
+\verify \texttt{check\_L05.py} solves Cournot (30,30, profit 900), the joint maximum (45, 2025), the
+deviation ($\frac{135}{4}$, $\frac{18225}{16}$), $\delta^* = \frac{81}{128}$ (both sides), the roots $\frac{70}{3}$ and
+$\frac{110}{3}$ at $\delta = \frac12$, the profit $\frac{9100}{9}$, and $q_{\min}(\delta)$ with its values at $\frac12$ and $\frac{81}{128}$.
+
+\mistakes
+\begin{itemize}
+  \item Using the mixed stage-2 equilibrium ($A$ with probability $\frac34$, payoff $75$) as the stick. The
+  exercise asks for pure strategies; with the mixed stick the threshold would be $\frac{9}{16} = 0.5625$,
+  still above $0.5$.
+  \item Forgetting that the deviation against $22.5$ is $33.75$, not the Cournot quantity $30$.
+\end{itemize}
+
+\answer{(a) Cournot $q_i = 30$, profit $900$; stage~2 pure equilibria $(A,a)$ and $(B,b)$. (b) $q_i = 22.5$ (profit
+$1012.5$) and $(B,b)$. (c) $\delta \ge \frac{81}{128} \approx 0.633$. (d) At $\delta = 0.5$: $q_i = \frac{70}{3}$ (profit $\frac{9100}{9}$) in stage~1,
+then $(B,b)$. (e) The lowest sustainable quantity is $q_{\min} = 30 - \frac{20\sqrt2}{3}\sqrt\delta \to 30$, the Cournot level, so
+profits fall to $900$ in stage~1 while stage~2 stays at $(B,b)$.}
+\end{exsol}

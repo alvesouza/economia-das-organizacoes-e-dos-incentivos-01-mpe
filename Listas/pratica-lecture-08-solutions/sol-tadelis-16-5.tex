@@ -1,0 +1,52 @@
+% Solution: Tadelis (2013) Exercise 16.5 "Drug Ads". Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Tadelis Exercise 16.5}{337}{Foundations}{3}
+\asked (a) The extensive form; (b) a separating PBE; (c) a pooling PBE; (d) what changes when
+$R > r > c > 0$ instead of $R > c > r > 0$.
+
+\method The five-step method: guess a profile, Bayes' rule, the consumer's reply, the company's
+incentive check, off-path beliefs (Tadelis \S16.1, pp.~319--323). The consumer buys iff his belief
+that the drug is effective is at least $\frac12$: buying pays $\mu - (1 - \mu) = 2\mu - 1$ against $0$.
+
+\solution \textbf{(a) Tree.} Nature picks $H$ or $L$ with probability $\frac12$; the company chooses
+$A$ (cost $c$) or $N$; the consumer, seeing only the message, buys ($B$) or not ($\bar B$).
+Payoffs (company, consumer): after $H$: $(R - c, 1)$, $(-c, 0)$ for $A$ and $(R, 1)$, $(0, 0)$ for
+$N$; after $L$: $(r - c, -1)$, $(-c, 0)$ for $A$ and $(r, -1)$, $(0, 0)$ for $N$.
+\sigtreenames{$H$}{$L$}{$A$}{$N$}{$B$}{$\bar B$}{$\frac12$ each}
+\sigtree{R-c,1}{-c,0}{r-c,-1}{-c,0}{R,1}{0,0}{r,-1}{0,0}
+(The left branches are message $A$, the right branches message $N$; upper node = type $H$, replies
+$B$ above and $\bar B$ below.)
+
+\textbf{(b) Separating PBE ($R > c > r$).} Strategies: $H$ plays $A$, $L$ plays $N$. Beliefs:
+$\mu(A) = 1$, $\mu(N) = 0$. Replies: buy after $A$ ($\mu = 1 \ge \frac12$), do not buy after $N$.
+Incentives: $H$ gets $R - c > 0$ against $0$ from $N$ (since $R > c$); $L$ gets $0$ from $N$ against
+$r - c < 0$ from imitating $A$ (since $c > r$). There are no off-path messages. The reverse
+profile ($H$: $N$, $L$: $A$) fails: $\mu(N) = 1$ makes the consumer buy, so $L$ would gain $r > -c$
+by switching to $N$.
+
+\textbf{(c) Pooling PBE ($R > c > r$).} Pooling on $A$ is not an equilibrium: $L$ earns at most
+$r - c < 0$ (the consumer buys at best, since $\mu(A) = \frac12$), while deviating to $N$ earns him
+at least $0$ whatever the consumer does; no off-path belief can prevent this.
+Pooling on $N$ is: both types play $N$, $\mu(N) = \frac12$, the consumer is indifferent and buys
+(or randomizes). The types get $R$ and $r$. A deviation to $A$ gives $H$ at most $R - c < R$ and $L$
+at most $r - c < r$, whatever the consumer does after $A$, so every off-path belief $\mu(A)$ works.
+PBE: both $N$; consumer buys after $N$; after $A$ he best-replies to any belief $\mu(A) \in [0,1]$.
+(If he does not buy after $N$ the types earn $0$; the profile is still an equilibrium provided he does
+not buy after $A$ either, i.e.\ $\mu(A) \le \frac12$.)
+
+\textbf{(d) $R > r > c > 0$.} Advertising is now cheaper than the low type's revenue from a sale,
+so $L$ would mimic: in $(A_H, N_L)$ the consumer buys after $A$, and $L$ earns $r - c > 0$ from
+imitating against $0$. There is no separating PBE (the reverse profile fails as before). Pooling on
+$N$ still works, and now pooling on $A$ works too: $\mu(A) = \frac12$, the consumer buys, the types
+get $R - c$ and $r - c > 0$, and a deviation to $N$ is deterred by the off-path belief
+$\mu(N) < \frac12$ (no purchase, payoff $0 < r - c$). Advertising stops separating because it is
+cheap relative to the low type's gain: single crossing fails.
+
+\verify \texttt{check\_T1.py} enumerates all pure profiles for $(R, c, r) = (10, 6, 3)$ and
+$(10, 2, 3)$ on a grid of beliefs of step $\frac1{60}$: the first has the separating PBE $(A_H, N_L)$ and
+pooling only on $N$; the second has no separating PBE and pooling on $A$ and on $N$. Tadelis prints
+no answer.
+
+\answer{(b) $H$ advertises, $L$ does not; $\mu(A) = 1$, $\mu(N) = 0$; buy after $A$ only.
+(c) Both $N$, buy after $N$, any belief after $A$ (pooling on $A$ is not an equilibrium).
+(d) No separating PBE; pooling on $N$ and also on $A$ (with $\mu(N) < \frac12$ after the off-path $N$).}
+\end{exsol}

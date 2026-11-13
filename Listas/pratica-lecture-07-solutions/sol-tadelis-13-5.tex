@@ -1,0 +1,67 @@
+% Solution: Tadelis (2013) Exercise 13.5 "Mixed Strategies". Input by \solitem. Check: check_E3.py.
+\begin{exsol}{Tadelis Exercise 13.5}{286}{Advanced}{5}
+\asked First-price auction, two bidders, values $\theta_i\in\{4,8\}$ equiprobable: (a) the low type
+bids $4$; (b) the high type never bids above $6$; (c) check the proposed equilibrium; (d) revenue
+against the English auction.
+
+\method Symmetric BNE, ties broken by a fair coin. Winning probabilities are weakly increasing in
+the bid; a mixed strategy needs equal payoffs on its support (Tadelis \S6.3, \S13.1.3).
+Let $W(b)$ be the probability that a bid $b$ wins.
+
+\solution
+\textbf{(a)} A low type never bids above $4$ (winning there pays more than $4$; bid $4$ already
+guarantees at least $0$), and the bid $4$ earns exactly $0$.
+\emph{No atom below $4$.} Suppose a bid $\beta<4$ is used with positive probability. A rival low type
+then also bids $\beta$ with positive probability, so $\beta$ ties with positive probability.
+Raising the bid to $\beta+\varepsilon$ turns each such tie into a sure win, a discrete gain in $W$,
+at cost at most $\varepsilon$; so for small $\varepsilon$ the deviation pays, contradicting optimality.
+This rules out a pure $b_L<4$ and any mixture over two different bids below $4$.
+\emph{No atomless mixing below $4$.} If the low type's support were an atomless set below $4$, with infimum
+$\underline b<4$ and supremum $\bar b\le4$, the lowest bids win with probability close to $0$ (they can
+beat only rival low types bidding even lower), so their payoff tends to $0$, whereas $\bar b<4$
+beats every rival low type and earns at least $\tfrac12(4-\bar b)>0$; the two cannot be equal. If $\bar b=4$
+the same argument applies at $\underline b$. Hence the low type's bid is the pure bid $b_L=4$.
+
+\textbf{(b)} Given $b_L=4$, a high type bidding $4+\varepsilon$ beats every rival low type
+(probability $\tfrac12$), so his payoff is at least $\tfrac12(4-\varepsilon)\to2$. A bid $b>6$ earns at most
+$8-b<2$ (the price is at most $b$ and winning probability is at most $1$), which is strictly
+less than $\tfrac12(4-\varepsilon)$ for $\varepsilon$ small. So no bid above $6$ is optimal.
+
+\textbf{(c)} \emph{The uniform distribution on $[4,6]$ is not an equilibrium strategy of the high type;
+the equilibrium has cdf $G(b)=\dfrac{b-4}{8-b}$ on $[4,6]$.} A high type bidding $b\in(4,6]$ wins against all
+low types (probability $\tfrac12$) and against a high type bidding below $b$ (probability $\tfrac12G(b)$):
+\[
+  U_H(b)=(8-b)\Bigl(\tfrac12+\tfrac12G(b)\Bigr).
+\]
+Mixing requires $U_H$ constant on the support. As $b\downarrow4$, $U_H\to4\cdot\tfrac12=2$ (a bid exactly
+$4$ ties with low types and earns only $1$), so $U_H\equiv2$ gives
+$1+G(b)=\dfrac4{8-b}$, i.e.\ $G(b)=\dfrac{b-4}{8-b}$, with $G(4)=0$, $G(6)=1$ and density $\dfrac4{(8-b)^2}$.
+With the \emph{uniform} $G(b)=(b-4)/2$ the payoff is $U_H(b)=\tfrac{(8-b)(b-2)}4$, equal to $2$ at $b=4^+$
+and $b=6$ but $\tfrac94$ at $b=5$: the high type would deviate to a pure bid near $5$, so uniform
+mixing is not a BNE (the book's wording in (c) is imprecise on this point). With the correct $G$:
+the high type is indifferent over $[4,6]$ (payoff $2$), strictly worse above $6$ ($8-b<2$) and
+strictly worse below $4$ (payoff $0$); the low type earns $0$ at $b_L=4$ and
+$(4-b)W(b)<0$ at any $b>4$. So $b_L=4$ and $b_H\sim G$ form a BNE.
+
+\textbf{(d) Revenue.} Both low ($\tfrac14$): the price is $4$. One high ($\tfrac12$): the high type
+wins and pays $b_H\sim G$, $E[b_H]=\int_4^6\tfrac{4b}{(8-b)^2}db$. Both high ($\tfrac14$): the maximum of two
+draws, cdf $G^2$. Evaluating,
+\[
+  \text{Rev}=\tfrac14\cdot4+\tfrac12E[b_H]+\tfrac14E[\max]=5 .
+\]
+The English auction gives the second-highest value: $8$ if both are high ($\tfrac14$), else $4$:
+$\tfrac14\cdot8+\tfrac34\cdot4=5$. The two are equal: revenue equivalence. (With the uniform on
+$[4,6]$ one would get $\tfrac{29}6<5$, another sign that it is not the equilibrium.)
+
+\interp With only two values, the high type must randomize to avoid being undercut by a pure
+bid; the support starts at the low type's value because bidding below it never wins against a
+low type's bid of $4$, and the shading is exactly enough to make revenue equal to the English auction's.
+
+\verify \texttt{check\_E3.py}: sympy verifies $G(4)=0$, $G(6)=1$, $U_H\equiv2$ on $(4,6]$; shows
+$U_H^{\text{unif}}(5)=\tfrac94>2$; integrates $E[b_H]$ and $E[\max]$ to obtain revenue exactly $5=$ English
+revenue; and the low type's strictly negative payoff from bids above $4$. Tadelis gives no answer.
+
+\answer{(a) $b_L=4$. (b) No high bid above $6$. (c) The high type mixes on $[4,6]$ with cdf
+$G(b)=\frac{b-4}{8-b}$ (the uniform fails: $U_H(5)=\frac94>2$). (d) Revenue $5$, equal to the English auction's
+$\frac14\cdot8+\frac34\cdot4=5$.}
+\end{exsol}

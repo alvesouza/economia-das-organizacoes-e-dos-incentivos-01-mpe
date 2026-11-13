@@ -1,0 +1,75 @@
+% Solution: MWG (1995) Exercise 8.C.1 (IESDS and never-best-response elimination). Input by \solitem.
+% Check: check_L2.py.
+\begin{exsol}{MWG Exercise 8.C.1}{262}{Advanced}{3}
+\asked Argue that if iterated elimination of strictly dominated strategies leaves a unique
+prediction, iterated elimination of strategies that are never a best response leaves the same one.
+
+\method A two-inclusions argument. A strictly dominated strategy is never a best reply, so
+never-best-response elimination removes \emph{at least} what IESDS removes, round by round; and
+elimination of never-best-replies can never remove everything, because a best reply exists in a
+finite game. Definitions: iterated strict dominance (MWG \S8.B) and never-best-response elimination,
+MWG Definitions~8.C.1--8.C.2 (rationalizable strategies; MWG \S8.C, pp.~242--245); the slides use the same idea for
+rationalizability (Lecture~2, slides~11--13). The game is finite.
+
+\solution
+\textbf{Notation.} $D^0_i = R^0_i = S_i$. In round $k$,
+\begin{itemize}
+  \item $D^k_i$ = strategies in $D^{k-1}_i$ not strictly dominated (by a pure or mixed strategy
+  over $D^{k-1}_i$) against every $s_{-i} \in D^{k-1}_{-i}$: iterated strict dominance;
+  \item $R^k_i$ = strategies in $R^{k-1}_i$ that are a best reply, among all of $S_i$, to some belief over
+  $R^{k-1}_{-i}$: iterated removal of never-best-replies, whose limit $R^\infty$ is the set of
+  rationalizable strategies (MWG Definition~8.C.2).
+\end{itemize}
+Let $D^\infty = \bigcap_k D^k$ and $R^\infty = \bigcap_k R^k$; suppose $D^\infty = \{s^*\}$.
+
+\textbf{Step 1: $R^k \subseteq D^k$ for every $k$.} By induction. True for $k = 0$. Suppose
+$R^{k-1} \subseteq D^{k-1}$, and take $s_i \in R^k_i$ with $s_i \notin D^k_i$. Then $s_i$ is strictly
+dominated by some $\sigma_i$ against every $s_{-i} \in D^{k-1}_{-i}$, hence against every belief
+supported on $D^{k-1}_{-i}$ (an expectation of strictly positive differences is strictly positive). Beliefs over $R^{k-1}_{-i}$ are supported on
+$R^{k-1}_{-i} \subseteq D^{k-1}_{-i}$, so against every belief over $R^{k-1}_{-i}$ the strategy $s_i$ is
+strictly worse than $\sigma_i$ and hence never a best reply. That contradicts $s_i \in R^k_i$. So
+$R^k_i \subseteq D^k_i$. Taking the limit, $R^\infty \subseteq D^\infty$.
+
+\textbf{Step 2: $R^\infty \ne \emptyset$.} Each $R^k_i$ is non-empty by induction: given $R^{k-1}_{-i} \ne
+\emptyset$, take any belief over it; a best reply in $S_i$ exists because $S_i$ is finite, and it
+lies in $R^{k-1}_i$ (if it had been deleted in an earlier round $m \le k-1$, it would not be a best reply
+to any belief over $R^{m-1}_{-i} \supseteq R^{k-1}_{-i}$). So it lies in $R^k_i$. The sets are finite,
+nested and non-empty, hence their intersection $R^\infty$ is non-empty.
+
+\textbf{Step 3: conclusion.} $\emptyset \ne R^\infty \subseteq D^\infty = \{s^*\}$ forces
+$R^\infty = \{s^*\}$: elimination of never-best-replies yields the same unique prediction. $\blacksquare$
+
+\answer{Every strictly dominated strategy is never a best reply, so round by round never-best-reply
+elimination removes at least what IESDS removes: $R^k \subseteq D^k$. Since a best reply always exists,
+$R^\infty$ is non-empty. If IESDS leaves only $s^*$, then $\emptyset \ne R^\infty \subseteq \{s^*\}$, so the
+rationalizable set is also $\{s^*\}$.}
+
+\interp Both procedures encode ``rational players who know that the others are rational''
+(Lecture~2, slide~7 for IESDS, slides~11--13 for rationalizability), and the exercise says that the
+second is never weaker. For two players the two sets are in fact equal (a strategy is never a
+best reply iff it is strictly dominated, Pearce's lemma, noted in MWG \S8.C), so the content is
+in games with three or more players with independent beliefs, where a strategy can be never a best reply
+without being strictly dominated and rationalizability can be strictly sharper. Together with
+exercise 5.1 this gives the chain
+\begin{center}\small
+strict dominant-strategy eq.\ $\Rightarrow$ unique IESDS survivor $\Rightarrow$
+unique rationalizable profile $\Rightarrow$ unique Nash equilibrium.
+\end{center}
+
+\verify \texttt{check\_L2.py} computes both procedures on $500$ random finite two-player games (strategy
+counts $2$--$4$, payoffs in $0,\dots,6$): IESDS with mixed dominators by linear programming, and
+rationalizability by a feasibility LP over mixed beliefs. In every game $R^\infty \subseteq D^\infty$ and
+$R^\infty$ is non-empty; whenever $D^\infty$ is a single profile (more than $30$ games) $R^\infty$ is the same
+profile. (In two-player games they coincide, as the interpretation says.) MWG's solutions manual covers
+this exercise; this argument is self-contained.
+
+\mistakes
+\begin{itemize}
+  \item Claiming the two sets are equal in general: with three or more players and independent
+  beliefs, $R^\infty$ can be strictly smaller than $D^\infty$.
+  \item Forgetting Step~2: ``$R^\infty \subseteq \{s^*\}$'' does not give equality unless $R^\infty$ is
+  non-empty, and non-emptiness is where finiteness (existence of a best reply) is used.
+  \item Letting dominance be pure-only: with mixed dominators the set $D^\infty$ is the right one; with pure
+  dominators the inclusion $R \subseteq D$ still holds, but $D$ is larger.
+\end{itemize}
+\end{exsol}

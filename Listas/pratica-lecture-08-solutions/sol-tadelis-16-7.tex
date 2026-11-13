@@ -1,0 +1,64 @@
+% Solution: Tadelis (2013) Exercise 16.7 "Intuitive Limit Pricing". Input by \solitem. Check: check_T3.py.
+\begin{exsol}{Tadelis Exercise 16.7}{338}{Advanced}{4}
+\asked Show that, of all the separating equilibria of the limit-pricing game of \S16.2, only the best
+separating equilibrium (the one with the lowest first-period output of the low-cost type) satisfies the
+intuitive criterion.
+
+\method Tadelis \S16.2 (pp.~323--332) for the separating set and \S16.3 (pp.~332--335) for the criterion.
+The criterion, in the form of Cho--Kreps and Gibbons' Signaling Requirement 6: after an off-path output
+$q'$, the entrant's belief must put zero weight on every type for which $q'$ is
+equilibrium-dominated, unless that holds for both types. (Tadelis' Def.~16.1 prints $v_2$ in condition~2;
+the sender's payoff $v_1$ is meant.)
+
+\solution \textbf{The separating set.} Costs $1$ (L) and $2$ (H), demand $5 - q$, entry cost $\frac12$, entrant's cost $2$.
+Monopoly profits are $4$ (L, at $q = 2$) and $\frac94$ (H, at $q = \frac32$). In any separating PBE
+H plays its monopoly output $\frac32$ and faces entry (Cournot profit $1$): H's payoff is
+$\frac94 + 1 = \frac{13}{4}$. L produces $q$ in period~1, deters entry, and then earns the monopoly $4$:
+payoff $(4 - q)q + 4$. With the off-path belief ``high cost'' (entry follows any other output) the
+incentive constraints are
+\[
+  \text{H does not mimic: } (3 - q)q + \tfrac94 \le \tfrac{13}{4}
+  \iff q^2 - 3q + 1 \ge 0 \iff q \ge \tfrac{3 + \sqrt5}{2} \approx 2.618,
+\]
+\[
+  \text{L does not deviate: } (4 - q)q + 4 \ge \tfrac{25}{4}
+  \iff q \le 2 + \sqrt{\tfrac74} \approx 3.323,
+\]
+(L's best deviation is $q = 2$, profit $4$, followed by entry and the best reply to the entrant's $1$,
+profit $\frac94$: total $\frac{25}4$). The separating PBE are indexed by $q_1^{1L} = q \in [q_{\min}, q_{\max}] =
+[2.618,\ 3.323]$, $q_{\min} = \frac{3 + \sqrt5}{2}$, and the best one is $q_{\min}$.
+
+\textbf{Equilibrium-dominated outputs.} Let $q'$ be an off-path output. The most the entrant's reaction
+can give a type is no entry, so the highest payoffs are
+\[
+  \bar u_H(q') = (3 - q')q' + \tfrac94, \qquad \bar u_L(q') = (4 - q')q' + 4 .
+\]
+$q'$ is equilibrium-dominated for H iff $\bar u_H(q') < \frac{13}4$, i.e.\ $q' > q_{\min}$ (or
+$q' < 0.382$); for L iff $\bar u_L(q') < (4 - q)q + 4$. Since $(4 - x)x$ is symmetric about $x = 2$, this holds iff
+$q' > q$ or $q' < 4 - q$: outputs between $4 - q$ and $q$ are not dominated for L.
+
+\textbf{Equilibria with $q > q_{\min}$ fail.} Take $q' \in (q_{\min}, q)$. It is equilibrium-dominated for
+H ($q' > q_{\min}$) but not for L: $\bar u_L(q') = (4 - q')q' + 4 > (4 - q)q + 4$ because $2 < q' < q$.
+The criterion forces the belief that the incumbent is low-cost, so the entrant stays out; then L earns
+$\bar u_L(q') > $ his equilibrium payoff and deviates. The equilibrium is not supported by admissible
+beliefs. This covers every $q$ in $(q_{\min}, q_{\max}]$.
+
+\textbf{The best equilibrium survives.} At $q = q_{\min}$, any $q' > q_{\min}$ is equilibrium-dominated for H;
+and for L as well, since $\bar u_L(q') < (4 - q_{\min})q_{\min} + 4$ ($q' > q_{\min} > 2$). Both types
+are dominated, so there is no restriction and the original off-path belief (high cost, entry)
+stays admissible. For $q' < q_{\min}$ that is equilibrium-dominated for H (only $q' < 0.382$), L's best payoff
+$\bar u_L(q') \le 5.38$ is below its equilibrium payoff $7.618$: again both are dominated. For
+$q' \in [0.382, q_{\min})$ H is not dominated, and the criterion requires nothing about L. In every case the
+belief ``high cost'' is admissible and no type gains from deviating. So $q_{\min}$ satisfies the criterion.
+Only $q_1^{1L} = \frac{3 + \sqrt5}{2} \approx 2.62$ survives.
+
+\verify \texttt{check\_T3.py} solves both quadratics with sympy ($q_{\min} = 2.6180$, $q_{\max} = 3.3229$)
+and applies the criterion on a grid of step $0.001$ over $q' \in [0, 6]$ to 20 equally spaced separating
+equilibria in $(q_{\min}, q_{\max}]$ and to $q_{\min}$ itself: all of the first group fail, $q_{\min}$ survives.
+Tadelis prints no answer; the note \texttt{Notas/L08/L08-07-limit-pricing.md} works the same game.
+
+\answer{The separating PBE are $q_1^{1L} \in \bigl[\frac{3 + \sqrt5}{2},\ 2 + \sqrt{7/4}\bigr] \approx [2.62, 3.32]$.
+For $q_1^{1L} > \frac{3 + \sqrt5}{2}$ an output in between is equilibrium-dominated only for the high-cost
+type, so the entrant must believe low cost and stay out, and the low-cost type deviates. Only
+$q_1^{1L} = \frac{3 + \sqrt5}{2}$ survives the intuitive criterion.}
+\end{exsol}

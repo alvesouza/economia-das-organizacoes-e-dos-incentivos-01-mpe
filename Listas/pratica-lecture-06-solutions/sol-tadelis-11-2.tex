@@ -1,0 +1,61 @@
+% Solution: Tadelis (2013) Exercise 11.2 "Holdup". Input by \solitem. Check: check_T2.py (item 10).
+\begin{exsol}{Tadelis Exercise 11.2}{236}{Exam level}{3}
+\asked In an ultimatum game ($T = 1$) where player~2 first invests $L$ or $H$ in the size of the pie:
+(a) find the unique SPE and say whether it is Pareto optimal; (b) find a Nash equilibrium whose outcome
+is better for both players than the SPE.
+
+\method Backward induction, then the set of Nash equilibria (Tadelis \S11.1, pp.~220--224, ultimatum;
+holdup is the commitment problem of a sunk investment). Notation: pie $v_k$, cost $c_k$ for $k \in \{L,H\}$,
+with $v_H > v_L$, $c_H > c_L$ and $v_H - c_H > v_L - c_L$.
+
+\solution
+\textbf{(a) SPE.} In the ultimatum subgame with pie $v_k$, player~2 accepts any offer $\ge 0$ (rejecting
+gives $0$), so player~1 offers $0$ and keeps $v_k$. Player~2's payoff is therefore $-c_k$ whatever she
+invests, and she picks the cheaper option, $L$ (since $c_L < c_H$). The unique SPE:
+\begin{itemize}
+  \item player~2 invests $L$;
+  \item player~1 offers $0$ after either investment; player~2 accepts every offer.
+\end{itemize}
+Payoffs $(v_L,\; -c_L)$. It is \emph{not} Pareto optimal: the total surplus under $H$ is $v_H - c_H$, larger than
+$v_L - c_L$ by assumption, and a transfer to player~2 can make both better off (part~b). This is the holdup
+problem: player~2 pays the investment cost, but player~1 captures the whole pie, so she under-invests.
+
+\textbf{(b) A better Nash equilibrium.} Pick a share $y$ with
+\[
+  c_H - c_L \;<\; y \;<\; v_H - v_L ,
+\]
+which is non-empty because $v_H - c_H > v_L - c_L \iff v_H - v_L > c_H - c_L$. Strategies:
+\begin{itemize}
+  \item player~2: invest $H$; after $H$ accept iff her share is at least $y$; after $L$ accept every offer;
+  \item player~1: offer $y$ after $H$, offer $0$ after $L$.
+\end{itemize}
+Outcome: $H$, share $y$ accepted, payoffs $(v_H - y,\; y - c_H)$. Check that each strategy is a best reply.
+Player~2 gets $y - c_H > -c_L$ from $H$, and deviating to $L$ gives $-c_L$ (she then receives $0$). Player~1
+gets $v_H - y > v_L$ and any other offer after $H$ is either rejected ($0$) or smaller for him. The
+outcome beats the SPE for both players: $v_H - y > v_L$ and $y - c_H > -c_L$.
+
+It is not subgame perfect. After $H$, rejecting an offer $x \in (0, y)$ gives player~2 $0 < x$: an empty
+threat. Its only role is to make player~1 pay $y$, which he does because he believes the threat.
+
+\interp When the investment is sunk before a take-it-or-leave-it offer, the investor is held up. A
+commitment to share the surplus (a contract, a reputation for fairness, or the threat of rejection)
+restores efficiency, but without commitment backward induction gives the inefficient outcome.
+
+\verify \texttt{check\_T2.py} (item~10) enumerates all pure-strategy profiles on an integer grid ($v_L = 6$,
+$v_H = 12$, $c_L = 2$, $c_H = 5$; offers $0,\dots,v_k$; acceptance thresholds): $(v_L, -c_L) = (6,-2)$ is a Nash
+outcome, and the Nash outcomes that give both players more use $H$ with $y \in \{4, 5\}$, i.e.\ $3 < y < 6$.
+Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Saying that player~2 invests $H$ because the pie is larger. In the SPE she gets nothing from it.
+  \item Choosing $y$ outside $(c_H - c_L,\, v_H - v_L)$: below the lower bound she prefers $L$, above the
+  upper bound player~1 prefers the SPE.
+\end{itemize}
+
+\answer{(a) Unique SPE: player~2 invests $L$, player~1 offers $0$ after either investment and player~2
+accepts everything; payoffs $(v_L, -c_L)$. It is not Pareto optimal. (b) Any $y$ with $c_H - c_L < y < v_H - v_L$
+(non-empty by the assumption on net surplus): player~2 invests $H$ and accepts offers $\ge y$, player~1
+offers $y$ after $H$. Payoffs $(v_H - y, y - c_H)$ beat the SPE for both, but the rejection threat is
+not credible.}
+\end{exsol}

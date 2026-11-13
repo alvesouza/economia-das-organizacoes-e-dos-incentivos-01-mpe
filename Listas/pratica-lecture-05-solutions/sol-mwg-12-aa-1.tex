@@ -1,0 +1,77 @@
+% Solution: MWG (1995) Exercise 12.AA.1. Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{MWG Exercise 12.AA.1}{420}{Advanced}{3}
+\asked Argue that no action pair $q$ with $\pi_i(q) < \pi_i(q^*)$ for some $i$ can be a stationary SPNE
+outcome path using Nash reversion. \emph{As printed the claim is false}; the MWG solutions manual (p.~12-46)
+marks it as a first-printing erratum. This solution shows why, and proves what is true.
+
+\method One-stage deviation principle for Nash reversion with normalised payoffs (Lecture~5, slides~21,
+24--25, 28--29; MWG Lemma 12.AA.1 and condition (12.AA.3), pp.~418--419; Tadelis \S10.3, pp.~196--202). Notation:
+$q^* = (q_1^*, q_2^*)$ is the \emph{unique} stage Nash equilibrium, $\tilde\pi_i(q_j) = \max_{q_i'}\pi_i(q_i',q_j)$
+is player~$i$'s best-reply payoff against $q_j$.
+
+\solution
+\textbf{Step 1: the exact condition.} Infinite repetition of $q$ with reversion to $q^*$ is an SPNE iff
+no player gains from a one-period deviation in the cooperative state (the punishment state is a stage
+equilibrium). A deviation is an action $q_i' \ne q_i$:
+\begin{equation}\label{eq:mwg-aa1}
+  \pi_i(q) \;\ge\; (1-\delta)\,\max_{q_i' \ne q_i}\pi_i(q_i',q_j) + \delta\,\pi_i(q^*), \qquad i = 1,2.
+\end{equation}
+MWG's (12.AA.3) writes $\tilde\pi_i(q_j)$ instead of $\max_{q_i'\ne q_i}$. The two differ only when $q_i$ is
+\emph{already} a best reply to $q_j$: then $\tilde\pi_i(q_j) = \pi_i(q)$ is not a deviation at all, and
+(12.AA.3) reads $0 \le \frac{\delta}{1-\delta}[\pi_i(q) - \pi_i(q^*)]$, which is stricter than the true condition
+(\ref{eq:mwg-aa1}). The claim in the exercise rests on the stricter form.
+
+\textbf{Step 2: a counterexample (the manual's).} Stage game:
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $\br{-1},\ 9$ & $-1,\ \br{10}$ \\ \cline{2-3}
+$D$ & $-10,\ -1$ & $\br{0},\ \br{0}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Cell by cell: at $(U,L)$ player~2 gains by $R$ ($10 > 9$); at $(U,R)$ player~1 gains by $D$ ($0 > -1$); at $(D,L)$ player~1 gains by $U$ ($-1 > -10$); $(D,R)$ is an equilibrium. So $q^* = (D,R)$ is the unique equilibrium, with payoff $(0,0)$. 
+Take
+$q = (U,L)$ with $\pi_1(q) = -1 < 0 = \pi_1(q^*)$. Check (\ref{eq:mwg-aa1}):
+\begin{itemize}
+  \item \emph{Player~1} ($U$ is already his best reply to $L$; the only deviation is $D$):
+  $-1 \ge (1-\delta)(-10) + \delta\cdot0 \iff \delta \le \frac{9}{10}$.
+  \item \emph{Player~2} (deviation $R$, payoff $10$): $9 \ge (1-\delta)\,10 + \delta\cdot 0 \iff \delta \ge \frac1{10}$.
+\end{itemize}
+So $(U,L)$ forever is an SPNE outcome path with Nash reversion iff $\frac1{10} \le \delta \le \frac9{10}$, although
+player~1's payoff is below his Nash payoff. Player~1 stays only because deviating costs him $9$ at once
+and the reward (payoff $0$ in the future) is far off: he must be \emph{impatient} enough.
+
+\textbf{Step 3: what is true.}
+\emph{(i)} If $\pi_i(q) < \pi_i(q^*)$ and $q_i$ is \emph{not} a best reply to $q_j$, then $q$ cannot be
+sustained, for any $\delta$: deviating to a best reply gives $\tilde\pi_i(q_j) > \pi_i(q)$ now and
+$\pi_i(q^*) > \pi_i(q)$ forever after, so the deviation payoff is strictly larger than
+$\pi_i(q) = (1-\delta)\pi_i(q) + \delta\pi_i(q)$.
+
+\emph{(ii) The corrected statement} (the manual's): no $q$ with $\pi_i(q) < \pi_i(q^*)$ for \emph{all}
+$i = 1,2$ can be sustained. Proof: $q^*$ is the unique equilibrium and $q \ne q^*$ (the payoffs differ), so $q$
+is not an equilibrium and some player $j$ has $q_j$ not a best reply to $q_{-j}$; since
+$\pi_j(q) < \pi_j(q^*)$, part (i) applies to $j$. Equivalently: if $q_i$ were a best reply for both players,
+$q$ would be a stage equilibrium.
+
+\emph{(iii)} The printed ``some $i$'' version holds when that player's action is not a best reply, as in (i).
+
+\textbf{Step 4: a Cournot illustration.} Stage game $P = 100 - q_1 - q_2$, cost $10q_i$: $q^* = (30,30)$, profit $900$.
+Take $q = (40,40)$: $\pi_i(q) = 400 < 900$ for both. The best reply to $40$ is $25$ with profit $625$, and
+$400 \ge (1-\delta)625 + \delta 900$ is false for every $\delta \in (0,1)$ (the right side exceeds $625$).
+
+\interp Nash reversion is a \emph{reward} for a player whose path payoff is below Nash, so it can only deter
+a deviator who is already getting more now than on the path. The exercise is true when both players do worse
+than Nash, or when the unhappy player has a profitable deviation.
+
+\verify \texttt{check\_L05.py} finds that $(D,R)$ is the only pure equilibrium of the counterexample, the two
+inequalities hold at $\delta = \frac1{10}, \frac12, \frac9{10}$ and fail at $0.91$ (player~1) and $0.09$ (player~2). It also
+checks on 300 random $3\times3$ games with a unique pure equilibrium that no profile below the equilibrium
+payoff for both players is sustainable for $\delta = 0.01, \dots, 0.99$, and the Cournot illustration.
+
+\answer{The claim for ``some $i$'' is false (manual's erratum): with the game above, $(U,L)$ gives player~1 the payoff $-1 < 0$ and
+is sustainable by Nash reversion iff $\frac1{10} \le \delta \le \frac9{10}$. True versions: a player below his Nash
+payoff whose action is not a best reply always deviates (the deviation pays more now and Nash pays more later);
+and no $q$ with $\pi_i(q) < \pi_i(q^*)$ for \emph{both} players is sustainable, because with a unique Nash
+equilibrium one of them is not best-replying.}
+\end{exsol}

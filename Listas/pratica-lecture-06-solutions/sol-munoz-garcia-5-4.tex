@@ -1,0 +1,56 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 5 Ex. 4 "Cartel with Firms Competing a la Cournot".
+% Input by \solitem. Check: check_T1.py (item 1).
+\begin{exsol}{\MG{} Ch.~5, Exercise 4}{228}{Foundations}{2}
+\asked A Cournot duopoly with $p = 100 - Q$ and $c = 10$: (a) the best-response function; (b) the
+Cournot output and profit; (c) the joint-profit-maximising (collusive) outputs and profits; (d) the
+comparison; (e) why the collusive profile is not a Nash equilibrium of the one-shot game.
+
+\method Solve each first-order condition. A cartel
+maximises the \emph{sum} of profits. A Nash equilibrium requires every output to be a best reply, so
+we test the collusive output against the best-response function of (a).
+
+\solution
+\textbf{(a) Best response.} Firm~$i$ solves $\max_{q_i}\,(100 - q_i - q_j)\,q_i - 10 q_i$. The
+first-order condition $100 - 2q_i - q_j - 10 = 0$ gives
+\[
+  q_i(q_j) = 45 - \tfrac12\, q_j .
+\]
+Firm~$i$ cuts output as $j$ expands (strategic substitutes, slope $-\frac12$).
+
+\textbf{(b) Cournot.} Setting $q_1 = q_2 = q$ in (a): $q = 45 - q/2$, so $q^C = 30$. Price is $100 - 60
+= 40$ and profit is $(40 - 10)\cdot 30 = 900$ for each firm (1\,800 in total).
+
+\textbf{(c) Collusion.} The cartel maximises $(100 - Q - 10)Q$. The condition $90 - 2Q = 0$ gives
+$Q^m = 45$, i.e.\ $q^m = 22.5$ each. Price is $55$ and each firm earns $(55 - 10)\cdot 22.5 = 1\,012.5$
+(2\,025 in total).
+
+\textbf{(d) Comparison.} $1\,012.5 > 900$: collusion raises each profit by $112.5$ (12.5\%), by
+restricting output from $60$ to $45$ and lifting the price from $40$ to $55$.
+
+\textbf{(e) No Nash equilibrium in the one-shot game.} If firm~$i$ produces $q^m = 22.5$, firm~$j$'s
+best reply is $q_j(22.5) = 45 - 11.25 = 33.75 \ne 22.5$. Its profit from this reply is
+$(100 - 56.25 - 10)\cdot 33.75 = 1\,139.0625 > 1\,012.5$. Each firm has a profitable deviation, so
+$(22.5, 22.5)$ is not a Nash equilibrium. The only Nash equilibrium is $(30, 30)$.
+
+\interp The cartel output is Pareto-superior for the firms but each firm's private incentive is to
+overproduce, a Prisoner's Dilemma. A one-shot promise to restrict output is not credible. Only repetition
+with a punishment can support it (item~9 for the cutoff; item~13 for the same numbers under temporary
+punishments).
+
+\verify \texttt{check\_T1.py} (item~1) solves the first-order conditions symbolically: $q^C = 30$,
+$\pi^C = 900$, $Q^m = 45$, $\pi^m = 1\,012.5$, the reply $33.75$ and the deviation profit
+$1\,139.0625 = \frac{18225}{16}$, and checks on a grid of step $\frac1{100}$ that $30$ is the best reply to
+$30$. The book's answer (worked after the exercise) gives the same numbers.
+
+\mistakes
+\begin{itemize}
+  \item Maximising each firm's own profit in (c). The cartel maximises the sum, so each firm
+  internalises the price effect on the other.
+  \item Concluding in (e) that firm~$j$ ``joins'' the agreement because both gain. The test is a
+  unilateral best reply, not joint profit.
+\end{itemize}
+
+\answer{(a) $q_i = 45 - q_j/2$. (b) $q^C = 30$, $\pi^C = 900$. (c) $q^m = 22.5$, $\pi^m = 1\,012.5$.
+(d) Collusion pays more ($1\,012.5 > 900$). (e) The best reply to $22.5$ is $33.75$, worth $1\,139.06 >
+1\,012.5$, so the cartel is not a one-shot Nash equilibrium.}
+\end{exsol}

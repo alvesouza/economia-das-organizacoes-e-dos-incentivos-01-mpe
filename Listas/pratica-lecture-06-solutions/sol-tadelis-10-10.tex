@@ -1,0 +1,67 @@
+% Solution: Tadelis (2013) Exercise 10.10 "Law Merchants Revisited". Input by \solitem. Check: check_T3.py (item 26).
+\begin{exsol}{Tadelis Exercise 10.10}{219}{Advanced}{4}
+\asked In the three-person game of Section~10.5.2 (a bond $B = 2$ and a fee $w = 0.1$ sustain cooperation for
+$\delta \ge 0.95$), show that a similar equilibrium (trust, bond, cooperation, guarantor honest in every period)
+exists for any discount factor $0 < \delta < 1$.
+
+\method The structure of \S10.5.2 (pp.~205--207). The trust game of Figure~10.1: no trust $(0,0)$; trust and
+cooperate $(1,1)$; trust and defect $(-1, 2)$ for players $(P_1^t, P_2^t)$. With a bond $B$ posted with player~3,
+a defector loses $B$ (Figure~10.2 uses $B = 2$). The guarantor (player~3) lives for ever and discounts at $\delta$.
+Footnote~10 (p.~207) says the bond need only exceed $1$ and that $P_2^t$ is willing to pay any fee up to $1$. We choose
+$B$ and $w$ and verify three incentive constraints, using the book's conventions: $P_2^t$ pays the fee in every
+period in which the guarantor follows the contract (including after his own defection, when the guarantor keeps
+the bond), and the guarantor's alternative is to keep the bond after a cooperation, which earns $B$ in that period
+and ends all future business.
+
+\solution
+\textbf{Strategies} (as in the text): $P_1^t$ trusts iff a bond was posted. $P_2^t$ posts a bond in period $t$ if the
+guarantor has followed the contract in all earlier periods, and then cooperates; otherwise he does not post and
+defects. The guarantor returns the bond iff $P_2^t$ cooperated.
+
+\textbf{(1) $P_2^t$ cooperates, given the bond.} With the bond she gets $1 - w$ from $C$ and $2 - B - w$ from $D$
+(she pays the fee in both cases, the bond is lost after $D$). Hence $C$ is optimal iff
+\[
+  B \ge 1 ,
+\]
+independently of $w$.
+
+\textbf{(2) $P_2^t$ uses the guarantor.} Without a bond she would defect and $P_1^t$ would not trust, so she
+gets $0$. With it she gets $1 - w$. She joins iff $w \le 1$ (strictly, $w < 1$).
+
+\textbf{(3) The guarantor stays honest.} Following the contract earns $w$ every period; keeping the bond after a
+cooperation earns $B$ once and then no one posts a bond again. He complies iff
+\[
+  \frac{w}{1-\delta} \ge B \iff w \ge (1-\delta)B .
+\]
+(The book's check is the same with $B = 2$, $w = 0.1$: $\frac{0.1}{1-\delta} \ge 2$, i.e.\ $\delta \ge 0.95$.)
+
+\textbf{Choice for any $\delta$.} The three conditions need $B \ge 1$ (to avoid indifference take $B > 1$),
+$(1-\delta)B \le w < 1$. For $B$ slightly above $1$ the interval $\bigl[(1-\delta)B,\,1\bigr)$ is non-empty for
+\emph{every} $\delta > 0$, since $(1-\delta)B < 1$ when $B < \frac1{1-\delta}$. A concrete choice:
+\[
+  B = 1 + \frac\delta2, \qquad w = 1 - \frac\delta2 .
+\]
+Then $B > 1$ (cooperation is strictly optimal), $w < 1$ (she strictly prefers to use the guarantor, with surplus
+$\frac\delta2$) and $\frac{w}{1-\delta} = \frac{1 - \delta/2}{1-\delta} > 1 + \frac\delta2 = B$ (the guarantor
+strictly prefers to comply). Off the path nothing changes: after the guarantor cheats nobody posts a bond and
+$(N)$, $D$ are stage equilibrium choices.
+
+\interp The fee need only compensate the guarantor for the one-period gain from keeping a bond that is just
+large enough to deter defection ($B$ close to $1$, the defector's gain). Making the bond small and the fee large
+shrinks the guarantor's temptation relative to the stream of fees, so even very impatient guarantors are
+honest. The limit is the fee ceiling $w < 1$ (what the clients are willing to pay) and $B \ge 1$.
+
+\verify \texttt{check\_T3.py} (item~26) checks $\frac{0.1}{1-\delta} = 2$ at $\delta = 0.95$ and verifies the three
+inequalities for $B = 1 + \frac\delta2$, $w = 1 - \frac\delta2$ at every $\delta = \frac{k}{100}$,
+$k = 1,\dots,99$. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Fixing the bond at $2$ and the fee at $0.1$: with those numbers $\delta \ge 0.95$ is needed.
+  \item Charging a fee above $1$: $P_2^t$ then prefers no trade.
+\end{itemize}
+
+\answer{Take bond $B = 1 + \frac\delta2$ and fee $w = 1 - \frac\delta2$. Then $P_2^t$ cooperates ($B \ge 1$), joins the
+guarantor ($w < 1$) and the guarantor complies ($\frac{w}{1-\delta} \ge B$), for every $\delta \in (0,1)$. In general
+the conditions are $B \ge 1$, $w \le 1$ and $w \ge (1-\delta)B$.}
+\end{exsol}

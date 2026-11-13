@@ -1,0 +1,86 @@
+% Solution: Tadelis (2013) Exercise 9.3 "Campaigning Revisited". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 9.3}{187--188}{Foundations}{3}
+\asked For two different stage games played in sequence: find the stage equilibria and the pure SPE at
+$\delta = 0$; then try to support $(P,p)$ in stage~1 at $\delta = 1$, find the lowest $\delta$ for it, and
+ask whether anything other than $(P,p)$ or $(N,n)$ can be played in stage~1.
+
+\method Multistage games with a stage-2 game that differs from stage~1 (Tadelis \S9.4, pp.~180--184;
+Prop.~9.2, p.~181: stage-2 play is a stage-2 Nash equilibrium after every history) and the
+one-stage deviation principle (Thm.~9.1, p.~185). Slides, Lecture~5: slide~10 (last-period play is a
+stage equilibrium), slides~13--15 (carrot, stick and the condition $\delta\cdot(\text{carrot} -
+\text{stick}) \ge \text{gain}$).
+
+\solution
+\textbf{Stage games} (player~1 chooses rows; best replies underlined):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{\emph{Stage 1}} & \multicolumn{1}{c}{$p$} & \multicolumn{1}{c}{$n$}\\ \cline{2-3}
+$P$ & $2,\ 2$ & $0,\ \br{5}$ \\ \cline{2-3}
+$N$ & $\br{5},\ 0$ & $\br{3},\ \br{3}$ \\ \cline{2-3}
+\end{tabular}
+\qquad
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{\emph{Stage 2}} & \multicolumn{1}{c}{$p$} & \multicolumn{1}{c}{$n$}\\ \cline{2-3}
+$P$ & $\br{4},\ \br{4}$ & $1,\ 0$ \\ \cline{2-3}
+$N$ & $0,\ 1$ & $\br{2},\ \br{2}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(a) Stage equilibria and SPE at $\delta=0$.} In stage~1, $N$ beats $P$ against $p$ ($5>2$) and
+against $n$ ($3>0$), and $n$ beats $p$ symmetrically, so $(N,n)$ with $(3,3)$ is the unique equilibrium. In
+stage~2 there are two pure equilibria, $(P,p)$ with $(4,4)$ and $(N,n)$ with $(2,2)$ ($(P,n)$ and $(N,p)$
+are not: the player getting $0$ or $1$ switches). At $\delta = 0$ the future does not matter, so stage~1
+is played as a one-shot game, $(N,n)$, and stage~2 is a stage equilibrium after each of the four stage-1
+outcomes. The pure SPE are
+\begin{itemize}
+  \item stage~1: player~1 plays $N$, player~2 plays $n$;
+  \item stage~2: after every history $h \in \{Pp, Pn, Np, Nn\}$ both play $(P,p)$ or both play $(N,n)$,
+  chosen history by history.
+\end{itemize}
+That is $2^4 = 16$ SPE, differing only in the choice after each history.
+
+\textbf{(b)--(c) Supporting $(P,p)$.} Try the carrot and stick: play $(P,p)$ in stage~1; in stage~2 play
+$(P,p)$ after $(P,p)$ and $(N,n)$ after any other history. Stage~2 is a stage equilibrium after every
+history, so only stage~1 needs checking. Player~1 conforms with $2 + 4\delta$; deviating to $N$ gives
+$5$ now and the stick $2$ later:
+\[
+  2 + 4\delta \;\ge\; 5 + 2\delta \iff \delta \;\ge\; \tfrac32 .
+\]
+The same holds for player~2. So the strategies work only for $\delta \ge \frac32$. For
+$\delta \in [0,1]$ there is no such SPE: the gain from deviating, $5 - 2 = 3$, exceeds the largest possible
+carrot-minus-stick swing, $\delta(4 - 2) \le 2$. Using the mixed stage-2 equilibrium ($P$ with probability
+$\frac15$, payoff $\frac85$) as the stick does not help: the swing is $4 - \frac85 = \frac{12}{5}$ and the
+condition becomes $\delta \ge \frac54 > 1$.
+
+\textbf{(d) Other first-stage outcomes.} In stage~1, $N$ is a best reply to each action of the rival, and
+the gain from playing $N$ rather than $P$ is $3$ whatever the rival does ($5 - 2$ against $p$, $3 - 0$
+against $n$). A player who plays $P$ in an SPE on a path with continuation values $c^{\text{path}}$
+and $c^{\text{dev}}$ needs $\delta(c^{\text{path}} - c^{\text{dev}}) \ge 3$, and
+$c^{\text{path}} - c^{\text{dev}} \le 4 - 2 = 2$. For $\delta \le 1$ this is impossible, so neither player
+ever plays $P$ (or $p$) in stage~1 of a pure SPE. Hence $(P,n)$, $(N,p)$ and $(P,p)$ are all excluded:
+the only first-stage outcome of a pure SPE is $(N,n)$, for every $\delta\in[0,1]$. The answer to (d) is no.
+
+\interp Stage~1's temptation (3) is larger than stage~2 can punish (2), because the stick $(N,n)$
+still pays $2$ and the carrot pays only $4$. Cooperation needs a stage~2 whose best and worst
+equilibria are far enough apart: $\delta\,(c - s) \ge g$ (slide~15). As printed, (b) and (c) have no
+answer inside $\delta \le 1$; the formal threshold is $\frac32$.
+
+\verify \texttt{check\_L05.py} finds the stage equilibria, confirms $2^4 = 16$, and with the exact
+one-stage-deviation test shows that for $\delta \in \{0, 0.1, 0.5, 0.9, 1\}$ the only first-stage
+outcome of a pure SPE is $(N,n)$, that $(P,p)$ becomes feasible at $\delta = \frac32$ (and not at $1.49$),
+and that the mixed stick gives $\frac54$.
+
+\mistakes
+\begin{itemize}
+  \item Forcing an answer to (b): at $\delta = 1$ one finds $6 < 7$ for the conforming player, so the
+  strategies above are not an SPE.
+  \item Using the \emph{best} stage-2 outcome as the punishment: the punishment must be the worst
+  equilibrium, $(N,n)$, and it still cannot deter.
+\end{itemize}
+
+\answer{(a) Stage~1: $(N,n)$, $(3,3)$; stage~2: $(P,p)$ with $(4,4)$ and $(N,n)$ with $(2,2)$; at $\delta=0$ there
+are 16 pure SPE (stage~1 $(N,n)$, and a stage-2 equilibrium chosen after each of the four histories).
+(b)--(c) $(P,p)$ in stage~1 with reward $(P,p)$ and punishment $(N,n)$ requires $\delta \ge \frac32$, so there is
+no such SPE for $\delta \le 1$. (d) No: for $\delta \le 1$ the only first-stage outcome of a pure SPE is $(N,n)$.}
+\end{exsol}

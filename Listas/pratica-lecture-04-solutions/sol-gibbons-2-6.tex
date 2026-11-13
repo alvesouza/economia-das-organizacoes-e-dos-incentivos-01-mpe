@@ -1,0 +1,63 @@
+% Solution: Gibbons (1992) Problem 2.6 (the same game as Tadelis Exercise 8.4). Input by \solitem.
+% New in the Lecture 4 practice list. Check: check_L04.py.
+\begin{exsol}{Gibbons Problem 2.6}{133}{Foundations}{3}
+\asked Three firms face $P(Q) = a - Q$ with marginal cost $c$. Firm~1 chooses $q_1$; firms~2 and~3
+observe it and then choose $q_2, q_3$ simultaneously. What is the subgame-perfect outcome?
+
+\method Two-stage game with a simultaneous second stage (Gibbons \S2.2.A, pp.~71--73): for each
+$q_1$ solve the followers' Cournot game (a Nash equilibrium of the subgame that follows $q_1$), then let
+firm~1 maximize against it. The outcome is a backward-induction outcome (Lecture~4, slides~31--33 on SPE; Tadelis
+\S8.3.2, pp.~160--163). Tadelis 8.4 (item 7) poses the same game and asks for the strategies, the number of subgames
+and a non-SPE Nash equilibrium too; this item stops at the outcome.
+
+\solution
+Assume $a > c$ and $q_1 \le a - c$ (above $a - c$ the price is below $c$ and firm~1 loses money).
+
+\textbf{Step 1: the followers' subgame after $q_1$.} Firm $i \in \{2,3\}$ solves
+$\max_{q_i \ge 0}\ (a - q_1 - q_i - q_j - c)\,q_i$, with first-order condition
+$a - c - q_1 - 2q_i - q_j = 0$, so $BR_i(q_j) = \frac{a-c-q_1-q_j}{2}$. The two best replies have slope $-\frac12$
+and cross once; by symmetry the unique Nash equilibrium of the subgame is
+\[
+  q_2 = q_3 = \frac{a - c - q_1}{3}.
+\]
+(Check: $\frac{a-c-q_1-q_j}{2} = \frac{a-c-q_1}{2}\cdot\frac{2}{3} = \frac{a-c-q_1}{3}$.)
+
+\textbf{Step 2: firm 1.} Substituting the followers' total output $\frac{2(a-c-q_1)}{3}$, the price is
+$P = a - q_1 - \frac{2(a-c-q_1)}{3}$, so
+\[
+  \pi_1(q_1) = \Bigl(\frac{a-c}{3} - \frac{q_1}{3}\Bigr)q_1 = \frac{(a-c-q_1)\,q_1}{3}.
+\]
+It is strictly concave; the first-order condition $a - c - 2q_1 = 0$ gives $q_1^* = \frac{a-c}{2}$.
+
+\textbf{Outcome.}
+\[
+  q_1^* = \frac{a-c}{2}, \qquad q_2^* = q_3^* = \frac{a-c}{6}, \qquad Q^* = \frac{5(a-c)}{6},
+  \qquad P^* = \frac{a+5c}{6},
+\]
+with profits $\pi_1 = \frac{(a-c)^2}{12}$ and $\pi_2 = \pi_3 = \frac{(a-c)^2}{36}$. Compare the three-firm
+Cournot outcome $\frac{a-c}{4}$ each, $Q = \frac{3(a-c)}{4}$, $\pi_i = \frac{(a-c)^2}{16}$: the leader
+produces twice the Cournot quantity, earns $\frac{4}{3}$ of its Cournot profit, and each follower earns
+$\frac{4}{9}$ of its Cournot profit.
+
+\interp Moving first lets firm~1 commit to a large output; the followers, each taking $q_1$ as given, shrink
+their own output (a unit more from firm~1 reduces each follower by $\frac13$, not $\frac12$ as in a duopoly), so
+the leader's expansion crowds out only $\frac23$ of a unit. That is why the leader overproduces relative to
+Cournot, and why the followers are worse off.
+
+\verify \texttt{check\_L04.py} solves the followers' subgame and the leader's problem with sympy
+(symbolic in $a, c$), confirms the quantities, the price and the three profits, and compares with the
+three-firm Cournot profits ($\frac{4}{3}$ and $\frac{4}{9}$), and checks with exact fractions on a grid of $q_1$ that
+$\frac{a-c}{2}$ maximizes $\pi_1$ for $a = 100$, $c = 10$. Output line:
+\texttt{gibbons-2-6: q = ((a-c)/2, (a-c)/6, (a-c)/6), P = (a+5c)/6}. Gibbons prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Solving a two-firm Stackelberg game with firm~1 against ``the market'': the followers play a
+  \emph{Cournot} game with each other after $q_1$, so the leader faces $\frac{2(a-c-q_1)}{3}$, not
+  $\frac{a-c-q_1}{2}$.
+  \item Reporting only $q_1^*$: the outcome is the whole vector $(q_1, q_2, q_3)$.
+\end{itemize}
+
+\answer{$q_1^* = \frac{a-c}{2}$, $q_2^* = q_3^* = \frac{a-c}{6}$, price $P^* = \frac{a+5c}{6}$; profits
+$\frac{(a-c)^2}{12}$ for the leader and $\frac{(a-c)^2}{36}$ for each follower.}
+\end{exsol}

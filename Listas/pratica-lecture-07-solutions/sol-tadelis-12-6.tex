@@ -1,0 +1,55 @@
+% Solution: Tadelis (2013) Exercise 12.6 "Reap and Weep". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.6}{268}{Exam}{4}
+\asked (a) Strategies and pure BNE of the farmer--plant game; (b) the social surplus in
+equilibrium; (c) the effect on surplus of cutting the farming payoff to $\theta/2$.
+
+\method As in item~13: a farmer of talent $\theta\sim U[0,1]$ asks a wage $w$; the owner accepts
+or rejects. Strategies: farmer $w:[0,1]\to[0,\infty)$; owner $\{A,R\}$ as a function of $w$.
+The owner's expected net value is computed on the set of types that accept
+(Tadelis \S12.3, pp.~258--261).
+
+\solution
+\textbf{(a)} A farmer of type $\theta$ who asks $w$ takes the job iff $w\ge\theta$ (outside
+option $\theta$), so types $\theta\le w$ sell. If the owner accepts $w\in(0,1]$ he employs the
+types $\theta\le w$, with $E[\theta\mid\theta\le w]=w/2$:
+\[
+  E\bigl[\tfrac32\theta-w\mid\theta\le w\bigr]=\tfrac34w-w=-\tfrac w4<0 ;\qquad
+  w\ge1:\ \tfrac34-w<0 .
+\]
+The owner rejects every positive wage; at $w=0$ he is indifferent, but farmers $\theta>0$ prefer
+to farm. As in item~13, an accepted positive wage would be asked by every type $\theta<w$ and
+would give the owner a loss, so it cannot occur in a BNE. \emph{BNE:} the owner rejects all
+$w>0$ (and may accept $w=0$); every farmer farms (any rejected ask is a best reply).
+
+\textbf{(b)} Surplus $=$ farmer's plus owner's expected payoffs $=E[\theta]+0=\tfrac12$. It is the
+only possible level: no trade occurs in any BNE (the efficient level would be $E[\tfrac32\theta]=\tfrac34$).
+
+\textbf{(c)} Now the farmer's outside option is $\theta/2$, so types $\theta\le2w$ accept a wage $w$.
+For $w\le\tfrac12$: $E[\tfrac32\theta-w\mid\theta\le2w]=\tfrac32w-w=\tfrac w2>0$; for $w\ge\tfrac12$
+all types sell and $E=\tfrac34-w\ge0$ iff $w\le\tfrac34$. So the owner accepts any wage up to
+$\tfrac34$, and a farmer asks the highest accepted wage, getting $\tfrac34>\theta/2$ for all $\theta$.
+The BNE with trade at a wage $w^*$ accepted by the owner has surplus
+\[
+  S(w^*)=\tfrac14+2w^{*2}\ (w^*\le\tfrac12),\qquad S(w^*)=\tfrac34\ (\tfrac12\le w^*\le\tfrac34),
+\]
+and the no-trade BNE has surplus $\tfrac14$. The maximum, $\tfrac34$, is reached when everybody
+works: with the owner's best reply (accept every wage that gives him a nonnegative net value) the
+farmer asks $w=\tfrac34$ and trade is efficient. Since $\tfrac34>\tfrac12$, the criterion
+\emph{supports} the policy-maker: cutting the subsidy turns a market that had broken down into
+one with full trade. Caveats: no-trade remains a BNE with surplus $\tfrac14<\tfrac12$ (and trade
+at $w^*<\sqrt2/4\approx0.35$ gives less than $\tfrac12$); and the farmer types $\theta>\tfrac34$ are
+worse off than before the policy (they now earn $\tfrac34<\theta$).
+
+\interp With outside option $\theta/2$ the average talent of those willing to work at wage $w$,
+$E[\theta\mid\theta\le2w]=w$, is high enough to cover the wage ($\tfrac32w>w$), so adverse selection no longer blocks
+trade: a worse outside option can raise total surplus.
+
+\verify \texttt{check\_E2.py}: sympy confirms $-w/4$ in (a); $E[\theta]=\tfrac12$; in (c) $w/2$,
+$\tfrac34-w$ (zero at $w=\tfrac34$), the surplus function $\tfrac14+2w^2$ (equal to $\tfrac34$ at
+$w=\tfrac12$), the no-trade surplus $\tfrac14$ and the break-even $w=\sqrt2/4$. Tadelis gives no answer.
+
+\answer{(a) No-trade BNE: the owner rejects every $w>0$ ($E=-w/4$). (b) Surplus $\tfrac12$.
+(c) With outside option $\theta/2$ the owner accepts wages up to $\tfrac34$, and the best BNE has
+all farmers work at $w=\tfrac34$ with surplus $\tfrac34>\tfrac12$: the policy can be advocated
+on the surplus criterion (not every BNE improves, and types $\theta>\tfrac34$ lose).}
+\end{exsol}

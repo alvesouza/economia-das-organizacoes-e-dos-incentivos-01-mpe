@@ -1,0 +1,50 @@
+% Solution: Tadelis (2013) Exercise 11.1 "Disagreement". Input by \solitem. Check: check_T1.py (item 3).
+\begin{exsol}{Tadelis Exercise 11.1}{236}{Foundations}{2}
+\asked Construct a Nash equilibrium of the ultimatum game ($T = 1$) in which the players disagree
+and both get zero, and show that disagreement is a Nash outcome for every number of bargaining periods.
+
+\method Nash equilibrium needs only best replies on the equilibrium path, so a threat to reject
+every offer is allowed (Tadelis \S11.1, pp.~220--224). Subgame perfection removes such threats because
+rejecting a positive offer is not a best reply in the last period (\S11.2, pp.~224--227).
+
+\solution
+\textbf{Ultimatum ($T = 1$).} Player~1 offers $x_1 = 1$ for himself (player~2 gets $0$), and player~2
+rejects every offer. Outcome: rejection, payoffs $(0, 0)$.
+\begin{itemize}
+  \item \emph{Player~1:} any other offer is rejected too, so he still gets $0$. No deviation gains.
+  \item \emph{Player~2:} given the offer $(1, 0)$ she gets $0$ whether she rejects or accepts, so rejecting is
+  a best reply (weakly).
+\end{itemize}
+So this is a Nash equilibrium with payoffs $(0,0)$.
+
+\textbf{$T$ periods.} Let every proposer claim the whole pie and every responder reject every offer
+in every period. The path runs through all $T$ periods without agreement: payoffs $(0,0)$. A unilateral
+deviation cannot yield positive payoff: as proposer the deviator's offer (whatever it is) is rejected;
+as responder he can only accept an offer that leaves him $\delta^{t-1}\cdot 0 = 0$, because the opponent
+claims the whole pie. Hence no one gains, for every $T$ and every $\delta$.
+
+\textbf{Why not subgame perfect.} In the last period, a responder offered $x > 0$ gets $x$ by accepting
+and $0$ by rejecting. The strategy ``reject everything'' is therefore not a best reply in that
+subgame (it is a non-credible threat), so the profile fails subgame perfection. Backward induction
+rules it out and selects immediate agreement (item~8 for finite $T$; Tadelis \S11.3 for the infinite horizon).
+
+\interp Nash equilibrium alone has no predictive power in bargaining: any division, and also
+disagreement, can be supported by threats to reject anything else. This is why the course uses SPE.
+
+\verify \texttt{check\_T1.py} (item~3) evaluates the deviator's best payoff against ``claim everything /
+reject everything'' for $T = 1,\dots,6$ and $\delta \in \{\frac12, \frac9{10}\}$ and finds $0$, equal to the
+equilibrium payoff. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Calling the profile subgame perfect because no one deviates on the path. The test also applies
+  after offers that are never made.
+  \item Letting player~1 offer player~2 a positive share. She would then gain by accepting, so rejecting
+  would not even be a best reply on the path. The offer $(1,0)$ makes her indifferent.
+\end{itemize}
+
+\answer{Player~1 offers himself the whole pie, player~2 rejects every offer. This is Nash with payoffs
+$(0,0)$: no deviation yields a positive payoff. The same strategies (claim everything; reject everything)
+in every period work for any $T$. The profile is not subgame perfect because rejecting a positive offer in
+the last period is not a best reply.}
+\end{exsol}

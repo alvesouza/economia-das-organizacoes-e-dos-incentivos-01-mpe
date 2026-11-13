@@ -1,0 +1,82 @@
+% Solution: Tadelis (2013) Exercise 8.12 "Agenda Setting". Input by \solitem.
+% New in the Lecture 4 practice list. Check: check_L04.py.
+\begin{exsol}{Tadelis Exercise 8.12}{173}{Advanced}{4}
+\asked An agenda setter (player~1) proposes $x \in X = [0,5]$ against the status quo $q = 4$; the
+legislator (player~2) picks $x$ or $q$. Payoffs $v_1(y) = 10 - |y-1|$, $v_2(y) = 10 - |y-3|$ for the final policy $y$.
+(a) The normal form and whether the game has perfect information; (b) a subgame-perfect equilibrium and
+its uniqueness; (c) a Nash equilibrium that is not subgame perfect, and all Nash equilibria.
+
+\method Backward induction with a continuum of proposals (Tadelis \S8.1--8.2, pp.~151--159; SPE, Lecture~4,
+slides~31--33): player~2's best reply to every proposal, then player~1's best proposal; the Nash equilibria that are
+not SPE use off-path rejections as non-credible threats (Lecture~4, slides~22--23).
+
+\solution
+\textbf{(a) Strategies and information.} Player~1's strategy is a proposal $x \in [0,5]$. Player~2 observes it,
+so a strategy of player~2 is a map $x \mapsto \{\text{accept}, \text{reject}\}$, equivalently the set
+$A \subseteq X$ of proposals he accepts: $S_2$ is the set of subsets of $X$. If the final policy is $y(x, A) = x$ if
+$x \in A$ and $y = 4$ otherwise, the payoffs are $v_i(y(x, A))$. Player~2 observes player~1's move, and each
+player moves once at a singleton information set, so this is a game of \emph{perfect} information, with a
+continuum of subgames, one for each proposal.
+
+\textbf{(b) The SPE.} \emph{Player~2.} He accepts $x$ iff $v_2(x) \ge v_2(4)$, i.e.\ $|x - 3| \le |4 - 3| = 1$,
+that is $x \in [2,4]$; he is indifferent at $x = 2$ and $x = 4$ and strictly rejects every other proposal. At
+$x = 4$ accepting and rejecting give the same policy, $4$.
+\emph{Player~1.} Accepted proposals give him $v_1(x) = 11 - x$ for $x \in [2,4]$, decreasing in $x$; a rejected
+proposal gives $v_1(4) = 7$. The best is the smallest acceptable proposal, $x = 2$, with $v_1 = 9$, provided
+player~2 accepts at the indifference point $x = 2$. If he rejected at $x = 2$, player~1's problem would have no
+solution (the infimum $2$ of the acceptance set is not attained), so no SPE would exist; hence the SPE requires
+that player~2 \emph{accepts} at $x = 2$.
+
+So the SPE outcome is unique: proposal $x^* = 2$, accepted, final policy $y = 2$, payoffs
+$(v_1,v_2) = (9, 9)$. The SPE strategy of player~2 is: accept every $x \in [2,4]$ except possibly the
+irrelevant tie at $x = 4$ (it leads to the same policy), reject all others. Player~2's strategy is therefore unique
+up to his response to the proposal $x = 4$; the outcome and the payoffs are unique.
+
+\textbf{(c) Nash equilibria.} A profile $(x^*, A)$ is a Nash equilibrium iff (i) player~2's reply is optimal at the
+\emph{proposal actually made} and (ii) player~1 cannot gain by proposing something else, given $A$. Off the path,
+player~2's replies are unconstrained, so he may reject proposals that would be good for player~1.
+\begin{itemize}
+  \item \emph{Outcome $y \in [2,4]$ through acceptance.} For any $y \in [2,4]$, take $x^* = y$ and $A = \{y\}$:
+  player~2 accepts $y$, which is optimal because $|y-3| \le 1$, and every other proposal is rejected and yields the
+  status quo, $v_1(4) = 7$. Player~1's payoff from $x^* = y$ is $11 - y \ge 7$, so he does not deviate. Each
+  such pair is a Nash equilibrium. None is subgame perfect: after a proposal $x \in (2,4)$ player~2 strictly
+  prefers accepting ($v_2(x) > v_2(4) = 9$), yet $A = \{y\}$ rejects it, a threat he would not carry out. A
+  subgame-perfect $A$ must contain $(2,4)$ and nothing outside $[2,4]$; then player~1 proposes $2$, so the only
+  subgame-perfect equilibrium is the one of part (b).
+  \item \emph{Outcome $4$ through rejection.} Take $x^* \in [0,2] \cup [4,5]$ (so rejecting is optimal for
+  player~2) and $A \cap [0,4) = \varnothing$: nothing player~1 can propose below $4$ is accepted, so the status quo
+  stays, with payoffs $(7, 9)$. Player~1 cannot gain, since the only acceptable proposals are in $[4,5]$, which
+  give him at most $7$.
+\end{itemize}
+Hence there is a continuum of Nash equilibria whose final policies are exactly $y \in [2,4]$ (no Nash
+equilibrium produces a policy outside $[2,4]$, since an accepted $x$ must satisfy $|x-3| \le 1$ and the
+alternative is $4$). Examples that are not subgame perfect: $(x^*, A) = (3, \{3\})$ with final policy $3$, payoffs
+$(8, 10)$; and $(x^*, A) = (0, \varnothing)$ with final policy $4$, payoffs $(7, 9)$.
+
+\interp Without subgame perfection the legislator can hold the setter to any policy in $[2,4]$ by threatening
+to reject every better offer; credibility removes those threats and leaves the setter his best policy among those the
+legislator would truly accept, $2$, the policy that makes the legislator just indifferent to the status quo
+(the mirror image of $q = 4$ around his ideal point $3$). The setter's power comes from the proposal being a
+take-it-or-leave-it offer, with the status quo as the legislator's outside option.
+
+\verify \texttt{check\_L04.py} works on the grid $X = \{0, \frac12, \dots, 5\}$ and enumerates all
+$2^{11}$ acceptance sets and all proposals: the set of final policies of Nash equilibria is exactly the grid points
+of $[2,4]$ (and no Nash equilibrium gives a policy outside it); player~2's best replies accept exactly when
+$|x - 3| \le 1$; the SPE outcome is $2$ when the tie at $2$ is accepted, and $2 + h$ (no maximum in the
+continuum) otherwise, for grid steps $h = \frac12, \dots, \frac1{64}$. Output line: \texttt{tadelis-8-12: SPE
+outcome x = 2 (payoffs 9, 9); NE outcomes = [2, 4]}. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Letting player~2 accept every proposal that is better than $q$ for \emph{player~1}: the legislator
+  compares policies with his own payoff, $|x - 3| \le 1$.
+  \item Proposing $x = 1$ (player~1's ideal point): player~2 rejects it, since $|1 - 3| = 2 > 1$.
+  \item Claiming a unique Nash equilibrium: off-path rejections generate a continuum of equilibria with
+  final policies in $[2,4]$.
+\end{itemize}
+
+\answer{(a) Strategies: a proposal $x$ for player~1, an acceptance set $A \subseteq X$ for player~2; perfect
+information. (b) Unique SPE outcome: $x^* = 2$ accepted, payoffs $(9,9)$; player~2 accepts exactly the proposals
+in $[2,4]$. (c) Not unique: for every $y \in [2,4]$ there is a Nash equilibrium with final policy $y$ (e.g.\
+$x^* = 3$, $A = \{3\}$) and one with the status quo $4$ ($x^* = 0$, $A = \varnothing$); only $y = 2$ is subgame perfect.}
+\end{exsol}

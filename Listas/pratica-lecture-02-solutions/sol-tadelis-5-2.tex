@@ -1,0 +1,59 @@
+% Solution: Tadelis (2013) Exercise 5.2 "Weak Dominance". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.2}{95}{Exam}{2}
+\asked Give an example of a game with a weakly dominant-strategy equilibrium and another Nash
+equilibrium.
+
+\method Construct and verify. Weak dominance only requires ``at least as good against everything'',
+so ties against some opponent strategies are allowed, and the ties are where a second equilibrium
+can hide (Lecture~2, slide~16: ``a Nash equilibrium may involve weakly dominated strategies'';
+Tadelis \S5.1, p.~81). Take the smallest game with a tie: $2\times2$, with a coordination payoff in
+one cell only.
+
+\solution
+\textbf{The game.} Player~1 chooses $U$ or $D$, player~2 chooses $L$ or $R$.
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $\br{1},\ \br{1}$ & $\br{0},\ 0$ \\ \cline{2-3}
+$D$ & $0,\ \br{0}$ & $\br{0},\ \br{0}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+(Underlined payoffs: the payoff is a best reply of its player to the other's strategy.)
+
+\textbf{$U$ and $L$ are weakly dominant.} For player~1: against $L$, $U$ gives $1 > 0$; against $R$,
+$U$ gives $0 = 0$. So $v_1(U, s_2) \ge v_1(D, s_2)$ for both $s_2$, with a strict inequality against $L$.
+For player~2: against $U$, $L$ gives $1 > 0$; against $D$, $L$ gives $0 = 0$. So $(U, L)$ is a weakly
+dominant-strategy equilibrium, and it is a Nash equilibrium (the definition of weak dominance applied
+at $s_{-i} = s^W_{-i}$).
+
+\textbf{A second Nash equilibrium: $(D, R)$.} Against $R$, player~1 gets $0$ from $D$ and $0$ from $U$:
+no gain from deviating. Against $D$, player~2 gets $0$ from $R$ and $0$ from $L$: no gain either. So
+neither player can strictly gain by deviating, and $(D, R)$ is a Nash equilibrium.
+
+No other profile is an equilibrium: at $(U, R)$ player~2 gains by switching to $L$ ($1 > 0$) and at
+$(D, L)$ player~1 gains by switching to $U$.
+
+\answer{In the game above, $(U, L)$ is a weakly dominant-strategy equilibrium, and $(D, R)$, in which
+both players use weakly dominated strategies, is another Nash equilibrium. The two equilibria give
+payoffs $(1,1)$ and $(0,0)$.}
+
+\interp Weak dominance does not pin down a unique equilibrium, whereas strict dominance does
+(exercise 5.1, Part~1). At $(D,R)$ each player is indifferent between his two actions, so
+deviating costs nothing, but it does not help either: the equilibrium survives only on ties. This is
+why the slides call such equilibria ``less plausible'' (Lecture~2, slide~16) and why refinements
+(trembling hands, eliminating weakly dominated strategies) discard them. The equilibrium $(U,L)$ is the
+one a player who is unsure about the other's move would pick: $U$ and $L$ are never worse.
+
+\verify \texttt{check\_L2.py} enumerates the four cells: the pure Nash equilibria are exactly
+$(U,L)$ and $(D,R)$; $U$ and $L$ weakly dominate ($\ge$ everywhere, $>$ somewhere); and the
+payoffs at $(D,R)$ are ties, not strict losses. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Using strict inequalities everywhere: with strict dominance the equilibrium would be unique.
+  \item Giving a game in which the second equilibrium is not an equilibrium after all, because a
+  deviation is strictly profitable; check every cell.
+  \item Forgetting that the definition applies to \emph{each} player: both $s_1^W$ and $s_2^W$ must
+  be weakly dominant.
+\end{itemize}
+\end{exsol}

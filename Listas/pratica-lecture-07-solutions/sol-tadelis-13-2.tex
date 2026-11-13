@@ -1,0 +1,35 @@
+% Solution: Tadelis (2013) Exercise 13.2 "Complete Information". Input by \solitem. Check: check_E1.py.
+\begin{exsol}{Tadelis Exercise 13.2}{285}{Foundations}{2}
+\asked $N$ bidders in a second-price auction with complete information: (a) is bidding one's value
+still weakly dominant? (b) are there other Nash equilibria?
+
+\method (a) The dominance argument of item~5 never used the others' information. (b) Look
+for profiles where the winner is not the highest-value bidder, using that the winner pays the
+second-highest bid (Tadelis \S13.1.1).
+
+\solution
+\textbf{(a) Yes.} The state-by-state comparison with the highest rival bid $r$ holds for every
+$r$ whatever the bidders know, so $b_i=v_i$ is weakly dominant (items 5--6); in particular
+$(v_1,\dots,v_N)$ is a Nash equilibrium. With $v_1>v_2\ge\dots$, bidder~1 wins and pays $v_2$.
+
+\textbf{(b) Yes, many.} Take any bidder $k$ and let
+$b_k=\max_{j\ne k}v_j$, $b_j=0$ for $j\ne k$ ($N\ge2$). Bidder $k$ wins and pays $0$, earning $v_k\ge0$;
+he cannot do better and has no reason to deviate. Any other bidder $j$ can win only by bidding
+$>b_k$ and then pays $b_k=\max_{l\ne k}v_l\ge v_j$, earning $v_j-b_k\le0$. So no one deviates:
+a Nash equilibrium in which bidder~$k$ wins even if his value is lowest. Example, $v=(3,2,1)$: the
+profile $(0,3,0)$ is an equilibrium with the value-$2$ bidder winning at price $0$; so is $(0,0,3)$
+with the value-$1$ bidder winning.
+
+\interp These equilibria use weakly dominated strategies ($b_k>v_k$ is weakly dominated by $b_k=v_k$)
+and rest on the other bidders' staying out; under complete information nothing in Nash
+equilibrium rules them out. Eliminating weakly dominated strategies selects the truthful
+equilibrium, as in item~5.
+
+\verify \texttt{check\_E1.py} enumerates all profiles on the integer bid grid $\{0,\dots,4\}^3$
+for $v=(3,2,1)$ (fair coin at ties): the truthful profile and $(0,3,0)$, $(0,0,3)$ are Nash; 55
+pure equilibria in all, in which every bidder wins in some equilibrium; dominance of
+$b_i=v_i$ is verified against every pair of rival bids. Tadelis gives no answer.
+
+\answer{(a) Yes, bidding the value is still weakly dominant. (b) Yes: e.g.\ one bidder bids the
+highest rival value and everyone else bids $0$; that bidder wins at price $0$, whoever he is.}
+\end{exsol}

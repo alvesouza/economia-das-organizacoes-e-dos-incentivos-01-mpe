@@ -1,0 +1,88 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 4, Exercise 12 "Stackelberg Competition with 2, or
+% 3 Firms". Input by \solitem. New in the Lecture 4 practice list. Check: check_L04.py.
+\begin{exsol}{\MG{} Ch.~4, Exercise 12}{185--186}{Exam}{3}
+\asked Stackelberg with $p(Q) = 10 - Q$ and marginal cost $2$ for each firm: (a) the equilibrium with a leader
+(firm~1) and a follower (firm~2); (b) the equilibrium when firm~3 joins and moves last, and how firm~3's entry
+changes the outputs of firms~1 and~2.
+
+\method Backward induction with a continuum of actions, from the last mover to the first (Tadelis \S8.3.2,
+pp.~160--163; SPE, Lecture~4, slides~31--33): each mover's best reply is a function of the outputs already chosen,
+which the earlier movers substitute into their own problems. Every output is assumed interior; this is checked at the end.
+
+\solution
+Write $\mu = 10 - 2 = 8$ for the margin when $Q = 0$, so each firm's profit is $(8 - Q)\,q_i$.
+
+\textbf{(a) Two firms.} \emph{Follower.} Given $q_1$, firm~2 maximizes $(8 - q_1 - q_2)\,q_2$; the first-order
+condition $8 - q_1 - 2q_2 = 0$ gives
+\[
+  q_2(q_1) = 4 - \frac{q_1}{2}.
+\]
+\emph{Leader.} Firm~1 maximizes $\bigl(8 - q_1 - q_2(q_1)\bigr)q_1 = \bigl(4 - \frac{q_1}{2}\bigr)q_1$, with
+first-order condition $4 - q_1 = 0$, so $q_1^* = 4$ and $q_2^* = 4 - 2 = 2$. Then $Q = 6$, $p = 4$, and the profits are
+$\pi_1 = (4-2)\cdot 4 = 8$ and $\pi_2 = (4-2)\cdot 2 = 4$.
+
+\textbf{(b) Three firms.} Firm~3 moves after observing $q_1, q_2$; firm~2 after $q_1$ only.
+\begin{enumerate}[label=\arabic*.]
+  \item \emph{Firm~3.} It maximizes $(8 - q_1 - q_2 - q_3)\,q_3$, so
+  \[
+    q_3(q_1, q_2) = \frac{8 - q_1 - q_2}{2} = 4 - \frac{q_1 + q_2}{2}.
+  \]
+  \item \emph{Firm~2,} anticipating $q_3(q_1, q_2)$. The margin it faces is
+  $8 - q_1 - q_2 - q_3 = 8 - q_1 - q_2 - 4 + \frac{q_1+q_2}{2} = 4 - \frac{q_1 + q_2}{2}$, so it maximizes
+  $\bigl(4 - \frac{q_1}{2} - \frac{q_2}{2}\bigr)q_2$, with first-order condition $4 - \frac{q_1}{2} - q_2 = 0$:
+  \[
+    q_2(q_1) = 4 - \frac{q_1}{2}, \qquad q_3(q_1) = 4 - \frac{q_1 + 4 - q_1/2}{2} = 2 - \frac{q_1}{4}.
+  \]
+  Firm~2's reply to the leader is the same as in part (a).
+  \item \emph{Firm~1,} anticipating both. The margin it faces is
+  $8 - q_1 - \bigl(4 - \frac{q_1}{2}\bigr) - \bigl(2 - \frac{q_1}{4}\bigr) = 2 - \frac{q_1}{4}$, so it maximizes
+  $\bigl(2 - \frac{q_1}{4}\bigr)q_1$, with first-order condition $2 - \frac{q_1}{2} = 0$, so $q_1^* = 4$.
+\end{enumerate}
+Then $q_2^* = 4 - 2 = 2$ and $q_3^* = 2 - 1 = 1$. Total output is $Q = 7$ and the price $p = 3$; the profits are
+$\pi_1 = (3 - 2)\cdot 4 = 4$, $\pi_2 = (3-2)\cdot 2 = 2$, $\pi_3 = (3-2)\cdot 1 = 1$. All outputs are positive, so
+the interior assumption holds. The SPE strategies are the reply functions $q_3(q_1, q_2)$ and $q_2(q_1)$ together with
+$q_1^* = 4$, defined for every output of the earlier movers.
+
+\textbf{Comparison.}
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+ & $q_1$ & $q_2$ & $q_3$ & $Q$ & $p$ & $(\pi_1,\pi_2,\pi_3)$ \\
+\midrule
+(a) two firms & 4 & 2 & --- & 6 & 4 & $(8,\ 4,\ -)$ \\
+(b) three firms & 4 & 2 & 1 & 7 & 3 & $(4,\ 2,\ 1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Firm~3's entry changes neither $q_1$ nor $q_2$: the earlier movers keep producing $4$ and $2$. Total output
+rises from $6$ to $7$ and the price falls from $4$ to $3$, so the profits of firms~1 and~2 are halved.
+
+\interp With linear demand and constant cost, a last mover who replies $q_3 = \frac{8-q_1-q_2}{2}$ turns every
+earlier mover's margin into exactly half of what it was: firm~2 faces $\frac12(8-q_1-q_2)$ instead of $8-q_1-q_2$, and
+firm~1 faces $2 - \frac{q_1}{4}$ instead of $4 - \frac{q_1}{2}$. Multiplying an objective by $\frac12$ does not move its
+maximizer, so $q_1^*$ and $q_2^*$ are unchanged, while the entrant adds output and lowers the price. First-mover
+status protects an incumbent's output, not its profit.
+
+\verify \texttt{check\_L04.py} solves the two-firm and three-firm Stackelberg games by backward induction with
+sympy (symbolic reply functions, then the leader), confirms $q = (4,2)$ and $(4,2,1)$, the prices $4$ and $3$ and the
+profits, and verifies on an integer grid that no firm gains by a unilateral deviation along the SPE reply
+functions. Output line: \texttt{munoz-garcia-4-12: (a) q = (4, 2), p = 4; (b) q = (4, 2, 1), p = 3}.
+\emph{Comparison with \MG{}'s answer} (pp.~186--189): it agrees on every figure: part~(a) $q_1^* = 4$,
+$q_2^* = 2$; part~(b) $q_1^* = 4$, $q_2^* = 2$, $q_3^* = 1$ and ``firms~1 and~2 continue to produce~4 and~2
+units of output respectively as in the 2-player game, while firm~3 produces~1 unit''. The book does not
+report prices or profits.
+
+\mistakes
+\begin{itemize}
+  \item Solving firm~1's problem with firm~2's reply from part (a) in part (b): firm~1 must anticipate both
+  later movers.
+  \item Treating firms~2 and~3 as moving simultaneously (a Cournot game after $q_1$): the exercise has firm~3
+  observe $q_2$.
+  \item Concluding from $q_1, q_2$ unchanged that entry is harmless: the price and every incumbent's
+  profit fall.
+\end{itemize}
+
+\answer{(a) $q_1^* = 4$, $q_2^* = 2$, $p = 4$, profits $(8, 4)$. (b) $q_1^* = 4$, $q_2^* = 2$, $q_3^* = 1$,
+$p = 3$, profits $(4, 2, 1)$; firm~3's entry leaves the outputs of firms~1 and~2 unchanged, raises total output
+from $6$ to $7$ and halves their profits.}
+\end{exsol}

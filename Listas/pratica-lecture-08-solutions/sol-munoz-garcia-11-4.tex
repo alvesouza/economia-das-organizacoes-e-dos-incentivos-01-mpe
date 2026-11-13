@@ -1,0 +1,56 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 11, Exercise 4. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{\MG{} Ch.~11, Exercise 4}{500}{Advanced}{4}
+\asked (a) All separating equilibria of the labor-market signaling game with $u = w - e^3/\theta$,
+$\theta_1 = 1$, $\theta_2 = 2$ equally likely; (b) which of them survive the Cho--Kreps intuitive criterion.
+
+\method Competitive wage $w(e) = E[\theta \mid e]$. In a separating PBE each type is paid its
+productivity; the incentive constraints bound the high type's education from below (the low type must
+not mimic) and above (the high type must want to separate); off-path beliefs ``low type'' make
+deviations as unattractive as possible. Then the criterion selects among them (Gibbons \S4.2.B and \S4.4;
+Tadelis \S16.3; MWG \S13.C).
+
+\solution \textbf{(a) Separating PBE.} By Bayes' rule the firms pay $w = \theta_1 = 1$ after the low
+type's education $e_1$ and $w = \theta_2 = 2$ after the high type's $e_2 \ne e_1$. The low type
+chooses $e_1 = 0$: any $e_1 > 0$ costs without raising the wage, and the deviation to $0$ pays at least
+$\theta_1 = 1$ whatever the belief. The high type chooses $e_2 = \bar e > 0$ and receives $2$.
+Off the path take $w(e) = 1$ (the belief ``low type'') for $e \ne \bar e$.
+\begin{itemize}
+  \item \emph{Low type must not mimic:} $1 - 0 \ge 2 - \bar e^3/1 \iff \bar e^3 \ge 1 \iff \bar e \ge 1$.
+  \item \emph{High type must prefer to separate:} $2 - \bar e^3/2 \ge 1 - 0 \iff \bar e^3 \le 2
+  \iff \bar e \le 2^{1/3} \approx 1.26$. (His best deviation is $e = 0$, wage $1$.)
+  \item \emph{No other deviations pay:} any $e \ne \bar e$ gets $w = 1$ and costs $e^3/\theta$, so no type
+  gains over $e = 0$ or $e = \bar e$.
+\end{itemize}
+The set of separating PBE is
+\[
+  \Bigl\{\bigl(e_1 = 0,\ e_2 = \bar e\bigr) : \bar e \in [1,\ 2^{1/3}]\Bigr\},
+  \quad w(0) = 1,\ w(\bar e) = 2,\ w(e) = 1 \text{ otherwise},
+\]
+a continuum. Payoffs: $1$ for the low type, $2 - \bar e^3/2$ for the high type (between $2 - \frac12 = \frac32$
+and $1$).
+
+\textbf{(b) Intuitive criterion.} The equilibrium payoffs are $U^*(\theta_1) = 1$ and
+$U^*(\theta_2) = 2 - \bar e^3/2$. The highest wage any belief can give is $2$, so the highest payoff from an
+off-path $e$ is $2 - e^3$ for $\theta_1$ and $2 - e^3/2$ for $\theta_2$.
+\begin{itemize}
+  \item $e$ is equilibrium-dominated for $\theta_1$ iff $1 > 2 - e^3$, i.e.\ $e > 1$; for $\theta_2$ iff
+  $2 - \bar e^3/2 > 2 - e^3/2$, i.e.\ $e > \bar e$.
+  \item Suppose $\bar e > 1$ and take $e \in (1, \bar e)$. It is dominated for $\theta_1$ ($e > 1$) but not for
+  $\theta_2$ ($e < \bar e$). The criterion forces the belief $\theta_2$, wage $2$, and then $\theta_2$ gets
+  $2 - e^3/2 > 2 - \bar e^3/2$: he deviates. So every $\bar e > 1$ fails.
+  \item $\bar e = 1$: for $e > 1$ the message is dominated for both types (no restriction); for $e \le 1$ it
+  is not dominated for $\theta_1$ ($2 - e^3 \ge 1$), so there is no restriction either. The off-path
+  belief ``low type'' stays admissible and nobody deviates: it survives.
+\end{itemize}
+Only the least-cost separating equilibrium $(e_1, e_2) = (0, 1)$, with wages $(1, 2)$, survives the intuitive
+criterion (high type's payoff $\frac32$).
+
+\verify \texttt{check\_T3.py} solves the two cubic inequalities with sympy and checks, on a grid of step
+$0.01$ for $\bar e \in [0, 2]$ and $0.002$ for deviations, that the separating PBE are exactly
+$\bar e \in [1, 2^{1/3}]$, and then applies the criterion on a grid of step $0.001$: $\bar e = 1$ survives,
+$\bar e \in \{1.01, 1.1, 1.2, 2^{1/3}\}$ fail. The book's printed answer (pp.~500--505) gets the same
+set and the same selection of the lowest level.
+
+\answer{(a) $e_1 = 0$, $e_2 \in [1, 2^{1/3}]$ (wages $1$ and $2$; off-path belief ``low type''). (b) Only
+$e_2 = 1$ survives the intuitive criterion.}
+\end{exsol}

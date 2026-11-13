@@ -1,0 +1,78 @@
+% Solution: Tadelis (2013) Exercise 6.1 "Best Responses in the Battle of the Sexes". Input by \solitem.
+% Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 6.1}{123}{Foundations}{2}
+\asked Use the best-response correspondences to find all Nash equilibria, pure and mixed, of the
+Battle of the Sexes ($O$ = opera, $F$ = football; Alex chooses the row, Chris the column; payoffs
+$(2,1)$ at $(O,O)$, $(1,2)$ at $(F,F)$, $(0,0)$ when they miss each other).
+
+\method Mixed strategies and the principle of indifference (Lecture~2, slides~42--46), then the
+best-response graph (Lecture~2, slides~47--50, ``Example~3''; Tadelis \S6.2.3, pp.~113--114).
+A mixed equilibrium is a point where the two best-response correspondences cross.
+
+\solution
+Let $p = \Pr(\text{Alex plays } O)$ and $q = \Pr(\text{Chris plays } O)$.
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{Alex $\backslash$ Chris} & \multicolumn{1}{c}{$O$} & \multicolumn{1}{c}{$F$}\\ \cline{2-3}
+$O$ & $2,\ 1$ & $0,\ 0$ \\ \cline{2-3}
+$F$ & $0,\ 0$ & $1,\ 2$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+\textbf{Alex's best response.} His expected payoffs against Chris's $q$ are
+\[
+  v_A(O, q) = 2q, \qquad v_A(F, q) = 1 - q, \qquad v_A(O,q) - v_A(F,q) = 3q - 1 .
+\]
+So $O$ is strictly better iff $q > \tfrac13$, $F$ iff $q < \tfrac13$, and he is indifferent at
+$q = \tfrac13$:
+\[
+  BR_A(q) = \begin{cases} p = 0 & q < \tfrac13,\\ p \in [0,1] & q = \tfrac13,\\ p = 1 & q > \tfrac13.\end{cases}
+\]
+\textbf{Chris's best response.} Against Alex's $p$:
+\[
+  v_C(p, O) = p, \qquad v_C(p, F) = 2(1 - p), \qquad v_C(p,O) - v_C(p,F) = 3p - 2,
+\]
+so
+\[
+  BR_C(p) = \begin{cases} q = 0 & p < \tfrac23,\\ q \in [0,1] & p = \tfrac23,\\ q = 1 & p > \tfrac23.\end{cases}
+\]
+\textbf{Crossing the two graphs} in the unit square $(p, q)$ (Alex's is a step at $q = \tfrac13$,
+Chris's a step at $p = \tfrac23$):
+\begin{itemize}
+  \item $q > \tfrac13$ forces $p = 1 > \tfrac23$, which forces $q = 1$: the profile $(p,q) = (1,1)$,
+  that is $(O,O)$.
+  \item $q < \tfrac13$ forces $p = 0 < \tfrac23$, which forces $q = 0$: $(0,0)$, that is $(F,F)$.
+  \item $q = \tfrac13$ lets $p$ be anything, but then Chris needs $p = \tfrac23$ to be willing to mix:
+  $(p,q) = (\tfrac23, \tfrac13)$.
+\end{itemize}
+These are the only three crossing points: the two pure equilibria and one mixed equilibrium in
+which Alex plays $O$ with probability $\tfrac23$ and Chris plays $O$ with probability $\tfrac13$
+($F$ with probability $\tfrac23$).
+
+\textbf{Payoffs at the mixed equilibrium.} Alex: $v_A = 2q = \tfrac23$; Chris: $v_C = p = \tfrac23$.
+They meet with probability $pq + (1-p)(1-q) = \tfrac29 + \tfrac29 = \tfrac49$, and each earns only $\tfrac23$,
+below the worst pure equilibrium payoff $1$.
+
+\answer{Three Nash equilibria: $(O,O)$, $(F,F)$, and the mixed one
+$\bigl(\sigma_A, \sigma_C\bigr) = \bigl((\tfrac23 O, \tfrac13 F),\ (\tfrac13 O, \tfrac23 F)\bigr)$, with
+expected payoff $\tfrac23$ for each player.}
+
+\interp Each player's mixing probability makes the \emph{other} indifferent, not himself: Alex plays
+his favourite $O$ with probability $\tfrac23$ because that is exactly what keeps Chris, who favours
+$F$, indifferent. The mixed equilibrium is worse for both than either pure one, and it is the
+third (odd) equilibrium that ``almost always'' accompanies two pure ones in a $2\times2$ game
+(Tadelis \S6.2.3, footnote~6; Nash's theorem, Lecture~2, slide~51).
+
+\verify \texttt{check\_L2.py} solves the two indifference conditions with sympy, then enumerates
+mutual best responses over a grid of $61 \times 61$ exact fractions: the only crossings are $(0,0)$,
+$(\tfrac23,\tfrac13)$ and $(1,1)$. It also recomputes the payoffs $\tfrac23$ and the meeting
+probability $\tfrac49$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Equalising one's \emph{own} payoffs: Alex's $p = \tfrac23$ comes from Chris's indifference
+  (equation $p = 2(1-p)$), not from Alex's.
+  \item Reading $q = \tfrac13$ as the probability that Chris plays $F$. Here $q$ is the probability
+  of $O$ throughout.
+  \item Forgetting the two pure equilibria, which are the end points of the same graphs.
+\end{itemize}
+\end{exsol}

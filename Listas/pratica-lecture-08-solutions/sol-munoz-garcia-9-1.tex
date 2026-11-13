@@ -1,0 +1,50 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 9, Exercise 1. Input by \solitem. Check: check_T1.py.
+\begin{exsol}{\MG{} Ch.~9, Exercise 1}{376--377}{Foundations}{2}
+\asked Whether the game of Fig.~9.1 has (a) a separating PBE and (b) a pooling PBE.
+
+\method The standard four-step test for each of the four pure profiles (two separating, two
+pooling): Bayes' rule for the belief, player~2's best reply, then each type's incentive to deviate
+(Tadelis \S16.1, pp.~319--323; Gibbons \S4.2.A, pp.~183--190). Payoffs are $(u_1, u_2)$; $L$ gives
+$(2, 0)$ for both types; after $R$ the high type gets $3$ ($U$) or $1$ ($D$), the low type $1$
+($U$) or $1$ ($D$), and player~2 gets $2$ or $0$ against $H$, and $0$ or $1$ against $L$ for
+$U$ or $D$. Let $q = \Pr(H \mid R)$. Player~2's payoffs are $u_2(U) = 2q$ and $u_2(D) = 1 - q$,
+so $U$ is optimal iff $q \ge \frac13$.
+
+\solution Write a profile as (action of $H$, action of $L$) with $R/L$ for the high type and
+$R'/L'$ for the low type.
+\begin{center}
+\small
+\begin{tabular}{llp{6.4cm}l}
+\toprule
+Profile & Belief and reply & Deviation check & PBE? \\
+\midrule
+$(R, L')$ & $q = 1$, so $U$ & $H$: $3 \ge 2$; $L$-type: $2 \ge 1$ & yes \\
+$(L, R')$ & $q = 0$, so $D$ & $L$-type gets $1 < 2$ from $R'$ & no \\
+$(L, L')$ & $q$ free & $H$ deviates to $R$ if $U$ ($3 > 2$); no deviation iff $D$, i.e.\ $q \le \frac13$ & yes, $q \le \frac13$ \\
+$(R, R')$ & $q = \frac12$, so $U$ & $L$-type: $1 < 2$ from $L'$ & no \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Separating $(R, L')$.} $q = \frac{\frac12 \cdot 1}{\frac12 \cdot 1 + \frac12 \cdot 0} = 1$,
+so after $R$ player~2 plays $U$ ($2 > 0$). The high type gets $3$ against $2$ from deviating to $L$;
+the low type gets $2$ from $L'$ against $1$ from $R'$ answered by $U$. After $L$ the game ends, so
+no belief is needed. PBE: $\bigl((R, L'), U;\ q = 1\bigr)$.
+
+\emph{Separating $(L, R')$.} $q = 0$, player~2 plays $D$ ($1 > 0$); the low type gets $1$ from
+$R'$ but $2$ from deviating to $L'$. Not an equilibrium.
+
+\emph{Pooling $(L, L')$.} $R$ is off the path, so $q$ is free. If $q > \frac13$ player~2 would play
+$U$ and the high type would gain by deviating to $R$ ($3 > 2$). If $q \le \frac13$ he plays $D$ and
+both types get $1 < 2$ from deviating: PBE $\bigl((L, L'), D;\ q \le \frac13\bigr)$.
+
+\emph{Pooling $(R, R')$.} $q = \frac12 \ge \frac13$, so $U$; the low type gets $1$ but $2$ from $L'$.
+Not an equilibrium.
+
+\verify \texttt{check\_T1.py} enumerates all sender and receiver profiles and the beliefs on a
+grid of step $\frac1{60}$: exactly the two PBE above, and the pooling belief set is
+$q \in [0, \frac13]$. The printed answer of the book (pp.~377--385) gives the same two equilibria
+and the same reasoning for the other two profiles.
+
+\answer{(a) Yes: $\bigl((R, L'), U;\ q = 1\bigr)$ is a separating PBE; $(L, R')$ is not. (b) Yes:
+$\bigl((L, L'), D;\ q \le \frac13\bigr)$ is a pooling PBE; $(R, R')$ is not.}
+\end{exsol}

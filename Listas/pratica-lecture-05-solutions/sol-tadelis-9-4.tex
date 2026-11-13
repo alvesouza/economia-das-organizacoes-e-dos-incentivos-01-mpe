@@ -1,0 +1,73 @@
+% Solution: Tadelis (2013) Exercise 9.4 "Online Gaming". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 9.4}{188}{Exam level}{3}
+\asked Two firms play a Cournot game and then an access game: find the equilibria and the SPE at
+$\delta = 0$; support the equal split of the monopoly output in stage~1 at $\delta = 1$; find the lowest
+$\delta$ for it; and decide whether it is supportable at $\delta = 0.4$.
+
+\method Carrot and stick over a continuous first stage (Tadelis \S9.4, pp.~180--184, Prop.~9.2, p.~181;
+Thm.~9.1, p.~185). Stage~2 supplies the reward $(O,o)$ and the stick $(N,n)$; the stage-1 incentive
+constraint compares the deviation gain with $\delta\,[\text{carrot} - \text{stick}]$ (Lecture~5, slide~15,
+$\delta \ge \frac12$ in the slide example).
+
+\solution
+\textbf{(a) Equilibria.} \emph{Stage~1.} Profit $\pi_i = (100 - q_i - q_j)q_i$, best response
+$q_i = \frac{100 - q_j}{2}$; the unique equilibrium is $q_1 = q_2 = \frac{100}{3}$, with price $\frac{100}{3}$ and profit
+$\frac{10000}{9} \approx 1111.1$ each. \emph{Stage~2} (best replies underlined):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$o$} & \multicolumn{1}{c}{$n$}\\ \cline{2-3}
+$O$ & $\br{2500},\ \br{2500}$ & $-10,\ 0$ \\ \cline{2-3}
+$N$ & $0,\ -10$ & $\br{0},\ \br{0}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+The pure equilibria are $(O,o)$ with $(2500,2500)$ and $(N,n)$ with $(0,0)$. ($(O,n)$ and $(N,o)$ are not:
+the firm that opened would rather close.) The mixed equilibrium, $O$ with probability $\frac{1}{251}$, also
+pays $0$.
+
+\emph{SPE at $\delta = 0$.} Stage~1 is a one-shot game, so $q_1 = q_2 = \frac{100}{3}$; stage~2 must be a stage
+equilibrium after every history $(q_1,q_2)$: any function from histories to $\{(O,o), (N,n)\}$. A history is
+a pair of quantities, so there are infinitely many such SPE, all with the same outcome in stage~1.
+
+\textbf{(b) Monopoly quantities at $\delta = 1$.} Total profit $(100 - Q)Q$ is maximal at $Q = 50$, price $50$,
+profit $2500$; split equally, $q_i = 25$ and $\pi_i = 1250$. Strategies: each firm produces $25$ in
+stage~1; in stage~2 both play $(O,o)$ after the history $(25,25)$ and $(N,n)$ after every other history.
+Stage~2 is a stage equilibrium after every history.
+
+\textbf{(c) Lowest $\delta$.} The best deviation against $q_j = 25$ is the best response
+$q_i = \frac{100 - 25}{2} = 37.5$, with profit $37.5\cdot(100 - 62.5) = 37.5^2 = 1406.25$, followed by the stick
+$(N,n)$ worth $0$. Conforming gives $1250 + 2500\delta$:
+\[
+  1250 + 2500\,\delta \;\ge\; 1406.25 + 0\cdot\delta \iff \delta \;\ge\; \frac{156.25}{2500} = \frac1{16} = 0.0625 .
+\]
+The stick $0$ is the worst stage-2 payoff (pure or mixed), so no punishment does better. The
+threshold is $\delta = \frac1{16}$.
+
+\textbf{(d) $\delta = 0.4$.} Since $0.4 > \frac1{16}$, \emph{yes}: the strategies of (b) are an SPE with
+payoffs $1250 + 0.4\cdot2500 = 2250$ per firm. The question's ``if not'' branch does not arise.
+For completeness, below $\frac1{16}$ the lowest symmetric quantity that can be sustained solves
+$\bigl(\frac{100-q}{2}\bigr)^2 - (100 - 2q)q = 2500\delta$, i.e.\
+$q_{\min}(\delta) = \frac{100}{3}\,(1-\sqrt{\delta})$. It equals the Cournot quantity at $\delta = 0$ and the
+monopoly split $25$ at $\delta = \frac1{16}$.
+
+\interp Stage~2 is a very strong carrot: moving from $(N,n)$ to $(O,o)$ is worth $2500$, twice the
+monopoly profit in stage~1. A very small weight on the future ($\frac1{16}$) is enough to keep the firms from
+undercutting.
+
+\verify \texttt{check\_L05.py} solves the Cournot equilibrium ($\frac{100}{3}$, profit $\frac{10000}{9}$), the
+monopoly ($50$, $2500$), the deviation ($\frac{75}{2}$, $\frac{5625}{4}$), the stage-2 equilibria and
+$\delta^* = \frac1{16}$ (both sides tested, $0.4$ included), and the formula for $q_{\min}(\delta)$.
+
+\mistakes
+\begin{itemize}
+  \item Treating $-10$ as the stick: it is the payoff of an off-equilibrium profile. The stick is the
+  equilibrium $(N,n)$ with payoff $0$.
+  \item Counting stage~1 deviations by quantity only: after \emph{any} history other than $(25,25)$ the
+  firms play $(N,n)$, including after a deviation by only one of them.
+\end{itemize}
+
+\answer{(a) Cournot $q_i = \frac{100}{3}$ (profit $\frac{10000}{9}$); stage~2 equilibria $(O,o)$ and $(N,n)$;
+at $\delta = 0$ the SPE have $q_i = \frac{100}{3}$ and a stage-2 equilibrium chosen after every history.
+(b) $q_i = 25$, then $(O,o)$ after $(25,25)$ and $(N,n)$ otherwise. (c) $\delta \ge \frac1{16}$ (best deviation
+$37.5$, profit $1406.25$). (d) Yes at $\delta = 0.4$ (it exceeds $\frac1{16}$).}
+\end{exsol}

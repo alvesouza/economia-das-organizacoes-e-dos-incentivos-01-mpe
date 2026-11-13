@@ -1,0 +1,74 @@
+% Solution: Tadelis (2013) Exercise 16.8 "Beer or Quiche?". Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Tadelis Exercise 16.8}{338}{Exam}{4}
+\asked (a) The extensive form; (b) the BNE; (c) the PBE; (d) which PBE fail the intuitive criterion.
+
+\method The Cho--Kreps game. Player~1 is Wimp ($W$, probability $p = \frac1{10}$) or Surly ($S$), picks
+Beer ($B$) or Quiche ($Q$); player~2 observes it and Duels ($D$) or not ($N$). Payoffs: breakfast
+$1$ for the preferred one ($S$: $B$, $W$: $Q$), $0$ for the other, plus $2$ if no duel; player~2
+gets $2$ ($D$) or $1$ ($N$) against $W$, and $0$ ($D$) or $1$ ($N$) against $S$. With $\mu = \Pr(W \mid \text{breakfast})$
+player~2 gets $2\mu$ from $D$ and $1$ from $N$: he duels iff $\mu \ge \frac12$ (Tadelis \S16.1 and
+\S16.3, pp.~319--335; Gibbons \S4.4, Signaling Requirement 6).
+
+\solution \textbf{(a) Tree.} Payoffs (player~1, player~2):
+\sigtreenames{$W$}{$S$}{$B$}{$Q$}{$N$}{$D$}{$0.1$ / $0.9$}
+\sigtree{2,1}{0,2}{3,1}{1,0}{3,1}{1,2}{2,1}{0,0}
+(Left branches: message $B$; right branches: message $Q$; upper node $W$, lower node $S$; replies $N$
+above, $D$ below. Upper-left $(2,1)$ is $W$ with $B$ and no duel: breakfast $0$, no duel $2$.)
+
+Check of the payoffs: $W$ with $Q$ and $N$ gets $1 + 2 = 3$, player~2 $1$; $W$ with $B$ and $D$ gets $0$,
+player~2 $2$; $S$ with $B$ and $N$ gets $3$, player~2 $1$; $S$ with $Q$ and $D$ gets $0$, player~2 $0$.
+
+\textbf{(b) BNE (pure).} Strategies are (breakfast of $W$, breakfast of $S$) and (reply after $B$,
+reply after $Q$). The pure BNE are $(BB;\ N \text{ after } B,\ D \text{ after } Q)$ and
+$(QQ;\ D \text{ after } B,\ N \text{ after } Q)$. In the first, $W$ gets $2$ and $S$ gets $3$; a switch to $Q$
+would be met by a duel (payoffs $1$ and $0$). Symmetrically for the second, where $W$ gets $3$ and $S$
+gets $2$. (Replies after the unreached breakfast may also be mixed, with $\Pr(D) \ge \frac12$.)
+
+\textbf{(c) PBE: no separating, two pooling families.} Let $d_B$, $d_Q$ be the probabilities of a duel
+after $B$ and $Q$. Then $u_S(B) - u_S(Q) = 1 - 2d_B + 2d_Q$ and $u_W(B) - u_W(Q) = -1 - 2d_B + 2d_Q$:
+\emph{whatever the replies, Surly's gain from Beer exceeds Wimp's by $2$.}
+\begin{itemize}
+  \item \emph{Separating} $(W{:}\,Q,\ S{:}\,B)$: $\mu(Q) = 1$ so $D$, $\mu(B) = 0$ so $N$; $W$ gets $1$ from
+  $Q$ but $2$ from $B$. Fails. \emph{Reverse} $(W{:}\,B,\ S{:}\,Q)$: $D$ after $B$, $N$ after $Q$; $W$ gets
+  $0$ but $3$ from $Q$. Fails.
+  \item \emph{Pooling on Beer.} Bayes' rule: $\mu(B) = p = 0.1 < \frac12$, so $N$ after $B$ ($d_B = 0$).
+  $W$ gets $2$ from $B$ and $3 - 2d_Q$ from $Q$; he does not deviate iff $d_Q \ge \frac12$, which
+  requires $\mu(Q) \ge \frac12$. $S$ gets $3$ from $B$ and at most $2$ from $Q$. PBE: both $B$; $N$
+  after $B$; $D$ after $Q$ (or a duel with probability $d_Q \ge \frac12$ at $\mu(Q) = \frac12$); off-path belief
+  $\mu(Q) = \Pr(W \mid Q) \ge \frac12$.
+  \item \emph{Pooling on Quiche.} $\mu(Q) = 0.1$, so $N$ after $Q$. $S$ gets $2$ from $Q$ and $3 - 2d_B$
+  from $B$: he does not deviate iff $d_B \ge \frac12$, so $\mu(B) = \Pr(W \mid B) \ge \frac12$. $W$ gets
+  $3$ from $Q$ and at most $2$ from $B$. PBE: both $Q$; $N$ after $Q$; $D$ after $B$; off-path belief
+  $\mu(B) \ge \frac12$.
+  \item \emph{Semi-separating.} If $W$ mixes with positive probability on $B$, Surly strictly prefers
+  $B$ (the identity above), so $\mu(B) \le p < \frac12$ and $d_B = 0$; $W$'s indifference then needs
+  $d_Q = \frac12$, but $Q$ is chosen only by $W$ ($\mu(Q) = 1$, $d_Q = 1$): contradiction. If $W$ plays $Q$ for
+  sure and $S$ mixes, $\mu(B) = 0$, $d_B = 0$ and Surly strictly prefers $B$: he does not mix.
+\end{itemize}
+These are all the PBE.
+
+\textbf{(d) Intuitive criterion.} A message is equilibrium-dominated for a type if his equilibrium payoff
+exceeds the best he can get from it.
+\begin{itemize}
+  \item \emph{Pooling on Quiche fails.} $W$'s equilibrium payoff is $3$ and the best he can get from $B$ is
+  $2$ (no duel): $B$ is equilibrium-dominated for $W$. $S$'s equilibrium payoff is $2$ and $B$ can give
+  him $3$: not dominated. So after $B$ player~2 must believe Surly, $\mu(B) = 0$, and does not duel; then $S$
+  gets $3 > 2$ from deviating to $B$. The equilibrium does not survive.
+  \item \emph{Pooling on Beer survives.} $S$'s equilibrium payoff is $3$ and $Q$ gives him at most $2$:
+  $Q$ is equilibrium-dominated for $S$. $W$ gets $2$ in equilibrium and up to $3$ from $Q$: not dominated.
+  So after $Q$ player~2 must believe Wimp, $\mu(Q) = 1 \ge \frac12$, and duels: $W$ gets $1 < 2$. This is the
+  admissible belief the equilibrium needed, so no type deviates.
+\end{itemize}
+(The criterion is applied with Surly's and Wimp's payoffs, i.e.\ the sender's, as in Gibbons'
+Signaling Requirement 6; Tadelis prints $v_2$ where $v_1$ belongs in condition 2 of his Def.~16.1.)
+
+\verify \texttt{check\_T2.py} builds the matrix (pure BNE: the two above), enumerates all pure PBE on a
+grid of step $\frac1{60}$ (only the two pooling profiles, with off-path beliefs $\ge \frac12$ on the unreached
+breakfast), checks the identity $u_S(B) - u_S(Q) = u_W(B) - u_W(Q) + 2$ for a grid of $d_B, d_Q$, and applies
+Requirement 6: only pooling on Quiche is eliminated. Tadelis prints no answer.
+
+\answer{(b) Pure BNE: $(BB;\ N, D)$ and $(QQ;\ D, N)$ (replies after $B$, after $Q$). (c) PBE: pooling on
+Beer ($N$ after $B$, $D$ after $Q$, $\Pr(W \mid Q) \ge \frac12$) and pooling on Quiche ($N$ after $Q$,
+$D$ after $B$, $\Pr(W \mid B) \ge \frac12$); no separating PBE. (d) Pooling on Quiche fails the intuitive
+criterion; pooling on Beer survives.}
+\end{exsol}

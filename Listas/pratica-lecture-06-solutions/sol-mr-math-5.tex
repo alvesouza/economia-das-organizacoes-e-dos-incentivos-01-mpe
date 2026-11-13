@@ -1,0 +1,48 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Mathematical Exercise 5. Input by \solitem. Check: check_T2.py (item 16).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Mathematical Exercise 5}{286}{Exam level}{3}
+\asked In the trust game, each round is followed by another with probability $p$. Show that, whenever the
+payoff $V$ of honoured trust exceeds the no-trust payoff $0$, for any gain $G$ from abusing trust and loss $L$
+from unhonoured trust there is a $p$ that makes offering and honouring trust at every round a Nash equilibrium.
+What threats and punishments sustain it?
+
+\method Stage payoffs (offeror, decision maker): offer and honour $(V, V)$; offer and abuse $(-L, V + G)$; no offer
+$(0, 0)$ (pp.~261--263). The objective is $\sum_n p^n u_{in}$, so a stream of $X$ per round is worth
+$X/(1-p)$. Use the one-deviation test with the trigger ``never offer (and never honour) after a breach''.
+
+\solution
+\textbf{Strategies.} Offeror: offer trust in every round as long as trust has always been honoured; after a
+breach never offer again. Decision maker: honour as long as trust has always been honoured; after a breach do not
+honour. After a breach play is the repeated static Nash equilibrium (no offer; dishonour if offered).
+
+\textbf{Decision maker.} Honouring gives $V/(1-p)$. Abusing gives $V + G$ today and then $0$ (trust is never offered
+again). He honours iff
+\[
+  \frac{V}{1-p} \ge V + G \iff pV \ge G(1-p) \iff p \ge p^* = \frac{G}{G + V}.
+\]
+Since $V > 0$, $p^* < 1$ and a value $p \in [p^*, 1)$ exists for \emph{every} $G > 0$. (For $p = 1$ the game
+never ends and the stream is not summable; the exercise has $p < 1$.)
+
+\textbf{Offeror.} On the path trust is honoured, so offering gives $V/(1-p) > 0$, the payoff from withholding for
+ever. He does not want to withhold, whatever $L$ is. Off the path, after a breach, never offering is optimal
+because the decision maker is expected to abuse again and $-L < 0$.
+
+\textbf{Role of $L$.} The loss $L$ never appears in the cutoff: it matters only if trust is abused, which does not
+happen on the path. It makes the offeror's threat of withdrawing trust credible after a breach, because
+offering to someone expected to abuse costs $L$.
+
+\textbf{Threats and punishments.} The punishment is the loss of the future gains from trade: the offeror withdraws
+trust for ever, so the decision maker gives up $V$ in every future round, $\frac{pV}{1-p}$ in expected present value,
+for a one-round gain $G$. The decision maker's reputation for honesty is what makes trust worth offering.
+
+\interp An uncertain end date works like a discount factor. A cooperative outcome that unravels under a known
+finite horizon (item~5) is sustained by a sufficiently high probability of continuing: with $V = 3$, $G = 2$ the
+threshold is $p^* = 0.4$; with $G = 10$ and $V = 1$ it is $p^* = \frac{10}{11}$.
+
+\verify \texttt{check\_T2.py} (item~16) solves $\frac{V}{1-p} = V + G$ symbolically ($p^* = \frac{G}{V+G}$) and
+checks, for $(V, G) \in \{(3,2), (1,10), (10,1)\}$, that $p^* \in (0,1)$, equality at $p^*$ and the correct sign of the
+inequality at $p^* \pm 0.01$. The book prints no answer.
+
+\answer{Honour trust iff $\frac{V}{1-p} \ge V + G$, i.e.\ $p \ge p^* = \frac{G}{G+V}$, which lies in $(0,1)$ for any
+$G, L$ because $V > 0$. The offeror's threat is to withdraw trust for ever after an abuse (credible, since offering to
+an expected abuser costs $L$); the decision maker's punishment is losing $V$ in all future rounds.}
+\end{exsol}

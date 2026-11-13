@@ -1,0 +1,67 @@
+% Solution: Cabral (2017) Ch. 9 Exercise 9.19 "Secret price cuts". Input by \solitem. Check: check_T3.py (item 25).
+\begin{exsol}{Cabral Exercise 9.19}{245}{Advanced}{5}
+\asked Two duopolists face demand $h = 1$ (probability $1-\alpha$) or $l = 0$ (probability $\alpha$) at reservation
+price $u$, with zero cost, and each firm sees only its own demand. They set $p = u$ until a firm gets zero demand,
+then $p = 0$ for $T$ periods, then $p = u$ again. Show (a) the value $V$; (b) the deviation value $V'$; (c) the
+equilibrium condition; (d) the optimal equilibrium.
+
+\method Cabral \S9.2 (pp.~222--227; secret price cuts, Green--Porter). The strategy is an equilibrium iff the value of
+cooperation $V$ is at least the value $V'$ of the best deviation (one-stage deviation principle). The price war
+itself is the static equilibrium ($p = 0$), so it needs no check.
+
+\solution
+\textbf{(a) $V$.} In a cooperative period, with probability $1-\alpha$ demand is high and each firm sells
+$\frac12$ at $u$, earning $\frac u2$ and staying in the cooperative phase (value $\delta V$ next period). With
+probability $\alpha$ demand is low: profit $0$, and the price war follows for $T$ periods of zero profit, after which
+cooperation returns, a value $\delta^{T+1}V$ viewed from today. Hence
+\[
+  V = (1-\alpha)\Bigl(\frac u2 + \delta V\Bigr) + \alpha\,\delta^{T+1}V
+  \quad\Longrightarrow\quad
+  V = \frac{(1-\alpha)u/2}{1 - (1-\alpha)\delta - \alpha\delta^{T+1}} .
+\]
+\textbf{(b) $V'$.} A deviator undercuts $u$ slightly. If demand is high (probability $1-\alpha$) he sells $1$ unit at about
+$u$, earning $u$, and the rival, who then gets zero demand, starts the price war. If demand is low (probability $\alpha$)
+he earns $0$ either way and the war starts anyway. In both cases the future is $\delta^{T+1}V$ (war and return):
+\[
+  V' = (1-\alpha)u + \delta^{T+1}V .
+\]
+\textbf{(c) Condition.} $V \ge V'$ means $V\,(1 - \delta^{T+1}) \ge (1-\alpha)u$. From (a), $(1-\alpha)u =
+2V\,[\,1 - (1-\alpha)\delta - \alpha\delta^{T+1}\,]$. Substituting and dividing by $V > 0$:
+\[
+  1 - \delta^{T+1} \ge 2 - 2(1-\alpha)\delta - 2\alpha\delta^{T+1}
+  \iff 1 \le 2(1-\alpha)\delta + (2\alpha - 1)\delta^{T+1} .
+\]
+\textbf{(d) Optimal equilibrium.} The planner chooses $T$ to maximise $V$, which is increasing in $\delta^{T+1}$, so a
+\emph{shorter} war is better, subject to (c). Write $g(T) = 2(1-\alpha)\delta + (2\alpha - 1)\delta^{T+1}$.
+\begin{itemize}
+  \item If $\alpha \ge \frac12$: $g(T) \le \delta < 1$ for every $T \ge 0$: no such equilibrium exists. (Wars are
+  triggered too often.)
+  \item If $\alpha < \frac12$: $g$ increases in $T$ and tends to $2(1-\alpha)\delta$, so an equilibrium exists iff
+  $\delta > \frac{1}{2(1-\alpha)}$, and the optimal one uses the \emph{smallest} $T$ with
+  $\delta^{T+1} \le \dfrac{2(1-\alpha)\delta - 1}{1 - 2\alpha}$.
+\end{itemize}
+Example: $\alpha = \frac15$, $\delta = \frac9{10}$: $g(1) = 0.954 < 1 \le g(2) = 1.0026$, so $T^* = 2$ and $V = 2.98$ (with $u = 1$).
+Equilibrium price wars occur on the path (after bad draws) even though nobody cheats: they are the cost of
+imperfect monitoring.
+
+\interp A price war must be long enough to deter secret cuts and short enough not to waste surplus. The optimal
+war is the shortest one that deters, and it happens with positive probability on the equilibrium path.
+
+\verify \texttt{check\_T3.py} (item~25) solves (a) symbolically, derives $(V - V')$ times the denominator and
+shows it equals $g(T) - 1$ times $\frac{(1-\alpha)u}{2}$ for $T = 1,2,3$, confirms $V = 2.98$ by value iteration over the
+Markov chain of phases ($T = 2$, $\alpha = 0.2$, $\delta = 0.9$), shows that (c) is never met for $\alpha \ge \frac12$,
+and finds $T^* = 2$ by search together with $\lceil\ln r / \ln\delta\rceil - 1$ for $r = \frac{2(1-\alpha)\delta - 1}{1-2\alpha}$.
+Cabral prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Treating the war as a punishment for cheating only: it also follows low demand, which is why the equilibrium
+  has wars on the path.
+  \item Maximising $T$: a longer war lowers $V$ (more periods of zero profit).
+\end{itemize}
+
+\answer{(a) $V = \frac{(1-\alpha)u/2}{1-(1-\alpha)\delta-\alpha\delta^{T+1}}$. (b) $V' = (1-\alpha)u + \delta^{T+1}V$.
+(c) $V \ge V'$ is equivalent to $1 \le 2(1-\alpha)\delta + (2\alpha-1)\delta^{T+1}$. (d) Exists iff $\alpha < \frac12$
+and $\delta > \frac1{2(1-\alpha)}$; the optimal war has the smallest $T$ satisfying (c), e.g.\ $T^* = 2$ for $\alpha =
+\frac15$, $\delta = 0.9$.}
+\end{exsol}

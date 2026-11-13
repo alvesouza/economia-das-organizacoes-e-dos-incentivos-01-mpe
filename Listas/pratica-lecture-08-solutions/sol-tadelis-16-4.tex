@@ -1,0 +1,65 @@
+% Solution: Tadelis (2013) Exercise 16.4 "School Choice". Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Tadelis Exercise 16.4}{336--337}{Exam}{3}
+\asked (a) The extensive form; (b) the matrix of the Bayesian game for $p = \frac12$; (c) all
+pure-strategy BNE; (d) all pure-strategy PBE; (e) the intuition for the difference.
+
+\method Compute payoffs from the table (wage minus learning cost for the student; productivity
+minus wage for the firm, with the $L$ job worth half the productivity); matrix and BNE; PBE by the
+firm's best replies at its two information sets (Tadelis \S16.1, pp.~319--323).
+
+\solution \textbf{Payoffs} (student, firm); wages $w_L = 2$, $w_H = 6$:
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+Type & School & Firm assigns $H$ & Firm assigns $L$ \\
+\midrule
+$E$ & $B$ & $(6 - 2,\ 12 - 6) = (4, 6)$ & $(2 - 2,\ 6 - 2) = (0, 4)$ \\
+$E$ & $S$ & $(6 - 0,\ 4 - 6) = (6, -2)$ & $(2 - 0,\ 2 - 2) = (2, 0)$ \\
+$G$ & $B$ & $(6 - 8,\ 10 - 6) = (-2, 4)$ & $(2 - 8,\ 5 - 2) = (-6, 3)$ \\
+$G$ & $S$ & $(6 - 2,\ 2 - 6) = (4, -4)$ & $(2 - 2,\ 1 - 2) = (0, -1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{(a) Tree.} Nature picks $E$ (probability $p$) or $G$; the student chooses $B$ or $S$; the firm
+observes only the school and chooses $H$ or $L$.
+\sigtreenames{$E$}{$G$}{$B$}{$S$}{$H$}{$L$}{$p$ / $1-p$}
+\sigtree{4,6}{0,4}{-2,4}{-6,3}{6,-2}{2,0}{4,-4}{0,-1}
+(Left branches: $B$; right branches: $S$; upper node: type $E$.)
+
+\textbf{(b) Matrix, $p = \frac12$.} The student's strategy is (school of $E$, school of $G$); the
+firm's is (job after $B$, job after $S$). Entries (student, firm):
+\begin{center}
+\begin{tabular}{r|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$HH$} & \multicolumn{1}{c}{$HL$} & \multicolumn{1}{c}{$LH$} & \multicolumn{1}{c}{$LL$} \\ \cline{2-5}
+$BB$ & $1,\ \br{5}$ & $1,\ \br{5}$ & $-3,\ \tfrac{7}{2}$ & $-3,\ \tfrac{7}{2}$ \\ \cline{2-5}
+$BS$ & $4,\ 1$ & $\br{2},\ \br{\tfrac{5}{2}}$ & $2,\ 0$ & $0,\ \tfrac{3}{2}$ \\ \cline{2-5}
+$SB$ & $2,\ 1$ & $0,\ \br{2}$ & $0,\ \tfrac{1}{2}$ & $-2,\ \tfrac{3}{2}$ \\ \cline{2-5}
+$SS$ & $\br{5},\ -3$ & $1,\ \br{-\tfrac{1}{2}}$ & $\br{5},\ -3$ & $\br{1},\ \br{-\tfrac{1}{2}}$ \\ \cline{2-5}
+\end{tabular}
+\end{center}
+For instance $(BS, HL)$: $E$ goes to $B$ and is placed in $H$ ($4$), $G$ goes to $S$ and is placed in $L$
+($0$): student $\frac12 4 + \frac12 0 = 2$, firm $\frac12 6 + \frac12(-1) = \frac52$.
+
+\textbf{(c) BNE.} The cells with both payoffs underlined: $(BS, HL)$ and $(SS, LL)$.
+
+\textbf{(d) PBE.} The firm's replies are dominant at each information set: after $B$ it gets $6 > 4$ (against
+$E$) and $4 > 3$ (against $G$) from $H$, so $H$ is optimal for every belief; after $S$ it gets $0 > -2$
+(against $E$) and $-1 > -4$ (against $G$) from $L$, so $L$ is optimal for every belief and every $p$.
+Hence in any PBE the firm plays $(H \text{ after } B,\ L \text{ after } S)$. Then $E$ prefers $B$ ($4 > 2$) and
+$G$ prefers $S$ ($0 > -2$): the unique PBE is $(BS, HL)$, separating, with beliefs $\Pr(E \mid B) = 1$,
+$\Pr(E \mid S) = 0$ (Bayes' rule at both sets). The firm's payoff is $\frac52$.
+
+\textbf{(e) Intuition.} $(SS, LL)$ is a BNE only because the firm's reply $L$ to the unreached message
+$B$ is never tested: it is a threat that no belief makes optimal ($H$ strictly dominates $L$ after $B$),
+and it keeps $E$ from signaling. A BNE accepts non-credible off-path replies; a PBE requires the reply
+to be optimal at every information set for some belief.
+
+\verify \texttt{check\_T2.py} recomputes the eight payoff pairs from wages, costs and productivities,
+builds the matrix, lists the BNE $(BS, HL)$, $(SS, LL)$, enumerates PBE (only $(BS, HL)$), and checks
+the dominance of $H$ after $B$ and $L$ after $S$ for $p \in \{0, \frac1{20}, \dots, 1\}$. Tadelis prints
+no answer.
+
+\answer{(c) BNE: $(BS, HL)$ and $(SS, LL)$. (d) The only PBE is $(BS, HL)$: $E$ goes to Brown Bear, $G$
+to Silly Tree, the firm assigns $H$ after $B$ and $L$ after $S$ (for every $p$). (e) $(SS, LL)$
+relies on a non-credible reply to $B$.}
+\end{exsol}

@@ -1,0 +1,46 @@
+% Solution: Tadelis (2013) Exercise 13.10 "Common Values Linear Bidding". Input by \solitem. Check: check_E3.py.
+\begin{exsol}{Tadelis Exercise 13.10}{287}{Advanced}{4}
+\asked Two bidders, first-price auction, value $\theta_1+\theta_2$ with private signals
+$\theta_i\sim U[0,1]$: (a) a symmetric BNE $s(\theta_i)=a+b\theta_i$; (b) the expected payoff of
+type $\theta_i$; (c) compare the bid with item~16.
+
+\method Common values: winning is informative about the rival's signal (the winner's curse;
+Tadelis \S13.2, pp.~282--284). Let the rival bid $a+b\theta_j$ with $b>0$; a bid $x$ wins iff
+$\theta_j<t\equiv(x-a)/b$, and then $E[\theta_j\mid\theta_j<t]=t/2$.
+
+\solution
+\textbf{(a)} Given signal $\theta_i$ and a bid $x=a+bt$,
+\[
+  EU_i=\underbrace{t}_{\Pr(\text{win})}\Bigl(\theta_i+\frac t2-a-bt\Bigr).
+\]
+FOC in $t$: $\theta_i-a+t-2bt=0$, so $t=\dfrac{\theta_i-a}{2b-1}$ (second derivative
+$1-2b<0$ needs $b>\tfrac12$). In a symmetric equilibrium the bid of type $\theta_i$ beats exactly the
+rival types below $\theta_i$, i.e.\ $t=\theta_i$ for all $\theta_i$:
+\[
+  (2b-1)\theta_i=\theta_i-a\ \ \forall\theta_i\ \Rightarrow\ 2b-1=1,\ a=0\ \Rightarrow\ b=1,\ a=0 .
+\]
+So $s^*(\theta_i)=\theta_i$: bid one's own signal. Conditional on winning the item is worth
+$\theta_i+\theta_i/2$ (the rival's signal is lower), and the bid shades that by $\theta_i/2$.
+
+\textbf{(b)} With $t=\theta_i$: $EU_i^*=\theta_i\bigl(\theta_i+\tfrac{\theta_i}2-\theta_i\bigr)=\dfrac{\theta_i^2}{2}$.
+
+\textbf{(c)} Item~16 (private values $0.5+\theta_i$) has $s(\theta_i)=\tfrac12+\tfrac12\theta_i$. Then
+\[
+  \tfrac12+\tfrac12\theta_i-\theta_i=\tfrac12(1-\theta_i)>0\quad\text{for }\theta_i<1 ,
+\]
+so the common-value bid is strictly lower for every $\theta_i<1$ (they coincide at $\theta_i=1$, a
+single type). Winner's curse: conditional on winning, the rival's signal is lower than
+$\theta_i$, so the item is worth less than $0.5+\theta_i$; bidders shade more.
+
+\interp Both exercises give the same expected payoff $\theta_i^2/2$, but with common values
+the bid is lower because winning is bad news about the rival's signal.
+
+\verify \texttt{check\_E3.py}: sympy solves the FOC, finds $(a,b)=(0,1)$ by matching, checks strict
+concavity ($-1$ at $b=1$) and the payoff $\theta^2/2$; scipy maximizes $EU_i$ against $s(\theta)=\theta$ at
+$\theta=0.1,0.4,0.8$ and returns bids $\theta$ and value $\theta^2/2$; compares with
+$\tfrac12+\tfrac12\theta$. Tadelis gives no answer.
+
+\answer{(a) $s^*(\theta_i)=\theta_i$ ($a=0$, $b=1$). (b) $EU_i^*(\theta_i)=\theta_i^2/2$. (c) The
+bid is lower than item~16's $\tfrac12+\tfrac12\theta_i$ by $\tfrac12(1-\theta_i)$, strictly for $\theta_i<1$
+(winner's curse).}
+\end{exsol}

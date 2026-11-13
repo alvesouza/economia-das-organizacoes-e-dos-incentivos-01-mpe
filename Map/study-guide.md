@@ -50,7 +50,7 @@ Ch. 9–11 before Nov 6.
 **Per-lecture kit** (every lecture N = 1–8): notes [[Notas/00-index|`Notas/LNN/`]] and their PDF
 `Notas/LNN/LNN-notes.pdf` · narration `Leituras/lecture-NN-notes-narrated.txt` · NotebookLM audio
 `NotebookLM/audio/lecture-NN-audio-part{1,2}.md` ([[NotebookLM/README|README]]) · quizzes
-`Simulados/quiz-lectureNN-{1,2,3}-*.md` · practice list `Listas/pratica-lecture-NN.md` (book
+`Simulados/quiz-lectureNN-{1,2,3}-*.md` · practice list `Listas/pratica-lecture-NN.md` with worked solutions `Listas/pratica-lecture-NN-solutions.pdf` (re-aligned to the real lectures on 2026-11-12; book
 exercises verbatim) · for Lectures 1–5, a 10-exercise real list with detailed solutions,
 `Listas/lista-reais-lecture-0N.pdf` and `-solutions.pdf`. Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
 [[Map/exercises-index|exercises-index]]. The kit files follow the estimated units (audio prompts
@@ -99,7 +99,7 @@ were written before any slides; Lecture 3's slides arrived 2026-11-03 and Lectur
 - **Content (slides `Aula/Lecture04.pdf`, 23 slides):** the Brexit case as a game (data, extensive form, replacing Nature by expected payoffs, strategic form, too many Nash equilibria, backward induction, lessons: sunk investments can be strategic, observability matters, talk is cheap); Nash equilibrium is not enough: non-credible threats; subgames (counting them) and subgame-perfect equilibrium, back to the Brexit game; repeated games: definition and payoffs, finitely repeated games.
 - **In-class case (pairs, prepared before class):** *Boris's Brexit Dilemma* (A) and (B), Darden UV9621/UV9624, task in `Cases/Brexit/intrucoes.md`. Worked model `Cases/Brexit/brexit-game.pdf` (14 pp.) and `brexit-game-short.pdf` (3 pp.); it matches the slides' numbers and solution (UK prepares; EU offers favorable if prepared, unfavorable otherwise; payoffs (−24.7, −14)).
 - **Before class:** Tadelis Ch. 8 (pp. 151–174), §10.1–10.2 (pp. 190–196) · Gibbons §2.1.A–B, §2.4 (pp. 115–129)
-- **After class:** `Listas/pratica-lecture-03.md` (credibility, entry, Stackelberg items) · quizzes `Simulados/quiz-lecture03-{2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 4
+- **After class:** `Listas/pratica-lecture-04.md` (12 items: credibility, commitment, Stackelberg, time inconsistency; solutions `Listas/pratica-lecture-04-solutions.pdf`) · quizzes `Simulados/quiz-lecture03-{2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 4
 - **Formal side:** MWG §9.A–9.B (pp. 267–281)
 - **Applications:** Cabral §7.2 (p. 167, entry and commitment)
 - **Notes:** [[Notas/L03/L03-00-map|L03 unit]] §05–06 (subgame perfection, credibility and commitment) and [[Notas/L05/L05-00-map|L05 unit]] §01, §03 (finite repetition, discounting and strategies); estimated units
@@ -108,7 +108,7 @@ were written before any slides; Lecture 3's slides arrived 2026-11-03 and Lectur
 #lecture/5
 - **Content (from the Lecture 4 wrap-up; no slides yet):** finitely repeated games: unraveling, carrots and sticks; infinitely repeated games, the one-stage deviation principle and the folk theorem; bargaining.
 - **Before class:** Tadelis Ch. 9 (pp. 175–189, one-stage deviation §9.5 p. 184), Ch. 10 (pp. 190–219, folk theorem §10.6 p. 209), Ch. 11 (pp. 220–237) · Gibbons §2.1.D (p. 68), §2.3.A–B (pp. 82–102)
-- **After class:** `Listas/pratica-lecture-05.md` and `Listas/pratica-lecture-04.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture05-{1,2,3}-*.md`, `quiz-lecture04-{1,2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 5 · Muñoz-Garcia Ch. 6 Ex. 1 (p. 274), Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
+- **After class:** `Listas/pratica-lecture-05.md` (25 items: repeated games, carrots and sticks, one-stage deviation; solutions `Listas/pratica-lecture-05-solutions.pdf`; bargaining items moved to Lecture 6) · quizzes `Simulados/quiz-lecture05-{1,2,3}-*.md`, `quiz-lecture04-{1,2,3}-*.md` · `Listas/lista-reais-lectures-01-05.pdf` block 5 · Muñoz-Garcia Ch. 6 Ex. 1 (p. 274), Ex. 8 (p. 303) · MWG 9.B.12, 9.B.13 (pp. 302–303)
 - **Formal side:** MWG 9.AA (p. 296), §12.D (p. 400), App. 12.A (p. 417)
 - **Slides (arrived 2026-11-08):** `Aula/Lecture05.pdf`, "Repeated games" (unraveling, carrots and sticks, one-stage deviation, grim trigger $\delta \geq 1/4$, tit-for-tat). Homework (slide 34, tacit collusion) solved in `Resolucao/homework-lecture-05.pdf` (5 pp.) and `-short.pdf` (1 p.): $\delta^* = 9/17$.
 - **Paper case:** Maheshri & Mastrobuoni (2021), "The race between deterrence and displacement" (guard hiring as a coordination game; carrot and stick, $\delta \geq 0.23$), solved in `Cases/the race between deterrence and displacement/deterrence-game.pdf` (11 pp.) and `-short.pdf` (2 pp.), numbers in `deterrence-check.py` · audio prompt `NotebookLM/audio/case-lecture-05-deterrence-audio.md`.

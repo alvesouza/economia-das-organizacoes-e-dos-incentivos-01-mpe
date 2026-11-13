@@ -1,0 +1,37 @@
+% Detailed solutions to the 25 items of Listas/pratica-lecture-05.md (Lecture 5, Repeated games).
+% Item order: sol-items.tex. Eight items reuse ../lista-reais-lectures-01-05-solutions/sol-<slug>.tex.
+% Compile here: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+% Then copy main.pdf to ../pratica-lecture-05-solutions.pdf.
+\documentclass[11pt,a4paper]{article}
+\newcommand{\soltema}{Lecture 5, Repeated games: detailed solutions}
+\input{../lista-reais-lectures-01-05-solutions/sol-preamble}
+% Heading of this list: item number in the list (no combined list here).
+\renewenvironment{exsol}[4]{%
+  \ifafterlecture\global\afterlecturefalse\else\clearpage\fi\phantomsection
+  \addcontentsline{toc}{section}{Item \theItemNo: #1 (p.~#2)}%
+  \section*{\large Item \theItemNo: #1\hfill{\normalsize\mdseries #3 $\cdot$ difficulty #4/5}}%
+  \textbf{Source:} #1, page~#2. The statement is reproduced verbatim in
+  \texttt{pratica-lecture-05.md} (item \theItemNo); it is not repeated here.\par}{\par}
+\newcommand{\reuse}[2]{\stepcounter{ItemNo}\renewcommand{\CombNo}{#1}%
+  \input{../lista-reais-lectures-01-05-solutions/sol-#2}}
+\input{sol-items}
+
+\title{\textbf{Lecture 5, Repeated Games: Detailed Solutions}\\[4pt]
+  \large Economics of Organizations and Incentives (MPE Insper)}
+\author{Solutions to the 25 exercises of \texttt{Listas/pratica-lecture-05.md}}
+\date{November 2026}
+
+\input{../statement-hook}  % statement of each item before its solution
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent\solintro
+
+\tableofcontents
+
+\sollecture{\lecturevtitle}
+\itemsv
+
+\end{document}

@@ -1,0 +1,58 @@
+% Solution: Tadelis (2013) Exercise 12.1 "Chicken Revisited". Input by \solitem. Check: check_E1.py.
+\begin{exsol}{Tadelis Exercise 12.1}{266}{Foundations}{2}
+\asked Re-solve the chicken game of \S12.2.1 for $(R,H,L)=(8,16,0)$ and for $(8,0,16)$, and say
+whether equilibrium analysis supports the claim that a society of lenient parents makes
+teenagers behave worse.
+
+\method Each kid has type $k\in\{L,H\}$ (cost of an accident), independent and equiprobable.
+Payoffs of $i$: swerve ($C$) $=0$; drive ($D$) against $C$ gives $R$; $D$ against $D$ gives
+$R/2-k$. Strategy $xy$: $x$ if the kid's parents are lenient ($L$), $y$ if harsh ($H$); build the
+$4\times4$ Bayesian normal form and underline best replies (Tadelis pp.~252--255).
+
+\solution
+\textbf{Case $R=8,H=16,L=0$} (book's matrix, rows $CC,CD,DC,DD$, columns $cc,cd,dc,dd$):
+\begin{center}\small
+\begin{tabular}{l|cccc}
+ & $cc$ & $cd$ & $dc$ & $dd$\\\hline
+$CC$ & $0,0$ & $0,4$ & $0,4$ & $0,8$\\
+$CD$ & $4,0$ & $-1,-1$ & $-1,3$ & $-6,2$\\
+$DC$ & $4,0$ & $3,-1$ & $\br{3},\br{3}$ & $2,2$\\
+$DD$ & $8,0$ & $2,-6$ & $2,2$ & $-4,-4$
+\end{tabular}
+\end{center}
+The unique pure BNE is $(DC,dc)$: lenient kids ($k=0$) drive, harsh kids ($k=16$) swerve.
+\emph{Preacher's claim:} in a society where \emph{all} parents are lenient, both kids have
+$k=0$ and $D$ is strictly dominant ($4>0$ against $D$, $8>0$ against $C$): everybody drives and
+the accident probability is $1$, against $\tfrac14$ in the mixed society (only lenient--lenient
+pairs crash). The analysis supports the claim.
+
+\textbf{Case $R=8,H=0,L=16$.} Now lenient parents impose the \emph{high} cost. Matrix:
+\begin{center}\small
+\begin{tabular}{l|cccc}
+ & $cc$ & $cd$ & $dc$ & $dd$\\\hline
+$CC$ & $0,0$ & $0,4$ & $0,4$ & $0,8$\\
+$CD$ & $4,0$ & $\br{3},\br{3}$ & $3,-1$ & $2,2$\\
+$DC$ & $4,0$ & $-1,3$ & $-1,-1$ & $-6,2$\\
+$DD$ & $8,0$ & $2,2$ & $2,-6$ & $-4,-4$
+\end{tabular}
+\end{center}
+The unique pure BNE is $(CD,cd)$: lenient kids swerve, harsh ($k=0$) kids drive ($D$ is dominant
+for them). Check for a lenient kid: the rival drives with probability $\tfrac12$ at least, so
+$D$ yields $\tfrac12\cdot 8+\tfrac12(4-16)=-2<0$. The prediction reverses: it is the
+\emph{harsh}-parent kids who are aggressive. A society of all-lenient parents ($k=16$ for both)
+is an ordinary chicken game with a symmetric mixed equilibrium in which each drives with
+probability $q$ solving $8(1-q)+q(4-16)=0$, $q=\tfrac25$, so accidents have probability
+$\tfrac4{25}<\tfrac14$, and the pure asymmetric equilibria have none. The claim is not supported.
+
+\interp The conclusion is driven by the payoff story, not by the equilibrium concept: the same
+model supports or reverses the preacher depending on whether leniency lowers or raises the
+perceived cost of an accident. This is exactly the book's own caveat after the first matrix.
+
+\verify \texttt{check\_E1.py} computes both $4\times4$ Bayesian normal forms from the types
+(first case matches the printed entries $(CD,dd)=(-6,2)$ and $(DC,dc)=(3,3)$) and enumerates
+all pure BNE: one each; it also checks $q=\tfrac25$. Tadelis gives no answer.
+
+\answer{$(R,H,L)=(8,16,0)$: unique BNE $(DC,dc)$; the all-lenient society drives for sure, so the
+claim is supported. $(8,0,16)$: unique BNE $(CD,cd)$ (harsh kids drive); the all-lenient society
+is a chicken game with accident probability $\le\tfrac4{25}$; the claim is not supported.}
+\end{exsol}

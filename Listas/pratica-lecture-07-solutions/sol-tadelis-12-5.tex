@@ -1,0 +1,41 @@
+% Solution: Tadelis (2013) Exercise 12.5 "Not All That Glitters". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.5}{267--268}{Exam}{3}
+\asked (a) For a price $p$, the prospector's threshold type; (b) the pure BNE, its uniqueness and
+the expected payoffs.
+
+\method The prospector knows $x\sim U[0,1]$; the owner does not. This is adverse selection
+(Tadelis \S12.3, pp.~258--261): the types that sell are the worst ones, which the owner must
+take into account in his expected payoff. Find the owner's expected net value conditional on
+acceptance.
+
+\solution
+\textbf{(a)} A prospector of type $x$ who asks $p$ sells iff the price is at least his
+self-mining value: $p\ge3x$, i.e.\ $x\le x(p)=\min\{p/3,\,1\}$. The payoff $3x$ increases
+in $x$ while the price is type-independent, so types below $x(p)$ prefer to sell and types above prefer to mine.
+
+\textbf{(b)} If the owner accepts price $p\in(0,3]$, he buys exactly the types $x\le p/3$, with
+$E[x\mid x\le p/3]=p/6$:
+\[
+  E[4x-p\mid x\le p/3]=4\cdot\frac p6-p=-\frac p3<0 .
+\]
+For $p\ge3$ all types sell and $E[4x-p]=2-p<0$. So the owner loses on average at any positive
+price and rejects it. Accepting $p=0$ yields $0$ (indifference), but then every type $x>0$
+strictly prefers asking a rejected price and mining ($3x>0$).
+
+\emph{Uniqueness.} Suppose some price $p>0$ were accepted in equilibrium; the highest accepted
+price is asked by every type $x<p/3$ (they gain $p-3x>0$ from it), so the owner's conditional
+payoff is $-p/3<0$: accepting is not a best reply, a contradiction. Hence in every pure BNE the
+owner accepts no positive price that is asked, and trade never occurs (up to the null type $x=0$).
+
+\textbf{Payoffs.} Each prospector type earns $3x$ (expected $\tfrac32$), the owner earns $0$.
+The market breaks down although trade would create surplus $4x-3x=x>0$ for every type.
+
+\interp The owner cannot tell good mines from bad: any price high enough to attract the good
+ones is above their average value to him. Akerlof's lemons logic, with a continuum of types.
+
+\verify \texttt{check\_E2.py}: sympy integrates $E[4x-p\mid x\le p/3]=-p/3$, $E[x\mid x\le p/3]=p/6$,
+the full-sale case $2-p$ and $E[3x]=\tfrac32$. Tadelis gives no answer.
+
+\answer{(a) $x(p)=\min\{p/3,1\}$. (b) Unique pure BNE: no trade (the owner rejects every $p>0$,
+since $E[4x-p\mid x\le p/3]=-p/3$); payoffs $3x$ to the prospector, $0$ to the owner.}
+\end{exsol}

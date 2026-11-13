@@ -1,0 +1,38 @@
+% Solution: Tadelis (2013) Exercise 13.9 "Private Value Linear Bidding". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 13.9}{287}{Exam}{3}
+\asked Two bidders, first-price auction, values $0.5+\theta_i$ with $\theta_i\sim U[0,1]$: (a) a
+symmetric BNE of the form $s(\theta_i)=a+b\theta_i$; (b) the expected payoff of type $\theta_i$.
+
+\method Method of undetermined coefficients (Tadelis \S13.1.3, pp.~276--280): let the rival bid
+$a+b\theta_j$, write the bidder's expected payoff for a bid $x$, take the FOC and match
+coefficients.
+
+\solution
+\textbf{(a)} A bid $x\in[a,a+b]$ beats the rival iff $a+b\theta_j<x$, i.e.\ $\theta_j<(x-a)/b$, with
+probability $(x-a)/b$. So
+\[
+  EU_i(x\mid\theta_i)=\frac{x-a}{b}\,\bigl(0.5+\theta_i-x\bigr).
+\]
+FOC: $(0.5+\theta_i-x)-(x-a)=0$, so $x=\tfrac12(0.5+\theta_i+a)$ (concave in $x$). Matching
+with $x=a+b\theta_i$ for all $\theta_i$:
+\[
+  b=\tfrac12,\qquad a=\tfrac12(0.5+a)\ \Rightarrow\ a=\tfrac12 .
+\]
+So $s^*(\theta_i)=\tfrac12+\tfrac12\theta_i$, with bids in $[\tfrac12,1]$. Bids below $a=\tfrac12$ win
+with probability $0$, and bids above $1$ win surely at a worse price than $1$; neither helps.
+
+\textbf{(b)} The probability of winning with $x=s^*(\theta_i)$ is $(x-a)/b=\theta_i$, and the margin is
+$0.5+\theta_i-\tfrac12-\tfrac12\theta_i=\tfrac12\theta_i$, so
+\[
+  EU_i^*(\theta_i)=\theta_i\cdot\tfrac12\theta_i=\frac{\theta_i^{2}}{2}.
+\]
+
+\interp In value terms $v_i=0.5+\theta_i$, the bid is $v_i/2+\tfrac14$: half the value plus
+$\tfrac14$, because the lowest value is $0.5$, so no one needs to bid below $0.5$.
+
+\verify \texttt{check\_E2.py}: sympy gets $x=(0.5+\theta+a)/2$ and the unique $(a,b)=(\tfrac12,\tfrac12)$;
+scipy maximizes $EU_i$ numerically at $\theta\in\{0.2,0.5,0.9,1\}$ and returns $0.5+0.5\theta$; the
+equilibrium payoff $\theta^2/2$ is confirmed symbolically and numerically. Tadelis gives no answer.
+
+\answer{(a) $s^*(\theta_i)=\tfrac12+\tfrac12\theta_i$ ($a=b=\tfrac12$). (b) $EU_i^*(\theta_i)=\theta_i^2/2$.}
+\end{exsol}

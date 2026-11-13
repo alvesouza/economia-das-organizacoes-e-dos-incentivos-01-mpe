@@ -57,6 +57,13 @@
 \author{Solutions to the 24 exercises of \texttt{Listas/pratica-lecture-01.md}}
 \date{October 2026}
 
+\input{../statement-hook}  % statement of each item before its solution
+% Lecture 1 uses a 5-argument exsol (#1 = item number); same statement block.
+\renewenvironment{exsol}[5]{%
+  \setcounter{section}{\numexpr #1-1\relax}%
+  \section[#2 (p.~#3)]{#2 \hfill{\normalsize\mdseries #4 $\cdot$ block #5}}%
+  \statementboxn{#1}}{\par}
+
 \begin{document}
 \maketitle
 \thispagestyle{empty}

@@ -1,0 +1,72 @@
+% Solution: MWG (1995) Exercise 12.AA.2 (proof of Proposition 12.AA.4). Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{MWG Exercise 12.AA.2}{435}{Advanced}{5}
+\asked Prove Proposition 12.AA.4: under the stated conditions there is an SPNE with discounted payoffs $v_i'$ such that
+$(1-\delta)v_i' < \pi_i(q^*)$ for $i = 1,2$, that is, punishments harsher than Nash reversion.
+
+\method The hint's profile (``play $q$ once, then $q^*$ forever, and restart after a deviation'') checked with the one-stage
+deviation principle and normalised payoffs (Lecture~5, slides~21, 24--25; MWG App.~A to Ch.~12, pp.~418--421; solution manual,
+Ex.~12.AA.2). Notation: $\tilde\pi_i(q_j) = \max_{q_i'}\pi_i(q_i',q_j)$. As in the text, $q^*$ is the stage Nash equilibrium, interior, so
+$\partial\pi_i(q^*)/\partial q_i = 0$; write $a_i = \partial\pi_i(q^*)/\partial q_j \ne 0$ ($j \ne i$). The minimax assumption is not used in the
+construction: the incentive constraints below force $(1-\delta)v_i' \ge \tilde\pi_i(q_j) \ge \underline\pi_i$ by themselves.
+
+\solution
+\textbf{Step 1: two first-order facts.} By the envelope theorem $\tilde\pi_i'(q_j^*) = a_i$. For a small move
+$q = q^* + \varepsilon d$ ($d = (d_1,d_2)$), the first-order condition $\partial\pi_i/\partial q_i = 0$ at $q^*$ gives
+\[
+  \pi_i(q) - \pi_i(q^*) = a_i\,\varepsilon d_j + o(\varepsilon), \qquad
+  \tilde\pi_i(q_j) - \pi_i(q^*) = a_i\,\varepsilon d_j + o(\varepsilon),
+\]
+the same first-order term, because own deviations from $q_i^*$ have no first-order effect.
+
+\textbf{Step 2: the direction.} Choose $d_j = -\operatorname{sign}(a_i)$ for $i \ne j$ (player~$j$'s move hurts $i$). Then
+$x_i \equiv a_i\varepsilon d_j = -|a_i|\varepsilon < 0$, and for $\varepsilon$ small
+$\pi_i(q) < \pi_i(q^*)$ for both $i$. Fix such a $q$.
+
+\textbf{Step 3: the profile.} Two states. \emph{Start:} play $q$. \emph{Nash:} play $q^*$. From Start, if both played
+$q$, go to Nash; from Nash, if both played $q^*$, stay; after any other profile, in either state, go back to Start (restart).
+Writing $V_i = (1-\delta)v_i'$ for the normalised value of Start,
+\[
+  V_i = (1-\delta)\pi_i(q) + \delta\pi_i(q^*) \;<\; \pi_i(q^*) \qquad (\delta > 0),
+\]
+which is the claim, if the profile is an SPNE.
+
+\textbf{Step 4: Nash state.} Staying gives $\pi_i(q^*)$. A deviation yields at most $\pi_i(q^*)$ now ($q^*$ is a stage
+equilibrium) and then Start, worth $V_i < \pi_i(q^*)$; the deviation payoff is below $\pi_i(q^*)$. No gain.
+
+\textbf{Step 5: Start state.} Staying gives $V_i$. The best deviation gives $\tilde\pi_i(q_j)$ now and Start again:
+$(1-\delta)\tilde\pi_i(q_j) + \delta V_i$ (if $q_i$ is already a best reply, every deviation gives less). Staying is optimal iff
+\[
+  V_i \;\ge\; \tilde\pi_i(q_j)
+  \iff \delta\bigl[\pi_i(q^*) - \pi_i(q)\bigr] \;\ge\; \tilde\pi_i(q_j) - \pi_i(q) .
+\]
+By Step~1 the right side is $o(\varepsilon)$ (both $\tilde\pi_i(q_j)$ and $\pi_i(q)$ differ from $\pi_i(q^*)$ by $x_i + o(\varepsilon)$), while the left side is
+$\delta\,(|a_i|\varepsilon + o(\varepsilon))$, first order in $\varepsilon$. So for every $\delta > 0$ there is an $\bar\varepsilon(\delta) > 0$ such that for
+$\varepsilon \le \bar\varepsilon$ the inequality holds for $i = 1, 2$.
+
+\textbf{Conclusion.} For small enough $\varepsilon$ the profile is an SPNE (Steps~4--5, one-stage deviation principle) with
+$(1-\delta)v_i' = V_i < \pi_i(q^*)$ for $i=1,2$. \qed
+
+\textbf{Cournot illustration.} $P = 100 - q_1 - q_2$, cost $10q_i$: $q^* = (30,30)$, $\pi_i^* = 900$, $a_i = -30 < 0$, so $d_j = +1$: both
+firms over-produce. With $q = (30 + \varepsilon, 30 + \varepsilon)$: $\pi_i(q) = 900 - 30\varepsilon - 2\varepsilon^2$,
+$\tilde\pi_i(q_j) = 900 - 30\varepsilon + \frac{\varepsilon^2}{4}$ (best reply $\frac{60 - \varepsilon}{2}$), and the Start constraint
+becomes $\varepsilon\bigl[30\delta - \varepsilon\bigl(\frac94 - 2\delta\bigr)\bigr] \ge 0$, i.e.\
+$\varepsilon \le \frac{30\delta}{9/4 - 2\delta}$. For $\delta = \frac12$: $\varepsilon \le 12$. Take $q = (40,40)$:
+$\pi_i(q) = 400$, $\tilde\pi_i = 625$, $V_i = \frac12\cdot400 + \frac12\cdot900 = 650 \ge 625$, and $V_i = 650 < 900$: the
+average payoff in the SPNE is below the Nash payoff, which Nash reversion alone cannot achieve (Exercise 12.AA.1, item~20). At the boundary $q = (42,42)$:
+$\pi_i = 252$, $\tilde\pi_i = 576 = V_i$.
+
+\interp Nash reversion punishes a deviator only by taking away the gains of cooperation. Restarting the path
+punishes by repeating the \emph{costly} first period, which lowers both players' payoffs below Nash; because the
+costly period is one in which each player is playing (almost) a best reply, it is credible. Deviating from it gains only
+second-order amounts.
+
+\verify \texttt{check\_L05.py} verifies for the Cournot example $\pi_i(q) = 900 - 30\varepsilon - 2\varepsilon^2$,
+$\tilde\pi_i = 900 - 30\varepsilon + \varepsilon^2/4$, the factorisation of $V_i - \tilde\pi_i$, and for $\delta \in \{0.01, 0.1, 0.5, 0.9\}$ with $\varepsilon$
+half the bound: $\pi_i(q) < 900$, Start constraint, Nash-state constraint and $V_i < 900$ with exact fractions.
+
+\answer{Proof: take $q = q^* + \varepsilon d$ with $d_j = -\operatorname{sign}(\partial\pi_i/\partial q_j)$, so $\pi_i(q) < \pi_i(q^*)$ for both players. Play $q$ once, then
+$q^*$ forever, restarting after any deviation. In the Nash state a deviation gains nothing now and restarts a path worth less than $\pi_i(q^*)$;
+in the Start state the deviation gain $\tilde\pi_i(q_j) - \pi_i(q)$ is $o(\varepsilon)$ while the loss $\delta[\pi_i(q^*) - \pi_i(q)]$ is first order. So the profile
+is an SPNE with $(1-\delta)v_i' = (1-\delta)\pi_i(q) + \delta\pi_i(q^*) < \pi_i(q^*)$.}
+\end{exsol}

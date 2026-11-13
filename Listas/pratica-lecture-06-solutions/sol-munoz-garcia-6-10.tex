@@ -1,0 +1,80 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Ex. 10 "Collusion and Imperfect Monitoring".
+% Input by \solitem. Check: check_T3.py (item 22).
+\begin{exsol}{\MG{} Ch.~6, Exercise 10}{310}{Advanced}{5}
+\asked Two firms sell differentiated products with $p_i = a - bq_i - dq_j$ ($0 < d < b$, zero cost), repeated
+for ever, with reversion to the static equilibrium after a detected deviation. (a) Under Cournot competition,
+find the minimum discount factor that sustains collusion when (i) deviations are detected immediately and (ii)
+they are detected with a one-period lag. (b) The same under Bertrand competition (immediate detection).
+
+\method One-stage deviation: $\dfrac{\pi^m}{1-\delta} \ge$ (deviation stream). Collusion is the joint-profit maximum
+with each firm earning half. The punishment is the repeated static equilibrium, so only the cooperation phase
+needs checking. With immediate detection $\delta \ge \dfrac{\pi^D - \pi^m}{\pi^D - \pi^N}$.
+
+\solution
+\textbf{(a) Cournot.}
+\begin{itemize}
+  \item \emph{Static.} The best reply is $q_i = (a - dq_j)/(2b)$, so $q^C = \frac{a}{2b+d}$ and $\pi^C = \frac{ba^2}{(2b+d)^2}$.
+  \item \emph{Collusion.} Symmetric joint profit $2\,(a - (b+d)q)\,q$ is maximised at $q^m = \frac{a}{2(b+d)}$
+  per firm, price $\frac a2$, so $\pi^m = \frac{a^2}{4(b+d)}$ (each firm's half of the monopoly profit).
+  \item \emph{Deviation.} The best reply to $q^m$ is $q^D = \frac{a - dq^m}{2b} = \frac{a(2b+d)}{4b(b+d)}$ with
+  profit $\pi^D = b(q^D)^2 = \frac{a^2(2b+d)^2}{16b(b+d)^2}$.
+\end{itemize}
+\textbf{(i) Immediate detection.}
+\[
+  \delta_1 = \frac{\pi^D - \pi^m}{\pi^D - \pi^C} = \frac{(2b+d)^2}{8b^2 + 8bd + d^2} .
+\]
+At $d \to 0$ it is $\frac12$ (independent monopolists), at $d = b$ it is $\frac{9}{17}$ (homogeneous goods), and
+$\frac{\partial\delta_1}{\partial d} = \frac{4bd(2b+d)}{(8b^2+8bd+d^2)^2} > 0$: collusion is harder when products are
+closer substitutes.
+
+\textbf{(ii) One-period lag.} The deviator earns $\pi^D$ in the deviation period \emph{and} the next (the rival has not
+yet reacted), then $\pi^C$:
+\[
+  \frac{\pi^m}{1-\delta} \ge \pi^D(1 + \delta) + \frac{\delta^2\pi^C}{1-\delta}
+  \iff \delta^2 \ge \frac{\pi^D - \pi^m}{\pi^D - \pi^C} = \delta_1 ,
+\]
+so
+\[
+  \delta_2 = \sqrt{\delta_1} = \frac{2b+d}{\sqrt{8b^2 + 8bd + d^2}} > \delta_1 .
+\]
+Collusion needs more patience when detection lags.
+
+\textbf{(b) Bertrand.} Inverting demand, $q_i = \dfrac{a(b-d) - bp_i + dp_j}{b^2 - d^2}$.
+\begin{itemize}
+  \item \emph{Static.} The best reply is $p_i = \frac{a(b-d) + dp_j}{2b}$, so $p^B = \frac{a(b-d)}{2b-d}$ and
+  $\pi^B = \frac{a^2 b (b-d)^2}{(2b-d)^2(b^2-d^2)}$.
+  \item \emph{Collusion.} A common price maximising $2pq(p,p)$ with $q = \frac{a-p}{b+d}$: $p^m = \frac a2$ and
+  $\pi^m = \frac{a^2}{4(b+d)}$ (the same joint outcome as under Cournot).
+  \item \emph{Deviation.} The best reply to $\frac a2$ is $p^D = \frac{a(2b-d)}{4b}$ with
+  $\pi^D = \frac{a^2(2b-d)^2}{16b(b^2-d^2)}$.
+\end{itemize}
+\[
+  \delta_B = \frac{\pi^D - \pi^m}{\pi^D - \pi^B} = \frac{(2b-d)^2}{8b^2 - 8bd + d^2} .
+\]
+It tends to $\frac12$ as $d \to 0$ and to $1$ as $d \to b$ (the deviation profit explodes when products become
+perfect substitutes: a small price cut captures the market).
+
+\interp Product differentiation helps collusion under Cournot (the deviation gain shrinks as $d \to 0$) and hurts
+it under Bertrand with these demands. A detection lag raises the required patience, since the deviator
+enjoys the gain for an extra period before the punishment begins.
+
+\verify \texttt{check\_T3.py} (item~22) derives every profit above symbolically and the three cutoffs, checks that
+$\delta_2^2 = \delta_1$ by solving the lag condition for $\delta$, the derivative of $\delta_1$, the limits
+$\frac12$ and $\frac9{17}$, and (numerically, $a = b = 1$, $d = \frac12$) the best replies on a grid of step
+$10^{-4}$. \textbf{Cross-check with the book.} The legible parts of the printed answers for $\delta_1$ and $\delta_2$ agree with
+ours (numerator $4b^2 + 4bd + d^2 = (2b+d)^2$; $\delta_2$ is a square root). Its intermediate Cournot monopoly profit
+as shown in the text layer (the collusive $\frac{a^2}{8(b+d)}$) differs from our $\frac{a^2}{4(b+d)}$, which we
+checked directly, and the Bertrand cutoff as extracted carries an extra factor $(2b^2 - 2bd + d^2)/a^2$: at $a = b = 1$,
+$d = \frac12$ it gives $0.662$, whereas the indifference condition holds exactly at $0.529$.
+
+\mistakes
+\begin{itemize}
+  \item Using $q^m = \frac{a}{4(b+d)}$ per firm: the joint maximum is $\frac{a}{2(b+d)}$ \emph{each} when demands are
+  $p_i = a - bq_i - dq_j$.
+  \item In (ii) giving the deviator $\pi^D$ for one period only. With a one-period lag it earns $\pi^D$ twice.
+\end{itemize}
+
+\answer{(a)(i) $\delta \ge \frac{(2b+d)^2}{8b^2+8bd+d^2}$ (from $\frac12$ at $d \to 0$ to $\frac9{17}$ at $d = b$); (ii) with a
+one-period lag $\delta \ge \sqrt{\cdot}$ of that, $\frac{2b+d}{\sqrt{8b^2+8bd+d^2}}$. (b) Bertrand, immediate detection:
+$\delta \ge \frac{(2b-d)^2}{8b^2-8bd+d^2}$.}
+\end{exsol}

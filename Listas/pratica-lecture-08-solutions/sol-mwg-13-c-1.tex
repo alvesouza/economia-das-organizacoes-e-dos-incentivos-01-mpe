@@ -1,0 +1,45 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.C.1. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{MWG Exercise 13.C.1}{474}{Advanced}{2}
+\asked Prove that in every subgame perfect Nash equilibrium all worker types take the costless test,
+and that firms offer a wage no greater than $\underline{\theta}$ to a worker who does not.
+
+\method Backward induction (unraveling): Bertrand competition for the worker at the last stage, then
+the worker's decision whether to be tested (MWG \S13.C, pp.~450--451, which states the result; \S13.B for
+the wage game). Types have an atomless distribution on $[\underline{\theta}, \bar{\theta}]$ with
+support the whole interval. A tested worker of type $\theta$ is offered $\theta$: after the test the
+two firms know her productivity, and Bertrand competition drives the wage to it.
+
+\solution Let $N$ be the set of types that skip the test in the equilibrium and $w$ the wage the
+two firms offer to a worker who skips it.
+
+\emph{Step 1: $w \le E[\theta \mid N]$ whenever $\Pr(N) > 0$.} Firms know only that the worker is in $N$.
+If the winning wage exceeded $E[\theta \mid N]$ the winning firm would lose money in expectation and
+would prefer to bid lower (to lose the worker); as in a Bertrand game with common values,
+the equilibrium wage equals $E[\theta \mid N]$, and in any case it is at most that.
+
+\emph{Step 2: $N \subseteq [\underline{\theta}, w]$.} A type who skips the test earns $w$; testing earns
+her $\theta$. So every type in $N$ has $\theta \le w$ (types above $w$ test).
+
+\emph{Step 3: $\Pr(N) = 0$.} Suppose $\Pr(N) > 0$. By Step 2 all types in $N$ are at most
+$w$, so $E[\theta \mid N] \le \sup N \le w$, and since the distribution has no atoms, $N$ contains
+types strictly below $\sup N$ with positive conditional probability, so the first inequality is strict:
+$E[\theta \mid N] < w$. This contradicts Step 1, which gives $w \le E[\theta \mid N]$. So almost every type
+takes the test. (The intuition: whoever sits at the top of the non-testers earns less than her type
+from the average of those below, so she tests; then the next one does, and so on until nobody is left.
+For a uniform distribution the average of the types in $[a, x]$ is $\frac{a+x}{2} < x$.)
+
+\emph{Step 4: the wage after no test.} Suppose a firm offered $w > \underline{\theta}$ to untested workers.
+Then every type in $[\underline{\theta}, \min\{w, \bar{\theta}\})$ strictly prefers skipping the test to being
+tested ($w > \theta$); this set has positive probability, because the support is the whole interval, so
+$\Pr(N) > 0$, contradicting Step 3. Hence the wage offered after no test is at most
+$\underline{\theta}$: not taking the test is treated as being the worst type (only the lowest type may
+be indifferent between testing and not).
+
+\verify \texttt{check\_T3.py} verifies with sympy that $E[\theta \mid \ell \le \theta \le x] < x$ at $x = \frac9{10}$ and $\ell \in \{0, \frac15\}$ for
+the uniform density and for $f(\theta) = 2\theta$ on $[0,1]$, and that the uniform average equals
+$\frac{a + x}{2}$. The MWG solutions manual's entry for 13.C.1 gives the same argument (the highest
+non-testing type prefers to test, so only the lowest type may not).
+
+\answer{All types except possibly a null set (and $\underline{\theta}$, who is indifferent) take the
+test; firms offer an untested worker at most $\underline{\theta}$.}
+\end{exsol}

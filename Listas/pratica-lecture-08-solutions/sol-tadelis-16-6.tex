@@ -1,0 +1,55 @@
+% Solution: Tadelis (2013) Exercise 16.6 "Publish or Perish". Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Tadelis Exercise 16.6}{337--338}{Exam}{3}
+\asked (a) A rough extensive form; (b) whether a pooling PBE has tenure and papers, and its unique
+outcome; (c) the separating PBE in terms of the parameters; (d) the smallest number of papers that gets
+tenure.
+
+\method A signaling game with a continuum of messages $q \ge 0$ (papers) and two replies $T$ or $N$:
+the department tenures iff its belief $\mu(q) = \Pr(\theta_H \mid q)$ makes tenure pay, then incentive
+constraints for each type, with off-path beliefs chosen to deter deviations (Tadelis \S16.1--16.2,
+pp.~319--332: the same logic as limit pricing). The department's payoff from $T$ is
+$\mu - (1-\mu) = 2\mu - 1$, from $N$ it is $0$: it tenures iff $\mu(q) \ge \frac12$.
+
+\solution \textbf{(a) Extensive form (rough).} Nature picks $\theta_H$ (probability $p < \frac12$) or $\theta_L$;
+the assistant professor, who knows his type, picks $q \ge 0$; the department sees only $q$ and picks $T$
+or $N$. Payoffs (professor, department): $\bigl(V - \frac{q}{\theta}, \pm 1\bigr)$ after $T$ (with $+1$
+for $\theta_H$, $-1$ for $\theta_L$) and $\bigl(-\frac{q}{\theta}, 0\bigr)$ after $N$. A different
+$q$ is a different message, with its own information set containing both type nodes.
+
+\textbf{(b) Pooling.} If both types publish the same $\bar q$, Bayes' rule gives $\mu(\bar q) = p < \frac12$,
+so the department denies tenure: the professor is not tenured. Then the payoff is $-\bar q / \theta$,
+which a deviation to $q = 0$ improves to at least $0$ (whatever belief follows $q = 0$ the payoff is
+$0$ or $V$), so $\bar q = 0$. Conversely, $\bar q = 0$ is supported by off-path beliefs
+$\mu(q) < \frac12$ for $q > 0$ (deviating to $q > 0$ yields $-q/\theta < 0$). The unique outcome of a
+pooling PBE: nobody publishes, nobody is tenured, payoffs $0$ for everybody; the department's belief
+$p$ stays at the prior.
+
+\textbf{(c) Separating.} $\theta_L$ publishes $q_L$, $\theta_H$ publishes $q_H \ne q_L$; Bayes' rule gives
+$\mu(q_H) = 1$ (tenure) and $\mu(q_L) = 0$ (no tenure).
+\begin{itemize}
+  \item $\theta_L$ has no reason to publish: he is denied tenure, so $q_L = 0$ (otherwise he would
+  gain by deviating to $0$). (The reverse profile, where $\theta_H$ publishes less than $\theta_L$,
+  fails: $\theta_L$ would copy $\theta_H$ to be tenured at lower cost.)
+  \item Write $q_H = q^* > 0$. \emph{No mimicking by $\theta_L$:} $0 \ge V - \frac{q^*}{\theta_L}$, i.e.\
+  $q^* \ge V\theta_L$. \emph{$\theta_H$ is willing to publish:} $V - \frac{q^*}{\theta_H} \ge 0$, i.e.\
+  $q^* \le V\theta_H$.
+  \item Off the path take $\mu(q) = 0$ for $q < q^*$ and $\mu(q) = 1$ for $q > q^*$: fewer papers
+  are not tenured and more papers only cost more. No type gains by moving to another $q$.
+\end{itemize}
+The separating PBE are exactly: $q_L = 0$, $q_H = q^* \in [V\theta_L,\ V\theta_H]$, tenure iff $q \ge q^*$
+(or iff $q = q^*$), beliefs as above. The interval is nonempty because $\theta_H > \theta_L$: this
+is the single-crossing property, $\theta_H$'s cost per paper is lower.
+
+\textbf{(d)} The smallest number of papers that gets tenure in a separating PBE is
+$q^* = V\theta_L$: $\theta_H$ publishes just enough to make $\theta_L$ indifferent about copying. All
+$q^* \in [V\theta_L, V\theta_H]$ are equilibria; $q^* = V\theta_L$ is the least-cost one.
+
+\verify \texttt{check\_T2.py} takes $V = 3$, $\theta_L = 1$, $\theta_H = 2$, $p = \frac3{10}$, a grid of
+papers $q \in \{0, \frac14, \dots, 10\}$ and checks every incentive constraint by brute force: the
+separating profiles are exactly $q^* \in \{3, \frac{13}4, \dots, 6\}$ and the only pooling outcome is
+$q = 0$ with no tenure. Tadelis prints no answer.
+
+\answer{(b) No: in a pooling PBE nobody is tenured and nobody publishes ($q = 0$, $N$). (c) $q_L = 0$,
+$q_H = q^* \in [V\theta_L, V\theta_H]$, tenure iff $q \ge q^*$, $\mu(q^*) = 1$, $\mu(0) = 0$. (d)
+$q^* = V\theta_L$.}
+\end{exsol}

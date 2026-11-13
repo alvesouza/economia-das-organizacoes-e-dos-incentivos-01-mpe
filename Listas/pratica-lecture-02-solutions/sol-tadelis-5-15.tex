@@ -1,0 +1,69 @@
+% Solution: Tadelis (2013) Exercise 5.15 "Hotelling's Continuous Model". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.15}{99}{Advanced}{3}
+\asked Voters are a continuum on $A = [-a, a]$ with the uniform distribution. (a) What is the best response of candidate $i$ to
+$a_j > 0$? (b) Show that the unique Nash equilibrium is $a_1 = a_2 = 0$. (c) Show that for a general distribution $F(\cdot)$ the
+unique Nash equilibrium is where both candidates choose the median voter's policy.
+
+\method Best-response correspondences of a game with interval strategies, then the intersection (Lecture~2, slides~10 and~14).
+This is Hotelling's location game, in the voting version of Tadelis \S5.2.5, pp.~92--94 (reading beyond the slides; the pharmacy
+location problem of Lecture~1 and Lecture~2, slides~2--3, is the same economics with discrete locations). A candidate prefers winning to a tie and a tie to losing;
+payoffs are $1$, $\tfrac12$, $0$.
+
+\solution
+\textbf{Vote shares.} A voter at $x$ votes for the platform closest to $x$ (a voter exactly in the middle splits evenly). If $a_1 < a_2$, candidate~1
+gets the voters below the midpoint $m = \tfrac12(a_1 + a_2)$, share $F(m)$, and candidate~2 gets $1 - F(m)$; if $a_1 = a_2$ both get $\tfrac12$. For the
+uniform distribution $F(x) = (x + a)/(2a)$, so $F(m) > \tfrac12$ iff $m > 0$.
+
+\textbf{(a) Best response to $a_j > 0$.}
+\begin{itemize}
+  \item If $a_i < a_j$: candidate~$i$ is the lower platform, with share $F(m)$ and $m = \tfrac12(a_i + a_j)$. He wins iff $m > 0$, i.e.\ $a_i > -a_j$,
+  and ties iff $a_i = -a_j$.
+  \item If $a_i = a_j$: tie.
+  \item If $a_i > a_j$: he is the upper platform with share $1 - F(m)$, $m > 0$, so $1 - F(m) < \tfrac12$: he loses.
+\end{itemize}
+Winning is best, and every platform in the open interval $(-a_j, a_j)$ wins, so
+\[
+  BR_i(a_j) = (-a_j, a_j) \quad (a_j > 0).
+\]
+By symmetry $BR_i(a_j) = (a_j, -a_j)$ for $a_j < 0$, and $BR_i(0) = \{0\}$: against $a_j = 0$ any $a_i \ne 0$ loses and $a_i = 0$ ties.
+The endpoints $\pm a_j$ give a tie, strictly worse than winning, so they are not best replies.
+
+\textbf{(b) The equilibrium is $(0,0)$.} $0 \in BR_i(0)$ for both, so $(0,0)$ is an equilibrium. Conversely, let $(a_1, a_2)$ be an
+equilibrium. If $a_1 = 0$ then $a_2 \in BR_2(0) = \{0\}$. If both are non-zero, $a_1 \in BR_1(a_2)$ requires $|a_1| < |a_2|$ and
+$a_2 \in BR_2(a_1)$ requires $|a_2| < |a_1|$: impossible. If $a_2 = 0$, the same argument gives $a_1 = 0$. Hence $(0,0)$ is the unique equilibrium.
+
+\textbf{(c) General $F$.} Assume $F$ is continuous and strictly increasing on $[-a, a]$, so that the median voter $a_m$ ($F(a_m) = \tfrac12$) is unique and
+$F(m) \gtreqless \tfrac12$ iff $m \gtreqless a_m$. Take $a_1 < a_2$ with midpoint $m$: candidate~1 wins iff $m > a_m$, ties iff $m = a_m$, loses iff $m < a_m$.
+\begin{itemize}
+  \item \emph{$(a_m, a_m)$ is an equilibrium.} A deviation to $x < a_m$ makes $m = \tfrac12(x + a_m) < a_m$ and the deviator is the lower platform with share
+  $F(m) < \tfrac12$; a deviation to $x > a_m$ makes him the upper platform with share $1 - F(m) < \tfrac12$. Either way he loses, worse than the tie.
+  \item \emph{Common platform $x \ne a_m$ is not an equilibrium.} If $x < a_m$, the rival moves to $x + \delta$ with $\delta$ small enough that
+  $m = x + \delta/2 < a_m$; he is the upper platform with share $1 - F(m) > \tfrac12$ and wins. For $x > a_m$ move below $x$.
+  \item \emph{Different platforms $a_1 < a_2$ are not an equilibrium.} If $m < a_m$, candidate~1 loses and gains by moving to $a_2$ (a tie); if $m > a_m$,
+  candidate~2 loses and gains by moving to $a_1$; if $m = a_m$ (a tie), candidate~1 moves to $a_1 + \delta$, so the midpoint passes $a_m$ and he wins.
+\end{itemize}
+So the unique equilibrium is $a_1 = a_2 = a_m$. For $F$ uniform, $a_m = \tfrac12(\underline a + \overline a) = 0$, which recovers (b).
+$\blacksquare$
+
+\answer{(a) $BR_i(a_j) = (-a_j, a_j)$ for $a_j > 0$ (open interval, the platforms that beat $a_j$), $(a_j, -a_j)$ for $a_j < 0$, and $\{0\}$ for $a_j = 0$.
+(b) The only profile of mutual best replies is $a_1 = a_2 = 0$. (c) With $F$ continuous and strictly increasing, the unique equilibrium is both candidates at the median voter $a_m$.}
+
+\interp This is the median voter theorem: competition for the majority pulls both platforms to the centre, whatever the shape of the
+distribution of preferences, and the equilibrium outcome is a tie. The best-response set is an open interval, not a point: any platform
+strictly inside the rival's mirror image wins, which is why $(0,0)$ is the only crossing. The result is not covered in the slides (it is a
+reading item) but is the voting twin of Lecture~1's location game: with two competitors, location has a centre of gravity. Adding a third candidate
+changes the answer (Gibbons Problem~1.8).
+
+\verify \texttt{check\_L2.py} discretises the platforms (a grid of $0.1$ on $[-1,1]$, exact fractions, uniform voters) and finds all mutual
+best replies: the unique one is $(0,0)$; it also checks that the best-response sets are the open intervals of part (a), the ties at $\pm a_j$
+and the losses beyond. For a non-uniform $F$, namely $F(x) = 2x^2$ on $[0, \tfrac12]$ and $1 - 2(1-x)^2$ on $[\tfrac12, 1]$ (continuous,
+strictly increasing, median $\tfrac12$), platforms on a grid of $1/20$ give the unique equilibrium $(\tfrac12, \tfrac12)$. These are checks of the
+continuum argument on a finite grid, not substitutes for it. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Writing the best response as the single point $a_i = a_j - \varepsilon$ (a Bertrand-style undercut): here any platform in the open interval wins.
+  \item Closing the interval: $a_i = \pm a_j$ is a tie, not a win.
+  \item Skipping the uniqueness half of (b): $(0,0)$ is shown to be an equilibrium, but one must also exclude profiles with different non-zero platforms.
+\end{itemize}
+\end{exsol}

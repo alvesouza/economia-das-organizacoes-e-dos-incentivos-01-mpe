@@ -1,0 +1,50 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Mathematical Exercise 3. Input by \solitem. Check: check_T2.py (item 17).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Mathematical Exercise 3}{286}{Exam level}{3}
+\asked In the efficiency-wage model, an honest, hard-working employee appears to be cheating with
+probability $q$. Determine the proper efficiency wage.
+
+\method The model of pp.~250--255: cheating gains $g$ once; the employee is caught with probability $p$ and then
+loses the rent $w - \bar w$ for $N$ periods (the multiplier $N$ values the stream); honesty is incentive compatible
+iff $p(w - \bar w)N \ge g$, giving $w = \bar w + g/(Np)$ (formula 8.3). The exercise adds a false alarm. I assume
+the evidence against a cheater is independent of the false alarm: a cheater is flagged with probability
+$p + (1-p)q$ (detected, or falsely flagged), an honest worker with probability $q$, and a flagged worker
+is dismissed. $N$ is the value of one unit of per-period rent over the horizon of an employee who stays honest.
+
+\solution
+\textbf{Incentive constraint.} Compare the expected loss of rent from cheating with that from working. Whether he
+cheats or not the worker is dismissed with probability $q$ from a false alarm, so the \emph{extra} probability of
+dismissal caused by cheating is
+\[
+  \bigl[p + (1-p)q\bigr] - q = p(1 - q) .
+\]
+Cheating is deterred iff $p(1-q)(w - \bar w)N \ge g$, so the minimum deterrent wage is
+\[
+  w^* = \bar w + \frac{g}{N\,p\,(1-q)} .
+\]
+Compared with $q = 0$, the wage premium is multiplied by $\frac{1}{1-q}$ and rises with $q$:
+$\partial w^*/\partial q = \frac{g}{Np(1-q)^2} > 0$.
+
+\textbf{Reading.} False alarms reduce the effective deterrence: a cheater was going to risk dismissal
+anyway (probability $q$), so cheating adds only $p(1-q)$ to it. The firm must pay a larger rent to restore the
+gap between the expected losses of cheating and honesty. If the evidence is instead read as ``a cheater is flagged
+with probability $p$ and an honest worker with $q$'', the gap is $p - q$ and $w^* = \bar w + \frac{g}{N(p - q)}$,
+which also rises with $q$ and requires $p > q$ (the monitor must be informative).
+
+\textbf{Refinement.} False dismissals also shorten the effective horizon of an honest worker (it falls below
+the $N$ of the no-error case), which raises the wage further. The wage formula holds for the effective $N$.
+
+\textbf{Numerical example.} $p = \frac12$, $g = 1\,000$, $N = 4$, $\bar w = 40\,000$: with $q = 0$, $w^* =
+40\,500$; with $q = \frac15$, $w^* = 40\,000 + \frac{1\,000}{4 \cdot 0.5 \cdot 0.8} = 40\,625$.
+
+\interp Noisy monitoring is costly: the firm pays the employee for the risk of wrongful dismissal too. Better
+accuracy (smaller $q$) is an alternative to a higher wage, a trade-off the cost-of-monitoring problem of
+Mathematical Exercise~1 (item~28) puts in cost terms.
+
+\verify \texttt{check\_T2.py} (item~17) verifies $[p + (1-p)q] - q = p(1-q)$, that $w^*$ makes the constraint bind,
+$w^*|_{q=0} = \bar w + g/(Np)$, the derivative $\frac{g}{Np(1-q)^2}$, and the example values $40\,500$, $40\,625$
+and (alternative reading) $40\,000 + \frac{1\,000}{4 \times 0.3}$. The book prints no answer.
+
+\answer{With false-alarm probability $q$ and dismissal on any flag, the extra dismissal risk from cheating is
+$p(1-q)$, so the efficiency wage is $w^* = \bar w + \dfrac{g}{N\,p\,(1-q)}$, which exceeds the no-error wage
+$\bar w + g/(Np)$ by the factor $\frac1{1-q}$ on the premium and rises with $q$.}
+\end{exsol}

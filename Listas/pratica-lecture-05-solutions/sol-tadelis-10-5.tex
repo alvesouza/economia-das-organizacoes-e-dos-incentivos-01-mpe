@@ -1,0 +1,90 @@
+% Solution: Tadelis (2013) Exercise 10.5 "Negative Ad Campaigns Revisited". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 10.5}{216--217}{Exam level}{4}
+\asked With $v_i = a_i - 2a_j + a_ia_j - a_i^2$ and $a_i \in [0,2]$: find the stage equilibrium and the
+binding-agreement optimum; the discount factors that sustain the optimum by grim trigger; and whether capping
+campaigns at $\frac12$ hour is a good policy.
+
+\method Grim trigger with continuous actions and normalised payoffs (Lecture~5, slides~21, 24--29; Tadelis
+\S10.3, pp.~196--202, threshold (10.5), p.~202). For part (d) the threshold is recomputed on the new action set,
+and the policy is judged by the level of campaigning each regime sustains.
+
+\solution
+\textbf{(a) Stage equilibrium.} $\partial v_i/\partial a_i = 1 + a_j - 2a_i = 0$ gives the best response
+$a_i = \frac{1 + a_j}{2}$ (always inside $[0,2]$ for $a_j \in [0,2]$), and $v_i$ is concave in $a_i$. The unique
+equilibrium solves $a = \frac{1 + a}{2}$: $a_1 = a_2 = 1$, with $v_i = 1 - 2 + 1 - 1 = -1$.
+
+\textbf{(b) Binding agreement.} Joint payoff:
+\[
+  v_1 + v_2 = -(a_1 + a_2) - (a_1 - a_2)^2 \;\le\; 0,
+\]
+with equality only at $a_1 = a_2 = 0$. They choose $(0,0)$ with $v_i = 0 > -1$.
+
+\textbf{(c) Grim trigger for $(0,0)$.} Strategy: campaign $0$ as long as both have; otherwise campaign $1$
+forever. Punishment state: a stage equilibrium, so no check. Cooperative state: against $a_j = 0$ the best
+response is $a_i = \frac12$, giving $v^d = \frac12 - 0 + 0 - \frac14 = \frac14$. In normalised payoffs
+\[
+  0 \;\ge\; (1-\delta)\cdot\tfrac14 + \delta\cdot(-1)
+  \iff \tfrac14 \;\ge\; \tfrac54\,\delta \iff \delta \;\ge\; \frac{1}{5}
+\]
+(check with (10.5): $\frac{1/4 - 0}{1/4 + 1} = \frac15$). By symmetry the same holds for party~2. So $(0,0)$ is an SPE
+outcome iff $\delta \in [\frac15, 1)$.
+
+\textbf{(d) The cap $a_i \in [0,\frac12]$.} The best response $\frac{1+a_j}{2} \ge \frac12$ for every $a_j \ge 0$, so
+the constrained best response is always $\frac12$: the new stage equilibrium is $(\frac12,\frac12)$ with
+$v_i = \frac12 - 1 + \frac14 - \frac14 = -\frac12$. The cooperative outcome is still $(0,0)$ with $v=0$ and the
+best deviation is still $\frac12$ with $v^d = \frac14$ (it is allowed). Only the punishment has changed:
+\[
+  0 \ge (1-\delta)\tfrac14 + \delta\bigl(-\tfrac12\bigr)
+  \iff \delta \;\ge\; \frac{1/4}{1/4 + 1/2} = \frac13 .
+\]
+\emph{Is the cap a good policy?} Compare the level of negative campaigning that each regime sustains. On the
+path of a symmetric SPE with campaigning $a$ each, $v(a,a) = -a$; the best deviation and the punishment give, with the
+unrestricted action set (stage equilibrium $-1$),
+\[
+  -a \;\ge\; (1-\delta)\Bigl[\tfrac{(1+a)^2}{4} - 2a\Bigr] - \delta
+  \iff a \;\ge\; a_{\min}(\delta) = \max\Bigl\{0,\ \frac{1 - 5\delta}{1 - \delta}\Bigr\},
+\]
+and with the cap (stage equilibrium $-\frac12$, best deviation $\frac12$ with payoff $\frac14 - \frac32a$)
+\[
+  -a \;\ge\; (1-\delta)\bigl(\tfrac14 - \tfrac32a\bigr) - \tfrac\delta2
+  \iff \bigl(\tfrac12 - \tfrac32\delta\bigr)\bigl(a - \tfrac12\bigr) \;\ge\; 0 ,
+\]
+so with the cap only $a = \frac12$ is sustainable if $\delta < \frac13$, and any $a \in [0,\frac12]$ (so $a = 0$) if
+$\delta \ge \frac13$. The lowest sustainable campaigning level is therefore:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+$\delta$ & $\frac1{20}$ & $\frac19$ & $\frac15$ & $\frac13$ and above \\
+\midrule
+no cap, $a_{\min}$ & $\frac{15}{19}\approx0.79$ & $\frac12$ & $0$ & $0$ \\
+cap at $\frac12$ & $\frac12$ & $\frac12$ & $\frac12$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The cap lowers negative campaigning only for $\delta < \frac19$, where the parties are too impatient to collude
+and the cap simply stops them overshooting. For $\delta \in (\frac19, \frac13)$ it \emph{raises} campaigning to $\frac12$ hour
+a day (from less than $\frac12$, and for $\delta \ge \frac15$ from $0$), and for $\delta \ge \frac13$ it changes nothing. Where the parties can coordinate without the cap ($\delta \ge \frac15$, part (c)), the cap is
+either harmful ($\delta < \frac13$) or irrelevant, so it is not a good policy.
+
+\interp The cap lowers the cost of being punished: a milder stage equilibrium ($-\frac12$ instead of $-1$) is a
+weaker threat, so collusion on \emph{no} negative campaigning needs more patience ($\frac13$ against $\frac15$). Limiting
+actions helps in a one-shot game but, in a repeated game, it removes the stick that supports cooperation.
+
+\verify \texttt{check\_L05.py} solves the equilibrium $(1,1)$ with $v=-1$, shows $v_1 + v_2 = -(a_1+a_2) - (a_1-a_2)^2$,
+the deviation $\frac14$, $\delta^* = \frac15$ (both sides tested), the capped case $v = -\frac12$ and $\delta^* = \frac13$,
+verifies that $a = 1$ is a root of the unrestricted constraint and the other root is $\frac{1-5\delta}{1-\delta}$, the capped
+factorisation, and the table values.
+
+\mistakes
+\begin{itemize}
+  \item Keeping the punishment payoff $-1$ in (d): with the cap the Nash payoff is $-\frac12$.
+  \item Judging the cap by the one-shot equilibrium alone ($1 \to \frac12$): that is the right comparison only when
+  $\delta < \frac19$.
+\end{itemize}
+
+\answer{(a) $a_1 = a_2 = 1$, $v_i = -1$. (b) $(0,0)$, $v_i = 0$. (c) $\delta \ge \frac15$ (best deviation $\frac12$, payoff $\frac14$).
+(d) With the cap the stage equilibrium is $(\frac12,\frac12)$ with $v = -\frac12$ and $(0,0)$ needs $\delta \ge \frac13$. The cap helps only
+if $\delta < \frac19$; for $\delta \in (\frac19,\frac13)$ it makes campaigning higher ($\frac12$ against less than $\frac12$, or $0$), and
+for $\delta \ge \frac13$ it changes nothing. So it is not a good policy for patient parties.}
+\end{exsol}

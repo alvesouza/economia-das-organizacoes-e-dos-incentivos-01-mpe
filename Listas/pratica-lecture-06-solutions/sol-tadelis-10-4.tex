@@ -1,0 +1,59 @@
+% Solution: Tadelis (2013) Exercise 10.4 "Trust Off the Equilibrium Path". Input by \solitem. Check: check_T2.py (item 15).
+\begin{exsol}{Tadelis Exercise 10.4}{216}{Exam level}{3}
+\asked In the repeated trust game of Figure~10.1, show that if player~2 uses ``as long as player~1 trusts me I
+will cooperate'', the path $(T, C)$ forever is a Nash equilibrium for $\delta \ge \frac12$ but is not
+subgame perfect for any $\delta$.
+
+\method The stage game (Figure~10.1, p.~205): player~1 chooses $N$ (payoffs $(0,0)$) or $T$; after $T$ player~2
+chooses $C$ (payoffs $(1,1)$) or $D$ (payoffs $(-1,2)$). The text's SPE (p.~205, \S10.5.1) has player~1 trusting
+until a deviation from $(T,C)$ and never afterwards. Player~2's \emph{modified} strategy is $\sigma_2$: ``cooperate
+whenever trusted'', whatever the history. Nash equilibrium needs best replies on the path only. Subgame
+perfection needs them after every history.
+
+\solution
+Let $\sigma_1$ be: ``trust in period~1; as long as $(T,C)$ was played in every earlier period keep trusting;
+after any other history never trust.''
+
+\textbf{Nash equilibrium for $\delta \ge \frac12$.}
+\begin{itemize}
+  \item \emph{Player~1.} Against $\sigma_2$ player~2 cooperates after every trust, so trusting forever gives $1$ per
+  period and any period of $N$ gives $0$. $\sigma_1$ is a best reply.
+  \item \emph{Player~2.} Against $\sigma_1$, a deviation to $D$ in some period yields $2$ then no trust ever again
+  ($0$), against $\frac{1}{1-\delta}$ from cooperating, which is at least $2$ iff $\delta \ge \frac12$. After the
+  deviation $\sigma_1$ never trusts, so $\sigma_2$'s prescription is never tested.
+\end{itemize}
+So $(\sigma_1, \sigma_2)$ is a Nash equilibrium for $\delta \ge \frac12$, with outcome $(T,C)$ forever.
+
+\textbf{Not subgame perfect, for any $\delta$.} Consider a history in which player~2 defected in period~$t$, so
+$\sigma_1$ prescribes no trust forever, and then the (off-path) situation in which player~1 trusts in period $t+1$.
+At that node player~2 chooses between $C$ and $D$. Under $\sigma_2$ she cooperates and gets $1$. Her continuation
+afterwards is $0$ in both cases, because $\sigma_1$ never trusts again after the earlier defection. So
+\[
+  C:\ 1 + 0 \quad<\quad D:\ 2 + 0 \qquad \text{for every } \delta .
+\]
+$\sigma_2$ is not a best reply in that subgame, hence the profile is not subgame perfect. The text's strategy
+``deviate forever after a deviation'' is a best reply there, which is why it works.
+
+\interp Nash equilibrium does not test choices after histories that the equilibrium itself never reaches.
+The text's version of player~2's strategy punishes off the path too, and therefore is subgame perfect; the
+version in this exercise leaves a threat (player~1's refusal to trust after a defection) that player~2 would never
+\emph{need} to respect and, at the off-path node, would rather exploit.
+
+\verify \texttt{check\_T2.py} (item~15) solves $\frac1{1-\delta} = 2$ ($\delta = \frac12$), checks the on-path
+inequality at $\delta \in \{\frac12, \frac34, \frac9{10}\}$, the strict inequality $D > C$ in the off-path
+subgame for $\delta \in \{\frac1{10}, \frac12, \frac{99}{100}\}$, and that stopping trust at any date
+$k \le 5$ is not a profitable deviation for player~1 at $\delta = 0.9$. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Treating the off-path node as irrelevant because it is never reached. It is a subgame, and SPE
+  requires best replies there.
+  \item Concluding that the failure depends on $\delta$: after a defection the future is zero in both branches,
+  so the comparison $1 < 2$ holds for all $\delta$.
+\end{itemize}
+
+\answer{With $\sigma_2$ = ``cooperate whenever trusted'' and $\sigma_1$ = grim trust, $(T,C)$ forever is Nash iff
+$\frac{1}{1-\delta} \ge 2$, i.e.\ $\delta \ge \frac12$. It is not subgame perfect for any $\delta$: after a past
+defection, if player~1 trusted once, player~2 would get $1$ from $C$ against $2$ from $D$, with continuation $0$ in
+both cases, so cooperating is not a best reply.}
+\end{exsol}

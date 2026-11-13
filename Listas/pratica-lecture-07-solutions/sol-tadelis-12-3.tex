@@ -1,0 +1,60 @@
+% Solution: Tadelis (2013) Exercise 12.3 "Armed Conflict". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.3}{266--267}{Exam}{3}
+\asked All pure-strategy BNE of the armed-conflict game for (a) $m=3,w=2,s=1$ and (b) $m=3,w=4,s=2$.
+
+\method Types $S$ or $W$ (equiprobable, independent), actions $A$ or $N$. An army's payoff from
+$N$ is $0$. From $A$: $m$ if the rival plays $N$; if both attack, $m-c$ when $i$ is strong and the
+rival weak, and $-c$ otherwise, where $c=s$ (strong) or $w$ (weak). A strategy is
+$(x_S,x_W)$, the action of the strong and of the weak type. For each type compute the expected
+payoff of $A$ against each of the four rival strategies and compare with $0$.
+
+\solution
+Expected payoff of $A$ for type $t$ against a rival strategy $(y_S,y_W)$ is
+$\tfrac12 u(A\mid y_S\text{ vs }S)+\tfrac12 u(A\mid y_W\text{ vs }W)$; ($N$ yields $0$).
+
+\textbf{(a) $m=3,w=2,s=1$.}
+\begin{center}\small
+\begin{tabular}{l|cccc}
+rival $(y_S,y_W)$ & $AA$ & $AN$ & $NA$ & $NN$\\\hline
+$E[A]$, strong & $\tfrac12$ & $1$ & $\tfrac52$ & $3$\\
+$E[A]$, weak & $-2$ & $\tfrac12$ & $\tfrac12$ & $3$
+\end{tabular}
+\end{center}
+The strong type attacks against every rival strategy ($E[A]>0$). The weak type attacks unless the
+rival is $AA$ (always attacks). So a rival $AA$ forces $(A,N)$ from the other army, but against
+$AN$ the weak type wants $A$: no symmetric pure equilibrium. The BNE are asymmetric:
+\[
+  (AA,\,AN)\quad\text{and}\quad(AN,\,AA).
+\]
+Check $(AA,AN)$: army~1 faces $AN$ and attacks with both types ($1>0$, $\tfrac12>0$); army~2 faces
+$AA$, so its strong type attacks ($\tfrac12>0$) and its weak type stays ($-2<0$).
+
+\textbf{(b) $m=3,w=4,s=2$.}
+\begin{center}\small
+\begin{tabular}{l|cccc}
+rival $(y_S,y_W)$ & $AA$ & $AN$ & $NA$ & $NN$\\\hline
+$E[A]$, strong & $-\tfrac12$ & $\tfrac12$ & $2$ & $3$\\
+$E[A]$, weak & $-4$ & $-\tfrac12$ & $-\tfrac12$ & $3$
+\end{tabular}
+\end{center}
+The weak type attacks only if the rival never attacks ($E[A]=3$ against $NN$, negative otherwise);
+the strong type attacks unless the rival is $AA$. Profiles:
+\[
+  (AN,\,AN),\qquad (AA,\,NN),\qquad (NN,\,AA).
+\]
+Check $(AN,AN)$: strong attacks ($\tfrac12>0$ against $AN$), weak stays ($-\tfrac12<0$). $(AA,NN)$:
+army~1 attacks with both types because army~2 never does ($3>0$), and army~2 stays with both types
+because army~1 always attacks ($-\tfrac12<0$ and $-4<0$).
+
+\interp (a) The costs are low enough that attacking pays unless the rival is sure to attack. The
+only equilibria have one army whose weak type attacks and another whose weak type backs off.
+(b) With high costs of fighting, only the strong type fights; the weak type attacks only against
+a rival who never does, which supports the lopsided equilibria $(AA,NN)$ and $(NN,AA)$.
+
+\verify \texttt{check\_E2.py} computes both Bayesian normal forms from the payoff rules and
+enumerates all $4\times4$ pure profiles; it prints the two tables of expected attack payoffs above
+and asserts exactly the two profiles in (a) and the three in (b). Tadelis gives no answer.
+
+\answer{(a) $(AA,AN)$ and $(AN,AA)$. (b) $(AN,AN)$, $(AA,NN)$ and $(NN,AA)$; each strategy lists the
+action of the strong type, then of the weak type.}
+\end{exsol}

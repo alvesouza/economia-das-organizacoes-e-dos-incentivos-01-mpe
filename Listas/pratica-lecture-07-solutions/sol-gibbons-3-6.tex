@@ -1,0 +1,35 @@
+% Solution: Gibbons (1992) Problem 3.6. Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Gibbons Problem 3.6}{170}{Exam}{3}
+\asked Show that with $n$ bidders with values i.i.d.\ $U[0,1]$ in a first-price sealed-bid
+auction, bidding $\frac{n-1}{n}v_i$ is a symmetric BNE.
+
+\method Verification, not derivation: take the rivals' strategy $b_j=\frac{n-1}{n}v_j$ as given and
+show that it is a best reply for every $v_i$ (Gibbons \S3.2.B, pp.~155--158).
+
+\solution
+Let $k=\frac{n-1}{n}$. A bid $x\le k$ beats rival $j$ iff $kv_j<x$, i.e.\ $v_j<x/k$, with probability
+$x/k$; it beats all $n-1$ independent rivals with probability $(x/k)^{n-1}$. Hence
+\[
+  EU_i(x\mid v_i)=\Bigl(\frac xk\Bigr)^{n-1}(v_i-x),\qquad 0\le x\le k .
+\]
+FOC: $(n-1)\dfrac{x^{n-2}}{k^{n-1}}(v_i-x)-\dfrac{x^{n-1}}{k^{n-1}}=0$, i.e.\ $(n-1)(v_i-x)=x$, so
+\[
+  x=\frac{n-1}{n}\,v_i=kv_i .
+\]
+This is the unique interior critical point and a maximum: on $[0,k]$, $EU_i=c\,x^{n-1}(v_i-x)$ with
+$c>0$ is $0$ at $x=0$, increasing up to $x=kv_i$ and decreasing afterwards. Bids $x>k$ win with
+probability $1$ and earn $v_i-x$, decreasing in $x$ and continuous with $EU_i(k)$, so they do no
+better than $x=k$, which is already beaten by $kv_i$ (as $kv_i\le k$, with equality only at $v_i=1$).
+So $b_i(v_i)=kv_i$ is a best reply to the other $n-1$ bidders using it: a symmetric BNE.
+
+\interp Shading is $v_i/n$: it vanishes as $n\to\infty$. The expected revenue is $E[\max v]\cdot k=
+\frac{n}{n+1}\cdot\frac{n-1}{n}=\frac{n-1}{n+1}$, the expected second-highest value, i.e.\ the
+second-price revenue (revenue equivalence); $n=2$ gives item~7's $\tfrac13$.
+
+\verify \texttt{check\_E2.py}: for $n=2,\dots,7$ sympy solves the FOC and returns $(n-1)v/n$;
+scipy maximizes $EU_i$ (with the winning-for-sure branch for $x>k$) at $v=0.7$ and returns
+$(n-1)\cdot0.7/n$; sympy integrates the two revenues to $(n-1)/(n+1)$. Gibbons gives no answer.
+
+\answer{With the rivals bidding $\frac{n-1}{n}v_j$, $EU_i=(\frac{nx}{n-1})^{n-1}(v_i-x)$ is maximized at
+$x=\frac{n-1}{n}v_i$: the profile is a symmetric BNE.}
+\end{exsol}

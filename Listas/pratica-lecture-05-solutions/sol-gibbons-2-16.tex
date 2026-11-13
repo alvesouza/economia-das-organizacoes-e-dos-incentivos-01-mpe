@@ -1,0 +1,64 @@
+% Solution: Gibbons (1992) Problem 2.16 (union and firm, repeated). Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Gibbons Problem 2.16}{136}{Advanced}{4}
+\asked In the infinitely repeated wage-employment game, derive conditions on $(w,L)$ such that
+(1) $(U,\pi)$ Pareto-dominates the backwards-induction outcome $(U^*,\pi^*)$ and (2) $(U,\pi)$ is the outcome of
+an SPNE in which $(U^*,\pi^*)$ is played forever after a deviation.
+
+\method The one-shot model is Gibbons \S2.1.C (pp.~64--68): the union chooses $w$, the firm observes it and
+chooses $L$; the firm's profit is $\pi(w,L) = R(L) - wL$ and the union's utility is $U(w,L)$. The repeated game is the
+trigger strategy with the one-stage deviation principle and normalised payoffs (Lecture~5, slides~21, 24--29;
+Tadelis \S10.3, pp.~196--202; Gibbons \S2.3.B, pp.~88--91). Notation: $L(w)$ is the firm's best reply to $w$ and
+$(w^*, L^*)$ the backwards-induction outcome, $L^* = L(w^*)$, $w^* = \arg\max_w U(w, L(w))$.
+
+\solution
+\textbf{Strategies.} Each period the union proposes $w$ and the firm answers $L$; play $(w,L)$ as long as it was played
+in every earlier period; after any other history play the one-shot backwards-induction behaviour (the union asks $w^*$,
+the firm plays $L(\cdot)$) forever. The punishment is an SPNE of the stage game, so no check is needed there. There are two
+cooperative-state checks, one per mover.
+
+\textbf{The union.} If the union asks $w' \ne w$, the firm's strategy after this history is the punishment strategy:
+it best-replies, $L(w')$, in that period, and the backwards-induction outcome follows. So the union's deviation payoff is
+$(1-\delta)\,U(w', L(w')) + \delta U^*$, at most $(1-\delta)U^* + \delta U^* = U^*$, since $U^*$ is the maximum of $U(w, L(w))$. The union conforms iff
+\[
+  U(w,L) \;\ge\; U^* .
+\]
+\textbf{The firm.} After the union has asked $w$, the firm's best deviation is $L(w)$, with profit
+$\pi^d(w) = \max_{L'}\,[R(L') - wL'] \ge \pi(w,L)$. It conforms iff
+\[
+  \pi(w,L) \;\ge\; (1-\delta)\,\pi^d(w) + \delta\,\pi^*
+  \iff \delta \;\ge\; \frac{\pi^d(w) - \pi(w,L)}{\pi^d(w) - \pi^*} .
+\]
+(If $L = L(w)$ the numerator is zero and there is nothing to deter.) The firm's condition implies $\pi(w,L) \ge \pi^*$: if
+$\pi^d(w) \ge \pi^*$, the right side is at least $\pi^*$; if $\pi^d(w) < \pi^*$, the right side exceeds $\pi^d(w) \ge \pi$ and the condition fails.
+
+\textbf{Conditions on $(w,L)$.} Both properties together:
+\begin{enumerate}[label=(\roman*)]
+  \item $U(w,L) \ge U^*$ and $\pi(w,L) \ge \pi^*$, with at least one strict (Pareto dominance, property~1);
+  \item $\delta \ge \dfrac{\pi^d(w) - \pi(w,L)}{\pi^d(w) - \pi^*}$, where $\pi^d(w) = \max_{L'}[R(L') - wL']$ (property~2).
+\end{enumerate}
+The union's constraint is $U \ge U^*$, already in (i); only the firm needs patience, because the union moves
+first and is automatically best-replied by the punishment.
+
+\textbf{Example (the model of item~3, M-G Ch.~4 Ex.~18).} $U = wL$, $R(L) = L - \frac{L^2}2$ (the union's wage $w \in [0,1]$ and hiring
+$L \in [0,1]$): $L(w) = 1 - w$, $(w^*,L^*) = (\frac12,\frac12)$, $U^* = \frac14$, $\pi^* = \frac18$. Total surplus $L - \frac{L^2}{2}$ is
+largest at $L = 1$, where $U = w$ and $\pi = \frac12 - w$. Pareto dominance requires $w \in [\frac14, \frac38]$. The firm's best deviation
+profit is $\pi^d(w) = \frac{(1-w)^2}{2}$, so
+\[
+  \delta(w) = \frac{\frac{(1-w)^2}{2} - \bigl(\frac12 - w\bigr)}{\frac{(1-w)^2}{2} - \frac18} = \frac{w^2/2}{\frac{(1-w)^2}2 - \frac18} .
+\]
+At $w = \frac14$ (the union exactly as well off as at $w^*$, the firm much better off): $\delta = \frac15$. At $w = \frac3{10}$: $\delta = \frac38$.
+The threshold rises with $w$ and reaches $1$ at $w = \frac38$, where the firm's gain from cooperation, $\pi - \pi^*$, vanishes.
+
+\interp The one-shot outcome is inefficient because the union cannot commit to a lower wage with $L = 1$. Repetition lets the
+firm trust the union's wage by threatening to return to the one-shot outcome. The firm is the one who must be
+patient: its temptation is to hire fewer workers than promised ($L = 1$ at the wage $w$ is not its best reply).
+
+\verify \texttt{check\_L05.py} verifies, in the example, $L(w) = 1-w$, $\pi^d(w) = \frac{(1-w)^2}{2}$, the Pareto range $[\frac14, \frac38]$,
+$\delta(\frac14) = \frac15$, $\delta(\frac3{10}) = \frac38$, $\delta(\frac38) = 1$, monotonicity of $\delta(w)$, that the firm's constraint holds at
+$\delta = \frac15$ and fails at $0.199$ for $w = \frac14$, and that the union's best deviation payoff is $U^* = \frac14$ (grid).
+
+\answer{(i) $U(w,L) \ge U^*$ and $\pi(w,L) \ge \pi^*$, one strictly; (ii) $\delta \ge \dfrac{\pi^d(w) - \pi(w,L)}{\pi^d(w) - \pi^*}$ with
+$\pi^d(w) = \max_{L'}[R(L') - wL']$ the firm's best-deviation profit. The union's deviation yields at most $U^*$, so its constraint is
+$U \ge U^*$. Example ($U = wL$, $R = L - L^2/2$): $(w,L) = (\frac14, 1)$ is sustained iff $\delta \ge \frac15$.}
+\end{exsol}

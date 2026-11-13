@@ -1,0 +1,70 @@
+% Solution: Tadelis (2013) Exercise 10.6 "Regulating Medications". Input by \solitem. Check: check_T2.py (item 18).
+\begin{exsol}{Tadelis Exercise 10.6}{217}{Exam level}{4}
+\asked A firm chooses the manufacturing procedure $G$ (cost $4$, value $9$) or $B$ (cost $0$, value $4$) for a drug
+with regulated price $p = 6$; the consumer buys or not before seeing quality. (a) The matrix and all Nash
+equilibria. (b) All SPE when the game is played twice. (c) The discount factors for which $G$ is used in an SPE
+of the infinitely repeated game. (d) The effect of lowering the price to $5$.
+
+\method Stage game from the payoffs. The firm pays its cost whether or not the consumer buys (it chooses the
+procedure before knowing his decision). One-stage deviation with the trigger ``revert to the stage equilibrium''
+(Tadelis \S10.5.1, pp.~204--205; \S10.3).
+
+\solution
+\textbf{(a) Stage game.} Firm (rows) $G, B$; consumer (columns) Buy, Not. Payoffs (firm, consumer):
+\[
+\begin{array}{c|cc}
+ & \text{Buy} & \text{Not} \\ \hline
+G & (6-4,\ 9-6) = (2,\ 3) & (-4,\ 0) \\
+B & (6-0,\ 4-6) = (6,\ -2) & (0,\ 0)
+\end{array}
+\]
+$B$ strictly dominates $G$ for the firm ($6 > 2$ and $0 > -4$). The consumer's best reply to $B$ is Not ($0 > -2$).
+The unique Nash equilibrium is $(B, \text{Not})$, in pure strategies (a mixed equilibrium puts weight $0$ on $G$,
+since $B$ is strictly dominant). Payoffs $(0,0)$ against the cooperative $(2,3)$.
+
+\textbf{(b) Played twice.} The stage game has a unique Nash equilibrium, so backward induction gives
+$(B, \text{Not})$ in period~2 whatever happened, and the history cannot be rewarded or punished in period~1. In
+period~1 each player therefore plays the stage best reply. The unique SPE is $(B,\text{Not})$ in both periods.
+(That the consumer only sees quality when he buys does not matter: nothing in period~1 conditions period~2.)
+
+\textbf{(c) Infinite horizon.} Strategies: the firm plays $G$ and the consumer buys, as long as every earlier
+period was $(G, \text{Buy})$; after any deviation they play $(B, \text{Not})$ for ever, which is a stage equilibrium
+and so self-enforcing. A deviation by the firm to $B$ is revealed after the consumer buys. The consumer's
+deviation (not buying) gives $0$ now and $0$ afterwards, below $3$, so he never wants it. The firm deviates iff
+\[
+  \frac{2}{1-\delta} < 6 + 0 \iff \delta < \frac23 .
+\]
+$G$ is used in an SPE for $\delta \ge \frac23$ (and not for $\delta < \frac23$ with this trigger).
+
+\textbf{(d) Price $5$.} The stage game becomes $G$: $(1, 4)$ and $(-4, 0)$; $B$: $(5, -1)$ and $(0, 0)$. The unique
+stage equilibrium is still $(B, \text{Not})$, and the same trigger now needs
+$\frac{1}{1-\delta} \ge 5 \iff \delta \ge \frac45$. In general, $G$ at price $p$ needs $\delta \ge \frac{4}{p}$ (and
+$p > 4$ for a positive margin).
+
+\textbf{Arguments.} \emph{Firm:} for $\delta \in [\frac23, \frac45)$ a regulated price of $6$ sustains quality $G$
+while a price of $5$ does not: the firm switches to $B$, the consumer stops buying, and both are worse off
+(firm $2 \to 0$ per period, consumer $3 \to 0$). \emph{Consumers:} if $\delta \ge \frac45$, quality remains $G$
+and the consumer's surplus per period rises from $3$ to $4$, a transfer of $1$ from the firm. The price cut only
+helps consumers if firms are patient enough; it is counterproductive when $\delta \in [\frac23, \frac45)$.
+
+\interp Reputation sustains quality only if the margin on honest behaviour is large relative to the one-period gain
+from cheating ($p$ against $p - 4$). A price cap that squeezes the margin makes quality harder to sustain, but
+quality is a public good that disappears completely when it fails.
+
+\verify \texttt{check\_T2.py} (item~18) enumerates the pure-strategy equilibria of both matrices
+(only $(B, \text{Not})$), checks the dominance of $B$, solves $\frac{p-4}{1-\delta} = p$ symbolically
+($\delta = \frac4p$: $\frac23$ at $p = 6$ and $\frac45$ at $p = 5$), and tests $\delta = 0.7$, where $p = 6$ sustains $G$
+and $p = 5$ does not. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Counting the cost $4$ only when the consumer buys. The firm pays it either way, which makes $B$ strictly
+  dominant.
+  \item Concluding that repetition twice allows $G$: a unique stage equilibrium unravels.
+\end{itemize}
+
+\answer{(a) Unique Nash equilibrium: $(B,\text{Not})$. (b) Unique SPE: $(B,\text{Not})$ in both periods.
+(c) $G$ and Buy in every period is an SPE with trigger reversion iff $\delta \ge \frac23$. (d) At $p = 5$ the
+cutoff becomes $\delta \ge \frac45$, so for $\delta \in [\frac23, \frac45)$ the cap destroys quality and both sides
+lose; for $\delta \ge \frac45$ consumers gain $1$ per period (surplus $4$ instead of $3$).}
+\end{exsol}

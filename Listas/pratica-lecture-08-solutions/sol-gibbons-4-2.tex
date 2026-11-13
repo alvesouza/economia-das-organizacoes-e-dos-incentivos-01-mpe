@@ -1,0 +1,46 @@
+% Solution: Gibbons (1992) Problem 4.2. Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Gibbons Problem 4.2}{245--246}{Exam}{3}
+\asked Show that the extensive-form game has no pure-strategy PBE, and find the mixed-strategy PBE.
+
+\method Player~2's best reply as a function of his belief, then player~1's incentives against each
+possible reply (Gibbons \S4.1, pp.~175--183, Requirements 1--4; a mixed strategy of player~2
+requires indifference at his information set, hence a pinned-down belief).
+
+\solution Payoffs $(u_1, u_2)$: $R$ gives $(2, 2)$; after $L$: $L'$ gives $(3, 0)$ and $R'$ gives
+$(0, 1)$; after $M$: $L'$ gives $(0, 1)$ and $R'$ gives $(3, 0)$. Let $p$ be player~2's belief that
+$L$ was played, and $q = \Pr(L')$. Player~2's payoffs are
+\[
+  u_2(L') = (1-p) \cdot 1 = 1 - p, \qquad u_2(R') = p \cdot 1 = p,
+\]
+so $L'$ is optimal iff $p \le \frac12$, $R'$ iff $p \ge \frac12$, and he mixes only if $p = \frac12$.
+Player~1's payoffs are $u_1(L) = 3q$, $u_1(M) = 3(1-q)$, $u_1(R) = 2$.
+
+\emph{No pure PBE.} A pure strategy of player~1 and a pure reply of player~2:
+\begin{itemize}
+  \item $L$: then $p = 1$, player~2 plays $R'$, and player~1 gets $0 < 2$ from $L$. Not an equilibrium.
+  \item $M$: then $p = 0$, player~2 plays $L'$, and player~1 gets $0 < 2$ from $M$. Not an equilibrium.
+  \item $R$: the information set is off the path. If player~2 plays $L'$, player~1 gets $3 > 2$
+  from deviating to $L$; if he plays $R'$, $3 > 2$ from deviating to $M$. Not an equilibrium
+  for any off-path belief.
+\end{itemize}
+\emph{The mixed PBE.} Let player~1 play $(a, b, c)$ on $(L, M, R)$.
+\begin{itemize}
+  \item If $a + b > 0$: $p = \frac{a}{a+b}$. For $p < \frac12$ player~2 plays $L'$ ($q = 1$) and then
+  only $L$ is a best reply ($3 > 0$ and $3 > 2$), so $b = 0$ and $p = 1$: contradiction. For $p > \frac12$
+  symmetric. For $p = \frac12$, $a = b$ and player~2 mixes, so indifference of player~1 between
+  $L$ and $M$ forces $q = \frac12$ and payoff $\frac32 < 2 = u_1(R)$, so $a = b = 0$: contradiction.
+  \item So $c = 1$ (player~1 plays $R$ for sure). The belief is not pinned down by Bayes' rule;
+  for player~2 to mix it must be $p = \frac12$, and he mixes with $q$ such that player~1 does not
+  deviate: $3q \le 2$ and $3(1-q) \le 2$.
+\end{itemize}
+The mixed PBE is: player~1 plays $R$; player~2 plays $L'$ with probability $q \in [\frac13, \frac23]$
+and $R'$ with probability $1 - q$; belief $p = \frac12$ at his information set. Player~1 earns $2$,
+and $L$ and $M$ earn at most $3q \le 2$ and $3(1-q) \le 2$. This is the only family of PBE.
+
+\verify \texttt{check\_T2.py} enumerates player~1's mixtures and player~2's $q$ on a grid of step
+$\frac1{12}$, with beliefs fixed by Bayes' rule where it applies and free elsewhere: the only equilibria
+have $c = 1$, $p = \frac12$ and $q \in \{\frac4{12}, \dots, \frac8{12}\}$. Gibbons prints no answer.
+
+\answer{No pure-strategy PBE. The (unique) mixed PBE family: player~1 plays $R$; player~2 plays
+$L'$ with probability $q \in [\frac13, \frac23]$ and $R'$ otherwise; belief $\Pr(L) = \frac12$.}
+\end{exsol}

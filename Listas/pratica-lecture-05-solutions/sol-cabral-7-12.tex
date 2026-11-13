@@ -1,0 +1,71 @@
+% Solution: Cabral (2017) Exercise 7.12 "Ad games". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Cabral Exercise 7.12}{181}{Exam level}{2}
+\asked Find the Nash equilibria of a symmetric $2\times2$ advertising game; find the optimal symmetric
+equilibrium of the infinitely repeated game at $\delta = 0.8$; and again when payoffs are doubled in the
+first ten periods.
+
+\method Nash equilibrium of the stage game, stage-game repetition as an SPE, and the one-stage deviation
+test for grim trigger with normalised payoffs (Lecture~5, slides~10, 21, 24--29; Tadelis
+\S10.3, pp.~196--202). The best symmetric equilibrium is found by comparing each period's best symmetric
+stage payoff with what the equilibrium conditions allow.
+
+\solution
+Stage game (firm~1 chooses rows, best replies underlined):
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$H$} & \multicolumn{1}{c}{$L$}\\ \cline{2-3}
+$H$ & $\br{5},\ \br{5}$ & $\br{8},\ 1$ \\ \cline{2-3}
+$L$ & $1,\ \br{8}$ & $4,\ 4$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(a)} $H$ strictly dominates $L$: $5 > 1$ against $H$ and $8 > 4$ against $L$ (the game is
+symmetric). The unique Nash equilibrium is $(H,H)$ with $(5,5)$.
+
+\textbf{(b)} Unlike the prisoner's dilemma, the stage equilibrium is also the best symmetric outcome:
+$(H,H)$ gives $5$ each, $(L,L)$ only $4$. Three facts settle the question.
+\begin{itemize}
+  \item \emph{$(H,H)$ in every period is an SPE} for every $\delta$: it is a stage equilibrium after every
+  history, so there is no profitable one-stage deviation (slide~10).
+  \item \emph{It gives each firm $5$ in every period}, the largest payoff either firm can get in a
+  symmetric outcome: the symmetric outcomes are $(H,H)$ with $5$ and $(L,L)$ with $4$, and alternating
+  $(H,L)$, $(L,H)$ gives $\frac{8+1}{2} = 4.5$ on average. No equilibrium can give a symmetric payoff above $5$.
+  \item \emph{Cooperating on $(L,L)$ is not even an equilibrium.} Grim trigger with reversion to $(H,H)$
+  needs $4 \ge (1-\delta)\cdot 8 + \delta\cdot 5$, i.e.\ $\delta \ge \frac43 > 1$: the ``punishment'' pays
+  $5 > 4$.
+\end{itemize}
+So at $\delta = 0.8$ the optimal symmetric equilibrium is $(H,H)$ forever, with normalised payoff $5$ per firm.
+
+\textbf{(c)} In periods $1$--$10$ all payoffs are doubled: $(H,H) = (10,10)$, $(L,L) = (8,8)$,
+$(H,L) = (16,2)$, and from period~11 the original table applies. $H$ is still strictly dominant in every
+period, $(H,H)$ is still the unique stage equilibrium, and it is still the best symmetric outcome in every
+period ($10 > 8$, $5 > 4$). The same argument applies, so the optimal symmetric equilibrium is again $(H,H)$
+in every period. Its normalised value is
+\[
+  (1-\delta)\Bigl[\,10\,\tfrac{1-\delta^{10}}{1-\delta} + 5\,\tfrac{\delta^{10}}{1-\delta}\Bigr]
+  = 10 - 5\delta^{10} = 10 - 5\cdot0.8^{10} \approx 9.463 .
+\]
+Front-loading the payoffs raises the value but changes no incentive: $(L,L)$ is dominated period by period.
+
+\interp The exercise reads like a collusion problem, but with these payoffs there is nothing to collude
+on: mutual high advertising is both the equilibrium and the efficient symmetric outcome. For $(L,L)$ to be
+a cooperative outcome one needs $u(L,L) > u(H,H)$, as in the prisoner's dilemma.
+
+\verify \texttt{check\_L05.py} computes the unique equilibrium $(H,H)$ with $H$ dominant, the grim-trigger
+threshold $\frac43$, the best symmetric stage payoff $5$ and total payoff $10$, and the value of part~(c)
+with exact fractions: average payoff $9.4631$.
+
+\mistakes
+\begin{itemize}
+  \item Treating the game as a prisoner's dilemma and answering ``$(L,L)$ for $\delta \ge \dots$''. With
+  $5 > 4$ the check fails for every $\delta < 1$.
+  \item In (c), computing a threshold from the doubled payoffs: doubling does not change which outcome is
+  best in a period, so the answer is unchanged.
+\end{itemize}
+
+\answer{(a) $(H,H)$ with $(5,5)$ is the unique Nash equilibrium ($H$ dominant). (b) At $\delta = 0.8$ the
+optimal symmetric equilibrium is $(H,H)$ in every period, payoff $5$ each; $(L,L)$ cannot be sustained (it
+would need $\delta \ge \frac43$). (c) Same equilibrium, $(H,H)$ in every period; average payoff
+$10 - 5\cdot0.8^{10} \approx 9.46$.}
+\end{exsol}

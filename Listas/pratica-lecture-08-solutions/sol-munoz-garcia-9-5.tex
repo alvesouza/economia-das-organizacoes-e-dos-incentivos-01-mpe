@@ -1,0 +1,47 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 9, Exercise 5. Input by \solitem. Check: check_T2.py.
+\begin{exsol}{\MG{} Ch.~9, Exercise 5}{422--423}{Exam}{3}
+\asked In the poker game of Fig.~9.46: (a) no pure separating PBE; (b) no pure pooling PBE;
+(c) a semi-separating PBE in which the High hand bets and the Low hand mixes.
+
+\method Pure profiles are refuted by one deviation each; the semi-separating PBE comes from two
+indifference conditions (player~2's belief makes him indifferent between Call and Fold, and his
+mixing makes the Low hand indifferent between Bet and Resign) plus Bayes' rule (Tadelis \S16.1;
+Gibbons \S4.2.A). Payoffs $(u_1, u_2)$: Resign $(-1, 1)$; Bet and Call $(2, -2)$ with the High
+hand and $(-2, 2)$ with the Low hand; Bet and Fold $(1, -1)$ for both. Let $\mu = \Pr(\text{High}
+\mid \text{Bet})$. Player~2's payoffs are $u_2(\text{Call}) = -2\mu + 2(1 - \mu) = 2 - 4\mu$ and
+$u_2(\text{Fold}) = -1$, so he calls iff $\mu \le \frac34$.
+
+\solution \textbf{(a) Separating.} \emph{High bets, Low resigns:} $\mu = 1$, so Fold. The Low hand
+gets $-1$ from resigning but $1$ from betting against a Fold: he deviates. \emph{High resigns,
+Low bets:} $\mu = 0$, so Call. The Low hand gets $-2$ from betting but $-1$ from resigning: he
+deviates (so does the High hand: $-1$ from resigning against $2$ from betting and being called).
+
+\textbf{(b) Pooling.} \emph{Both bet:} $\mu = \frac12$, $2 - 4\mu = 0 > -1$, so Call. The Low hand
+gets $-2 < -1$ and deviates to Resign. \emph{Both resign:} Bet is off the path. The High hand
+gets $2$ (Call) or $1$ (Fold), both above $-1$, so he deviates whatever the off-path belief.
+
+\textbf{(c) Semi-separating.} Let the High hand bet, the Low hand bet with probability $\beta$, and
+player~2 call with probability $\gamma$.
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Beliefs (Bayes).} $\mu = \dfrac{\frac12 \cdot 1}{\frac12 \cdot 1 + \frac12 \beta} = \dfrac{1}{1 + \beta}$.
+  \item \emph{Player~2 mixes} only if indifferent: $2 - 4\mu = -1$, i.e.\ $\mu = \frac34$. Then
+  $1 + \beta = \frac43$, so $\beta = \frac13$.
+  \item \emph{The Low hand mixes} only if indifferent between Bet and Resign:
+  $-2\gamma + 1\cdot(1-\gamma) = -1$, i.e.\ $1 - 3\gamma = -1$ and $\gamma = \frac23$.
+  \item \emph{The High hand} gets $2\gamma + (1 - \gamma) = \frac53 > -1$ from betting, so
+  betting is strictly optimal.
+\end{enumerate}
+PBE: the High hand bets; the Low hand bets with probability $\frac13$ and resigns with $\frac23$;
+player~2 calls with probability $\frac23$; belief $\mu = \frac34$. Payoff of player~1 with the Low
+hand: $-1$; with the High hand: $\frac53$. The mixing probability $\beta$ is unique: any other
+$\beta$ gives $\mu \ne \frac34$, so player~2 would play a pure reply and the Low hand would not be
+indifferent.
+
+\verify \texttt{check\_T2.py} enumerates all pure sender and receiver profiles (none is a PBE),
+and checks exactly that $\mu = \frac34$, that Call and Fold both give $-1$, that the Low hand's
+Bet and Resign both give $-1$ and that the High hand's bet gives $\frac53$. The book's printed
+answer reaches $\mu = \frac34$ and a Call probability of $66.67\%$, in agreement.
+
+\answer{(a), (b): no pure separating or pooling PBE. (c) The High hand bets; the Low hand bets with
+probability $\frac13$; player~2 calls with probability $\frac23$; $\mu = \frac34$.}
+\end{exsol}

@@ -1,0 +1,99 @@
+% Solution: Gibbons (1992) Problem 1.5 (finite Cournot games). Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Gibbons Problem 1.5}{49}{Exam}{3}
+\asked Two finite versions of the Cournot duopoly with $P(Q) = a - Q$ and marginal cost $c$.
+(i) With only $q_m/2 = (a-c)/4$ and $q_c = (a-c)/3$ available, show the game is a Prisoners' Dilemma.
+(ii) With a third quantity $q'$ available, find $q'$ such that $(q_c, q_c)$ is the unique equilibrium
+and both firms are worse off than in cooperation, but no strategy is strictly dominated.
+
+\method Normal-form games built from the Cournot payoff (Lecture~2, slides~20--25), strict dominance
+(Lecture~1) and the cartel as a prisoner's dilemma (Lecture~2, slide~25). Measure quantities in
+units of $a - c$, so $q_m/2 = \tfrac14$, $q_c = \tfrac13$ and the profit of a firm producing $q$ against a rival producing $y$ is
+\[
+  f(q, y) = q\,(1 - q - y)\cdot(a-c)^2 ,
+\]
+since $\pi = (a - q - y - c)\,q$.
+
+\solution
+\textbf{(i) The $2\times2$ game.} Payoffs in units of $(a-c)^2$:
+$f(\tfrac14, \tfrac14) = \tfrac14\cdot\tfrac12 = \tfrac18$;
+$f(\tfrac13, \tfrac13) = \tfrac13\cdot\tfrac13 = \tfrac19$;
+$f(\tfrac14, \tfrac13) = \tfrac14\cdot\tfrac{5}{12} = \tfrac{5}{48}$;
+$f(\tfrac13, \tfrac14) = \tfrac13\cdot\tfrac{5}{12} = \tfrac{5}{36}$.
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{1 $\backslash$ 2} & \multicolumn{1}{c}{$q_m/2$} & \multicolumn{1}{c}{$q_c$}\\ \cline{2-3}
+$q_m/2$ & $\tfrac18,\ \tfrac18$ & $\tfrac5{48},\ \br{\tfrac5{36}}$ \\ \cline{2-3}
+$q_c$ & $\br{\tfrac5{36}},\ \tfrac5{48}$ & $\br{\tfrac19},\ \br{\tfrac19}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Against $q_m/2$ the quantity $q_c$ pays $\tfrac5{36} > \tfrac18$ ($0.139 > 0.125$); against $q_c$ it pays
+$\tfrac19 > \tfrac5{48}$ ($0.111 > 0.104$). So $q_c$ strictly dominates $q_m/2$ for each firm, $(q_c,q_c)$ is the
+unique equilibrium (a dominant-strategy equilibrium), and both earn $\tfrac19 < \tfrac18$, what they
+would earn at $(q_m/2, q_m/2)$. Strictly dominated strategy, worse-off equilibrium: a Prisoners' Dilemma.
+
+\textbf{(ii) Adding $q'$.} The payoff depends on the rival only through its quantity $y$, so compare
+strategies as functions of $y$:
+\[
+  f(q_c, y) - f(q_m/2, y) = \frac{5 - 12 y}{144}, \qquad
+  f(q_c, y) - f(q', y) = \Bigl(q'^2 - q' + \tfrac29\Bigr) + y\Bigl(q' - \tfrac13\Bigr).
+\]
+The first is positive iff $y < \tfrac5{12}$. The second, for $q' > \tfrac13$, increases in $y$, and at $y = \tfrac14$
+equals $(q' - \tfrac13)(q' - \tfrac5{12})$.
+\begin{itemize}
+  \item If $q' < \tfrac5{12}$, every rival quantity available ($\tfrac14$, $\tfrac13$, $q'$) is below $\tfrac5{12}$,
+  so $q_c$ strictly beats $q_m/2$ against all of them: $q_m/2$ is strictly dominated. Excluded.
+  \item If $q' > \tfrac5{12}$, then $(q'-\tfrac13)(q'-\tfrac5{12}) > 0$ and every rival quantity is at
+  least $\tfrac14$, so $q_c$ strictly beats $q'$ against all of them: $q'$ is strictly dominated. Excluded.
+  \item So the only candidate is $q' = \tfrac5{12}\,(a - c)$, where both differences are $\ge 0$ with equality at exactly one
+  rival quantity each ($y = \tfrac5{12}$ in the first, $y = \tfrac14$ in the second).
+\end{itemize}
+With $q' = \tfrac5{12}$ the payoff table, in units of $(a-c)^2/144$ (row firm's payoff; the game is symmetric), is
+\begin{center}
+\begin{tabular}{c|ccc}
+ & $\tfrac14$ & $\tfrac13$ & $\tfrac5{12}$ \\ \hline
+$\tfrac14$ & $18$ & $15$ & $12$ \\
+$\tfrac13$ & $20$ & $16$ & $12$ \\
+$\tfrac5{12}$ & $20$ & $15$ & $10$ \\
+\end{tabular}
+\end{center}
+$q_c$ is at least as good as each of the others against every column, but ties with $q_m/2$ against
+$q'$ ($12 = 12$) and with $q'$ against $q_m/2$ ($20 = 20$), so \emph{no strategy is strictly dominated}
+(neither by a pure nor by a mixed strategy). The profile $(q_c, q_c)$ is an equilibrium paying $16$ each, which is
+less than the $18$ each of the cooperative profile $(q_m/2, q_m/2)$: both are worse off than under cooperation.
+
+\textbf{A caveat on uniqueness.} Because of the two ties just noted, $(q_m/2, q')$ and $(q', q_m/2)$ are also Nash
+equilibria, in the weak sense: at $(q_m/2, q')$ firm~1 earns $12$ and is indifferent between $q_m/2$ and
+$q_c$, firm~2 earns $20$ and is indifferent between $q'$ and $q_c$. So the three-quantity game has
+three equilibria, not one. No value of $q'$ gives all of the properties together: the two arguments
+above show that any $q' \ne \tfrac5{12}$ makes some strategy strictly dominated, and $q' = \tfrac5{12}$
+creates the ties. The value $q' = 5(a-c)/12$ is the one that matches the exercise as far as it can be matched.
+
+\answer{(i) $q_c$ strictly dominates $q_m/2$ for both firms, $(q_c,q_c)$ is the unique equilibrium with profits
+$(a-c)^2/9$ each, below the $(a-c)^2/8$ each earned at $(q_m/2, q_m/2)$: a Prisoners' Dilemma.
+(ii) $q' = 5(a - c)/12$ is the only value for which no strategy is strictly dominated; $(q_c,q_c)$ is
+then an equilibrium that is worse for both than cooperating, but it is not the \emph{only} one
+(two weak equilibria appear through ties).}
+
+\interp The point of the exercise is that the prisoner's-dilemma logic of the cartel (Lecture~2,
+slide~25) does not need a strictly dominated strategy: the Cournot model of Section 1.2.A has a continuum of quantities,
+no strategy is dominated, and still the equilibrium is Pareto-dominated. The finite version with
+$q' = 5(a-c)/12$ keeps that feature, but only at the knife's edge: the third quantity must be neither too
+small (it would make $q_m/2$ dominated) nor too big (it would be dominated itself).
+
+\verify \texttt{check\_L2.py} uses exact fractions: the two payoff tables, $f(q_c,y) - f(q_m/2,y) = 0$ iff
+$y = \tfrac5{12}$, the factorisation $(q'-\tfrac13)(q'-\tfrac5{12})$ at $y = \tfrac14$, and, for every $q'$ on a
+grid of $1/240$ other than $\tfrac14, \tfrac13, \tfrac5{12}$, that $q_c$ pure-strictly dominates $q'$ (if $q' > \tfrac5{12}$) or
+$q_m/2$ (if $q' < \tfrac5{12}$). At $q' = \tfrac5{12}$ it checks the table above, that nothing is strictly
+dominated (linear programming over mixtures) and that the pure equilibria are exactly
+$(q_c,q_c)$, $(q_m/2, q')$ and $(q', q_m/2)$. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Computing profits with the market price $a - q_i - q_j$ but forgetting to subtract $c$ (the
+  factor is $a - c - q_i - q_j$).
+  \item Choosing $q'$ at random and checking only that $(q_c, q_c)$ is an equilibrium: the
+  requirement is also that nothing is strictly dominated.
+  \item Reading ``worse off than if they cooperated'' as comparing with the monopoly profit: the
+  comparison is with $(q_m/2, q_m/2)$, each earning $(a-c)^2/8$.
+\end{itemize}
+\end{exsol}

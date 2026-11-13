@@ -1,0 +1,86 @@
+% Solution: Tadelis (2013) Exercise 6.3 "Mixed Dominance 2". Input by \solitem.
+% New in the Lecture 3 practice list. Check: check_L03.py.
+\begin{exsol}{Tadelis Exercise 6.3}{123}{Advanced}{3}
+\asked In the $3\times3$ game of Section~6.3: (a) find a mixed strategy different from
+$(0,\frac12,\frac12)$ that strictly dominates $L$ for player~2, and show that there are infinitely many;
+(b) the same for $U$ of player~1 in the game that remains after one round of elimination.
+
+\method Strict dominance by a mixed strategy: $\sigma_i$ strictly dominates $s_i$ if it earns strictly
+more against \emph{every} pure strategy of the opponents (Tadelis \S6.3, pp.~114--117;
+Gibbons Appendix~1.1.C). Take a mix of two strategies with weight $a$, write one inequality per
+opposing pure strategy and intersect the intervals for $a$. This is reading, not covered in the slides
+of Lecture~3.
+
+\solution
+The game (payoffs $(u_1,u_2)$; player~1 chooses the row):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$U$ & $5,\ 1$ & $1,\ 4$ & $1,\ 0$ \\ \cline{2-4}
+$M$ & $3,\ 2$ & $0,\ 0$ & $3,\ 5$ \\ \cline{2-4}
+$D$ & $4,\ 3$ & $4,\ 4$ & $0,\ 3$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+
+\textbf{(a) Dominating $L$.} Player~2's payoffs from $L$ against $U, M, D$ are $1, 2, 3$; from $C$ they
+are $4, 0, 4$; from $R$ they are $0, 5, 3$. Mix $C$ and $R$ with $\sigma_2 = (0, a, 1-a)$. The mix must
+beat $L$ against each row:
+\begin{align*}
+  \text{vs } U:&\quad 4a + 0\cdot(1-a) > 1 \iff a > \tfrac14,\\
+  \text{vs } M:&\quad 0\cdot a + 5(1-a) > 2 \iff a < \tfrac35,\\
+  \text{vs } D:&\quad 4a + 3(1-a) = 3 + a > 3 \iff a > 0 .
+\end{align*}
+The three conditions hold together exactly for $a \in (\frac14, \frac35)$, a non-empty open interval.
+The book's mix is $a = \frac12$. Another is $a = \frac13$: payoffs $\frac43 > 1$, $\frac{10}{3} > 2$,
+$\frac{10}3 > 3$. Because the interval is open and contains a continuum of points, there are
+infinitely many such strategies; indeed the same inequalities remain strict if a little weight is put on
+$L$ itself, so the family is even larger. At the endpoints the mix only ties with $L$ against $U$ (at
+$a = \frac14$) or $M$ (at $a = \frac35$), so those are not strictly dominating.
+
+\textbf{(b) Dominating $U$ after one round.} Round one removes $L$ (by the mix of part (a)); nothing
+else is strictly dominated in the full game (check: against $L$ the best mix of $M, D$ for player~1
+earns at most $4 < 5$ the payoff of $U$, so $U$ is not dominated before $L$ goes). In the game with
+columns $\{C, R\}$ player~1's payoffs are
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$C$} & \multicolumn{1}{c}{$R$}\\ \cline{2-3}
+$U$ & $1$ & $1$ \\ \cline{2-3}
+$M$ & $0$ & $3$ \\ \cline{2-3}
+$D$ & $4$ & $0$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Mix $M$ and $D$ with $\sigma_1 = (0, b, 1-b)$:
+\begin{align*}
+  \text{vs } C:&\quad 0\cdot b + 4(1-b) > 1 \iff b < \tfrac34,\\
+  \text{vs } R:&\quad 3b + 0\cdot(1-b) > 1 \iff b > \tfrac13 .
+\end{align*}
+So every $b \in (\frac13, \frac34)$ gives a strictly dominating strategy; the book's $b = \frac12$ is
+one, $b = \frac25$ another, and the interval is open, so again infinitely many. At $b = \frac13$ the mix
+ties with $U$ against $R$, at $b = \frac34$ against $C$.
+
+\interp Neither $U$ nor $L$ is dominated by a \emph{pure} strategy, so a player who checks only pure
+strategies would conclude that no strategy can be eliminated. The mixed strategy is a hypothetical
+benchmark: a strategy that is beaten by an average is never a best reply to any belief, which is why
+mixed dominance and ``never a best reply'' coincide (Tadelis \S6.3; MWG \S8.C).
+
+\verify \texttt{check\_L03.py} confirms that no pure strategy dominates $L$ or $U$ (and none in
+round one of the full game), tests 200 values of $a$ and $b$ on a fine rational grid and asserts that
+strict dominance holds exactly on $(\frac14,\frac35)$ and $(\frac13,\frac34)$ (including that the
+endpoints fail), and that after removing $L$ player~1's $U$ is dominated while in the full game it is
+not. Output line: \texttt{tadelis-6-3: L dominated for a in (1/4,3/5); U dominated for b in
+(1/3,3/4)}. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Testing dominance of $U$ in the \emph{full} game: against $L$ player~1's payoff from $U$ is 5, more
+  than any mix of $M$ and $D$ can give, so $U$ is dominated only after $L$ is removed.
+  \item Weak instead of strict inequalities: at the endpoints the mix ties against one row (or column), so
+  the domination is weak, not strict.
+  \item Forgetting that the dominating mix must beat $L$ against \emph{every} opposing pure strategy,
+  not on average over them.
+\end{itemize}
+
+\answer{(a) $\sigma_2 = (0, a, 1-a)$ strictly dominates $L$ for every $a \in (\frac14, \frac35)$, e.g.\
+$a = \frac13$: infinitely many. (b) After $L$ is removed, $\sigma_1 = (0, b, 1-b)$ strictly dominates $U$ for
+every $b \in (\frac13, \frac34)$, e.g.\ $b = \frac25$: infinitely many.}
+\end{exsol}

@@ -1,0 +1,34 @@
+% Solution: Tadelis (2013) Exercise 13.1 "Second-Price Auctions". Input by \solitem. Check: check_E1.py.
+\begin{exsol}{Tadelis Exercise 13.1}{285}{Foundations}{1}
+\asked Show that bidding one's valuation weakly dominates bidding above it in a second-price
+sealed-bid auction.
+
+\method Fix the highest rival bid $r$ (any number) and compare payoffs state by state
+(Tadelis \S13.1.1, pp.~271--273). Bidder $i$ has value $v$ and bids $b$; if he wins he pays $r$.
+
+\solution
+Let $b>v$. Payoff from bidding $v$: $v-r$ if $r<v$, $0$ if $r>v$ (a tie at $r=v$ pays $v-r=0$).
+Payoff from bidding $b$: $v-r$ if $r<b$, $0$ if $r>b$.
+\begin{center}
+\begin{tabular}{lcc}
+ rival bid $r$ & bid $v$ & bid $b>v$\\\hline
+ $r<v$ & $v-r>0$ & $v-r$ (same)\\
+ $v\le r<b$ & $0$ & $v-r\le 0$ (wins and pays $r\ge v$)\\
+ $r>b$ & $0$ & $0$ (same)
+\end{tabular}
+\end{center}
+In no state does $b$ do better than $v$; in the middle state ($v<r<b$) it does strictly worse
+($v-r<0$). So $b=v$ weakly dominates every $b>v$. (Tie at $r=b$ pays $v-r\le 0$ in expectation:
+no gain either.)
+
+\interp Overbidding only adds the states where the bidder wins at a price above his value; the
+price is the rival's bid, not his own, so he gains nothing in the states where he already won.
+Underbidding is dominated by the symmetric argument (Muñoz-Garcia item~6).
+
+\verify \texttt{check\_E1.py} checks on a grid of 13 values, 13 bids and 13 rival bids (fair
+coin at ties) that $b=v$ is never worse than any $b$, and strictly better for some $r$ whenever
+$b\ne v$. Tadelis gives no answer.
+
+\answer{For every highest rival bid $r$, bidding $v$ earns at least what any $b>v$ earns, and
+strictly more when $v<r<b$. Hence bidding the valuation weakly dominates bidding above it.}
+\end{exsol}

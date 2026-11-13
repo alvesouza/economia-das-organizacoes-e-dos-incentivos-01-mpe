@@ -1,0 +1,68 @@
+% Solution: Tadelis (2013) Exercise 15.3 "Trust Thy Neighbor". Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Tadelis Exercise 15.3}{315--316}{Foundations}{3}
+\asked (a) The tree and the conditions on $x, y$ under which player~1 trusts; (b) the tree with
+nice and jerk types; (c) the pure BNE for $p = \frac34$ and which are not PBE; (d) the values of
+$p$ for which every BNE is a PBE.
+
+\method Backward induction for (a); a Bayesian game (Nature picks player~2's type) for (b)--(d):
+BNE of the type-contingent normal form, and PBE = BNE in which every type of player~2 also
+plays optimally at its own, off-path or on-path, node (Tadelis \S15.1--15.2, pp.~303--312).
+
+\solution \textbf{(a)} After $S$ player~2 delivers ($D$, payoff $x$) or throws away ($T$, payoff
+$y$): he plays $D$ iff $x \ge y$. Player~1 gets $1$ after $D$ and $-1$ after $T$ against $0$ from
+$L$, so she trusts iff she expects $D$. Condition for trust in the subgame perfect equilibrium
+$(S, D)$: $x > y$ (at $x = y$ player~2 is indifferent and she trusts only if he delivers with
+probability at least $\frac12$).
+
+\textbf{(b) Tree.} Nature picks $N$ with probability $p$ ($x = 1$, $y = 0$) or $J$ with $1-p$
+($x = 0$, $y = 1$); player~1's two nodes form one information set; after $S$, player~2 moves at
+the node of his type. Payoffs are $(u_1, u_2)$; after $L$ player~2 gets $0$ (he is not involved).
+\begin{center}
+\begin{tikzpicture}[dot/.style={circle,fill,inner sep=1.4pt},every node/.style={font=\footnotesize}]
+  \node[dot,label=above:{Nature}] (n) at (0,0) {};
+  \node[dot,label=left:{1}] (a) at (-3,-1.3) {};
+  \node[dot,label=right:{1}] (b) at (3,-1.3) {};
+  \draw (n) -- node[above left] {$N$ ($p$)} (a);
+  \draw (n) -- node[above right] {$J$ ($1-p$)} (b);
+  \draw[dashed] (a) -- (b);
+  \node[dot,label=below:{$(0,0)$}] (al) at (-4.6,-2.7) {};
+  \node[dot,label=right:{2 ($N$)}] (a2) at (-1.4,-2.7) {};
+  \node[dot,label=below:{$(0,0)$}] (bl) at (1.4,-2.7) {};
+  \node[dot,label=right:{2 ($J$)}] (b2) at (4.6,-2.7) {};
+  \draw (a) -- node[above left] {$L$} (al);  \draw (a) -- node[above right] {$S$} (a2);
+  \draw (b) -- node[above left] {$L$} (bl);  \draw (b) -- node[above right] {$S$} (b2);
+  \foreach \pt/\d/\t in {a2/{$(1,1)$}/{$(-1,0)$}, b2/{$(1,0)$}/{$(-1,1)$}} {
+    \node[dot,label=below:{\d}] (\pt d) at ($(\pt)+(-0.9,-1.3)$) {};
+    \node[dot,label=below:{\t}] (\pt t) at ($(\pt)+(0.9,-1.3)$) {};
+    \draw (\pt) -- node[left] {$D$} (\pt d);  \draw (\pt) -- node[right] {$T$} (\pt t);
+  }
+\end{tikzpicture}
+\end{center}
+
+\textbf{(c) $p = \frac34$.} Type $N$ strictly prefers $D$ ($1 > 0$) and type $J$ strictly prefers $T$
+($1 > 0$), but only if $S$ is played. Let player~2's strategy be $(a_N, a_J)$.
+\begin{itemize}
+  \item If $S$ is played, both types must play optimally, so $(a_N, a_J) = (D, T)$ and $S$ pays
+  $\frac34 - \frac14 = \frac12 > 0$: $(S; D, T)$ is a BNE.
+  \item If $L$ is played, the types' actions are off the path, so any $(a_N, a_J)$ is allowed as
+  long as $S$ does not pay more than $0$. $S$ yields $2p - 1 = \frac12$ against $(D,T)$ and $1$
+  against $(D,D)$: no. It yields $-1$ against $(T,T)$ and $1 - 2p = -\frac12$ against $(T,D)$:
+  yes. So $(L; T, T)$ and $(L; T, D)$ are BNE.
+\end{itemize}
+Pure BNE: $(S; D,T)$, $(L; T,T)$, $(L; T,D)$. A PBE needs sequential rationality at the
+nodes of player~2, which are singletons (each type knows itself): $N$ must play $D$ and $J$ must
+play $T$. Only $(S; D, T)$ qualifies, with player~1's belief given by Nature: $\Pr(N) = \frac34$.
+The BNE $(L; T,T)$ and $(L; T,D)$ are not PBE: they rest on the non-credible plan that the nice
+type throws the problem set away.
+
+\textbf{(d)} For no $p \in [0,1]$. Whatever $p$, the profile $(L; T, T)$ is a BNE (after $S$ player~1
+would get $-1 < 0$) and it is never a PBE ($N$ would deliver). For $p < \frac12$ the PBE is $(L; D, T)$,
+for $p > \frac12$ it is $(S; D, T)$, and for $p = \frac12$ both.
+
+\verify \texttt{check\_T1.py} enumerates the $2 \times 4$ strategy profiles for $p = \frac34$
+(three BNE, one PBE) and for $p \in \{0, \frac1{20}, \dots, 1\}$ checks that $(L; T, T)$ is a BNE
+and not a PBE every time. Tadelis prints no answer.
+
+\answer{(a) $x > y$. (c) BNE: $(S; D,T)$, $(L; T,T)$, $(L; T,D)$; the last two are not PBE; the
+unique PBE is $(S; D, T)$. (d) No value of $p$: $(L; T, T)$ is a BNE and not a PBE for every $p$.}
+\end{exsol}

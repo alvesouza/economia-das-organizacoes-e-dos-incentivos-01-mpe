@@ -1,0 +1,79 @@
+% Solution: Tadelis (2013) Exercise 15.5 "Entry (again)". Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Tadelis Exercise 15.5}{316--317}{Exam}{4}
+\asked (a) The extensive form; (b) all pure-strategy BNE by matrix; (c) the BNE the incumbent
+prefers and whether it is a PBE; (d) all PBE.
+
+\method Compute the terminal payoffs, build the Bayesian-game matrix, read off the BNE, then add
+beliefs and sequential rationality for the incumbent at each of his two information sets (Tadelis
+\S15.1--15.2, pp.~303--312; \S16.1).
+
+\solution \textbf{Payoffs.} The market is worth $10$ (shares are multiplied by $10$). A weak entrant
+pays $6$ to enter at any level. Entries are (entrant, incumbent):
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+Type & Entry & Incumbent accommodates ($A$) & Incumbent fights ($F$) \\
+\midrule
+$T$ & $S$ & $(4,\ 6)$ & $(2,\ 8-4 = 4)$ \\
+$T$ & $B$ & $(6,\ 4)$ & $(4,\ 6-4 = 2)$ \\
+$W$ & $S$ & $(4-6 = -2,\ 6)$ & $(-6,\ 10-2 = 8)$ \\
+$W$ & $B$ & $(6-6 = 0,\ 4)$ & $(-6,\ 10-8 = 2)$ \\
+$W$ & $X$ & \multicolumn{2}{c}{$(0,\ 10)$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{(a) Tree.} Nature picks $T$ or $W$ with probability $\frac12$; the entrant chooses $S$ or $B$
+($T$) or $S$, $B$ or $X$ ($W$); $X$ ends the game; the incumbent has two information sets, one after
+$S$ (two nodes) and one after $B$ (two nodes), and chooses $A$ or $F$. Terminal payoffs are in the table.
+
+\textbf{(b) BNE.} Entrant strategies are (entry of $T$, entry of $W$), e.g.\ $SX$; incumbent
+strategies are (reply after $S$, reply after $B$). Expected payoffs (entrant, incumbent), best
+replies underlined:
+\begin{center}
+\begin{tabular}{r|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$AA$} & \multicolumn{1}{c}{$AF$} & \multicolumn{1}{c}{$FA$} & \multicolumn{1}{c}{$FF$} \\ \cline{2-5}
+$SS$ & $1,\ \br{6}$ & $1,\ \br{6}$ & $-2,\ \br{6}$ & $-2,\ \br{6}$ \\ \cline{2-5}
+$SB$ & $2,\ \br{5}$ & $-1,\ 4$ & $1,\ 4$ & $-2,\ 3$ \\ \cline{2-5}
+$SX$ & $2,\ \br{8}$ & $\br{2},\ \br{8}$ & $1,\ 7$ & $1,\ 7$ \\ \cline{2-5}
+$BS$ & $2,\ 5$ & $1,\ 4$ & $0,\ \br{6}$ & $-1,\ 5$ \\ \cline{2-5}
+$BB$ & $\br{3},\ \br{4}$ & $-1,\ 2$ & $\br{3},\ \br{4}$ & $-1,\ 2$ \\ \cline{2-5}
+$BX$ & $\br{3},\ \br{7}$ & $\br{2},\ 6$ & $\br{3},\ \br{7}$ & $\br{2},\ 6$ \\ \cline{2-5}
+\end{tabular}
+\end{center}
+Pure BNE: $(SX, AF)$, $(BB, AA)$, $(BB, FA)$, $(BX, AA)$, $(BX, FA)$.
+
+\textbf{(c)} The incumbent's payoffs in the five BNE are $8$, $4$, $4$, $7$, $7$. The preferred one is
+$(SX, AF)$: the tough type enters small, the weak type stays out, and the incumbent accommodates $S$ and
+fights $B$. It is not a PBE: after $B$ the incumbent gets $4$ from $A$ and $2$ from $F$ against
+\emph{both} types, so $A$ is better for every belief; the threat to fight $B$ is not credible.
+
+\textbf{(d) PBE.} Let $\mu_W$ be the belief that the entrant is weak after $S$. After $B$ the
+incumbent plays $A$ ($4 > 2$ against either type). After $S$ he gets $6$ from $A$ and
+$4(1-\mu_W) + 8\mu_W$ from $F$, so he fights iff $\mu_W \ge \frac12$. Given $A$ after $B$:
+the tough type earns $6$ from $B$ and at most $4$ from $S$, so he plays $B$; the weak type earns
+$0$ from $B$ and $X$, and at most $-2$ from $S$, so he plays $B$ or $X$. Both profiles are
+equilibria, and the off-path reply after $S$ can be $A$ (with $\mu_W \le \frac12$) or $F$ (with
+$\mu_W \ge \frac12$), since neither type gains by deviating to $S$:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Entrant & Incumbent & Beliefs \\
+\midrule
+$T{:}\,B$, $W{:}\,B$ & $A$ after $B$; $A$ or $F$ after $S$ & $\Pr(W \mid B) = \frac12$; after $S$ matching $\mu_W$ \\
+$T{:}\,B$, $W{:}\,X$ & $A$ after $B$; $A$ or $F$ after $S$ & $\Pr(W \mid B) = 0$; after $S$ matching $\mu_W$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Incumbent's payoffs: $4$ in the first (both enter big), $7$ in the second (the weak type exits).
+Pooling on $S$ is not an equilibrium (the weak type would exit), and neither is the profile in which
+the tough type enters small (it would switch to $B$).
+
+\verify \texttt{check\_T2.py} builds the $6 \times 4$ matrix from the payoff table, lists the five
+BNE, enumerates PBE with beliefs on a grid of step $\frac1{60}$ (the four PBE above, two outcomes), and
+checks the threshold $\mu_W \ge \frac12$ after $S$. Tadelis prints no answer.
+
+\answer{(b) BNE: $(SX, AF)$, $(BB, AA)$, $(BB, FA)$, $(BX, AA)$, $(BX, FA)$. (c) The incumbent
+prefers $(SX, AF)$ (payoff $8$); it is not a PBE because $F$ after $B$ is never optimal. (d) PBE: the
+tough type enters big; the weak type enters big or exits; the incumbent accommodates after $B$ and
+responds after $S$ according to $\mu_W \lessgtr \frac12$.}
+\end{exsol}

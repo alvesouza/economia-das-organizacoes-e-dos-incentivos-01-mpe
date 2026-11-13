@@ -1,0 +1,48 @@
+% Solution: Gibbons (1992) Problem 4.16. Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Gibbons Problem 4.16}{253}{Exam}{3}
+\asked For the pooling equilibria of Problem 4.3 (a) and (b): can each be supported by beliefs that
+satisfy Signaling Requirement 5, and by beliefs that satisfy Requirement 6 (the Intuitive Criterion)?
+
+\method Gibbons \S4.4, pp.~233--240. After an off-path message $m_j$, Requirement 5 puts zero
+probability on every type for which $m_j$ is \emph{dominated} (some other message gives that type a
+payoff whose lowest value exceeds the highest value from $m_j$); Requirement 6 does the same for every
+type for which $m_j$ is \emph{equilibrium-dominated} (the type's equilibrium payoff exceeds the highest
+payoff from $m_j$). The restriction applies unless it would exclude all types.
+
+\solution \textbf{(a)} The equilibrium of item~5: both types play $R$; after $R$ the Receiver plays $d$;
+equilibrium payoffs $U^*(t_1) = 3$, $U^*(t_2) = 2$; the off-path message is $L$, and the equilibrium
+needs the reply $u$ after $L$, i.e.\ $\nu = \Pr(t_1 \mid L) \ge \frac13$. Highest payoffs from $L$:
+$t_1$: $\max(1, 2) = 2$; $t_2$: $\max(0, 3) = 3$. Lowest payoffs from $R$: $t_1$: $\min(0, 3) = 0$;
+$t_2$: $\min(1, 2) = 1$.
+\begin{itemize}
+  \item \emph{Requirement 5.} $L$ is dominated for $t_1$ iff $0 > 2$ (no) and for $t_2$ iff $1 > 3$ (no).
+  Nothing is excluded, so the beliefs $\nu \ge \frac13$ are admissible: \textbf{satisfied}.
+  \item \emph{Requirement 6.} $L$ is equilibrium-dominated for $t_1$ ($3 > 2$) but not for $t_2$ ($2 < 3$).
+  So $\nu = \Pr(t_1 \mid L) = 0$, hence $\nu < \frac13$ and the Receiver plays $d$ after $L$, which
+  gives $t_2$ the payoff $3 > 2$: he deviates. \textbf{Violated}; the pooling equilibrium
+  cannot be supported by beliefs that satisfy Requirement 6.
+\end{itemize}
+\textbf{(b)} The equilibrium: all three types play $L$; the Receiver plays $u$ after $L$; $U^* =
+(1, 2, 1)$; the off-path message is $R$ and the equilibrium needs $u$ after $R$, i.e.\ $r_3 \le \frac12$
+(the Receiver's payoff is $r_1 + r_2$ from $u$ and $r_3$ from $d$). Highest payoffs from $R$:
+$(0, 1, 2)$ for $t_1, t_2, t_3$. Lowest payoffs from $L$: $(1, 0, 0)$.
+\begin{itemize}
+  \item \emph{Requirement 5.} $R$ is dominated for $t_1$ ($1 > 0$) only. So $r_1 = 0$, and the beliefs
+  $r = (0, r_2, r_3)$ with $r_3 \le \frac12$ (for instance $(0, \frac23, \frac13)$) remain: \textbf{satisfied}.
+  \item \emph{Requirement 6.} $R$ is equilibrium-dominated for $t_1$ ($1 > 0$) and for $t_2$ ($2 > 1$), not for
+  $t_3$ ($1 < 2$). So $r = (0, 0, 1)$, $r_3 = 1 > \frac12$, the Receiver plays $d$ after $R$, and $t_3$
+  gets $2 > 1$ by deviating. \textbf{Violated}.
+\end{itemize}
+Both pooling equilibria satisfy Requirement 5 and violate Requirement 6: the extra power of the
+Intuitive Criterion comes from comparing with the \emph{equilibrium} payoff, not with the worst
+payoff of another message.
+
+\verify \texttt{check\_T2.py} applies both requirements by enumeration (all PBE of the two games, beliefs
+on grids of steps $\frac1{60}$ and $\frac1{12}$): in each game the pooling profile survives the
+`dominated' filter and is eliminated by the `equilibrium-dominated' filter, and it recomputes the
+payoff comparisons used above. Gibbons prints no answer.
+
+\answer{(a) Requirement 5: yes. Requirement 6: no ($t_1$ is excluded after $L$, the Receiver then
+plays $d$ and $t_2$ deviates). (b) Requirement 5: yes (beliefs with $r_1 = 0$, $r_3 \le \frac12$).
+Requirement 6: no ($r = (0,0,1)$, the Receiver plays $d$, $t_3$ deviates).}
+\end{exsol}

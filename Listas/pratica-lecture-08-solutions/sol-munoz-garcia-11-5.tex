@@ -1,0 +1,66 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 11, Exercise 5. Input by \solitem. Check: check_T2.py.
+\begin{exsol}{\MG{} Ch.~11, Exercise 5}{505}{Exam}{4}
+\asked (a) The extensive form; (b) if $m - f_I \le 2a_I$ there is a separating equilibrium; (c) if
+$m - f_I \le 2a_I$ fails, there is a pooling equilibrium when $p \le \frac{f_E}{f_E + a_E}$.
+
+\method Backward induction in the last stage, then a signaling game between the incumbent (sender,
+sane or crazy) and the entrant (receiver) with the first-period action as message (Tadelis \S16.1,
+pp.~319--323; the structure is Kreps--Wilson/Milgrom--Roberts reputation for toughness, \S16.2).
+
+\solution \textbf{(a) Tree.} Nature picks \emph{sane} (probability $p$) or \emph{crazy} ($1-p$). In
+period~1 the sane incumbent chooses Fight ($F_1$) or Accommodate ($Acc_1$); the crazy one can only fight.
+The entrant observes this (not the type) and chooses Stay or Exit. After Exit the incumbent
+earns $m$ in period~2; after Stay the incumbent chooses again (the crazy type fights) and the period-2
+payoffs are as in period~1. Totals (incumbent, entrant), with the sane incumbent's period-2 choice
+already optimized:
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+Incumbent & Period 1 & Stay (then sane plays $Acc_2$) & Exit \\
+\midrule
+sane & $Acc_1$ & $(2a_I,\ 2a_E)$ & $(a_I + m,\ a_E)$ \\
+sane & $F_1$ & $(a_I - f_I,\ a_E - f_E)$ & $(m - f_I,\ -f_E)$ \\
+crazy & $F_1$ & $(\cdot,\ -2f_E)$ & $(\cdot,\ -f_E)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The sane incumbent plays $Acc_2$ in the last stage after either history: $a_I > -f_I$ gives
+$a_I - f_I > -2f_I$ after $F_1$, and $2a_I > a_I - f_I$ after $Acc_1$. The entrant's information
+sets: after $Acc_1$ (only the sane type reaches it) and after $F_1$ (both types; belief
+$\lambda = \Pr(\text{sane} \mid F_1)$).
+
+\emph{Entrant's replies.} After $Acc_1$ the entrant knows he faces the sane type: Stay gives $2a_E >
+a_E$ (Exit). After $F_1$: Stay gives $\lambda(a_E - f_E) + (1-\lambda)(-2f_E)$, Exit gives $-f_E$, so he
+stays iff
+\[
+  \lambda(a_E - f_E) - 2(1-\lambda)f_E \ge -f_E \iff \lambda \ge \frac{f_E}{f_E + a_E} =: \lambda^*.
+\]
+
+\textbf{(b) Separating.} The sane type accommodates, the crazy type fights. Bayes' rule: after
+$F_1$, $\lambda = 0 < \lambda^*$, so the entrant exits; after $Acc_1$ he stays. The sane type gets
+$2a_I$ from $Acc_1$ and, by deviating to $F_1$ (answered by Exit), $m - f_I$. Hence the profile is a PBE
+iff $m - f_I \le 2a_I$. As the crazy type has no choice, this is the only separating equilibrium.
+
+\textbf{(c) Pooling on fight.} Suppose $m - f_I > 2a_I$ and both types fight, so $\lambda = p$.
+\begin{itemize}
+  \item If $p \le \lambda^*$ the entrant exits. The sane type gets $m - f_I$ from $F_1$. A deviation to
+  $Acc_1$ is met by Stay (belief $1$ on the sane type: it is a one-node information set) and pays
+  $2a_I < m - f_I$. So pooling is a PBE.
+  \item If $p > \lambda^*$ the entrant stays and the sane type gets $a_I - f_I < 2a_I$ from $F_1$:
+  he deviates to $Acc_1$. No pooling equilibrium.
+\end{itemize}
+So when $m - f_I \le 2a_I$ fails there is a pooling equilibrium iff $p \le \frac{f_E}{f_E + a_E}$: the
+entrant must be pessimistic enough about a sane incumbent to exit after a fight, which then makes
+fighting worth its cost to the sane type. (At $p = \lambda^*$ he is indifferent and exits.)
+
+\verify \texttt{check\_T2.py} solves the game for 400 random integer parameter sets and rational priors,
+enumerating all pure PBE with the belief after $Acc_1$ restricted to the sane type: a separating PBE
+exists exactly when $m - f_I \le 2a_I$, and a pooling-on-fight PBE exactly when $m - f_I \ge 2a_I$
+and $p \le \frac{f_E}{f_E + a_E}$. The book's printed answer (pp.~505--510) states the same
+conditions, including the observation that the separating equilibrium is the only one.
+
+\answer{(b) Sane incumbent accommodates, crazy fights; entrant exits after a fight and stays after
+an accommodation; a PBE iff $m - f_I \le 2a_I$. (c) Both fight, $\lambda = p$; entrant exits after a
+fight (needs $p \le \frac{f_E}{f_E + a_E}$) and stays after an accommodation; a PBE when
+$m - f_I \ge 2a_I$.}
+\end{exsol}

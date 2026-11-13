@@ -1,0 +1,42 @@
+% Solution: Tadelis (2013) Exercise 12.2 "Cournot Revisited". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.2}{266}{Exam}{3}
+\asked The BNE of the Cournot duopoly $p=a-b(q_1+q_2)$ in which each firm independently has cost
+$c_L$ with probability $\mu$ and $c_H>c_L$ with probability $1-\mu$, privately known.
+
+\method Types $T_i=\{c_L,c_H\}$, actions $q_i\ge0$, beliefs $p_i(c_j\mid c_i)=\mu$ for $c_L$ (independent
+types). A strategy is a pair $(q_i(c_L),q_i(c_H))$. Write the FOC of each type, given the rival's
+\emph{average} output $\bar q_j=\mu q_j(c_L)+(1-\mu)q_j(c_H)$ (Gibbons \S3.1.A, pp.~144--149;
+Tadelis \S12.2.2). Assume interior solutions.
+
+\solution
+A firm of type $c$ maximizes $E[(a-b(q+q_j)-c)\,q]=(a-c-b\bar q_j-bq)\,q$:
+$a-c-b\bar q_j-2bq=0$, i.e.
+\[
+  q_i(c)=\frac{a-c-b\bar q_j}{2b},\qquad \text{concave since } -2b<0 .
+\]
+The two types of each firm give the system ($\bar c=\mu c_L+(1-\mu)c_H$)
+\[
+  q_L=\frac{a-c_L-b\bar q}{2b},\quad q_H=\frac{a-c_H-b\bar q}{2b},\quad
+  \bar q=\mu q_L+(1-\mu)q_H .
+\]
+Averaging the first two: $2b\bar q=a-\bar c-b\bar q$, so $\bar q=\dfrac{a-\bar c}{3b}$. Substituting,
+\[
+  q_L^*=\frac{2a-3c_L+\bar c}{6b}=\frac{a-c_L}{3b}+\frac{(1-\mu)(c_H-c_L)}{6b},\qquad
+  q_H^*=\frac{2a-3c_H+\bar c}{6b}=\frac{a-c_H}{3b}-\frac{\mu(c_H-c_L)}{6b}.
+\]
+The linear system for the four unknowns (two firms, two types) has a unique solution, so
+the equilibrium is symmetric and unique: both firms use $(q_L^*,q_H^*)$.
+
+\interp Complete-information Cournot gives $(a-c)/(3b)$ for a firm facing a rival with the same
+cost. Here the low-cost type produces \emph{more} than that when the rival may be high-cost
+($1-\mu>0$) and the high-cost type produces \emph{less} when the rival may be low-cost: each type
+adjusts to the rival's expected output.
+
+\verify \texttt{check\_E2.py}: sympy solves both the 2-equation and the full 4-equation system
+and confirms the formulas and $\bar q=(a-\bar c)/(3b)$; scipy maximizes expected profit against
+the equilibrium rival for $(a,b,c_L,c_H,\mu)=(10,1,1,3,\tfrac25)$ and returns $q_L^*,q_H^*$.
+Tadelis gives no answer.
+
+\answer{$q^*(c_L)=\dfrac{a-c_L}{3b}+\dfrac{(1-\mu)(c_H-c_L)}{6b}$ and
+$q^*(c_H)=\dfrac{a-c_H}{3b}-\dfrac{\mu(c_H-c_L)}{6b}$ for both firms (interior case).}
+\end{exsol}

@@ -1,0 +1,94 @@
+% Solution: MWG (1995) Exercise 8.D.3 (first-price auction, two bidders, dollar bids). Input by \solitem.
+% Check: check_L2.py.
+\begin{exsol}{MWG Exercise 8.D.3}{263}{Advanced}{4}
+\asked In a first-price sealed-bid auction with two bidders with known valuations $v_1, v_2$ and
+bids in whole dollars: (a) is any strategy strictly dominated? (b) is any weakly dominated?
+(c) is there a Nash equilibrium, what is it, and is it unique?
+
+\method Dominance (Lecture~1) and Nash equilibrium for a game with discrete strategies and
+discontinuous payoffs (Lecture~2, slide~14). The undercutting logic is the one of the Bertrand
+price game on a grid (Lecture~2, slides~29--39; exercise 5.12): whoever wins by a small margin has no
+reason to bid more than one unit above the loser. Assume that $v_1, v_2$ are positive integers and
+that bids are the non-negative integers, with no upper limit.
+
+\solution
+\textbf{Payoffs.} For bidder $i$ with bid $b_i$ against $b_j$:
+\[
+  u_i(b_i, b_j) = \begin{cases} v_i - b_i & b_i > b_j,\\[2pt] \tfrac12 (v_i - b_i) & b_i = b_j,\\[2pt] 0 & b_i < b_j.\end{cases}
+\]
+
+\textbf{(a) No strategy is strictly dominated.} Take any bid $b$ and any (pure or mixed) strategy
+$\sigma$, and let $N$ exceed $b$ and every bid in the support of $\sigma$. Against a rival bid of $N$
+both $b$ and every bid of $\sigma$ lose, so each earns $0$: $\sigma$ does not do \emph{strictly} better
+than $b$ against $N$. Hence no bid, not even one above the valuation, is strictly dominated.
+
+\textbf{(b) Weak dominance.}
+\begin{itemize}
+  \item \emph{Every bid $b \ge v_i$ is weakly dominated by the bid $v_i - 1$} (a legal bid because $v_i \ge 1$).
+  Compare by the rival's bid $y$: if $y < v_i - 1$, bidding $v_i - 1$ wins for $1 > 0 \ge v_i - b$; if $y = v_i - 1$ it
+  ties for $\tfrac12 > 0 \ge v_i - b$ (the bid $b$ wins at a non-positive surplus); if $y > v_i - 1$ it loses and earns $0$,
+  while $b$ earns $v_i - b \le 0$, $\tfrac12(v_i - b) \le 0$ or $0$. So $v_i - 1$ is never worse and is
+  strictly better when $y \le v_i - 1$.
+  \item \emph{For $v_i \ge 2$ the bid $0$ is weakly dominated by the bid $1$:} against $y = 0$, bid $1$ gives $v_i - 1 \ge \tfrac12 v_i$;
+  against $y = 1$ it gives $\tfrac12 (v_i - 1) > 0$; against $y \ge 2$ both give $0$.
+\end{itemize}
+Bidding one's valuation or more is never sensible: at best it wins for no surplus. Bids in $\{1, \dots, v_i - 1\}$
+are not weakly dominated by any other bid (checked by brute force below).
+
+\textbf{(c) Nash equilibria.} Equilibrium profiles split into ties and wins, and each is characterised by
+the one-unit deviations.
+
+\emph{Ties, $b_1 = b_2 = b$.} Bidder $i$ earns $\tfrac12(v_i - b)$.
+Raising the bid by one wins for $v_i - b - 1$, which is not better iff $v_i - b \le 2$. Lowering loses and gives $0$,
+which is not better iff $b \le v_i$. Larger changes are worse. So a tie is an equilibrium iff
+\[
+  \max\{v_1, v_2\} - 2 \;\le\; b \;\le\; \min\{v_1, v_2\} \quad (b \ge 0).
+\]
+\emph{Bidder 1 wins, $b_1 > b_2$.} If $b_1 > b_2 + 1$, bidder~1 gains by lowering to $b_2 + 1$
+($v_1 - b_2 - 1 > v_1 - b_1$), so $b_1 = b_2 + 1$. Lowering to a tie gives $\tfrac12(v_1 - b_2) = \tfrac12 (v_1 - b_1 + 1)$,
+not better than $v_1 - b_1$ iff $b_1 \le v_1 - 1$. The loser earns $0$; by tying at $b_1$ he would
+earn $\tfrac12(v_2 - b_1)$, not better iff $b_1 \ge v_2$ (bidding higher is worse still). With
+$b_2 = b_1 - 1 \ge 0$ this gives the equilibria
+\[
+  (b_1, b_2) = (k, k - 1), \qquad \max\{v_2, 1\} \le k \le v_1 - 1 .
+\]
+\emph{Bidder 2 wins:} symmetrically $(b_1, b_2) = (k - 1, k)$ with $\max\{v_1, 1\} \le k \le v_2 - 1$.
+
+\textbf{Examples.} $v_1 = v_2 = 5$: ties at $b \in \{3,4,5\}$; no wins. $v_1 = 7$, $v_2 = 5$: tie at $(5,5)$ and
+wins $(5,4)$, $(6,5)$. $v_1 = 8$, $v_2 = 5$: wins $(5,4)$, $(6,5)$, $(7,6)$ only.
+
+\textbf{Existence and uniqueness.} An equilibrium always exists (for $v_1 \ge v_2$ either $v_1 - v_2 \le 2$ and the tie
+range or a win is non-empty, or $v_1 - v_2 \ge 3$ and the win range $[v_2, v_1 - 1]$ is non-empty), but \emph{it is never
+unique}: with $d = |v_1 - v_2|$ there are $3$ equilibria if $0 \le d \le 2$ except when $v_1 = v_2 = 1$ (two:
+$(0,0)$ and $(1,1)$), and $d$ equilibria if $d \ge 3$. In every equilibrium bids are at most $\max\{v_1, v_2\}$.
+
+\answer{(a) No strategy is strictly dominated (against a very high rival bid all bids lose). (b) Every bid
+$b_i \ge v_i$ is weakly dominated by $v_i - 1$ (and the bid $0$ by $1$ when $v_i \ge 2$). (c) There are Nash
+equilibria, but never a unique one: ties $b_1 = b_2 = b$ with $\max\{v_1,v_2\} - 2 \le b \le \min\{v_1,v_2\}$, and
+profiles where one bidder wins by exactly one dollar, $b_{\text{win}} = b_{\text{lose}} + 1$ with
+$\max\{v_{\text{lose}}, 1\} \le b_{\text{win}} \le v_{\text{win}} - 1$. The bidder with the higher valuation wins whenever
+$v_1 - v_2 \ge 3$.}
+
+\interp The auction is a Bertrand game in reverse: bidders ``undercut'' the object's price upward
+until the surplus is exhausted. With a one-dollar grid the competition stops at a one-dollar margin; the
+equilibrium price ends between the loser's value and the winner's value minus one, and ties appear
+when valuations are close. Bidding above value is weakly dominated, which is the reason the first-price
+auction is not strategy-proof: the \emph{amount} of shading below $v_i$ is what the equilibrium determines
+(Lecture~7 will return to this with incomplete information).
+
+\verify \texttt{check\_L2.py} computes all Nash equilibria by brute force (exact fractions, bids
+$0, \dots, \max\{v_1,v_2\} + 4$) for every pair $1 \le v_1, v_2 \le 10$ and compares them with the characterisation above and with the counting
+rule: they coincide in all $100$ cases, and the number of equilibria is at least two in each. It also
+verifies (a) by linear programming against a rival bid above the grid, and (b) by enumerating weak
+dominance among pure bids for $v = 1, \dots, 8$ (undominated: $\{1, \dots, v - 1\}$, and $\{0\}$ if $v = 1$). The MWG solutions manual
+treats this exercise; the derivation here is complete without it.
+
+\mistakes
+\begin{itemize}
+  \item Claiming the answer to (a) is ``bids above $v_i$'': against a very high rival bid every bid
+  earns zero, so strict dominance fails; they are only weakly dominated.
+  \item Reporting the single equilibrium $b_1 = b_2 = v_2$ (the continuous-bid intuition): on a
+  dollar grid a tie is an equilibrium only if $|v_1 - v_2| \le 2$, and winning equilibria exist as well.
+  \item Treating a tie as winning with probability one: a tie pays $\tfrac12 (v_i - b)$.
+\end{itemize}
+\end{exsol}

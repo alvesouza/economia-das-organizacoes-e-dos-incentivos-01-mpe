@@ -1,0 +1,43 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.C.5. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{MWG Exercise 13.C.5}{475}{Advanced}{2}
+\asked (a) When does the consumer buy at the regulated price $p$; (b) whether pure money-burning
+advertising $A$ can support a separating PBE.
+
+\method (a) Expected surplus of a risk-neutral consumer. (b) Single crossing: a signal separates only
+if it is more costly for the type that should not send it (MWG \S13.C, pp.~455--457). Payoffs: the
+firm earns $p - c - A$ if the consumer buys and $-A$ if not; the consumer's surplus is $v - p$.
+
+\solution \textbf{(a)} With probability $\lambda$ the product is of high quality. The consumer buys
+iff $\lambda v_H + (1-\lambda) v_L \ge p$, i.e.\
+\[
+  \lambda \ \ge\ \frac{p - v_L}{v_H - v_L} \in (0, 1),
+\]
+(the bound is in $(0,1)$ because $v_H > p > v_L$).
+
+\textbf{(b)} Suppose a separating PBE exists: high quality advertises $A_H$, low quality $A_L \ne A_H$,
+and consumers infer the quality from $A$. After $A_H$ the consumer believes high quality and buys
+($v_H > p$); after $A_L$ he believes low quality and does not buy ($v_L < p$). Then:
+\begin{itemize}
+  \item the low-quality firm earns $-A_L$ in equilibrium (no sale) and the high-quality firm earns
+  $p - c_H - A_H$, which must be at least what it gets by playing $A_L$ instead (no sale: $-A_L$);
+  \item the low-quality firm can imitate: spending $A_H$ earns him $p - c_L - A_H$ because the
+  consumer buys. Since $c_L < c_H$,
+  \[
+    p - c_L - A_H \ >\ p - c_H - A_H \ \ge\ -A_L ,
+  \]
+  so imitating is strictly profitable.
+\end{itemize}
+The low-quality firm deviates, a contradiction: \emph{no separating PBE exists}. Advertising cannot
+separate because it costs both types the same amount while the low-quality firm has the higher margin
+($p - c_L > p - c_H$): the single-crossing property fails. Only pooling equilibria are possible
+(in the discrete example checked below there are $30$ of them, all pooling).
+
+\verify \texttt{check\_T3.py} derives the threshold of (a) with sympy and, for $v_H = 10$, $p = 6$, $v_L = 4$, $c_H = 3$, $c_L = 1$,
+$\lambda = \frac12$ and $A \in \{0, \dots, 4\}$, enumerates all pure sender and
+receiver strategies with beliefs on a grid of step $\frac1{60}$: no separating PBE, while pooling
+profiles exist; it also checks the inequality $p - c_L - A > p - c_H - A$ for $A = 0, \dots, 49$. The
+MWG solutions manual's entry for 13.C.5 gives the same argument.
+
+\answer{(a) The consumer buys iff $\lambda \ge \frac{p - v_L}{v_H - v_L}$. (b) No: the low-quality
+firm profits from imitating the high-quality firm's advertising, since $c_L < c_H$.}
+\end{exsol}

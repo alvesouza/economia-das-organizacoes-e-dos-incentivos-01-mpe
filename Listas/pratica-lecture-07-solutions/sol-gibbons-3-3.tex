@@ -1,0 +1,43 @@
+% Solution: Gibbons (1992) Problem 3.3. Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Gibbons Problem 3.3}{169}{Exam}{3}
+\asked Spell out the Bayesian game (actions, types, beliefs, payoffs, strategies) of Bertrand
+duopoly with demand $q_i=a-p_i-b_ip_j$, $b_i\in\{b_H,b_L\}$ private, write the symmetric pure BNE
+conditions and solve.
+
+\method Gibbons \S3.1.A (pp.~144--149). The type is the demand sensitivity $b_i$; firm~$i$'s profit is
+$\pi_i=p_i\,(a-p_i-b_ip_j)$ (zero cost).
+
+\solution
+\textbf{The game.} Players $i=1,2$. Actions $A_i=[0,\infty)$ (prices). Types $T_i=\{b_H,b_L\}$.
+Beliefs $p_i(b_j\mid b_i)=\theta$ for $b_j=b_H$ and $1-\theta$ for $b_L$, independent of $b_i$.
+Payoffs $u_i(p_i,p_j;b_i)=p_i(a-p_i-b_ip_j)$. Strategies $p_i:T_i\to[0,\infty)$, i.e.\ a pair
+$(p_i(b_H),p_i(b_L))$.
+
+\textbf{BNE conditions.} A symmetric pure profile $(p_H,p_L)$ (same function for both firms) is a
+BNE iff for each $b\in\{b_H,b_L\}$
+\[
+  p_b\in\arg\max_{p}\ \theta\,p\,(a-p-b\,p_H)+(1-\theta)\,p\,(a-p-b\,p_L)
+  =\arg\max_p\ p\,(a-p-b\,\bar p),
+\]
+where $\bar p=\theta p_H+(1-\theta)p_L$ (the rival's expected price; profit is linear in $p_j$).
+
+\textbf{Solution.} FOC $a-2p-b\bar p=0$ (strictly concave: $-2<0$), so $p_b=(a-b\bar p)/2$.
+Averaging over types with weights $\theta,1-\theta$: $\bar p=\dfrac{a-\bar b\bar p}{2}$, where
+$\bar b=\theta b_H+(1-\theta)b_L$, so $\bar p=\dfrac{a}{2+\bar b}$ and
+\[
+  p_H^*=\frac{a}{2}\Bigl(1-\frac{b_H}{2+\bar b}\Bigr)=\frac{a\,(2+\bar b-b_H)}{2\,(2+\bar b)},\qquad
+  p_L^*=\frac{a\,(2+\bar b-b_L)}{2\,(2+\bar b)} .
+\]
+Since $b_H>b_L$, $p_H^*<p_L^*$: the type whose demand reacts more to the rival's price prices lower.
+Positivity requires $2+\bar b>b_H$, true e.g.\ for $b_H<2$.
+
+\interp With $b_H=b_L=b$ the price is $a/(2+b)$, the standard differentiated-products Bertrand price.
+Here the rival's type is unknown, so each firm prices against the \emph{expected} rival price.
+
+\verify \texttt{check\_E2.py}: sympy solves the two FOCs for $(p_H,p_L)$ and matches the
+formulas and $\bar p=a/(2+\bar b)$; scipy maximizes profit for $(a,b_H,b_L,\theta)=(10,\tfrac32,\tfrac12,\tfrac13)$ against the
+equilibrium rival and returns $p_H^*,p_L^*$. Gibbons gives no answer.
+
+\answer{Symmetric BNE: $p^*(b)=\dfrac{a\,(2+\bar b-b)}{2\,(2+\bar b)}$ with
+$\bar b=\theta b_H+(1-\theta)b_L$, for $b\in\{b_H,b_L\}$.}
+\end{exsol}

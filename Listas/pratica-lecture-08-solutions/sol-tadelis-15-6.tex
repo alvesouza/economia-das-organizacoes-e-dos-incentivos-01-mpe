@@ -1,0 +1,68 @@
+% Solution: Tadelis (2013) Exercise 15.6 "Selten's Horse". Input by \solitem. Check: check_T3.py.
+\begin{exsol}{Tadelis Exercise 15.6}{317}{Advanced}{3}
+\asked (a) The pure-strategy BNE of Selten's horse; (b) which are PBE; (c) which are sequential
+equilibria.
+
+\method List the eight pure profiles and test each for a profitable deviation; for PBE add a belief
+$\mu = \Pr(x_3)$ at player~3's information set and require sequential rationality at \emph{every}
+information set, including player~2's off-path node; for sequential equilibrium require $\mu$ to be a
+limit of Bayes beliefs from totally mixed strategies (Tadelis \S15.2--15.3, Defs.~15.4--15.5,
+pp.~303--313; MWG \S9.C).
+
+\solution Player~1 chooses $A$ (to $x_3$) or $B$ (to player~2 at $x_2$); player~2 chooses $C$ (to $x_4$)
+or $D$ (payoffs $(1,1,1)$); player~3, who cannot tell $x_3$ from $x_4$, chooses $E$ or $F$. Payoffs:
+at $x_3$: $E$ gives $(3,3,2)$, $F$ gives $(0,0,0)$; at $x_4$: $E$ gives $(4,4,0)$, $F$ gives $(0,0,1)$.
+
+\textbf{(a) Pure BNE.}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Profile & Payoffs & Profitable deviation? \\
+\midrule
+$(A, C, E)$ & $(3,3,2)$ & player 1 to $B$: $(4,4,0)$ gives him $4 > 3$ \\
+$(A, C, F)$ & $(0,0,0)$ & player 3 at $x_3$: $E$ gives $2 > 0$ \\
+$(A, D, E)$ & $(3,3,2)$ & none: $B$ leads to $D$ and gives player 1 $1 < 3$ \\
+$(A, D, F)$ & $(0,0,0)$ & player 3 at $x_3$: $E$ gives $2 > 0$ \\
+$(B, C, E)$ & $(4,4,0)$ & player 3 at $x_4$: $F$ gives $1 > 0$ \\
+$(B, C, F)$ & $(0,0,1)$ & player 2: $D$ gives $1 > 0$ \\
+$(B, D, E)$ & $(1,1,1)$ & player 1 to $A$: $E$ gives $3 > 1$ \\
+$(B, D, F)$ & $(1,1,1)$ & none: $A$ then $F$ gives player 1 $0 < 1$; player 2 gets $1 > 0$ from $D$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The pure BNE are $(A, D, E)$ and $(B, D, F)$. In both, player~2's choice at $x_2$ or player~3's at
+the other node is never tested.
+
+\textbf{(b) PBE.} Player~3's payoffs are $E$: $2\mu$ and $F$: $1 - \mu$, so $E$ is optimal iff $\mu \ge \frac13$.
+\begin{itemize}
+  \item $(A, D, E)$: $x_3$ is reached, so Bayes' rule gives $\mu = 1$ and $E$ is optimal. But at
+  $x_2$ (a singleton information set, off the path) player~2 compares $D$, which gives $1$, with $C$,
+  which leads to $x_4$ where player~3 plays $E$ and gives player~2 $4$. $D$ is not optimal given
+  player~3's strategy: \textbf{not a PBE}. The equilibrium rests on the threat of $D$,
+  which player~2 would not carry out.
+  \item $(B, D, F)$: neither $x_3$ nor $x_4$ is reached, so $\mu$ is free; $F$ is optimal iff
+  $\mu \le \frac13$. Player~2 gets $1$ from $D$ and $0$ from $C$ (followed by $F$): $D$ is optimal;
+  player~1 gets $1$ from $B$ and $0$ from $A$ (followed by $F$): optimal. \textbf{PBE} with
+  $\mu \in [0, \frac13]$.
+\end{itemize}
+\textbf{(c) Sequential equilibrium.} Perturb: player~1 plays $A$ with probability $\varepsilon_A$ and
+player~2 plays $C$ with probability $\varepsilon_C$, both positive. The probability of $x_3$ is
+$\varepsilon_A$ and of $x_4$ is $(1 - \varepsilon_A)\varepsilon_C$, so
+\[
+  \mu^k = \frac{\varepsilon_A}{\varepsilon_A + (1-\varepsilon_A)\varepsilon_C}.
+\]
+Letting the two trembles vanish at different rates gives any limit in $[0, 1]$ (for a target $\mu_0 > 0$,
+$\varepsilon_C = \varepsilon_A (1-\mu_0)/\mu_0$ gives $\mu_0$ in the limit). Hence every $\mu \le \frac13$
+is consistent, and $(B, D, F)$ with such a $\mu$ is a sequential equilibrium. In this game consistency
+removes nothing from the PBE: the equilibrium that fails (the one with $D$ at $x_2$ against $E$) is
+removed already by sequential rationality at $x_2$, which a BNE ignores.
+
+\verify \texttt{check\_T3.py} computes the pure BNE by enumeration (exactly the two above),
+tests PBE conditions on a grid of beliefs of step $\frac1{60}$ (only $(B,D,F)$, with $\mu \le \frac13$; at
+$(A,D,E)$ player~2's best reply to $E$ is $C$), and checks the tremble beliefs for the targets
+$0, \frac14, \frac13$. Tadelis prints no answer.
+
+\answer{(a) $(A, D, E)$ and $(B, D, F)$. (b) Only $(B, D, F)$ with $\mu \le \frac13$; $(A, D, E)$
+fails because $D$ is not optimal for player~2 at $x_2$. (c) $(B, D, F)$ with $\mu \le \frac13$ is also
+sequential, since any $\mu \in [0,1]$ is a limit of trembles.}
+\end{exsol}

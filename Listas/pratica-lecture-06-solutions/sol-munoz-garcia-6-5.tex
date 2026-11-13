@@ -1,0 +1,55 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Ex. 5 "Collusion When N Firms Compete in Prices".
+% Input by \solitem. Check: check_T3.py (item 20).
+\begin{exsol}{\MG{} Ch.~6, Exercise 5}{290--291}{Advanced}{4}
+\asked $n$ Bertrand firms with zero cost; demand is $\alpha = 1$ in the current period and $\alpha = \theta > 1$
+in every later period, known to all. Under the trigger ``charge the monopoly price $p_m$ until a zero profit is
+observed, then charge $0$ for ever'', find the condition for an SPNE and show how $\theta$ and $n$ affect it.
+
+\method One-stage deviation with a zero-profit punishment (Cabral \S9.1 and \S9.3, pp.~218--222, 227--231). Let
+$\pi(p_m)$ be the monopoly profit at $\alpha = 1$; at $\alpha = \theta$ it is $\theta\,\pi(p_m)$. Reversion to $p = 0$
+forever is a stage Nash equilibrium (profit $0$), so the punishment phase needs no check.
+
+\solution
+\textbf{Cooperation.} Each firm gets $\frac1n\pi(p_m)$ now and $\frac{\theta}{n}\pi(p_m)$ in each later period:
+\[
+  V^{coop} = \frac{\pi(p_m)}{n}\Bigl(1 + \delta\theta + \delta^2\theta + \cdots\Bigr)
+  = \frac{\pi(p_m)}{n}\Bigl(1 + \frac{\delta\theta}{1-\delta}\Bigr).
+\]
+\textbf{Deviation.} Undercutting slightly wins the whole market: $\pi(p_m)$ today and $0$ afterwards.
+
+\textbf{Condition.}
+\[
+  \frac{1}{n}\Bigl(1 + \frac{\delta\theta}{1-\delta}\Bigr) \ge 1
+  \iff 1 - \delta + \delta\theta \ge n(1-\delta)
+  \iff \delta \ge \tilde\delta(n,\theta) = \frac{n-1}{n-1+\theta} .
+\]
+\textbf{Comparative statics.}
+\[
+  \frac{\partial\tilde\delta}{\partial\theta} = -\frac{n-1}{(n-1+\theta)^2} < 0, \qquad
+  \frac{\partial\tilde\delta}{\partial n} = \frac{\theta}{(n-1+\theta)^2} > 0 .
+\]
+Check at $\theta = 1$ (constant demand): $\tilde\delta = \frac{n-1}{n} = 1 - \frac1n$, the usual $n$-firm cutoff; for
+$n = 2$ it is $\frac12$. For $n = 3$, $\theta = 2$ it is $\frac12$ again, and as $\theta \to \infty$ it tends to $0$.
+
+\interp \emph{Growth helps collusion.} The higher $\theta$, the more profit a firm forfeits by triggering a war, so the
+threat is costlier and collusion is easier ($\tilde\delta$ falls). \emph{More firms hinder collusion.} The
+cartel share $\frac1n$ shrinks while the deviation prize (the whole market) does not ($\tilde\delta$ rises with
+$n$, Cabral's ``few firms'' factor). This is the demand-growth entry of Cabral's list of factors (the
+$(1+g)$ in his (9.5)).
+
+\verify \texttt{check\_T3.py} (item~20) solves the indifference condition symbolically
+($\tilde\delta = \frac{n-1}{n-1+\theta}$), both derivatives, the case $\theta = 1$ and the limit $0$ as $\theta \to
+\infty$, and the stream comparison for $n = 3$, $\theta = 2$ at $\delta = 0.49, 0.5, 0.51$. This matches the book's
+answer, which states the same cutoff and the same two signs.
+
+\mistakes
+\begin{itemize}
+  \item Applying $\theta$ in the current period. Demand is $1$ today and $\theta$ from tomorrow on.
+  \item Forgetting that the deviation profit is the full $\pi(p_m)$, not $\frac1n\pi(p_m)$: the firm takes all
+  demand today.
+\end{itemize}
+
+\answer{The trigger is an SPNE iff $\delta \ge \frac{n-1}{n-1+\theta}$. The cutoff falls with $\theta$ (growing
+demand raises the cost of a price war) and rises with $n$ (a smaller cartel share against an unchanged deviation
+gain); at $\theta = 1$ it is $1 - \frac1n$.}
+\end{exsol}

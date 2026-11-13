@@ -1,0 +1,48 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 4 Ex. 1 "Ultimatum Bargaining Game". Input by \solitem.
+% Check: check_T1.py (item 4).
+\begin{exsol}{\MG{} Ch.~4, Exercise 1}{154}{Foundations}{2}
+\asked An ultimatum game in which the responder's utility is $u_R = x + \alpha(x - y)$ ($x$ his money,
+$y$ the proposer's, $\alpha > 0$) and the proposer is selfish: (a) the game tree; (b) the SPE and how it
+depends on $\alpha$; (c) the proposer's and the responder's equilibrium amounts as functions of $\alpha$.
+
+\method Backward induction. Let $m$ be the offer to the responder, so $x = m$ and $y = 1 - m$. The responder
+accepts iff accepting is at least as good as rejecting, which gives $0$ (with $x = y = 0$).
+
+\solution
+\textbf{(a) Tree.} Player~1 (proposer) chooses $m \in [0,1]$. Player~2 (responder) then accepts, with
+payoffs $\bigl(1 - m,\; m + \alpha(2m - 1)\bigr)$, or rejects, with payoffs $(0, 0)$. The responder's
+payoff from acceptance is $m + \alpha\bigl(m - (1-m)\bigr) = m + \alpha(2m-1)$.
+
+\textbf{(b) SPE.} The responder accepts iff
+\[
+  m + \alpha(2m - 1) \ge 0 \iff m \ge \frac{\alpha}{1 + 2\alpha} \equiv m^* .
+\]
+The proposer's payoff $1 - m$ is decreasing in $m$, so he offers exactly $m^*$, which is accepted.
+Equilibrium payoffs:
+\[
+  \bigl(1 - m^*,\; m^*\bigr) = \Bigl(\frac{1 + \alpha}{1 + 2\alpha},\; \frac{\alpha}{1 + 2\alpha}\Bigr).
+\]
+Strategies: proposer offers $m^*$; responder accepts iff $m \ge m^*$. Comparative statics:
+\[
+  \frac{\partial m^*}{\partial \alpha} = \frac{1}{(1+2\alpha)^2} > 0, \qquad
+  \frac{\partial (1 - m^*)}{\partial \alpha} = -\frac{1}{(1+2\alpha)^2} < 0 .
+\]
+\textbf{(c) Plot.} At $\alpha = 0$ the split is $(1, 0)$, the standard SPE. At $\alpha = 0.5$ it is
+$(0.75, 0.25)$, at $\alpha = 1$ it is $(\frac23, \frac13)$, and as $\alpha \to \infty$ both amounts tend to
+$\frac12$. The proposer's curve falls from $1$ towards $\frac12$ and the responder's rises from $0$ towards
+$\frac12$ without crossing: $1 - 2m^* = \frac{1}{1+2\alpha} > 0$, so the
+proposer always keeps more.
+
+\interp An aversion to inequality (here, envy when $x < y$) makes the responder demand a larger share,
+as in experiments where low offers are rejected. The theory stays an SPE of a game with different
+\emph{utilities}: a rejection of a positive offer is rational once the responder cares about fairness.
+
+\verify \texttt{check\_T1.py} (item~4) solves $u_R = 0$ symbolically ($m^* = \alpha/(1+2\alpha)$), checks both
+derivatives, the values at $\alpha = \frac12$ and $\alpha = 1$, the limit $\frac12$ and the identity
+$1 - 2m^* = \frac{1}{1+2\alpha}$. Matches the book's answer (it reports $(0.75, 0.25)$ and $(2/3, 1/3)$).
+
+\answer{The responder accepts iff $m \ge \alpha/(1+2\alpha)$. SPE: the proposer offers
+$m^* = \alpha/(1+2\alpha)$, accepted. Payoffs $\bigl(\frac{1+\alpha}{1+2\alpha},\frac{\alpha}{1+2\alpha}\bigr)$: the
+proposer's falls and the responder's rises with $\alpha$, from $(1,0)$ at $\alpha = 0$ towards
+$(\frac12,\frac12)$ as $\alpha \to \infty$.}
+\end{exsol}

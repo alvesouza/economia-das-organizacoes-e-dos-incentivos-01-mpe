@@ -1,0 +1,48 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 4 Exercise 18 "Backward Induction in Wage
+% Negotiations". Input by \solitem. New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{\MG{} Ch.~4 Exercise 18}{200--201}{Foundations}{1}
+\asked A union sets a wage $w$, then a firm picks the number of workers $h \in [0,1]$. Find the
+firm's best response $h(w)$ and the union's optimal wage.
+
+\method Backward induction in a two-stage game (Gibbons \S2.2.A, pp.~71--73; Tadelis \S9.2--9.3):
+solve the last mover's problem for every history, substitute it into the first mover's payoff, then
+maximise. Lecture~5 slide~14 (solve the last stage first, check one deviation at a time) applies
+the same logic to repeated games.
+
+\solution
+\textbf{Step 1: the firm (stage 2).} For a given $w$ the firm maximises
+$\pi(w,h) = h - \tfrac{h^2}{2} - wh$ over $h \in [0,1]$. The first-order condition is $1 - h - w = 0$
+and $\partial^2\pi/\partial h^2 = -1 < 0$, so $\pi$ is concave and
+\[
+  h(w) = 1 - w \quad \text{for } w \in [0,1].
+\]
+For $w \ge 1$ the unconstrained solution is $\le 0$, so $h(w) = 0$. The best response is
+$h(w) = \max\{0,\,1-w\}$. The firm hires everybody at $w = 0$ and nobody at $w = 1$.
+
+\textbf{Step 2: the union (stage 1).} Anticipating $h(w)$, the union's payoff is
+\[
+  u_L\bigl(w, h(w)\bigr) = w(1-w) = w - w^2 , \qquad w \in [0,1].
+\]
+The first-order condition $1 - 2w = 0$ gives $w^* = \frac12$, and the second derivative is $-2<0$.
+Then $h^* = h(\frac12) = \frac12$.
+
+\textbf{Step 3: payoffs.} $u_L = \frac12\cdot\frac12 = \frac14$ and
+$\pi = \bigl(\frac12 - \frac18\bigr) - \frac14 = \frac18$.
+
+\textbf{The SPE} is: union plays $w^* = \frac12$; firm plays $h(w) = \max\{0,1-w\}$ after every $w$,
+in particular $h(\frac12) = \frac12$. The strategy of the firm after $w \ne \frac12$ matters: it is what
+makes the union's choice optimal.
+
+\interp The union uses its first-mover advantage but cannot ignore the firm's reaction: a higher wage
+lowers employment. The outcome is not efficient. Joint surplus $h - h^2/2$ is largest at $h = 1$
+(value $\frac12$), whereas here it is $\frac38$. Both sides could gain by moving to $h = 1$ with a wage
+in between, but nothing in a single play of the game enforces it. This is the starting point of
+item~24 (Gibbons 2.16), where repetition supports such outcomes.
+
+\verify \texttt{check\_L05.py} solves both stages with sympy and reproduces the book's answer:
+$h(w) = 1-w$, $w^* = \frac12$, $h^* = \frac12$, $u_L = \frac14$, $\pi = \frac18$. It also confirms
+by grid that $w(1-w)$ has maximum $\frac14$.
+
+\answer{$h(w) = 1 - w$ (and $0$ for $w \ge 1$); $w^* = \frac12$, $h^* = \frac12$; payoffs $u_L = \frac14$ for
+the union and $\pi = \frac18$ for the firm, as in the book.}
+\end{exsol}

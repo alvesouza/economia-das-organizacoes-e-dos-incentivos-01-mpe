@@ -1,0 +1,57 @@
+% Solution: Tadelis (2013) Exercise 11.3 "Even/Odd Symmetry". Input by \solitem. Check: check_T1.py (item 8).
+\begin{exsol}{Tadelis Exercise 11.3}{236}{Foundations}{2}
+\asked Solve the finite alternating-offer bargaining game of Section~11.2 when the number of periods $T$ is
+even.
+
+\method Backward induction with a common discount factor $\delta$ (Tadelis \S11.2, pp.~224--227).
+Player~1 proposes in odd periods and player~2 in even periods, so for $T$ even \emph{player~2 makes the
+last offer}. Let $s_m$ be the share of the pie, valued at the start of the subgame, that the proposer
+obtains when $m$ periods remain.
+
+\solution
+\textbf{Last period.} The proposer takes the whole pie: $s_1 = 1$ (the responder accepts at indifference).
+
+\textbf{Earlier periods.} With $m$ periods left, the responder gets $\delta s_{m-1}$ by rejecting, since next
+period he is the proposer with $m-1$ periods left. The proposer offers him exactly that and keeps
+\[
+  s_m = 1 - \delta\, s_{m-1}, \qquad s_1 = 1 \quad\Longrightarrow\quad
+  s_m = \frac{1 - (-\delta)^m}{1 + \delta}.
+\]
+(Induction: $s_m = 1 - \delta\,\frac{1 - (-\delta)^{m-1}}{1+\delta} = \frac{1 + \delta(-\delta)^{m-1}}{1+\delta}$ and
+$\delta(-\delta)^{m-1} = -(-\delta)^m$.)
+
+\textbf{$T$ even.} Player~1 is the proposer when $T$ periods remain. His offer is accepted in period~1
+(agreement is immediate, as in Prop.~11.3, p.~226):
+\[
+  (v_1, v_2) = \Bigl(\frac{1 - \delta^T}{1 + \delta},\; \frac{\delta + \delta^T}{1 + \delta}\Bigr).
+\]
+For $T = 2$: $v_1 = 1 - \delta$ and $v_2 = \delta$. Strategies: with $m$ periods left the proposer offers the
+responder $\delta s_{m-1}$, and the responder accepts iff his share is at least that.
+
+\textbf{Comparison with $T$ odd} (the book's case, $v_1 = \frac{1 + \delta^T}{1 + \delta}$): for $T$ even the first
+mover's share is \emph{below} $\frac{1}{1+\delta}$, and for $T$ odd it is above. Both tend to the
+infinite-horizon share $\frac{1}{1+\delta}$ (\S11.3) as $T \to \infty$. Player~2, who has the last word when
+$T$ is even, is ahead ($v_2 > \frac12$) iff $2\delta^T > 1 - \delta$. Example: $T = 2$ and $\delta = 0.8$ gives
+$v_1 = 0.2$, $v_2 = 0.8$; with $\delta = 0.4$, $v_1 = 0.6$.
+
+\interp The last word is worth a lot when patience is high ($\delta \to 1$): the last proposer can claim
+almost the whole pie, so the earlier proposer must buy agreement with the value of that position. Being
+first is an advantage only when delay is costly.
+
+\verify \texttt{check\_T1.py} (item~8) checks the recursion against the closed form symbolically for
+$T = 1,\dots,8$, the case $T = 2$, the equivalence ``player~2 ahead $\iff 2\delta^T > 1-\delta$'' on a grid,
+and the limit $\frac1{1+\delta}$ with the ordering $\frac{1-\delta^4}{1+\delta} < \frac1{1+\delta} <
+\frac{1+\delta^5}{1+\delta}$ (at $\delta = \frac12$). Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Using the odd-$T$ formula $\frac{1 + \delta^T}{1 + \delta}$. Parity decides who proposes last.
+  \item Discounting with the wrong factor or from the wrong period: each earlier step uses $\delta s_{m-1}$,
+  the responder's own continuation.
+\end{itemize}
+
+\answer{$s_m = \frac{1 - (-\delta)^m}{1 + \delta}$. For $T$ even, agreement in period~1 with
+$(v_1, v_2) = \bigl(\frac{1 - \delta^T}{1 + \delta}, \frac{\delta + \delta^T}{1 + \delta}\bigr)$; e.g.\ $T = 2$ gives
+$(1-\delta, \delta)$. The last mover (player~2) is ahead iff $2\delta^T > 1 - \delta$. The limit as $T \to
+\infty$ is $\frac{1}{1+\delta}$.}
+\end{exsol}

@@ -1,0 +1,77 @@
+% Solution: Tadelis (2013) Exercise 8.16 "The Value of Commitment". Input by \solitem.
+% New in the Lecture 4 practice list. Check: check_L04.py.
+\begin{exsol}{Tadelis Exercise 8.16}{174}{Advanced}{4}
+\asked The three-period problem of Tadelis 8.15 for a \emph{sophisticated} player~1 ($\ln x$, $\delta = 1$,
+$\beta = \frac12$): (a) the plan she would choose if an outside entity could enforce it and stop player~2
+from changing it; (b) for $K = 90$, the largest part of the budget she would pay for that enforcement.
+
+\method Commitment shrinks the set of strategies to a single path, so player~1 simply maximizes her own
+objective over plans; without commitment the outcome is the SPE of the game between the two selves, solved by
+backward induction (Tadelis \S8.3.4, pp.~166--169; Lecture~4 on credibility and commitment, slides~19--20). Her willingness
+to pay is the fee that leaves her indifferent, evaluated with her own period-1 objective
+$v_1 = \ln x_1 + \frac12\ln x_2 + \frac12\ln x_3$. This is reading, not in the slides of Lecture~4.
+
+\solution
+\textbf{(a) The enforced plan.} With budget $K$ the plan maximizing $v_1$ is the one found in Tadelis~8.15(a):
+\[
+  \bigl(x_1, x_2, x_3\bigr) = \bigl(\tfrac K2, \tfrac K4, \tfrac K4\bigr),
+  \qquad v_1^{\text{commit}}(K) = \ln\tfrac K2 + \tfrac12\ln\tfrac K4 + \tfrac12\ln\tfrac K4
+  = \ln\frac{K^2}{8}.
+\]
+
+\textbf{No commitment (the benchmark).} Player~2's reply to a remaining budget $K_2$ is
+$x_2 = \frac23K_2$, $x_3 = \frac13K_2$ (Tadelis 8.15(b)). Player~1 substitutes it, with $K_2 = K - x_1$:
+\[
+  v_1(x_1) = \ln x_1 + \tfrac12\ln\bigl(\tfrac23(K - x_1)\bigr) + \tfrac12\ln\bigl(\tfrac13(K - x_1)\bigr).
+\]
+The constants inside the logarithms drop out of the derivative, so
+$v_1'(x_1) = \frac{1}{x_1} - \frac{1}{K - x_1} = 0$ and $x_1 = \frac K2$; the sophisticated plan is
+\[
+  \bigl(\tfrac K2, \tfrac K3, \tfrac K6\bigr), \qquad
+  v_1^{\text{SPE}}(K) = \ln\tfrac K2 + \tfrac12\ln\tfrac K3 + \tfrac12\ln\tfrac K6
+  = \ln\frac{K^2}{2\sqrt{18}} = \ln\frac{K^2}{6\sqrt2}.
+\]
+Note that this is not the $x_1 = \frac23K$ printed on p.~169: with the objective as printed, the maximum is at
+$\frac K2$, as the derivative above shows (the book multiplies each term by the constant inside the logarithm).
+The comparison uses the corrected plan.
+
+\textbf{(b) The fee.} If she pays $c$ for enforcement, the budget is $B = K - c$ and she gets
+$v_1^{\text{commit}}(B) = \ln\frac{B^2}{8}$. She is indifferent when
+\[
+  \frac{B^2}{8} = \frac{K^2}{6\sqrt2}
+  \iff B^2 = \frac{4}{3\sqrt2}K^2 = \frac{2\sqrt2}{3}K^2
+  \iff B = \Bigl(\frac89\Bigr)^{1/4}K ,
+\]
+since $\frac{2\sqrt2}{3} = \sqrt{\frac89}$. Hence the largest fee is
+\[
+  c^* = K\Bigl(1 - \bigl(\tfrac89\bigr)^{1/4}\Bigr) \approx 0.0290\,K .
+\]
+For $K = 90$: $B = 90\cdot 0.97099 \approx 87.39$ and $c^* \approx 2.61$, that is, about $2.9\%$ of the budget.
+
+\interp Commitment is valuable because the selves disagree: player~1 would give period~2 only $\frac K4$,
+but player~2 takes $\frac K3$. The price player~1 is willing to pay is modest here because log utility makes the
+loss from the revised plan small: the first-period consumption is the same ($\frac K2$) in both plans, and only
+the split of the rest changes.
+
+\verify \texttt{check\_L04.py} recomputes both objectives with sympy, confirms the plans
+$(\frac K2, \frac K4, \frac K4)$ and $(\frac K2, \frac K3, \frac K6)$, solves $v_1^{\text{commit}}(K - c) =
+v_1^{\text{SPE}}(K)$ for $c$, asserts $c^* = 90\bigl(1 - (\frac89)^{1/4}\bigr) \approx 2.6115$, and checks by a grid
+search that the commitment plan beats the SPE plan for every fee below $c^*$ and loses above it. Output line:
+\texttt{tadelis-8-16: commit plan (K/2,K/4,K/4); SPE plan (K/2,K/3,K/6); c* = 2.6115 at K = 90}. Tadelis prints
+no answer. With the plan printed in the book instead of the corrected SPE plan, the fee would come out near
+$7.6$, an overstatement.
+
+\mistakes
+\begin{itemize}
+  \item Using the book's printed $x_1 = \frac23K$ as the no-commitment benchmark: it is not the maximizer of
+  player~1's objective, so the fee is overstated.
+  \item Evaluating the no-commitment plan with player~2's objective: both plans are valued with player~1's
+  period-1 preferences, since she is the one who pays.
+  \item Paying the fee out of the \emph{plan}: the fee reduces the budget before the plan is chosen, so the
+  committed plan is optimal for $K - c$, not $K$.
+\end{itemize}
+
+\answer{(a) She enforces $(\frac K2, \frac K4, \frac K4)$. (b) The fee $c$ satisfies $\ln\frac{(K-c)^2}{8} =
+\ln\frac{K^2}{6\sqrt2}$, so $c^* = K\bigl(1 - (\frac89)^{1/4}\bigr)$; for $K = 90$, $c^* \approx 2.61$ (about
+$2.9\%$ of $K$).}
+\end{exsol}

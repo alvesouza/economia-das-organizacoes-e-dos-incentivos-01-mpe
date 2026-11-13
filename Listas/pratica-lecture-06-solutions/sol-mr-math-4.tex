@@ -1,0 +1,42 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Mathematical Exercise 4. Input by \solitem. Check: check_T1.py (item 5).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Mathematical Exercise 4}{286}{Foundations}{2}
+\asked In the trust game of Ch.~8 (offeror, decision maker), the parties meet exactly twice, then exactly
+three times, then any known finite number of times. Would trust be offered and honoured? Is the prediction
+credible?
+
+\method Backward induction from the last round. The stage payoffs of Ch.~8 (pp.~261--263) are: offer and
+honour $(V, V)$; offer and not honour $(-L, V + G)$; no offer $(0, 0)$, with $V, G, L > 0$. In one
+play, a self-interested decision maker does not honour ($V + G > V$), so the offeror does not offer
+($-L < 0$).
+
+\solution
+\textbf{Two interactions.} In round~2 (final), nothing follows, so the one-shot logic applies: trust is not
+honoured if offered, and so it is not offered. Round-2 payoffs are $(0,0)$ whatever happened in round~1.
+In round~1, honouring cannot earn a reputation, since round~2's outcome does not depend on round~1
+(the hint's question). The decision maker therefore gains $G$ by not honouring, so he will not honour,
+and the offeror, anticipating this, does not offer. Both parties get $0$ in each round.
+
+\textbf{Three interactions and any finite $N$.} By induction: suppose rounds $k+1, \dots, N$ all give
+$(0,0)$ regardless of history. Then round $k$ is effectively one-shot, with the same conclusion. The
+unravelling reaches round~1, so for every known finite $N$ trust is never offered and, if it were,
+never honoured. The formal SPE is unique.
+
+\textbf{Credibility.} The prediction is not credible as a description of behaviour. Experiments with
+finitely repeated trust and social-dilemma games show cooperation for most of the horizon, with collapse
+only near the end. Explanations: (i) people are unsure of the horizon (a probability of continuation
+restores trust, item~16); (ii) some players are honest by type, so a selfish player gains by mimicking
+them (reputation, Lectures~7--8, e.g.\ Kreps--Milgrom--Roberts--Wilson); (iii) a small departure from
+rationality ($\varepsilon$-equilibrium) sustains cooperation for long horizons.
+
+\interp The finite-horizon paradox shows that trust rests on the \emph{shadow of the future}: repetition
+disciplines behaviour only if the interaction has no known last round.
+
+\verify \texttt{check\_T1.py} (item~5) runs backward induction on the repeated trust game for $N = 1, 2,
+3, 10$ (with $V = 3$, $G = 2$, $L = 5$): in every round the decision maker dishonours and the offeror does
+not offer, giving continuation $(0,0)$. The exercise is discursive and has no printed answer.
+
+\answer{Round $N$ is one-shot, so trust is neither offered nor honoured; honouring in round $N - 1$
+cannot buy a future reward; by induction the same holds in every round. For any known finite horizon no
+trust is offered. This is not credible empirically: with an uncertain end date, honest types or small
+departures from rationality, cooperation reappears.}
+\end{exsol}

@@ -1,0 +1,64 @@
+% Solution: Tadelis (2013) Exercise 10.8 "Tacit Collusion". Input by \solitem. Check: check_T2.py (item 9).
+\begin{exsol}{Tadelis Exercise 10.8}{218}{Exam level}{3}
+\asked Two firms with zero cost face $p = 200 - Q$. (a) The static Cournot equilibrium. (b) The $\delta$
+for which splitting monopoly profit is a grim-trigger SPE under Cournot. (c) The static Bertrand
+equilibrium. (d) The same cutoff under Bertrand. (e) A two-period Bertrand punishment: for which $\delta$,
+and why does it differ from (d)?
+
+\method One-stage deviation with grim trigger (Tadelis \S10.4, pp.~201--204): cooperation is optimal iff
+$\dfrac{\pi^m}{1-\delta} \ge \pi^D + \dfrac{\delta\,\pi^N}{1-\delta}$, with $\pi^m$ each firm's share of monopoly
+profit, $\pi^D$ the best one-period deviation profit and $\pi^N$ the static Nash profit. The punishment
+phase is a repeated static Nash equilibrium, so it needs no further check.
+
+\solution
+\textbf{(a) Cournot.} Firm~$i$ maximises $(200 - q_i - q_j)q_i$, so $q_i = (200 - q_j)/2$. Symmetry gives
+$q^C = \frac{200}{3}$, price $\frac{200}{3}$ and $\pi^C = \bigl(\frac{200}{3}\bigr)^2 = \frac{40\,000}{9} \approx
+4\,444$.
+
+\textbf{(b) Grim trigger, Cournot.} Monopoly: $Q^m = 100$, $p^m = 100$, profit $10\,000$, so each firm
+produces $50$ and earns $\pi^m = 5\,000$. A deviator facing $q_j = 50$ best-replies with $q_D = \frac{200 - 50}{2}
+= 75$, price $200 - 125 = 75$ and $\pi^D = 75 \times 75 = 5\,625$. The condition is
+\[
+  \frac{5\,000}{1-\delta} \ge 5\,625 + \frac{\delta}{1-\delta}\cdot\frac{40\,000}{9}
+  \iff \delta \ge \frac{5\,625 - 5\,000}{5\,625 - \frac{40\,000}{9}} = \frac{625}{1\,180.\overline{5}} = \frac{9}{17}
+  \approx 0.529 .
+\]
+\textbf{(c) Bertrand.} With zero marginal cost and the lowest price taking the market, the unique
+static equilibrium is $p_1 = p_2 = 0$ with profit $\pi^N = 0$.
+
+\textbf{(d) Grim trigger, Bertrand.} Each firm charges $p^m = 100$ and earns $5\,000$. Undercutting by
+$\varepsilon$ yields (almost) the whole $10\,000$ in one period, and $0$ afterwards:
+\[
+  \frac{5\,000}{1-\delta} \ge 10\,000 \iff \delta \ge \frac12 .
+\]
+\textbf{(e) Two-period punishment.} After a deviation both firms charge $0$ for two periods, then return
+to $p = 100$. The cooperation and deviation streams differ only in periods $0$--$2$:
+\[
+  5\,000\,(1 + \delta + \delta^2) \ge 10\,000 \iff \delta^2 + \delta - 1 \ge 0
+  \iff \delta \ge \frac{\sqrt5 - 1}{2} \approx 0.618 .
+\]
+The cutoff rises from $0.5$ to $0.618$: the punishment costs the deviator $5\,000(\delta + \delta^2)$
+rather than $5\,000\,\delta/(1-\delta)$, and the loss from a punishment that ends is smaller, so more
+patience is needed to deter the same one-period gain.
+
+\interp The same monopoly-sharing agreement needs $\delta \ge 0.53$ under quantity competition and
+$\delta \ge 0.5$ under price competition. Bertrand deviation is more profitable ($10\,000$ vs.\ $5\,625$) but
+its punishment is harsher (profit $0$ vs.\ $4\,444$); the harsher punishment wins. Temporary punishments
+need more patience than permanent ones (item~13 for the quantity version).
+
+\verify \texttt{check\_T2.py} (item~9) solves the first-order conditions and recovers $q^C = \frac{200}{3}$,
+$\pi^C = \frac{40\,000}{9}$, $\pi^m = 5\,000$, $q_D = 75$, $\pi^D = 5\,625$, $\delta = \frac9{17}$ for (b),
+$\frac12$ for (d), and $\frac{\sqrt5-1}{2} = 0.618034$ for (e). Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Taking the deviation profit in (b) as the monopoly profit. The deviator best-replies to the
+  rival's $50$ with $75$, which is not the monopoly output.
+  \item Forgetting in (e) that cooperation resumes: the streams coincide from period~3 on and cancel.
+\end{itemize}
+
+\answer{(a) $q^C = \frac{200}{3}$ each, $\pi^C = \frac{40\,000}{9}$. (b) $\delta \ge \frac{9}{17}$.
+(c) $p = 0$, zero profit. (d) $\delta \ge \frac12$. (e) $\delta^2 + \delta \ge 1$, i.e.\ $\delta \ge
+\frac{\sqrt5 - 1}{2} \approx 0.618$: a temporary punishment is a weaker threat than a permanent one, so
+it requires more patience.}
+\end{exsol}

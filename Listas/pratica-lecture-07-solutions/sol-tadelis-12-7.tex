@@ -1,0 +1,50 @@
+% Solution: Tadelis (2013) Exercise 12.7 "Trading Places". Input by \solitem. Check: check_E3.py.
+\begin{exsol}{Tadelis Exercise 12.7}{268}{Advanced}{4}
+\asked House swap with private values $v_i\sim U[0,1]$ (house $i$ is worth $v_i$ to its owner and
+$\tfrac32v_i$ to the other): (a) a threshold BNE; (b) the change if the other's value is $\tfrac52v_i$;
+(c) why every BNE is a threshold equilibrium.
+
+\method Player~$i$ announces ``exchange'' iff $v_i\le\theta_i$. An exchange takes place only if both
+agree, so $i$'s decision matters only when $j$ agrees; compute $i$'s expected gain from agreeing
+conditional on that event (Tadelis \S12.3, pp.~258--261, same adverse-selection logic).
+
+\solution
+\textbf{(a)} Suppose $j$ agrees iff $v_j\le\theta_j$. Then $\Pr(j\text{ agrees})=\theta_j$ and, when $j$
+agrees, $E[v_j]=\theta_j/2$. If $i$ agrees, he gets $\tfrac32v_j$ when $j$ agrees and keeps
+$v_i$ otherwise; if he refuses he keeps $v_i$. The gain from agreeing is
+\[
+  \theta_j\Bigl(\tfrac32\cdot\frac{\theta_j}2-v_i\Bigr)\ \ge0\iff v_i\le\tfrac34\,\theta_j .
+\]
+This is decreasing in $v_i$: a threshold rule with $\theta_i=\tfrac34\theta_j$. Simultaneously
+$\theta_j=\tfrac34\theta_i$, so $\theta_i=\tfrac9{16}\theta_i$ and $\theta_1=\theta_2=0$: the only
+threshold equilibrium has no one trading (agreeing has probability $0$). The reason is adverse
+selection: a rival who agrees has $E[v_j]=\theta_j/2$, so the house received is worth only
+$\tfrac34\theta_j<\theta_j$ on average, and each player's cutoff is below the other's.
+
+\textbf{(b)} With $\tfrac52v_j$ the gain is $\theta_j(\tfrac52\cdot\tfrac{\theta_j}2-v_i)$, so
+$\theta_i=\min\{1,\tfrac54\theta_j\}$. Solutions: $\theta_1=\theta_2=0$, and $\theta_1=\theta_2=1$
+(everyone agrees: $\tfrac54\cdot1\ge1$). Interior solutions require $\theta=\tfrac{25}{16}\theta$, so none
+with $\theta>0$. There are two threshold equilibria: no trade, and trade for every pair of
+types (the swap is then mutually beneficial in expectation: $E[\tfrac52v_j]=\tfrac54>\tfrac12=E[v_i]$).
+
+\textbf{(c)} For a fixed strategy of $j$ with $\Pr(j\text{ agrees})>0$, $i$'s gain from agreeing is
+$\Pr(j\text{ agrees})\,\bigl(kE[v_j\mid j\text{ agrees}]-v_i\bigr)$, a \emph{decreasing linear function} of $v_i$:
+$i$ agrees exactly for $v_i$ below a cutoff $c$. So $i$'s best reply (and hence $i$'s strategy in
+any BNE) is a threshold rule. The exception is a $j$ who never agrees: then $i$'s choice is
+irrelevant and any rule is a best reply, but $j$'s own behavior (never agreeing) is the
+threshold $\theta_j=0$.
+
+\interp (a) is Akerlof's lemons logic with two-sided private information: gains from trade
+exist for every pair ($\tfrac32v_j>v_j$) and still no trade survives, because agreeing is
+informative about the value of the house one receives. (b) Increasing the gain from the swap
+supports a full-trade equilibrium as well, with no-trade remaining another equilibrium.
+
+\verify \texttt{check\_E3.py}: sympy checks $E[v_j\mid v_j\le\theta_j]=\theta_j/2$; scanning a grid of thresholds for the fixed
+points of $\theta\mapsto\min\{1,k\theta/2\}$ returns $\{(0,0)\}$ for $k=\tfrac32$ and
+$\{(0,0),(1,1)\}$ for $k=\tfrac52$; checks that $k/2\cdot k/2\ne1$ (no interior solutions); and that the gain
+function is monotone decreasing in $v_i$. Tadelis gives no answer.
+
+\answer{(a) The only threshold equilibrium is $\theta_1=\theta_2=0$ (no trade). (b) Thresholds
+$\theta_i=\min\{1,\tfrac54\theta_j\}$: two equilibria, $(0,0)$ and $(1,1)$ (full trade). (c) The gain
+from agreeing is decreasing and linear in $v_i$, so best replies are cutoff rules.}
+\end{exsol}

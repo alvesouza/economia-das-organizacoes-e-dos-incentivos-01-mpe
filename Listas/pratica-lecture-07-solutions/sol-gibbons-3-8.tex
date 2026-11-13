@@ -1,0 +1,66 @@
+% Solution: Gibbons (1992) Problem 3.8. Input by \solitem. Check: check_E3.py.
+\begin{exsol}{Gibbons Problem 3.8}{171--172}{Advanced}{5}
+\asked Firm (marginal product $m$) and worker (outside opportunity $v$), $m,v$ independent $U[0,1]$:
+expected payoffs in the linear equilibrium of the double auction; then Game~I (fixed wage $w$, each side
+accepts or rejects) and Game~II (the firm offers a wage): equilibrium, trading region, and the
+sum of expected payoffs.
+
+\method Gibbons \S3.2.C (pp.~158--163). Trade gives the firm $m-w$ and the worker $w$; no
+trade gives $0$ and $v$. Because $v$ is the worker's payoff without trade, the \emph{sum of
+expected payoffs} is $E[v]+E[(m-v)\mathbf 1_{\text{trade}}]=\tfrac12+\text{(gains from trade)}$.
+
+\solution
+\textbf{Double auction.} Worker (seller) names $p_s$, firm (buyer) names $p_b$; trade at
+$(p_b+p_s)/2$ iff $p_b\ge p_s$. With linear strategies $p_b=a_b+c\,m$, $p_s=a_s+c\,v$ the firm's
+FOC gives $p_b=\tfrac23m+\tfrac13a_s$ and the worker's $p_s=\tfrac23v+\tfrac13(a_b+c)$; so
+$c=\tfrac23$, $a_b=\tfrac1{12}$, $a_s=\tfrac14$:
+\[
+  p_b(m)=\tfrac23m+\tfrac1{12},\qquad p_s(v)=\tfrac23v+\tfrac14,\qquad
+  \text{trade}\iff p_b\ge p_s\iff m\ge v+\tfrac14 .
+\]
+Trade probability $\tfrac9{32}$; gains from trade $E[(m-v)\mathbf 1]=\tfrac9{64}$; price
+$w=\tfrac{m+v}3+\tfrac16$. Expected payoffs: firm $E[(m-w)\mathbf 1]=\tfrac9{128}$, worker
+$\tfrac12+E[(w-v)\mathbf 1]=\tfrac{73}{128}$; sum $\tfrac{82}{128}=\tfrac{41}{64}$ (gains $\tfrac9{64}\approx0.141$).
+
+\textbf{Game I (fixed $w$).} After learning their information the firm accepts iff $m\ge w$ and the worker
+iff $w\ge v$ (accepting weakly dominates; the trade-never equilibrium in which both always reject is
+a Nash equilibrium too, but uses weakly dominated actions). Trade occurs iff $m\ge w\ge v$: the
+rectangle $[0,w]\times[w,1]$ in $(v,m)$ space, versus the double auction's triangle $m\ge v+\tfrac14$.
+\begin{center}
+\begin{tikzpicture}[scale=2.4,font=\scriptsize]
+  \draw[->] (0,0)--(1.1,0) node[right]{$v$}; \draw[->] (0,0)--(0,1.1) node[above]{$m$};
+  \draw (1,0) node[below]{1} (0,1) node[left]{1};
+  \fill[hdr!25] (0,0.25)--(0,1)--(0.75,1)--cycle;
+  \draw[hdr] (0,0.25) node[left]{$\tfrac14$}--(0.75,1);
+  \draw[dashed,ans] (0,0.5) node[left]{$w$}--(1,0.5);
+  \fill[ans!25,opacity=0.7] (0,0.5) rectangle (0.5,1);
+  \draw[ans] (0.5,0)--(0.5,1);
+  \draw (1,0)--(1,1)--(0,1);
+\end{tikzpicture}\\[-2pt]
+{\footnotesize Trading regions in $(v,m)$ space: blue triangle = double auction; green rectangle = Game~I
+for $w=\tfrac12$ (the two overlap).}
+\end{center}
+Gains from trade at wage $w$: $P(m\ge w)P(v\le w)\bigl[E(m\mid m\ge w)-E(v\mid v\le w)\bigr]=(1-w)\,w\cdot\tfrac12$,
+maximized at $w=\tfrac12$ with value $\tfrac18$, so the maximized sum of expected payoffs is
+$\tfrac12+\tfrac18=\tfrac58$. At $w=\tfrac12$ the firm earns $\tfrac1{16}$ and the worker $\tfrac12+\tfrac1{16}$. This
+is below the double auction's $\tfrac9{64}$ in gains (and $\tfrac{41}{64}$ in sum).
+
+\textbf{Game II (the firm offers).} The worker accepts $w$ iff $w\ge v$, with probability $w$. The
+firm with marginal product $m$ maximizes $(m-w)\,w$: $w=m/2$ (the payoff $m^2/4$). Trade occurs iff
+$v\le m/2$. Gains from trade $\int_0^1\!\int_0^{m/2}(m-v)\,dv\,dm=\int_0^1\tfrac38m^2dm=\tfrac18$; firm
+$\tfrac1{12}$, worker $\tfrac12+\tfrac1{24}$; sum $\tfrac58$.
+
+\interp The double auction is best (gains $\tfrac9{64}>\tfrac18$), though not efficient (first
+best $E[(m-v)^+]=\tfrac16$): its regions of trade are not rectangular, so it adapts the trade
+rule to both types. Game~II (informed principal) yields the same $\tfrac18$ as the best fixed wage.
+
+\verify \texttt{check\_E3.py} (sympy): the linear equilibrium coefficients and best-reply FOC; the
+trade condition $m\ge v+\tfrac14$; the integrals $\tfrac9{32}$, $\tfrac9{64}$, $\tfrac9{128}$,
+$\tfrac{73}{128}$, $\tfrac{41}{64}$; Game~I gains $w(1-w)/2$, firm $w(1-w)^2/2$, worker $\tfrac12+(1-w)w^2/2$, the
+maximum at $w=\tfrac12$; Game~II offer $m/2$, gains $\tfrac18$, payoffs $\tfrac1{12},\tfrac12+\tfrac1{24}$. Gibbons gives no
+answer.
+
+\answer{Double auction: firm $\tfrac9{128}$, worker $\tfrac{73}{128}$, sum $\tfrac{41}{64}$
+(gains $\tfrac9{64}$). Game~I: trade iff $m\ge w\ge v$; best $w=\tfrac12$, sum $\tfrac58$ (gains $\tfrac18$).
+Game~II: the firm offers $w=m/2$; trade iff $v\le m/2$; sum $\tfrac58$ (gains $\tfrac18$).}
+\end{exsol}

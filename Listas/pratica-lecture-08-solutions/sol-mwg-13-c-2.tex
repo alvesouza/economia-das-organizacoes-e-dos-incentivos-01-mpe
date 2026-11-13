@@ -1,0 +1,70 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.C.2. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{MWG Exercise 13.C.2}{475}{Advanced}{4}
+\asked In the two-type signaling model with $r(\theta_L) = r(\theta_H) = 0$ and productivity
+$\theta(1 + \mu e)$, $\mu > 0$: identify the separating and pooling PBE and relate them to the
+perfect-information competitive outcome.
+
+\method Same steps as MWG \S13.C (pp.~450--459): firms pay expected productivity, so the wage after $e$ is
+$E[\theta \mid e]\,(1 + \mu e)$, between $\theta_L(1 + \mu e)$ and $\theta_H(1 + \mu e)$. The worst off-path belief
+(low type) gives the wage $\theta_L(1 + \mu e)$. Incentive constraints for each type as in the
+unproductive case, but now education also raises the wage.
+
+\solution \textbf{Perfect-information outcome.} If types were observed, type $\theta$ would choose $e^*(\theta)$ to
+maximize $\theta(1 + \mu e) - c(e, \theta)$, i.e.\ $\theta\mu = c_e(e^*, \theta)$, and earn the wage
+$w^*(\theta) = \theta(1 + \mu e^*(\theta))$; utility $u^*(\theta)$. This is the efficient level of education, and
+$e^*(\theta_H) > e^*(\theta_L)$ by $c_{e\theta} < 0$.
+
+\textbf{Separating PBE.} By Bayes' rule each type is paid its productivity. The low type must choose
+$e_L = e^*(\theta_L)$: after $e_L$ his wage is $\theta_L(1 + \mu e_L)$, and any $e$ off the path gets at least
+$\theta_L(1+\mu e)$, so he can always secure $u^*(\theta_L)$ and nothing more. The high type chooses
+$e_H$ with the wage $\theta_H(1 + \mu e_H)$, subject to
+\begin{align*}
+  \text{(IC}_L\text{)}&\quad \theta_H(1 + \mu e_H) - c(e_H, \theta_L) \le u^*(\theta_L), \\
+  \text{(IC}_H\text{)}&\quad \theta_H(1 + \mu e_H) - c(e_H, \theta_H) \ \ge\ \max_{e}\ \bigl[\theta_L(1+\mu e) - c(e, \theta_H)\bigr],
+\end{align*}
+the right-hand side of (IC$_H$) being his best deviation under the belief ``low type''. By single
+crossing the set is an interval $e_H \in [\underline{e}, \bar e]$, with off-path belief ``low type''.
+\emph{Relation to the perfect-information outcome:} the pair $(e^*(\theta_L), e^*(\theta_H))$ is itself a separating
+PBE iff (IC$_L$) holds at $e_H = e^*(\theta_H)$, that is, iff the low type does not want to mimic the efficient
+high-type education (the constraint (IC$_H$) always holds there, because $e^*(\theta_H)$ maximizes his
+utility under his own wage). When (IC$_L$) fails at $e^*(\theta_H)$, then $\underline{e} > e^*(\theta_H)$:
+the high type \emph{over-invests} in education to separate, and the outcome is below the
+perfect-information one. The low type always gets his perfect-information outcome.
+
+\textbf{Pooling PBE.} Both types choose $e$ and are paid $\bar\theta(1 + \mu e)$ with
+$\bar\theta = \lambda\theta_H + (1-\lambda)\theta_L$. Deviations are met by the belief ``low type'', so each
+type compares with his best deviation: the low type's is $u^*(\theta_L)$, the high type's is the right-hand side
+of (IC$_H$). The pooling set is an interval $e \in [e_{\min}, e_{\max}]$ (including $0$ when
+$\bar\theta \ge$ both deviation payoffs); the low type's constraint binds first. Pooling is
+inefficient: both types get the same education, and the competitive outcome with perfect information is not
+attained.
+
+\textbf{A worked example.} $c(e, \theta) = e^2/\theta$, $\theta_L = 1$, $\theta_H = 2$, $\mu = \frac12$,
+$\lambda = \frac12$. Then $e^*(\theta) = \theta^2\mu/2$: $e^*(\theta_L) = \frac14$, $e^*(\theta_H) = 1$, with $u^*(\theta_L) = \frac{17}{16}$ and
+$u^*(\theta_H) = \frac52$.
+\begin{itemize}
+  \item (IC$_L$): $2 + e - e^2 \le \frac{17}{16}$, i.e.\ $e \ge \underline{e} = \frac{2 + \sqrt{19}}{4} \approx 1.59 > 1 = e^*(\theta_H)$:
+  the full-information outcome is \emph{not} sustainable, because the low type would gain by
+  mimicking education $1$ ($2 + 1 - 1 = 2 > \frac{17}{16}$).
+  \item (IC$_H$): the best deviation under the low-type belief is $\frac98$ (at $e = \frac12$), and
+  $2 + e - \frac{e^2}{2} \ge \frac98$ gives $e \le \bar e = 1 + \frac{\sqrt{11}}{2} \approx 2.66$.
+  \item Separating PBE: $e_L = \frac14$ and $e_H \in [1.59,\ 2.66]$.
+  \item Pooling: with $\bar\theta = \frac32$ the low type needs $\frac32 + \frac34 e - e^2 \ge \frac{17}{16}$, i.e.\
+  $e \le \frac{3 + \sqrt{37}}{8} \approx 1.135$; the high type needs $e \le \frac{3 + \sqrt{21}}{4} \approx 1.90$.
+  So pooling PBE exist for $e \in [0, 1.135]$.
+\end{itemize}
+The full-information outcome is attainable as a separating equilibrium for other parameters: for
+$\theta_H = 4$ (all else equal) $e^*(\theta_H) = 4$ and the low type's mimic payoff is $12 - 16 = -4 \le
+\frac{17}{16}$, so $(e^*(\theta_L), e^*(\theta_H))$ is itself a separating PBE (the case of Figure~13.C.2(a) of the solutions manual).
+
+\verify \texttt{check\_T3.py} recomputes $e^*$, $u^*$, the best deviation $\frac98$, the two separating bounds
+and the two pooling bounds symbolically with sympy for the example, and checks the $\theta_H = 4$ case. The
+MWG solutions manual gives the same structure (separating $(e^*_L, e_H)$ with $e_H$ in an interval $[e', e'']$,
+pooling below a bound, the perfect-information outcome sustained only in some cases).
+
+\answer{Perfect information: $\theta\mu = c_e(e^*, \theta)$, wage $\theta(1 + \mu e^*)$. Separating PBE: low type
+at $e^*(\theta_L)$, high type at any $e_H \in [\underline{e}, \bar e]$ defined by (IC$_L$) and (IC$_H$); it
+attains the perfect-information outcome iff the low type does not mimic $e^*(\theta_H)$, otherwise the high type
+over-invests. Pooling PBE: $e \in [e_{\min}, e_{\max}]$, inefficient. Example above: separating
+$e_H \in [1.59, 2.66]$, pooling $e \in [0, 1.135]$.}
+\end{exsol}

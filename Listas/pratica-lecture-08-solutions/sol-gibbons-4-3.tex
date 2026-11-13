@@ -1,0 +1,64 @@
+% Solution: Gibbons (1992) Problem 4.3. Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Gibbons Problem 4.3}{246--247}{Foundations}{3}
+\asked (a) A pooling PBE in which both Sender types play $R$; (b) a pooling PBE in which all three
+Sender types play $L$.
+
+\method The pooling recipe: (1) belief on the path equals the prior; (2) Receiver's best reply to
+it; (3) each type's payoff against the best replies after $L$ and after $R$; (4) off-path belief
+and reply that stop every deviation (Gibbons \S4.2.A, pp.~183--190, Requirements 1--3; Tadelis
+\S16.1). Payoffs below are (Sender, Receiver), read from the trees.
+
+\solution \textbf{(a)} Types $t_1, t_2$ with probability $\frac12$ each; $\nu = \Pr(t_1 \mid L)$.
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & $L,u$ & $L,d$ & $R,u$ & $R,d$ \\
+\midrule
+$t_1$ & $(1,2)$ & $(2,0)$ & $(0,1)$ & $(3,0)$ \\
+$t_2$ & $(0,0)$ & $(3,1)$ & $(1,0)$ & $(2,2)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{After $R$ (on the path).} Bayes' rule gives $\Pr(t_1 \mid R) = \frac12$. The Receiver's payoffs
+are $u$: $\frac12 \cdot 1 + \frac12 \cdot 0 = \frac12$ and $d$: $\frac12 \cdot 0 + \frac12 \cdot 2 = 1$,
+so he plays $d$. The types get $u_S(t_1) = 3$ and $u_S(t_2) = 2$.
+
+\emph{After $L$ (off the path).} The Receiver's payoffs are $u$: $2\nu$ and $d$: $1 - \nu$, so
+$u$ is optimal iff $\nu \ge \frac13$. If he played $d$ after $L$ (belief $\nu < \frac13$), $t_2$ would
+get $3 > 2$ from deviating. With $u$ the deviation pays $1 < 3$ to $t_1$ and $0 < 2$ to $t_2$.
+
+PBE: both types play $R$; Receiver plays $d$ after $R$ and $u$ after $L$; beliefs
+$\Pr(t_1 \mid R) = \frac12$ and $\nu = \Pr(t_1 \mid L) \ge \frac13$ (for instance $\nu = \frac12$).
+It is the only pooling-on-$R$ PBE; the off-path reply must be $u$.
+
+\textbf{(b)} Three types, probability $\frac13$ each; $r = (r_1, r_2, r_3)$ is the belief after $R$.
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & $L,u$ & $L,d$ & $R,u$ & $R,d$ \\
+\midrule
+$t_1$ & $(1,1)$ & $(1,0)$ & $(0,1)$ & $(0,0)$ \\
+$t_2$ & $(2,1)$ & $(0,0)$ & $(1,1)$ & $(1,0)$ \\
+$t_3$ & $(1,1)$ & $(0,0)$ & $(0,0)$ & $(2,1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{After $L$ (on the path).} The belief is $(\frac13, \frac13, \frac13)$; the Receiver's payoff is
+$1$ from $u$ and $0$ from $d$, so he plays $u$. Payoffs: $t_1$: $1$, $t_2$: $2$, $t_3$: $1$.
+
+\emph{After $R$ (off the path).} The Receiver's payoffs are $u$: $r_1 + r_2 + 0 \cdot r_3$ and
+$d$: $r_3$, so $u$ is optimal iff $r_3 \le \frac12$. Against $u$ the deviation pays $0 < 1$,
+$1 < 2$, $0 < 1$: nobody deviates. Against $d$ the deviation would pay $t_3$ a payoff of $2 > 1$.
+
+PBE: all types play $L$; Receiver plays $u$ after $L$ (belief $(\frac13,\frac13,\frac13)$) and $u$
+after $R$, supported by any belief with $r_3 \le \frac12$, for instance $r = (\frac13, \frac13, \frac13)$.
+
+\verify \texttt{check\_T1.py} enumerates all pure Sender and Receiver strategies with beliefs on
+a grid ($\frac1{60}$ for (a), $\frac1{12}$ for (b)): in (a) the only pooling PBE is $RR$ with replies
+$(u, d)$ and $\nu \in [\frac13, 1]$, with no separating PBE; in (b) the pooling profile is $LLL$ with
+replies $(u, u)$ and $r_3 \le \frac12$. Gibbons prints no answer.
+
+\answer{(a) Both $R$; Receiver $d$ after $R$, $u$ after $L$; $\Pr(t_1 \mid R) = \frac12$,
+$\Pr(t_1 \mid L) \ge \frac13$. (b) All $L$; Receiver $u$ after $L$ and $u$ after $R$; belief after
+$R$ with $r_3 \le \frac12$.}
+\end{exsol}

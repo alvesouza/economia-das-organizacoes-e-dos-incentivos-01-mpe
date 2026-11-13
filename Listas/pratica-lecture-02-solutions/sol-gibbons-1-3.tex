@@ -1,0 +1,50 @@
+% Solution: Gibbons (1992) Problem 1.3 (splitting a dollar). Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Gibbons Problem 1.3}{49}{Foundations}{2}
+\asked Find all pure-strategy Nash equilibria of the game in which two players simultaneously name
+shares $s_1, s_2 \in [0,1]$ of one dollar, and receive them if $s_1 + s_2 \le 1$ and zero otherwise.
+
+\method Nash equilibrium with a continuum of strategies (Lecture~2, slide~14; Gibbons \S1.1.C,
+pp.~8--14). The payoffs are discontinuous at $s_1 + s_2 = 1$, so there is no first-order condition:
+for each class of profiles either show that no deviation pays (equilibrium) or exhibit one that does.
+
+\solution
+\textbf{Payoffs.} $(u_1, u_2) = (s_1, s_2)$ if $s_1 + s_2 \le 1$; $(0, 0)$ otherwise.
+
+\textbf{Step 1: profiles with $s_1 + s_2 = 1$ are equilibria.} Player~1 gets $s_1$. Naming
+$s'_1 < s_1$ gives him only $s'_1 < s_1$; naming $s'_1 > s_1$ makes the sum exceed $1$, so he gets
+$0 \le s_1$. So there is no profitable deviation; the same holds for player~2. Every point of the line
+$\{(s, 1-s): 0 \le s \le 1\}$ is a Nash equilibrium (the ends $(1,0)$ and $(0,1)$ included).
+
+\textbf{Step 2: profiles with $s_1 + s_2 < 1$ are not equilibria.} Player~1 can raise his
+demand to $s'_1 = 1 - s_2 > s_1$; the sum is exactly $1$, so he gets $1 - s_2 > s_1$.
+
+\textbf{Step 3: profiles with $s_1 + s_2 > 1$.} Both get $0$. If $s_2 < 1$, player~1 deviates to
+$s'_1 = 1 - s_2 > 0$ and gets $1 - s_2 > 0$: not an equilibrium. By symmetry the same holds if
+$s_1 < 1$. The only profile left is $s_1 = s_2 = 1$: then every deviation by player~1 to
+$s'_1 \in [0, 1)$ still gives sum $s'_1 + 1 \ge 1$; for $s'_1 > 0$ the sum exceeds $1$ and he gets $0$;
+for $s'_1 = 0$ the sum is $1$ and he gets $s'_1 = 0$. No deviation gives more than the current $0$.
+So $(1,1)$ is a Nash equilibrium, a ``weak'' one (both payoffs are zero and each player is indifferent
+among all his strategies).
+
+\answer{The pure-strategy Nash equilibria are all pairs with $s_1 + s_2 = 1$ (a continuum, including
+$(1,0)$ and $(0,1)$) and, in addition, the profile $s_1 = s_2 = 1$ in which both demand the whole dollar
+and get nothing.}
+
+\interp With a continuum of strategies the equilibrium set is a whole line: any split that exhausts
+the dollar is self-enforcing, because each player prefers to keep his share rather than risk
+overreaching. Nash equilibrium, as a pure consistency requirement, says nothing about \emph{which}
+split; a selection device (a focal point such as $\tfrac12$, or bargaining protocol, Lecture~6) is
+needed. The profile $(1,1)$ is a coordination failure supported only by indifference.
+
+\verify \texttt{check\_L2.py} discretises the strategies to multiples of $1/20$ (the deviations used
+above, $1 - s_j$, lie on the grid) and computes all pure equilibria by brute force: they are exactly
+the $21$ pairs with $s_1 + s_2 = 1$ plus $(1,1)$, $22$ in all. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Differentiating. Payoffs jump at $s_1 + s_2 = 1$, so best responses are not smooth.
+  \item Missing $(1,1)$: it is an equilibrium because the payoff is $0$ whatever one demands,
+  not because anybody is happy with it.
+  \item Reporting only $s_1 = s_2 = \tfrac12$ (the symmetric split) as ``the'' equilibrium.
+\end{itemize}
+\end{exsol}

@@ -1,0 +1,61 @@
+% Solution: Gibbons (1992) Problem 2.17. Input by \solitem. Check: check_T3.py (item 27).
+\begin{exsol}{Gibbons Problem 2.17}{136--137}{Advanced}{4}
+\asked An infinitely lived firm faces a sequence of one-period workers. A worker chooses effort (output $y$, cost
+$c < y$) or not; the firm then chooses a wage, with no enforceable contracts; each worker observes the whole past.
+Describe strategies for the firm and the workers forming an SPE in which every worker works, and give a necessary and
+sufficient condition.
+
+\method A relational contract through trigger strategies (Gibbons \S2.3.D, pp.~107--112, efficiency wages; the
+firm is the long-lived player). The worker's outside option is $0$ and a wage cannot be negative, so a worker
+works only if the wage he expects, net of the effort cost, is at least $0$. The worst the workers can do to the firm
+is never work, which gives it $0$.
+
+\solution
+\textbf{Strategies.} Fix a wage $w^* \in [c, y)$.
+\begin{itemize}
+  \item \emph{Worker $t$:} work iff in every earlier period in which output was produced the firm paid $w^*$ (and, in
+  period~1, always); otherwise shirk.
+  \item \emph{Firm:} after output pay $w^*$ as long as it has always done so; after any failure to pay $w^*$
+  following output, pay $0$ for ever.
+\end{itemize}
+\textbf{Worker.} If he works he expects $w^*$ and gets $w^* - c \ge 0$, the value of his outside option, so working
+is optimal. After the firm has once cheated, the worker expects wage $0$ and shirks (working would cost $c > 0$ for
+nothing). That is a best reply.
+
+\textbf{Firm.} On the path it gets $y - w^*$ per period: $\frac{y - w^*}{1-\delta}$. If it pays $0$ after output it keeps $y$
+once and then no worker ever works again ($0$). It pays iff
+\[
+  \frac{y - w^*}{1-\delta} \ge y \iff w^* \le \delta y .
+\]
+After a deviation the firm pays $0$ and no output is produced, which is a stage best reply (a wage after zero output
+costs it), so the punishment phase is itself an equilibrium.
+
+\textbf{Condition.} A wage $w^*$ must satisfy $c \le w^* \le \delta y$, so the equilibrium exists iff
+\[
+  \delta \ge \frac{c}{y} .
+\]
+\textbf{Necessity.} In any SPE in which workers work, the equilibrium wage must be at least $c$ (workers can
+refuse). The firm can always deviate to $0$, and the harshest punishment it can face is zero profit for ever,
+because workers can always shirk. So the equilibrium wage is at most $\delta y$, which is impossible if $\delta <
+\frac{c}{y}$. Hence $\delta \ge \frac cy$ is also necessary.
+
+\interp The firm honours an unenforceable wage promise because reneging ends the relationship. The wage that
+induces effort ($c$) is the minimum a worker accepts, and the bound $\delta y$ is the most the firm will pay
+without being tempted to renege. The relationship is possible iff effort is cheap relative to the firm's patience
+($\frac cy \le \delta$): output must exceed the effort cost with enough margin, discounted.
+
+\verify \texttt{check\_T3.py} (item~27) checks, for $(y, c) \in \{(10,4), (10,9), (5,1)\}$ and all
+$\delta = \frac k{100}$, that a wage in $[c, \delta y]$ exists iff $\delta \ge c/y$, that every such wage
+satisfies the firm's constraint, and that when $\delta < c/y$ no wage $\ge c$ does. Gibbons's unofficial manual
+is not copied.
+
+\mistakes
+\begin{itemize}
+  \item Specifying the firm's strategy only on the path. SPE requires what happens after a failure to pay.
+  \item Setting the wage at $y$ or at $y - c$: the cap is $\delta y$, and a wage above $y$ would not be paid.
+\end{itemize}
+
+\answer{Workers work iff the firm has always paid $w^*$ after output; the firm pays $w^*$ as long as it always has,
+and $0$ for ever otherwise, with $c \le w^* \le \delta y$. The firm complies iff $\frac{y - w^*}{1-\delta} \ge y$, and the
+worker iff $w^* \ge c$. Such $w^*$ exists, and the SPE exists, iff $\delta \ge \dfrac{c}{y}$ (also necessary).}
+\end{exsol}

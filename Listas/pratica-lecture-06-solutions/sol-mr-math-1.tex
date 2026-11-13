@@ -1,0 +1,62 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Mathematical Exercise 1. Input by \solitem. Check: check_T3.py (item 28).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Mathematical Exercise 1}{285}{Advanced}{4}
+\asked In the efficiency-wage model with $N = (1 - \delta^t)/(1-\delta)$, $t = 5$, $\delta = 0.9$ ($N \approx
+4.1$), opportunity wage $\bar w = 20\,000$, gain from leaking secrets $g = 3\,000$ and monitoring cost $1\,500$ per
+unit of detection probability: (1) formulate and solve for the optimal $p$ and $w$; (2) say whether the contract
+still deters cheating if the horizon falls to one year; (3) show that $w^*(N)$ is nonincreasing in $N$ when $M' > 0$
+and $M'' > 0$.
+
+\method The minimum-cost implementation problem (pp.~254--255, formulas 8.2--8.6):
+\[
+  \min_{p,w}\; M(p) + w \quad\text{s.t.}\quad p\,(w - \bar w)\,N \ge g, \qquad 0 \le p \le 1 .
+\]
+The constraint binds, so $w = \bar w + \frac{g}{Np}$ (8.3) and the problem is $\min_p\, M(p) + \bar w + \frac{g}{Np}$
+with first-order condition $M'(p^*) = \frac{g}{N p^{*2}}$ (8.5).
+
+\solution
+\textbf{(1) Optimum.} $N = \frac{1 - 0.9^5}{0.1} = 4.0951$. With $M(p) = 1\,500\,p$ ($M' = 1\,500$):
+\[
+  1\,500 = \frac{3\,000}{N p^2} \iff p^* = \sqrt{\frac{2}{N}} = 0.699, \qquad
+  w^* = 20\,000 + \frac{3\,000}{4.0951 \times 0.699} \approx 21\,048 .
+\]
+The second-order condition $\frac{2g}{Np^3} > 0$ holds. With $N = 4.1$, $p^* = 0.698$. The monitoring cost
+$1\,500\,p^* \approx 1\,048$ equals the wage premium $w^* - \bar w$: at the optimum the firm spends the same on
+monitoring as on the premium.
+
+\textbf{(2) One more year.} With $N = 1$ the old contract gives an expected loss $p^*(w^* - \bar w)\cdot 1 = 0.699 \times
+1\,048 \approx 733 < 3\,000$: cheating pays, so the contract no longer deters. Re-optimising: $p^* = \sqrt{2} > 1$
+is infeasible, so $p = 1$ (the corner) and $w = 20\,000 + 3\,000 = 23\,000$. A shorter horizon makes cheating tempting, and
+deterrence needs much higher pay (or monitoring).
+
+\textbf{(3) $w^*(N)$ nonincreasing.} The first-order condition gives $p^{*2}M'(p^*) = \frac gN$. The left side
+$\phi(p) = p^2M'(p)$ is strictly increasing in $p$ when $M' > 0$ and $M'' > 0$, so $p^*(N)$ is the unique solution
+and is \emph{decreasing} in $N$ (the right side falls as $N$ rises); this is the text's Figure~8.1. At the optimum
+$\frac{g}{Np^*} = p^*M'(p^*)$ by the first-order condition, so
+\[
+  w^*(N) = \bar w + p^*(N)\,M'\bigl(p^*(N)\bigr) .
+\]
+The function $p \mapsto pM'(p)$ is increasing ($M' > 0$, $M'' > 0$) and $p^*(N)$ is decreasing in $N$, hence
+$w^*(N)$ is nonincreasing in $N$. If $p^* \ge 1$ at some $N$, the corner $p = 1$ gives $w = \bar w + \frac gN$, also
+nonincreasing, and the two branches join continuously.
+
+\interp A longer horizon means more rent to lose and more trust, so incentives can be provided with a lower wage
+premium and less monitoring. This is why long-tenure employees are paid less per unit of trust than
+short-horizon ones, and why takeovers or bankruptcy threats, which shorten $N$, erode honesty.
+
+\verify \texttt{check\_T3.py} (item~28) obtains $N = 4.0951$, $p^* = \sqrt{2/N} = 0.69886$, $w^* = 21\,048.2$ (and
+$p^* = 0.69843$ at $N = 4.1$), checks the second-order condition, that monitoring cost equals the wage premium,
+that $\sqrt2 > 1$ at $N = 1$ (so $p = 1$ and $w = 23\,000$), the old contract's expected loss of $732.6$, and, for
+$M(p) = mp^2$ with $m \in \{1, 100, 1\,500\}$, that $p^*(N)$ and $w^*(N)$ are strictly decreasing on a grid, that
+$w^* = \bar w + p^*M'(p^*)$, and that $Np^*(N)$ increases. The book prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Ignoring the cap $p \le 1$ when $N = 1$: the unconstrained $p^* = \sqrt2$ is not a probability.
+  \item Proving monotonicity of $w^*$ from $w = \bar w + g/(Np)$ alone: $p^*$ also depends on $N$. The sign is
+  settled by $w^* = \bar w + p^*M'(p^*)$ and the fall of $p^*$.
+\end{itemize}
+
+\answer{(1) $p^* = \sqrt{2/N} \approx 0.70$ and $w^* \approx \$21\,048$. (2) With $N = 1$ the old contract does
+not deter (expected loss $\approx \$733 < \$3\,000$); the new optimum is $p = 1$ and $w = \$23\,000$. (3)
+$M'(p^*) = g/(Np^{*2})$ implies $p^*(N)$ decreasing and $w^*(N) = \bar w + p^*M'(p^*)$, which is nonincreasing in $N$.}
+\end{exsol}

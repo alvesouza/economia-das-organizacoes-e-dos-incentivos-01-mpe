@@ -1,0 +1,100 @@
+% Solution: Tadelis (2013) Exercise 9.2 "Centipedes Revisited". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 9.2}{187}{Exam level}{3}
+\asked A centipede game followed by a coordination game: find the stage equilibria, count the
+strategies, find the SPE at $\delta = 0$, support the outcome $(2,2)$ in the centipede at $\delta = 1$, find the
+lowest $\delta$ for it, and ask which other centipede outcomes can be supported.
+
+\method Multistage games (Tadelis \S9.4, pp.~180--184; Prop.~9.2, p.~181; one-stage deviation principle,
+Thm.~9.1, p.~185). Stage~2 is a coordination game with two pure equilibria, so it supplies a carrot
+$(B,b)$ and a stick $(A,a)$. Lecture~5, slides~10--15 (the same construction on a simultaneous stage~1), with
+backward induction on the tree (slide~14).
+
+\solution
+\textbf{The centipede (Figure~9.2).} Nodes: 1 chooses $N$ (stop, payoff $(1,1)$) or $C$; then 2 chooses
+$n$ ($(0,3)$) or $c$; then 1 chooses $N$ ($(2,2)$) or $C$; then 2 chooses $n$ ($(1,4)$) or $c$ ($(3,3)$). Write
+the five terminal outcomes as $o_1 = (1,1)$, $o_2 = (0,3)$, $o_3 = (2,2)$, $o_4 = (1,4)$, $o_5 = (3,3)$.
+The second game is
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$a$} & \multicolumn{1}{c}{$b$}\\ \cline{2-3}
+$A$ & $\br{1},\ \br{1}$ & $0,\ 0$ \\ \cline{2-3}
+$B$ & $0,\ 0$ & $\br{3},\ \br{3}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+
+\textbf{(a) Stage equilibria.} \emph{Coordination game:} $(A,a)$ with $(1,1)$ and $(B,b)$ with $(3,3)$, plus a
+mixed equilibrium ($A$ with probability $\frac34$, payoff $\frac34$), which we ignore because the
+exercise asks for pure strategies. \emph{Centipede:} backward induction gives $n$ at the last node ($4>3$),
+$N$ at node~3 ($2>1$), $n$ at node~2 ($3>2$) and $N$ at node~1 ($1>0$): the unique SPE is $(N,N;\,n,n)$ with
+outcome $(1,1)$. Nash equilibria: every profile in which player~1 plays $N$ at node~1 and player~2 plays $n$
+at node~2 (the later choices are off the path), so four profiles, all with outcome $(1,1)$. A profile with $c$
+at node~2 is not Nash, because player~1 would then go $C$ and stop at node~3 with $2 > 1$.
+
+\textbf{(b) Strategies.} Player~1 chooses an action at each of his two centipede nodes ($2^2 = 4$ ways) and a
+stage-2 action after each of the five centipede outcomes ($2^5 = 32$ ways): $4\cdot 32 = 128$ pure
+strategies. Player~2 likewise, $128$.
+
+\textbf{(c) SPE at $\delta = 0$.} Stage~2 is a stage equilibrium after each outcome, and stage~1 is played
+without regard to the future, hence by backward induction: $(N,N;\,n,n)$. The SPE are those with this
+centipede play and, after each of the five outcomes $o_k$, either $(A,a)$ or $(B,b)$:
+$2^5 = 32$ pure SPE.
+
+\textbf{(d) $(2,2)$ at $\delta = 1$.} Strategies: player~1 plays $C$ at node~1 and $N$ at node~3; player~2
+plays $c$ at node~2 and $n$ at node~4. Stage~2: $(B,b)$ after $o_3$ (the path) and $(A,a)$ after every other
+outcome. Stage~2 is a stage equilibrium after every history. In stage~1, one-stage deviations
+(values are stage-1 payoff plus $\delta\times$ stage-2 payoff):
+\begin{center}
+\begin{tabular}{llcc}
+\toprule
+node & choice & conform & deviate \\
+\midrule
+1 (player 1) & $C$ & $2 + 3\delta$ & $N$: $1 + \delta$ \\
+2 (player 2) & $c$ & $2 + 3\delta$ & $n$: $3 + \delta$ \\
+3 (player 1) & $N$ & $2 + 3\delta$ & $C$, then $n$: $1 + \delta$ \\
+4 (player 2, off path) & $n$ & $4 + \delta$ & $c$: $3 + \delta$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Nodes~1, 3 and 4 hold for every $\delta \ge 0$. Node~2 gives $2 + 3\delta \ge 3 + \delta$ iff $\delta \ge \frac12$,
+so the strategies are an SPE at $\delta = 1$ and indeed for all $\delta \ge \frac12$.
+
+\textbf{(e) Lowest $\delta$.} Node~2 is binding: player~2 gains $3 - 2 = 1$ by stopping, and the largest swing in
+stage~2 is $3 - 1 = 2$, so $\delta\cdot 2 \ge 1$. No other continuation does better, since $(B,b)$ and $(A,a)$ are
+the best and worst stage-2 equilibria. The lowest value is $\delta = \frac12$; below it the only outcome
+of a pure SPE is $(1,1)$ (checked by script for $\delta = 0.499$).
+
+\textbf{(f) Other outcomes for $\delta \ge \frac12$.} Reward $(B,b)$ after the target outcome only, $(A,a)$
+elsewhere, and let play off the path be backward induction. The binding deviation is:
+\begin{center}
+\begin{tabular}{lcl}
+\toprule
+target outcome & binding deviation & condition \\
+\midrule
+$(1,1)$ & none & every $\delta$ \\
+$(0,3)$ & player 1 at node 1 stops: $1 + \delta$ & $0 + 3\delta \ge 1 + \delta$ \\
+$(2,2)$ & player 2 at node 2 stops: $3 + \delta$ & $2 + 3\delta \ge 3 + \delta$ \\
+$(1,4)$ & player 1 at node 3 stops: $2 + \delta$ & $1 + 3\delta \ge 2 + \delta$ \\
+$(3,3)$ & player 2 at node 4 stops: $4 + \delta$ & $3 + 3\delta \ge 4 + \delta$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Every condition reduces to $\delta \ge \frac12$. Hence for $\delta \ge \frac12$ \emph{every} outcome of the
+centipede, including the efficient $(3,3)$, can be a first-stage SPE outcome; for $\delta < \frac12$ only
+$(1,1)$ can.
+
+\interp The coordination game turns the centipede's unravelling around: each stopping gain in the tree is at
+most $1$, and the future carrot is worth $2\delta$ more than the stick. Once $\delta \ge \frac12$ the
+last-node temptation ($4$ against $3$) is also covered, so even full cooperation is supported.
+
+\verify \texttt{check\_L05.py} finds the four Nash equilibria of the centipede (all with outcome $(1,1)$), the
+counts $128$ and $32$, and, by backward induction with every assignment of $(A,a)/(B,b)$ to the five outcomes,
+that the set of SPE outcomes is $\{(1,1)\}$ for $\delta < \frac12$ and all five outcomes for $\delta = \frac12$ and
+$\delta = 1$; for the strategies in (d), $(2,2)$ is the SPE outcome at $\delta \ge \frac12$ and not at $0.49$.
+
+\answer{(a) Centipede: unique SPE $(N,N;n,n)$, outcome $(1,1)$; four Nash equilibria, all with that outcome.
+Coordination game: $(A,a)$, $(B,b)$. (b) $4\cdot2^5 = 128$ pure strategies per player. (c) $2^5 = 32$ pure SPE:
+$(N,N;n,n)$ plus $(A,a)$ or $(B,b)$ after each of the five outcomes. (d) $C,N$ / $c,n$ with $(B,b)$ after
+$(2,2)$ and $(A,a)$ otherwise. (e) $\delta = \frac12$. (f) Yes: for $\delta \ge \frac12$ every outcome of the
+centipede can be supported, with the same $\frac12$ threshold.}
+\end{exsol}

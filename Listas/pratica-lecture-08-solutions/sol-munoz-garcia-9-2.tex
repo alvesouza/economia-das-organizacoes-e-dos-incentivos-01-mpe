@@ -1,0 +1,52 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 9, Exercise 2. Input by \solitem. Check: check_T1.py.
+\begin{exsol}{\MG{} Ch.~9, Exercise 2}{385--386}{Foundations}{2}
+\asked Whether the job-market signaling game of Fig.~9.11 has an equilibrium in each of the four
+profiles: (a) $[NE']$, (b) $[EN']$, (c) $[EE']$, (d) $[NN']$ (first letter: the High type's
+education choice $E$/$N$, second: the Low type's $E'$/$N'$).
+
+\method Four-step test for each profile: belief by Bayes' rule, the firm's best reply, then each
+worker type's deviation check. Payoffs (worker, firm): after $N$ the firm gets $10$ ($M'$) or $4$ ($C'$)
+from the High type and $0$ or $4$ from the Low type; the worker gets $10$ ($M'$) or $4$ ($C'$). After
+$E$: High worker $6$ ($M$) or $0$ ($C$), Low worker $3$ ($M$) or $-3$ ($C$); firm $10$ or $4$ against
+High, $0$ or $4$ against Low. With $p = \Pr(H \mid N)$ and $q = \Pr(H \mid E)$ the firm hires as
+manager iff $10p \ge 4$ after $N$ and $10q \ge 4$ after $E$, i.e.\ $p \ge \frac25$, $q \ge \frac25$.
+
+\solution
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Profile & Beliefs and replies & Deviation check & PBE? \\
+\midrule
+(a) $[NE']$ & $p = 1$, $M'$; $q = 0$, $C$ & Low: $-3 < 10$ from $N'$ & no \\
+(b) $[EN']$ & $q = 1$, $M$; $p = 0$, $C'$ & High: $6 > 4$; Low: $4 > 3$ & yes \\
+(c) $[EE']$ & $q = \frac12$, $M$ & Low: $N'$ pays $4$ or $10 > 3$; & no \\
+(d) $[NN']$ & $p = \frac12$, $M'$ & no gain from $E$ for any reply & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{(a) $[NE']$ is not an equilibrium.} After $N$ the firm believes High ($p = 1$) and hires
+a manager; after $E$ it believes Low ($q = 0$) and hires a cashier. The Low worker gets $-3$ from
+$E'$ but $10$ from deviating to $N'$ (answered by $M'$).
+
+\textbf{(b) $[EN']$ is an equilibrium.} $q = 1$, so after $E$ the firm plays $M$; $p = 0$, so after $N$ it
+plays $C'$ ($4 > 0$). High: $E$ gives $6$, deviating to $N$ gives $4$. Low: $N'$ gives $4$, deviating
+to $E'$ gives $3$. PBE: $\bigl([EN'], (M \text{ after } E,\ C' \text{ after } N);\ q = 1, p = 0\bigr)$.
+
+\textbf{(c) $[EE']$ is not an equilibrium.} $q = \frac12 \ge \frac25$, so $M$; the types get $6$ and $3$.
+After $N$ the firm answers $C'$ (belief $p < \frac25$) or $M'$. Against $C'$ the Low worker gets $4 > 3$
+from $N'$; against $M'$ both types get $10$. Whatever the off-path belief, the Low type deviates.
+
+\textbf{(d) $[NN']$ is an equilibrium.} $p = \frac12 \ge \frac25$, so $M'$ and both types get $10$. Any
+deviation to $E$ gives High at most $6$ and Low at most $3$, below $10$, whatever the firm
+replies. So the off-path belief $q \in [0,1]$ is unrestricted. PBE: $\bigl([NN'], M' \text{ after }
+N,\ \text{best reply to } q \text{ after } E;\ p = \frac12\bigr)$; the firm answers $M$ if $q \ge \frac25$
+and $C$ if $q \le \frac25$.
+
+\verify \texttt{check\_T1.py} enumerates all pure profiles with beliefs on a grid of step $\frac1{60}$:
+the PBE are exactly $[EN']$ and $[NN']$. The book's printed answer (pp.~386--394) reaches the same
+verdict on the four profiles.
+
+\answer{(a) No. (b) Yes: $[EN']$ with $M$ after $E$, $C'$ after $N$, beliefs $q = 1$, $p = 0$.
+(c) No. (d) Yes: $[NN']$ with $M'$ after $N$ ($p = \frac12$) and any belief $q$ after $E$ with the
+matching best reply.}
+\end{exsol}

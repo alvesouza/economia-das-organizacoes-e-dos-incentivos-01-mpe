@@ -1,0 +1,48 @@
+% Solution: Gibbons (1992) Problem 4.1. Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Gibbons Problem 4.1}{245}{Foundations}{3}
+\asked For each of the two trees: the normal form, and all pure-strategy Nash, subgame-perfect and
+perfect Bayesian equilibria.
+
+\method Normal form, then equilibria; subgame perfection via the proper subgames (the
+information set of player~2 joins his two nodes, so the only subgame is the whole game); PBE by
+adding the belief $p = \Pr(L)$ on player~2's information set (Gibbons \S4.1, pp.~175--183,
+Requirements 1--4; Tadelis \S15.2).
+
+\solution \textbf{Game (a).} Payoffs $(u_1, u_2)$; $R$ ends the game at $(2,2)$. Player~2's
+payoff from $L'$ is $p \cdot 1 + (1-p) \cdot 0 = p$ and from $R'$ is $1 - p$: $L'$ is optimal iff
+$p \ge \frac12$.
+\begin{center}
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L'$} & \multicolumn{1}{c}{$R'$}\\ \cline{2-3}
+$L$ & $\br{4},\ \br{1}$ & $0,\ 0$ \\ \cline{2-3}
+$M$ & $3,\ 0$ & $0,\ \br{1}$ \\ \cline{2-3}
+$R$ & $2,\ \br{2}$ & $\br{2},\ \br{2}$ \\ \cline{2-3}
+\end{tabular}
+\end{center}
+Nash: $(L, L')$ and $(R, R')$; $M$ is never a best reply. Subgame perfect: the whole game is the
+only subgame, so the same two. PBE: $(L, L')$ with $p = 1$ (Bayes' rule; $L'$ optimal since
+$1 \ge \frac12$). $(R, R')$ with any off-path belief $p \le \frac12$ ($R'$ optimal iff $1 - p \ge p$);
+for $p > \frac12$ player~2 would play $L'$ and player~1 would deviate to $L$.
+
+\textbf{Game (b).} Player~2's payoffs: $L'$: $3p$, $M'$: $2$, $R'$: $3(1-p)$, so $M'$ is optimal iff
+$p \in [\frac13, \frac23]$.
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L'$} & \multicolumn{1}{c}{$M'$} & \multicolumn{1}{c}{$R'$}\\ \cline{2-4}
+$L$ & $1,\ \br{3}$ & $1,\ 2$ & $\br{4},\ 0$ \\ \cline{2-4}
+$M$ & $\br{4},\ 0$ & $0,\ 2$ & $3,\ \br{3}$ \\ \cline{2-4}
+$R$ & $2,\ \br{4}$ & $\br{2},\ \br{4}$ & $2,\ \br{4}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Nash: only $(R, M')$ (against $L'$ player~1 prefers $M$, against $R'$ he prefers $L$). Subgame
+perfect: the same. PBE: $(R, M')$ with off-path belief $p \in [\frac13, \frac23]$; outside that
+interval $L'$ or $R'$ is strictly better for player~2, and then player~1 deviates to $M$ or $L$.
+
+\verify \texttt{check\_T1.py} builds both matrices, lists the pure equilibria and scans beliefs
+on a grid of step $\frac1{60}$ for the thresholds $\frac12$ and $[\frac13, \frac23]$. Gibbons prints no
+answer.
+
+\answer{(a) Nash = subgame-perfect: $(L, L')$ and $(R, R')$; PBE: $(L, L')$ with $p = 1$ and
+$(R, R')$ with $p \le \frac12$. (b) Nash = subgame-perfect: $(R, M')$; PBE: $(R, M')$ with
+$p \in [\frac13, \frac23]$.}
+\end{exsol}

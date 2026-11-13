@@ -1,0 +1,57 @@
+% Solution: Tadelis (2013) Exercise 16.3 "More Limit Pricing". Input by \solitem. Check: check_T2.py.
+\begin{exsol}{Tadelis Exercise 16.3}{335--336}{Exam}{3}
+\asked (a) The tree and the matrix; (b) for $\delta = 1$, a pooling PBE in which both types choose
+$p_L$; (c) the discount factors for which a separating PBE with $\theta_L$ at $p_L$ and $\theta_H$
+at $p_H$ exists.
+
+\method Compute the entrant's entry rule from his belief, then the two incentive constraints of a
+separating or pooling profile (Tadelis \S16.2, pp.~323--332: same steps, with a discrete price).
+With belief $\mu = \Pr(\theta_H \mid \text{price})$ the entrant gets $1\cdot\mu - 2(1-\mu) = 3\mu - 2$
+from $E$ and $0$ from $O$: he enters iff $\mu \ge \frac23$.
+
+\solution \textbf{(a) Tree and matrix.} Nature picks $\theta_L$ or $\theta_H$ with probability $\frac12$;
+the incumbent picks $p_L$ or $p_H$; the entrant sees the price and picks $E$ or $O$. Incumbent's
+payoff: period-1 profit plus $\delta$ times period-2 payoff; entrant's payoff: period 2 only.
+\sigtreenames{$\theta_L$}{$\theta_H$}{$p_L$}{$p_H$}{$O$}{$E$}{$\frac12$ each}
+\sigtree{6+8\delta,0}{6,-2}{1+5\delta,0}{1,1}{8+8\delta,0}{8,-2}{5+5\delta,0}{5,1}
+(Left branches $p_L$, right branches $p_H$; upper node $\theta_L$; replies $O$ above, $E$ below;
+payoffs (incumbent, entrant).) The matrix, with incumbent strategies (price of $\theta_L$, price of
+$\theta_H$) and entrant strategies (reply to $p_L$, reply to $p_H$):
+\begin{center}
+\small
+\begin{tabular}{r|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$OO$} & \multicolumn{1}{c}{$OE$} & \multicolumn{1}{c}{$EO$} & \multicolumn{1}{c}{$EE$} \\ \cline{2-5}
+$p_L p_L$ & $\frac72 + \frac{13}{2}\delta,\ 0$ & $\frac72 + \frac{13}{2}\delta,\ 0$ & $\frac72,\ -\frac12$ & $\frac72,\ -\frac12$ \\ \cline{2-5}
+$p_L p_H$ & $\frac{11}{2} + \frac{13}{2}\delta,\ 0$ & $\frac{11}{2} + 4\delta,\ \frac12$ & $\frac{11}{2} + \frac52\delta,\ -1$ & $\frac{11}{2},\ -\frac12$ \\ \cline{2-5}
+$p_H p_L$ & $\frac92 + \frac{13}{2}\delta,\ 0$ & $\frac92 + \frac52\delta,\ -1$ & $\frac92 + 4\delta,\ \frac12$ & $\frac92,\ -\frac12$ \\ \cline{2-5}
+$p_H p_H$ & $\frac{13}{2} + \frac{13}{2}\delta,\ 0$ & $\frac{13}{2},\ -\frac12$ & $\frac{13}{2} + \frac{13}{2}\delta,\ 0$ & $\frac{13}{2},\ -\frac12$ \\ \cline{2-5}
+\end{tabular}
+\end{center}
+
+\textbf{(b) Pooling at $p_L$, $\delta = 1$.} After $p_L$ the belief is the prior, $\mu = \frac12 < \frac23$,
+so the entrant stays out ($O$). Payoffs: $\theta_L$: $6 + 8 = 14$; $\theta_H$: $1 + 5 = 6$. Off the path
+(after $p_H$) choose the belief $\mu \ge \frac23$ (say $\mu = 1$): the entrant enters, and a deviation
+to $p_H$ pays $\theta_L$ $8 + 0 = 8 < 14$ and $\theta_H$ $5 + 0 = 5 < 6$. PBE: both types $p_L$; the
+entrant plays $O$ after $p_L$ ($\mu = \frac12$) and $E$ after $p_H$ ($\mu \ge \frac23$). (The belief after
+$p_H$ cannot be below $\frac23$: then he would stay out and $\theta_L$ would get $16 > 14$.)
+
+\textbf{(c) Separating.} Beliefs: $\mu(p_L) = 0$, $\mu(p_H) = 1$; replies: $O$ after $p_L$, $E$ after $p_H$
+(Bayes' rule on both prices, so there are no off-path prices). Incentive constraints:
+\begin{align*}
+  \theta_L:&\quad 6 + 8\delta \ge 8 + 0 \;\Longleftrightarrow\; \delta \ge \tfrac14, \\
+  \theta_H:&\quad 5 + 0 \ge 1 + 5\delta \;\Longleftrightarrow\; \delta \le \tfrac45.
+\end{align*}
+$\theta_L$ must not give up the high period-1 profit of $p_H$ (8 against 6) only to be mistaken for
+$\theta_H$; $\theta_H$ must not mimic ($1 + 5\delta$ against $5$). Both hold iff
+$\frac14 \le \delta \le \frac45$. (The reverse separating profile never works: $\theta_H$
+would get $1$ from $p_L$ and $5 + 5\delta$ from $p_H$.)
+
+\verify \texttt{check\_T2.py} builds the game for each $\delta \in \{0, \frac1{40}, \dots, 1\}$ and
+enumerates pure PBE with beliefs on a grid of step $\frac1{60}$: the separating profile exists
+exactly for $\frac14 \le \delta \le \frac45$; at $\delta = 1$ the profile of (b) is a PBE with off-path
+belief at least $\frac23$. Pooling at $p_H$ also exists for every $\delta$, which the exercise does not
+ask. Tadelis prints no answer.
+
+\answer{(b) Both $p_L$; $O$ after $p_L$ (belief $\frac12$), $E$ after $p_H$ (belief $\mu \ge \frac23$).
+(c) $\frac14 \le \delta \le \frac45$.}
+\end{exsol}

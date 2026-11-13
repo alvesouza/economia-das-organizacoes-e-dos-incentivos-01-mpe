@@ -1,0 +1,57 @@
+% Solution: Tadelis (2013) Exercise 15.1 "Equilibrium Selection". Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Tadelis Exercise 15.1}{314}{Foundations}{2}
+\asked (a) All Bayesian Nash equilibria (BNE) of the tree of Figure~15.5; (b) which of them are
+perfect Bayesian equilibria (PBE), and why.
+
+\method Write the normal form and find its Nash equilibria; a BNE of a tree is a Nash
+equilibrium of its normal form. For a PBE add a belief $\mu = \Pr(x_2)$ at player~2's information
+set $\{x_2, x_3\}$ and require his action to be optimal for it, on or off the path (Tadelis
+\S15.2, Requirements 15.1--15.3, pp.~303--312; Gibbons \S4.1, pp.~175--183).
+
+\solution Payoffs $(u_1, u_2)$; player~1 chooses $A$, $B$ or $C$ (which ends the game at $(1,3)$),
+player~2 chooses $L$, $M$ or $R$ without seeing $A$ versus $B$.
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$A$ & $0,\ \br{4}$ & $0,\ 1$ & $\br{4},\ 0$ \\ \cline{2-4}
+$B$ & $\br{4},\ 0$ & $0,\ 1$ & $0,\ \br{4}$ \\ \cline{2-4}
+$C$ & $1,\ \br{3}$ & $\br{1},\ \br{3}$ & $1,\ \br{3}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+\textbf{(a) Pure BNE.} The only cell with both payoffs underlined is $(C, M)$: against $M$ player~1
+gets $1$ from $C$ and $0$ from $A$ or $B$, and player~2 is indifferent among all three replies to $C$.
+
+\emph{All BNE.} Let player~1 mix $(a, b, c)$ and player~2 $(l, m, r)$. If $a + b > 0$ the
+information set is reached and, with $\mu = a/(a+b)$, player~2's payoffs are
+\[
+  u_2(L) = 4\mu, \qquad u_2(M) = 1, \qquad u_2(R) = 4(1-\mu).
+\]
+$M$ is optimal only if $4\mu \le 1$ and $4(1-\mu) \le 1$, which is impossible: whenever the
+information set is reached $m = 0$. Then:
+\begin{itemize}
+  \item $c = 1$: player~1 gets $1$; the deviations $A$ and $B$ pay $4r$ and $4l$, so the profile is a
+  BNE iff $l \le \frac14$ and $r \le \frac14$ ($m \ge \frac12$ is free). This family contains $(C,M)$.
+  \item $a, b > 0$: $m = 0$ and player~1 is indifferent between $A$ and $B$ iff $4r = 4l$, so
+  $l = r = \frac12$. Player~2 mixes $L$ and $R$ only if $\mu = \frac12$, i.e.\ $a = b$. Both give
+  player~1 $2 > 1$, so $c = 0$: the profile $\bigl(\frac12 A + \frac12 B,\ \frac12 L + \frac12 R\bigr)$.
+  \item $a > 0 = b$ (or the mirror image): $\mu = 1$, player~2 plays $L$, and then $A$ pays $0 < 4$
+  for $B$. No equilibrium. Mixing $C$ with $A$ or $B$ would need $4r = 1$ and $4l = 1$ with $m = 0$:
+  impossible.
+\end{itemize}
+\textbf{(b) PBE.} In the first family the information set is off the path, so $\mu$ is free, but $M$
+is a best reply for no $\mu$: it is strictly dominated at both nodes by $\frac12 L + \frac12 R$
+($2 > 1$). Every profile of the family with $m > 0$ is therefore not sequentially rational, and
+$m = 0$ would force $l + r = 1 > \frac12$. So $(C, M)$ and the whole family are BNE but not PBE:
+player~2's reply $M$ is not credible. In the second profile Bayes' rule gives $\mu = \frac12$ and
+player~2 is indifferent between $L$ and $R$ ($2 = 2 > 1$), so mixing is sequentially rational, and
+player~1 is optimal ($u_1(A) = u_1(B) = 2 > 1$): a PBE.
+
+\verify \texttt{check\_T1.py} finds the pure equilibria of the matrix, enumerates every
+equilibrium with probabilities in multiples of $\frac1{12}$ and compares them with the families above,
+and checks over a grid of beliefs that $M$ is never a best reply once the set is reached. Tadelis
+prints no answer.
+
+\answer{(a) BNE: $C$ with $\Pr(L) \le \frac14$, $\Pr(R) \le \frac14$ (pure case $(C, M)$), and
+$(\frac12 A + \frac12 B,\ \frac12 L + \frac12 R)$. (b) Only the mixed profile, with $\mu = \frac12$,
+is a PBE; $(C, M)$ is not, because $M$ is never optimal at player~2's information set.}
+\end{exsol}

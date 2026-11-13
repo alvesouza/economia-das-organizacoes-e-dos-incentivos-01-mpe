@@ -1,0 +1,39 @@
+% Lecture 8 additions to ../lista-reais-lectures-01-05-solutions/sol-preamble.tex.
+% (1) exsol header for a one-lecture document; (2) \sigtree: a two-type, two-message,
+% two-reply signaling tree in the layout of Gibbons Ch. 4 (messages left and right, the
+% Receiver's information set joined by a dashed line).
+\renewenvironment{exsol}[4]{%
+  \ifafterlecture\global\afterlecturefalse\else\clearpage\fi\phantomsection
+  \addcontentsline{toc}{section}{Item \theItemNo: #1 (p.~#2)}%
+  \section*{\large Item \theItemNo: #1\hfill{\normalsize\mdseries #3 $\cdot$ difficulty #4/5}}%
+  \textbf{Source:} #1, page~#2. The statement is reproduced verbatim in the Lecture~8 list
+  (item~\theItemNo); it is not repeated here.\par}{\par}
+
+\newcommand{\sigtreenames}[7]{%
+  \def\sigtA{#1}\def\sigtB{#2}\def\sigmL{#3}\def\sigmR{#4}\def\sigrU{#5}\def\sigrD{#6}\def\sigprior{#7}}
+% \sigtree{8 payoffs (Sender, Receiver)}: message L: (t1,u) (t1,d) (t2,u) (t2,d); message R: same order
+\newcommand{\sigtree}[8]{%
+\begin{center}
+\begin{tikzpicture}[dot/.style={circle,fill,inner sep=1.3pt},every node/.style={font=\footnotesize}]
+  \node[dot] (n) at (0,0) {};
+  \node[dot,label=above:{\sigtA}] (a) at (0,1.5) {};
+  \node[dot,label=below:{\sigtB}] (b) at (0,-1.5) {};
+  \draw (a) -- (b);
+  \node[right=2pt] at (n) {\sigprior};
+  \node[dot] (la) at (-3,1.5) {}; \node[dot] (lb) at (-3,-1.5) {};
+  \node[dot] (ra) at (3,1.5) {};  \node[dot] (rb) at (3,-1.5) {};
+  \draw (a) -- node[above] {\sigmL} (la);  \draw (a) -- node[above] {\sigmR} (ra);
+  \draw (b) -- node[above] {\sigmL} (lb);  \draw (b) -- node[above] {\sigmR} (rb);
+  \draw[dashed] (la) -- (lb);  \draw[dashed] (ra) -- (rb);
+  \node[left=3pt] at ($(la)!0.5!(lb)$) {Receiver};
+  \node[right=3pt] at ($(ra)!0.5!(rb)$) {Receiver};
+  \draw (la) -- node[above left,pos=.4] {\sigrU} ++(-1.2,0.8) node[dot,label=left:{$(#1)$}] {};
+  \draw (la) -- node[below left,pos=.4] {\sigrD} ++(-1.2,-0.8) node[dot,label=left:{$(#2)$}] {};
+  \draw (lb) -- node[above left,pos=.4] {\sigrU} ++(-1.2,0.8) node[dot,label=left:{$(#3)$}] {};
+  \draw (lb) -- node[below left,pos=.4] {\sigrD} ++(-1.2,-0.8) node[dot,label=left:{$(#4)$}] {};
+  \draw (ra) -- node[above right,pos=.4] {\sigrU} ++(1.2,0.8) node[dot,label=right:{$(#5)$}] {};
+  \draw (ra) -- node[below right,pos=.4] {\sigrD} ++(1.2,-0.8) node[dot,label=right:{$(#6)$}] {};
+  \draw (rb) -- node[above right,pos=.4] {\sigrU} ++(1.2,0.8) node[dot,label=right:{$(#7)$}] {};
+  \draw (rb) -- node[below right,pos=.4] {\sigrD} ++(1.2,-0.8) node[dot,label=right:{$(#8)$}] {};
+\end{tikzpicture}
+\end{center}}

@@ -1,0 +1,68 @@
+% Solution: Gibbons (1992) Problem 2.8 (tournament with sabotage). Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Gibbons Problem 2.8}{133}{Advanced}{4}
+\asked In the tournament of \S2.2.D, let output be $y_i = e_i - \tfrac12 s_j + \varepsilon_i$ and effort cost
+$g(e_i) + g(s_i)$, where $s_j \ge 0$ is sabotage by the rival. Show that the optimal prize $w_H - w_L$ is smaller than without sabotage.
+
+\method Backward induction in a two-stage game (Gibbons \S2.2.A and \S2.2.D, pp.~71--73, 79--82): solve the
+workers' simultaneous second-stage game for given wages, then the boss's wage choice (Lecture~5, slide~14: last stage
+first). Notation as in the text: $\varepsilon_i$ are i.i.d. with an atomless density $f$ and mean zero; $g' > 0$,
+$g'' > 0$; the payoff to a worker is $w - g(e_i) - g(s_i)$, the boss's is $y_1 + y_2 - w_H - w_L$; $U_a$ is the
+alternative utility; we look at the symmetric interior equilibrium, as the text does.
+
+\solution
+\textbf{Step 1: the workers.} Write $\Delta = w_H - w_L$. Worker~$i$'s output exceeds $j$'s iff
+\[
+  y_i - y_j = (e_i - e_j) + \tfrac12(s_i - s_j) + (\varepsilon_i - \varepsilon_j) > 0 ,
+\]
+so $\Pr\{y_i > y_j\} = H\bigl(e_i - e_j + \tfrac12(s_i - s_j)\bigr)$, with $H$ the c.d.f.\ of $\varepsilon_j - \varepsilon_i$ and density
+$h(z) = \int f(\varepsilon)f(\varepsilon + z)\,d\varepsilon$, $h(0) = \int f^2$. Worker $i$ maximises
+$w_L + \Delta\,\Pr\{y_i > y_j\} - g(e_i) - g(s_i)$, with first-order conditions
+\[
+  \Delta\,h(\cdot) = g'(e_i), \qquad \tfrac12\,\Delta\,h(\cdot) = g'(s_i).
+\]
+(Own effort raises the probability of winning at rate $h$; own sabotage raises it at half that rate.) In the symmetric equilibrium
+$h = h(0)$ and
+\[
+  g'(e^*) = \Delta\,h(0), \qquad g'(s^*) = \tfrac12\,\Delta\,h(0) = \tfrac12\,g'(e^*) .
+\]
+So sabotage is positive (assume $g'(0)$ small enough) but smaller than effort, $s^* < e^*$, and both rise with the prize.
+Write $s^* = s(e^*)$, where $s(e)$ solves $g'(s) = \tfrac12 g'(e)$; $s'(e) = \dfrac{g''(e)}{2g''(s)} > 0$.
+
+\textbf{Step 2: the boss.} Each worker wins with probability $\frac12$, so participation requires
+$\frac12 w_H + \frac12 w_L - g(e^*) - g(s^*) \ge U_a$, binding at the optimum:
+$w_H + w_L = 2U_a + 2g(e^*) + 2g(s^*)$. Expected output is $2e^* - s^*$ (sabotage lowers it), so the profit is
+\[
+  \Pi(e) = 2e - s(e) - 2g(e) - 2g\bigl(s(e)\bigr) - 2U_a ,
+\]
+chosen through $\Delta$, which fixes $e$ via $g'(e) = \Delta h(0)$. \emph{Without sabotage} the profit is
+$\Pi_0(e) = 2e - 2g(e) - 2U_a$, maximal at $g'(e_0) = 1$, and the optimal prize solves $\Delta_0\,h(0) = 1$.
+
+\textbf{Step 3: comparison.} Differentiating, and using $2g'(s) = g'(e)$,
+\[
+  \Pi'(e) = 2 - s'(e) - 2g'(e) - 2g'(s)\,s'(e) = 2\bigl[1 - g'(e)\bigr] - s'(e)\bigl[1 + g'(e)\bigr].
+\]
+For every $e$ with $g'(e) \ge 1$ both terms are $\le 0$ and the second is strictly negative, so
+$\Pi'(e) < 0$; in particular at $e_0$, where $g'(e_0) = 1$, $\Pi'(e_0) = -2s'(e_0) < 0$. Hence any optimal $e^*$ satisfies
+$g'(e^*) < 1$, i.e.\ $e^* < e_0$ ($g'$ increasing), and the optimal prize is
+\[
+  \Delta^* = \frac{g'(e^*)}{h(0)} \;<\; \frac{1}{h(0)} = \Delta_0 .
+\]
+The first-order condition at the optimum confirms it: $2[1 - g'(e^*)] = s'(e^*)[1 + g'(e^*)] > 0$.
+
+\textbf{Example.} $g(x) = \frac{x^2}{2}$: $s(e) = \frac e2$, $\Pi(e) = \tfrac32 e - \tfrac54 e^2$ (up to the constant), optimum $e^* = \frac35$ against
+$e_0 = 1$: the optimal prize with sabotage is $\frac35$ of the prize without.
+
+\interp Sabotage is a pure waste: it costs effort $g(s)$ and lowers output by $\frac12 s$. A larger prize
+raises both useful effort and sabotage, so the boss tunes the prize down to curb sabotage, even though this
+also reduces productive effort.
+
+\verify \texttt{check\_L05.py} verifies $\Pi'(e) = 2(1 - g') - s'(1 + g')$ for $g(x) = x^2/2$, the optimum $e^* = \frac35$ with $g'(e^*) = \frac35 < 1$,
+that $\Pi' < 0$ for $e \in [1,4)$ in that example, and, numerically for $g(x) = \frac{x^2}{2} + \frac{x^4}{4}$ (solving $g'(s) = \frac12 g'(e)$), that the
+optimum has $g'(e^*) = 0.504 < 1 = g'(e_0)$.
+
+\answer{In the symmetric equilibrium $g'(e^*) = \Delta h(0)$ and $g'(s^*) = \frac12 g'(e^*)$. The boss's profit
+$\Pi(e) = 2e - s(e) - 2g(e) - 2g(s(e))$ has $\Pi'(e) = 2[1 - g'(e)] - s'(e)[1 + g'(e)] < 0$ whenever $g'(e) \ge 1$, so the
+optimal induced effort has $g'(e^*) < 1$, whereas without sabotage $g'(e_0) = 1$. Since $\Delta = g'(e)/h(0)$, the optimal prize
+with sabotage is smaller than the one without it.}
+\end{exsol}

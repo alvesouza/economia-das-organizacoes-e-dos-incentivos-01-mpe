@@ -1,0 +1,66 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 6 Exercise 6 "Collusion in Donations in an
+% Infinitely Repeated Public Good Game". Input by \solitem. New for the Lecture 5 list.
+% Check: check_L05.py.
+\begin{exsol}{\MG{} Ch.~6 Exercise 6}{292--293}{Exam level}{3}
+\asked In a two-player public-good game with $u_i = \sqrt{(w - g_i)\,m\,(g_i + g_j)}$: find the best
+responses, the Nash equilibrium and the socially optimal contribution, then the discount factors for which
+grim trigger sustains the socially optimal contribution in the infinitely repeated game.
+
+\method Best responses and the stage Nash equilibrium, then grim trigger with the one-stage deviation
+principle and normalised payoffs (Lecture~5, slides~21, 24--29; Tadelis \S10.3, pp.~196--202). The
+incentive constraint compares the cooperative stage payoff with the best deviation followed by the stage
+Nash payoff forever.
+
+\solution
+\textbf{(a) Best response.} Squaring does not change the maximiser, so player~$i$ maximises
+$(w - g_i)(g_i + g_j)$: $\;(w - g_i) - (g_i + g_j) = 0$, hence
+\[
+  g_i(g_j) = \frac{w - g_j}{2} = \frac w2 - \frac12\,g_j .
+\]
+A rival's contribution crowds out one half of one's own: the response is $\frac w2$ when $g_j = 0$ and falls
+to $0$ at $g_j = w$. The second-order condition holds, since $(w-g_i)(g_i+g_j)$ is concave in $g_i$.
+
+\textbf{(b) Nash equilibrium.} Symmetric: $g = \frac{w - g}{2}$, so $g^* = \frac w3$. Payoff
+$u_i^* = \sqrt{\tfrac{2w}{3}\cdot m\cdot\tfrac{2w}{3}} = \frac{2w}{3}\sqrt m$.
+
+\textbf{(c) Social optimum.} Maximise $u_A + u_B$. At a symmetric profile each term is
+$\sqrt{(w - g)\,2mg}$, so the joint problem is to maximise $(w - g)g$, with
+solution $g^{SO} = \frac w2$ (the first-order condition for the asymmetric problem is also satisfied at
+$g_A = g_B = \frac w2$). Payoff $u_i^{SO} = \sqrt{\tfrac w2\cdot m\cdot w} = \frac{w\sqrt m}{\sqrt2} \approx 0.707\,w\sqrt m$,
+against $u_i^* = 0.667\,w\sqrt m$: the difference is $\frac{3\sqrt2 - 4}{6}\,w\sqrt m \approx 0.04\,w\sqrt m > 0$.
+Each player is better off at the social optimum, which has a larger contribution ($\frac w2 > \frac w3$):
+at Nash, each ignores the benefit his donation gives the other and free-rides.
+
+\textbf{(d) Grim trigger.} Strategy: contribute $\frac w2$ as long as both have; otherwise contribute $\frac w3$
+forever. Per-period payoffs, in units of $w\sqrt m$:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+cooperation & $\frac{1}{\sqrt2}$ & both give $\frac w2$ \\
+best deviation & $\frac34$ & $g_i = \frac{w - w/2}{2} = \frac w4$ against $g_j = \frac w2$:
+ $\sqrt{\tfrac{3w}{4}\,m\,\tfrac{3w}{4}} = \frac{3w}{4}\sqrt m$ \\
+punishment (Nash) & $\frac23$ & both give $\frac w3$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The punishment state needs no check (a stage equilibrium). The cooperative state requires, in
+normalised payoffs,
+\[
+  \frac{1}{\sqrt2} \;\ge\; (1-\delta)\,\frac34 + \delta\,\frac23
+  \iff \delta \;\ge\; \frac{\frac34 - \frac1{\sqrt2}}{\frac34 - \frac23}
+  = 12\Bigl(\frac34 - \frac{1}{\sqrt2}\Bigr) = 9 - 6\sqrt2 \approx 0.5147 .
+\]
+This is (10.5), $\delta^* = (v^d - v^c)/(v^d - v^*)$. The threshold does not depend on $w$ or $m$, because both
+scale every payoff by the same factor.
+
+\interp Cooperation is worth only $0.04$ more than Nash (a $6\%$ gain) while a deviation pays $0.043$
+more than cooperating. The two are of the same size, so the players must be fairly patient, $\delta \ge 0.51$.
+
+\verify \texttt{check\_L05.py} reproduces the book's answers with sympy: $g_i(g_j) = \frac{w-g_j}{2}$, $g^* = \frac w3$,
+$g^{SO} = \frac w2$, payoffs $\frac{w\sqrt m}{\sqrt2}$, $\frac{2w\sqrt m}{3}$, deviation $\frac{3w\sqrt m}{4}$, and
+$\delta^* = 9 - 6\sqrt2 = 0.5147$ (the book: ``$\delta \ge 0.51$''); the inequality holds at $0.52$ and fails at $0.51$.
+
+\answer{$g_i(g_j) = \frac{w - g_j}{2}$; $g^* = \frac w3$; $g^{SO} = \frac w2$ (higher utility for both: $\frac{w\sqrt m}{\sqrt2}$ against
+$\frac{2w\sqrt m}{3}$); grim trigger sustains $g^{SO}$ iff $\delta \ge 9 - 6\sqrt2 \approx 0.51$ (best deviation
+$g = \frac w4$ with payoff $\frac{3w\sqrt m}{4}$).}
+\end{exsol}

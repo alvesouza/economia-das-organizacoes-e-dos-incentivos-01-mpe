@@ -1,0 +1,40 @@
+% Solution: Gibbons (1992) Problem 3.1 (definitions). Input by \solitem. Check: check_E1.py.
+\begin{exsol}{Gibbons Problem 3.1}{169}{Foundations}{1}
+\asked Define a static Bayesian game, a pure strategy in it, and a pure-strategy Bayesian Nash
+equilibrium.
+
+\method Gibbons \S3.1.B (pp.~149--151); Tadelis \S12.1 (pp.~246--252). Information is
+incomplete because a player's payoff depends on a parameter (his \emph{type}) that only he
+observes; Harsanyi's device makes Nature draw the types first, which turns the game into one
+of imperfect information.
+
+\solution
+\textbf{Static Bayesian game.} $G=\{A_1,\dots,A_n;\,T_1,\dots,T_n;\,p_1,\dots,p_n;\,u_1,\dots,u_n\}$:
+action spaces $A_i$; type spaces $T_i$; beliefs $p_i(t_{-i}\mid t_i)$ (from a common prior, so
+that $p_i$ is the conditional of one joint distribution on $T$); payoffs $u_i(a_1,\dots,a_n;t_i)$.
+Timing: (1) Nature draws $t=(t_1,\dots,t_n)$ and tells player~$i$ only $t_i$; (2) players choose
+actions $a_i\in A_i$ simultaneously; (3) payoffs $u_i$ are realized.
+
+\textbf{Pure strategy.} A function $s_i:T_i\to A_i$: it says which action each type of~$i$
+takes. The strategy space has $|A_i|^{|T_i|}$ elements, and it is what a player with
+$|T_i|$ types is ``really'' choosing, even though only one type is realized.
+
+\textbf{Pure-strategy BNE.} A profile $s^*=(s_1^*,\dots,s_n^*)$ such that for every player $i$
+and every type $t_i\in T_i$, the action $s_i^*(t_i)$ solves
+\[
+  \max_{a_i\in A_i}\ \sum_{t_{-i}\in T_{-i}} u_i\bigl(s_1^*(t_1),\dots,a_i,\dots,s_n^*(t_n);t_i\bigr)\,p_i(t_{-i}\mid t_i).
+\]
+Each type best-responds to the others' \emph{strategies} (functions of their types) averaged
+over his beliefs. Because every type has positive probability, this interim condition is
+equivalent to Nash equilibrium of the Bayesian normal form, where player~$i$ picks a whole
+function $s_i$ to maximize ex-ante expected payoff (Tadelis p.~251; Gibbons p.~150).
+
+\verify \texttt{check\_E1.py} builds the Bayesian normal form of the game in item~2 and checks
+that its Nash equilibria are exactly the profiles in which every type passes the interim
+best-reply test, and that the strategy count is $|A_i|^{|T_i|}$ ($2^2=4$ there). Gibbons gives no
+answer.
+
+\answer{A static Bayesian game is $\{A_i;T_i;p_i;u_i\}$ with Nature drawing types first; a pure
+strategy is a map $s_i:T_i\to A_i$; a BNE is a profile in which every type of every player
+maximizes expected payoff given his belief $p_i(\cdot\mid t_i)$ and the others' strategies.}
+\end{exsol}

@@ -1,0 +1,57 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Food for Thought 4 (public officials' pay). Input by \solitem.
+% Check: check_T1.py (item 7).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Food for Thought 4}{284--285}{Foundations}{2}
+\asked Discuss the efficacy of proposals that tie pay increases for public officials to limits on their
+outside earnings (lectures for pay; lobbying after leaving office).
+
+\method The efficiency-wage model of Ch.~8 (pp.~250--255). An official does not sell favours iff
+$p\,(w - \bar w)\,N \ge g$, where $w$ is pay in office, $\bar w$ the best alternative if dismissed, $p$ the
+probability of detecting misconduct, $N$ the horizon multiplier and $g$ the one-time gain from
+misconduct. The minimum deterrent pay is $w = \bar w + g/(Np)$ (formula 8.3). The exercise is discursive,
+so this is an analytical answer.
+
+\solution
+\textbf{1. Where outside activities enter.} Outside income plays two roles.
+(i) Lecture fees and later lobbying jobs from interest groups can be the \emph{payment for favours}: they
+raise $g$, and they do not vanish if the official is found out, because the lobby values the same
+connections, so the penalty $w - \bar w$ falls ($\bar w$ rises).
+(ii) They are also a way of paying the official, which keeps the visible salary $w$ low and the rent
+$w - \bar w$ of the job small. Both reduce $p(w-\bar w)N - g$.
+
+\textbf{2. What the plan does.} Tying a pay rise to a cap on outside activities (a) raises $w$ and
+(b) cuts $g$ and the outside component of $\bar w$. Both move the incentive constraint the right way.
+In the model the plan works iff
+\begin{itemize}
+  \item the raise exceeds the outside income given up, otherwise $w - \bar w$ does not grow. With $p = 0.2$,
+  $N = 4$, $\bar w = 100$ and $g = 80$ the deterrent salary is $w = 200$. An official who earns $30$ on the
+  side needs only $170$, and a raise of $20$ in exchange for the ban does not deter;
+  \item the limits are enforceable: $p$ must apply to the new rules (disclosure; bans on post-office
+  lobbying with credible penalties), otherwise the ban is cosmetic;
+  \item the post-office restriction is credible: a delayed lobbying job is a reward that cheating
+  officials \emph{keep}, so only a binding cooling-off period reduces $g$.
+\end{itemize}
+
+\textbf{3. Costs and caveats.} (a) Participation: pay must still attract capable officials, whose
+alternatives are lucrative. A cap lowers total pay unless the salary rises enough, which is politically
+costly. (b) Not all outside activity is corrupt: lectures spread expertise, so a blunt ban destroys value.
+(c) Payments can be displaced to relatives or consulting firms, so monitoring ($p$) is the weak link, as in
+Macaulay's Lord Clive example (remote, powerful officials, low $p$). (d) A higher salary raises the rent
+of honest officials too.
+
+\textbf{4. Assessment.} The plan is effective as a package: a salary increase that at least replaces
+the lost income, caps on activities that are payments for favours, and credible monitoring. A pay rise
+without limits leaves $g$ untouched. Limits without a pay rise lower $w - \bar w$ and invite cheating or
+exit.
+
+\interp The proposal applies Clive's logic of liberal remuneration (p.~252) together with the monitoring
+side of the model: pay and monitoring are substitutes in $p(w-\bar w)N \ge g$.
+
+\verify \texttt{check\_T1.py} (item~7) computes the deterrent salary $200$, the salary $170$ with $30$ of
+outside income, shows that a $+20$ raise against a $30$ ban fails to deter, and that a larger gain
+($g = 120$) raises the required salary to $250$. The numbers are illustrative.
+
+\answer{Deterrence needs $p(w - \bar w)N \ge g$. A package of a higher salary, limits on paid outside work
+and enforceable post-office rules raises the rent and cuts the gain from favours, so it can work. It fails if
+the raise is smaller than the income given up, if the limits cannot be monitored, or if the cooling-off
+rule is not credible.}
+\end{exsol}

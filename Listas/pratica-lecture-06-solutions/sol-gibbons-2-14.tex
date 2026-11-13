@@ -1,0 +1,70 @@
+% Solution: Gibbons (1992) Problem 2.14. Input by \solitem. Check: check_T3.py (item 23).
+\begin{exsol}{Gibbons Problem 2.14}{135--136}{Advanced}{5}
+\asked In the infinitely repeated Bertrand game of Problem~2.13, demand $a - p$ has intercept $a_H$ with probability
+$\pi$ and $a_L < a_H$ with probability $1-\pi$, i.i.d., and the state is revealed before prices are set. Find (i) the
+monopoly prices $p_H$, $p_L$; (ii) the lowest $\delta^*$ for which trigger strategies sustain them; (iii) for
+$\delta \in [\frac12, \delta^*)$, the highest price $p(\delta)$ sustainable in the high state with $p_L$ in the low
+state.
+
+\method One-stage deviation with reversion to the static equilibrium (price $= c$, profit $0$), Gibbons \S2.3.C
+and the Rotemberg--Saloner model of the text. In state $i$, each firm's collusive profit is half the monopoly
+profit and a price-cutter takes all of it. Let $\pi_i = \frac{(a_i - c)^2}{8}$ (each firm's collusive profit) and
+$\bar\pi = \pi\,\pi_H + (1-\pi)\,\pi_L$ (expected, before the state is drawn).
+
+\solution
+\textbf{(i) Monopoly prices.} Maximising $(p - c)(a_i - p)$: $p_i = \frac{a_i + c}{2}$, with total profit
+$\frac{(a_i - c)^2}{4}$ and $\pi_i = \frac{(a_i - c)^2}{8}$ per firm.
+
+\textbf{(ii) The cutoff $\delta^*$.} In state $i$, collusion gives $\pi_i + \frac{\delta}{1-\delta}\bar\pi$ (today's profit plus
+the expected value of the future, which is the same whether or not today's state is high) and deviation gives $2\pi_i$
+(then $0$). The condition is
+\[
+  \frac{\delta}{1-\delta}\,\bar\pi \ge \pi_i \iff \delta \ge \frac{\pi_i}{\pi_i + \bar\pi} .
+\]
+It is hardest in the high state (larger $\pi_i$), so
+\[
+  \delta^* = \frac{\pi_H}{\pi_H + \bar\pi} = \frac{(a_H - c)^2}{(a_H - c)^2(1+\pi) + (1-\pi)(a_L - c)^2}
+  \in \Bigl(\tfrac12, \tfrac{1}{1+\pi}\Bigr).
+\]
+Example: $a_H = 10$, $a_L = 6$, $c = 0$, $\pi = \frac12$: $p_H = 5$, $p_L = 3$, $\pi_H = 12.5$, $\pi_L = 4.5$,
+$\delta^* = \frac{100}{150 + 18} = \frac{25}{42} \approx 0.595$. At $\pi = 1$ (no fluctuation) $\delta^* = \frac12$.
+
+\textbf{(iii) Highest boom price for $\delta \in [\frac12, \delta^*)$.} Suppose the firms charge $p \le p_H$ in the high
+state, with static profit per firm $\varphi(p) = \frac{(p - c)(a_H - p)}{2}$, and $p_L$ in the low state. The deviator
+undercuts at $p - \varepsilon$ and earns $2\varphi(p)$. The expected future profit is $\bar\pi(p) = \pi\varphi(p) +
+(1-\pi)\pi_L$. The high-state constraint is
+\[
+  \frac{\delta}{1-\delta}\bigl[\pi\varphi(p) + (1-\pi)\pi_L\bigr] \ge \varphi(p)
+  \iff \varphi(p) \le \Phi(\delta) \equiv \frac{\delta(1-\pi)\pi_L}{1 - \delta(1+\pi)} .
+\]
+($1 - \delta(1+\pi) > 0$ for $\delta < \delta^* < \frac1{1+\pi}$.) The low-state constraint $\delta\bar\pi(p) \ge
+(1-\delta)\pi_L$ holds because $\Phi(\delta) \ge \pi_L$ for $\delta \ge \frac12$. Since $\varphi$ rises up to $p_H$, the highest sustainable
+price is the lower root of $\varphi(p) = \Phi(\delta)$:
+\[
+  p(\delta) = \frac{(a_H + c) - \sqrt{(a_H - c)^2 - 8\Phi(\delta)}}{2},
+\]
+which increases with $\delta$, with $\Phi(\delta^*) = \pi_H$ giving $p(\delta^*) = p_H$. In the example $p(\frac12) = 1$
+(profit equals $\pi_L = 4.5$, so $p(\frac12) < p_L$: at $\delta = \frac12$ the high state can earn no more than the low
+state does), and $p(\delta)$ rises to $5$ at $\delta = \frac{25}{42}$.
+
+\interp Booms tempt firms more (a larger gain from cutting, while the future is unchanged), so for intermediate $\delta$ the
+boom price must be below monopoly: prices are countercyclical relative to the monopoly benchmark (Rotemberg--Saloner).
+
+\verify \texttt{check\_T3.py} (item~23) computes the prices, $\pi_H$, $\pi_L$, $\delta^* = \frac{25}{42}$ and the
+formula, confirms the low-state cutoff is smaller, that the high-state condition switches at $\delta^*$, and, for
+$\delta \in \{\frac12, \frac{11}{20}, \frac{57}{100}\}$, that the largest price on a grid of step $\frac1{2000}$
+satisfying both constraints equals the formula for $p(\delta)$ (to $10^{-3}$), with $p(\frac12) = 1$. Gibbons's
+unofficial manual is not copied.
+
+\mistakes
+\begin{itemize}
+  \item Using the state-contingent profit as the future value. After the next draw the future value is the
+  \emph{expected} $\bar\pi$, whichever state today is.
+  \item Forgetting the low-state constraint when lowering the high-state price; it holds for $\delta \ge \frac12$ here.
+\end{itemize}
+
+\answer{(i) $p_i = \frac{a_i + c}{2}$. (ii) $\delta^* = \dfrac{(a_H - c)^2}{(a_H - c)^2(1+\pi) + (1-\pi)(a_L - c)^2}$. (iii) For
+$\delta \in [\frac12, \delta^*)$: $p(\delta) = \frac12\bigl[(a_H + c) - \sqrt{(a_H - c)^2 - 8\Phi(\delta)}\bigr]$ with
+$\Phi(\delta) = \frac{\delta(1-\pi)(a_L - c)^2/8}{1 - \delta(1+\pi)}$, rising from the price that earns the low-state
+profit at $\delta = \frac12$ to $p_H$ at $\delta^*$.}
+\end{exsol}

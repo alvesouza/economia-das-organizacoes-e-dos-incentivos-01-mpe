@@ -1,0 +1,59 @@
+% Solution: Gibbons (1992) Problem 2.10. Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Gibbons Problem 2.10}{134}{Exam level}{3}
+\asked For which $x > 4$ is the stated strategy (play $Q_i$ in stage~1, then a continuation that depends
+on who deviated) a subgame-perfect equilibrium of the twice-played $4\times4$ game, with no discounting?
+
+\method Two-stage repeated game with player-specific punishments (Gibbons \S2.3.A, pp.~82--88; Tadelis
+\S9.4, pp.~180--184, Thm.~9.1, p.~185). Second-stage play must be a stage Nash equilibrium after every
+history; a first-stage deviation is checked one stage at a time. Lecture~5, slides~10--15.
+
+\solution
+\textbf{Step 1: stage equilibria.} Best replies (underlined, with $x > 4$):
+\begin{center}
+\begin{tabular}{r|c|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$P_2$} & \multicolumn{1}{c}{$Q_2$} & \multicolumn{1}{c}{$R_2$} & \multicolumn{1}{c}{$S_2$}\\ \cline{2-5}
+$P_1$ & $\br{2},\ \br{2}$ & $\br{x},\ 0$ & $-1,\ 0$ & $0,\ 0$ \\ \cline{2-5}
+$Q_1$ & $0,\ \br{x}$ & $4,\ 4$ & $-1,\ 0$ & $0,\ 0$ \\ \cline{2-5}
+$R_1$ & $0,\ 0$ & $0,\ 0$ & $\br{0},\ \br{2}$ & $0,\ 0$ \\ \cline{2-5}
+$S_1$ & $0,\ -1$ & $0,\ -1$ & $-1,\ -1$ & $\br{2},\ \br{0}$ \\ \cline{2-5}
+\end{tabular}
+\end{center}
+Player~1's best replies are $P_1$ to $P_2$ (2), $P_1$ to $Q_2$ ($x$), $R_1$ to $R_2$ ($0$) and $S_1$ to $S_2$ ($2$);
+player~2's are $P_2$ to $P_1$ (2), $P_2$ to $Q_1$ ($x$), $R_2$ to $R_1$ ($2$), $S_2$ to $S_1$ ($0$). The pure
+equilibria are
+\[
+  (P_1,P_2) \to (2,2), \qquad (R_1,R_2) \to (0,2), \qquad (S_1,S_2) \to (2,0).
+\]
+$(Q_1,Q_2)$ is not one because $x > 4$: either player gains by switching to $P$.
+
+\textbf{Step 2: the second stage.} The strategy prescribes $(P_1,P_2)$ after $(Q_1,Q_2)$, $(R_1,R_2)$ after
+a deviation by player~1 only, $(S_1,S_2)$ after a deviation by player~2 only, and $(P_1,P_2)$ after a
+double deviation. All four are stage equilibria and nothing follows stage~2, so there is no profitable
+deviation there. Player~1 is punished by $(R,R)$ (payoff $0$, his worst equilibrium), and player~2 by
+$(S,S)$ (payoff $0$, her worst).
+
+\textbf{Step 3: the first stage, player 1.} On the path he gets $4 + 2 = 6$. Against $Q_2$ his deviations
+give: $P_1$ pays $x$, $R_1$ pays $-1$, $S_1$ pays $0$; after any of them stage~2 is $(R,R)$ and pays him $0$.
+The best deviation is $P_1$ with $x + 0 = x$. So he conforms iff
+\[
+  6 \ge x .
+\]
+\textbf{Player 2} is symmetric: against $Q_1$ the best deviation is $P_2$ (payoff $x$), followed by $(S,S)$ and
+$0$; she conforms iff $6 \ge x$. A double deviation is not a one-stage deviation by either player.
+
+\textbf{Result.} The strategy is an SPE iff $4 < x \le 6$ (the lower bound is only the assumption $x>4$).
+
+\interp The reward $(P,P)$ is worth $2$ to each; the stick is worth $0$. The swing, $2$, must cover the
+deviation gain $x - 4$. Player-specific sticks matter: $(R,R)$ hurts only player~1 and $(S,S)$ only
+player~2. With a single stick equal to $(P,P)$ itself (no punishment) the condition would be $6 \ge x + 2$,
+impossible for $x > 4$.
+
+\verify \texttt{check\_L05.py} lists the pure stage equilibria $(P,P)$, $(R,R)$, $(S,S)$ and, with the exact
+one-stage-deviation test, finds that $(Q,Q)$ is a first-stage SPE outcome for $x \in \{4.5, 5, 6\}$ and not for
+$x \in \{6.1, 7\}$: precisely when $x \le 6$.
+
+\answer{The strategy is an SPE iff $4 < x \le 6$. Stage~2 is a stage equilibrium after every history:
+$(P,P)$ on the path, $(R,R)$ after player~1 deviates, $(S,S)$ after player~2 deviates. In stage~1 the
+best deviation gives $x$ and then $0$, against $4 + 2 = 6$ on the path.}
+\end{exsol}

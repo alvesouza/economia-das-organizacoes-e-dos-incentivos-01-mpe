@@ -1,0 +1,46 @@
+% Detailed solutions to the 28 items of Listas/pratica-lecture-06.md (Lecture 6, estimated).
+% Item order: sol-items.tex. Items 12 and 19 are input from ../lista-reais-lectures-01-05-solutions.
+% Compile here: pdflatex main.tex (twice). Check: pdffonts main.pdf (all Type 1, uni = yes).
+\documentclass[11pt,a4paper]{article}
+\newcommand{\soltema}{Lecture 6 practice list: solutions}
+\input{../lista-reais-lectures-01-05-solutions/sol-preamble}
+% Heading for this list: the item number equals the list number, so the combined-list number is dropped.
+\renewenvironment{exsol}[4]{%
+  \ifafterlecture\global\afterlecturefalse\else\clearpage\fi\phantomsection
+  \addcontentsline{toc}{section}{Item \theItemNo: #1 (p.~#2)}%
+  \section*{\large Item \theItemNo: #1\hfill{\normalsize\mdseries #3 $\cdot$ difficulty #4/5}}%
+  \textbf{Source:} #1, page~#2. The statement is reproduced verbatim in
+  the list, item~\theItemNo; it is not repeated here.\par}{\par}
+\input{sol-items}
+
+\title{\textbf{Lecture 6 Practice List: Detailed Solutions}\\[4pt]
+  \large Economics of Organizations and Incentives (MPE Insper)}
+\author{Solutions to the 28 exercises of \texttt{Listas/pratica-lecture-06.md}}
+\date{November 2026}
+
+\input{../statement-hook}  % statement of each item before its solution
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent\textbf{Scope.} Lecture 6 is estimated (no slides yet): bargaining (announced for Lecture 5 but absent from
+its slides), tacit collusion, reputation and relational contracts. The items follow the order of the list: Tier~1
+Foundations (1--8), Tier~2 Exam level (9--18), Tier~3 Advanced (19--28). Each solution has the same layout: what is
+asked, method, solution, interpretation, verification and common mistakes, followed by a boxed answer.
+Items~12 (Tadelis 11.5) and 19 (Gibbons 2.20) are the solutions of
+\texttt{Listas/lista-reais-lectures-01-05-solutions/}, reused unchanged. Every number is asserted by
+\texttt{check\_T1.py}, \texttt{check\_T2.py} and \texttt{check\_T3.py} (one per tier). Where
+Mu\~noz-Garcia prints an answer, ours was cross-checked: the printed answer to Ch.~6 Ex.~3(c) (item~13)
+contradicts the book's own numbers and is flagged there.
+
+\tableofcontents
+
+\soltier{Tier 1 --- Foundations}
+\tieri
+\soltier{Tier 2 --- Exam level}
+\tierii
+\soltier{Tier 3 --- Advanced}
+\tieriii
+
+\end{document}

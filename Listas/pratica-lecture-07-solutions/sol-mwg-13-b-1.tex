@@ -1,0 +1,61 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.B.1. Input by \solitem. Check: check_E3.py
+% (check_E3.py writes fig-mwg13b.tex, input below).
+\begin{exsol}{MWG Exercise 13.B.1}{473}{Advanced}{4}
+\asked Graph $r(\hat\theta)$, $E[\theta\mid\theta\le\hat\theta]$ and $\hat\theta$ on $[\underline\theta,\bar\theta]$;
+read off the competitive equilibria with unobservable types and the Pareto optimal allocation;
+then draw the situations of Figures 13.B.1--13.B.3.
+
+\method Model of MWG \S13.B (pp.~437--443): a worker of type $\theta$ produces $\theta$ at a
+firm and $r(\theta)$ at home, and accepts a wage $w$ iff $r(\theta)\le w$. With $r$ increasing, the accepting set at wage $w=r(\hat\theta)$ is
+$\{\theta\le\hat\theta\}$ and firms break even iff $w=E[\theta\mid\theta\le\hat\theta]$ (Def.~13.B.1).
+Reading the diagram in the cutoff $\hat\theta$ turns the equilibrium condition into a crossing.
+
+\solution
+\textbf{Competitive equilibria.} An interior cutoff $\hat\theta\in(\underline\theta,\bar\theta)$ with
+wage $w=r(\hat\theta)$ is an equilibrium iff
+\[
+  r(\hat\theta)=E[\theta\mid\theta\le\hat\theta],
+\]
+a point where the curve $r(\hat\theta)$ crosses the curve $E[\theta\mid\theta\le\hat\theta]$. Two
+corners: $\hat\theta=\bar\theta$ (everybody works, wage $E[\theta]$) is an equilibrium iff
+$r(\bar\theta)\le E[\theta]$; $\hat\theta=\underline\theta$ (only the lowest type, a null set, wage $\underline\theta$)
+is an equilibrium iff $r(\underline\theta)=\underline\theta$ (the curves meet at the left end). The curve $E[\theta\mid\theta\le\hat\theta]$ is increasing
+(if $f>0$), starts at $\underline\theta$, ends at $E[\theta]$ and lies below the $45^\circ$ line $\hat\theta$.
+
+\textbf{Pareto optimal allocation.} Workers with $r(\theta)\le\theta$ work at a firm: the set of
+$\hat\theta$ where the curve $r$ lies on or below the $45^\circ$ line. An equilibrium is efficient only if
+its cutoff coincides with the boundary of that set.
+
+\textbf{The three figures} (examples checked in \texttt{check\_E3.py}; blue $r$, green $E[\theta\mid\theta\le\hat\theta]$, dashed $45^\circ$):
+\input{fig-mwg13b}
+\begin{itemize}
+  \item \emph{Fig.~13.B.1} (left): $\theta\sim U[1,2]$, $r(\theta)=0.9\,\theta\le\theta$. All types should
+  work, but the unique equilibrium is the crossing $\hat\theta=\tfrac54$ (wage $\tfrac98$); here
+  $r(\bar\theta)=1.8>E[\theta]=1.5$, so the all-work corner fails: the best workers are driven out.
+  \item \emph{Fig.~13.B.2} (middle): $\theta\sim U[0,2]$, $r(\theta)=0.8\,\theta$, $\alpha>\tfrac12$:
+  $E[\theta\mid\theta\le\hat\theta]=\hat\theta/2<r(\hat\theta)$ for every $\hat\theta>0$; the only equilibrium
+  is the corner $\hat\theta=\underline\theta=0$, with a null set employed: complete market failure although
+  everybody should work ($r(\theta)<\theta$).
+  \item \emph{Fig.~13.B.3} (right): a density with two bumps ($\theta\in[0,1]$, mass
+  $\tfrac1{20},\tfrac5{20},\tfrac1{20},\tfrac{13}{20}$ on $[0,\tfrac15],[\tfrac15,\tfrac35],[\tfrac35,\tfrac45],[\tfrac45,1]$) and
+  $r(\theta)=0.6\,\theta$: the curves cross three times, at $\hat\theta\approx0.262,\,0.458,\,0.834$,
+  with wages $0.157,\,0.275,\,0.501$. Wages are Pareto ranked (firms earn $0$ everywhere,
+  workers gain with $w$): the high-wage equilibrium dominates, the low ones are coordination failures.
+\end{itemize}
+
+\interp The three curves summarize the model: efficiency is read against the $45^\circ$ line
+(types worth more at the firm than at home), the equilibrium against the expected-productivity
+curve $E[\theta\mid\theta\le\hat\theta]$, which lies below the $45^\circ$ line because only the
+worse types accept low wages: adverse selection.
+
+\verify \texttt{check\_E3.py}: sympy solves the crossing for Fig.~B.1 ($\hat\theta=\tfrac54$,
+$E=r=\tfrac98$) and shows the $\alpha>\tfrac12$ case of Fig.~B.2 has no positive root; it solves the piecewise
+quadratic equations for Fig.~B.3 (three roots, increasing wages), checks that
+$E[\theta\mid\theta\le\hat\theta]$ is increasing, and writes \texttt{fig-mwg13b.tex}.
+MWG's solutions manual contains the figures; no numbers to compare.
+
+\answer{Equilibria = crossings of $r(\hat\theta)$ with $E[\theta\mid\theta\le\hat\theta]$ (plus the corners
+$\hat\theta=\bar\theta$ if $r(\bar\theta)\le E[\theta]$ and $\hat\theta=\underline\theta$); the Pareto optimal set of workers is where
+$r(\hat\theta)\le\hat\theta$ (below the $45^\circ$ line). Fig.~B.1: one interior crossing below the efficient
+set; B.2: only $\hat\theta=\underline\theta$; B.3: three crossings.}
+\end{exsol}

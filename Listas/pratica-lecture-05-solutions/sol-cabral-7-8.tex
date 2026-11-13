@@ -1,0 +1,63 @@
+% Solution: Cabral (2017) Exercise 7.8 "Finitely repeated game". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Cabral Exercise 7.8}{180}{Foundations}{1}
+\asked Explain in words why a one-shot game with two equilibria, played twice, can have equilibria
+whose play differs from the repetition of the one-shot equilibria.
+
+\method Finitely repeated games with several stage equilibria (Tadelis \S10.1, pp.~190--192, and the
+one-stage deviation principle, Thm.~9.1, p.~185; Gibbons \S2.3.A, pp.~82--88). Slides, Lecture~5:
+stage-game equilibria and the repeated game (slide~10), the $T=2$ example with two equilibria
+(slides~11--13), one-stage deviation principle (slide~14), discounting (slide~15).
+
+\solution
+\textbf{Step 1: the last period.} The subgame after any first-period outcome is the stage game
+itself, so every SPE plays a stage-game Nash equilibrium there (slide~10). With two equilibria,
+$e^{\text{good}}$ and $e^{\text{bad}}$, the players can choose \emph{which one} after each
+first-period outcome.
+
+\textbf{Step 2: the first period.} A first-period action profile $a$ that is not a stage equilibrium
+tempts some player to deviate and gain $g_i$. The second period can make that deviation costly:
+play $e^{\text{good}}$ after $a$ (the carrot) and $e^{\text{bad}}$ after a deviation (the stick). This
+is credible, because both are Nash equilibria of the second-period subgame. Player~$i$ then
+conforms if the continuation gap is larger than the temptation:
+\[
+  \delta\,\bigl[u_i(e^{\text{good}}) - u_i(e^{\text{bad}})\bigr] \;\ge\; g_i .
+\]
+When it holds, $a$ is played in period~1 although it is not an equilibrium of the one-shot game. The
+repetition of one-shot equilibria (every period a stage equilibrium) is still an SPE, but it is no
+longer the only one.
+
+\textbf{Step 3: an example (slide~11).} The stage game
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$m$} & \multicolumn{1}{c}{$f$} & \multicolumn{1}{c}{$r$}\\ \cline{2-4}
+$M$ & $4,\ 4$ & $-1,\ 5$ & $0,\ 0$ \\ \cline{2-4}
+$F$ & $5,\ -1$ & $\br{1},\ \br{1}$ & $0,\ 0$ \\ \cline{2-4}
+$R$ & $0,\ 0$ & $0,\ 0$ & $\br{3},\ \br{3}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+has two pure equilibria, $(F,f)$ with $(1,1)$ and $(R,r)$ with $(3,3)$. Consider: play $(M,m)$ in
+period~1; in period~2 play $(R,r)$ after $(M,m)$ and $(F,f)$ after any other outcome. The best
+deviation of player~1 is $F$ (payoff $5$). Conforming gives $4 + 3\delta$, deviating gives
+$5 + \delta$, so he conforms iff $\delta \ge \frac12$; player~2 is symmetric. At $\delta=1$ the
+comparison is $7 \ge 6$ (slide~13). So $(M,m)$ is played in period~1 of an SPE, which no repetition
+of $(F,f)$ and $(R,r)$ produces.
+
+\textbf{Step 4: why two equilibria are needed.} If the stage game has a unique equilibrium, the
+second period's play cannot depend on the first, the carrot and the stick coincide, and the
+condition in Step~2 fails: unraveling (slide~9, and Cabral 7.13, item~1).
+
+\interp Repetition adds new equilibria only through the \emph{choice among} stage equilibria: a
+future that depends on the present is a credible threat exactly when the threatened action is itself
+a best reply in the last period.
+
+\verify \texttt{check\_L05.py} computes the stage equilibria of the slide-11 game, $(F,f)$ and
+$(R,r)$, and confirms by the one-stage deviation test that $(M,m)$ is a first-period SPE outcome
+for $\delta = \frac12$, $\frac34$, $1$ and not for $\delta = 0.49$.
+
+\answer{With two stage equilibria, period-2 play can be made to depend on period-1 play (reward with
+the good equilibrium, punish with the bad one) and both are best replies in the last period, so
+the threat is credible. A non-equilibrium first-period profile is then sustained whenever
+$\delta\,[u_i(e^{\text{good}}) - u_i(e^{\text{bad}})] \ge g_i$ (in the slide-11 game, $\delta \ge \frac12$ for
+$(M,m)$). With a unique stage equilibrium nothing new arises.}
+\end{exsol}

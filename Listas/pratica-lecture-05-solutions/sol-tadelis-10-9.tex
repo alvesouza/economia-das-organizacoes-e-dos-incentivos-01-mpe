@@ -1,0 +1,61 @@
+% Solution: Tadelis (2013) Exercise 10.9 "Negative Externalities". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 10.9}{218--219}{Foundations}{2}
+\asked Two firms impose external costs on each other: find the stage-game Nash equilibrium and
+compare it with the Pareto-optimal outputs; then find the discount factors for which the Pareto-optimal
+outputs are an SPE of the infinitely repeated game.
+
+\method Grim trigger and the one-stage deviation principle with normalised payoffs (Lecture~5,
+slides~21, 24--25, 28--29; Tadelis \S10.3, pp.~196--202, threshold (10.5), p.~202). The
+cooperative state is checked against the best one-period deviation followed by the stage Nash
+equilibrium forever; the punishment state needs no check because it is a stage equilibrium.
+
+\solution
+Payoffs: $v_1 = (30 - q_2)q_1 - q_1^2$ and $v_2 = (30 - q_1)q_2 - q_2^2$.
+
+\textbf{(a) Stage game.} The first-order condition of firm~1 is $30 - q_2 - 2q_1 = 0$, so the best
+responses are
+\[
+  q_1(q_2) = \tfrac{30 - q_2}{2}, \qquad q_2(q_1) = \tfrac{30 - q_1}{2}
+\]
+(downward-sloping lines, each with intercept $15$ on its own axis and $30$ on the rival's axis, crossing at one point). Solving, $q_1 = q_2 = 10$ is the unique Nash equilibrium, with
+profits $v_i = (30-10)\cdot10 - 100 = 100$.
+
+\emph{Pareto optimum.} Let $s = q_1 + q_2$. Then
+$v_1 + v_2 = 30s - 2q_1q_2 - q_1^2 - q_2^2 = 30s - s^2$, which depends on $s$ only and is maximal at
+$s = 15$. Any split of $15$ maximises joint profit; the symmetric one is $q_1 = q_2 = \frac{15}{2}$, with
+\[
+  v_i = \bigl(30 - 7.5\bigr)\,7.5 - 7.5^2 = 168.75 - 56.25 = 112.5 .
+\]
+Compared with Nash, each firm produces less ($7.5 < 10$) and earns more ($112.5 > 100$). Each firm
+ignores the harm its output does to its neighbour, so the Nash equilibrium overproduces.
+
+\textbf{(b) Grim trigger.} Strategy: produce $7.5$ as long as both have; otherwise produce $10$ forever.
+\begin{itemize}
+  \item \emph{Punishment state.} The continuation is the stage Nash equilibrium whatever happens, and a
+  deviation from $10$ cannot raise the stage payoff, so no deviation pays.
+  \item \emph{Cooperative state.} The best deviation against $q_j = 7.5$ is the best response
+  $q_i = \frac{30-7.5}{2} = 11.25$, with profit $v^d = 11.25\cdot(22.5 - 11.25) = 11.25^2 = 126.5625$.
+\end{itemize}
+In normalised payoffs the incentive constraint is
+\[
+  112.5 \;\ge\; (1-\delta)\,126.5625 + \delta\cdot 100
+  \iff \delta \;\ge\; \frac{126.5625 - 112.5}{126.5625 - 100} = \frac{14.0625}{26.5625} = \frac{9}{17}
+  \approx 0.529 .
+\]
+(This is the general threshold (10.5), $\delta^* = (v^d - v^c)/(v^d - v^*)$.) By symmetry the same holds
+for firm~2. So the Pareto-optimal outputs $(7.5, 7.5)$ are an SPE outcome of the infinitely repeated
+game iff $\delta \ge \frac{9}{17}$.
+
+\interp The externality makes cooperation valuable ($112.5$ against $100$) but the deviation
+temptation is large too ($126.5625$). Firms must be fairly patient, more than $0.53$.
+
+\verify \texttt{check\_L05.py} solves the best responses with sympy ($q^* = (10,10)$, $v = 100$,
+$\partial^2 v_i/\partial q_i^2 = -2$), shows $v_1 + v_2 = 30s - s^2$, gets $112.5$, $q_d = 45/4$,
+$v^d = 2025/16$ and $\delta^* = 9/17$, and tests the inequality on both sides of $9/17$.
+
+\answer{(a) Nash equilibrium $q_1 = q_2 = 10$, profits $100$ each; the Pareto-optimal (joint-profit-maximising)
+symmetric outputs are $7.5$ each with profits $112.5$: lower output, higher profit.
+(b) Grim trigger sustains $(7.5,7.5)$ iff $\delta \ge \frac{9}{17} \approx 0.53$ (best deviation $q = 11.25$,
+profit $126.5625$).}
+\end{exsol}

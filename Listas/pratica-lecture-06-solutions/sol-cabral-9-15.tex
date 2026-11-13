@@ -1,0 +1,57 @@
+% Solution: Cabral (2017) Ch. 9 Exercise 9.15 "Multimarket contact". Input by \solitem. Check: check_T3.py (item 21).
+\begin{exsol}{Cabral Exercise 9.15}{244}{Advanced}{4}
+\asked Two markets with the same inelastic demand ($q$ units up to a reservation price $p^M$). Firm~1's
+cost is $\underline c$ in Market~1 and $\overline c$ in Market~2, and the reverse for Firm~2, with
+$\underline c < \overline c < p^M$. Firms set prices in both markets each period. Find the minimum discount factor
+for which the optimal collusive solution is stable.
+
+\method Cabral \S9.3 (pp.~227--231, multimarket contact). The efficient collusive agreement in each market is
+that the low-cost firm sets $p^M$ and the high-cost firm sets a higher price and sells nothing. The punishment is a
+price war at the static equilibrium, in which the low-cost firm prices just below the rival's cost
+$\overline c$.
+
+\solution
+\textbf{Collusion.} Each firm sells all $q$ units at $p^M$ in its low-cost market: profit per period
+$A = q(p^M - \underline c)$.
+
+\textbf{Deviation.} Take Firm~1. In Market~1 it is already a monopolist, and in Market~2 it can undercut Firm~2's price
+$p^M$ slightly, gaining the whole market at cost $\overline c$: extra profit $B = q(p^M - \overline c) > 0$.
+So the deviation profit in the period is $A + B$.
+
+\textbf{Punishment.} Static equilibrium in each market: the low-cost firm charges just below $\overline c$ and
+the high-cost firm sells nothing. Each firm earns, in its low-cost market, $q(\overline c - \underline c) = A - B$ per period.
+Both markets are in the war.
+
+\textbf{Condition.}
+\[
+  \frac{A}{1-\delta} \ge A + B + \frac{\delta (A - B)}{1-\delta}
+  \iff A \ge (A + B)(1-\delta) + \delta(A - B)
+  \iff 0 \ge B - 2\delta B
+  \iff \delta \ge \frac12 .
+\]
+So the minimum discount factor is $\delta = \frac12$, whatever $\underline c$, $\overline c$, $p^M$ or $q$ (with
+$\overline c < p^M$ so that $B > 0$).
+
+\interp In a single market the efficient agreement is never stable: the high-cost firm earns zero and would
+undercut at any $\delta$, since no punishment can hurt it. With two markets each firm is the ``low-cost'' firm in one
+market and has something to lose in the other, so the threat of retaliation in the rival's market holds the agreement
+together. This is Cabral's point that multimarket contact matters when markets are asymmetric
+(his airlines and dog food boxes, pp.~229--230).
+
+\verify \texttt{check\_T3.py} (item~21) solves the indifference equation symbolically with $A$, $B$ and
+$A - B$ in terms of $p^M$, $\underline c$, $\overline c$, $q$ and obtains $\frac12$. It tests numbers
+($p^M = 10$, $\underline c = 2$, $\overline c = 6$, $q = 1$: $A = 8$, $B = 4$, war profit $4$) at $\delta = \frac12,
+\frac23$ (stable) and $0.49$ (not stable). Cabral prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Using zero as the punishment payoff. In the static equilibrium of this asymmetric game the low-cost firm
+  still earns $q(\overline c - \underline c)$ in its own market.
+  \item Counting only one market's deviation gain: Firm~1 deviates in Market~2 (the rival's market) and
+  continues to collect $A$ in Market~1 in the same period.
+\end{itemize}
+
+\answer{$\delta \ge \dfrac12$: with collusive profit $A$, extra deviation profit $B$ and war profit $A - B$ the
+condition $\frac{A}{1-\delta} \ge A + B + \frac{\delta(A-B)}{1-\delta}$ reduces to $\delta \ge \frac12$, independent
+of the costs, $q$ and $p^M$.}
+\end{exsol}

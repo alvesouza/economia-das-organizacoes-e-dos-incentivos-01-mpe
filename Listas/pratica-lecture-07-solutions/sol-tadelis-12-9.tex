@@ -1,0 +1,50 @@
+% Solution: Tadelis (2013) Exercise 12.9 "Grab the Dollar". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 12.9}{269}{Exam}{3}
+\asked (a) Nash equilibria of grab-the-dollar. (b) The pure-strategy BNE when $\theta_i\sim U[-\varepsilon,\varepsilon]$
+is added to the payoff of the sole grabber. (c) Its limit as $\varepsilon\to0$.
+
+\method (a) Best replies; indifference gives the mixed equilibrium. (b) A player grabs when the
+expected payoff from grabbing is nonnegative, which is increasing in $\theta_i$: a threshold rule
+(Tadelis \S12.5, pp.~264--266, Harsanyi's purification).
+
+\solution
+\textbf{(a)} Payoffs: sole grabber $1$, non-grabber $0$, both grab $-1$ each. Pure Nash equilibria:
+$(G,D)$ and $(D,G)$. Mixed: if the rival grabs with probability $p$, grabbing yields
+$(1-p)\cdot1+p\cdot(-1)=1-2p$ against $0$ from not grabbing; indifference gives $p=\tfrac12$. So the
+mixed equilibrium has both players grabbing with probability $\tfrac12$.
+
+\textbf{(b)} Let the rival grab with probability $p$. Player~$i$ of type $\theta_i$ gets
+$(1-p)(1+\theta_i)-p$ from $G$ and $0$ from $D$, so he grabs iff
+\[
+  \theta_i\ \ge\ \frac{2p-1}{1-p}.
+\]
+Take thresholds $t_i$ ($i$ grabs iff $\theta_i\ge t_i$): the rival grabs with probability
+$p_j=\dfrac{\varepsilon-t_j}{2\varepsilon}$, hence $1-p_j=\dfrac{\varepsilon+t_j}{2\varepsilon}$,
+$2p_j-1=-t_j/\varepsilon$ and
+\[
+  t_i=\frac{-2\,t_j}{\varepsilon+t_j},\qquad t_j=\frac{-2\,t_i}{\varepsilon+t_i}.
+\]
+Subtracting the two cross-multiplied equations $t_i(\varepsilon+t_j)=-2t_j$ and
+$t_j(\varepsilon+t_i)=-2t_i$ gives $(\varepsilon-2)(t_i-t_j)=0$, so $t_i=t_j=t$ because $\varepsilon<1<2$;
+then $t(\varepsilon+t)=-2t$, i.e.\ $t=0$ or $t=-(2+\varepsilon)$, and only $t=0$ lies in
+$[-\varepsilon,\varepsilon]$. The interior pure BNE is: \emph{each player grabs iff $\theta_i\ge0$}, i.e.\
+with probability $\tfrac12$. (Two further pure BNE sit at the corners: one player always
+grabs, since $1+\theta\ge1-\varepsilon>0$ when the other never grabs, and the other never grabs, since
+grabbing against a sure grabber yields $-1$. They are the perturbed versions of $(G,D)$ and $(D,G)$.)
+
+\textbf{(c)} In the symmetric BNE, the probability of grabbing is $\tfrac12$ for \emph{every}
+$\varepsilon$, so as $\varepsilon\to0$ it converges to the mixed-strategy equilibrium of (a), now
+interpreted as a pure strategy of a slightly uncertain game: players randomize only in the eyes of
+an observer who does not know their $\theta_i$.
+
+\interp The mixed equilibrium becomes the limit of pure-strategy BNE, with no player
+randomizing: this is Harsanyi's purification argument.
+
+\verify \texttt{check\_E2.py}: sympy solves the two cross equations and returns only
+$(t_1,t_2)=(0,0)$ in $[-\varepsilon,\varepsilon]$; the grab probability at $t=0$ equals $\tfrac12$; the mixed $p=\tfrac12$ is checked. Tadelis gives
+no answer.
+
+\answer{(a) $(G,D)$, $(D,G)$ and the mixed equilibrium with $p=\tfrac12$. (b) Symmetric BNE: grab iff
+$\theta_i\ge0$ (probability $\tfrac12$); there are also the two corner pure BNE. (c) The grabbing
+probability is $\tfrac12$ for all $\varepsilon$, hence converges to the mixed equilibrium of (a).}
+\end{exsol}

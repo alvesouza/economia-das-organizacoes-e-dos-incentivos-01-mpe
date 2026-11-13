@@ -1,0 +1,46 @@
+% Item order of the solutions to Listas/pratica-lecture-02.md (22 items, rising difficulty).
+% \solitem{n}{slug}  : a solution written for this list (sol-<slug>.tex in this folder);
+% \solreuse{n}{slug} : a solution already written for lista-reais-lectures-01-05-solutions, input from there, never copied.
+\newcommand{\lectureiititle}{Lecture 2 --- Static games of complete information II: Nash equilibrium, Cournot, Bertrand and mixed strategies}
+\newcommand{\solreuse}[2]{\stepcounter{ItemNo}\renewcommand{\CombNo}{#1}%
+  \IfFileExists{../lista-reais-lectures-01-05-solutions/sol-#2.tex}%
+    {\input{../lista-reais-lectures-01-05-solutions/sol-#2}}%
+    {\PackageError{sol-items}{reused solution sol-#2.tex missing}{}}}
+
+\newcommand{\itemsii}{%
+\solreuse{1}{munoz-garcia-2-2}
+\solreuse{2}{tadelis-5-6}
+\solitem{3}{tadelis-5-5}
+\solitem{4}{gibbons-1-3}
+\solitem{5}{munoz-garcia-2-7}
+\solreuse{6}{munoz-garcia-3-1}
+\solitem{7}{tadelis-6-1}
+\solreuse{8}{gibbons-1-12}
+\solitem{9}{tadelis-5-1}
+\solitem{10}{tadelis-5-2}
+\solitem{11}{tadelis-5-3}
+\solreuse{12}{tadelis-5-8}
+\solitem{13}{gibbons-1-5}
+\solreuse{14}{gibbons-1-6}
+\solreuse{15}{gibbons-1-7}
+\solreuse{16}{tadelis-6-8}
+\solreuse{17}{mwg-8-d-2}
+\solitem{18}{mwg-8-c-1}
+\solitem{19}{mwg-8-d-3}
+\solitem{20}{tadelis-5-12}
+\solreuse{21}{mwg-8-d-6}
+\solitem{22}{tadelis-5-15}}
+
+\newcommand{\solintro}{\sloppy These are detailed solutions to the 22 real book exercises of
+\texttt{Listas/pratica-lecture-02.md}, in the list's order, which runs from easy to hard. Each heading shows the item's
+number in the list, its level and its difficulty from 1 (apply a definition) to 5 (graduate level). Statements
+are reproduced verbatim in the list and are not repeated here. Every solution has the same parts: (a) what is asked, in one line;
+(b) the method, with the book section and page and the lecture slide (printed slide numbers of
+\texttt{Aula/Lecture02.pdf}); (c) the solution, every step shown; (d) the economic interpretation; (e) the
+verification, by the Python check scripts and against the book's worked answer or the MWG solutions manual where one exists;
+(f) common mistakes. Ten solutions (items 1, 2, 6, 8, 12, 14, 15, 16, 17, 21) were written for the earlier list
+\texttt{lista-reais-lectures-01-05} and are input from
+\texttt{../lista-reais-lectures-01-05-solutions/}; they are verified by \texttt{check\_A2.py} there. The twelve others are new and are
+verified by \texttt{check\_L2.py} in this folder. Books: Tadelis (2013), \MG{} \& Toro-Gonzalez (2019, 2nd ed.),
+Gibbons (1992), Mas-Colell, Whinston \& Green (1995) (MWG). In bimatrices player~1 picks rows and the first payoff is
+player~1's; \underline{underlined} payoffs are best replies.}

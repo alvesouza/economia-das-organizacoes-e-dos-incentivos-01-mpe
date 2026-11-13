@@ -1,0 +1,86 @@
+% Solution: Tadelis (2013) Exercise 5.1 "Prove Proposition 5.1". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.1}{95}{Exam}{3}
+\asked Prove Proposition~5.1: if a strategy profile $s$ is a strict dominant-strategy equilibrium, or
+the unique survivor of IESDS, or the unique rationalizable profile, then $s$ is the unique Nash
+equilibrium.
+
+\method Direct arguments. For (1) and (2), a profitable deviation against $s_{-i}$ forces the
+deviating strategy to have been deleted at some round; for (3), the definition of rationalizability
+applied to a singleton. The slides prove (2) in two halves, Propositions~1 and~2 (Lecture~2,
+slides~16--17), and the proof below follows the same ``first round in which something is deleted''
+argument. All games are finite; ``Nash equilibrium'' means a pure-strategy one, as in Tadelis \S5.1.
+
+\solution
+\textbf{Part 1: strict dominant-strategy equilibrium.} Let $s_i^*$ be strictly dominant for every
+$i$: $v_i(s_i^*, s_{-i}) > v_i(s_i, s_{-i})$ for all $s_i \ne s_i^*$ and all $s_{-i}$.
+\begin{itemize}
+  \item \emph{$s^*$ is a Nash equilibrium.} Take $s_{-i} = s^*_{-i}$: the inequality says $s_i^*$
+  does strictly better than any other $s_i$, so it is a best reply to $s^*_{-i}$ for every $i$.
+  \item \emph{It is the only one.} If $s \ne s^*$ were a Nash equilibrium, some $s_i \ne s_i^*$ would
+  be a best reply to $s_{-i}$, contradicting $v_i(s_i^*, s_{-i}) > v_i(s_i, s_{-i})$.
+\end{itemize}
+(Part 1 also follows from Part 2: a strict dominant strategy deletes all the others in round~1.)
+
+\textbf{Part 2: unique survivor of IESDS.} Let $S^k$ be the strategy sets after $k$ rounds and let
+$s^*$ be the only profile in $S^\infty$.
+\begin{itemize}
+  \item \emph{$s^*$ is a Nash equilibrium (Proposition~2).} Suppose player $i$ had a strategy $s_i$
+  with $v_i(s_i, s^*_{-i}) > v_i(s^*_i, s^*_{-i})$. Then $s_i \ne s_i^*$, so $s_i$ was deleted in
+  some round $k$: there is $s_i' \in S_i^{k-1}$ with $v_i(s_i', t_{-i}) > v_i(s_i, t_{-i})$ for all
+  $t_{-i} \in S_{-i}^{k-1}$. The profile $s^*_{-i}$ lies in $S_{-i}^{k-1}$ (it survives forever), so
+  \[
+    v_i(s_i', s^*_{-i}) > v_i(s_i, s^*_{-i}) > v_i(s_i^*, s^*_{-i}),
+  \]
+  and $s_i' \ne s_i^*$ is again a strictly better reply to $s^*_{-i}$. Apply the same argument to
+  $s_i'$, and so on. The values $v_i(\cdot, s^*_{-i})$ rise strictly along the chain, so no strategy
+  repeats, and the strategy sets are finite: the chain must stop at a strategy that is never
+  deleted, that is, at $s_i^*$. But every member of the chain does strictly better against
+  $s^*_{-i}$ than $s_i^*$ does, a contradiction. So no profitable deviation exists.
+  \item \emph{It is the only Nash equilibrium (Proposition~1).} Let $s$ be a Nash equilibrium and
+  suppose it does not survive. Take the first round $k$ in which some component $s_i$ is deleted:
+  $s_i$ is strictly dominated by some $s_i' \in S_i^{k-1}$ against every $t_{-i} \in S_{-i}^{k-1}$,
+  and $s_{-i} \in S_{-i}^{k-1}$ because no component was deleted earlier. Then
+  $v_i(s_i', s_{-i}) > v_i(s_i, s_{-i})$, so $s_i$ is not a best reply to $s_{-i}$, a contradiction.
+  Hence every Nash equilibrium lies in $S^\infty = \{s^*\}$.
+\end{itemize}
+
+\textbf{Part 3: unique rationalizable profile.} Let $R^k$ be the strategy sets after $k$ rounds of
+deleting strategies that are never a best reply to a belief over the opponents' surviving
+strategies, and let $R^\infty = \{s^*\}$.
+\begin{itemize}
+  \item \emph{$s^*$ is a Nash equilibrium.} The sets are finite and decrease to $R^\infty$, so for
+  $k$ large $R^{k-1}_{-i} = \{s^*_{-i}\}$. Since $s_i^*$ survives round $k$, it is a best reply to some
+  belief over $R^{k-1}_{-i}$, and the only such belief is the point mass on $s^*_{-i}$. So $s_i^*$ is a
+  best reply to $s^*_{-i}$, for each $i$.
+  \item \emph{It is the only one: every Nash equilibrium is rationalizable.} Let $s$ be a Nash
+  equilibrium. By induction on $k$, $s \in R^k$: it holds for $k = 0$; if $s_{-i} \in R^{k-1}_{-i}$,
+  then $s_i$ is a best reply to the belief ``$s_{-i}$ with probability one'', which is a belief over
+  $R^{k-1}_{-i}$, so $s_i \in R^k_i$. Hence $s \in R^\infty = \{s^*\}$.
+\end{itemize}
+$\blacksquare$
+
+\interp The three hypotheses are three ways of saying that rational, mutually aware players have a
+unique prediction, and they are nested: a strict dominant-strategy equilibrium is the unique
+survivor of IESDS (everything else goes in round~1), and a unique IESDS survivor is the unique
+rationalizable profile (MWG exercise 8.C.1). So Nash equilibrium is a \emph{necessary} condition for
+any of them to make a single prediction; this is why the slides treat IESDS and rationalizability as
+the epistemic benchmark and Nash equilibrium as the sharper concept (Lecture~2, slides~15--17). The
+converse fails: the Battle of the Sexes has two Nash equilibria and IESDS deletes nothing.
+
+\verify \texttt{check\_L2.py} tests the proposition on random finite two-player games ($1{,}200$
+games with $2$--$4$ strategies per player and payoffs in $0,\dots,5$, ties included): whenever the
+game has a strict dominant-strategy equilibrium, a unique IESDS survivor (pure dominators), or a
+unique rationalizable profile (computed by linear programming over mixed beliefs), the set of pure
+Nash equilibria is exactly that profile. It also confirms the lemma that every pure Nash equilibrium
+is rationalizable. The proof itself is the argument above. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Proving only ``$s$ is a Nash equilibrium'' and forgetting uniqueness, which is the other
+  half (Proposition~1).
+  \item Using \emph{weak} dominance: a weakly dominant-strategy equilibrium can coexist with other
+  Nash equilibria (exercise 5.2).
+  \item Assuming that the strategy deleted in some round is dominated by $s_i^*$ itself; the dominator
+  may be deleted later, which is why the chain argument is needed.
+\end{itemize}
+\end{exsol}

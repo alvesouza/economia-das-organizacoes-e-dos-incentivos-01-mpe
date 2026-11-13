@@ -1,0 +1,70 @@
+% Solution: Tadelis (2013) Exercise 5.5 "Public Good Contribution". Input by \solitem. Check: check_L2.py.
+\begin{exsol}{Tadelis Exercise 5.5}{96}{Foundations}{2}
+\asked Write each player's best-response correspondence in the three-player streetlamp game, then
+list the outcomes that are pure-strategy Nash equilibria.
+
+\method Best response and pure-strategy Nash equilibrium (Lecture~2, slides~10 and~14; Tadelis
+\S5.1.1, p.~81). With three players a matrix is awkward, so the payoff of each action is tabulated
+by the number $k$ of \emph{other} players who contribute; a profile is a Nash equilibrium when
+every player's action is a best response to the number $k$ the others produce.
+
+\solution
+\textbf{Payoffs.} $S_i = \{C, N\}$ ($C$ = contribute 1, $N$ = nothing). The lamp is erected iff at
+least two players contribute; it is worth $3$ to everyone, whether or not they contributed, and a
+contribution is lost. Fix player~$i$ and let $k \in \{0,1,2\}$ be the number of the other two who
+contribute.
+\begin{center}
+\begin{tabular}{c|p{4.1cm}p{4.1cm}|c}
+\toprule
+$k$ & $v_i(C, k)$ & $v_i(N, k)$ & best response \\
+\midrule
+$0$ & lamp needs 2: only $i$ pays, no lamp: $-1$ & $0$ & $N$ \\
+$1$ & two contribute, lamp erected: $3 - 1 = 2$ & one contributor, no lamp: $0$ & $C$ \\
+$2$ & lamp erected: $3 - 1 = 2$ & lamp erected, $i$ free rides: $3$ & $N$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+No ties occur, so each best response is unique.
+
+\textbf{(a) Best-response correspondence.} For each player $i$,
+\[
+  BR_i(k) = \begin{cases} N & k = 0,\\ C & k = 1,\\ N & k = 2,\end{cases}
+\]
+where $k$ is the number of contributions by the other two. In words: contribute exactly when you
+are \emph{pivotal}, that is, when your contribution is the one that makes the second one.
+
+\textbf{(b) Pure-strategy Nash equilibria.} Check the four types of profile (the game is symmetric,
+so only the number of contributors matters).
+\begin{itemize}
+  \item \emph{No one contributes} $(N,N,N)$: each player sees $k = 0$ and $BR = N$. Nash equilibrium.
+  \item \emph{Exactly one contributes}: the contributor sees $k = 0$ and $BR = N$, so he deviates
+  (his $-1$ becomes $0$). Not an equilibrium.
+  \item \emph{Exactly two contribute}, e.g. $(C,C,N)$: each contributor sees $k = 1$ and $BR = C$;
+  the free rider sees $k = 2$ and $BR = N$. Nash equilibrium. There are three such profiles.
+  \item \emph{All three contribute}: each sees $k = 2$ and $BR = N$, so each wants to free ride
+  ($3 > 2$). Not an equilibrium.
+\end{itemize}
+\answer{(a) Contribute iff exactly one other player contributes: $BR_i(0) = N$, $BR_i(1) = C$,
+$BR_i(2) = N$. (b) Four pure-strategy Nash equilibria: nobody contributes and no lamp is built, or
+exactly two players contribute, which can happen in $3$ ways, and the lamp is erected and the third
+player free rides.}
+
+\interp The two kinds of equilibria are the two faces of a public good. When exactly two pay, the
+lamp exists but the equilibrium is not symmetric and is unfair to the contributors, who earn $2$
+against the free rider's $3$. When nobody pays, a lone contribution is wasted, so a coordination
+failure is self-enforcing. Full contribution, the efficient outcome ($2$ each against $0$ each),
+is \emph{not} an equilibrium: free riding on the other two is tempting. This is the same logic as
+the dilemma of Lecture~2 (slide~18), with the twist that the best response flips with $k$.
+
+\verify \texttt{check\_L2.py} enumerates all $2^3$ profiles with the payoff $3\cdot 1\{\text{at least
+two contribute}\} - \text{own contribution}$, checks the three table rows and that the equilibrium
+set is $\{NNN, NCC, CNC, CCN\}$. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Treating the lamp as built when one player contributes. The text says one contribution is
+  lost, which is why $v_i(C, 0) = -1$.
+  \item Counting all-contribute as an equilibrium because it is efficient.
+  \item Listing only ``two contribute'' and forgetting the no-contribution equilibrium.
+\end{itemize}
+\end{exsol}

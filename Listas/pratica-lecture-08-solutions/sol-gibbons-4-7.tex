@@ -1,0 +1,62 @@
+% Solution: Gibbons (1992) Problem 4.7. Input by \solitem. Check: check_T3.py.
+\begin{exsol}{Gibbons Problem 4.7}{249}{Advanced}{3}
+\asked Draw indifference curves and production functions for a two-type job-market signaling
+model, and specify a hybrid (semi-separating) PBE in which the high-ability worker randomizes.
+
+\method The exercise gives no numbers, so a specification is chosen: Gibbons \S4.2.B, pp.~190--205 (Spence's
+model with $y(\eta, e) = \eta$, education unproductive, and competing firms paying expected output).
+In a hybrid equilibrium the type that randomizes must be indifferent between its two messages;
+Bayes' rule at the shared message then fixes the mixing probability.
+
+\solution \textbf{Model.} Ability $\eta \in \{1, 2\}$ (low $\eta_L = 1$, high $\eta_H = 2$) with
+$\Pr(\eta_H) = q = \frac23$; output $y(\eta, e) = \eta$; education cost $c(\eta, e) = e^2/\eta$;
+wage $w(e)$ equal to expected output given the firms' belief $\mu(e) = \Pr(\eta_H \mid e)$:
+$w(e) = 1 + \mu(e)$. Worker utility $w - c(\eta, e)$.
+
+\textbf{Hybrid PBE.} The low type plays $e = 0$. The high type plays $e^* = 1$ with probability
+$r = \frac12$ and $e = 0$ with probability $\frac12$.
+\begin{itemize}
+  \item \emph{Beliefs.} $\mu(1) = 1$, so $w(1) = 2$ (only the high type plays $1$). At $e = 0$ Bayes' rule gives
+  \[
+    \mu(0) = \frac{q(1-r)}{q(1-r) + (1-q)} = \frac{\frac23 \cdot \frac12}{\frac23 \cdot \frac12 + \frac13} = \frac12,
+    \qquad w(0) = 1 + \frac12 = \frac32 .
+  \]
+  Off the path ($e \ne 0, 1$) take $\mu(e) = 0$, $w(e) = 1$.
+  \item \emph{High type indifferent:} $w(0) - c(2, 0) = \frac32$ and $w(1) - c(2, 1) = 2 - \frac12 = \frac32$.
+  \item \emph{Low type strictly prefers $0$:} $\frac32$ against $w(1) - c(1, 1) = 2 - 1 = 1$.
+  \item \emph{Deviations.} Any $e \in (0, 1)$ gets wage $1$ and costs more than zero (payoffs $< \frac32$ for
+  both types); any $e > 1$ gets at most $2$ even under the best belief, and $2 - \frac{e^2}{2} < \frac32$,
+  $2 - e^2 < \frac32$.
+\end{itemize}
+Why this works: the mixing probability must make $\mu(0)$ low enough that the pooled wage $w(0)$ falls
+to $2 - c(2, e^*) = \frac32$; $\mu(0) = 1 - \frac{e^{*2}}{2}$ requires $\mu(0) < q$ (the prior), which is why
+the high type has to play $0$ with probability below one: $r > 0$.
+
+\textbf{Diagram.} Wage against education. Production functions are the flat lines $w = \eta_L = 1$ and $w = \eta_H = 2$
+(output does not depend on $e$). Indifference curves through the pooled point $(0, \frac32)$:
+$w = \frac32 + e^2$ for the low type and $w = \frac32 + \frac{e^2}{2}$ for the high type. The point $(1, 2)$
+lies on the high type's curve and below the low type's curve ($2 < \frac52$ at $e = 1$): this is single crossing.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=1.6cm,every node/.style={font=\footnotesize}]
+  \draw[->] (0,0) -- (2.0,0) node[right] {$e$};
+  \draw[->] (0,0) -- (0,3.4) node[above] {$w$};
+  \draw[dashed] (0,1) -- (2.0,1) node[right] {$y(\eta_L, e) = 1$};
+  \draw[dashed] (0,2) -- (2.0,2) node[right] {$y(\eta_H, e) = 2$};
+  \draw[thick,blue,domain=0:1.1,smooth,variable=\x] plot ({\x},{1.5+\x*\x});
+  \node[blue,right] at (1.1,2.71) {low type};
+  \draw[thick,red!70!black,domain=0:1.8,smooth,variable=\x] plot ({\x},{1.5+\x*\x/2});
+  \node[red!70!black,right] at (1.8,3.12) {high type};
+  \fill (0,1.5) circle (1.6pt) node[left] {$w(0) = \frac32$};
+  \fill (1,2) circle (1.6pt) node[below right] {$(e^*, w) = (1, 2)$};
+  \draw[dotted] (1,0) node[below] {$e^* = 1$} -- (1,2);
+\end{tikzpicture}
+\end{center}
+
+\verify \texttt{check\_T3.py} checks Bayes' rule exactly ($\mu(0) = \frac12$, $w(0) = \frac32$), the high
+type's indifference, the low type's strict preference and every deviation $e \in \{0, \frac1{20}, \dots, 5\}$
+under the off-path wage $1$ (and under the best-case wage $2$ for $e \ge 1$). Gibbons prints no answer.
+
+\answer{Specification: $\eta \in \{1, 2\}$, $\Pr(\eta = 2) = \frac23$, $y = \eta$, $c = e^2/\eta$. Hybrid PBE: low
+type $e = 0$; high type $e = 1$ with probability $\frac12$ and $e = 0$ with probability $\frac12$; $\mu(1) = 1$,
+$\mu(0) = \frac12$, off-path $\mu = 0$; wages $w(1) = 2$, $w(0) = \frac32$.}
+\end{exsol}

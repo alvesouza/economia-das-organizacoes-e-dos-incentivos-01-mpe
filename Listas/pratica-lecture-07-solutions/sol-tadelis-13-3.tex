@@ -1,0 +1,52 @@
+% Solution: Tadelis (2013) Exercise 13.3 "Reserve Prices (Easier)". Input by \solitem. Check: check_E2.py.
+\begin{exsol}{Tadelis Exercise 13.3}{285--286}{Exam}{3}
+\asked Second-price auction with reserve price $r$, two buyers, values $\{0,1,2\}$ equiprobable and
+independent: (a) is truthful bidding still weakly dominant? Expected revenue at (b) $r=0$, (c) $r=1$;
+(d) why they differ; (e) the optimal $r$.
+
+\method (a) Compare payoffs state by state as in item~5. (b)--(e) Enumerate the nine value pairs
+(each probability $\tfrac19$) with bids equal to values (Tadelis \S13.1.1 and the reserve-price
+discussion).
+
+\solution
+\textbf{(a) Yes.} A winner pays $\max\{r,\text{rival bid}\}$ and wins iff his bid is at least $r$ and
+beats the rival. Value $v<r$: bidding $v$ loses; any winning bid would pay at least $r>v$, a loss.
+Value $v\ge r$: the situation is that of item~5 with the effective price
+$\max\{r,\text{rival bid}\}$, so the same table shows no bid beats $b=v$.
+
+\textbf{(b) $r=0$.} Revenue is the second-highest value, $\min(v_1,v_2)$: $0$ in 5 pairs, $1$ in
+3 pairs, $2$ in 1 pair:
+\[
+  \tfrac19(0\cdot5+1\cdot3+2\cdot1)=\tfrac59 .
+\]
+\textbf{(c) $r=1$.} Value-0 buyers do not bid. Pairs: $(0,0)$ no sale ($0$); one buyer at least $1$ and the
+other $0$ (4 pairs): price $r=1$; both at least $1$: price $\min$: $(1,1),(1,2),(2,1)\to1$ each,
+$(2,2)\to2$. Revenue $=\tfrac19(4\cdot1+1+1+1+2)=\tfrac99=1$.
+
+\textbf{(d)} Compared with $r=0$, the four pairs with exactly one value-$0$ buyer now yield $1$
+instead of $0$ ($+\tfrac49$): the other buyer used to pay the second-highest bid, $0$, and now
+pays $r$. The pair $(0,0)$ yields $0$ in both cases and the pairs with both values at least $1$
+are unaffected (price $\min\ge1=r$). Nothing is lost, because $r=1$ is the lowest positive value:
+it excludes only buyers who would have paid $0$.
+
+\textbf{(e)} For $r\in(0,1]$: revenue $=\tfrac59+\tfrac49r$ (the $(1,1),(1,2),(2,1),(2,2)$ pairs give
+$5/9$, the four ``one buyer'' pairs give $r$). For $r\in(1,2]$ only value-$2$ buyers bid:
+four pairs at price $r$ and $(2,2)$ at price $2$, revenue $=\tfrac{4r+2}{9}$, increasing in $r$;
+$r>2$ gives $0$. The maximum is at $r=2$ (the highest value) with revenue $\tfrac{10}{9}$, twice the
+revenue of $r=0$ (strictly above $r=1$'s $1$). Conclusion: a reserve price above the seller's
+value (here $0$) raises revenue: the seller gives up sales that would have been at low prices
+to raise the price paid by the high types; the optimal reserve is above the lowest values.
+
+\interp A reserve price is a monopoly price inside the auction: raising it above $1$ also excludes
+the value-$1$ buyers, but the extra revenue from value-$2$ buyers ($r$ instead of $\min$) outweighs
+the lost sales, because each value-$2$ buyer is alone in $\tfrac49$ of the pairs.
+
+\verify \texttt{check\_E2.py}: enumerates the nine pairs for $r$ on a fine grid and asserts
+$5/9$, $1$, $10/9$ at $r=0,1,2$, the two linear pieces for $r\in(0,1]$ and $(1,2]$, the global maximum
+$10/9$ at $r=2$; and dominance of $b=v$ against every rival bid for five values of $v$ and four
+reserves. Tadelis gives no answer.
+
+\answer{(a) Yes. (b) $5/9$. (c) $1$. (d) Excluding value-$0$ buyers lets the seller charge $1$ in
+the four pairs with exactly one such buyer, at no loss elsewhere. (e) The optimal reserve is $r=2$,
+with revenue $10/9$: reserve prices can raise revenue above the no-reserve auction.}
+\end{exsol}

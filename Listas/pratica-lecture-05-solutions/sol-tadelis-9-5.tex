@@ -1,0 +1,70 @@
+% Solution: Tadelis (2013) Exercise 9.5 "Campaign Spending". Input by \solitem.
+% New for the Lecture 5 list. Check: check_L05.py.
+\begin{exsol}{Tadelis Exercise 9.5}{188--189}{Advanced}{4}
+\asked A contest ($s_i$ spent, win probability $\frac{s_i}{s_1+s_2}$, prize $16$) followed by a nice-or-nasty
+game with payoff $w$: find the stage equilibria and Pareto-optimal outcomes, the $w$ that supports the Pareto
+path, the best symmetric SPE at $w=1$, and how it changes with $w$.
+
+\method Carrot and stick with $\delta = 1$ and a continuous first stage (Tadelis \S9.4, pp.~180--184;
+Thm.~9.1, p.~185). The stage-2 carrot is $(P,p)$ with payoff $w$ and the stick is $(N,n)$ with payoff $0$, so $w$
+plays the role of $\delta\,[\text{carrot} - \text{stick}]$ (Lecture~5, slide~15). The deviation gain is computed
+from the best reply in the contest.
+
+\solution
+\textbf{(a) Stage equilibria.} \emph{Contest:} $v_i = \frac{16s_i}{s_i + s_j} - s_i$. The first-order condition
+is $\frac{16s_j}{(s_i + s_j)^2} = 1$, i.e.\ $s_i + s_j = 4\sqrt{s_j}$, so
+\[
+  s_i(s_j) = 4\sqrt{s_j} - s_j \qquad (s_j \le 16).
+\]
+In a symmetric equilibrium $s = 4\sqrt s - s \Rightarrow \sqrt s = 2$, so $s_1 = s_2 = 4$ with $v_i = 8 - 4 = 4$. This is the unique
+equilibrium: if $s_j = 0$, any $s_i > 0$ wins with probability one and there is no best reply (the supremum $16$
+is not attained), so $s_j = 0$ is not part of an equilibrium. \emph{Stage~2:} $(P,p)$ with $(w,w)$ and $(N,n)$ with $(0,0)$ are
+equilibria: against $p$, $P$ beats $N$ since $w > 0$; against $n$, $N$ beats $P$ since $0 > -1$.
+
+\textbf{(b) Pareto-optimal outcomes.} The prize is shared, so $v_1 + v_2 = 16 - s_1 - s_2$, maximal only at
+$s_1 = s_2 = 0$ (each wins with probability $\frac12$): payoffs $(8,8)$ against $(4,4)$ at Nash.
+In stage~2, $(P,p)$ with $(w,w)$ Pareto-dominates $(N,n)$.
+
+\textbf{(c) Supporting the Pareto path.} Path: $s_1 = s_2 = 0$, then $(P,p)$; after any deviation, $(N,n)$.
+Against $s_j = 0$, any $s_i = \varepsilon > 0$ wins for sure and pays $16 - \varepsilon$, with supremum $16$.
+Conforming gives $8 + w$, deviating gives at most $16 - \varepsilon$ plus the stick $0$:
+\[
+  8 + w \;\ge\; 16 - \varepsilon \ \text{ for every } \varepsilon > 0 \iff w \;\ge\; 8 .
+\]
+(At $w = 8$ the deviation payoff $16 - \varepsilon$ is strictly below $16$, so the path is an SPE.) The Pareto path is an
+SPE iff $w \ge 8$; the punishment state is a stage equilibrium and needs no check.
+
+\textbf{(d) $w = 1$.} The path with $(P,p)$ in stage~2 and $s_1 = s_2 = s$ in stage~1 has payoff $8 - s + w$. The best deviation
+against $s$ is $x = 4\sqrt s - s$, with win probability $\frac{x}{x + s} = 1 - \frac{\sqrt s}{4}$ and payoff
+\[
+  16\Bigl(1 - \tfrac{\sqrt s}{4}\Bigr) - (4\sqrt s - s) = 16 - 8\sqrt s + s ,
+\]
+followed by $(N,n)$ worth $0$. The incentive constraint is
+\[
+  8 - s + w \ge 16 - 8\sqrt s + s \iff 2\bigl(\sqrt s - 2\bigr)^2 \le w
+  \iff 2 - \sqrt{\tfrac w2} \le \sqrt s \le 2 + \sqrt{\tfrac w2}.
+\]
+The first-stage payoff $8 - s$ falls with $s$, so the best symmetric SPE uses the smallest admissible $s$:
+\[
+  s_{\min}(w) = \Bigl(2 - \sqrt{w/2}\Bigr)^2 , \qquad s_{\min}(1) = \bigl(2 - \tfrac1{\sqrt2}\bigr)^2 = \tfrac92 - 2\sqrt2 \approx 1.672 ,
+\]
+and total payoff $8 - 1.672 + 1 \approx 7.328$ per player (against $4 + 1 = 5$ if they spend the Nash amount $4$ and reach $(P,p)$ anyway).
+
+\textbf{(e) As $w$ changes.} $s_{\min}(w)$ falls from $4$ (the Nash level, as $w \to 0$) to $0$ at $w = 8$ and stays at $0$ for
+$w \ge 8$. A larger stage-2 gap supports less wasteful spending, and for $w \ge 8$ the whole Pareto path. The role of
+$w$ is that of a discount factor: with discount factor $\delta$ the constraint reads $2(\sqrt s - 2)^2 \le \delta w$, so what
+matters is $\delta w$, the discounted gap between carrot and stick, exactly as $\delta\,[\text{carrot} - \text{stick}]$
+in the other items.
+
+\interp The contest is a prisoner's dilemma in disguise: spending is wasted in the aggregate ($v_1 + v_2 = 16 - s_1 - s_2$).
+Stage~2 provides the incentive to restrain spending, and the amount that can be sustained moves smoothly with its size.
+
+\verify \texttt{check\_L05.py} verifies the best reply $4\sqrt{s_j} - s_j$, the Nash spending $4$ with payoff $4$, the deviation
+payoff $16 - 8\sqrt s + s$, the factorisation $2(\sqrt s - 2)^2 \le w$, $s_{\min}(1) = \frac92 - 2\sqrt2$, $s_{\min}(8) = 0$,
+$s_{\min}(w) \to 4$ as $w \to 0$ and the stage-2 equilibria for $w \in \{1, 8, \frac12\}$.
+
+\answer{(a) Contest equilibrium $s_1 = s_2 = 4$, payoff $4$; stage~2 equilibria $(P,p)$ and $(N,n)$. (b) Pareto-optimal:
+$s = (0,0)$ (payoff $8$ each) and $(P,p)$. (c) $w \ge 8$. (d) At $w = 1$, $s_1 = s_2 = \frac92 - 2\sqrt2 \approx 1.67$ with $(P,p)$ in stage~2
+(payoff $\approx 7.33$). (e) $s_{\min}(w) = (2 - \sqrt{w/2})^2$ decreases from $4$ to $0$ as $w$ goes from $0$ to $8$;
+$w$ plays the role of the discounted gap $\delta\,[\text{carrot} - \text{stick}]$.}
+\end{exsol}

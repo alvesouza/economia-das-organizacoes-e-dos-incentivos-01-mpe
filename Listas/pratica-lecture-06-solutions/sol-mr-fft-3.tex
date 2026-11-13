@@ -1,0 +1,58 @@
+% Solution: Milgrom & Roberts (1992) Ch. 8 Food for Thought 3 (auditors). Input by \solitem. Check: check_T1.py (item 6).
+\begin{exsol}{Milgrom \& Roberts Ch.~8, Food for Thought 3}{284}{Foundations}{2}
+\asked Why do large corporations use big audit firms with many clients, and avoid a firm for which one
+client would be too large a share of its business?
+
+\method The chapter's reputation model (pp.~259--268; efficiency-wage condition, pp.~250--255).
+A party who can cheat for a one-time gain $G$ stays honest iff the value of the reputation he would lose
+exceeds $G$: in the efficiency-wage form, $p\,(w - \bar w)\,N \ge G$. We read the auditor's reputation as the
+trust-based rent $v$ that investors' willingness to rely on its reports earns it. The answer is an
+analytical argument, not a computation; the chapter prints no answer to this question.
+
+\solution
+\textbf{1. What auditors sell.} Investors cannot verify the books themselves. An audit is valuable only
+if the auditor reports honestly even though management picks and pays him. This is the trust game of
+Ch.~8: investors offer trust, and the auditor can fail to honour it by shading the report to please
+management (gain $G$). Contracts cannot specify honest reporting in detail, so reputation has to enforce it
+(``Reputations as contract enforcers'', p.~259).
+
+\textbf{2. Many clients make honesty cheaper to enforce.}
+\begin{itemize}
+  \item \emph{Reputation is firm-wide and indivisible.} A shaded report for one client, once detected, damages
+  the auditor's credibility with all clients and with investors, so the multiplier $N$ applies to the whole
+  stream of rents (compare the Maghribi traders, who punished cheaters group-wide, p.~252). With $k$ clients
+  paying a rent $v$ each, honesty requires $p\,k\,v\,N \ge G_i$ for every client $i$. The left side grows
+  with $k$, while the temptation $G_i$ from any one client is only part of the firm's income.
+  \item \emph{A dominant client changes both sides.} If one client is a large share of revenue, its
+  favour is worth more ($G_i$ large), and the auditor has more to lose from displeasing that client
+  than from being caught. The client can credibly threaten to leave and take the auditor's income with it:
+  a firm that depends on one buyer faces the buyer's hold-up. With many clients, no single threat is
+  decisive.
+  \item \emph{Reputation outlives individuals.} The brand passes from one partner to the next
+  (Tadelis \S10.5.3, pp.~207--208), and large firms monitor and discipline their own partners, which keeps
+  the detection probability $p$ high.
+\end{itemize}
+
+\textbf{3. Why management goes along.} Managers want the credibility of a clean opinion in order to raise
+capital, so they choose a firm whose reputation investors recognise. A small firm dependent on one client
+has no reputation to lose, so investors would discount its opinion and the audit would be worthless to
+the very manager who buys it.
+
+\textbf{4. Auxiliary reasons.} Economies of scale, specialised knowledge, pooling of litigation risk and
+the capacity to audit a large corporation's worldwide records also favour big firms. They explain size,
+but not the reluctance to hire a firm with a large client share, which is the puzzle.
+
+\interp Audit independence is bought by making the auditor's stake in its whole reputation large
+relative to the gain from any single favour. This is also why regulators limit the share of a firm's fees
+that may come from one audit client.
+
+\verify \texttt{check\_T1.py} (item~6) illustrates the inequality $p\,k\,v\,N \ge G$ with assumed numbers
+($G = 10$, $p = \frac12$, $v = 1$, $N = 6$): honesty needs $k \ge 4$ clients, and $k = 3$ fails. The numbers
+are illustrative, not from the book.
+
+\answer{The auditor's reputation for honest reporting is a firm-wide asset. A detected shaded report loses
+all clients' rents, while the gain from favouring one client is limited. A firm dominated by one client has
+little to lose from displeasing it and much to lose by losing it, so its independence is weak and investors
+discount its opinion. Large audit firms with many clients make honesty incentive compatible, and
+management gains from the credibility.}
+\end{exsol}

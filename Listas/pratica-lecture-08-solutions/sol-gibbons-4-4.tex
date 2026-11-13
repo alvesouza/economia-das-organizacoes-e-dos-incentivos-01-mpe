@@ -1,0 +1,70 @@
+% Solution: Gibbons (1992) Problem 4.4. Input by \solitem. Check: check_T1.py.
+\begin{exsol}{Gibbons Problem 4.4}{248}{Foundations}{3}
+\asked All pure-strategy pooling and separating PBE of the two signaling games. Types $t_1, t_2$
+have probability $\frac12$ each.
+
+\method For each of the four Sender profiles ($LL$, $RR$, $LR$, $RL$, written (message of $t_1$,
+message of $t_2$)): belief from Bayes' rule on the path, free off the path; the Receiver's best
+reply; each type's payoff against the replies (Gibbons \S4.2.A, pp.~183--190; Tadelis \S16.1).
+Payoffs (Sender, Receiver) are read from the trees.
+
+\solution \textbf{Game (a).}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & $L,u$ & $L,d$ & $R,u$ & $R,d$ \\
+\midrule
+$t_1$ & $(1,1)$ & $(2,0)$ & $(2,2)$ & $(0,0)$ \\
+$t_2$ & $(0,0)$ & $(0,1)$ & $(1,0)$ & $(1,1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+With $\nu = \Pr(t_1 \mid L)$ and $\mu = \Pr(t_1 \mid R)$ the Receiver's payoffs are $u$: $\nu$ against
+$d$: $1 - \nu$ after $L$ (so $u$ iff $\nu \ge \frac12$), and $u$: $2\mu$ against $d$: $1 - \mu$ after $R$
+(so $u$ iff $\mu \ge \frac13$).
+\begin{itemize}
+  \item $LL$: $t_2$ gets $0$ after $L$ whatever the reply, but $R$ gives him $1$ against either
+  reply. He deviates: not a PBE.
+  \item $RR$: $\mu = \frac12 \ge \frac13$, reply $u$; payoffs $2$ ($t_1$) and $1$ ($t_2$). $t_2$
+  gets $0$ from $L$. $t_1$ gets at most $2$ from $L$ (with $d$), which is not more than $2$. So
+  $RR$ is a PBE with $u$ after $R$ and any off-path belief $\nu$ with the reply best for it ($u$ if
+  $\nu \ge \frac12$, $d$ if $\nu \le \frac12$).
+  \item $LR$: $\nu = 1$, reply $u$; $\mu = 0$, reply $d$. $t_1$ gets $1$ (deviating to $R$: $0$);
+  $t_2$ gets $1$ (deviating to $L$: $0$). PBE.
+  \item $RL$: $\mu = 1$, $u$; $\nu = 0$, $d$. $t_1$ gets $2$ ($L$ gives $2$, no gain), but $t_2$ gets
+  $0$ from $L$ and $1$ from deviating to $R$ (answered by $u$): not a PBE.
+\end{itemize}
+\textbf{Game (b).}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & $L,u$ & $L,d$ & $R,u$ & $R,d$ \\
+\midrule
+$t_1$ & $(3,0)$ & $(1,1)$ & $(0,0)$ & $(4,1)$ \\
+$t_2$ & $(3,3)$ & $(0,1)$ & $(1,2)$ & $(2,0)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The Receiver's payoffs are $u$: $3(1-\nu)$ against $d$: $1$ after $L$ (so $u$ iff $\nu \le \frac23$),
+and $u$: $2(1-\mu)$ against $d$: $\mu$ after $R$ (so $u$ iff $\mu \le \frac23$).
+\begin{itemize}
+  \item $LL$: $\nu = \frac12$, reply $u$; both types get $3$. A deviation to $R$ pays $t_1$ at most $4$
+  (if $d$) and $t_2$ at most $2$. So the off-path reply must be $u$ ($\mu \le \frac23$): then
+  $t_1$ gets $0$ and $t_2$ gets $1$. PBE with $u$ after $L$, $u$ after $R$, $\mu \le \frac23$.
+  \item $RR$: $\mu = \frac12$, reply $u$; $t_1$ gets $0$, but $L$ pays him $3$ (if $u$) or $1$
+  (if $d$), both above $0$. He deviates: not a PBE.
+  \item $LR$: $\nu = 1$, reply $d$; $\mu = 0$, reply $u$. $t_1$ gets $1$ (deviating to $R$: $0$);
+  $t_2$ gets $1$ (deviating to $L$: $0$). PBE.
+  \item $RL$: $\mu = 1$, reply $d$; $\nu = 0$, reply $u$. $t_1$ gets $4$ (deviating to $L$: $3$);
+  $t_2$ gets $3$ (deviating to $R$: $2$). PBE.
+\end{itemize}
+
+\verify \texttt{check\_T1.py} enumerates the 16 Sender--Receiver pure profiles of each game with
+beliefs on a grid of step $\frac1{60}$ and returns exactly the equilibria listed. Gibbons prints
+no answer.
+
+\answer{(a) Pooling: $RR$ with $u$ after $R$ ($\mu = \frac12$) and an off-path reply optimal for
+$\nu$. Separating: $LR$ with replies $(u \text{ after } L,\ d \text{ after } R)$. No $LL$, no $RL$.
+(b) Pooling: $LL$ with $u$ after $L$ and $u$ after $R$ ($\mu \le \frac23$). Separating: $LR$
+(replies $d$ after $L$, $u$ after $R$) and $RL$ ($u$ after $L$, $d$ after $R$). No $RR$.}
+\end{exsol}

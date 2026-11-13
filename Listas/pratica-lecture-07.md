@@ -1,6 +1,6 @@
 ---
 tags: [lista, pratica, lecture-07, topic/bayesian-games, topic/adverse-selection, topic/auctions]
-date: 2026-10-25
+date: 2026-11-12
 status: estimated
 ---
 
@@ -13,6 +13,12 @@ Gibbons (1992) Ch. 3; Muñoz-Garcia & Toro-Gonzalez (2019) Ch. 7–8, worked ans
 exercise; MWG (1995) §13.B. Class plan: [[Map/study-guide|study guide]]; book map:
 [[Map/books-index|books-index]]; notes: [[Notas/L07/L07-00-map|Lecture 7 notes]].
 
+**Re-checked on 2026-11-12** when the lists were re-aligned to the real Lectures 1–5. The real
+lectures run about half a lecture behind the estimate, so this unit may shift once its slides
+arrive. The 24 items, their order and the three tiers were re-checked and kept unchanged (moved
+here from the old Lecture 7 list: items 1–24, same numbers). Worked solutions to all 24 items:
+`Listas/pratica-lecture-07-solutions.pdf` (sources in `Listas/pratica-lecture-07-solutions/`).
+
 **Estimated unit.** There are no Lecture 7 slides yet (the lecture is on Tue Nov 17 2026). The
 selection follows the study guide's Lecture 7 block and the estimated notes in `Notas/L07/`;
 every reference points to the books, not to slides. Re-check the weighting when
@@ -24,7 +30,7 @@ manual's OCR text. Gibbons: no official answers. Tadelis: none in the book; the 
 says about half are solved on Princeton UP's website (not checked). No solutions file for this
 list yet.
 
-**Verification.** Pages from `Livros/book-registry.json` (Tadelis offset 18; Gibbons Ch. 3–4
+**Verification.** Printed pages, with the PDF viewer page (1-based) in brackets, from `Livros/book-registry.json` (Tadelis offset 18; Gibbons Ch. 3–4
 offset 5; Muñoz-Garcia Ch. 6–7 offset 10, Ch. 8 offset 9; MWG 2-up, `(printed + 20) // 2`).
 Every statement below was read off the rendered page: Tadelis pp. 266–269 and 285–287; Gibbons
 pp. 169–172; Muñoz-Garcia pp. 318–319, 350, 362; MWG p. 473.
@@ -72,14 +78,14 @@ than the lecture uses.
 #### 1. Gibbons 3.1
 
 <!-- id: Gibbons 3.1 -->
-**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.1, p. 169. Reproduced verbatim.
+**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.1, p. 169 [PDF p. 175]. Reproduced verbatim. **Answer in the source:** no.
 
 > **3.1.** What is a static Bayesian game? What is a (pure) strategy in such a game? What is a (pure-strategy) Bayesian Nash equilibrium in such a game?
 
 #### 2. Muñoz-Garcia Ch. 7 Ex. 1
 
 <!-- id: Muñoz-Garcia Ch. 7 Ex. 1 -->
-**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 7, Exercise 1 "A Simple Bayesian Game", pp. 318–319. Reproduced verbatim (statement only; the book's worked answer follows it).
+**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 7, Exercise 1 "A Simple Bayesian Game", pp. 318–319 [PDF pp. 329–330]. Reproduced verbatim (statement only; the book's worked answer follows it). **Answer in the source:** yes, the book's worked answer follows the exercise.
 
 > Consider the payoff matrix in Fig. 7.1, where player 1 (in rows) chooses between $A$ and $B$, and player 2 (in columns) selects $C$ or $D$. Player 1 observes the realization of random variable $x$, which takes value $x = 15$ with probability 1/2 or $x = 4$ with probability 1/2. Player 2, however, doesn't observe the realization of $x$, but knows its probability distribution. Therefore, player 1 is perfectly informed about the payoff matrix they face, while player 2 does not know the payoff that player 1 earns in strategy profile $(A, C)$. While this payoff only affects player 1, player 2's behavior is affected by this uncertainty since he could anticipate that player 1 best responds to column $C$ with $A$ when $x = 15$, but player 1 would best respond with $B$ when $x = 4$.
 >
@@ -101,7 +107,7 @@ than the lecture uses.
 #### 3. Gibbons 3.4
 
 <!-- id: Gibbons 3.4 -->
-**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.4, pp. 169–170. Reproduced verbatim.
+**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.4, pp. 169–170 [PDF pp. 175–176]. Reproduced verbatim. **Answer in the source:** no.
 
 > **3.4.** Find all the pure-strategy Bayesian Nash equilibria in the following static Bayesian game:
 >
@@ -123,21 +129,21 @@ than the lecture uses.
 #### 4. Tadelis 12.1
 
 <!-- id: Tadelis 12.1 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.1 "Chicken Revisited", p. 266. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.1 "Chicken Revisited", p. 266 [PDF p. 285]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Chicken Revisited:** Consider the game of chicken in Section 12.2.1 with the parameters $R = 8$, $H = 16$, and $L = 0$ as described there. A preacher, who knows some game theory, decides to use this model to claim that moving to a society in which all parents are lenient will have detrimental effects on the behavior of teenagers. Does equilibrium analysis support this claim? What if $R = 8$, $H = 0$, and $L = 16$?
 
 #### 5. Tadelis 13.1
 
 <!-- id: Tadelis 13.1 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.1 "Second-Price Auctions", p. 285. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.1 "Second-Price Auctions", p. 285 [PDF p. 304]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Second-Price Auctions:** Show that in a second-price sealed-bid auction bidding your valuation weakly dominates bidding above your valuation.
 
 #### 6. Muñoz-Garcia Ch. 8 Ex. 4
 
 <!-- id: Muñoz-Garcia Ch. 8 Ex. 4 -->
-**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 8, Exercise 4 "Second Price Auction", p. 362. Reproduced verbatim (statement only; the book's worked answer follows it).
+**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 8, Exercise 4 "Second Price Auction", p. 362 [PDF p. 372]. Reproduced verbatim (statement only; the book's worked answer follows it). **Answer in the source:** yes, the book's worked answer follows the exercise.
 
 > Consider a setting where every bidder privately observes his/her own valuation for the object. In addition, assume that $N$ bidders interact in an auction in which they simultaneously and independently submit their own bids, the highest bidder wins the object, but he/she pays the second-highest bid (this is the so-called second-price auction, SPA). All other bidders pay zero.
 >
@@ -150,7 +156,7 @@ than the lecture uses.
 #### 7. Muñoz-Garcia Ch. 8 Ex. 1
 
 <!-- id: Muñoz-Garcia Ch. 8 Ex. 1 -->
-**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 8, Exercise 1 "First Price Auction with Uniformly Distributed Valuations—Two Players", p. 350. Reproduced verbatim (statement only; the book's worked answer follows it).
+**Source.** Muñoz-Garcia & Toro-Gonzalez (2019), *Strategy and Game Theory: Practice Exercises with Answers*, Ch. 8, Exercise 1 "First Price Auction with Uniformly Distributed Valuations—Two Players", p. 350 [PDF p. 360]. Reproduced verbatim (statement only; the book's worked answer follows it). **Answer in the source:** yes, the book's worked answer follows the exercise.
 
 > Consider a first-price auction with two players, each of them drawing his valuation for the object $v_i$ from a uniform distribution $v_i \sim U[0, 1]$. Every player $i$ simultaneously and independently submits his bid for the object, $b_i$, and the seller chooses the player who submitted the highest bid as the winning bidder, who pays the bid he submitted. The other bidder loses the auction and receives a zero payoff.
 >
@@ -161,7 +167,7 @@ than the lecture uses.
 #### 8. Tadelis 13.2
 
 <!-- id: Tadelis 13.2 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.2 "Complete Information", p. 285. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.2 "Complete Information", p. 285 [PDF p. 304]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Complete Information:** Consider a set of $N$ players participating in a sealed-bid second-price auction, but assume that there is complete information so that each player knows the valuation of every other player.
 >
@@ -191,21 +197,21 @@ than the lecture uses.
 #### 9. Tadelis 12.2
 
 <!-- id: Tadelis 12.2 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.2 "Cournot Revisited", p. 266. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.2 "Cournot Revisited", p. 266 [PDF p. 285]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Cournot Revisited:** Consider the Cournot duopoly model in which two firms, 1 and 2, simultaneously choose the quantities they supply, $q_1$ and $q_2$. The price each will face is determined by the market demand function $p(q_1, q_2) = a - b(q_1 + q_2)$. Each firm has a probability $\mu$ of having a marginal unit cost of $c_L$ and a probability $1 - \mu$ of having a marginal unit cost of $c_H$. These probabilities are common knowledge, but the true type is revealed only to each firm individually. Solve for the Bayesian Nash equilibrium.
 
 #### 10. Gibbons 3.3
 
 <!-- id: Gibbons 3.3 -->
-**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.3, p. 169. Reproduced verbatim. The demand function is printed with a minus sign before $b_i \cdot p_j$; the scanned copy in `Livros/` carries a reader's handwritten mark over that sign.
+**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.1, Problem 3.3, p. 169 [PDF p. 175]. Reproduced verbatim. The demand function is printed with a minus sign before $b_i \cdot p_j$; the scanned copy in `Livros/` carries a reader's handwritten mark over that sign. **Answer in the source:** no.
 
 > **3.3.** Consider the following asymmetric-information model of Bertrand duopoly with differentiated products. Demand for firm $i$ is $q_i(p_i, p_j) = a - p_i - b_i \cdot p_j$. Costs are zero for both firms. The sensitivity of firm $i$'s demand to firm $j$'s price is either high or low. That is, $b_i$ is either $b_H$ or $b_L$, where $b_H > b_L > 0$. For each firm, $b_i = b_H$ with probability $\theta$ and $b_i = b_L$ with probability $1 - \theta$, independent of the realization of $b_j$. Each firm knows its own $b_i$ but not its competitor's. All of this is common knowledge. What are the action spaces, type spaces, beliefs, and utility functions in this game? What are the strategy spaces? What conditions define a symmetric pure-strategy Bayesian Nash equilibrium of this game? Solve for such an equilibrium.
 
 #### 11. Tadelis 12.3
 
 <!-- id: Tadelis 12.3 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.3 "Armed Conflict", pp. 266–267. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.3 "Armed Conflict", pp. 266–267 [PDF pp. 285–286]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Armed Conflict:** Consider the following strategic situation: Two rival armies plan to seize a disputed territory. Each army's general can choose either to attack ($A$) or to not attack ($N$). In addition, each army is either strong ($S$) or weak ($W$) with equal probability, and the realizations for each army are *independent*. Furthermore the type of each army is known only to that army's general. An army can capture the territory if either (i) it attacks and its rival does not or (ii) it and its rival attack, but it is strong and the rival is weak. If both attack and are of equal strength then neither captures the territory. As for payoffs, the territory is worth $m$ if captured and each army has a cost of fighting equal to $s$ if it is strong and $w$ if it is weak, where $s < w$. If an army attacks but its rival does not, no costs are borne by either side. Identify all the pure-strategy Bayesian Nash equilibria of this game for the following two cases, and briefly describe the intuition for your results:
 >
@@ -216,7 +222,7 @@ than the lecture uses.
 #### 12. Tadelis 12.9
 
 <!-- id: Tadelis 12.9 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.9 "Grab the Dollar", p. 269. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.9 "Grab the Dollar", p. 269 [PDF p. 288]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Grab the Dollar:** Each of two players has two possible actions: grab the dollar or don't grab the dollar. Player $i$'s payoff is 1 if he is the only one to grab the dollar, and his payoff is 0 if he does not. Each player's payoff is $-1$ if both players grab the dollar.
 >
@@ -229,7 +235,7 @@ than the lecture uses.
 #### 13. Tadelis 12.5
 
 <!-- id: Tadelis 12.5 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.5 "Not All That Glitters", pp. 267–268. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.5 "Not All That Glitters", pp. 267–268 [PDF pp. 286–287]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Not All That Glitters:** A prospector owns a gold mine where he can dig to recover gold. His output depends on the amount of gold in the mine, denoted by $x$. The prospector knows the value of $x$, but the rest of the world knows only that the amount of gold is uniformly distributed on the interval $[0, 1]$. Before deciding to mine, the prospector can try to sell his mine to a large mining company, which is much more efficient in its extraction methods. The prospector can ask the company owner for any price $p \ge 0$, and the owner can reject ($R$) or accept ($A$) the offer. If the owner rejects the offer then the prospector is left to mine himself, and his payoff from self-mining is equal to $3x$. If the owner accepts the offer then the prospector's payoff is the price $p$, while the owner's payoff is given by the net value $4x - p$, and this is common knowledge.
 >
@@ -240,7 +246,7 @@ than the lecture uses.
 #### 14. Tadelis 12.6
 
 <!-- id: Tadelis 12.6 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.6 "Reap and Weep", p. 268. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.6 "Reap and Weep", p. 268 [PDF p. 287]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Reap and Weep:** A farmer owns some land that he can farm to produce crops. Farming output depends on the talent of the farmer. The farmer knows his talent, but the rest of the world knows only that a farmer's talent is uniformly distributed: $\theta \in [0, 1]$. The farmer's payoff from farming his land is equal to his talent $\theta$. Before setting up his farm, the farmer approaches the local manufacturing plant and offers to work on the production line. The farmer can ask the plant owner for any wage $w \ge 0$, and the owner can reject ($R$) or accept ($A$) the offer. If the owner rejects the offer then the farmer must return home and settle into his farming. If the owner accepts the offer then the farmer's payoff is the wage $w$, while the owner's payoff is given by the net value $\frac{3}{2}\theta - w$, and this is common knowledge.
 >
@@ -253,14 +259,14 @@ than the lecture uses.
 #### 15. Gibbons 3.6
 
 <!-- id: Gibbons 3.6 -->
-**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.2, Problem 3.6, p. 170. Reproduced verbatim.
+**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.2, Problem 3.6, p. 170 [PDF p. 176]. Reproduced verbatim. **Answer in the source:** no.
 
 > **3.6.** Consider a first-price, sealed-bid auction in which the bidders' valuations are independently and uniformly distributed on $[0,1]$. Show that if there are $n$ bidders, then the strategy of bidding $(n-1)/n$ times one's valuation is a symmetric Bayesian Nash equilibrium of this auction.
 
 #### 16. Tadelis 13.9
 
 <!-- id: Tadelis 13.9 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.9 "Private Value Linear Bidding", p. 287. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.9 "Private Value Linear Bidding", p. 287 [PDF p. 306]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Private Value Linear Bidding:** Two players participate in a first-price sealed-bid auction in an IPV setting. The value of the good for each player is given by $0.5 + \theta_i$, where $\theta_i$ is observed only by player $i$ and is uniformly distributed over the interval $[0, 1]$.
 >
@@ -271,7 +277,7 @@ than the lecture uses.
 #### 17. Tadelis 13.3
 
 <!-- id: Tadelis 13.3 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.3 "Reserve Prices (Easier)", pp. 285–286. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.3 "Reserve Prices (Easier)", pp. 285–286 [PDF pp. 304–305]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Reserve Prices (Easier):** Consider a seller who must sell a single private value good. There are two potential buyers, each with a valuation that can take on one of three values, $\theta_i \in \{0, 1, 2\}$, each value occurring with an equal probability of $\frac{1}{3}$. The players' values are independently drawn. The seller will offer the good using a second-price sealed-bid auction, but he can set a "reserve price" of $r \ge 0$ that modifies the rules of the auction as follows. If both bids are below $r$ then neither bidder obtains the good and it is destroyed. If both bids are at or above $r$ then the regular auction rules prevail. If only one bid is at or above $r$ then that bidder obtains the good and pays $r$ to the seller.
 >
@@ -288,7 +294,7 @@ than the lecture uses.
 #### 18. Tadelis 12.8
 
 <!-- id: Tadelis 12.8 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.8 "Jury Voting", pp. 268–269. Reproduced verbatim. The game it refers to is Tadelis §12.4 (pp. 261–264), summarized in [[Notas/L07/L07-09-common-values-curses]] §1.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.8 "Jury Voting", pp. 268–269 [PDF pp. 287–288]. Reproduced verbatim. The game it refers to is Tadelis §12.4 (pp. 261–264), summarized in [[Notas/L07/L07-09-common-values-curses]] §1. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Jury Voting:** Consider the jury voting game in Section 12.4.
 >
@@ -297,6 +303,10 @@ than the lecture uses.
 > b. Would it be better for the two players if only one of them decided on the fate of the defendant? Why or why not?
 >
 > c. Consider a three-player game in which the defendant is convicted if at least two players vote to convict him, and acquitted otherwise (i.e., majority voting determines the defendant's fate). Assume that the informational structure is the same as in the two-player game. Are there conditions in which voting according to one's signal ($C$ if $\theta_i = \theta_G$ and $A$ if $\theta_i = \theta_I$) is a Bayesian Nash equilibrium?
+
+**Note on the book (item 18).** Part (a) is true only for $p \le q$ (the signal precision does not exceed the
+prior): against a juror who always convicts, a juror who sees $\theta_I$ is pivotal and acquits when $p > q$.
+The book (p. 264) states $CC$ as an equilibrium without the condition. See the solutions PDF, item 18.
 
 ---
 
@@ -316,21 +326,21 @@ than the lecture uses.
 #### 19. MWG 13.B.1
 
 <!-- id: MWG 13.B.1 -->
-**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 13 Exercises, Exercise 13.B.1^A, p. 473. Reproduced verbatim. Figures 13.B.1–13.B.3 are in the text, pp. 440–443.
+**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 13 Exercises, Exercise 13.B.1^A, p. 473 [PDF p. 247]. Reproduced verbatim. Figures 13.B.1–13.B.3 are in the text, pp. 440–443. **Answer in the source:** yes, in the MWG solutions manual (Figures 13.B.1(a)-(c)).
 
 > Consider three functions of $\hat\theta$: $r(\hat\theta)$, $E[\theta \mid \theta \le \hat\theta]$, and $\hat\theta$. Graph these three functions over the domain $[\underline\theta, \bar\theta]$, assuming that the first two functions are continuous in $\hat\theta$ but allowing them to be otherwise quite arbitrary. Identify the competitive equilibria of the adverse selection model of Section 13.B using this diagram. What about the Pareto optimal labor allocation? Now produce a diagram to depict each of the situations in Figures 13.B.1 to 13.B.3.
 
 #### 20. MWG 13.B.2
 
 <!-- id: MWG 13.B.2 -->
-**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 13 Exercises, Exercise 13.B.2^B, p. 473. Reproduced verbatim.
+**Source.** Mas-Colell, Whinston & Green (1995), *Microeconomic Theory*, Ch. 13 Exercises, Exercise 13.B.2^B, p. 473 [PDF p. 247]. Reproduced verbatim. **Answer in the source:** not found in the solutions manual's OCR text.
 
 > Suppose that $r(\cdot)$ is a continuous and strictly increasing function and that there exists $\hat\theta \in (\underline\theta, \bar\theta)$ such that $r(\theta) > \theta$ for $\theta > \hat\theta$ and $r(\theta) < \theta$ for $\theta < \hat\theta$. Let the density of workers of type $\theta$ be $f(\theta)$, with $f(\theta) > 0$ for all $\theta \in [\underline\theta, \bar\theta]$. Show that a competitive equilibrium with unobservable worker types necessarily involves a Pareto inefficient outcome.
 
 #### 21. Tadelis 12.7
 
 <!-- id: Tadelis 12.7 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.7 "Trading Places", p. 268. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 12.7 "Trading Places", p. 268 [PDF p. 287]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Trading Places:** Two players, 1 and 2, each own a house. Each player $i$ values his own house at $v_i$. The value of player $i$'s house to the other player, i.e., to player $j \ne i$, is $\frac{3}{2}v_i$. Each player $i$ knows the value $v_i$ of his own house to himself, but not the value of the other player's house. The values $v_i$ are drawn independently from the interval $[0, 1]$ with uniform distribution.
 >
@@ -343,7 +353,7 @@ than the lecture uses.
 #### 22. Gibbons 3.8
 
 <!-- id: Gibbons 3.8 -->
-**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.2, Problem 3.8, pp. 171–172. Reproduced verbatim. Figure 3.2.3 (the double auction's trading region) is in the text, p. 163.
+**Source.** Gibbons (1992), *Game Theory for Applied Economists*, §3.5 Problems, Section 3.2, Problem 3.8, pp. 171–172 [PDF pp. 177–178]. Reproduced verbatim. Figure 3.2.3 (the double auction's trading region) is in the text, p. 163. **Answer in the source:** no.
 
 > **3.8.** Reinterpret the buyer and seller in the double auction analyzed in Section 3.2.C as a firm that knows a worker's marginal product ($m$) and a worker who knows his or her outside opportunity ($v$), respectively, as in Hall and Lazear (1984). In this context, trade means that the worker is employed by the firm, and the price at which the parties trade is the worker's wage, $w$. If there is trade, then the firm's payoff is $m - w$ and the worker's is $w$; if there is no trade then the firm's payoff is zero and the worker's is $v$.
 >
@@ -356,7 +366,7 @@ than the lecture uses.
 #### 23. Tadelis 13.5
 
 <!-- id: Tadelis 13.5 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.5 "Mixed Strategies", p. 286. Reproduced verbatim.
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.5 "Mixed Strategies", p. 286 [PDF p. 305]. Reproduced verbatim. **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Mixed Strategies:** Consider a seller who offers a single private value good using a first-price sealed-bid auction. There are two potential buyers, each with a valuation that can take on one of two values, $\theta_i \in \{4, 8\}$, each value occurring with an equal probability of $\frac{1}{2}$. The players' values are independently drawn. Call the type with $\theta_i = 4$ the "low" type and $\theta_i = 8$ the "high" type.
 >
@@ -368,10 +378,14 @@ than the lecture uses.
 >
 > d. Calculate the expected revenue to the seller given the Bayesian Nash equilibrium in (c). How does it compare to the expected revenue he would obtain from an English auction?
 
+**Note on the book (item 23).** In part (c) the uniform distribution on $[4,6]$ is not an equilibrium strategy of
+the high type (the payoff $(8-b)(b-2)/4$ is not constant on $[4,6]$); the indifference condition gives the cdf
+$(b-4)/(8-b)$ on $[4,6]$, whose revenue equals the English auction's $5$. See the solutions PDF, item 23.
+
 #### 24. Tadelis 13.10
 
 <!-- id: Tadelis 13.10 -->
-**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.10 "Common Values Linear Bidding", p. 287. Reproduced verbatim. "The previous exercise" is item 16 (Tadelis 13.9).
+**Source.** Tadelis (2013), *Game Theory: An Introduction*, Exercise 13.10 "Common Values Linear Bidding", p. 287 [PDF p. 306]. Reproduced verbatim. "The previous exercise" is item 16 (Tadelis 13.9). **Answer in the source:** no (none in the book; Princeton UP's website has about half, not checked).
 
 > **Common Values Linear Bidding:** Two players participate in a first-price sealed-bid auction in a common-values setting. The value of the good for each player is given by $\theta_1 + \theta_2$, where $\theta_i$ is a signal observed only by player $i$ and is uniformly distributed over the interval $[0, 1]$. Hence if player $i$ observes his signal $\theta_i$ then his expected valuation is equal to $0.5 + \theta_i$ (but unlike the previous exercise, this is a common-values setting).
 >
