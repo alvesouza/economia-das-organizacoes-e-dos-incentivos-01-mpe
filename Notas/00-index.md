@@ -33,5 +33,7 @@ When the slides arrive, run `/notes NN --reconcile`.
 
 **PDFs** ([L01](L01/L01-notes.pdf) [L02](L02/L02-notes.pdf) [L03](L03/L03-notes.pdf) [L04](L04/L04-notes.pdf) [L05](L05/L05-notes.pdf) [L06](L06/L06-notes.pdf) [L07](L07/L07-notes.pdf) [L08](L08/L08-notes.pdf)). Each unit compiles to `Notas/LNN/LNN-notes.pdf` (`python -I ~/.claude/commands/templates/notes_pdf.py Notas/LNN`; rerun after any note edit). **Narrations** (TTS): `Leituras/lecture-NN-notes-narrated.txt`.
 
+**Cross-lecture guide:** [How to write strategies](strategies-guide/how-to-write-strategies.pdf) (complete contingent plans in trees, repeated, Bayesian and signaling games; templates, mistakes, self-check). NotebookLM audio prompt: `NotebookLM/audio/strategies-guide-audio.md`.
+
 Book misprints found while writing these notes: `.agent/notes/errata-game-theory-books.md`.
 Schedule and readings: [[../Map/study-guide|study guide]].
