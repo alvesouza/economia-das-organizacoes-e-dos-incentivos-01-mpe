@@ -1,0 +1,99 @@
+% Solution: Tadelis (2013) Exercise 15.3 "Trust Thy Neighbor". Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-08-solutions/sol-tadelis-15-3.tex. Check: check_G_L07.py.
+\begin{exsol}{Tadelis Exercise 15.3}{315--316}{Foundations}{2}
+\asked (a) The tree and the conditions on $x, y$ under which player~1 trusts; (b) the tree with nice and
+jerk types; (c) the pure BNE for $p = \frac34$, and which of them are not PBE; (d) the values of $p$ for
+which every BNE is a PBE.
+
+\method (a) Backward induction. (b)--(d) A Bayesian game in which Nature draws player~2's type: the BNE
+are the Nash equilibria of the type-contingent normal form (strategies are \emph{functions of types},
+Lecture~7, frame~11); a PBE additionally needs every type of player~2 to choose optimally at his own node,
+whether or not that node is reached (Tadelis \S15.1--15.2, pp.~304--312). Slides: Lecture~7, frames~27--30
+(the entry game: a BNE with a non-credible move), 32 (on and off the equilibrium path), 34--36
+(Requirements~1--4, PBE).
+
+\solution
+\textbf{(a)} Player~1 chooses $L$ (payoff $0$) or $S$. After $S$ player~2 chooses $D$ (player~1 gets $1$,
+player~2 $x$) or $T$ (player~1 gets $-1$, player~2 $y$). Backward induction: player~2 delivers iff
+$x \ge y$ (strictly if $x > y$). Player~1 trusts iff she expects delivery: $1 > 0 > -1$. So trust is
+justified iff $x > y$. At $x = y$ player~2 is indifferent; trust is an equilibrium only if he delivers
+with probability $\pi$ such that $\pi - (1 - \pi) \ge 0$, i.e.\ $\pi \ge \frac12$.
+
+\textbf{(b) Tree.} Nature draws $N$ (probability $p$; $x = 1$, $y = 0$) or $J$ (probability $1-p$;
+$x = 0$, $y = 1$). Player~1 does not observe it: her two nodes form one information set. Player~2 knows his
+type, so each of his nodes is a singleton. Payoffs $(u_1, u_2)$; after $L$ player~2 gets $0$.
+\begin{center}
+\begin{tikzpicture}[dot/.style={circle,fill,inner sep=1.4pt},every node/.style={font=\footnotesize}]
+  \node[dot,label=above:{Nature}] (n) at (0,0) {};
+  \node[dot,label=left:{1}] (a) at (-3,-1.3) {};
+  \node[dot,label=right:{1}] (b) at (3,-1.3) {};
+  \draw (n) -- node[above left] {$N$ ($p$)} (a);
+  \draw (n) -- node[above right] {$J$ ($1-p$)} (b);
+  \draw[dashed] (a) -- (b);
+  \node[dot,label=below:{$(0,0)$}] (al) at (-4.6,-2.7) {};
+  \node[dot,label=right:{2 ($N$)}] (a2) at (-1.4,-2.7) {};
+  \node[dot,label=below:{$(0,0)$}] (bl) at (1.4,-2.7) {};
+  \node[dot,label=right:{2 ($J$)}] (b2) at (4.6,-2.7) {};
+  \draw (a) -- node[above left] {$L$} (al);  \draw (a) -- node[above right] {$S$} (a2);
+  \draw (b) -- node[above left] {$L$} (bl);  \draw (b) -- node[above right] {$S$} (b2);
+  \foreach \pt/\d/\t in {a2/{$(1,1)$}/{$(-1,0)$}, b2/{$(1,0)$}/{$(-1,1)$}} {
+    \node[dot,label=below:{\d}] (\pt d) at ($(\pt)+(-0.9,-1.3)$) {};
+    \node[dot,label=below:{\t}] (\pt t) at ($(\pt)+(0.9,-1.3)$) {};
+    \draw (\pt) -- node[left] {$D$} (\pt d);  \draw (\pt) -- node[right] {$T$} (\pt t);
+  }
+\end{tikzpicture}
+\end{center}
+
+\textbf{(c) $p = \frac34$.} Player~2's strategy is a pair $(a_N, a_J)$. Player~1's payoff from $S$ is
+$p\,u(a_N) + (1-p)\,u(a_J)$ with $u(D) = 1$, $u(T) = -1$:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+$(a_N, a_J)$ & $(D, D)$ & $(D, T)$ & $(T, D)$ & $(T, T)$ \\
+\midrule
+$u_1(S)$ & $1$ & $2p - 1 = \frac12$ & $1 - 2p = -\frac12$ & $-1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+  \item \emph{Player~1 plays $S$.} Both of player~2's nodes are reached, so each type must best respond:
+  $N$ plays $D$ ($1 > 0$), $J$ plays $T$ ($1 > 0$). Against $(D, T)$, $S$ gives $\frac12 > 0$:
+  $(S;\ D, T)$ is a BNE.
+  \item \emph{Player~1 plays $L$.} Player~2's nodes are not reached, so in a BNE his plan there is
+  unrestricted (it does not change his payoff). The only requirement is that $L$ be optimal: $u_1(S) \le 0$.
+  This holds for $(T, D)$ and $(T, T)$, not for $(D, D)$ or $(D, T)$. BNE: $(L;\ T, T)$ and $(L;\ T, D)$.
+\end{itemize}
+Pure BNE: $(S; D, T)$, $(L; T, T)$, $(L; T, D)$. For a PBE each type of player~2 must play optimally at
+his own (singleton) node, whether reached or not: $N$ plays $D$ and $J$ plays $T$. Only $(S; D, T)$
+qualifies; player~1's belief on her information set is Nature's prior, $\Pr(N) = \frac34$. The other two
+BNE are not PBE: both rest on the nice type throwing the problem set away, which he would never do.
+
+\textbf{(d)} For no value of $p$. Whatever $p$, $(L;\ T, T)$ is a BNE ($S$ would give $-1 < 0$), and it is never
+a PBE (the nice type delivers). For completeness, the PBE is $(L; D, T)$ if $p < \frac12$, $(S; D, T)$ if
+$p > \frac12$, and both at $p = \frac12$: player~1 trusts iff $2p - 1 \ge 0$.
+
+\interp This is the outsourcing game of Lecture~7 (frames~17--21) turned sequential: the trusting player
+hires (here, hands over the problem set) iff she believes the share of ``responsible'' types is high
+enough, here $p \ge \frac12$ (there $p \ge \frac25$). The non-PBE equilibria show why the course needed PBE: a
+BNE lets an unreached type promise behavior he would never carry out.
+
+\verify \texttt{check\_G\_L07.py} enumerates the $2 \times 4$ profiles for $p = \frac34$ (three BNE, one PBE),
+checks for $p \in \{0, \frac1{20}, \dots, 1\}$ that $(L; T, T)$ is a BNE and not a PBE, and tests the trust
+threshold at $\frac12 \pm \frac1{1000}$. Output: ``Tadelis 15.3: p = 3/4 BNE (S;D,T), (L;T,T), (L;T,D); PBE
+(S;D,T) only; (L;T,T) is a non-PBE BNE for every p; trust iff 2p-1 >= 0''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Treating player~2's nodes as one information set. Player~2 knows his type, so each node is a
+  singleton; only player~1 is uncertain.
+  \item Missing $(L; T, D)$: off the path a BNE allows a jerk who delivers and a nice guy who trashes, as
+  long as player~1 does not want to trust.
+  \item Answering (d) with ``$p > \frac12$''. The question is whether \emph{all} BNE are PBE, and
+  $(L; T, T)$ is a non-PBE BNE for every $p$.
+  \item Writing player~2's strategy as one action. It is a plan per type, $(a_N, a_J)$.
+\end{itemize}
+
+\answer{(a) Trust iff $x > y$ (at $x = y$, only if delivery has probability at least $\frac12$). (c) BNE:
+$(S; D, T)$, $(L; T, T)$, $(L; T, D)$; only $(S; D, T)$ is a PBE. (d) No value of $p$: $(L; T, T)$ is a BNE
+that is not a PBE for every $p$. (The PBE has player~1 trust iff $p \ge \frac12$.)}
+\end{exsol}

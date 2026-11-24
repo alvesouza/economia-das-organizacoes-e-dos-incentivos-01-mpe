@@ -1,0 +1,95 @@
+% Solution: Tadelis (2013) Exercise 11.2 "Holdup". Input by \solitem.
+% Rewritten from ../pratica-lecture-06-solutions/sol-tadelis-11-2.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 11.2}{236}{Exam level}{3}
+\asked An ultimatum game in which, before player~1's offer, player~2 invests $L$ (pie $v_L$, cost
+$c_L$) or $H$ (pie $v_H$, cost $c_H$), with $v_H > v_L > 0$, $c_H > c_L > 0$, $v_H - c_H > v_L - c_L$:
+(a) the unique SPE and whether it is Pareto optimal; (b) a Nash equilibrium whose outcome is better
+for both players.
+
+\method Backward induction from the ultimatum stage (Lecture~6, frames~13--14: the responder accepts
+every offer, the proposer keeps everything), then a comparison of total surplus. For (b), a Nash
+equilibrium sustained by a rejection threat that is not credible, the logic of item~2 and of
+Lecture~4 (non-credible threats; ``sunk investments can be strategic'' in the Brexit case). Slides,
+frame~21: what matters is each side's position if there is no deal now; a sunk investment does not
+improve it. Book: Tadelis \S11.1 (pp.~220--224).
+
+\solution
+\textbf{Notation.} After investment $k \in \{L,H\}$ the pie is $v_k$; player~1 offers player~2 a share
+$z \in [0, v_k]$ (keeping $v_k - z$); acceptance gives $(v_k - z,\ z - c_k)$, rejection gives
+$(0,\ -c_k)$. The cost $c_k$ is sunk at the bargaining stage.
+
+\textbf{(a) The SPE.}
+\emph{Stage 3 (player~2 responds).} Accepting $z$ gives $z - c_k$, rejecting gives $-c_k$. She accepts
+every $z > 0$ and, at indifference ($z = 0$), accepts: otherwise player~1 would want the smallest
+positive offer, which does not exist.
+\emph{Stage 2 (player~1 offers).} Every offer is accepted, so he offers $z = 0$ and keeps $v_k$, after
+either investment.
+\emph{Stage 1 (player~2 invests).} She anticipates receiving $0$ whatever the pie: $L$ gives $-c_L$,
+$H$ gives $-c_H < -c_L$. She invests $L$.
+
+The unique SPE: player~2 invests $L$ and accepts every offer after either investment; player~1 offers
+$0$ after $L$ and after $H$. Payoffs $(v_L,\ -c_L)$.
+
+\emph{Pareto optimality.} Total surplus is $v_L - c_L$ under $L$ and $v_H - c_H$ under $H$, and the
+second is larger by assumption. So the outcome ``invest $H$, then share'' can make both players better
+off with a suitable split (part~b): the SPE is \emph{not} Pareto optimal. This is the holdup problem:
+player~2 bears the whole cost of the investment, player~1 captures its whole return, so player~2
+under-invests.
+
+\textbf{(b) A better Nash equilibrium.} Choose a share $y$ for player~2 with
+\[
+  c_H - c_L \;<\; y \;<\; v_H - v_L .
+\]
+The interval is non-empty because $v_H - c_H > v_L - c_L \iff v_H - v_L > c_H - c_L$. Strategies:
+\begin{itemize}
+  \item player~2: invest $H$; after $H$ accept iff $z \ge y$; after $L$ accept every offer;
+  \item player~1: after $H$ offer $z = y$; after $L$ offer $z = 0$.
+\end{itemize}
+Outcome: $H$, offer $y$ accepted, payoffs $(v_H - y,\ y - c_H)$. Best replies:
+\begin{itemize}
+  \item player~1 after $H$: offering $y$ gives $v_H - y > 0$; offering less is rejected ($0$); offering
+  more gives less. After $L$ (off the path) offering $0$ is optimal;
+  \item player~2: investing $H$ gives $y - c_H$; switching to $L$ gives $0 - c_L$; and $y - c_H > -c_L
+  \iff y > c_H - c_L$. Her acceptance rule after $H$ only matters at $z = y$, where accepting is optimal.
+\end{itemize}
+Both gain relative to the SPE: player~1 since $v_H - y > v_L \iff y < v_H - v_L$, player~2 since
+$y - c_H > -c_L$. Example: $v_L = 6$, $v_H = 12$, $c_L = 2$, $c_H = 5$ need $3 < y < 6$; with $y = 4$ the
+payoffs are $(8, -1)$ against the SPE's $(6, -2)$.
+
+It is not subgame perfect: after $H$, if player~1 offered $z \in (0, y)$, rejecting would give
+player~2 $-c_H < z - c_H$. The threat ``I reject anything below $y$'' is not credible once the
+investment is sunk.
+
+\interp Holdup is why relationship-specific investments need protection that exists \emph{before}
+the bargaining: long-term contracts that fix the split, vertical integration, or a reputation for
+fair dealing. Without commitment, rational anticipation of being held up destroys the efficient
+investment, even though both parties would prefer it. This is the commitment lesson of Lecture~4 seen
+from the bargaining side.
+
+\verify \texttt{check\_F\_L06.py} enumerates the pure strategies of the game on the integer grid
+$v_L = 6$, $v_H = 12$, $c_L = 2$, $c_H = 5$ (offers $0,\dots,v_k$; acceptance thresholds), and checks that
+the SPE outcome is $(6,-2)$, that the Nash outcomes giving both players strictly more all have $H$ and
+$y \in \{4, 5\}$ (i.e.\ $3 < y < 6$), and that none of them is subgame perfect. Output: ``Tadelis 11.2:
+SPE (L, offer 0) = (6,-2); Pareto-better Nash outcomes use H with y in \{4, 5\}''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Saying player~2 invests $H$ ``because the pie is bigger'' or ``because net surplus is larger''.
+  In the SPE she gets nothing from the pie, so only her cost matters.
+  \item Including the sunk cost in the responder's acceptance decision (``she accepts only if $z \ge
+  c_k$''). At the bargaining stage the cost is paid either way; accepting $z \ge 0$ is optimal.
+  \item Picking $y$ outside $(c_H - c_L,\ v_H - v_L)$: below the lower bound she prefers $L$; above the
+  upper bound player~1 is worse off than in the SPE.
+  \item Calling the part~(b) profile an SPE. It relies on rejecting positive offers after $H$, a
+  non-credible threat.
+  \item Judging Pareto optimality by player~1's payoff alone: $v_H - c_H > v_L - c_L$ means a larger
+  surplus to share, which is what makes a Pareto improvement possible.
+\end{itemize}
+
+\answer{(a) Unique SPE: player~2 invests $L$; player~1 offers $0$ after either investment; player~2
+accepts every offer. Payoffs $(v_L, -c_L)$. Not Pareto optimal: $H$ creates more surplus, but
+player~2 would not receive any of it (holdup). (b) For any $y \in (c_H - c_L,\ v_H - v_L)$: player~2
+invests $H$ and accepts after $H$ only offers $\ge y$; player~1 offers $y$ after $H$ ($0$ after $L$).
+Payoffs $(v_H - y,\ y - c_H)$ beat $(v_L, -c_L)$ for both; the profile is Nash but not subgame
+perfect.}
+\end{exsol}

@@ -1,0 +1,113 @@
+% Solution: Tadelis (2013) Exercise 11.7 "Legislative Bargaining Revisited". Input by \solitem.
+% Rewritten from ../pratica-lecture-06-solutions/sol-tadelis-11-7.tex, deepened; adds the pivotal-voting
+% convention that the book's uniqueness claim needs. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 11.7}{237}{Advanced}{5}
+\asked A $T$-period Baron--Ferejohn game with $N$ (odd) legislators, random recognition and a closed
+rule: (a) the SPE for $T = 1$ and a Nash equilibrium that is not subgame perfect; (b) the same for
+$T = 2$ with $0 < \delta \le 1$; (c) the first proposer's share against the two-period, two-person
+Rubinstein--St\aa hl game; (d) against the infinite-horizon solution of Section~11.4.1.
+
+\method Backward induction, as in two-person alternating offers (Lecture~6, frames~15--19): a voter
+accepts iff his share is at least the discounted value of continuing, and the proposer buys exactly
+the votes he needs at that price. This is Lecture~6's homework~2 (frame~37): ``How does Rubinstein's
+model change when $N$ legislators bargain under majority rule?''. Book: Tadelis \S11.4 and \S11.4.1
+(pp.~229--232), \S11.2 for the two-person two-period game (pp.~224--225).
+
+\textbf{Convention on voting.} With $N \ge 5$ a single vote rarely changes the outcome, so in a voting
+subgame ``everyone votes no'' is a Nash equilibrium (no voter is pivotal), whatever the proposal. To get
+the unique SPE the book claims, one uses the Baron--Ferejohn convention, which \S11.4.1 states as
+``respondents vote based only on the current proposal as it compares to their expectations about
+future proposals'': each legislator votes \emph{as if pivotal}, i.e.\ yes iff his share is at least his
+continuation value (equivalently, no weakly dominated votes). All SPE statements below use it.
+
+\solution
+\textbf{Notation.} $v_t$ = a legislator's expected payoff at the start of a game with $t$ periods left;
+$k_t$ = the proposer's share. A proposal needs $\frac{N+1}{2}$ yes votes, the proposer's included, so
+$\frac{N-1}{2}$ others.
+
+\textbf{(a) $T = 1$.} Rejection gives everyone $0$. A voter accepts any $x_i \ge 0$ (at $x_i = 0$ he must
+accept, by the ultimatum argument of frame~14: otherwise the proposer has no best offer). The proposer
+keeps $k_1 = 1$ and gives $0$ to all others; the proposal passes. Before recognition every legislator
+expects
+\[
+  v_1 = \tfrac1N \cdot 1 + \tfrac{N-1}{N}\cdot 0 = \tfrac1N .
+\]
+\emph{A Nash equilibrium that is not subgame perfect.} Every proposer proposes the equal split
+$(\frac1N, \dots, \frac1N)$ and every legislator votes yes iff the proposal is exactly the equal split.
+On the path it passes and each gets $\frac1N$ ex ante, as in the SPE. A proposer who proposes anything
+else gets at most his own vote, it fails and he gets $0$; no single voter can change the outcome. So it
+is Nash. It fails subgame perfection under the pivotal convention (and plainly when $N = 3$, where one
+extra vote is pivotal): after a deviant proposal giving a voter $x_i > 0$, voting no gives him $0 < x_i$.
+
+\textbf{(b) $T = 2$.} If period~1 fails, period~2 is the game of (a): each legislator's continuation value
+is $v_1 = \frac1N$, worth $\frac{\delta}{N}$ in period-1 terms. So in period~1 a voter accepts iff
+\[
+  x_i \ge \delta v_1 = \frac{\delta}{N}.
+\]
+The proposer offers exactly $\frac{\delta}{N}$ to $\frac{N-1}{2}$ others (chosen at random, to keep
+symmetry), $0$ to the rest, and keeps
+\[
+  k_2 = 1 - \frac{N-1}{2}\cdot\frac{\delta}{N} = 1 - \frac{\delta(N-1)}{2N}.
+\]
+He prefers this to a failed proposal: $k_2 \ge 1 - \frac{\delta}{2} > \frac{\delta}{N}$. It passes at once.
+Ex-ante value: proposer with probability $\frac1N$; otherwise in the coalition with probability
+$\frac12$ (it takes $\frac{N-1}{2}$ of the $N - 1$ others):
+\[
+  v_2 = \frac1N k_2 + \frac{N-1}{N}\cdot\frac12\cdot\frac{\delta}{N}
+  = \frac1N - \frac{\delta(N-1)}{2N^2} + \frac{\delta(N-1)}{2N^2} = \frac1N .
+\]
+\emph{A non-SPE Nash equilibrium.} In period~1 the equal-split rule of (a); in period~2 the SPE of (a). A
+period-1 proposer who deviates is rejected and gets $\delta v_1 = \frac{\delta}{N} < \frac1N$; no voter is
+pivotal on the path. It is not subgame perfect (pivotal convention): a voter offered $x_i > \frac{\delta}{N}$
+should vote yes.
+
+\textbf{(c) Against two-person bargaining.} With two players and $T = 2$ the first proposer gets
+$1 - \delta$ (frame~16). Here $k_2 = 1 - \frac{N-1}{2N}\delta > 1 - \delta$ because $\frac{N-1}{2N} < \frac12
+< 1$. Example: $N = 3$, $\delta = \frac9{10}$ gives $k_2 = 0.7$ against $0.1$. Why: in the two-person game
+the responder who rejects \emph{becomes} the last proposer and takes everything, so her vote costs
+$\delta$. In the legislature a rejecter is next period's proposer only with probability $\frac1N$, so his
+vote costs $\frac{\delta}{N}$; and the proposer needs only a bare majority, ignoring the other
+$\frac{N-1}{2}$ legislators.
+
+\textbf{(d) Against the infinite horizon.} In the symmetric stationary equilibrium of \S11.4.1 each
+legislator's value is $v = \frac1N$ and the proposer keeps $k = 1 - \frac{N-1}{2}\delta v = 1 -
+\frac{\delta(N-1)}{2N}$, the same as $k_2$. In fact $v_t = \frac1N$ for every $t$: by symmetry and random
+recognition the pie is shared equally \emph{ex ante} whatever the horizon, so the price of a vote,
+$\frac{\delta}{N}$, does not depend on how many periods remain. In two-person bargaining, by contrast, the
+horizon decides who moves last, which is why the finite-$T$ shares (frame~17) only converge to
+Rubinstein's $\frac1{1+\delta}$.
+
+\interp Majority rule plus random recognition gives the proposer great power (about half the pie and
+more as $N$ grows: $k \to 1 - \frac{\delta}{2}$), minimal winning coalitions, and immediate agreement.
+The cheap votes are those of legislators with poor outside options, the analogue of ``patience is
+bargaining power'' (frame~21): here the outside option is a $\frac1N$ chance of proposing.
+
+\verify \texttt{check\_F\_L06.py} iterates $v_t = \frac1N k_t + \frac{N-1}{2N}\,\delta v_{t-1}$ with
+$k_t = 1 - \frac{N-1}{2}\delta v_{t-1}$ for $N \in \{3,5,7,9\}$, $\delta \in \{\frac12, \frac9{10}, 1\}$ and
+$t \le 7$, and finds $v_t = \frac1N$ every time; it checks that $k_2$ equals the stationary $k$, that
+$k_2 > 1 - \delta$, and that in the $T = 1$ voting stage with $N = 5$ ``all vote no'' leaves no voter
+pivotal (the reason for the convention). Output: ``Tadelis 11.7: v\_t = 1/N for all t; k2 = k\_inf = 1 -
+delta(N-1)/(2N) > 1 - delta; N=5 all-no voting has no pivotal voter''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Pricing a vote at $\frac1N$ (the undiscounted value) or at $\delta$ (the two-person price). The
+  price is the discounted continuation value $\delta v = \frac{\delta}{N}$.
+  \item Buying $\frac{N+1}{2}$ other votes: the proposer's own vote counts, so he needs $\frac{N-1}{2}$
+  others, the cheapest minimal winning coalition.
+  \item Forgetting that a rejecting voter is the next proposer only with probability $\frac1N$, and
+  using the two-person logic ``if I reject I propose next''.
+  \item Ignoring the voting-equilibrium problem: with $N \ge 5$, ``everyone votes no'' passes the plain
+  subgame-perfection test because nobody is pivotal. The unique SPE needs voters to vote as if pivotal.
+  \item In (d), explaining the match with ``the game is stationary''. The reason is that $v_t = \frac1N$ at
+  every horizon, so the price of a vote is the same with two periods or infinitely many.
+\end{itemize}
+
+\answer{(Voters vote as if pivotal.) (a) $T = 1$: the proposer keeps $1$ and offers $0$, which passes;
+each legislator expects $\frac1N$. Non-SPE Nash: everyone proposes the equal split and votes yes only for
+it. (b) $T = 2$: the proposer offers $\frac{\delta}{N}$ to $\frac{N-1}{2}$ others and keeps $1 -
+\frac{\delta(N-1)}{2N}$; ex-ante value $\frac1N$; the equal-split rule in period~1 is again a non-SPE Nash
+equilibrium. (c) $1 - \frac{\delta(N-1)}{2N} > 1 - \delta$: votes are cheap because a rejecter proposes next
+only with probability $\frac1N$. (d) It equals the infinite-horizon share, because each legislator's
+continuation value is $\frac1N$ at every horizon.}
+\end{exsol}

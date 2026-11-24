@@ -1,0 +1,88 @@
+% =============================================================================
+% Additions for blocks 6-7 (Lectures 6-7, items 51-70) of the real-exercise list.
+% Input right after preamble.tex by lista-reais-lecture-06.tex, lista-reais-lecture-07.tex and
+% lista-reais-lectures-01-07.tex. Blocks 6-7 do not retype statements: each item \input's the
+% fragment that Listas/make_statements.py generates from its practice list
+% (pratica-lecture-0N-solutions/stmt/item-NN.tex), so the practice list stays the single source.
+% Rerun make_statements.py after editing a practice list, then recompile.
+% =============================================================================
+\usepackage{longtable,calc}
+\makeatletter
+% Support macros that pandoc's LaTeX output expects (same as Listas/statement-hook.tex).
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\@ifundefined{c@none}{\newcounter{none}}{}
+\providecommand{\pandocbounded}[1]{\begingroup
+  \setkeys{Gin}{width=0.75\linewidth,height=0.32\textheight,keepaspectratio}#1\endgroup}
+\makeatother
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{00B3}{\textsuperscript{3}}
+% Fragments name images ../figures/x.png, relative to their solutions folder.
+\graphicspath{{pratica-lecture-08-solutions/}}
+
+% \exercicioreal[<diff>]{<short name>}{<level>}{<origin>}: header of a block 6-7 item. The
+% fragment that follows prints the book source line itself, so the header gives the origin.
+\newcommand{\exercicioreal}[4][]{\needspace{12\baselineskip}\refstepcounter{questao}\medskip\noindent
+  \textbf{Exercise \thequestao.}\ifperlecture~{\small(item
+  \the\numexpr\value{questao}+\blockoffset\relax\ of the combined list)}\fi~\textit{#2}%
+  {\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}\nobreak\hfill\mbox{\small[#3; difficulty #1/5]}}\par
+  \noindent{\small\color{black!70}\textbf{Origin.} #4}\par\smallskip}
+% \stmtfrag{<lecture NN>}{<item NN>}: the verbatim statement block from that practice list.
+\newcommand{\stmtfrag}[2]{{\sloppy\input{pratica-lecture-#1-solutions/stmt/item-#2}}\par}
+
+\renewcommand{\howtouse}{{\small\noindent\textbf{How to use this list.} Every exercise below is a
+real exercise from one of the course books, reproduced verbatim under its source line (author,
+book, exercise, printed page and, in brackets, the page your PDF viewer shows for the file in
+\texttt{Livros/}, and whether the source gives the answer). Material the exercise refers to is
+copied into the same block. For Lectures 6--7 the statements are printed from the practice lists
+\texttt{Listas/pratica-lecture-0N.md}, where they were transcribed and checked against the book
+pages; the ``Origin'' line names the chapter and the practice-list item. Muñoz-Garcia \&
+Toro-Gonzalez print a worked answer right after each exercise; MWG answers are in the MWG
+solutions manual; Tadelis and Gibbons give no answer in the book. There is one block per lecture
+of the real schedule, ten exercises in rising difficulty, rated from 1 (apply a definition) to 5
+(graduate level): three foundations, five exam level, two advanced. Detailed solutions:
+\texttt{lista-reais-lecture-0N-solutions.pdf}.\par}}
+
+\renewcommand{\tablenote}{{\footnotesize \ifperlecture \#: item number in this lecture's list,
+then its number in the combined list (\texttt{lista-reais-lectures-01-07.pdf}) in brackets.
+\fi Blocks 1--5 are those of \texttt{lista-reais-lectures-01-05.pdf} (marks there: $^\dagger$\,added
+in the 30-item version, $^\ddagger$\,added in the 50-item version); blocks 6--7 were added on
+2026-11-20 from the slides of Lectures 6 and 7. ``Diff.'': difficulty from 1 (apply a definition)
+to 5 (graduate level). Pages: printed page, then the PDF viewer page in brackets (offsets in
+\texttt{Livros/book-registry.json}; MWG is a two-pages-per-sheet scan). ``Answer'': \emph{book} =
+worked answer printed after the exercise; \emph{manual} = MWG solutions manual in
+\texttt{Livros/}; \emph{none} = no answer in the book. Books: Tadelis (2013), \emph{Game Theory:
+An Introduction}; Gibbons (1992), \emph{Game Theory for Applied Economists}; Muñoz-Garcia \&
+Toro-Gonzalez (2019), \emph{Strategy and Game Theory: Practice Exercises with Answers}, 2nd ed.;
+Mas-Colell, Whinston \& Green (1995), \emph{Microeconomic Theory} (MWG); Cabral (2017),
+\emph{Introduction to Industrial Organization}, 2nd ed.\par}}
+
+\newcommand{\rowsvi}{%
+L6 & \rownum{51} & Gibbons 3.1 & 169 [175] & Found. & Definitions: static Bayesian game, strategy, BNE & 1 & none \\
+   & \rownum{52} & Tadelis 11.1 & 236 [255] & Found. & Disagreement as a Nash equilibrium of any bargaining game & 1 & none \\
+   & \rownum{53} & Muñoz-Garcia Ch.~4 Ex.~1 & 154 [166] & Found. & Ultimatum with envy and guilt: SPE as a function of $\alpha$ & 2 & book \\
+   & \rownum{54} & Gibbons 3.4 & 169--170 [175--176] & Exam & Nature picks the game: all pure BNE & 2 & none \\
+   & \rownum{55} & Muñoz-Garcia Ch.~7 Ex.~1 & 318--319 [329--330] & Exam & Complete vs.\ incomplete information; Bayesian normal form & 3 & book \\
+   & \rownum{56} & Tadelis 11.2 & 236 [255] & Exam & Hold-up: SPE vs.\ a better Nash equilibrium & 3 & none \\
+   & \rownum{57} & Tadelis 12.3 & 266--267 [285--286] & Exam & Two-sided private types: armed conflict, all pure BNE & 3 & none \\
+   & \rownum{58} & Tadelis 12.2 & 266 [285] & Exam & Cournot with private costs (the slides' homework 1) & 4 & none \\
+   & \rownum{59} & Tadelis 12.9 & 269 [288] & Adv. & Continuous types; purification of a mixed equilibrium & 4 & none \\
+   & \rownum{60} & Tadelis 11.7 & 237 [256] & Adv. & Baron--Ferejohn with $T = 1, 2$ (the slides' homework 2) & 5 & none \\}
+\newcommand{\rowsvii}{%
+L7 & \rownum{61} & Tadelis 15.1 & 314 [333] & Found. & BNE vs.\ PBE in a small tree & 1 & none \\
+   & \rownum{62} & Muñoz-Garcia Ch.~9 Ex.~1 & 376--377 [385--386] & Found. & Separating and pooling PBE, two types & 2 & book \\
+   & \rownum{63} & Tadelis 15.3 & 315--316 [334--335] & Found. & Trust with player types; BNE that are not PBE & 2 & none \\
+   & \rownum{64} & Tadelis 12.5 & 267--268 [286--287] & Exam & Selling a mine of unknown quality: adverse selection & 3 & none \\
+   & \rownum{65} & Muñoz-Garcia Ch.~9 Ex.~2 & 385--386 [394--395] & Exam & Job-market signaling: four candidate profiles & 3 & book \\
+   & \rownum{66} & Tadelis 12.6 & 268 [287] & Exam & Adverse selection in hiring; a policy that raises surplus & 3 & none \\
+   & \rownum{67} & Tadelis 15.5 & 316--317 [335--336] & Exam & Entry with a tough or weak entrant: BNE and PBE & 4 & none \\
+   & \rownum{68} & Tadelis 16.4 & 336--337 [355--356] & Exam & Productive education as a signal: BNE vs.\ PBE & 4 & none \\
+   & \rownum{69} & MWG 13.C.5 & 475 [248] & Adv. & Regulated price: can advertising separate qualities? & 4 & manual \\
+   & \rownum{70} & Tadelis 16.8 & 338 [357] & Adv. & Beer or quiche: pooling PBE and the intuitive criterion & 5 & none \\}
+
+\newcommand{\pathvi}{\textbf{Lecture 6}: from the definitions of a Bayesian game (1) through
+disagreement, hold-up and type-contingent strategies to Tadelis 11.7 (5), majority-rule
+bargaining with a closed rule over one and two periods, compared with Rubinstein and with the
+infinite-horizon Baron--Ferejohn solution.}
+\newcommand{\pathvii}{\textbf{Lecture 7}: from separating BNE and PBE in a small tree (1) through
+lemons-style unraveling and Spence's education game to Tadelis 16.8 (5), where every PBE is pooling
+and the intuitive criterion must pick out the one with reasonable off-path beliefs.}

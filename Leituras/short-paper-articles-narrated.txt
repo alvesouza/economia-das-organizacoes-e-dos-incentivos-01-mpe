@@ -1,0 +1,572 @@
+Short paper readings. Cartels, leniency and damages in Brazil. A listening version of the three papers in the Artigos folder.
+
+How to listen.
+
+This script narrates the three papers chosen for the short paper of Economia das Organizações e dos Incentivos, explains the game theory behind each one, and ends with a reading route of further papers. Nothing in the papers' arguments has been cut. Every model, every payoff, and every estimate is here, with the mathematics spoken in words. The long legal passages, lists of case numbers and lists of public bodies are condensed to what matters for the argument, and the script says so where it happens.
+
+The script has twelve parts. Part one is the map: why these three papers belong together. Part two is the first paper, the leniency game by Sabino, Lara and Sarto, narrated in full. Part three re-solves that game and shows where its main result breaks. Part four is the second paper, Responsabilização 360 degrees, by Fraga, Zenkner and Micheli. Part five is the third paper, the cement cartel working paper from CADE's Department of Economic Studies. Part six is the theory behind all three: expected sanctions, collusion in repeated games, leniency and the race to report, private damages, and post-cartel pricing. Part seven is what this means for the short paper. Then come the support parts: common mistakes, a spoken formula sheet, the reading route, a self-test, a glossary, and the whole topic in five lines.
+
+Three conventions. First, CADE is the Conselho Administrativo de Defesa Econômica, Brazil's competition authority. Say it as one word, CADE. The S D E is the old Secretaria de Direito Econômico of the Ministry of Justice, which ran investigations before the 2011 law. Second, page numbers are the printed page numbers of each paper. Third, theory that does not come from the three papers, for example the grim trigger condition with a fine, is labelled as course theory or as textbook theory when it appears. The short-paper guide says that the model, its equilibrium and its comparative statics must be the group's own work, so the model ideas in part seven are directions, not a finished model.
+
+One scope note. The course is game theory, ten lectures following Tadelis, Game Theory: An Introduction, Princeton, 2013. The tools used here are sequential games and subgame perfection from lectures 3 and 4, and repeated games from lectures 5 and 6. The short paper is theoretical. Empirical work, such as the third paper's regressions, enters only through the motivation and the literature review, never as a part the group has to run.
+
+
+Part one. The map.
+
+The one claim to hold on to. A cartel is a repeated game that firms play against each other and against an enforcer. Everything the state does, fines, leniency, damages, debarment, works by changing the payoffs of that game: how much colluding pays each period, how much cheating pays once, and how much confessing pays.
+
+The three papers cover three sides of the same problem.
+
+The first paper is theory. Douglas Matias Sabino, Fabiano Teodoro de Rezende Lara and Elisa Santos Coelho Sarto, "Game Theory Applied to the Brazilian Antitrust Leniency Program", Revista de Direito Público, Brasília, volume 21, number 111, pages 330 to 357, August and September 2024. It builds a two-player sequential game between a cartel member and CADE and asks whether the member wants to confess.
+
+The second paper is institutional. Vivian Fraga, Marcelo Zenkner and Marco Micheli, "Responsabilização 360 graus: desdobramentos de um movimento responsivo dissuasório estimulado pela autoridade de defesa da concorrência", Revista de Defesa da Concorrência, volume 11, number 1, pages 169 to 185, 2023. It documents that CADE pushes other public bodies and the victims to punish cartels in criminal, administrative and civil courts as well.
+
+The third paper is empirical. Felipe Resende Oliveira and Ricardo Carvalho de Andrade Lima, "Estimativa de Sobrepreço em Cartéis: Evidências do Cartel do Cimento no Brasil", CADE Department of Economic Studies, Working Paper number 003, written in 2025. It measures how much the cement cartel raised prices and how much consumers saved when it broke.
+
+Put together: the first paper asks whether the legal rules make confessing worth it. The second shows that the legal exposure of a cartel member is growing, in more and more courts. The third shows that the problem is real and large in Brazil, and that firms' pricing after a cartel reacts to how damages are measured.
+
+Recap of part one. Theory, institutions, evidence. One game seen three ways.
+
+
+Part two. Paper one: the Brazilian antitrust leniency game.
+
+Two point one. The question and the method. Printed pages 330 to 333.
+
+The paper asks whether the current Brazilian leniency programme gives a cartel member enough reason to propose a leniency agreement, and whether that changes if the applicant is also made immune from civil damages. The authors call their method theoretical research with the deductive method, and their data secondary: books, journal papers and legislation. They build two models, both sequential games with perfect information.
+
+Two point two. The literature they review. Printed pages 333 and 334.
+
+Five strands are cited.
+
+First, Motta and Polo, 2003, in the International Journal of Industrial Organization, the first study of how leniency affects cartels. It models leniency during the prosecution phase and how the authority allocates its budget. The paper criticises it for leaving out the preventive effect of self-reporting.
+
+Second, Marvão and Spagnolo, 2018, in the Handbook of Game Theory and Industrial Organization: there is a conflict between public and private enforcement, because damages actions can make leniency less attractive if cooperating with the authority helps victims win in court.
+
+Third, Buccirossi, Marvão and Spagnolo, 2020, in the Journal of Legal Studies: a model of leniency under the European Damages Directive. They reject the existence of a public-private conflict in the European Union and the United States, propose reducing or removing the damages liability of leniency applicants, and recommend giving future claimants full access to the leniency documents.
+
+Fourth, Silbye, 2012, in the European Journal of Law and Economics: to limit the pro-collusive effect, either exempt the applicant fully from private damages or let the leniency programme reward whistleblowers.
+
+Fifth, Bodnar and co-authors, 2023, in the Journal of Law, Economics and Organization, an experiment: large third-party claims can make firms reluctant to apply, because cooperating does not reduce their damages exposure much, and that can stabilise cartels. And Bigoni and co-authors, 2012, in the RAND Journal of Economics: leniency can stabilise the cartels that survive, which may then raise prices.
+
+Two point three. The Brazilian programme. Printed pages 334 to 341.
+
+Leniency entered Brazilian law with Law 10,149 of 2000, which amended the old competition law, Law 8,884 of 1994, by adding articles 35-B and 35-C. Today it sits in articles 86 and 87 of Law 12,529 of 2011, in force since May 29, 2012.
+
+Who can apply: firms and individuals, including the alleged leader of the cartel, which the old law did not allow. The requirements, which must all hold when the agreement is proposed, are four. The applicant is the first to come forward. It stops taking part in the conduct. CADE's General Superintendence does not already hold evidence sufficient to convict it. And it admits its participation and cooperates fully and permanently, at its own expense, until the agreement is ratified.
+
+The procedure. The applicant first asks for a marker, which secures its place in the queue. Later applicants are ranked by time, in case the first fails. Then comes negotiation, with documentary evidence such as emails, meeting records, hotel bookings and travel receipts. The General Superintendence has 10 days to decide on a complete proposal. A rejected proposal is not a confession: the documents are returned and cannot be used, although CADE can still open an investigation from independent evidence. The Public Prosecutor's Office may take part as an intervening party.
+
+The benefits. When the agreement is fulfilled, CADE's Tribunal either extinguishes the administrative punishment or reduces the penalty by one third to two thirds. Criminal liability is also extinguished for the cartel crimes in Law 8,137 of 1990, the related crimes in the old procurement law, Law 8,666 of 1993, and article 288 of the Penal Code.
+
+What leniency does not cover: civil damages. The signatory can still be sued by the prosecutors in a public civil action or by the victims themselves. Law 14,470 of 2022 gave victims of cartels the right to double damages. Signatories of leniency agreements and of cease-and-desist agreements are exempt from the doubling, pay only the damage they actually caused, and are not jointly liable for the damage caused by the other members.
+
+The evidence on use. CADE's own data show leniency agreements rising since 2010, with a sharp increase between 2014 and 2017. The authors note that, since the number of cartels is unknowable, this cannot be tied directly to deterrence. The OECD peer review of 2019 reports that CADE asks for more cooperation than authorities in the United States or Europe, demands stronger evidence, and that agreements can take up to a year to sign.
+
+Two point four. Game theory and Leslie's argument. Printed pages 342 to 344.
+
+The paper defines a sequential game as one where players move in a fixed order, and perfect information as every player knowing the whole history when moving. It cites Christopher Leslie, 2006, "Antitrust Amnesty, Game Theory, and Cartel Stability", in the Journal of Corporation Law, which casts leniency as a prisoner's dilemma. Leslie lists the costs of confessing beyond the antitrust fine: the cartel profit is lost and the confessor is never trusted again in any cartel; victims can sue, needing only to prove their damage; there may be prosecution for related crimes the amnesty does not cover; there are other jurisdictions for an international cartel; and there is reputational damage. So pleading guilty is often not the best option. Leslie concludes that amnesty for the first to confess, even a leader, and even when the government already has enough evidence, breeds distrust inside cartels.
+
+Two point five. The first game. Printed pages 344 to 349.
+
+The players are two: the Applicant, a member of a cartel, and CADE. The order: the Applicant moves first and chooses Propose or Do not propose. If it proposes, CADE chooses Accept or Do not accept.
+
+The story behind the numbers: a food-sector company in a classic, hardcore cartel with four other identical members, in its second year in the cartel, with gross revenue of 100 million dollars in 2022. The probability that the cartel is detected is p, set to one half, which the authors state openly is an assumption with no empirical basis.
+
+The variables, all measured in millions.
+
+L, the cartel profit, is 20 per cent of revenue, so 20.
+
+M, the fine, is 20 per cent of revenue, so 20. The law says the fine can never be less than the advantage gained, so M is at least L.
+
+A, the administrative sanction, is defined in the text as a quarter of gross revenue, but the number used in the calculations is 5.
+
+C, the cost of litigation, is 1.
+
+I, CADE's cost of investigating, is 10 per cent of M, so 2.
+
+M i, the fines CADE can impose on the other members, is 4 times L, so 80.
+
+RC, civil reparation, is set equal to L, so 20 if the agreement is signed. Without an agreement the applicant faces double damages, two times RC, so 40.
+
+Criminal sanctions are left out, because they fall on employees, not on the firm.
+
+The payoffs.
+
+If the Applicant does not propose, its expected payoff, call it X, is p times the quantity L minus A minus M minus two RC minus C, plus one minus p times L. With the numbers: one half times the quantity 20 minus 5 minus 20 minus 40 minus 1, which is minus 46, plus one half times 20. So X is minus 23 plus 10, which is minus 13.
+
+CADE's payoff in that branch, call it Y, is p times the quantity A plus M i plus M minus I, plus one minus p times minus L. With the numbers: one half times the quantity 5 plus 80 plus 20 minus 2, which is 103, plus one half times minus 20. So Y is 51.5 minus 10, which is 41.5.
+
+If the Applicant proposes and CADE accepts, CADE gets 80, the fines on the other four members. The Applicant pays only civil damages, so its payoff is minus RC, which is minus 20.
+
+If the Applicant proposes and CADE rejects, both get what they would have had without a proposal: minus 13 for the Applicant, 41.5 for CADE.
+
+The solution the paper gives. At CADE's node, Accept gives 80 and Reject gives 41.5, so CADE accepts. The Applicant compares minus 13 from not proposing with minus 20 from proposing, so it does not propose. The conclusion is printed on page 349 as the Nash equilibrium Do not propose, and on page 353 as the pair Does not propose, Accept. In words: under current law the cartel member keeps quiet.
+
+Two point six. The second game: immunity from civil damages. Printed pages 349 to 353.
+
+Now the law is hypothetically changed so that the leniency applicant is also immune from civil damages. The only payoff that changes is the Applicant's after Propose and Accept: it goes from minus 20 to 0. Everything else stays: minus 13 and 41.5 without an agreement, 80 for CADE if it accepts. The text writes 40.5 once on page 350, but means 41.5.
+
+The paper first finds two Nash equilibria: Propose and Accept, and Do not propose and Do not accept. It calls the second irrational, because if the Applicant did propose, rejecting would give CADE less than accepting. It then applies backward induction. At CADE's node, Accept beats Reject. At the Applicant's node, Propose gives 0 against minus 13. The subgame perfect equilibrium is Propose, Accept.
+
+Two point seven. The conclusion. Printed pages 353 and 354.
+
+In the first game the company does not confess. With immunity from civil damages it does. The authors conclude that, depending on the detection probability, leniency benefits may not outweigh the cartel's gains. They argue that encouraging damages claims without immunity for applicants, which is what Law 14,470 of 2022 does, may weaken the incentive to report. The challenge, citing Pinha and Braga, 2021, is to balance damages actions against cooperation with the authority. They end by noting that leniency can also stabilise the cartels that survive.
+
+Checklist for part two. You should be able to name the players, the order of moves and the seven variables with their values. You should be able to compute minus 13 and 41.5 aloud. You should be able to state both games' equilibria in the paper's own words.
+
+
+Part three. Re-solving the leniency game.
+
+This part is not in the paper. It is a re-computation done for the short paper, and it changes the paper's main conclusion. Check it yourself before using it.
+
+Three point one. The accounting problem.
+
+Look at where the cartel profit L appears. In the branch where the Applicant does not propose and is not detected, it keeps L, 20. In the branch where it is detected, its payoff starts with L, before the sanctions are subtracted. So L is profit the firm has already earned. But in the leniency branch the payoff is minus RC alone, minus 20, with no L. Under the law the paper itself describes, the leniency applicant loses the fine but pays single damages, so the consistent payoff is L minus RC, which is 20 minus 20, so 0. In the second game, with damages immunity, the consistent payoff is L, so 20.
+
+Three point two. The threshold in the detection probability.
+
+The paper solves only at p equal to one half. The more useful object is the threshold. The payoff from not proposing is 20 minus 66 times p. To see it: p times minus 46, plus one minus p times 20, equals 20 minus 66 p. The Applicant proposes when its leniency payoff is at least 20 minus 66 p.
+
+Four cases follow.
+
+With the paper's first-game payoff of minus 20, the Applicant proposes only if p is at least 40 over 66, about 0.606. At one half, it does not.
+
+With the paper's second-game payoff of 0, it proposes if p is at least 20 over 66, about 0.303. At one half, it does.
+
+With the consistent first-game payoff of 0, the threshold is also about 0.303. At one half, it proposes. So under current law, with consistent accounting, the paper's headline result reverses.
+
+With the consistent second-game payoff of 20, the threshold is 0. It always proposes, weakly.
+
+Three point three. What the model leaves out.
+
+First, there is no strategic interaction between cartel members. The other four members never move. Yet the heart of leniency is the race: each member fears that another will report first, and only the first gets full immunity. Detection should depend on what the others do, and here it is fixed from outside.
+
+Second, CADE's move is trivial. Accept always pays more than Reject, so CADE could be replaced by a rule. Its payoff is fines collected, not social welfare, which is an unusual objective for an authority.
+
+Third, the decision to form the cartel is not modelled, although the conclusion talks about deterrence.
+
+Fourth, the minor slips: A is described as a quarter of revenue, which would be 25, but set to 5; page 348 writes RC equals M where it means RC equals L, both 20; and 40.5 appears where 41.5 is meant.
+
+Three point four. The equilibrium concepts, checked.
+
+In the first game, the Nash equilibria are Do not propose with Accept, and Do not propose with Reject. Both are Nash, because CADE's choice is never reached. Only Do not propose with Accept is subgame perfect. In the second game, the Nash equilibria are Propose with Accept, and Do not propose with Reject. The second is Nash only because of a tie: if CADE rejects, the Applicant gets minus 13 either way. The subgame perfect equilibrium is Propose with Accept. This is exactly the lecture 4 lesson: Nash allows threats off the path that are not credible, and subgame perfection removes them.
+
+Recap of part three. The arithmetic of the paper is right, but its accounting is not consistent, and the conclusion depends on that. The threshold in p is the result worth reporting. The missing race between members is the gap the short paper can fill.
+
+
+Part four. Paper two: Responsabilização 360 degrees.
+
+Four point one. The question. Printed pages 169 to 172.
+
+The authors are lawyers at the firm TozziniFreire. They set out to confirm, with what they call a dense empirical analysis, an institutional movement they name Accountability 360 degrees: CADE, besides punishing cartels under competition law, encourages other public bodies and the victims to seek criminal, administrative and civil sanctions too.
+
+The motivation is bid rigging, cartels in public procurement, which Brazilian law treats as the most serious anticompetitive conduct. They cite OECD estimates that cartels raise prices by 10 to 20 per cent, a conservative estimate by Werden of 10 per cent, and figures of up to 50 per cent from Connor and Bolotova. They recall the Clube das 16 uncovered by Operation Lava Jato, a cartel of large contractors that split Petrobras contracts using rules written up as a sports championship. They also cite Michael Johnston on elite-cartel corruption. They describe the three classic forms of bid rigging: cover bidding, with fake higher bids; bid suppression, with competitors abstaining or withdrawing; and bid rotation, with winners taking turns.
+
+Four point two. The legal frame. Printed pages 172 and 173.
+
+The conduct is defined in Law 12,529 of 2011, article 36, paragraph 3, item I, letter d: to agree, combine, manipulate or adjust with a competitor prices, conditions, advantages or abstention in a public tender. CADE published a guide on fighting bid-rigging cartels in December 2019 and a practical guide for procurement agents in 2021.
+
+Four point three. Method and result. Printed pages 173 and 174.
+
+The authors searched CADE's electronic case system and cross-checked every cartel case with the minutes of the Tribunal's judgment sessions, from January 2018 to April 2023.
+
+The numbers. 40 bid-rigging cases, public or private, were judged. Total fines in convictions were about 2.52 billion reais. In 24 of those 40 cases, 60 per cent, the Tribunal sent a copy of its decision, or some other communication, to another public body: state and federal prosecutors, regulators, other agencies, or public companies such as the Correios, the postal service.
+
+Narrowing down: 26 of the 40 cases concerned public procurement. Keeping only convictions, even partial ones, leaves 20 cases. In 80 per cent of those 20 convictions, CADE engaged in Accountability 360 degrees. Those 20 cases add up to 2.3 billion reais in fines.
+
+Four point four. The precedents. Printed pages 174 to 179.
+
+The paper walks through cases. Here they are condensed, keeping what each one shows.
+
+A cartel in municipal tenders for mobile health units and hospital equipment, funded by Ministry of Health agreements between 2000 and 2005: the Tribunal sent the decision to the Federal Prosecutor's Office in Resende, in Rio de Janeiro state, for a possible action for collective damages, and asked for the decision to be sent to the affected municipalities.
+
+The telecommunications case against Claro, Oi and Telefônica, for a consortium in a Correios tender: fines of about 395 million, 266 million and 122 million reais, around 800 million in total, with a copy sent to the Correios and wide publicity so that victims could seek damages.
+
+The cafeteria-concession case at Infraero airports: copies to the federal and state prosecutors in six cities, to the Federal Police in Paraná, publicity, a newspaper publication paid by the offenders, and a five-year ban on taking part in public tenders.
+
+The Juazeiro do Norte case, school construction works in Ceará, which involved a municipal civil servant: accessory penalties, including a five-year ban on contracting with public financial institutions and taking part in public tenders at every level of government, plus referrals to the municipality, the state audit court, the federal comptroller, the commercial registry and others.
+
+A table on pages 177 to 179 lists the other cases: salt, Curitiba taxis, metro and train projects, information technology services in Brasília, solar water-heating kits for low-income housing, blood products, school meals, school uniforms, PVC pipes, school and office supplies in Pernambuco, rural road equipment in Paraná, and a spin-off of the international high-voltage cable cartel.
+
+Four point five. Multiple legal spheres. Printed pages 179 to 181.
+
+The same conduct is an offence under several laws. Under the Anti-Corruption Law, Law 12,846 of 2013, frustrating or defrauding the competitive character of a tender is punishable, and the competition law says its own sanctions do not exclude others. Under the old procurement law, article 90, it is a crime punishable by two to four years. If a public official takes part, the official also falls under the Administrative Improbity Law, Law 8,429 of 1992. The authors note that CADE treats bid rigging as an offence by object: once the agreement is proven, its effects need not be shown.
+
+They then separate public enforcement, by bodies like CADE and the prosecutors, whose function is mainly repressive, from private enforcement, damages actions by victims, whose function is to compensate.
+
+Four point six. Law 14,470 of 2022. Printed pages 181 and 182.
+
+Five changes, in force since November 17, 2022. First, damages claims expire five years after CADE's final decision is published. Second, the pass-on defence, that the victim passed the overcharge on to its own customers, is not presumed: the defendant must prove it. Third, victims get double damages, except against signatories of agreements with CADE, who pay single damages. Fourth, leniency and cease-and-desist signatories are not jointly liable for the damage caused by the others. Fifth, CADE's decision is enough to ground a fast-track preliminary ruling, called tutela de evidência, in the damages case. The authors expect damages actions, today incipient, to grow.
+
+Four point seven. Conclusion and assessment. Printed pages 182 and 183.
+
+The authors conclude that CADE is the protagonist of a holistic enforcement against bid-rigging cartels: rigorous in its own sphere, with 2.5 billion reais in fines, and active in triggering the others.
+
+How to read it for the short paper. It is neither a theory paper nor a causal study. It counts referrals; it does not measure whether they deter anything. Its value is twofold. It gives institutional facts that can become parameters: more sanction spheres, debarment from public tenders for five years, and the damages rules of Law 14,470. And it sharpens the tension of paper one. Every extra sphere of liability raises the cost of being caught, which deters collusion, but it also raises the cost of confessing, unless leniency protects the confessor in those spheres too.
+
+Checklist for part four. You should be able to give the 40, 24, 26, 20 and 80 per cent figures in order, state the five changes of Law 14,470, and explain why more liability cuts both ways for leniency.
+
+
+Part five. Paper three: the cement cartel overcharge.
+
+Five point one. The case. Printed pages 6 to 17.
+
+On May 28, 2014, CADE's Tribunal convicted six cement companies, Votorantim, Itabira, InterCement, Holcim, Cimpor and Itambé, plus three industry bodies, the Brazilian Portland Cement Association, the national cement industry union, and the concrete services association, and six individuals. Fines on the firms totalled about 3.11 billion reais, the largest CADE has ever imposed, about 5.6 billion at January 2025 prices. Votorantim alone was fined about 1.57 billion. Lafarge signed a cease-and-desist agreement and paid 43 million reais into the Diffuse Rights Fund. Other sanctions included selling assets, a ban on credit from public banks, restrictions on mergers, publication of the decision, and five years of monitoring. The associations were barred from refusing members who met the statutes and from electing convicted people to their boards.
+
+The investigation began on November 23, 2006, with a complaint by a Votorantim commercial coordinator to the S D E. Dawn raids took place between February 7 and 13, 2007, and the administrative proceeding opened in March 2007. There is evidence the cartel ran from at least 1987; the whistleblower said from the 1960s. The conduct included price fixing, regional market division, client allocation, entry barriers, splitting the concrete market in proportion to cement, asset swaps, and control of inputs such as blast-furnace slag.
+
+Why cement is prone to collusion. Eight firms, seven of them in the case, held about 85 per cent of national production in 2012. Transport costs limit each plant to a radius of about 300 to 500 kilometres, so competition is local. Entry needs large investments, and quarry licences can take up to five years. The product is homogeneous and has few substitutes, so demand is inelastic. Cement cartels have been found in South Africa, Germany, Argentina, Poland and India.
+
+Literature in the introduction. Levenstein and Suslow, 2006: cartels last about five years on average, many break within a year from cheating, entry or shocks, some last decades. Zhou, 2016: European Commission investigations in one market reduce cartel formation and raise exits elsewhere. Finkelstein and Levenbach, 1983, on estimating counterfactual prices in court. Erutku and Hildebrand, 2010: after an investigation of a petrol cartel in Sherbrooke, Quebec, prices fell 1.75 cents per litre relative to Montreal.
+
+The goal: estimate the overcharge of the cartel against competitive prices, using the February 2007 raids as the break. The authors stress this is not a damages calculation.
+
+Five point two. The method: difference in differences. Printed pages 18 to 25.
+
+The overcharge is the cartel price minus the competitive price. The hard part is the competitive price, the counterfactual.
+
+Three ways to build it. Before and after: compare prices during the cartel with prices before or after it. Yardstick: compare with a similar competitive market. Difference in differences combines them: the change in the cartel market before and after the break, minus the change in a comparison market over the same time.
+
+The regression, equation two. The log of the price of input i, in state s, in month t, equals a constant, plus beta times the product of a cement dummy and a post-raid dummy, plus input fixed effects, plus state fixed effects, plus month fixed effects, plus an error. Beta is the parameter of interest. It measures how much the cement price moved after the raid relative to the controls.
+
+The controls. The cartel covered almost the whole country and almost every firm, so other states or non-cartel firms cannot be used, and cement abroad follows other business cycles. The controls are other construction inputs measured in kilograms that neither go into cement nor contain it: CA-50 steel bars, CA-60 steel bars, and hydrated lime. Lime shares limestone with cement but has about 185 firms and was not cartelised.
+
+The identifying assumption is parallel trends: without the raid, cement prices would have moved like the controls. It cannot be tested directly, so the authors run an event study, equation three, which replaces the single post dummy with one dummy for cement in each month relative to February 2007, 13 months before and 8 after. If the coefficients before the raid are zero, the trends were parallel.
+
+The data: monthly median prices of 69 construction inputs by state from SINAPI, the IBGE construction-cost survey, January 2003 to September 2013. The treated product is composite Portland cement, CP II-E-32, per kilogram. CP II was 64 per cent of production in 2007.
+
+The confounder: the PAC, the government's Growth Acceleration Programme, announced January 28, 2007, with 503 billion reais over four years, 21.2 per cent of 2006 G D P, which pushed cement demand to record levels. So the window is kept short, to separate the cartel break from the demand boom.
+
+Five point three. Results. Printed pages 26 to 36.
+
+Descriptive statistics, June 2006 to January 2007 against February to August 2007: the mean cement price per kilogram fell from about 0.492 to about 0.484 reais, while the dispersion of cement prices rose. Steel and lime moved little.
+
+The event study. No coefficient before the raid is significant, which supports parallel trends. The effect becomes significant in the second month after the raid, April 2007, with a p value of 0.003. The post-raid effects range from minus 1.58 to minus 3.51 per cent.
+
+The main difference-in-differences table. With February 2007 as the break, the cement price fell between 1.40 and 2.02 per cent, and the effect grows as the window shrinks. The preferred window is June 2006 to August 2007, where the coefficient is minus 0.0204. In a regression on the log of price, the percentage effect of a dummy is e to the beta, minus one, times 100, which turns minus 0.0204 into a fall of 2.02 per cent. So, had the cartel not broken, prices would have been about 2.02 per cent higher than the competitive level. With March 2007 as the break, when the formal proceeding opened, the fall is between 1.59 and 2.35 per cent. Every specification is significant at 5 per cent, and adding state effects or state-by-month effects barely moves the estimate.
+
+Evidence from the case files fits. In South Africa, Govinda and Khumalo, 2014, found an overcharge of 7.5 to 9.7 per cent and savings of 424.5 to 547.1 million dollars from 2010 to 2013. Seized documents show Itabira monitoring whether Poty, a Votorantim company, was keeping to the agreed price, with Poty pricing 2.65 to 4.35 per cent below it. A Votorantim spreadsheet notes Lafarge's brand at 9.80 reais against Votorantim's 10.20 and says to realign prices, a gap of 4.08 per cent. Other records imply gaps of 17.7 to 19.0 per cent in some regions.
+
+Why 2.02 per cent is probably too low. A meta-analysis by Boyer and Kotchoni, 2015, finds a mean overcharge of 15.47 per cent and a median of 16.01 per cent across cartels. Hüschelrath, Müller and Veith, 2012, found 20.3 to 26.2 per cent for a German cement cartel. The authors give three theory reasons, and these are the game-theoretic heart of the paper.
+
+First, from September 2007 the cement price rises again, and steel and lime do not. Harrington, 2004 and 2005, shows that a cartel facing an antitrust authority prices below the monopoly level to avoid suspicion. Once caught, collusion can become tacit, without meetings, and since there is no longer anything to hide, prices can rise.
+
+Second, Harrington, 2004, on post-cartel pricing during litigation. If damages will be computed by comparing cartel prices with post-cartel prices, firms gain by keeping post-cartel prices high: that shrinks the measured overcharge and the damages. The incentive is stronger in concentrated markets and long-lived cartels, both true for cement. Using pre-cartel prices instead is impossible here, because the cartel is too old.
+
+Third, Turner, 2024, on the air cargo cartel, one of the largest ever, with fines above 1.6 billion dollars in the United States and 1.1 billion in Europe: prices stayed high after the break because firms kept using the fuel-surcharge formula created by the cartel. Two lessons follow. Fines limited to the profits earned during the cartel ignore the tacit profits afterwards, which weakens deterrence. And damages based only on the cartel period understate the harm. The Brazilian rule that a fine can never be below the advantage gained, combined with measuring the overcharge against post-cartel prices, can create the same incentive. In Brazil, damages actions remain rare: legal uncertainty, hard proof and high costs deter them, especially when buyers are dispersed.
+
+Further evidence: González and Moral, 2019, find that in a Spanish fuel cartel, prices rose slightly after the sanctions, and the extra revenue far exceeded the fine. Sproul, 1993, finds that in 25 cartels indicted between 1973 and 1984, prices usually rose in the four years after the charges. Levenstein and Suslow, 2010: long cartels have strong internal governance, monitoring and punishment, often through trade associations.
+
+Five point four. Robustness. Printed pages 37 to 40.
+
+Changing the control group, still June 2006 to August 2007: with February as the break, the fall is 1.55 per cent with CA-50 steel and lime as controls, 2.38 per cent with CA-60 steel and lime, and 2.11 per cent with the two steel bars. With March as the break, it ranges from 1.83 to 2.74 per cent. All are significant at 5 per cent. With a different data source, average cement prices from the industry body via the construction chamber, covering 20 states, the fall is 1.58 to 1.72 per cent, significant at 10 per cent.
+
+Five point five. Savings for consumers. Printed pages 40 to 46.
+
+The method: each year's price per kilogram times 2.02 per cent gives the overcharge per kilogram, times 85 per cent of national consumption, the cartel's share, gives the saving; then it is brought to December 2022 prices. If the cartel had continued, it would have cost consumers between about 490 million and 990 million reais a year. From February 2007 to December 2022 the saving is about 11.8 billion reais.
+
+But cartels alternate between collusion and price wars, as in Green and Porter, 1984, and Rotemberg and Saloner, 1986, so assuming 15 years of competition is unrealistic. Three windows are added, each with overcharges of 2.02, 10 and 20 per cent. Ten per cent is the presumption of the United States Sentencing Guidelines and the OECD; 20 per cent was used in CADE's own case.
+
+Three years, February 2007 to February 2010: 2.13, 10.55 and 21.15 billion reais.
+
+The reference window, February 2007 to May 2014, from the raids to the conviction, before the structural remedies took effect: 5.84, 28.90 and 57.80 billion reais.
+
+To May 2019, when most merger restrictions expired: 8.95, 44.33 and 88.66 billion reais.
+
+One caution for careful readers: the 2011 row of table 5 shows an updated saving of about 494 million, while the same year in tables 7 and 8 shows about 858 million. The source has this inconsistency. Quote the totals, not that row.
+
+Five point six. Conclusions. Printed pages 46 to 48.
+
+The overcharge of 2.02 per cent is a lower bound, both because it is below international benchmarks and because it leaves out deadweight loss and dynamic gains such as entry and innovation. Identification depends on parallel trends, which shocks to cost, demand, tax and freight can disturb. A research agenda: after cartels break, do mergers rise to recover market power? Hüschelrath and Smuda, 2013, find in the European Union that mergers rise up to 51 per cent in the three years after a cartel collapses, and horizontal mergers up to 83 per cent. The final message: the formal end of a cartel does not restore competition by itself, because collusion can persist tacitly or through concentrated structures.
+
+Checklist for part five. You should be able to explain difference in differences in two sentences, say why steel and lime are the controls, convert minus 0.0204 into 2.02 per cent, and give the three theory reasons why the estimate is low.
+
+
+Part six. The theory behind all three papers.
+
+This part is course theory and standard textbook theory. It is not taken from the three papers, except where a paper is named.
+
+Six point one. Expected sanctions.
+
+The starting point is Gary Becker, 1968, "Crime and Punishment: An Economic Approach", in the Journal of Political Economy. A rational offender compares the gain with the expected sanction, which is the probability of being caught times the sanction if caught. Paper one's payoff is exactly this: p times the sanctions, against one minus p times keeping the profit. Paper two adds spheres: the sanction if caught is the sum of the fine, damages, criminal penalties, debarment and reputation. Paper three measures the gain side: the overcharge times the quantity.
+
+Six point two. Collusion as a repeated game. Lectures 5 and 6, Tadelis chapter 10, printed pages 190 to 219.
+
+In a one-shot price game between identical firms with Bertrand competition, the only equilibrium is price at marginal cost and zero profit, the prisoner's dilemma of pricing. Repetition changes that. Suppose n firms share the monopoly profit, pi M, equally while they collude, so each earns pi M over n per period. A firm that undercuts by a cent captures the whole market for one period, earning pi M, and then everyone reverts to competition forever, earning zero. That is the grim trigger strategy.
+
+Colluding is worth pi M over n, divided by one minus delta, where delta is the discount factor. Cheating is worth pi M once. Collusion is sustainable when pi M over n, divided by one minus delta, is at least pi M. That simplifies to delta at least one minus one over n. With two firms, delta must be at least one half. With five firms, at least four fifths. More firms make collusion harder, which is one reason cement, with a handful of local suppliers, is fertile ground.
+
+The general form, from the lecture: cooperation is sustainable when delta is at least the gain from cheating divided by the gain from cheating plus the per-period loss from punishment. Or, equivalently, delta at least the cheating payoff minus the collusive payoff, over the cheating payoff minus the punishment payoff.
+
+Six point three. Adding enforcement to the repeated game. A textbook-style illustration, not from the papers.
+
+Suppose that in every period the cartel is detected with probability p and each member then pays K, the total of fines and damages. A simple version subtracts the expected sanction, p times K, from each period's collusive profit. The condition becomes: pi M over n minus p K, all over one minus delta, at least pi M. Rearranged: delta at least one minus one over n, plus p K over pi M. So a higher detection probability or a higher sanction raises the critical discount factor and makes collusion harder. This is the channel through which paper two's extra spheres of liability deter cartels. It is a simplification: in a fuller model, detection ends the cartel, and the cheater may also be fined.
+
+Six point four. Leniency and the race to report.
+
+Leniency adds a new move: confess. Two effects matter, and they point in opposite directions.
+
+The first effect destabilises cartels. If the first to report is immune, a firm that is cheating anyway can cheat and report at the same time, collecting the deviation profit and escaping the sanction while the others are fined. That raises the payoff from deviating and so raises the critical discount factor. And among members, reporting has the structure of a prisoner's dilemma: if I think you will report, I want to report first. Even a small fear that others will run sustains a race. This is the idea in Leslie, 2006, and the formal work of Motta and Polo, 2003, Spagnolo, 2004, Aubert, Rey and Kovacic, 2006, and Harrington, 2008.
+
+The second effect can stabilise cartels. Reduced fines lower the expected sanction for everyone who expects to report when trouble comes, and moderate leniency can make collusion cheaper. Motta and Polo show that leniency for firms after an investigation has started trades off deterrence against faster prosecution. Bigoni and co-authors find in experiments that the cartels that survive leniency can charge higher prices.
+
+Six point five. Private damages and leniency. The tension in papers one and two.
+
+Damages raise the sanction K and so deter collusion. But damages that the leniency applicant must also pay lower the value of confessing, and confessing may even make the victims' case easier. That is the public-private conflict in Marvão and Spagnolo, 2018. Buccirossi, Marvão and Spagnolo, 2020, argue that the conflict is resolved if the applicant's damages are reduced or removed, since the other members then bear more. Law 14,470 of 2022 takes a middle road: double damages for the others, single damages and no joint liability for the applicant. In game terms, the law widens the gap between the payoff of reporting and the payoff of being reported on. Whether it strengthens the race depends on the size of that gap against the profit from staying in, which is exactly what the corrected threshold in part three measures.
+
+Six point six. Post-cartel pricing.
+
+Three mechanisms explain why prices may not fall much after a cartel breaks, all from paper three.
+
+Detection avoidance: when big price jumps raise suspicion, the cartel raises prices gradually and stops short of the monopoly price. Harrington, 2004, in the RAND Journal of Economics, and 2005, in the International Economic Review.
+
+Damages manipulation: when damages are measured against post-cartel prices, firms keep those prices high. Harrington, 2004, in the Journal of Industrial Economics.
+
+Tacit collusion: the repeated game does not need meetings. After the explicit cartel ends, the same grim trigger logic can sustain high prices with focal rules, like air cargo's fuel surcharge.
+
+Two more classics explain price wars. Green and Porter, 1984, in Econometrica: when demand shocks are not observed, a low price could be cheating or bad luck, so the cartel must sometimes punish after bad luck, and price wars happen on the equilibrium path. Rotemberg and Saloner, 1986, in the American Economic Review: price wars happen in booms, because that is when the one-time gain from cheating is biggest.
+
+Recap of part six. Deterrence is expected sanction against gain. Collusion survives when delta is high enough. Sanctions raise the bar. Leniency raises the payoff from cheating and confessing, but damages on the confessor lower it. After a cartel, prices can stay high for strategic reasons.
+
+
+Part seven. What this means for the short paper.
+
+Seven point one. What the guide asks for on November 24.
+
+Three papers and the idea of the model, five minutes, three or four slides, formative feedback with no grade. For each paper: its question, its link to game theory, its mechanism or model, its main result, and how it can be adapted to the group's question.
+
+Seven point two. The weakness of the set and how to fix it.
+
+The set has one weak theory paper from a law journal, one institutional paper and one empirical paper. The literature criterion, worth 25 per cent of the content grade, rewards separating theory from evidence and building an explicit bridge from the theory to the model. So the strongest move is to add, or swap paper two for, a canonical economics theory paper. The best candidates are already cited inside papers one and three, which makes them easy to defend: Motta and Polo, 2003; Buccirossi, Marvão and Spagnolo, 2020; Pinha and Braga, 2021, on leniency and damages liability in Brazil; and Harrington, 2008, on optimal corporate leniency. Check each one by its D O I before citing it, as the guide demands, because tools can invent or distort references.
+
+Seven point three. A candidate research question.
+
+Under Law 14,470 of 2022, double damages for the other members but single damages for the leniency applicant, does private damages exposure strengthen or weaken the race to report, and so make cartels less or more stable?
+
+The gap: paper one asks this with one player, a fixed detection probability and an accounting slip. Paper two documents that liability is spreading across spheres. Paper three shows the cartel problem is real in Brazil and that damages rules feed back into pricing.
+
+Seven point four. Three model directions, for the group to choose and solve.
+
+Direction A, a static reporting game, using lectures 1 and 2. Two cartel members choose, at the same time, Report or Stay silent, with detection probability p, fine F, a damages multiplier k equal to one or two, and a leniency discount. The question: for which values is reporting dominant, and how does the applicant's k shift that?
+
+Direction B, repeated collusion with leniency, using lectures 5 and 6. n firms with grim trigger strategies, a per-period detection probability, and fines, damages and debarment on detection. Derive the critical discount factor with and without the option to report, and do comparative statics on the damages gap. This is the most complete answer to the model criterion, worth 30 per cent.
+
+Direction C, sequential, using lecture 4. Paper one's game, corrected, with a second member who can report first, so that the detection probability is no longer fixed.
+
+Directions A and C are safer for a five-minute slot. Direction B is the strongest final paper.
+
+Checklist for part seven. You should be able to say the question in one sentence, name the gap, and say which lecture each direction uses.
+
+
+Part eight. Common mistakes.
+
+The error is to report paper one's conclusion as it stands. The correction is to say that its arithmetic is right, but that with the cartel profit counted consistently, the applicant proposes under current law for any detection probability above about 0.3.
+
+The error is to give paper one's first equilibrium as a single action, Do not propose. The correction is that a strategy profile names a choice at every node: Do not propose, Accept.
+
+The error is to treat paper two as evidence of deterrence. The correction is that it counts referrals; it does not measure any effect on cartel formation.
+
+The error is to call 2.02 per cent the cement cartel's true overcharge. The correction is that the authors call it a lower bound, for three game-theoretic reasons: detection avoidance, damages manipulation and tacit collusion.
+
+The error is to read the difference-in-differences coefficient, minus 0.0204, as minus 2.04 per cent. The correction is e to the beta, minus one, which gives minus 2.02 per cent.
+
+The error is to put regressions in the short paper. The correction is that the work is theoretical; paper three belongs in the motivation and the literature review.
+
+The error is to assume leniency always destabilises cartels. The correction is that reduced fines can also lower the expected sanction and help collusion, and that surviving cartels may charge more.
+
+The error is to assume damages always help enforcement. The correction is that damages on the confessor lower the value of confessing; that is the public-private conflict.
+
+The error is to let a tool define the model. The correction is that the guide allows artificial intelligence for searching and editing, but the model, the equilibrium and the comparative statics must be the group's, checked by hand, and declared in the last slide.
+
+
+Part nine. Spoken formula sheet.
+
+Pause after each number, try to say the formula, then listen to the answer.
+
+Formula one. Paper one, the applicant's payoff from not proposing. X equals p times the quantity L minus A minus M minus two RC minus C, plus one minus p times L. At the paper's values, minus 13.
+
+Formula two. Paper one, CADE's payoff without an agreement. Y equals p times the quantity A plus M i plus M minus I, plus one minus p times minus L. At the paper's values, 41.5.
+
+Formula three. The payoff from not proposing, as a function of p: 20 minus 66 times p.
+
+Formula four. The proposal threshold: propose when the leniency payoff is at least 20 minus 66 p. Paper's first game: p at least about 0.606. Consistent first game, and paper's second game: p at least about 0.303.
+
+Formula five. The overcharge: cartel price minus competitive price.
+
+Formula six. Difference in differences: the log price equals a constant, plus beta times cement times post, plus input, state and month fixed effects, plus error. Beta is the overcharge in logs.
+
+Formula seven. From log points to per cent: e to the beta, minus one, times 100. Minus 0.0204 becomes minus 2.02 per cent.
+
+Formula eight. Saving per year: price per kilogram times the overcharge, times 85 per cent of consumption.
+
+Formula nine. The expected sanction: the probability of detection times the sanction if detected.
+
+Formula ten. The grim trigger with n Bertrand firms: delta at least one minus one over n.
+
+Formula eleven. The general cooperation condition: delta at least the cheating payoff minus the collusive payoff, over the cheating payoff minus the punishment payoff.
+
+Formula twelve. With an expected sanction each period, as an illustration: delta at least one minus one over n, plus p K over pi M.
+
+
+Part ten. Reading route.
+
+First, the three papers themselves, in this order: paper one, printed pages 344 to 353, the two games; paper three, printed pages 26 to 36, the results and the theory explanation; paper two, printed pages 173 to 174 and 181 to 182, the numbers and Law 14,470.
+
+Second, the course textbook. Tadelis, chapter 8, printed pages 151 to 174, for subgame perfection and credible threats, to check paper one. Tadelis, chapter 10, printed pages 190 to 219, for repeated games and the grim trigger. Cabral, Introduction to Industrial Organization, section 7.3, printed page 172, for collusion in industry.
+
+Third, theory papers on leniency. These are the ones to add to the literature review. The first three are cited in paper one.
+
+Motta and Polo, 2003, "Leniency programs and cartel prosecution", International Journal of Industrial Organization, volume 21, issue 3, pages 347 to 379.
+
+Buccirossi, Marvão and Spagnolo, 2020, "Leniency and damages: where is the conflict?", Journal of Legal Studies, volume 49, issue 2.
+
+Pinha and Braga, 2021, "Leniency and damage liability for cartel members in Brazil", Journal of Competition Law and Economics, volume 17, issue 4, pages 877 to 902. The closest to the group's question.
+
+Spagnolo, 2004, "Divide et Impera: Optimal Leniency Programmes", a C E P R discussion paper. Rewards for the first reporter can make cartels impossible to sustain.
+
+Aubert, Rey and Kovacic, 2006, "The impact of leniency and whistle-blowing programs on cartels", International Journal of Industrial Organization, volume 24.
+
+Harrington, 2008, "Optimal corporate leniency programs", Journal of Industrial Economics, volume 56.
+
+Marvão and Spagnolo, 2018, "Cartels and leniency: taking stock of what we learnt", in the Handbook of Game Theory and Industrial Organization, volume 2. A survey, the best single entry point. Cited in paper one.
+
+Fourth, theory papers on collusion and post-cartel pricing. The first two are cited in paper three.
+
+Green and Porter, 1984, "Noncooperative collusion under imperfect price information", Econometrica, volume 52.
+
+Rotemberg and Saloner, 1986, "A supergame-theoretic model of price wars during booms", American Economic Review, volume 76.
+
+Harrington, 2004, "Post-cartel pricing during litigation", Journal of Industrial Economics, volume 52. Cited in paper three.
+
+Harrington, 2004, "Cartel pricing dynamics in the presence of an antitrust authority", RAND Journal of Economics, volume 35. Cited in paper three.
+
+Becker, 1968, "Crime and punishment: an economic approach", Journal of Political Economy, volume 76. The basis of the expected-sanction logic.
+
+Fifth, empirical evidence, for the motivation.
+
+Levenstein and Suslow, 2006, "What determines cartel success?", Journal of Economic Literature, volume 44. Cited in paper three.
+
+Boyer and Kotchoni, 2015, "How much do cartels overcharge?", Review of Industrial Organization, volume 47. The 15.47 and 16.01 per cent figures. Cited in paper three.
+
+Bodnar and co-authors, 2023, "The effects of private damage claims on cartel activity: experimental evidence", Journal of Law, Economics and Organization, volume 39. Cited in paper one.
+
+Porter, 1983, "A study of cartel stability: the Joint Executive Committee, 1880 to 1886", Bell Journal of Economics. The classic test of Green and Porter's price wars.
+
+A warning on this list. The papers marked as cited in papers one or three come from those papers' reference lists. The others are standard references in the field, but for every one of them, check the D O I, the year and the volume in Google Scholar before citing, as the short-paper guide requires.
+
+
+Part eleven. Self-test.
+
+Pause after each question and answer it aloud.
+
+Question one. In paper one, who moves first, and what are the two choices at each node?
+
+Pause.
+
+Question two. Compute the applicant's payoff from not proposing at p equal to one half.
+
+Pause.
+
+Question three. Why is Do not propose with Do not accept a Nash equilibrium of the second game, but not subgame perfect?
+
+Pause.
+
+Question four. Where does the cartel profit L disappear in paper one, and what happens to the result when you put it back?
+
+Pause.
+
+Question five. What does paper one leave out that is central to how leniency works?
+
+Pause.
+
+Question six. In paper two, what share of public-procurement convictions involved a referral to another body, and out of how many cases?
+
+Pause.
+
+Question seven. Name three of the five changes made by Law 14,470 of 2022.
+
+Pause.
+
+Question eight. Why can more spheres of liability both help and hurt leniency?
+
+Pause.
+
+Question nine. In paper three, what is the treated group, what is the control group, and why those controls?
+
+Pause.
+
+Question ten. Why was the window kept short around February 2007?
+
+Pause.
+
+Question eleven. Give the three reasons why 2.02 per cent is likely an underestimate.
+
+Pause.
+
+Question twelve. With five Bertrand firms and grim trigger strategies, what is the critical discount factor?
+
+Pause.
+
+Question thirteen. How does leniency raise the payoff from cheating on a cartel?
+
+Pause.
+
+Question fourteen. In one sentence, what is the group's candidate research question?
+
+Pause.
+
+Answers, briefly. One: the applicant, Propose or Do not propose; then CADE, Accept or Do not accept. Two: minus 13. Three: the applicant is indifferent when CADE rejects, so not proposing is a best reply, but rejecting is not optimal at CADE's node. Four: in the leniency branch; with L counted, the applicant proposes under current law whenever p exceeds about 0.3. Five: the race between cartel members. Six: 80 per cent of 20. Seven: a five-year limitation period from CADE's decision, no presumption of pass-on, double damages except for signatories, no joint liability for signatories, and CADE's decision grounding a fast-track ruling. Eight: it raises the cost of being caught, which deters, but also the cost of confessing, unless leniency covers it. Nine: cement; CA-50 and CA-60 steel bars and hydrated lime; same unit, no input link, similar shocks, and not cartelised. Ten: to keep the PAC demand boom out. Eleven: detection avoidance, damages manipulation, tacit collusion. Twelve: four fifths. Thirteen: the cheater can also report and escape the sanction while the others are fined. Fourteen: whether the single-versus-double damages gap of Law 14,470 strengthens or weakens the race to report, and so cartel stability.
+
+
+Part twelve. Glossary.
+
+Cartel: an agreement between competitors to fix prices, split markets or rig bids.
+
+Hardcore cartel: an explicit, organised price-fixing or market-sharing cartel.
+
+Bid rigging: collusion in tenders, by cover bidding, suppression or rotation.
+
+Leniency: reduced or no penalty for a cartel member who confesses and cooperates first.
+
+Marker: the place in the queue that a leniency applicant secures before handing in full evidence.
+
+Cease-and-desist agreement: a settlement in which a firm under investigation stops the conduct and pays a contribution, in Portuguese Termo de Compromisso de Cessação.
+
+Private enforcement: damages actions brought by victims, as opposed to public sanctions.
+
+Pass-on defence: the claim that the victim passed the overcharge on to its own buyers.
+
+Joint and several liability: each member can be made to pay the damage caused by all.
+
+Debarment: a ban on taking part in public tenders, five years under article 38 of the competition law.
+
+Overcharge: the cartel price minus the price that would have prevailed under competition.
+
+Counterfactual: the price that would have prevailed without the cartel.
+
+Difference in differences: the before-after change in the treated market minus the before-after change in a control market.
+
+Parallel trends: the assumption that, without the treatment, both groups would have moved together.
+
+Event study: a regression with one coefficient per period around the event, used to check for pre-trends.
+
+Grim trigger: a strategy that cooperates until someone deviates, then punishes forever.
+
+Critical discount factor: the lowest delta at which collusion can be sustained.
+
+Tacit collusion: high prices sustained by the repeated game without explicit communication.
+
+Subgame perfect equilibrium: a strategy profile that is a Nash equilibrium in every subgame, removing threats that are not credible.
+
+
+The whole topic in five lines.
+
+One. A cartel is a repeated game, and every enforcement tool works by changing its payoffs: collusion survives only when delta exceeds a threshold that rises with detection and sanctions.
+
+Two. The Brazilian leniency game in paper one says current law gives no reason to confess, but with the cartel profit counted consistently, a member confesses whenever detection is above about 30 per cent.
+
+Three. CADE pushes liability into criminal, administrative and civil courts, which deters cartels but also raises the cost of confessing, and Law 14,470 answers with single damages and no joint liability for the confessor.
+
+Four. Breaking the cement cartel lowered prices by about 2 per cent, a lower bound, because firms that may be sued keep post-cartel prices high and can keep colluding tacitly.
+
+Five. The short paper's gap is the race between cartel members under unequal damages: model it as a reporting game or a repeated game with leniency, and show how the damages gap moves the threshold.

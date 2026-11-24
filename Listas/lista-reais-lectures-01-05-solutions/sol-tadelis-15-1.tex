@@ -1,0 +1,85 @@
+% Solution: Tadelis (2013) Exercise 15.1 "Equilibrium Selection". Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-08-solutions/sol-tadelis-15-1.tex. Check: check_G_L07.py.
+\begin{exsol}{Tadelis Exercise 15.1}{314}{Foundations}{1}
+\asked (a) All Bayesian Nash equilibria (BNE) of the tree in Figure~15.5; (b) which of them are
+perfect Bayesian equilibria (PBE), and why.
+
+\method A BNE of an extensive-form game is a Nash equilibrium of its normal form, so write the
+$3\times3$ matrix and find its equilibria. For the PBE, give player~2 a belief $\mu = \Pr(x_2)$ at his
+information set $\{x_2, x_3\}$ and require his action to be a best reply to some belief: Bayes' rule
+if the set is reached, any belief if it is not (Tadelis \S15.1--15.2, pp.~304--312). Slides:
+Lecture~7, frames~30--31 (the BNE that relies on a non-credible move), 33 (system of beliefs),
+34--35 (Requirements~1--4) and 36 (definition of PBE).
+
+\solution
+\textbf{Reading the tree.} Player~1 chooses $A$, $B$ or $C$; $C$ ends the game with $(1, 3)$. After $A$
+(node $x_2$) or $B$ (node $x_3$) player~2 chooses $L$, $M$ or $R$ without knowing which of the two nodes
+he is at. Payoffs $(u_1, u_2)$: after $A$: $L\,(0,4)$, $M\,(0,1)$, $R\,(4,0)$; after $B$: $L\,(4,0)$,
+$M\,(0,1)$, $R\,(0,4)$.
+
+\textbf{Normal form} (best replies underlined):
+\begin{center}
+\begin{tabular}{r|c|c|c|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{$L$} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$R$}\\ \cline{2-4}
+$A$ & $0,\ \br{4}$ & $0,\ 1$ & $\br{4},\ 0$ \\ \cline{2-4}
+$B$ & $\br{4},\ 0$ & $0,\ 1$ & $0,\ \br{4}$ \\ \cline{2-4}
+$C$ & $1,\ \br{3}$ & $\br{1},\ \br{3}$ & $1,\ \br{3}$ \\ \cline{2-4}
+\end{tabular}
+\end{center}
+Against $L$ player~1's best reply is $B$ (4); against $M$ it is $C$ (1 beats 0); against $R$ it is $A$.
+Against $A$ player~2's best reply is $L$, against $B$ it is $R$, and against $C$ he is indifferent.
+
+\textbf{(a) Pure BNE.} The only cell with both payoffs underlined is $(C, M)$.
+
+\emph{Mixed BNE.} Let player~1 play $(a, b, c)$ and player~2 $(l, m, r)$. If $a + b > 0$ the information
+set is reached, with belief $\mu = a/(a+b)$, and
+\[
+  u_2(L) = 4\mu, \qquad u_2(M) = 1, \qquad u_2(R) = 4(1 - \mu).
+\]
+Since $\max\{4\mu, 4(1-\mu)\} \ge 2 > 1$, $M$ is never a best reply when the set is reached: $m = 0$.
+\begin{itemize}
+  \item \emph{$c = 1$.} Player~1 gets $1$; deviating to $A$ gives $4r$ and to $B$ gives $4l$. Equilibrium
+  iff $l \le \frac14$ and $r \le \frac14$ (so $m \ge \frac12$); player~2's choice is unconstrained because
+  his set is not reached. This family contains $(C, M)$.
+  \item \emph{$a, b > 0$.} Then $m = 0$; player~1 mixes $A$ and $B$ only if $4r = 4l$, so $l = r = \frac12$,
+  and player~2 mixes $L$ and $R$ only if $4\mu = 4(1-\mu)$, so $\mu = \frac12$, i.e.\ $a = b$. Each of $A$,
+  $B$ pays $2 > 1$, so $c = 0$: the profile $\bigl(\frac12 A + \frac12 B,\ \frac12 L + \frac12 R\bigr)$.
+  \item \emph{Only one of $a, b$ positive} (say $a > 0 = b$): $\mu = 1$, player~2 plays $L$, and then $B$
+  pays $4 > 0$, so player~1 would not play $A$. Mixing $C$ with $A$ and/or $B$ needs $4r = 1$ or
+  $4l = 1$ with $m = 0$ and the set reached, which the first two cases rule out.
+\end{itemize}
+
+\textbf{(b) PBE.} \emph{The family with $c = 1$.} The information set is off the path, so Bayes' rule says
+nothing and $\mu$ may be anything (Requirement~3). But Requirement~4 still binds: player~2 must best
+respond to \emph{some} belief. $M$ is a best reply to none ($\max\{4\mu, 4(1-\mu)\} \ge 2 > 1$), so
+$m = 0$, and then $l + r = 1$ contradicts $l, r \le \frac14$. No member of the family is a PBE; in
+particular $(C, M)$ is a BNE that is not a PBE. \emph{The mixed profile.} The set is reached with
+$\mu = \frac12$ by Bayes' rule; then $L$ and $R$ both give $2 > 1$, so mixing them is sequentially
+rational, and player~1's $A$ and $B$ each give $2 > 1$ from $C$. It is a PBE with $\mu = \frac12$.
+
+\interp $(C, M)$ is the Lecture~7 entry-game problem (frame~30) in miniature: player~1 is deterred from
+entering the information set by a reply, $M$, that player~2 would never choose once there. Subgame
+perfection cannot remove it, because the only proper subgame is the whole game; asking for a belief at
+the information set and a best reply to it does.
+
+\verify \texttt{check\_G\_L07.py} finds the pure equilibrium of the matrix, enumerates every mixed
+profile with probabilities in multiples of $\frac1{12}$ (the equilibria found are exactly the two families
+above), tests the boundary $l = \frac14$ and $l = \frac14 + \frac1{1000}$, and checks that $M$ is never a best
+reply on a belief grid. Output: ``Tadelis 15.1: pure BNE (C,M); BNE = \{C with l,r <= 1/4\} +
+(A/2+B/2, L/2+R/2); only the mixed one is a PBE (mu = 1/2)''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Calling $(C, M)$ a PBE ``because beliefs off the path are free''. Free beliefs do not license any
+  action: the action must be optimal for at least one belief, and $M$ is optimal for none.
+  \item Looking only for pure equilibria and concluding the game has no PBE. The only PBE is mixed.
+  \item Checking subgame perfection instead: there is no proper subgame below the root (the information
+  set has two nodes), so every BNE is an SPE here and SPE removes nothing.
+  \item Forgetting that the BNE with $c = 1$ form a whole family ($l, r \le \frac14$), not just $(C, M)$.
+\end{itemize}
+
+\answer{(a) BNE: player~1 plays $C$ and player~2 plays $L$ and $R$ each with probability at most
+$\frac14$ (pure case $(C, M)$); and $\bigl(\frac12 A + \frac12 B,\ \frac12 L + \frac12 R\bigr)$. (b) Only the
+mixed profile, with belief $\mu = \frac12$, is a PBE. $(C, M)$ is not, because $M$ is never a best reply
+at player~2's information set, whatever he believes.}
+\end{exsol}

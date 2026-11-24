@@ -1,0 +1,82 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 9, Exercise 2. Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-08-solutions/sol-munoz-garcia-9-2.tex. Check: check_G_L07.py.
+\begin{exsol}{\MG{} Ch.~9, Exercise 2}{385--386}{Exam level}{3}
+\asked Whether the job-market signaling game of Fig.~9.11 has a PBE in each of the four pure sender
+profiles: (a) $[NE']$, (b) $[EN']$, (c) $[EE']$, (d) $[NN']$. The first letter is the High type's choice
+($E$ = education, $N$ = none), the primed one the Low type's.
+
+\method The four-step test of Lecture~7: fix the profile; beliefs by Bayes' rule on the path, free off the
+path; the firm's best reply at each information set; each type's deviation check (frames~45--48, the same
+steps on the slides' Spence game; frames~38--40 for the vocabulary). Book: Tadelis \S16.1, pp.~319--323;
+Gibbons \S4.2.B, pp.~190--205.
+
+\solution
+\textbf{Payoffs} (worker, firm) read from Fig.~9.11, each type with probability $\frac12$:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{No education ($N$, $N'$)} & \multicolumn{2}{c}{Education ($E$, $E'$)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Type & Manager ($M'$) & Cashier ($C'$) & Manager ($M$) & Cashier ($C$) \\
+\midrule
+High & $(10, 10)$ & $(4, 4)$ & $(6, 10)$ & $(0, 4)$ \\
+Low & $(10, 0)$ & $(4, 4)$ & $(3, 0)$ & $(-3, 4)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Education costs the High worker $4$ and the Low worker $7$ (compare the worker's payoffs across columns)
+and does not change productivity: the firm's payoffs are the same with or without a degree.
+
+\textbf{The firm's best reply.} Let $p = \Pr(H \mid N)$ and $q = \Pr(H \mid E)$. After either message the
+manager job gives the firm $10 \times \Pr(H) + 0$, the cashier job $4$. So the firm hires a manager iff the
+belief is at least $\frac25$: $M'$ iff $p \ge \frac25$, $M$ iff $q \ge \frac25$.
+
+\textbf{(a) $[NE']$: no.} Bayes: $p = 1$ (only High skips the degree), $q = 0$. The firm plays $M'$ after
+$N$ and $C$ after $E$. The Low worker gets $-3$ but would get $10$ by skipping the degree: he deviates.
+(This is the ``reverse'' separating profile of frame~46.)
+
+\textbf{(b) $[EN']$: yes.} Bayes: $q = 1$, $p = 0$. The firm plays $M$ after $E$ ($10 > 4$) and $C'$ after
+$N$ ($4 > 0$). High: $6$ from $E$ against $4$ from $N$; Low: $4$ from $N'$ against $3$ from $E'$. No one
+deviates. Separating PBE: $\bigl([EN'];\ M \text{ after } E,\ C' \text{ after } N;\ q = 1,\ p = 0\bigr)$.
+It works because the degree is worth $6 - 4 = 2 > 0$ to the High type, net of cost, and $3 - 4 < 0$ to the
+Low type: the cost difference does the separating (frame~45's condition $c_H \le w \le c_L$, here in
+payoff differences).
+
+\textbf{(c) $[EE']$: no.} Bayes: $q = \frac12 \ge \frac25$, so $M$; the worker gets $6$ (High) or $3$
+(Low). After $N$, off the path, the firm plays $C'$ or $M'$ depending on $p$. Against $C'$ the Low worker
+gets $4 > 3$ from skipping the degree; against $M'$ both types get $10$. Whatever the off-path belief, the
+Low type deviates.
+
+\textbf{(d) $[NN']$: yes.} Bayes: $p = \frac12 \ge \frac25$, so $M'$ and both types get $10$. A degree yields
+at most $6$ (High) or $3$ (Low), whatever the firm does after $E$. So the off-path belief $q$ is
+unrestricted; the firm answers $M$ if $q \ge \frac25$ and $C$ if $q \le \frac25$. Pooling PBE:
+$\bigl([NN'];\ M' \text{ after } N;\ p = \frac12;\ \text{any } q \text{ with the matching reply after } E\bigr)$.
+
+\interp Two equilibria survive. In the separating one, the High worker pays $4$ for a degree that does not
+raise productivity, just to be told apart (frame~50: the private return of a signal need not equal its
+social return). In the pooling one nobody studies and the firm, with a favorable prior ($\frac12 \ge \frac25$),
+makes everybody a manager. Both workers are better off in the pooling equilibrium ($10$ each against $6$
+and $4$); the firm earns $5$ in pooling against $\frac12(10) + \frac12(4) = 7$ in separating.
+
+\verify \texttt{check\_G\_L07.py} enumerates all pure sender profiles and firm replies with beliefs on a grid of
+step $\frac1{60}$: the PBE are exactly $[EN']$ and $[NN']$ (the latter with $C$ after $E$ for $q \le \frac25$ and
+$M$ for $q \ge \frac25$). Output: ``MG 9.2: PBE = separating [EN'] (M after E, C' after N); pooling [NN'] with any
+q (M if q >= 2/5, C if q <= 2/5); [NE'] and [EE'] fail''. The book's worked answer reaches the same verdicts.
+
+\mistakes
+\begin{itemize}
+  \item Ruling out $[NN']$ because ``the firm would believe a graduate is High''. The belief after $E$ is free,
+  and here it does not matter: even a manager job after $E$ pays less than $10$.
+  \item In $[EE']$, checking only the High type. The Low type is the one who deviates: $4 > 3$ even if he is
+  made a cashier.
+  \item Using the firm's threshold $\frac12$ instead of $\frac25$: the manager job pays $10\,\Pr(H)$ against a
+  sure $4$, so the cutoff is $\frac{4}{10}$.
+  \item Mixing up primed and unprimed letters: the profile $[EN']$ is ``High educates, Low does not'', and the
+  firm's replies after $N$ carry primes.
+\end{itemize}
+
+\answer{(a) No: the Low type deviates to $N'$ ($10 > -3$). (b) Yes: separating PBE with $M$ after $E$, $C'$ after
+$N$, beliefs $q = 1$, $p = 0$. (c) No: the Low type deviates to $N'$ whatever the firm believes after $N$.
+(d) Yes: pooling PBE with $M'$ after $N$ ($p = \frac12$) and any belief $q$ after $E$, with $M$ if $q \ge \frac25$ and
+$C$ if $q \le \frac25$.}
+\end{exsol}

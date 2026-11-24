@@ -1,0 +1,94 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 4 Ex. 1 "Ultimatum Bargaining Game". Input by \solitem.
+% Rewritten from ../pratica-lecture-06-solutions/sol-munoz-garcia-4-1.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{\MG{} Ch.~4, Exercise 1}{154}{Foundations}{2}
+\asked An ultimatum game over a pie of $1$ in which the responder's utility is
+$u_R = x + \alpha(x - y)$ ($x$ his money, $y$ the proposer's, $\alpha > 0$) and the proposer is
+selfish: (a) the game tree with payoffs in terms of the offer $m$ and $\alpha$; (b) the SPE and how
+payoffs move with $\alpha$; (c) the proposer's money and the responder's payoff as functions of
+$\alpha$.
+
+\method Backward induction, exactly as in the selfish ultimatum game of the slides: first the
+responder's acceptance rule after every offer, then the proposer's best offer. Lecture~6,
+frames~13--14 (ultimatum game; acceptance at indifference, since otherwise the proposer has no best
+offer). Book: \MG{} Ch.~4 (backward induction, p.~153); Tadelis \S11.1 (pp.~220--224). The only
+change is the responder's utility.
+
+\solution
+\textbf{(a) Tree and payoffs.} The proposer chooses $m \in [0,1]$, the money offered to the
+responder. The responder sees $m$ and accepts or rejects.
+\begin{itemize}
+  \item Accept: money $x = m$ for the responder, $y = 1 - m$ for the proposer. Utilities
+  \[
+    u_P = 1 - m, \qquad u_R = m + \alpha\bigl(m - (1 - m)\bigr) = m + \alpha(2m - 1).
+  \]
+  \item Reject: $x = y = 0$, so $u_P = 0$ and $u_R = 0 + \alpha(0 - 0) = 0$.
+\end{itemize}
+The tree has one decision node for the proposer with a continuum of branches $m \in [0,1]$, each
+followed by a responder node with branches $A$ (payoffs $(1-m,\ m + \alpha(2m-1))$) and $R$
+(payoffs $(0,0)$).
+
+\textbf{(b) SPE.} \emph{Responder.} He accepts iff
+\[
+  m + \alpha(2m - 1) \ge 0 \iff m(1 + 2\alpha) \ge \alpha \iff m \ge \frac{\alpha}{1 + 2\alpha}
+  \equiv m^* .
+\]
+For $m < m^*$ the envy term $\alpha(2m-1) < 0$ outweighs the money and he rejects; at $m = m^*$ he is
+indifferent and accepts (if he rejected at $m^*$ the proposer would want the smallest offer above
+$m^*$, which does not exist).
+\emph{Proposer.} His payoff $1 - m$ falls in $m$ and any $m < m^*$ is rejected (payoff $0$), so he
+offers exactly $m^*$, and $1 - m^* > 0$ beats a rejection. The SPE:
+\[
+  s_P^* : m = m^* = \frac{\alpha}{1+2\alpha}, \qquad
+  s_R^*(m) = A \iff m \ge \frac{\alpha}{1+2\alpha}.
+\]
+Equilibrium money: proposer $1 - m^* = \dfrac{1+\alpha}{1+2\alpha}$, responder $m^* =
+\dfrac{\alpha}{1+2\alpha}$. The responder's \emph{utility} is $m^* + \alpha(2m^* - 1) = 0$: he is held
+to his reservation level, just as the selfish responder is held to $0$.
+
+Comparative statics:
+\[
+  \frac{d m^*}{d\alpha} = \frac{(1+2\alpha) - 2\alpha}{(1+2\alpha)^2} = \frac{1}{(1+2\alpha)^2} > 0,
+  \qquad \frac{d(1 - m^*)}{d\alpha} = -\frac{1}{(1+2\alpha)^2} < 0 .
+\]
+A more envious responder gets more money; the proposer keeps less.
+
+\textbf{(c) As functions of $\alpha$.} The proposer's money $\frac{1+\alpha}{1+2\alpha}$ starts at
+$1$ ($\alpha = 0$, the selfish SPE) and falls towards $\frac12$; the responder's money
+$\frac{\alpha}{1+2\alpha}$ starts at $0$ and rises towards $\frac12$. Values: $\alpha = \frac12$ gives
+$(\frac34, \frac14)$; $\alpha = 1$ gives $(\frac23, \frac13)$; $\alpha = 2$ gives $(\frac35, \frac25)$.
+The curves never cross: $1 - 2m^* = \frac{1}{1+2\alpha} > 0$, so the proposer always keeps more
+than half. (The responder's equilibrium utility is the flat line $0$.)
+
+\interp Experiments show proposers offering 30--50\% and responders rejecting low positive offers.
+This model keeps rationality and subgame perfection but changes preferences: a rejection of a low
+offer is a credible threat once the responder dislikes being behind. The proposer then offers just
+enough to make the responder indifferent, the same ``offer exactly the outside option'' logic as in
+frame~16. Even infinite envy only pushes the split to equality, never past it.
+
+\verify \texttt{check\_F\_L06.py} solves $m + \alpha(2m-1) = 0$ with sympy ($m^* =
+\alpha/(1+2\alpha)$), checks both derivatives, the values at $\alpha = \frac12, 1, 2$, the limit
+$\frac12$, the identity $1 - 2m^* = \frac{1}{1+2\alpha}$, and that the responder rejects at $m^* -
+\frac1{1000}$ and accepts at $m^*$ for several $\alpha$. Output: ``MG 4.1: m* = alpha/(1+2 alpha);
+(3/4,1/4) at alpha=1/2, (2/3,1/3) at alpha=1; limit 1/2''. The book's worked answer reports the
+same values.
+
+\mistakes
+\begin{itemize}
+  \item Writing the inequality term with the wrong money: $x - y = m - (1 - m) = 2m - 1$, not
+  $m - 1$ or $1 - 2m$.
+  \item Giving the rejection payoff as $-\alpha$ or $\alpha$: after a rejection both get $0$, so the
+  inequality term is also $0$.
+  \item Reporting the responder's equilibrium \emph{utility} as $m^*$. His money is $m^*$; his utility
+  is $0$, the value of rejecting.
+  \item Concluding that with envy the split becomes equal. Only as $\alpha \to \infty$; for every
+  finite $\alpha$ the proposer keeps $\frac{1+\alpha}{1+2\alpha} > \frac12$.
+  \item Letting the responder reject at indifference: then no optimal offer exists.
+\end{itemize}
+
+\answer{(a) Proposer offers $m$; acceptance gives $(1 - m,\ m + \alpha(2m-1))$, rejection $(0,0)$.
+(b) The responder accepts iff $m \ge \alpha/(1+2\alpha)$; the proposer offers exactly
+$m^* = \alpha/(1+2\alpha)$, which is accepted. Money: proposer $\frac{1+\alpha}{1+2\alpha}$ (falls in
+$\alpha$), responder $\frac{\alpha}{1+2\alpha}$ (rises in $\alpha$); the responder's utility is $0$.
+(c) From $(1,0)$ at $\alpha = 0$ towards $(\frac12,\frac12)$ as $\alpha\to\infty$, e.g.\
+$(\frac23,\frac13)$ at $\alpha = 1$.}
+\end{exsol}

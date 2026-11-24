@@ -1,0 +1,95 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 7 Ex. 1 "A Simple Bayesian Game". Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-munoz-garcia-7-1.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{\MG{} Ch.~7, Exercise 1}{318--319}{Exam level}{3}
+\asked In the $2\times 2$ game of Fig.~7.1, where player~1's payoff in $(A,C)$ is $x \in \{15, 4\}$
+with probability $\frac12$ each: (a) the pure Nash equilibria when $x$ is common knowledge, for
+$x = 15$ and $x = 4$; (b) when only player~1 observes $x$, the strategy spaces, the Bayesian normal
+form and its BNE by underlining best replies.
+
+\method (a) Best-reply underlining in each matrix. (b) The Bayesian normal form of Lecture~6,
+frame~29 (a strategy is a function of the type) and the definition on frame~30; the three-step
+recipe of frame~36. Book: \MG{} Ch.~7 introduction (pp.~317--318); Tadelis \S12.1.3 (pp.~250--252);
+Gibbons \S3.1.B (pp.~146--149). Superscripts name the type: $A^{15}B^{4}$ means ``$A$ if $x = 15$,
+$B$ if $x = 4$''.
+
+\solution
+\textbf{(a) Complete information.} Player~2's payoffs do not involve $x$: against $A$ he prefers $C$
+($18 > 7$), against $B$ he prefers $D$ ($11 > 0$). Player~1 prefers $B$ against $D$ ($8 > 6$) for
+either $x$; against $C$ he compares $x$ with $8$.
+\begin{itemize}
+  \item $x = 15$: $BR_1(C) = A$ ($15 > 8$). Pure NE: $(A, C)$ with payoffs $(15,18)$ and $(B,D)$ with
+  $(8,11)$.
+  \item $x = 4$: $BR_1(C) = B$ ($8 > 4$), and $B$ is then dominant for player~1. Unique pure NE:
+  $(B, D)$.
+\end{itemize}
+
+\textbf{(b) Incomplete information.}
+\emph{1. Strategy spaces.} Player~1 has two types and two actions:
+$S_1 = \{A^{15}A^{4},\ A^{15}B^{4},\ B^{15}A^{4},\ B^{15}B^{4}\}$ ($2^2 = 4$ strategies). Player~2 has a
+single type: $S_2 = \{C, D\}$.
+
+\emph{2. Bayesian normal form.} Each cell averages the two realizations of $x$ with weight $\frac12$,
+using the action each type takes. Player~1: $EU_1(s_1, s_2) = \frac12 u_1(s_1(15), s_2; 15) +
+\frac12 u_1(s_1(4), s_2; 4)$; player~2 likewise. Worked cells:
+\begin{align*}
+  EU(A^{15}A^{4}, C) &= \bigl(\tfrac12\cdot 15 + \tfrac12\cdot 4,\ \tfrac12\cdot 18 + \tfrac12\cdot 18\bigr)
+  = (9.5,\ 18),\\
+  EU(A^{15}B^{4}, C) &= \bigl(\tfrac12\cdot 15 + \tfrac12\cdot 8,\ \tfrac12\cdot 18 + \tfrac12\cdot 0\bigr)
+  = (11.5,\ 9),\\
+  EU(A^{15}B^{4}, D) &= \bigl(\tfrac12\cdot 6 + \tfrac12\cdot 8,\ \tfrac12\cdot 7 + \tfrac12\cdot 11\bigr)
+  = (7,\ 9),\\
+  EU(B^{15}A^{4}, C) &= \bigl(\tfrac12\cdot 8 + \tfrac12\cdot 4,\ \tfrac12\cdot 0 + \tfrac12\cdot 18\bigr)
+  = (6,\ 9).
+\end{align*}
+
+\emph{3. Underlining.} Full matrix, best replies underlined:
+\begin{center}
+\begin{tabular}{l|cc}
+ & $C$ & $D$\\\hline
+$A^{15}A^{4}$ & $9.5,\ \br{18}$ & $6,\ 7$\\
+$A^{15}B^{4}$ & $\br{11.5},\ \br{9}$ & $7,\ \br{9}$\\
+$B^{15}A^{4}$ & $6,\ \br{9}$ & $7,\ \br{9}$\\
+$B^{15}B^{4}$ & $8,\ 0$ & $\br{8},\ \br{11}$
+\end{tabular}
+\end{center}
+Player~1: against $C$ the maximum is $11.5$ ($A^{15}B^{4}$), against $D$ it is $8$ ($B^{15}B^{4}$).
+Player~2: $C$ against $A^{15}A^{4}$ ($18 > 7$); a tie ($9 = 9$) against $A^{15}B^{4}$ and against
+$B^{15}A^{4}$; $D$ against $B^{15}B^{4}$ ($11 > 0$). Cells with both payoffs underlined:
+\[
+  \text{BNE: } (A^{15}B^{4},\ C) \quad\text{and}\quad (B^{15}B^{4},\ D).
+\]
+
+\textbf{Interim check (type by type).} In $(A^{15}B^{4}, C)$: type $15$ plays $A$ ($15 > 8$), type $4$
+plays $B$ ($8 > 4$), and player~2, facing $A$ or $B$ with probability $\frac12$ each, gets $9$ from $C$
+and $9$ from $D$, so $C$ is a best reply. In $(B^{15}B^{4}, D)$: both types play $B$ against $D$
+($8 > 6$), and player~2 gets $11 > 0$ from $D$.
+
+\interp The first BNE is the incomplete-information version of $(A,C)$: the type for whom $A$
+pays ($x = 15$) plays it, the other plays $B$. Player~2 then faces a coin flip between the row he
+likes with $C$ and the row he likes with $D$, and exactly balances ($9 = 9$), so he can play $C$.
+With a prior slightly different from $\frac12$ (say probability $q$ on $x = 15$), $C$ would need
+$18q \ge 7q + 11(1-q)$, i.e.\ $q \ge \frac12$: the knife edge is the given prior. The second BNE is
+the complete-information $(B,D)$, which survives for both types.
+
+\verify \texttt{check\_F\_L06.py} recomputes the eight cells from the two matrices, enumerates the
+eight profiles and runs the type-by-type test; it also confirms player~2's threshold $q \ge \frac12$
+(holds at $\frac12$, fails at $\frac12 - \frac1{1000}$). Output: ``MG 7.1: complete info x=15 -> (A,C),(B,D);
+x=4 -> (B,D); BNE = (A15B4,C), (B15B4,D)''. The book's worked answer finds the same two BNE.
+
+\mistakes
+\begin{itemize}
+  \item Averaging player~2's payoff over $x$ while holding player~1's \emph{action} fixed. Player~2's
+  payoff in a cell depends on the action each type takes: in $(A^{15}B^{4}, C)$ it is
+  $\frac12\cdot 18 + \frac12\cdot 0$, not $18$.
+  \item Treating ``player~1 plays $A$ when $x = 15$'' as player~1's strategy. A strategy names an
+  action for both types; the matrix has four rows, not two.
+  \item Discarding $(A^{15}B^{4}, C)$ because player~2 ``could just as well play $D$''. A tie is a best
+  reply; the profile passes the test.
+  \item Averaging player~1's payoff over $x$ in the interim check. Type $15$ knows $x = 15$: he compares
+  $15$ with $8$, not $9.5$ with $8$. The ex-ante average is only for the normal form.
+\end{itemize}
+
+\answer{(a) $x = 15$: $(A, C)$ and $(B, D)$; $x = 4$: $(B, D)$ only. (b) $S_1 =
+\{A^{15}A^{4}, A^{15}B^{4}, B^{15}A^{4}, B^{15}B^{4}\}$, $S_2 = \{C, D\}$; Bayesian normal form as above;
+BNE: $(A^{15}B^{4}, C)$ and $(B^{15}B^{4}, D)$.}
+\end{exsol}

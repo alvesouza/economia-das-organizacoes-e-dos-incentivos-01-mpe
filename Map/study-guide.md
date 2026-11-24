@@ -1,6 +1,6 @@
 ---
 tags: [map, cross-reference]
-date: 2026-11-03
+date: 2026-11-20
 ---
 
 # Class plan and study guide
@@ -30,10 +30,10 @@ the organizational and IO applications. Pages are printed pages, verified on 202
 | 3 | Tue Oct 27 | Mixed strategies and dynamic games (slides) | §6.1–6.4 (101–123); Ch. 7 (129–150); §8.1–8.2 (151–159) | §1.3, §2.1.A, §2.4 | Slides `Aula/Lecture03.pdf` · mini case solved (`Resolucao/mini-case-lecture-03.pdf`, short version `-short.pdf`) · notes units L02 §07–09 + L03 · `Listas/pratica-lecture-03.md`, 3 quizzes, 2 audio prompts (from the slides), TTS |
 | 4 | Tue Nov 3 | Credible threats and subgame perfection (slides) | Ch. 8 (151–174); §10.1–10.2 (190–196) | §2.1.A–B, §2.4 (115–129) | Slides `Aula/Lecture04.pdf` · Brexit case (`Cases/Brexit/brexit-game.pdf`, short `-short.pdf`) · notes units L03 §05–06 + L05 §01, §03 · 2 audio prompts (from the slides) |
 | 5 | **Fri Nov 6** | Repeated games and bargaining (per L4 wrap-up; no slides yet) | Ch. 9 (175–189); Ch. 10 (190–219); Ch. 11 (220–237) | §2.1.D (68), §2.2, §2.3.A–B (82–102) | notes units L05 + L04 §03, §05–07 · `Listas/pratica-lecture-0{4,5}.md`, quizzes `quiz-lecture0{4,5}-*`, 2 audio prompts (estimated) · real-exercise list `Listas/lista-reais-lectures-01-05.pdf` |
-| 6 | Tue Nov 10 | Repeated games II: collusion, relational contracts | §10.4–10.5 (201–209) | §2.3.C–D (102–) | `Listas/pratica-lecture-06.md`, 3 quizzes, 2 audio prompts, TTS |
-| 7 | Tue Nov 17 | Bayesian games, adverse selection and auctions | Ch. 12 (241–269); Ch. 13 (270–287) | Ch. 3 (143–172) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-07.md`, 3 quizzes, 2 audio prompts, TTS |
-| 8 | Tue Nov 24 | Signaling and perfect Bayesian equilibrium | Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | [[rules/07_selecao_adversa\|Topic 7]] · `Listas/pratica-lecture-08.md`, 3 quizzes, 2 audio prompts, TTS |
-| 9 | Tue Dec 1 | Short-paper presentations | — | — | — |
+| 6 | **Wed Nov 11** | Closing repeated games (tit-for-tat, folk theorem), bargaining, Bayesian games (slides) | §10.6 (209–212); Ch. 11 (220–237); §12.1–12.2 (241–257) | §2.1.D (68–70); §3.1 (144–152) | Slides `Aula/Lecture06.pdf` · real list `Listas/lista-reais-lecture-06.pdf` + solutions · 3 exercise prompts `NotebookLM/audio/lecture-06-exercises-part{1,2,3}.md` · short paper: groups and questions |
+| 7 | Tue Nov 17 | Bayesian games, adverse selection, PBE and signaling (slides) | Ch. 12 (241–269); Ch. 15 (303–317); Ch. 16 (318–338) | Ch. 4 (§4.1–4.2, 175–210) | Slides `Aula/Lecture07.pdf` · real list `Listas/lista-reais-lecture-07.pdf` + solutions · 3 exercise prompts `NotebookLM/audio/lecture-07-exercises-part{1,2,3}.md` · short paper: topic due in class · homework: auction case (Blackboard) |
+| 8 | Tue Nov 24 | Auctions (per the Lecture 7 wrap-up; no slides yet) | Ch. 13 (270–287) | §3.2.B–C (155–163) | `Listas/pratica-lecture-07.md` auction items 5–8, 16–17, 23–24 · short paper: 3 papers from the literature and the idea of the model |
+| 9 | Tue Dec 1 | Mechanism design (half class) and short-paper presentations | Ch. 14 (288–302) | — | — |
 | 10 | Tue Dec 8 | Final exam (55%) | — | — | — |
 
 **Real schedule vs. the estimate (2026-11-06).** The slides run about half a lecture behind the
@@ -42,17 +42,32 @@ credibility, subgames and SPE through the Brexit case and only defined repeated 
 Lecture 5 (per the Lecture 4 wrap-up) takes finitely and infinitely repeated games, the
 one-stage deviation principle, the folk theorem *and* bargaining, i.e. the old estimated units
 L04 and L05 together. The notes units `Notas/LNN/` keep their estimated numbering; each lecture
-row says which units it draws on. Lectures 6–8 below are still the estimate and may shift.
+row says which units it draws on. (Superseded for Lectures 6 on by the next paragraph.)
 
-**Tight stretch.** Lectures 4, 5 and 6 fall within eight days (Nov 3, 6, 10): read Tadelis
-Ch. 9–11 before Nov 6.
+**Real schedule from Lecture 6 on (2026-11-20).** The Lecture 6 slides (frame 3) give a new
+tentative schedule: Lecture 6 (Wed Nov 11) closed repeated games, then bargaining and Bayesian
+games; Lecture 7 (Nov 17) adverse selection and signaling, with Bayesian games repeated as its
+opening; Lecture 8 (Nov 24) auctions; Lecture 9 (Dec 1) mechanism design in half the class, then the
+presentations; Lecture 10 (Dec 8) the final exam. Tacit collusion, reputation and relational
+contracts (the estimated Lecture 6) were not taught beyond Lecture 5's homework, so mechanism
+design (Tadelis Ch. 14) is now in scope for Lecture 9. The kit files for Lectures 6–8 written before
+the slides (`pratica-lecture-0{6,7,8}.md`, `Notas/L06`–`L08`, quizzes, `lecture-0{6,7,8}-audio-*`)
+follow the estimate; the real-exercise lists and exercise prompts for Lectures 6–7 follow the slides.
+
+**Short-paper milestones** (Lecture 6 slides, frames 3 and 40; Lecture 7, frame 52): Lecture 6
+groups and questions; Lecture 7 each group hands in, in class, its members, a real organizational
+or business situation with a strategic interaction, a research question in one or two sentences
+and the course tools it expects to use; Lecture 8 three papers from the literature and the idea of
+the model; Lecture 9 presentations, 10 minutes per group plus Q&A.
 
 **Per-lecture kit** (every lecture N = 1–8): notes [[Notas/00-index|`Notas/LNN/`]] and their PDF
 `Notas/LNN/LNN-notes.pdf` · narration `Leituras/lecture-NN-notes-narrated.txt` · NotebookLM audio
 `NotebookLM/audio/lecture-NN-audio-part{1,2}.md` ([[NotebookLM/README|README]]) · quizzes
 `Simulados/quiz-lectureNN-{1,2,3}-*.md` · practice list `Listas/pratica-lecture-NN.md` with worked solutions `Listas/pratica-lecture-NN-solutions.pdf` (re-aligned to the real lectures on 2026-11-12; book
-exercises verbatim) · for Lectures 1–5, a 10-exercise real list with detailed solutions,
-`Listas/lista-reais-lecture-0N.pdf` and `-solutions.pdf`. Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
+exercises verbatim) · for Lectures 1–7, a 10-exercise real list with detailed solutions,
+`Listas/lista-reais-lecture-0N.pdf` and `-solutions.pdf` · for Lectures 1–7, three NotebookLM
+prompts that talk through that list's problems, solutions and traps,
+`NotebookLM/audio/lecture-0N-exercises-part{1,2,3}.md`. Topic view: [[Map/topics-index|topics-index]]; exercise lookup:
 [[Map/exercises-index|exercises-index]]. The kit files follow the estimated units (audio prompts
 for Lectures 3–5 were rewritten on 2026-11-06 to follow the real lectures). Notes units L03–L08
 were written before any slides; Lecture 3's slides arrived 2026-11-03 and Lecture 4's on
@@ -115,39 +130,44 @@ were written before any slides; Lecture 3's slides arrived 2026-11-03 and Lectur
 - **Applications and project material:** Cabral §7.3 (p. 172) · M&R bargaining over a sale (p. 140) · `Aula/aula-02-notes.md` §5 (Nash bargaining, Rubinstein) · [[rules/02_barganha|Topic 2]]
 - **Notes:** [[Notas/L05/L05-00-map|L05 unit]] (repeated games) and [[Notas/L04/L04-00-map|L04 unit]] §03 (one-stage deviation), §05–07 (bargaining); estimated units
 
-### Lecture 6 — Repeated games II: collusion and relational contracts
+### Lecture 6 — Bargaining and Bayesian games (Wed Nov 11)
 #lecture/6
-- **Before class:** Tadelis §10.4 tacit collusion (p. 201), §10.5 reputation (pp. 204–209) · Gibbons §2.3.C Cournot collusion (p. 102), §2.3.D efficiency wages (p. 107) · M&R Ch. 8 "Reputations as contract enforcers" (p. 259), the repeated trust game (pp. 261–263), "live and let live" (p. 264), limits of reputation (p. 265)
-- **After class:** `Listas/pratica-lecture-06.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture06-{1,2,3}-*.md` · Muñoz-Garcia Ch. 6 Ex. 2–5 (pp. 278–290), Ex. 10 (p. 310); Ch. 5 Ex. 4–5, 8 (pp. 228–239) · M&R Quantitative Exercise 4 (p. 286)
-- **Formal side:** MWG §12.D (p. 400)
-- **Applications:** Cabral Ch. 9 (from p. 217: stability of collusive agreements p. 218, price wars p. 222) · M&R efficiency wages (p. 250)
-- **Notes:** [[Notas/L06/L06-00-map|Lecture 6 notes]] (estimated before the lecture; figures and companions inside)
+- **Content (slides `Aula/Lecture06.pdf`, 40 frames):** closing repeated games: tit-for-tat in the $(4,4)/(5,-1)/(1,1)$ prisoner's dilemma (a single deviation echoes forever; four one-stage checks; not an SPE for any $\delta$, frame 7; an SPE only at the knife edge $\delta = 1/3$ in a second game, frame 8), the folk theorem (frames 9–11: feasible payoffs above the stage Nash payoff, "almost anything goes"); bargaining: the ultimatum game (unique SPE $x_1 = 1$, acceptance at indifference, frames 13–14), two-period alternating offers $(1-\delta_2, \delta_2)$ (frames 15–16), $T$ periods by backward induction and the periods-remaining recursion $1 - x_i^s = \delta_{-i} x_{-i}^{s-1}$ (frames 17–19), Rubinstein's limit $\bigl(\frac{1-\delta_2}{1-\delta_1\delta_2}, \frac{\delta_2(1-\delta_1)}{1-\delta_1\delta_2}\bigr)$, $\frac{1}{1+\delta}$ with equal patience, shares $r_{-i}/(r_1+r_2)$ as offers become frequent (frame 20), takeaways (frame 21); Bayesian games: the Munich Agreement with a friendly (0.6) or belligerent (0.4) Hitler, $U(C) = 2.2 > U(N) = 2$ (frames 23–27), Harsanyi's Nature, the definition (players, type spaces $\Theta_i$, common prior $P$, actions, $u_i(a, \theta)$), strategies $s_i : \Theta_i \to A_i$, Bayes-conditional expected payoffs and Bayesian Nash equilibrium (frames 28–30); application: outsourcing and social responsibility (Serra Gaúcha wineries 2023, Zara 2011), BNE $\{(R,I), H\}$ iff $p \geq 2/5$ (frames 32–36).
+- **Homework (frame 37):** Cournot with private costs, $q_i(\theta_i) = (\theta_i - E[q_j(\theta_j)])/2$ (real-list item 58, Tadelis 12.2), and Baron–Ferejohn legislative bargaining (handout on Blackboard; real-list item 60, Tadelis 11.7).
+- **Short paper:** groups, topics and questions (frame 40).
+- **Before class:** Tadelis §10.6 (pp. 209–212), Ch. 11 (pp. 220–237), §12.1–12.2 (pp. 241–257) · Gibbons §2.1.D (pp. 68–70), §3.1 (pp. 144–152)
+- **After class:** **real list** `Listas/lista-reais-lecture-06.pdf` (10 items, easy → graduate, statements verbatim) with detailed solutions `Listas/lista-reais-lecture-06-solutions.pdf` · exercise prompts `NotebookLM/audio/lecture-06-exercises-part{1,2,3}.md` · practice lists `Listas/pratica-lecture-06.md` items 3–4, 8, 10–12, 19, 24 (bargaining) and `Listas/pratica-lecture-07.md` items 1–4, 9–14 (Bayesian games) · Muñoz-Garcia Ch. 7 (pp. 317–347)
+- **Formal side:** MWG §8.E (p. 253), §9.AA (p. 296)
+- **Notes:** [[Notas/L04/L04-00-map|L04 unit]] §05–07 (bargaining) and [[Notas/L07/L07-00-map|L07 unit]] (Bayesian games); estimated units, not reconciled with the slides. The estimated Lecture 6 unit [[Notas/L06/L06-00-map|L06]] (collusion, reputation, relational contracts) was not taught.
 
 ## Games of incomplete information
 
-### Lecture 7 — Bayesian games, adverse selection and auctions
+### Lecture 7 — Bayesian games, adverse selection and signaling (Tue Nov 17)
 #lecture/7
-- **Before class:** Tadelis Ch. 12 (pp. 241–269; adverse selection §12.3 p. 258), Ch. 13 (pp. 270–287) · Gibbons Ch. 3 (pp. 143–172; auctions §3.2.B p. 155, double auction §3.2.C p. 158)
-- **After class:** `Listas/pratica-lecture-07.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture07-{1,2,3}-*.md` · Muñoz-Garcia Ch. 7 (pp. 317–347), Ch. 8 (pp. 349–373) · MWG 13.B.1, 13.B.2
-- **Formal side:** MWG §8.E (p. 253), §13.B (pp. 437–449)
-- **Applications:** M&R adverse selection (p. 149) · Cabral §7.4 (p. 174), §6.4 auctions and negotiations (p. 140) · [[rules/07_selecao_adversa|Topic 7]]
-- **Notes:** [[Notas/L07/L07-00-map|Lecture 7 notes]] (estimated before the lecture; figures and companions inside)
+- **Content (slides `Aula/Lecture07.pdf`, 58 frames):** Bayesian games and BNE repeated from Lecture 6 (Munich; definitions with the discrete and the continuous expected payoff, frames 4–14; outsourcing and the three-step recipe, frames 16–21); adverse selection: Akerlof's used cars (good: seller 8, buyer 10; lemon: seller 2, buyer 4; half each), expected value 7 < 8, so good cars leave and only lemons trade at $p^* \in [2,4]$ (frames 23–25), with warranties, inspection and reputation as remedies; sequential rationality and PBE: the entry game with an entrant of type C ($p$) or W (Tadelis Ch. 15), two BNE $(OO, F)$ and $(EO, A)$ at $p = 0.5$, the fight threat not credible (frames 27–30), why subgame perfection has no bite, on- and off-path information sets, systems of beliefs, Requirements 1–4, the PBE definition: $(EO, A)$ with $\mu(x_3) = 1$ is a PBE and $(OO, F)$ is not (frames 31–36); signaling: pooling, separating and hybrid equilibria (frames 38–40), Spence (1973) with education that does not raise productivity: separating iff $c_H \leq w \leq c_L$ (frame 45), the reverse separating profile fails (frame 46), pooling on E iff $\Pr(H) \geq w/\pi$ and $c_L \leq w$ with pessimistic off-path beliefs (frame 47), pooling on NE sustained by off-path beliefs, refinements such as the intuitive criterion (frame 48), summary and Akerlof vs. Spence (frames 49–50); appendix: the general competitive lemons model, only low quality trades, at $v_L^s \leq p^* \leq v_L^b$ (frames 56–58).
+- **Short paper (frame 52):** each group hands in, in class, its members, topic, research question and expected tools. **Homework (frame 53):** auction case (Blackboard), for Lecture 8.
+- **Before class:** Tadelis Ch. 12 (pp. 241–269; adverse selection §12.3 p. 258), Ch. 15 (pp. 303–317), Ch. 16 (pp. 318–338) · Gibbons §4.1 (p. 175), §4.2 (pp. 183–210; job-market signaling p. 190)
+- **After class:** **real list** `Listas/lista-reais-lecture-07.pdf` (10 items) with detailed solutions `Listas/lista-reais-lecture-07-solutions.pdf` · exercise prompts `NotebookLM/audio/lecture-07-exercises-part{1,2,3}.md` · practice lists `Listas/pratica-lecture-08.md` (all 25: PBE and signaling) and `Listas/pratica-lecture-07.md` items 13–14, 19–21 (adverse selection) · quizzes `Simulados/quiz-lecture08-{1,2,3}-*.md` · Muñoz-Garcia Ch. 9 (pp. 375–451) · MWG 13.B.1, 13.B.2, 13.C.1, 13.C.5
+- **Formal side:** MWG §9.C (p. 282), §13.B (pp. 437–449), §13.C (pp. 450–459)
+- **Applications:** M&R adverse selection (p. 149), signaling and screening (p. 154) · Cabral §7.4 (p. 174) · [[rules/07_selecao_adversa|Topic 7]]
+- **Notes:** [[Notas/L07/L07-00-map|L07 unit]] (Bayesian games, lemons) and [[Notas/L08/L08-00-map|L08 unit]] (PBE, signaling, intuitive criterion); estimated units, not reconciled with the slides.
 
-### Lecture 8 — Signaling and perfect Bayesian equilibrium
+### Lecture 8 — Auctions (Tue Nov 24)
 #lecture/8
-- **Before class:** Tadelis Ch. 15 (pp. 303–317), Ch. 16 (pp. 318–338) · Gibbons §4.1 (p. 175), §4.2 (pp. 183–210; job-market signaling p. 190)
-- **After class:** `Listas/pratica-lecture-08.md` (book exercises verbatim, tiered) · quizzes `Simulados/quiz-lecture08-{1,2,3}-*.md` · Muñoz-Garcia Ch. 9 (pp. 375–451), Ch. 11 (pp. 481–520) · MWG 13.C.1, 13.C.5, then 13.C.2, 13.C.4
-- **Formal side:** MWG §9.C (p. 282), §9.D (p. 292), §13.C (pp. 450–459), 13.AA (p. 467)
-- **Applications:** M&R signaling and screening (p. 154) · [[rules/07_selecao_adversa|Topic 7]]
-- **Notes:** [[Notas/L08/L08-00-map|Lecture 8 notes]] (estimated before the lecture; figures and companions inside)
+- **Content (from the Lecture 7 wrap-up; no slides yet):** auctions. Prepare the auction case (Blackboard). Short paper: present three papers from the literature and the idea of the model.
+- **Before class:** Tadelis Ch. 13 (pp. 270–287) · Gibbons §3.2.B (p. 155), §3.2.C double auction (p. 158)
+- **After class:** `Listas/pratica-lecture-07.md` auction items (Tadelis 13.1–13.3, 13.5, 13.9, 13.10; Muñoz-Garcia Ch. 8 Ex. 1, 4) with solutions `Listas/pratica-lecture-07-solutions.pdf` · Muñoz-Garcia Ch. 8 (pp. 349–373)
+- **Applications:** Cabral §6.4 auctions and negotiations (p. 140)
+- **Notes:** [[Notas/L07/L07-00-map|L07 unit]] auction sections (estimated)
 
 ## Paper and exam
 
-### Lecture 9 — Short-paper presentations (Tue Dec 1)
-- Group paper: motivation, brief literature review, research question, an economic model (35% in all). Comments on another group's paper count 5%. Partial-submission dates: to be agreed in class (not yet known).
+### Lecture 9 — Mechanism design (half class) and short-paper presentations (Tue Dec 1)
+- **Mechanism design** (half the class): Tadelis Ch. 14 (pp. 288–302). In scope since the Lecture 6 slides scheduled it.
+- **Presentations:** 10 minutes per group plus Q&A. Group paper: motivation, literature review, research question and a small game-theoretic model of a real organizational or business situation (35%: content 15%, presentation and Q&A 15%, written comments on another group's paper 5%).
 
 ### Lecture 10 — Final exam (Tue Dec 8)
-- Individual, 55%. Covers Lectures 1–8. Exam-style practice: `Listas/lista-lecture-01.tex` (more to follow lecture by lecture). **Real book exercises, Lectures 1–5 (current, 2026-11-06):** 50 exercises, 10 per lecture, each block ordered easy → graduate-level (difficulty 1–5) and following the real schedule: combined `Listas/lista-reais-lectures-01-05.pdf` with detailed solutions `Listas/lista-reais-lectures-01-05-solutions.pdf`; per lecture `Listas/lista-reais-lecture-0N.pdf` and `Listas/lista-reais-lecture-0N-solutions.pdf` (order: `Listas/lista-reais-lectures-01-05/order.md`). Earlier version (old plan's blocks), Lectures 1–4: `Listas/lista-reais-lectures-01-04.pdf` (24 items, statements verbatim), solutions `Listas/lista-reais-lectures-01-04-solutions.pdf`, book pages `Listas/study-pack-roteiro-lectures-01-04.pdf` (roadmap `Listas/roteiro-lectures-01-04.md`).
+- Individual, 55%. Covers Lectures 1–9. **Real book exercises, Lectures 1–7 (current, 2026-11-20):** 70 exercises, 10 per lecture, each block ordered easy → graduate-level (difficulty 1–5) and following the real schedule: combined `Listas/lista-reais-lectures-01-07.pdf` with detailed solutions `Listas/lista-reais-lectures-01-07-solutions.pdf`; per lecture `Listas/lista-reais-lecture-0N.pdf` and `Listas/lista-reais-lecture-0N-solutions.pdf` (order: `Listas/lista-reais-lectures-01-05/order.md`). Lectures 1–5 alone: `Listas/lista-reais-lectures-01-05.pdf`. Earlier version (old plan's blocks), Lectures 1–4: `Listas/lista-reais-lectures-01-04.pdf`, solutions `Listas/lista-reais-lectures-01-04-solutions.pdf`, book pages `Listas/study-pack-roteiro-lectures-01-04.pdf` (roadmap `Listas/roteiro-lectures-01-04.md`). Exam-style practice: `Listas/lista-lecture-01.tex`.
 
 ---
 

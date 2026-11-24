@@ -1,0 +1,252 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % Type 1 vector fonts (replaces PK bitmaps)
+\usepackage{cmap}      % ToUnicode CMap -> copyable text and accents
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=2pt,topsep=3pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{Short paper: literature report\\[2pt]\large Cartels, leniency and damages in Brazil --- the three papers in \texttt{Artigos/}}
+\author{Economia das Organizações e dos Incentivos --- MPE Insper 2026}
+\date{24 November 2026 (Lecture 8: three papers and the idea of the model)}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+This report prepares the Lecture 8 deliverable of the short paper (guide:
+\url{Aula/Short_paper_guia_rubrica.pptx}). For each paper the guide asks for five things:
+the paper's question, its link to game theory, its mechanism or model, its main result, and how it can be
+adapted to the group's research question. The short paper is theoretical: empirical results enter
+only through the motivation and the literature review. The model, its equilibrium and its
+comparative statics must be the group's own work. Section~\ref{sec:model} therefore offers
+directions, not a finished model.
+
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}lYp{2.1cm}p{2.3cm}@{}}
+\toprule
+ & Paper & Type & Role \\
+\midrule
+1 & Sabino, Lara \& Sarto (2024), ``Game Theory Applied to the Brazilian Antitrust Leniency Program'', \emph{RDP} 21(111), 330--357, doi:10.11117/rdp.v21i111.7589 & Theory & Precedent and gap \\
+2 & Fraga, Zenkner \& Micheli (2023), ``Responsabilização 360°'', \emph{Rev.\ Defesa da Concorrência} 11(1), 169--185, doi:10.52896/rdc.v11i1.1035 & Legal, descriptive & Institutions, parameters \\
+3 & Oliveira \& Lima (2025), ``Estimativa de Sobrepreço em Cartéis: Evidências do Cartel do Cimento no Brasil'', CADE/DEE Working Paper 003 & Empirical (DiD) & Motivation, evidence \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent\textbf{Common thread.} A cartel is a repeated game that firms play against each other and
+against an enforcer. Fines, leniency, damages and debarment all work by changing its payoffs.
+
+%-------------------------------------------------------------
+\section{Paper 1 --- the Brazilian leniency game}
+
+\paragraph{Question.} Do the benefits of CADE's leniency programme (Law 12,529/2011, arts.\ 86--87)
+lead a cartel member to propose an agreement? Would immunity from civil damages change that?
+
+\paragraph{Link to the course.} A sequential game with perfect information, Nash equilibrium versus
+subgame-perfect equilibrium, and backward induction, with Nature replaced by expected payoffs
+(Lectures 3--4; Tadelis Ch.~8).
+
+\paragraph{Model (pp.\ 344--353).} The Applicant chooses Propose or Not propose. After a proposal,
+CADE chooses Accept or Reject. Detection probability $p=0.5$, an assumption the authors state
+openly. Values in millions, for a firm with revenue 100:
+cartel profit $L=20$, fine $M=20$, administrative sanction $A=5$, litigation cost $C=1$,
+investigation cost $I=0.1M=2$, fines on the four other members $M_i=4L=80$, damages $RC=L=20$
+(doubled to $2RC$ without an agreement, under Law 14,470/2022).
+\begin{align*}
+X_{\text{NP}} &= p(L-A-M-2RC-C)+(1-p)L = 0.5(-46)+0.5(20) = -13,\\
+Y_{\text{NP}} &= p(A+M_i+M-I)+(1-p)(-L) = 0.5(103)-10 = 41.5.
+\end{align*}
+After Propose and Accept, CADE gets $80$ and the Applicant gets $-RC=-20$ (Game 1), or $0$ with
+damages immunity (Game 2). After a rejection, both get the no-proposal payoffs.
+
+\paragraph{Result.} Game 1: the SPE is (Not propose, Accept), so current law does not induce
+leniency. Game 2: the Nash equilibria are (Propose, Accept) and (Not propose, Reject), and the SPE
+is (Propose, Accept). The authors recommend damages immunity for applicants and warn that Law
+14,470/2022, by encouraging damages claims, may weaken the incentive to report.
+
+\paragraph{Re-solution (ours, to be checked by the group).} The cartel profit $L$ enters both
+no-proposal branches but is dropped from the leniency branch. Counted consistently, the leniency
+payoff is $L-RC=0$ under current law and $L=20$ with immunity. Since $X_{\text{NP}}(p)=20-66p$,
+the Applicant proposes iff its leniency payoff is at least $20-66p$:
+
+\begin{center}\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Leniency payoff & Propose iff & At $p=0.5$ \\
+\midrule
+Paper, Game 1: $-20$ & $p\ge 0.606$ & No \\
+Paper, Game 2: $0$ & $p\ge 0.303$ & Yes \\
+Consistent, Game 1: $L-RC=0$ & $p\ge 0.303$ & \textbf{Yes (result reverses)} \\
+Consistent, Game 2: $L=20$ & always (weakly) & Yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Limitations.}
+\begin{itemize}
+\item No interaction among cartel members: there is no race to report, and $p$ is fixed from outside.
+\item CADE's move is trivial, since Accept dominates, and its payoff is fines collected, not welfare.
+\item No cartel-formation stage, although the paper draws conclusions about deterrence.
+\item No comparative statics.
+\item Minor slips: $A$ is described as a quarter of revenue (25) but set to 5; ``RC = M'' is written
+for $RC=L$; ``40.5'' is written for 41.5.
+\end{itemize}
+
+\paragraph{Use.} The closest theoretical precedent. Its limitations define the gap.
+
+%-------------------------------------------------------------
+\section{Paper 2 --- ``Responsabilização 360°''}
+
+\paragraph{Question.} Does CADE push for cartel liability beyond antitrust, in the criminal, other
+administrative and civil spheres?
+
+\paragraph{Method and result (pp.\ 173--174).} A search of CADE's case system, January 2018 to
+April 2023. Of 40 bid-rigging cases judged, with R\$~2.52~bn in fines, 24 (60\%) referred the
+decision to other bodies: prosecutors, audit courts, the Federal Police, victims. Of these cases, 26
+concerned public procurement, and 20 of those ended in conviction. In 80\% of the 20 convictions
+CADE engaged in ``360° accountability''; they total R\$~2.3~bn in fines. The precedents described
+include Claro, Oi and Telefônica (about R\$~800~m, with a referral to the Correios), Infraero
+cafeterias (five-year debarment) and Juazeiro do Norte (a civil servant involved). The count is
+descriptive and makes no causal claim.
+
+\paragraph{Institutional parameters (pp.\ 179--182).} The same conduct is an offence under the
+Anti-Corruption Law (12,846/2013), a crime under the old procurement law (art.\ 90, two to four
+years), and improbity when an official takes part (8,429/1992). Law 14,470/2022 makes five changes:
+\begin{itemize}
+\item damages claims expire five years after CADE's decision;
+\item pass-on is not presumed;
+\item victims get double damages, except against signatories of agreements with CADE, who pay single damages;
+\item signatories are not jointly liable for the other members' damage;
+\item CADE's decision is enough to ground a fast-track ruling (\emph{tutela de evidência}).
+\end{itemize}
+
+\paragraph{Link to the course.} The paper is indirect on theory. More sanction spheres and
+debarment raise the expected sanction, which tightens the incentive constraint for collusion.
+They also raise the cost of confessing, unless leniency extends to those spheres. This is the
+tension behind Paper~1.
+
+\paragraph{Use.} Institutional evidence and model parameters. It should not be presented as one of
+the theory papers.
+
+%-------------------------------------------------------------
+\section{Paper 3 --- the cement cartel overcharge}
+
+\paragraph{Question.} What overcharge did the cement cartel impose, and what did consumers save
+when it broke? The cartel was convicted in May 2014 with R\$~3.11~bn in fines, the largest CADE
+has imposed, and was active since at least 1987.
+
+\paragraph{Method (pp.\ 18--25).} Difference-in-differences with an event study.
+\[
+\ln P_{ist} = \alpha + \beta\,(\text{Cement}_i\times\text{Post}_t) + \gamma_i + \mu_s + \tau_t + \varepsilon_{ist}.
+\]
+\begin{itemize}
+\item Treated product: cement CP~II-E-32 per kg. Controls: CA-50 and CA-60 steel bars and hydrated
+lime (same unit, no input link, not cartelised).
+\item Data: monthly median prices by state from SINAPI-IBGE.
+\item Break: the February 2007 dawn raids. The window is kept short to exclude the PAC demand boom
+(January 2007).
+\end{itemize}
+
+\paragraph{Results (pp.\ 26--46).}
+\begin{itemize}
+\item There are no significant pre-trends; the effect becomes significant from April 2007.
+\item Preferred estimate (June 2006 to August 2007): $\hat\beta=-0.0204$, so
+$e^{\hat\beta}-1=-2.02\%$. The range across specifications is 1.40--2.35\%.
+\item Robustness: 1.55--2.74\% with other control groups, and 1.58--1.72\% with CBIC data.
+\item Estimated consumer savings, 2007--2022: about R\$~11.8~bn. In alternative windows with 2.02,
+10 and 20\% overcharges: R\$~2.13/10.55/21.15~bn for 2007--2010, 5.84/28.90/57.80~bn for
+February 2007 to May 2014, and 8.95/44.33/88.66~bn to May 2019.
+\end{itemize}
+The authors read 2.02\% as a lower bound. A meta-analysis gives a mean overcharge of 15.47\% and
+a median of 16.01\% (Boyer \& Kotchoni 2015), and a German cement cartel shows 20.3--26.2\%.
+
+\paragraph{Link to the course (strong).} The paper explains the low estimate with repeated-game
+theory (Lecture 5):
+\begin{itemize}
+\item cartels price below monopoly to avoid detection (Harrington 2004b, 2005);
+\item firms keep post-cartel prices high to shrink the damages counterfactual (Harrington 2004a);
+\item collusion continues tacitly after the cartel ends (prices rise from September 2007; Turner
+2024 finds the same in air cargo);
+\item price wars arise in equilibrium (Green \& Porter 1984; Rotemberg \& Saloner 1986).
+\end{itemize}
+The cartel was exposed by an employee whistleblower, not by corporate leniency.
+
+\paragraph{Use.} Motivation, with a real case and numbers, and evidence that damages rules feed
+back into pricing.
+
+%-------------------------------------------------------------
+\section{Theory behind the three papers}
+\begin{itemize}
+\item \textbf{Expected sanction} (Becker 1968): deterrence compares the gain with $p\times$sanction.
+Paper~1 models this directly. Paper~2 enlarges the sanction. Paper~3 measures the gain.
+\item \textbf{Collusion in a repeated game} (Tadelis Ch.~10): with $n$ Bertrand firms and grim
+trigger strategies, collusion is sustainable iff $\delta\ge 1-1/n$. In general,
+$\delta \ge (\pi^{D}-\pi^{C})/(\pi^{D}-\pi^{N})$.
+\item \textbf{Enforcement} (illustration): subtracting an expected sanction $pK$ per period gives
+$\delta \ge 1-1/n + pK/\pi^{M}$, so detection and sanctions raise the bar for collusion.
+\item \textbf{Leniency}: the first reporter can cheat and report at once, which raises the payoff
+from deviating and creates a prisoner's-dilemma race (Motta \& Polo 2003; Spagnolo 2004; Aubert,
+Rey \& Kovacic 2006; Harrington 2008). Reduced fines can, however, also lower expected sanctions
+and stabilise the cartels that survive (Bigoni et al.\ 2012).
+\item \textbf{Damages versus leniency}: damages deter collusion, but damages on the applicant lower
+the value of confessing (Marvão \& Spagnolo 2018; Buccirossi, Marvão \& Spagnolo 2020). Law
+14,470/2022 widens the gap between reporting and being reported on.
+\end{itemize}
+
+%-------------------------------------------------------------
+\section{Research question and model directions}\label{sec:model}
+
+\paragraph{Assessment of the set.} The set has one weak theory paper, one institutional paper and
+one empirical paper. The literature criterion (25\% of content) rewards separating theory from
+evidence and linking the theory to the model, so we recommend adding (or replacing Paper~2 with)
+a canonical theory paper. Candidates already cited inside Papers 1 and 3 are Buccirossi, Marvão
+\& Spagnolo (2020), Pinha \& Braga (2021, Brazil-specific) and Motta \& Polo (2003). Each must be
+checked by DOI before it is cited.
+
+\paragraph{Candidate question.} \emph{Under Law 14,470/2022 (double damages for other members,
+single damages for the leniency applicant), does private damages exposure strengthen or weaken the
+race to report, and thus make cartels less or more stable?}
+
+\paragraph{Directions (the group chooses and solves).}
+\begin{enumerate}[label=\Alph*.]
+\item \emph{Static reporting game} (Lectures 1--2): two members choose Report or Silent at the
+same time, with $p$, a fine $F$, a damages multiplier $k\in\{1,2\}$ and a leniency discount.
+When is reporting dominant?
+\item \emph{Repeated collusion with leniency} (Lectures 5--6): solve for
+$\delta^*(p,F,k,\text{debarment})$ with and without a reporting option, and do comparative statics
+on the damages gap. This is the most complete option for the model criterion (30\%).
+\item \emph{Sequential} (Lecture 4): Paper~1 corrected, with a second member who can report first,
+so that $p$ is no longer fixed.
+\end{enumerate}
+
+%-------------------------------------------------------------
+\section{Further reading}
+\small
+Cited inside the three papers: Motta \& Polo (2003, \emph{IJIO} 21(3), 347--379); Buccirossi,
+Marvão \& Spagnolo (2020, \emph{J.\ Legal Stud.} 49(2)); Pinha \& Braga (2021, \emph{J.\ Comp.\ Law
+\& Econ.} 17(4), 877--902); Marvão \& Spagnolo (2018, \emph{Handbook of Game Theory and IO} vol.~2);
+Bigoni et al.\ (2012, \emph{RAND} 43(2)); Bodnar et al.\ (2023, \emph{JLEO} 39(1)); Leslie (2006,
+\emph{J.\ Corp.\ Law} 31); Harrington (2004a, ``Post-cartel pricing during litigation'', \emph{JIE});
+Harrington (2004b, \emph{RAND}; 2005, \emph{IER}); Green \& Porter (1984, \emph{Econometrica});
+Rotemberg \& Saloner (1986, \emph{AER}); Levenstein \& Suslow (2006, \emph{JEL}); Boyer \& Kotchoni
+(2015, \emph{RIO}).
+
+\smallskip\noindent Standard references not cited in the papers (verify before use): Becker (1968,
+\emph{JPE}); Spagnolo (2004, CEPR DP ``Divide et Impera''); Aubert, Rey \& Kovacic (2006,
+\emph{IJIO} 24); Harrington (2008, ``Optimal corporate leniency programs'', \emph{JIE} 56);
+Porter (1983, \emph{Bell J.\ Econ.}). Textbooks: Tadelis (2013) Ch.~8 (pp.\ 151--174) and Ch.~10
+(pp.\ 190--219); Cabral, \emph{Introduction to Industrial Organization}, \S7.3.
+
+\sloppy\medskip\noindent\textbf{AI declaration note.} This report and the companion audio script
+(\url{Leituras/short-paper-articles-narrated.txt}) were prepared with AI assistance for reading
+and summarising. The guide requires the group to verify every reference and every calculation,
+including the re-solution in Section~1, and to declare this use in the final slide.
+
+\end{document}

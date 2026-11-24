@@ -1,6 +1,6 @@
 ---
 tags: [map, cross-reference]
-date: 2026-11-03
+date: 2026-11-20
 ---
 
 # Topics index
@@ -17,10 +17,11 @@ slides and notes; step 3 the rules and formula sheet; steps 4–5 practice-list 
 list, item 6); step 6 the quiz sections (tag and number of questions); step 7 the audio
 prompts and narrations; step 8 cases. Slides exist for Lectures 1–5
 ([[Aula/Lecture01.pdf|L1]], [[Aula/Lecture02.pdf|L2]], [[Aula/Lecture03.pdf|L3]],
-[[Aula/Lecture04.pdf|L4]], [[Aula/Lecture05.pdf|L5]]); the notes units L03–L08 were written
+[[Aula/Lecture04.pdf|L4]], [[Aula/Lecture05.pdf|L5]], [[Aula/Lecture06.pdf|L6]],
+[[Aula/Lecture07.pdf|L7]]); the notes units L03–L08 were written
 from the books before the slides ([[Notas/00-index|notes index]]).
 
-**Where each topic is actually taught (2026-11-12).** Since 2026-11-12 the practice lists follow
+**Where each topic is actually taught (2026-11-12; Lectures 6–9 updated 2026-11-20 from the Lecture 6–7 slides).** Since 2026-11-12 the practice lists follow
 the real lectures (`.agent/plans/relist-real-lectures.md`), so "L3 #6"-style references point to
 the real Lecture 3 list; every list has a solutions PDF (`Listas/pratica-lecture-NN-solutions.pdf`).
 The notes units `Notas/LNN/` still keep the estimated numbering, which runs about half a lecture
@@ -33,9 +34,10 @@ ahead of the real lectures:
 | T6 Mixed strategies (finished), T7 Extensive form, T8 Backward induction and SPE | 3 | [[Aula/Lecture03.pdf\|L3]] | 18 items |
 | T8 SPE and subgames, T9 Commitment and credibility (Brexit case), T12 repeated games: definition | 4 | [[Aula/Lecture04.pdf\|L4]] | 12 items |
 | T12 Repeated games (finite and infinite, grim trigger, tit-for-tat), T10 one-stage deviation | 5 | [[Aula/Lecture05.pdf\|L5]] | 25 items |
-| T11 Bargaining (announced for L5, not in its slides), T13 Collusion, T14 Reputation | 6, estimate | — | 28 items |
-| T15 Bayesian games, T16 Adverse selection, T17 Auctions | 7, estimate | — | 24 items |
-| T18 PBE, T19 Signaling | 8, estimate | — | 25 items |
+| T12 tit-for-tat and folk theorem (closing), T11 Bargaining, T15 Bayesian games | 6 | [[Aula/Lecture06.pdf\|L6]] | real list L6 (10 items); estimated lists 6 and 7 |
+| T15 Bayesian games (again), T16 Adverse selection, T18 PBE, T19 Signaling | 7 | [[Aula/Lecture07.pdf\|L7]] | real list L7 (10 items); estimated lists 7 and 8 |
+| T17 Auctions | 8, no slides yet | — | estimated list 7, auction items |
+| Mechanism design (Tadelis Ch. 14, no topic note yet) | 9, half class | — | — |
 
 Shared rules for every topic: [[rules/game-theory|Game theory rules]] (specify the game
 completely, name the solution concept, check existence and multiplicity, repeated ≠ one-shot,
@@ -271,19 +273,19 @@ common vs. mutual knowledge).
 ## Topic: Strategic bargaining
 #topic/bargaining
 
-**T11** · **Lectures:** 4
+**T11** · **Lectures:** 6 (real; announced for 5)
 **Complexity:** intermediate
 **Prerequisites:** [[#Topic: Backward induction and subgame perfection|T8]] ([[#Topic: Multistage games (carrot and stick, one-stage deviation)|T10]] for the one-stage deviation check)
 **Cross-topic links:** [[#Topic: Commitment and credibility (Stackelberg, entry, time inconsistency)|T9]], [[#Topic: Bayesian games and Bayesian Nash equilibrium|T15]]
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§11.1 — One Round of Bargaining: The Ultimatum Game (p. 222)|Tadelis §11.1 (pp. 222–224)]] · [[Map/books-index#§11.2 — Finitely Many Rounds of Bargaining (p. 224)|§11.2 (pp. 224–227)]] · [[Map/books-index#§11.3 — The Infinite-Horizon Game (p. 228)|§11.3 (pp. 228–229)]] · [[Map/books-index#§11.4 — Application: Legislative Bargaining (p. 229)|§11.4 (pp. 229–235)]] · [[Map/books-index#§2.1 — Dynamic Games of Complete and Perfect Information (p. 57)|Gibbons §2.1.D (pp. 68–71)]] · formal: [[Map/books-index#Ch. 9, Appendix A — Finite and Infinite Horizon Bilateral Bargaining (p. 296)|MWG Ch. 9 App. A (pp. 296–298)]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L04/L04-05-ultimatum-game|ultimatum game]], [[Notas/L04/L04-06-finite-alternating-offers|finite alternating offers]], [[Notas/L04/L04-07-rubinstein-infinite-horizon|Rubinstein]], [[Notas/L04/L04-08-legislative-bargaining|legislative bargaining]], [[Notas/L04/L04-09-bargaining-private-information|bargaining with private information]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture06.pdf|L6]] frames 13–21 (ultimatum, alternating offers, Rubinstein, frequent offers) · notes [[Notas/L04/L04-05-ultimatum-game|ultimatum game]], [[Notas/L04/L04-06-finite-alternating-offers|finite alternating offers]], [[Notas/L04/L04-07-rubinstein-infinite-horizon|Rubinstein]], [[Notas/L04/L04-08-legislative-bargaining|legislative bargaining]], [[Notas/L04/L04-09-bargaining-private-information|bargaining with private information]]
 3. 📝 Rules (Medium): [[rules/02_barganha|Topic 2 — Bargaining]] (alternating offers) · [[Notas/L04/L04-10-formulas|L04 formula sheet]] · [[Notas/L04/L04-11-pitfalls|L04 pitfalls]]
-4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-06#3. Tadelis 11.1|L6 #3 Tadelis 11.1]] · [[Listas/pratica-lecture-06#4. Muñoz-Garcia Ex. 1|L6 #4 Muñoz-Garcia Ch. 4 Ex. 1]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ex. 16 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ex. 17 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#10. Tadelis 11.2|L6 #10 Tadelis 11.2]] · [[Listas/pratica-lecture-06#8. Tadelis 11.3|L6 #8 Tadelis 11.3]] · [[Listas/pratica-lecture-06|Tadelis 11.4 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#12. Tadelis 11.5|L6 #12 Tadelis 11.5]] · [[Listas/pratica-lecture-06#11. Gibbons 2.19|L6 #11 Gibbons 2.19]] · [[Listas/pratica-lecture-06|Tadelis 11.6 (L6 further practice / dropped, not in the tiers)]] · real-exercise list items 22–24 ([[Listas/roteiro-lectures-01-04|roteiro]])
-5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-06#19. Gibbons 2.20|L6 #19 Gibbons 2.20]] · [[Listas/pratica-lecture-06|MWG 9.B.12 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|MWG 9.B.13 (with 9.B.7, which it builds on) (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ch. 6 Ex. 8 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#24. Tadelis 11.7|L6 #24 Tadelis 11.7]]
+4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-06#3. Tadelis 11.1|L6 #3 Tadelis 11.1]] · [[Listas/pratica-lecture-06#4. Muñoz-Garcia Ex. 1|L6 #4 Muñoz-Garcia Ch. 4 Ex. 1]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ex. 16 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ex. 17 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#10. Tadelis 11.2|L6 #10 Tadelis 11.2]] · [[Listas/pratica-lecture-06#8. Tadelis 11.3|L6 #8 Tadelis 11.3]] · [[Listas/pratica-lecture-06|Tadelis 11.4 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#12. Tadelis 11.5|L6 #12 Tadelis 11.5]] · [[Listas/pratica-lecture-06#11. Gibbons 2.19|L6 #11 Gibbons 2.19]] · [[Listas/pratica-lecture-06|Tadelis 11.6 (L6 further practice / dropped, not in the tiers)]] · real-exercise list items 22–24 ([[Listas/roteiro-lectures-01-04|roteiro]]) · [[Listas/lista-reais-lecture-06.pdf|real list L6]] ([[Listas/lista-reais-lecture-06-solutions.pdf|solutions]]) items 52 Tadelis 11.1, 53 Muñoz-Garcia Ch. 4 Ex. 1, 56 Tadelis 11.2
+5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-06#19. Gibbons 2.20|L6 #19 Gibbons 2.20]] · [[Listas/pratica-lecture-06|MWG 9.B.12 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|MWG 9.B.13 (with 9.B.7, which it builds on) (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06|Muñoz-Garcia Ch. 6 Ex. 8 (L6 further practice / dropped, not in the tiers)]] · [[Listas/pratica-lecture-06#24. Tadelis 11.7|L6 #24 Tadelis 11.7]] · [[Listas/lista-reais-lecture-06.pdf|real list L6]] ([[Listas/lista-reais-lecture-06-solutions.pdf|solutions]]) item 60 Tadelis 11.7 (Baron–Ferejohn, the slides' homework 2)
 6. 🧪 Quiz: [[Simulados/quiz-lecture04-2-ultimatum-finite-offers-2026-10-25#ult|L4-2 ult (3)]] · [[Simulados/quiz-lecture04-2-ultimatum-finite-offers-2026-10-25#fin|fin (5)]] · [[Simulados/quiz-lecture04-2-ultimatum-finite-offers-2026-10-25#lim|lim (2)]] · [[Simulados/quiz-lecture04-3-rubinstein-legislative-2026-10-25#rub|L4-3 rub (4)]] · [[Simulados/quiz-lecture04-3-rubinstein-legislative-2026-10-25#pat|pat (2)]] · [[Simulados/quiz-lecture04-3-rubinstein-legislative-2026-10-25#leg|leg (3)]] · [[Simulados/quiz-lecture04-3-rubinstein-legislative-2026-10-25#inf|inf (1)]] · [[Simulados/quiz-topic-T11-bargaining-hard-2026-11-13|hard conceptual quiz (10)]]
-7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-04-audio-part2|L4 audio part 2]] · [[Leituras/lecture-04-notes-narrated.txt|L4 narration]]
+7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-04-audio-part2|L4 audio part 2]] · [[Leituras/lecture-04-notes-narrated.txt|L4 narration]] · [[NotebookLM/audio/lecture-06-exercises-part1|L6 exercise prompt 1]]
 8. 🗂️ Cases: [[Cases/Brexit/brexit-game.pdf|Brexit case]] (the EU's offer and the UK's present/reject decisions; "In-class decision guide"; (vii) comparing the equilibrium with your negotiation)
 
 **Cross-topic synthesis (Hard):**
@@ -293,14 +295,14 @@ common vs. mutual knowledge).
 ## Topic: Repeated games and the folk theorem
 #topic/repeated-games
 
-**T12** · **Lectures:** 5
+**T12** · **Lectures:** 5, closed in 6 (tit-for-tat, folk theorem)
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Multistage games (carrot and stick, one-stage deviation)|T10]] (discounting: [[Map/books-index#§2.4 — Decisions over Time (p. 26)|Tadelis §2.4.2]])
 **Cross-topic links:** [[#Topic: Collusion and price wars|T13]], [[#Topic: Reputation and relational contracts|T14]]
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§10.1 — Finitely Repeated Games (p. 190)|Tadelis §10.1 (pp. 190–192)]] · [[Map/books-index#§10.2 — Infinitely Repeated Games (p. 192)|§10.2 (pp. 192–196)]] · [[Map/books-index#§10.3 — Subgame-Perfect Equilibria (p. 196)|§10.3 (pp. 196–201)]] · [[Map/books-index#§10.6 — The Folk Theorem: Almost Anything Goes (p. 209)|§10.6 (pp. 209–214)]] · [[Map/books-index#§2.3 — Repeated Games (p. 82)|Gibbons §2.3.A–B (pp. 82–102)]] · [[Map/books-index#Ch. 7 — Games and Strategies (pp. 159–183)|Cabral §7.3 (pp. 172–174)]] · formal: [[Map/books-index#§12.D — Repeated Interaction (p. 400)|MWG §12.D]], [[Map/books-index#Ch. 12, Appendix A — Infinitely Repeated Games and the Folk Theorem (p. 417)|Ch. 12 App. A (pp. 417–422)]] · drill: [[Map/books-index#Ch. 6 — Repeated Games and Correlated Equilibria (pp. 273–316) · Lectures 5–6 · Exercises 1–10|Muñoz-Garcia Ch. 6]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L05/L05-00-map|L05 map]], [[Notas/L05/L05-01-finite-repetition-unraveling|finite repetition]], [[Notas/L05/L05-02-two-stage-carrot-stick|two-stage carrot and stick]], [[Notas/L05/L05-03-discounting-histories-strategies|discounting and strategies]], [[Notas/L05/L05-04-grim-trigger-spe|grim trigger]], [[Notas/L05/L05-05-critical-discount-factor|critical discount factor]], [[Notas/L05/L05-06-folk-theorem|folk theorem]], [[Notas/L06/L06-01-recap-grim-trigger|L06 recap]] · [[Notas/L05/L05-notes.pdf|L05 notes PDF]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture06.pdf|L6]] frames 5–11 (tit-for-tat is not an SPE; knife edge $\delta = 1/3$; folk theorem) · notes [[Notas/L05/L05-00-map|L05 map]], [[Notas/L05/L05-01-finite-repetition-unraveling|finite repetition]], [[Notas/L05/L05-02-two-stage-carrot-stick|two-stage carrot and stick]], [[Notas/L05/L05-03-discounting-histories-strategies|discounting and strategies]], [[Notas/L05/L05-04-grim-trigger-spe|grim trigger]], [[Notas/L05/L05-05-critical-discount-factor|critical discount factor]], [[Notas/L05/L05-06-folk-theorem|folk theorem]], [[Notas/L06/L06-01-recap-grim-trigger|L06 recap]] · [[Notas/L05/L05-notes.pdf|L05 notes PDF]]
 3. 📝 Rules (Medium): [[rules/game-theory|Game theory rules]] (Non-negotiable 4) · [[Notas/L05/L05-07-formulas|L05 formula sheet]] · [[Notas/L05/L05-08-pitfalls|L05 pitfalls]]
 4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-04#2. Gibbons 2.12|L4 #2 Gibbons 2.12]] · [[Listas/pratica-lecture-05#2. Cabral 7.8|L5 #2 Cabral 7.8]] · [[Listas/pratica-lecture-05#1. Cabral 7.13|L5 #1 Cabral 7.13]] · [[Listas/pratica-lecture-05#5. Tadelis 10.2|L5 #5 Tadelis 10.2]] · [[Listas/pratica-lecture-05#7. Tadelis 10.9|L5 #7 Tadelis 10.9]] · [[Listas/pratica-lecture-05#6. Muñoz-Garcia Ex. 1|L5 #6 Muñoz-Garcia Ch. 6 Ex. 1]] · [[Listas/pratica-lecture-05#10. Tadelis 10.3|L5 #10 Tadelis 10.3]] · [[Listas/pratica-lecture-05#9. Cabral 7.12|L5 #9 Cabral 7.12]] · [[Listas/pratica-lecture-05#14. Muñoz-Garcia Ex. 6|L5 #14 Muñoz-Garcia Ch. 6 Ex. 6]] · [[Listas/pratica-lecture-05#18. Tadelis 10.5|L5 #18 Tadelis 10.5]] · [[Listas/pratica-lecture-05#15. Muñoz-Garcia Ex. 9|L5 #15 Muñoz-Garcia Ch. 6 Ex. 9]]
 5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-05#11. Gibbons 2.10|L5 #11 Gibbons 2.10]] · [[Listas/pratica-lecture-05#16. Gibbons 2.11|L5 #16 Gibbons 2.11]] · [[Listas/pratica-lecture-05#21. Tadelis 10.7|L5 #21 Tadelis 10.7]] · [[Listas/pratica-lecture-05#24. Gibbons 2.16|L5 #24 Gibbons 2.16]] · [[Listas/pratica-lecture-05#20. MWG 12.AA.1|L5 #20 MWG 12.AA.1]] · [[Listas/pratica-lecture-05#25. MWG 12.AA.2|L5 #25 MWG 12.AA.2]]
@@ -315,7 +317,7 @@ common vs. mutual knowledge).
 ## Topic: Collusion and price wars
 #topic/collusion
 
-**T13** · **Lectures:** 6
+**T13** · **Lectures:** Lecture 5 homework only (tacit collusion); not taught in 6 as estimated
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Repeated games and the folk theorem|T12]], [[#Topic: Oligopoly and continuous games (Cournot, Bertrand, commons, Hotelling)|T5]]
 **Cross-topic links:** [[#Topic: Reputation and relational contracts|T14]], [[#Topic: Multistage games (carrot and stick, one-stage deviation)|T10]]
@@ -336,7 +338,7 @@ common vs. mutual knowledge).
 ## Topic: Reputation and relational contracts
 #topic/reputation
 
-**T14** · **Lectures:** 6
+**T14** · **Lectures:** not taught as estimated (reputation appears only in the outsourcing application, L6–L7)
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Repeated games and the folk theorem|T12]] ([[#Topic: Commitment and credibility (Stackelberg, entry, time inconsistency)|T9]] for trust as a credibility problem)
 **Cross-topic links:** [[#Topic: Collusion and price wars|T13]], [[#Topic: Perfect Bayesian equilibrium|T18]]
@@ -357,19 +359,19 @@ common vs. mutual knowledge).
 ## Topic: Bayesian games and Bayesian Nash equilibrium
 #topic/bayesian-games
 
-**T15** · **Lectures:** 7
+**T15** · **Lectures:** 6, repeated at the start of 7
 **Complexity:** intermediate
 **Prerequisites:** [[#Topic: Nash equilibrium|T4]], [[#Topic: Mixed strategies and existence|T6]] (expected payoffs; Bayes' rule, [[Map/books-index#Ch. 19 — Mathematical Appendix (pp. 369–384)|Tadelis §19.4.3]])
 **Cross-topic links:** [[#Topic: Adverse selection|T16]], [[#Topic: Auctions|T17]], [[#Topic: Perfect Bayesian equilibrium|T18]]
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§12.1 — Strategic Representation of Bayesian Games (p. 246)|Tadelis §12.1 (pp. 246–252)]] · [[Map/books-index#§12.2 — Examples (p. 252)|§12.2 (pp. 252–258)]] · [[Map/books-index#§12.5 — Mixed Strategies Revisited: Harsanyi's Interpretation (p. 264)|§12.5 (pp. 264–266)]] · [[Map/books-index#§3.1 — Theory: Static Bayesian Games and Bayesian Nash Equilibrium (p. 144)|Gibbons §3.1 (pp. 144–152)]] · formal: [[Map/books-index#§8.E — Games of Incomplete Information: Bayesian Nash Equilibrium (p. 253)|MWG §8.E (pp. 253–257)]] · drill: [[Map/books-index#Ch. 7 — Simultaneous-Move Games with Incomplete Information (pp. 317–347) · Lecture 7 · Exercises 1–7|Muñoz-Garcia Ch. 7]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L07/L07-00-map|L07 map]], [[Notas/L07/L07-01-bayesian-games-harsanyi|Bayesian games]], [[Notas/L07/L07-02-bayesian-nash-equilibrium|BNE]], [[Notas/L07/L07-03-cournot-private-costs|Cournot with private costs]], [[Notas/L07/L07-04-threshold-strategies-purification|thresholds and purification]] · [[Notas/L07/L07-notes.pdf|L07 notes PDF]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture06.pdf|L6]] frames 23–37 and [[Aula/Lecture07.pdf|L7]] frames 4–21 (Munich, definitions, outsourcing $p \geq 2/5$) · notes [[Notas/L07/L07-00-map|L07 map]], [[Notas/L07/L07-01-bayesian-games-harsanyi|Bayesian games]], [[Notas/L07/L07-02-bayesian-nash-equilibrium|BNE]], [[Notas/L07/L07-03-cournot-private-costs|Cournot with private costs]], [[Notas/L07/L07-04-threshold-strategies-purification|thresholds and purification]] · [[Notas/L07/L07-notes.pdf|L07 notes PDF]]
 3. 📝 Rules (Medium): [[Notas/L07/L07-10-formulas|L07 formula sheet]] · [[Notas/L07/L07-11-pitfalls|L07 pitfalls]]
-4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-07#1. Gibbons 3.1|L7 #1 Gibbons 3.1]] · [[Listas/pratica-lecture-07#2. Muñoz-Garcia Ch. 7 Ex. 1|L7 #2 Muñoz-Garcia Ch. 7 Ex. 1]] · [[Listas/pratica-lecture-07#3. Gibbons 3.4|L7 #3 Gibbons 3.4]] · [[Listas/pratica-lecture-07#4. Tadelis 12.1|L7 #4 Tadelis 12.1]] · [[Listas/pratica-lecture-07#11. Tadelis 12.3|L7 #11 Tadelis 12.3]]
-5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-07#9. Tadelis 12.2|L7 #9 Tadelis 12.2]] · [[Listas/pratica-lecture-07#10. Gibbons 3.3|L7 #10 Gibbons 3.3]] · [[Listas/pratica-lecture-07#12. Tadelis 12.9|L7 #12 Tadelis 12.9]]
+4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-07#1. Gibbons 3.1|L7 #1 Gibbons 3.1]] · [[Listas/pratica-lecture-07#2. Muñoz-Garcia Ch. 7 Ex. 1|L7 #2 Muñoz-Garcia Ch. 7 Ex. 1]] · [[Listas/pratica-lecture-07#3. Gibbons 3.4|L7 #3 Gibbons 3.4]] · [[Listas/pratica-lecture-07#4. Tadelis 12.1|L7 #4 Tadelis 12.1]] · [[Listas/pratica-lecture-07#11. Tadelis 12.3|L7 #11 Tadelis 12.3]] · [[Listas/lista-reais-lecture-06.pdf|real list L6]] ([[Listas/lista-reais-lecture-06-solutions.pdf|solutions]]) items 51 Gibbons 3.1, 54 Gibbons 3.4, 55 Muñoz-Garcia Ch. 7 Ex. 1, 57 Tadelis 12.3, 58 Tadelis 12.2 (the slides' homework 1)
+5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-07#9. Tadelis 12.2|L7 #9 Tadelis 12.2]] · [[Listas/pratica-lecture-07#10. Gibbons 3.3|L7 #10 Gibbons 3.3]] · [[Listas/pratica-lecture-07#12. Tadelis 12.9|L7 #12 Tadelis 12.9]] · [[Listas/lista-reais-lecture-06.pdf|real list L6]] ([[Listas/lista-reais-lecture-06-solutions.pdf|solutions]]) item 59 Tadelis 12.9 (purification)
 6. 🧪 Quiz: [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#harsanyi|L7-1 harsanyi (3)]] · [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#bne|bne (2)]] · [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#cournot|cournot (2)]] · [[Simulados/quiz-lecture07-1-bayesian-nash-2026-10-25#threshold|threshold (3)]] · [[Simulados/quiz-topic-T15-bayesian-games-bne-hard-2026-11-13|hard conceptual quiz (10)]]
-7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-07-audio-part1|L7 audio part 1]] · [[Leituras/lecture-07-notes-narrated.txt|L7 narration]]
+7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-07-audio-part1|L7 audio part 1]] · [[Leituras/lecture-07-notes-narrated.txt|L7 narration]] · [[NotebookLM/audio/lecture-06-exercises-part2|L6 exercise prompt 2]] · [[NotebookLM/audio/lecture-06-exercises-part3|L6 exercise prompt 3]]
 
 **Cross-topic synthesis (Hard):**
 - With [[#Topic: Oligopoly and continuous games (Cournot, Bertrand, commons, Hotelling)|T5]]: L7 #9, #10.
@@ -386,12 +388,12 @@ common vs. mutual knowledge).
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§12.3 — Inefficient Trade and Adverse Selection (p. 258)|Tadelis §12.3 (pp. 258–261)]] · [[Map/books-index#§3.2 — Applications (p. 152)|Gibbons §3.2.C double auction (pp. 158–163)]] · applications: [[Map/books-index#Ch. 5 — Bounded Rationality and Private Information (pp. 126–165)|M&R Ch. 5 (adverse selection pp. 149–154)]], [[Map/books-index#Ch. 5 — Market Failure and Public Policy (pp. 93–119)|Cabral §5.2 (p. 99)]], [[Map/books-index#Ch. 38 — Asymmetric Information (pp. 740–762)|Varian §38.1–38.3]] · formal: [[Map/books-index#§13.B — Informational Asymmetries and Adverse Selection (pp. 437–449)|MWG §13.B (pp. 437–449)]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L07/L07-05-adverse-selection-lemons|adverse selection and lemons]], [[Notas/L07/L07-09-common-values-curses|common values and curses]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture07.pdf|L7]] frames 23–25 (used cars) and 56–58 (general model) · notes [[Notas/L07/L07-05-adverse-selection-lemons|adverse selection and lemons]], [[Notas/L07/L07-09-common-values-curses|common values and curses]]
 3. 📝 Rules (Medium): [[rules/07_selecao_adversa|Topic 7 — Adverse selection]] · [[Notas/L07/L07-10-formulas|L07 formula sheet]] · [[Notas/L07/L07-11-pitfalls|L07 pitfalls]]
-4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-07#13. Tadelis 12.5|L7 #13 Tadelis 12.5]] · [[Listas/pratica-lecture-07#14. Tadelis 12.6|L7 #14 Tadelis 12.6]]
-5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-07#19. MWG 13.B.1|L7 #19 MWG 13.B.1]] · [[Listas/pratica-lecture-07#20. MWG 13.B.2|L7 #20 MWG 13.B.2]] · [[Listas/pratica-lecture-07#21. Tadelis 12.7|L7 #21 Tadelis 12.7]] · [[Listas/pratica-lecture-07#22. Gibbons 3.8|L7 #22 Gibbons 3.8]]
+4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-07#13. Tadelis 12.5|L7 #13 Tadelis 12.5]] · [[Listas/pratica-lecture-07#14. Tadelis 12.6|L7 #14 Tadelis 12.6]] · [[Listas/lista-reais-lecture-07.pdf|real list L7]] ([[Listas/lista-reais-lecture-07-solutions.pdf|solutions]]) items 64 Tadelis 12.5, 66 Tadelis 12.6
+5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-07#19. MWG 13.B.1|L7 #19 MWG 13.B.1]] · [[Listas/pratica-lecture-07#20. MWG 13.B.2|L7 #20 MWG 13.B.2]] · [[Listas/pratica-lecture-07#21. Tadelis 12.7|L7 #21 Tadelis 12.7]] · [[Listas/pratica-lecture-07#22. Gibbons 3.8|L7 #22 Gibbons 3.8]] · [[Listas/lista-reais-lecture-07.pdf|real list L7]] ([[Listas/lista-reais-lecture-07-solutions.pdf|solutions]]) item 69 MWG 13.C.5
 6. 🧪 Quiz: [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#lemons|L7-2 lemons (3)]] · [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#insurance|insurance (2)]] · [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#double|double (2)]] · [[Simulados/quiz-lecture07-2-adverse-selection-2026-10-25#cv|cv (3)]] · [[Simulados/quiz-topic-T16-adverse-selection-hard-2026-11-13|hard conceptual quiz (10)]]
-7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-07-audio-part1|L7 audio part 1]] · [[Leituras/lecture-07-notes-narrated.txt|L7 narration]]
+7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-07-audio-part1|L7 audio part 1]] · [[Leituras/lecture-07-notes-narrated.txt|L7 narration]] · [[NotebookLM/audio/lecture-07-exercises-part2|L7 exercise prompt 2]]
 
 **Cross-topic synthesis (Hard):**
 - With [[#Topic: Signaling and refinements|T19]]: MWG §13.B → [[Map/books-index#§13.C — Signaling (pp. 450–459)|§13.C]] (signaling as the response to adverse selection); L7 #19–#20 then [[Listas/pratica-lecture-08#24. MWG 13.C.2|L8 #24]], [[Listas/pratica-lecture-08#25. MWG 13.C.4|L8 #25]].
@@ -400,7 +402,7 @@ common vs. mutual knowledge).
 ## Topic: Auctions
 #topic/auctions
 
-**T17** · **Lectures:** 7 (second-price auction already in Lecture 1)
+**T17** · **Lectures:** 8 (second-price auction already in Lecture 1)
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Bayesian games and Bayesian Nash equilibrium|T15]], [[#Topic: Dominance and IESDS|T2]]
 **Cross-topic links:** [[#Topic: Adverse selection|T16]], [[#Topic: Mixed strategies and existence|T6]]
@@ -421,19 +423,19 @@ common vs. mutual knowledge).
 ## Topic: Perfect Bayesian equilibrium
 #topic/pbe
 
-**T18** · **Lectures:** 8
+**T18** · **Lectures:** 7
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Backward induction and subgame perfection|T8]], [[#Topic: Bayesian games and Bayesian Nash equilibrium|T15]]
 **Cross-topic links:** [[#Topic: Signaling and refinements|T19]], [[#Topic: Reputation and relational contracts|T14]]
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§15.1 — The Problem with Subgame Perfection (p. 303)|Tadelis §15.1 (pp. 303–307)]] · [[Map/books-index#§15.2 — Perfect Bayesian Equilibrium (p. 307)|§15.2 (pp. 307–312)]] · [[Map/books-index#§15.3 — Sequential Equilibrium (p. 312)|§15.3 (pp. 312–313)]] · [[Map/books-index#§4.1 — Introduction to Perfect Bayesian Equilibrium (p. 175)|Gibbons §4.1 (pp. 175–183)]] · formal: [[Map/books-index#§9.C — Beliefs and Sequential Rationality (p. 282)|MWG §9.C (pp. 282–292)]], [[Map/books-index#§9.D — Reasonable Beliefs and Forward Induction (p. 292)|§9.D]] · drill: [[Map/books-index#Ch. 9 — Perfect Bayesian Equilibrium and Signaling Games (pp. 375–451) · Lecture 8 · Exercises 1–9|Muñoz-Garcia Ch. 9]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L08/L08-00-map|L08 map]], [[Notas/L08/L08-01-subgame-perfection-fails|subgame perfection fails]], [[Notas/L08/L08-02-beliefs-and-pbe|beliefs and PBE]], [[Notas/L08/L08-03-sequential-equilibrium|sequential equilibrium]] · [[Notas/L08/L08-notes.pdf|L08 notes PDF]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture07.pdf|L7]] frames 27–36 (entry game, beliefs, Requirements 1–4, PBE) · notes [[Notas/L08/L08-00-map|L08 map]], [[Notas/L08/L08-01-subgame-perfection-fails|subgame perfection fails]], [[Notas/L08/L08-02-beliefs-and-pbe|beliefs and PBE]], [[Notas/L08/L08-03-sequential-equilibrium|sequential equilibrium]] · [[Notas/L08/L08-notes.pdf|L08 notes PDF]]
 3. 📝 Rules (Medium): [[Notas/L08/L08-09-formulas|L08 formula sheet]] · [[Notas/L08/L08-10-pitfalls|L08 pitfalls]]
-4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-08#1. Tadelis 15.1|L8 #1 Tadelis 15.1]] · [[Listas/pratica-lecture-08#2. Gibbons 4.1|L8 #2 Gibbons 4.1]] · [[Listas/pratica-lecture-08#3. Tadelis 15.3|L8 #3 Tadelis 15.3]] · [[Listas/pratica-lecture-08#9. Gibbons 4.2|L8 #9 Gibbons 4.2]] · [[Listas/pratica-lecture-08#10. Tadelis 15.5|L8 #10 Tadelis 15.5]]
+4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-08#1. Tadelis 15.1|L8 #1 Tadelis 15.1]] · [[Listas/pratica-lecture-08#2. Gibbons 4.1|L8 #2 Gibbons 4.1]] · [[Listas/pratica-lecture-08#3. Tadelis 15.3|L8 #3 Tadelis 15.3]] · [[Listas/pratica-lecture-08#9. Gibbons 4.2|L8 #9 Gibbons 4.2]] · [[Listas/pratica-lecture-08#10. Tadelis 15.5|L8 #10 Tadelis 15.5]] · [[Listas/lista-reais-lecture-07.pdf|real list L7]] ([[Listas/lista-reais-lecture-07-solutions.pdf|solutions]]) items 61 Tadelis 15.1, 63 Tadelis 15.3, 67 Tadelis 15.5
 5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-08#20. Tadelis 15.6|L8 #20 Tadelis 15.6]]
 6. 🧪 Quiz: [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#sp|L8-1 sp (2)]] · [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#beliefs|beliefs (3)]] · [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#pbe|pbe (3)]] · [[Simulados/quiz-lecture08-1-pbe-beliefs-2026-10-25#se|se (2)]] · [[Simulados/quiz-topic-T18-pbe-hard-2026-11-13|hard conceptual quiz (10)]]
-7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-08-audio-part1|L8 audio part 1]] · [[Leituras/lecture-08-notes-narrated.txt|L8 narration]]
+7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-08-audio-part1|L8 audio part 1]] · [[Leituras/lecture-08-notes-narrated.txt|L8 narration]] · [[NotebookLM/audio/lecture-07-exercises-part1|L7 exercise prompt 1]]
 
 **Cross-topic synthesis (Hard):**
 - With [[#Topic: Backward induction and subgame perfection|T8]]: Nash vs. SPE vs. PBE on the same trees, L8 #2; entry with tough and weak entrants, L8 #10.
@@ -442,19 +444,19 @@ common vs. mutual knowledge).
 ## Topic: Signaling and refinements
 #topic/signaling
 
-**T19** · **Lectures:** 8
+**T19** · **Lectures:** 7
 **Complexity:** advanced
 **Prerequisites:** [[#Topic: Perfect Bayesian equilibrium|T18]], [[#Topic: Adverse selection|T16]]
 **Cross-topic links:** [[#Topic: Commitment and credibility (Stackelberg, entry, time inconsistency)|T9]], [[#Topic: Mixed strategies and existence|T6]]
 
 **Difficulty progression:**
 1. 📖 Isolated concept (Easy): [[Map/books-index#§16.1 — Education Signaling: The MBA Game (p. 319)|Tadelis §16.1 (pp. 319–323)]] · [[Map/books-index#§16.2 — Limit Pricing and Entry Deterrence (p. 323)|§16.2 (pp. 323–332)]] · [[Map/books-index#§16.3 — Refinements of Perfect Bayesian Equilibrium in Signaling Games (p. 332)|§16.3 (pp. 332–335)]] · [[Map/books-index#§4.2 — Signaling Games (p. 183)|Gibbons §4.2 (pp. 183–210; Spence p. 190)]] · [[Map/books-index#§4.4 — Refinements of Perfect Bayesian Equilibrium (p. 233)|§4.4 (pp. 233–244)]] · applications: [[Map/books-index#Ch. 5 — Bounded Rationality and Private Information (pp. 126–165)|M&R Ch. 5 (signalling pp. 154–156)]] · formal: [[Map/books-index#§13.C — Signaling (pp. 450–459)|MWG §13.C]], [[Map/books-index#Appendix A — Reasonable-Beliefs Refinements in Signaling Games (p. 467)|App. 13.AA (p. 467)]] · drill: [[Map/books-index#Ch. 9 — Perfect Bayesian Equilibrium and Signaling Games (pp. 375–451) · Lecture 8 · Exercises 1–9|Muñoz-Garcia Ch. 9]], [[Map/books-index#Ch. 11 — More Advanced Signaling Games (pp. 481–520) · Lecture 8 · Exercises 1–6|Ch. 11]]
-2. 🎓 Lecture (Easy→Medium): no slides yet · notes [[Notas/L08/L08-04-signaling-games|signaling games]], [[Notas/L08/L08-05-mba-game|MBA game]], [[Notas/L08/L08-06-spence-job-market|Spence]], [[Notas/L08/L08-07-limit-pricing|limit pricing]], [[Notas/L08/L08-08-intuitive-criterion|intuitive criterion]]
+2. 🎓 Lecture (Easy→Medium): slides [[Aula/Lecture07.pdf|L7]] frames 38–50 (Spence: separating $c_H \leq w \leq c_L$, pooling, off-path beliefs) · notes [[Notas/L08/L08-04-signaling-games|signaling games]], [[Notas/L08/L08-05-mba-game|MBA game]], [[Notas/L08/L08-06-spence-job-market|Spence]], [[Notas/L08/L08-07-limit-pricing|limit pricing]], [[Notas/L08/L08-08-intuitive-criterion|intuitive criterion]]
 3. 📝 Rules (Medium): [[rules/07_selecao_adversa|Topic 7]] (signaling; labour-market signaling) · [[Notas/L08/L08-09-formulas|L08 formula sheet]] · [[Notas/L08/L08-10-pitfalls|L08 pitfalls]]
-4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-08#4. Muñoz-Garcia Ch. 9 Ex. 1|L8 #4 Muñoz-Garcia Ch. 9 Ex. 1]] · [[Listas/pratica-lecture-08#5. Gibbons 4.3|L8 #5 Gibbons 4.3]] · [[Listas/pratica-lecture-08#6. Gibbons 4.4|L8 #6 Gibbons 4.4]] · [[Listas/pratica-lecture-08#7. Tadelis 16.5|L8 #7 Tadelis 16.5]] · [[Listas/pratica-lecture-08#8. Muñoz-Garcia Ch. 9 Ex. 2|L8 #8 Muñoz-Garcia Ch. 9 Ex. 2]] · [[Listas/pratica-lecture-08#11. Muñoz-Garcia Ch. 9 Ex. 5|L8 #11 Muñoz-Garcia Ch. 9 Ex. 5]] · [[Listas/pratica-lecture-08#12. Tadelis 16.4|L8 #12 Tadelis 16.4]] · [[Listas/pratica-lecture-08#13. Tadelis 16.3|L8 #13 Tadelis 16.3]] · [[Listas/pratica-lecture-08#14. Muñoz-Garcia Ch. 11 Ex. 5|L8 #14 Muñoz-Garcia Ch. 11 Ex. 5]] · [[Listas/pratica-lecture-08#15. Tadelis 16.6|L8 #15 Tadelis 16.6]] · [[Listas/pratica-lecture-08#16. Tadelis 16.8|L8 #16 Tadelis 16.8]] · [[Listas/pratica-lecture-08#17. Gibbons 4.16|L8 #17 Gibbons 4.16]]
-5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-08#22. Tadelis 16.7|L8 #22 Tadelis 16.7]] · [[Listas/pratica-lecture-08#21. Gibbons 4.7|L8 #21 Gibbons 4.7]] · [[Listas/pratica-lecture-08#23. Muñoz-Garcia Ch. 11 Ex. 4|L8 #23 Muñoz-Garcia Ch. 11 Ex. 4]] · [[Listas/pratica-lecture-08#18. MWG 13.C.1|L8 #18 MWG 13.C.1]] · [[Listas/pratica-lecture-08#19. MWG 13.C.5|L8 #19 MWG 13.C.5]] · [[Listas/pratica-lecture-08#24. MWG 13.C.2|L8 #24 MWG 13.C.2]] · [[Listas/pratica-lecture-08#25. MWG 13.C.4|L8 #25 MWG 13.C.4]]
+4. ✏️ Direct exercises (Medium): [[Listas/pratica-lecture-08#4. Muñoz-Garcia Ch. 9 Ex. 1|L8 #4 Muñoz-Garcia Ch. 9 Ex. 1]] · [[Listas/pratica-lecture-08#5. Gibbons 4.3|L8 #5 Gibbons 4.3]] · [[Listas/pratica-lecture-08#6. Gibbons 4.4|L8 #6 Gibbons 4.4]] · [[Listas/pratica-lecture-08#7. Tadelis 16.5|L8 #7 Tadelis 16.5]] · [[Listas/pratica-lecture-08#8. Muñoz-Garcia Ch. 9 Ex. 2|L8 #8 Muñoz-Garcia Ch. 9 Ex. 2]] · [[Listas/pratica-lecture-08#11. Muñoz-Garcia Ch. 9 Ex. 5|L8 #11 Muñoz-Garcia Ch. 9 Ex. 5]] · [[Listas/pratica-lecture-08#12. Tadelis 16.4|L8 #12 Tadelis 16.4]] · [[Listas/pratica-lecture-08#13. Tadelis 16.3|L8 #13 Tadelis 16.3]] · [[Listas/pratica-lecture-08#14. Muñoz-Garcia Ch. 11 Ex. 5|L8 #14 Muñoz-Garcia Ch. 11 Ex. 5]] · [[Listas/pratica-lecture-08#15. Tadelis 16.6|L8 #15 Tadelis 16.6]] · [[Listas/pratica-lecture-08#16. Tadelis 16.8|L8 #16 Tadelis 16.8]] · [[Listas/pratica-lecture-08#17. Gibbons 4.16|L8 #17 Gibbons 4.16]] · [[Listas/lista-reais-lecture-07.pdf|real list L7]] ([[Listas/lista-reais-lecture-07-solutions.pdf|solutions]]) items 62 Muñoz-Garcia Ch. 9 Ex. 1, 65 Muñoz-Garcia Ch. 9 Ex. 2, 68 Tadelis 16.4
+5. ✏️ Integrating exercises (Hard): [[Listas/pratica-lecture-08#22. Tadelis 16.7|L8 #22 Tadelis 16.7]] · [[Listas/pratica-lecture-08#21. Gibbons 4.7|L8 #21 Gibbons 4.7]] · [[Listas/pratica-lecture-08#23. Muñoz-Garcia Ch. 11 Ex. 4|L8 #23 Muñoz-Garcia Ch. 11 Ex. 4]] · [[Listas/pratica-lecture-08#18. MWG 13.C.1|L8 #18 MWG 13.C.1]] · [[Listas/pratica-lecture-08#19. MWG 13.C.5|L8 #19 MWG 13.C.5]] · [[Listas/pratica-lecture-08#24. MWG 13.C.2|L8 #24 MWG 13.C.2]] · [[Listas/pratica-lecture-08#25. MWG 13.C.4|L8 #25 MWG 13.C.4]] · [[Listas/lista-reais-lecture-07.pdf|real list L7]] ([[Listas/lista-reais-lecture-07-solutions.pdf|solutions]]) items 69 MWG 13.C.5, 70 Tadelis 16.8 (intuitive criterion)
 6. 🧪 Quiz: [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#sig|L8-2 sig (3)]] · [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#mba|mba (3)]] · [[Simulados/quiz-lecture08-2-signaling-mba-spence-2026-10-25#spence|spence (4)]] · [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#lp|L8-3 lp (3)]] · [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ic|ic (4)]] · [[Simulados/quiz-lecture08-3-limit-pricing-intuitive-2026-10-25#ref|ref (3)]] · [[Simulados/quiz-topic-T19-signaling-refinements-hard-2026-11-13|hard conceptual quiz (10)]]
-7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-08-audio-part1|L8 audio part 1]] (first signaling game) · [[NotebookLM/audio/lecture-08-audio-part2|part 2]] · [[Leituras/lecture-08-notes-narrated.txt|L8 narration]]
+7. 🎧 Audio and narration: [[NotebookLM/audio/lecture-08-audio-part1|L8 audio part 1]] (first signaling game) · [[NotebookLM/audio/lecture-08-audio-part2|part 2]] · [[Leituras/lecture-08-notes-narrated.txt|L8 narration]] · [[NotebookLM/audio/lecture-07-exercises-part3|L7 exercise prompt 3]]
 
 **Cross-topic synthesis (Hard):**
 - With [[#Topic: Adverse selection|T16]]: Spence as the market response to adverse selection (MWG §13.B → §13.C; L8 #24, #25).

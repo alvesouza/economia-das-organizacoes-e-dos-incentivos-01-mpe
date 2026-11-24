@@ -1,0 +1,84 @@
+% Solution: Tadelis (2013) Exercise 12.6 "Reap and Weep". Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-07-solutions/sol-tadelis-12-6.tex. Check: check_G_L07.py.
+\begin{exsol}{Tadelis Exercise 12.6}{268}{Exam level}{3}
+\asked (a) The players' pure strategies and the pure BNE of the farmer--plant game; (b) the possible levels
+of expected social surplus in equilibrium; (c) whether cutting the farmers' water subsidy (farming then pays
+$\theta/2$) can be advocated on the surplus criterion.
+
+\method Adverse selection with a continuum of types, as in item~64 (Tadelis \S12.3, pp.~258--261; MWG
+\S13.B, pp.~437--444): the owner evaluates a wage by the expected talent of the farmers \emph{who would
+accept it}. Slides: Lecture~7, frames~23--25 (lemons) and 56--58 (general model, competitive equilibrium);
+frame~14 (BNE: each type best-responds).
+
+\solution
+\textbf{(a) Strategies.} Farmer: an asking wage for each talent, $w : [0,1] \to [0, \infty)$. Owner: accept or
+reject each wage, $a : [0,\infty) \to \{A, R\}$. Payoffs: farmer $w$ if accepted, $\theta$ if rejected; owner
+$\frac32\theta - w$ if he accepts, $0$ otherwise.
+
+\emph{Who accepts a job at wage $w$:} the types with $\theta \le w$. If the owner accepts $w \in (0, 1]$ and
+it is the highest accepted wage, all of them ask it, $\theta \sim U[0, w]$, and
+\[
+  E\Bigl[\tfrac32\theta - w \Bigm| \theta \le w\Bigr] = \tfrac32\cdot\tfrac w2 - w = -\tfrac w4 < 0 ;
+  \qquad w \ge 1:\ E\bigl[\tfrac32\theta\bigr] - w = \tfrac34 - w < 0 .
+\]
+By the argument of item~64 (the highest accepted wage attracts every type below it, and an accepted wage
+that nobody asks would be asked by those types), no positive wage is accepted in a BNE. \emph{BNE:} the owner
+rejects every $w > 0$ (he may accept $w = 0$); each farmer asks some rejected wage and farms. Unique outcome:
+no farmer works at the plant.
+
+\textbf{(b) Social surplus.} Farmer plus owner: $E[\theta] + 0 = \frac12$, the only possible level. The
+first-best is $E[\frac32\theta] = \frac34$, since every farmer is worth more at the plant.
+
+\textbf{(c) Outside option $\theta/2$.} Now type $\theta$ accepts $w$ iff $w \ge \theta/2$, i.e.\
+$\theta \le 2w$. The owner's expected payoff from accepting $w$ when every type below $2w$ takes it:
+\[
+  w \le \tfrac12:\ E\Bigl[\tfrac32\theta - w \Bigm| \theta \le 2w\Bigr] = \tfrac32 w - w = \tfrac w2 > 0 ;
+  \qquad \tfrac12 \le w:\ \tfrac34 - w \ \ge 0 \iff w \le \tfrac34 .
+\]
+So accepting any wage up to $\frac34$ is now profitable. In the BNE where the owner accepts every $w \le \frac34$,
+every farmer asks $\frac34$ (he gets $\frac34 \ge \frac12 \ge \theta/2$), all of them work, the owner breaks
+even, and the surplus is the first-best $E[\frac32\theta] = \frac34$.
+
+Other BNE exist, because in a BNE the owner's response to wages nobody asks is unconstrained. If he accepts
+wages only up to $w^* \le \frac12$, types $\theta \le 2w^*$ work and the rest farm. The farmers who farm
+ask a wage the owner rejects \emph{optimally}, for instance any $w \ge \frac32$: no type is worth more
+than $\frac32$ to him, so rejecting that ask is a best reply whoever makes it. Surplus:
+\[
+  S(w^*) = \int_0^{2w^*} \tfrac32\theta\, d\theta + \int_{2w^*}^1 \tfrac{\theta}{2}\, d\theta
+  = \tfrac14 + 2w^{*2},
+\]
+from $\frac14$ (no trade, $w^* = 0$) to $\frac34$ ($w^* = \frac12$); every $w^* \in [\frac12, \frac34]$ gives $\frac34$.
+
+\emph{Verdict.} Yes, with a caveat. The policy turns a market that unravels completely (surplus $\frac12$) into one
+that can trade efficiently (surplus up to $\frac34$). But it also lowers everyone's outside option, so a
+bad equilibrium becomes worse: no trade now gives only $\frac14$, and any equilibrium with
+$w^* < \frac{\sqrt2}{4} \approx 0.354$ gives less than $\frac12$. And farmers with $\theta > \frac34$ lose
+($\frac34 < \theta$) even in the best case.
+
+\interp A worse outside option weakens adverse selection. The types willing to work at $w$ now have average talent
+$E[\theta \mid \theta \le 2w] = w$, which the owner values at $\frac32 w > w$: the pool is no longer made of the
+worst types only. This is the general lemons condition of frames~56--58 turned around: unraveling happens
+when the average buyer value of the pool falls short of what the best seller in it can get elsewhere.
+
+\verify \texttt{check\_G\_L07.py} computes with sympy $-w/4$, $\frac34 - w$, $E[\theta] = \frac12$, $w/2$, the surplus
+function $\frac14 + 2w^2$ (equal to $\frac34$ at $w = \frac12$ and $\frac14$ at $0$) and the root $w = \sqrt2/4$ of
+$S = \frac12$. Output: ``Tadelis 12.6: (a) E[1.5 theta - w | theta <= w] = -w/4: no trade, surplus 1/2; (c) w/2 > 0,
+accepted up to 3/4, surplus 1/4 + 2w\^{}2 up to 3/4 (= 1/2 at w = sqrt2/4)''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Computing the owner's value with the whole population: $E[\frac32\theta] = \frac34$ suggests he accepts
+  $w \le \frac34$ in (a). Only types $\theta \le w$ apply; their value is $\frac34 w < w$.
+  \item In (c), conditioning on $\theta \le w$ instead of $\theta \le 2w$: the outside option is $\theta/2$, so
+  the pool doubles.
+  \item Comparing only the best equilibria. The surplus criterion depends on which equilibrium is played;
+  the no-trade equilibrium after the policy is worse than before.
+  \item Forgetting the distributional side: high-talent farmers lose from the policy.
+\end{itemize}
+
+\answer{(a) Unique outcome: the owner rejects every positive wage ($E[\frac32\theta - w \mid \theta \le w] = -\frac w4$),
+all farmers farm. (b) Surplus $\frac12$ (first-best $\frac34$). (c) The owner now gains $\frac w2$ from wages up to
+$\frac12$ and breaks even at $\frac34$; with all wages up to $\frac34$ accepted everyone works and the surplus is
+$\frac34 > \frac12$, so the policy can be advocated. Caveats: other equilibria give $\frac14 + 2w^{*2}$, below $\frac12$
+when $w^* < \sqrt2/4$, and farmers with $\theta > \frac34$ lose.}
+\end{exsol}

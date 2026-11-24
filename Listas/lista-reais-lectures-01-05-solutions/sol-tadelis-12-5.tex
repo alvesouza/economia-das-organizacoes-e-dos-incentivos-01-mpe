@@ -1,0 +1,74 @@
+% Solution: Tadelis (2013) Exercise 12.5 "Not All That Glitters". Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-07-solutions/sol-tadelis-12-5.tex. Check: check_G_L07.py.
+\begin{exsol}{Tadelis Exercise 12.5}{267--268}{Exam level}{3}
+\asked (a) For a given asking price $p$, the threshold type $x(p)$ below which the prospector prefers to
+sell; (b) the pure-strategy BNE, its uniqueness, and the expected payoffs of every prospector type and of
+the owner.
+
+\method Adverse selection with a continuum of types (Tadelis \S12.3 ``Inefficient Trade and Adverse
+Selection'', pp.~258--261; MWG \S13.B, pp.~437--444). The owner evaluates a price by the expected value of
+the mines \emph{that are actually offered at that price}, not of the average mine. Slides: Lecture~7,
+frames~23--25 (the used-car example: the good cars leave the market) and 56--58 (the general model: the
+only equilibria trade the low quality alone).
+
+\solution
+\textbf{Strategies.} The prospector, type $x \in [0,1]$, asks a price: $p : [0,1] \to [0, \infty)$. The owner
+accepts or rejects each price: $a : [0, \infty) \to \{A, R\}$. Payoffs: prospector $p$ if accepted, $3x$ if
+rejected; owner $4x - p$ if he accepts, $0$ if he rejects.
+
+\textbf{(a) Threshold.} Facing a price $p$ that will be accepted, type $x$ prefers selling iff $p \ge 3x$, i.e.\
+\[
+  x \le x(p) = \min\Bigl\{\frac p3,\ 1\Bigr\}.
+\]
+The value of self-mining, $3x$, rises with $x$ while the price is the same for every type, so the types
+who want to sell are always the \emph{worst} mines.
+
+\textbf{(b) The owner's evaluation.} Suppose a price $p \in (0, 3]$ is accepted and is the best accepted
+price, so that every type below $p/3$ asks it. The owner buys the mines $x \in [0, p/3]$, uniformly
+distributed on that interval, with
+\[
+  E\Bigl[x \Bigm| x \le \frac p3\Bigr] = \frac{p}{6}, \qquad
+  E\Bigl[4x - p \Bigm| x \le \frac p3\Bigr] = 4\cdot\frac p6 - p = -\frac p3 < 0 .
+\]
+If $p > 3$, every type sells and $E[4x - p] = 2 - p < 0$. Accepting any positive price loses money.
+
+\emph{Uniqueness.} Suppose some positive price were accepted and asked in a BNE. Every type strictly prefers
+the highest accepted price $\bar p$ to any lower one and to self-mining whenever $x < \bar p/3$ (if the
+accepted prices had no maximum, those types would have no best ask, so there is one). So the sellers at
+$\bar p$ are all of $[0, \bar p/3]$, and the owner's payoff from accepting is $-\bar p/3 < 0$: accepting is not
+a best reply. Contradiction. Nor can the owner accept an \emph{unasked} positive price, because the types
+below $p/3$ would then ask it. Hence in every pure BNE the owner rejects every $p > 0$ (accepting $p = 0$
+is harmless: only the null type $x = 0$ would sell), every prospector asks a price that is rejected and
+mines himself. The equilibrium \emph{outcome} is unique: no trade. (The prospector's ask is not pinned
+down, since every rejected ask gives him the same $3x$.)
+
+\textbf{Payoffs.} Type $x$ earns $3x$ (expected $E[3x] = \frac32$); the owner earns $0$. Trade would create
+$4x - 3x = x > 0$ for every type, an expected $\frac12$, all of which is lost.
+
+\interp This is Akerlof's market for lemons (Lecture~7, frames~23--25) with a continuum of qualities and
+complete unraveling: the owner values every mine more than the prospector does ($4x > 3x$), yet any price
+attracts only the mines worth less than the price to him. Because $E[x \mid x \le \hat x] = \hat x/2$ and the
+owner's premium is only $\frac43$, the average quality of the offered mines is always too low:
+$4 \cdot \frac{\hat x}{2} = 2\hat x < 3\hat x$. Remedies are the ones on frame~25: an inspection
+(verifiable $x$), a contract that pays according to the gold extracted, or a warranty.
+
+\verify \texttt{check\_G\_L07.py} integrates $E[x \mid x \le p/3] = p/6$ and $E[4x - p \mid x \le p/3] = -p/3$ with
+sympy, checks the full-sale case $2 - p$, the sign on a grid of prices up to $6$, $E[3x] = \frac32$ and the
+lost surplus $\frac12$. Output: ``Tadelis 12.5: x(p) = p/3; E[4x - p | x <= p/3] = -p/3 < 0 (2 - p if p >= 3):
+no trade, prospector 3x (mean 3/2), owner 0, lost surplus 1/2''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Using the unconditional mean: ``$E[4x] = 2$, so the owner accepts any $p \le 2$''. At $p = 2$ only
+  the mines with $x \le \frac23$ are sold; their value to the owner is $\frac43 < 2$.
+  \item Writing the threshold as $x \le p/4$ (the owner's valuation) instead of $p/3$ (the prospector's
+  own outside option decides who sells).
+  \item Proving ``no trade'' only for the prices actually asked. The argument must also rule out accepted
+  prices that nobody asks, or the owner's strategy is not pinned down.
+  \item Claiming the prospector's strategy is unique. Only the outcome is; any rejected ask is optimal.
+\end{itemize}
+
+\answer{(a) $x(p) = \min\{p/3, 1\}$: types $x < p/3$ prefer to sell, types above prefer to mine. (b) In every
+pure BNE the owner rejects every positive price, because $E[4x - p \mid x \le p/3] = -p/3 < 0$; no mine is sold.
+Type $x$ earns $3x$ (expected $\frac32$), the owner $0$; the gain from trade, $\frac12$ in expectation, is lost.}
+\end{exsol}

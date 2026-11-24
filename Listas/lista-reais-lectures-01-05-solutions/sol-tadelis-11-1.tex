@@ -1,0 +1,84 @@
+% Solution: Tadelis (2013) Exercise 11.1 "Disagreement". Input by \solitem.
+% Rewritten from ../pratica-lecture-06-solutions/sol-tadelis-11-1.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 11.1}{236}{Foundations}{1}
+\asked (i) A Nash equilibrium of the ultimatum game ($T = 1$) whose outcome is no agreement, with
+payoffs $(0,0)$; (ii) the same outcome as a Nash equilibrium for any number $T$ of periods.
+
+\method Nash equilibrium asks for best replies \emph{given the strategies}, so a responder may
+threaten to reject offers that are never made, and even the offer that is made if it leaves her
+indifferent. Subgame perfection then removes such threats. Tadelis \S11.1 (ultimatum, pp.~220--224)
+and \S11.2 (finitely many rounds, pp.~224--227). Slides: Lecture~6, frames~13--14 (the ultimatum
+game, strategies $S_1 = [0,1]$, $S_2 = \{s_2:[0,1]\to\{A,R\}\}$, and the backward-induction
+argument) and frames~15--18 (alternating offers); the SPE of every finite game is unique
+(frame~19). Lecture~4, frame on non-credible threats, for the Nash/SPE contrast.
+
+\solution
+\textbf{Notation.} $x$ is player~1's share and $1 - x$ player~2's (as in frame~13). A strategy of
+player~2 in the ultimatum game is a whole response function $s_2 : [0,1] \to \{A, R\}$.
+
+\textbf{(i) $T = 1$.} Take
+\[
+  s_1^* : \ x = 1, \qquad s_2^*(x) = R \ \text{ for every } x \in [0,1].
+\]
+Outcome: player~1 claims the whole pie, player~2 rejects, payoffs $(0,0)$.
+\begin{itemize}
+  \item \emph{Player~1.} Every offer is rejected under $s_2^*$, so every $x$ gives him $0$. Offering
+  $x = 1$ is a best reply (all offers tie).
+  \item \emph{Player~2.} Only her response to the offer actually made, $x = 1$, affects her payoff:
+  accepting gives $1 - 1 = 0$, rejecting gives $0$. Rejecting is a best reply (a tie). Her responses
+  to other offers are never reached and change nothing.
+\end{itemize}
+No player gains by deviating, so $(s_1^*, s_2^*)$ is a Nash equilibrium with payoffs $(0,0)$.
+
+Note the role of $x = 1$: if player~1 offered $x < 1$, rejecting would cost player~2 $1 - x > 0$ and
+``reject everything'' would no longer be a best reply on the path.
+
+\textbf{(ii) Any $T$.} In every period $t = 1, \dots, T$ let the proposer claim the whole pie for
+himself and let the responder reject every offer. Under this profile agreement is never reached and
+both get $0$. Check unilateral deviations:
+\begin{itemize}
+  \item a proposer who changes his offer is still rejected (the responder rejects everything), so he
+  still gets $0$;
+  \item a responder who accepts instead of rejecting gets the share the opponent leaves him, which is
+  $0$, discounted: $\delta^{t-1}\cdot 0 = 0$;
+  \item any combination of such changes by one player leaves him at $0$, because his opponent's
+  strategy never gives him a positive share.
+\end{itemize}
+So the profile is a Nash equilibrium for every $T$ and every $\delta \in (0,1)$, with payoffs $(0,0)$.
+
+\textbf{Why it is not subgame perfect.} Consider the last period (period~$T$, or the only period
+when $T = 1$) after an offer that leaves the responder $1 - x > 0$. In that subgame accepting gives
+$\delta^{T-1}(1-x) > 0$ and rejecting gives $0$, so ``reject'' is not a best reply: the threat is not
+credible. Backward induction instead gives immediate agreement (frames~16--19).
+
+\interp Nash equilibrium alone does not discipline bargaining: by threatening to reject, either side
+can support disagreement or (by similar constructions) any division of the pie. That is why
+the lecture solves bargaining games by subgame perfection: it pins down a unique outcome with
+immediate agreement, and the responder's acceptance rule must be optimal after every offer, not just
+after the one on the path.
+
+\verify \texttt{check\_F\_L06.py} computes, for $T = 1,\dots,6$ and $\delta \in \{\frac12,
+\frac9{10}\}$, the best payoff a unilateral deviator can get against ``claim everything / reject
+everything'' (on a grid of offers and acceptance rules) and finds $0$; it also checks that against a
+claim $x < 1$ rejecting is strictly worse for the responder. Output: ``Tadelis 11.1: disagreement is
+Nash for T = 1..6 (best deviation payoff 0); x < 1 would break it''. Tadelis prints no answer.
+
+\mistakes
+\begin{itemize}
+  \item Calling the profile subgame perfect because nobody deviates on the path. Subgame perfection
+  also tests the responder after offers that are never made, and there ``reject $1 - x > 0$'' fails.
+  \item Letting player~1 offer a positive share to player~2. Then rejecting costs her $1 - x > 0$, so
+  it is not even a Nash equilibrium. The offer must leave her indifferent ($x = 1$).
+  \item Describing player~2's strategy as ``reject'' (one action). Her strategy is a response to
+  \emph{every} offer $x \in [0,1]$; the equilibrium needs ``reject all $x$''.
+  \item For $T > 1$, forgetting the later proposers: if a later proposer offered a positive share,
+  an earlier responder might want to wait for it, and the construction must make every proposer claim
+  everything.
+\end{itemize}
+
+\answer{$T = 1$: player~1 offers $x = 1$ (keeps everything) and player~2 rejects every offer; no
+one can gain, so it is a Nash equilibrium with outcome ``no agreement'', payoffs $(0,0)$. For any
+$T$: every proposer claims the whole pie and every responder rejects every offer; a deviator still
+gets $0$. These equilibria are not subgame perfect: in the last period rejecting a positive share is
+not a best reply.}
+\end{exsol}

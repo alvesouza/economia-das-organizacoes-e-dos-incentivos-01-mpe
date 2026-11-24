@@ -1,0 +1,101 @@
+% Solution: Gibbons (1992) Problem 3.1 (static Bayesian game: definitions). Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-gibbons-3-1.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Gibbons Problem 3.1}{169}{Foundations}{1}
+\asked Three definitions: a static Bayesian game, a pure strategy in such a game, and a
+pure-strategy Bayesian Nash equilibrium (BNE).
+
+\method Gibbons \S3.1.B (normal form of a static Bayesian game, pp.~146--149) and \S3.1.C
+(definition of BNE, pp.~149--152); Tadelis \S12.1 (pp.~246--252). Slides: Lecture~6, frame~28
+(the five ingredients and the timing), frame~29 (strategy as a function of the type, expected
+payoff with Bayes' rule) and frame~30 (definition of BNE); the Munich game (frames~23--27) is
+the worked example.
+
+\solution
+\textbf{1. Static Bayesian game.} Write it, in the slides' notation, as
+\[
+  \Gamma = \bigl(I,\ \{\Theta_i\}_{i\in I},\ P,\ \{A_i\}_{i\in I},\ \{u_i\}_{i\in I}\bigr),
+\]
+with $I = \{1,\dots,n\}$ the players; $\Theta_i$ player~$i$'s type space; $P \in \Delta(\Theta)$
+a common prior over type profiles $\theta = (\theta_1,\dots,\theta_n) \in \Theta =
+\times_i \Theta_i$; $A_i$ the action space; and $u_i : A \times \Theta \to \mathbb R$ the payoff,
+which may depend on the whole type profile. (Gibbons writes $T_i$ for $\Theta_i$, $t_i$ for
+$\theta_i$, and lists beliefs $p_i(t_{-i}\mid t_i)$ directly; with a common prior they are the
+conditionals of $P$.) The timing (frame~28):
+\begin{enumerate}
+  \item Nature draws $\theta$ according to $P$;
+  \item each player $i$ privately learns his own $\theta_i$ and nothing else;
+  \item players choose $a_i \in A_i$ simultaneously;
+  \item payoffs $u_i(a,\theta)$ are received.
+\end{enumerate}
+``Static'' refers to step~3: one simultaneous move. Harsanyi's device is to treat the type draw
+as a move by Nature, so incomplete information (about payoffs) becomes imperfect information
+(about Nature's move).
+
+\textbf{2. Beliefs.} Type $\theta_i$'s belief about the others' types follows from the prior by
+Bayes' rule:
+\[
+  P(\theta_{-i}\mid\theta_i) = \frac{P(\theta_i,\theta_{-i})}{\sum_{\theta'_{-i}} P(\theta_i,\theta'_{-i})}.
+\]
+With independent types, $P(\theta_{-i}\mid\theta_i) = P(\theta_{-i})$: every type of $i$ holds the
+same belief.
+
+\textbf{3. Pure strategy.} A function $s_i : \Theta_i \to A_i$, one action for \emph{each} type,
+including the types that are not realized. With finite sets player~$i$ has $|A_i|^{|\Theta_i|}$
+pure strategies (e.g.\ two types and two actions give $2^2 = 4$, as in items~4 and~5 of this
+list). The plan is needed because the other players do not know $\theta_i$: to evaluate an action
+they must predict what every possible type of $i$ would do.
+
+\textbf{4. Expected (interim) payoff.} If type $\theta_i$ chooses $a_i$ and the others follow
+$s_{-i}$,
+\[
+  U_i(a_i, s_{-i}, \theta_i) = \sum_{\theta_{-i}\in\Theta_{-i}}
+  u_i\bigl(a_i, s_{-i}(\theta_{-i}), \theta_i, \theta_{-i}\bigr)\,P(\theta_{-i}\mid\theta_i).
+\]
+
+\textbf{5. Pure-strategy BNE.} A profile $s^* = (s_1^*,\dots,s_n^*)$ such that for every player $i$
+and \emph{every} type $\theta_i \in \Theta_i$,
+\[
+  U_i\bigl(s_i^*(\theta_i), s_{-i}^*, \theta_i\bigr) \;\ge\; U_i\bigl(a_i, s_{-i}^*, \theta_i\bigr)
+  \quad\text{for all } a_i \in A_i .
+\]
+Each type best-responds to the others' \emph{strategies} (not to their realized actions), averaged
+with his own posterior.
+
+\textbf{6. Equivalence with Nash in the Bayesian normal form.} Let player~$i$ choose the whole
+function $s_i$ to maximize the ex-ante payoff $\sum_{\theta_i} P(\theta_i)\,U_i(s_i(\theta_i),
+s_{-i},\theta_i)$. That sum is maximized term by term, so when every type has positive prior
+probability, $s^*$ is a BNE iff it is a Nash equilibrium of this normal form (the game of
+$|A_i|^{|\Theta_i|}$ strategies built in items~4--5). A type with zero probability is unconstrained
+ex ante, which is why the definition is stated type by type.
+
+\interp A BNE is a Nash equilibrium of a bigger game in which ``a player'' is the list of his
+types. In Munich (frames~23--27): Hitler's strategy says what the friendly and the belligerent
+type each do after $C$ and after $N$; Chamberlain best-responds to that \emph{plan}, weighting the
+two types by $0.6$ and $0.4$ ($U(C) = 2.2 > U(N) = 2$).
+
+\verify \texttt{check\_F\_L06.py} builds the Bayesian normal form of item~5 (\MG{} Ch.~7 Ex.~1),
+confirms the count $|A_1|^{|\Theta_1|} = 4$, and checks that its Nash equilibria coincide with the
+profiles passing the type-by-type test of point~5; it also recomputes the Munich expected payoffs
+$2.2$ and $2$. Output: ``Gibbons 3.1: |S1| = 4; normal-form NE = type-by-type BNE (2 profiles);
+Munich U(C) = 11/5 > U(N) = 2''. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Defining a strategy as ``the action of player~$i$'' instead of a map from types to actions.
+  An answer such as ``player~1 plays $A$'' is not a strategy when he has two types.
+  \item Writing the best-response condition only for the realized type. A BNE must hold for
+  every type, because the others' payoffs depend on what the unrealized types would have done.
+  \item Conditioning on the wrong thing: type $\theta_i$ averages over $\theta_{-i}$ with
+  $P(\theta_{-i}\mid\theta_i)$, not with the prior of his own type, and not over his own type.
+  \item Letting a player best-respond to the \emph{actions} of the others' realized types, which he
+  does not observe. He best-responds to $s_{-i}$, a function, averaged over $\theta_{-i}$.
+  \item Forgetting the common-prior assumption: beliefs are common knowledge, so everyone can
+  compute what each type believes.
+\end{itemize}
+
+\answer{A static Bayesian game is $(I, \{\Theta_i\}, P, \{A_i\}, \{u_i\})$: Nature draws types
+from the common prior $P$, each player learns only his own type, then all move simultaneously. A
+pure strategy is a function $s_i:\Theta_i\to A_i$. A pure-strategy BNE is a profile $s^*$ in which,
+for every player and every type, $s_i^*(\theta_i)$ maximizes $\sum_{\theta_{-i}} u_i(a_i,
+s_{-i}^*(\theta_{-i}),\theta)\,P(\theta_{-i}\mid\theta_i)$.}
+\end{exsol}

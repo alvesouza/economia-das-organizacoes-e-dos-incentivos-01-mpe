@@ -1,0 +1,95 @@
+% Solution: Tadelis (2013) Exercise 12.9 "Grab the Dollar". Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-tadelis-12-9.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 12.9}{269}{Advanced}{4}
+\asked (a) The Nash equilibria of grab-the-dollar; (b) the pure-strategy BNE when the sole grabber
+gets $1 + \theta_i$, with $\theta_i \sim U[-\varepsilon, \varepsilon]$ private and $\varepsilon < 1$;
+(c) its limit as $\varepsilon \to 0$ and the link with the mixed equilibrium of (a).
+
+\method (a) Best replies, and the indifference principle (Lecture~3) for the mixed equilibrium.
+(b) A Bayesian game with a continuum of types (Lecture~6, frame~29, continuous case: the sum
+becomes an integral). Since grabbing pays more for higher $\theta_i$, look for threshold strategies
+``grab iff $\theta_i \ge t_i$''. (c) Harsanyi's purification: a mixed equilibrium as the limit of pure
+BNE of slightly perturbed games. Book: Tadelis \S12.5 (pp.~264--266); Gibbons \S3.2.A (pp.~152--154).
+
+\solution
+\textbf{(a) Complete information.} Actions $G$ (grab) and $D$ (don't). Payoffs: sole grabber $1$, the
+other $0$; both grab $-1$ each; neither grabs $0$ each.
+\[
+\begin{array}{c|cc}
+ & G & D\\\hline
+ G & -1,-1 & \underline{1},\underline{0}\\
+ D & \underline{0},\underline{1} & 0,0
+\end{array}
+\]
+Pure NE: $(G, D)$ and $(D, G)$. Mixed: if the rival grabs with probability $p$, grabbing gives
+$(1-p)\cdot 1 + p\cdot(-1) = 1 - 2p$ and not grabbing $0$; indifference gives $p = \frac12$. So there is a
+third NE, both grab with probability $\frac12$ (expected payoff $0$ each).
+
+\textbf{(b) Incomplete information.} \emph{One type's choice.} If the rival grabs with probability $p$,
+type $\theta_i$ gets $(1 - p)(1 + \theta_i) - p$ from $G$ and $0$ from $D$. Grabbing is optimal iff
+\[
+  (1-p)(1+\theta_i) \ge p \iff \theta_i \ge \frac{2p - 1}{1 - p} \qquad (p < 1).
+\]
+The left side increases in $\theta_i$, so every best reply is a threshold rule (up to the measure-zero
+cut-off type). If $p = 1$, grabbing gives $-1 < 0$: no type grabs.
+
+\emph{Thresholds.} If $j$ grabs iff $\theta_j \ge t_j$ with $t_j \in [-\varepsilon, \varepsilon]$, then
+\[
+  p_j = \Pr(\theta_j \ge t_j) = \frac{\varepsilon - t_j}{2\varepsilon}, \qquad
+  1 - p_j = \frac{\varepsilon + t_j}{2\varepsilon}, \qquad 2p_j - 1 = -\frac{t_j}{\varepsilon}.
+\]
+So $i$'s best threshold is $\frac{2p_j - 1}{1 - p_j} = -\frac{2t_j}{\varepsilon + t_j}$, truncated to
+$[-\varepsilon,\varepsilon]$.
+
+\emph{Interior equilibria.} With both thresholds interior, cross-multiplying gives
+$t_i(\varepsilon + t_j) = -2t_j$ and $t_j(\varepsilon + t_i) = -2t_i$. Subtracting:
+$\varepsilon(t_i - t_j) = 2(t_i - t_j)$, i.e.\ $(\varepsilon - 2)(t_i - t_j) = 0$. Since $\varepsilon < 1 < 2$,
+$t_i = t_j = t$, and $t(\varepsilon + t) = -2t$ gives $t = 0$ or $t = -(2 + \varepsilon) <
+-\varepsilon$. The only interior BNE is
+\[
+  t_1 = t_2 = 0: \quad \text{grab iff } \theta_i \ge 0, \quad\text{so each grabs with probability } \tfrac12 .
+\]
+\emph{Corner equilibria.} If $j$ never grabs ($p_j = 0$), $i$ grabs iff $\theta_i \ge -1$, which holds for
+every type since $\varepsilon < 1$: $i$ always grabs. If $j$ always grabs ($p_j = 1$), $i$ never grabs.
+So ``$i$ always grabs, $j$ never grabs'' is a BNE for each assignment of roles: these are the perturbed
+$(G,D)$ and $(D,G)$. A mixed corner/interior pair is impossible: a corner rival forces a corner reply.
+
+\textbf{(c) Limit.} In the symmetric BNE each player grabs with probability $\frac12$ for \emph{every}
+$\varepsilon \in (0,1)$, so as $\varepsilon \to 0$ the induced distribution of play converges to the mixed
+equilibrium of (a). No player randomizes: each plays a pure strategy that depends on a payoff shock the
+other cannot see, and to the other player the behavior looks like a fair coin.
+
+\interp This is Harsanyi's justification of mixed strategies: a mixed equilibrium describes what
+others \emph{believe} about a player whose payoffs are slightly uncertain, not a player flipping a coin.
+It also answers the old puzzle ``why would an indifferent player mix exactly $\frac12$?'': in the
+perturbed game almost every type strictly prefers its action, and the cut-off type is what makes the
+others indifferent.
+
+\verify \texttt{check\_F\_L06.py} solves the two threshold equations with sympy for symbolic
+$\varepsilon$ (solutions $(0,0)$ and $(-(2+\varepsilon), -(2+\varepsilon))$), keeps only $(0,0)$ inside
+$[-\varepsilon,\varepsilon]$, checks the grab probability $\frac12$, the corner equilibria for
+$\varepsilon \in \{\frac1{10}, \frac12, \frac9{10}\}$, and the mixed NE of (a) by indifference. Output:
+``Tadelis 12.9: (a) (G,D), (D,G), p = 1/2; (b) symmetric threshold 0, prob 1/2, plus 2 corner BNE;
+(c) limit = mixed NE''. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Computing the probability that the rival grabs as $t_j$ or $1 - t_j$. With $\theta_j \sim
+  U[-\varepsilon,\varepsilon]$ it is $\frac{\varepsilon - t_j}{2\varepsilon}$: the uniform density is
+  $\frac1{2\varepsilon}$, not $1$.
+  \item Adding $\theta_i$ to every payoff. The shock only enters when $i$ is the \emph{sole} grabber; the
+  payoff from both grabbing stays $-1$.
+  \item Answering (c) by letting the threshold converge. The threshold is $0$ for every $\varepsilon$; what
+  converges is the game, and the probability of grabbing is already $\frac12$.
+  \item Missing the two asymmetric corner equilibria in (b): ``always grab'' against ``never grab'' is a
+  threshold pair too ($t = -\varepsilon$ and $t = \varepsilon$).
+  \item Saying a player randomizes in the BNE. Each type plays a pure action; the randomness is in
+  Nature's draw of $\theta_i$.
+\end{itemize}
+
+\answer{(a) $(G,D)$, $(D,G)$, and the mixed NE in which each grabs with probability $\frac12$. (b) The
+symmetric pure BNE: grab iff $\theta_i \ge 0$, so each grabs with probability $\frac12$; also two corner
+BNE in which one player always grabs and the other never does. (c) The symmetric BNE grabs with
+probability $\frac12$ for every $\varepsilon$, so as $\varepsilon \to 0$ it converges to the mixed
+equilibrium of (a) (Harsanyi purification).}
+\end{exsol}

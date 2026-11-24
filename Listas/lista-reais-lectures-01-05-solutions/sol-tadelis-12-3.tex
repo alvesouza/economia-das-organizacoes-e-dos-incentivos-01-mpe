@@ -1,0 +1,93 @@
+% Solution: Tadelis (2013) Exercise 12.3 "Armed Conflict". Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-tadelis-12-3.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 12.3}{266--267}{Exam level}{3}
+\asked Two armies, each privately strong ($S$) or weak ($W$) with probability $\frac12$,
+independently, choose to attack ($A$) or not ($N$). Find all pure-strategy BNE for (a) $m = 3$,
+$w = 2$, $s = 1$ and (b) $m = 3$, $w = 4$, $s = 2$.
+
+\method Bayesian game with two-sided private information (Lecture~6, frame~28) and the recipe of
+frame~36: for each \emph{type} of each army, find the best action against each possible strategy of
+the rival; then keep the profiles in which every type best-responds. A strategy is a pair
+$(x_S, x_W)$: action of the strong type, action of the weak type (frame~29). Types are independent, so
+every type believes the rival is strong with probability $\frac12$. Book: Tadelis \S12.1 (pp.~246--252),
+\S12.2 (examples, pp.~252--258).
+
+\solution
+\textbf{Payoffs of one army.} $N$ gives $0$ (no capture, no fight). $A$ gives: $m$ if the rival plays
+$N$ (no fight, no cost); if both attack, the army pays its fighting cost $c \in \{s, w\}$ and captures
+the territory only when it is strong and the rival weak. So, for an attacking army of type $t$ facing an
+attacking rival of type $t'$:
+\[
+  u(A \mid t, t') = \begin{cases} m - s & t = S,\ t' = W,\\ -s & t = S,\ t' = S,\\ -w & t = W
+  \ (\text{any } t'). \end{cases}
+\]
+\textbf{Expected payoff of $A$.} Against a rival strategy $(y_S, y_W)$, type $t$ gets
+$E[A] = \frac12 u(A \mid t, \text{strong rival plays } y_S) + \frac12 u(A \mid t, \text{weak rival plays }
+y_W)$, where a rival playing $N$ yields $m$. Since $N$ yields $0$, type $t$ attacks iff $E[A] \ge 0$.
+
+\textbf{(a) $m = 3$, $w = 2$, $s = 1$.} Strong: $-1$ vs an attacking strong rival, $2$ vs an attacking
+weak rival, $3$ vs a passive rival. Weak: $-2$ vs any attacking rival, $3$ vs a passive one.
+\begin{center}
+\begin{tabular}{l|cccc}
+rival $(y_S, y_W)$ & $AA$ & $AN$ & $NA$ & $NN$\\\hline
+strong: $E[A]$ & $\frac12(-1)+\frac12(2) = \frac12$ & $\frac12(-1)+\frac12(3) = 1$ & $\frac12(3)+\frac12(2) = \frac52$ & $3$\\
+weak: $E[A]$ & $-2$ & $\frac12(-2)+\frac12(3) = \frac12$ & $\frac12(3)+\frac12(-2) = \frac12$ & $3$\\\hline
+best reply & $AN$ & $AA$ & $AA$ & $AA$
+\end{tabular}
+\end{center}
+The strong type always attacks; the weak type attacks unless the rival always attacks. Look for
+mutual best replies: $BR(AA) = AN$ and $BR(AN) = AA$, so
+\[
+  (AA,\ AN) \quad\text{and}\quad (AN,\ AA)
+\]
+are BNE. No symmetric profile works: $BR(AA) = AN \ne AA$ and $BR(AN) = AA \ne AN$; $NA$ and $NN$ are
+never best replies. Check $(AA, AN)$ type by type: army~1 faces $AN$, strong $1 > 0$ and weak
+$\frac12 > 0$, so both attack; army~2 faces $AA$, strong $\frac12 > 0$ attacks and weak $-2 < 0$ stays.
+
+\textbf{(b) $m = 3$, $w = 4$, $s = 2$.} Strong: $-2$ vs an attacking strong rival, $1$ vs an attacking
+weak rival, $3$ vs a passive rival. Weak: $-4$ vs any attacking rival, $3$ vs a passive one.
+\begin{center}
+\begin{tabular}{l|cccc}
+rival $(y_S, y_W)$ & $AA$ & $AN$ & $NA$ & $NN$\\\hline
+strong: $E[A]$ & $\frac12(-2)+\frac12(1) = -\frac12$ & $\frac12(-2)+\frac12(3) = \frac12$ & $\frac12(3)+\frac12(1) = 2$ & $3$\\
+weak: $E[A]$ & $-4$ & $\frac12(-4)+\frac12(3) = -\frac12$ & $\frac12(3)+\frac12(-4) = -\frac12$ & $3$\\\hline
+best reply & $NN$ & $AN$ & $AN$ & $AA$
+\end{tabular}
+\end{center}
+Mutual best replies: $BR(AN) = AN$; $BR(AA) = NN$ and $BR(NN) = AA$. So
+\[
+  (AN,\ AN), \qquad (AA,\ NN), \qquad (NN,\ AA).
+\]
+$NA$ is never a best reply. Check $(AA, NN)$: army~1 faces a rival that never attacks, so both its
+types get $3 > 0$ from $A$; army~2 faces a rival that always attacks, strong $-\frac12 < 0$ and weak
+$-4 < 0$, so both stay out.
+
+\interp In (a) fighting is cheap relative to the prize, so even a weak army attacks unless it is sure to
+meet an attacker; equilibrium needs an asymmetry in which one army's weak type backs off. In (b)
+fighting is expensive: the weak type attacks only an army that never attacks, and the natural
+symmetric outcome is ``only the strong fight'' $(AN, AN)$; the lopsided $(AA, NN)$, where one army is
+``known'' to be aggressive and the other always yields, also survives. As in Munich (frames~23--27),
+each type best-responds to the rival's whole plan, weighted by its belief about the rival's type.
+
+\verify \texttt{check\_F\_L06.py} derives each army's payoffs from the rules in the statement, builds
+both $4\times 4$ Bayesian normal forms (each of the four type pairs with probability $\frac14$) and
+enumerates the sixteen pure profiles. Output: ``Tadelis 12.3: (a) BNE = (AA,AN), (AN,AA); (b) BNE =
+(AA,NN), (AN,AN), (NN,AA)''. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Giving the weak army $m - w$ when it attacks a weak attacker. If both attack with equal strength,
+  \emph{neither} captures: the payoff is $-w$.
+  \item Charging the fighting cost when only one army attacks. If the rival does not attack there is no
+  fight: the attacker gets $m$, the passive army $0$.
+  \item Treating the strong army's expected payoff as if the rival's \emph{action} were fixed. The rival's
+  strong and weak types may act differently, so $E[A]$ depends on the whole rival strategy $(y_S,y_W)$.
+  \item Looking only for symmetric equilibria. In (a) there is none; both BNE are asymmetric.
+  \item Using the posterior ``the rival is like me''. Types are independent: whatever its own type, an army
+  puts probability $\frac12$ on the rival being strong.
+\end{itemize}
+
+\answer{Strategies list (strong type, weak type). (a) $(AA, AN)$ and $(AN, AA)$: the strong type always
+attacks; one army's weak type attacks and the other's stays out. (b) $(AN, AN)$, $(AA, NN)$ and
+$(NN, AA)$.}
+\end{exsol}

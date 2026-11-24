@@ -1,0 +1,72 @@
+% Solution: Munoz-Garcia & Toro-Gonzalez (2019) Ch. 9, Exercise 1. Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-08-solutions/sol-munoz-garcia-9-1.tex. Check: check_G_L07.py.
+\begin{exsol}{\MG{} Ch.~9, Exercise 1}{376--377}{Foundations}{2}
+\asked Whether the signaling game of Fig.~9.1 has (a) a separating PBE and (b) a pooling PBE.
+
+\method The four-step test applied to each of the four pure sender profiles (two separating, two
+pooling): (1) fix the sender profile; (2) derive the receiver's belief by Bayes' rule where it applies,
+leave it free where it does not; (3) find the receiver's best reply; (4) check that no sender type wants
+to deviate (Tadelis \S16.1, pp.~319--323; Gibbons \S4.2.A, pp.~183--190). Slides: Lecture~7, frames~38--40
+(signaling games; pooling and separating), 44 (Bayes' rule for the posterior), 45--48 (the same test on
+the Spence game).
+
+\solution
+\textbf{Payoffs} $(u_1, u_2)$ from Fig.~9.1. Both types get $(2, 0)$ from $L$ (the game ends). After $R$,
+player~2 picks $U$ or $D$:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Type after $R$ & $U$ & $D$ \\
+\midrule
+High ($H$, prob.\ $\frac12$) & $(3, 2)$ & $(1, 0)$ \\
+Low ($L$, prob.\ $\frac12$) & $(1, 0)$ & $(1, 1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Player~2's best reply.} With $q = \Pr(H \mid R)$, $u_2(U) = 2q$ and $u_2(D) = q \cdot 0 + (1-q) \cdot 1
+= 1 - q$. So $U$ is optimal iff $2q \ge 1 - q$, i.e.\ $q \ge \frac13$.
+
+Write a profile as (action of $H$, action of $L$), primes for the low type.
+
+\textbf{Separating $(R, L')$.} Bayes: $q = \frac{\frac12 \cdot 1}{\frac12 \cdot 1 + \frac12 \cdot 0} = 1$, so
+player~2 plays $U$ ($2 > 0$). High type: $3$ from $R$ against $2$ from $L$: stays. Low type: $2$ from $L'$
+against $1$ from $R'$ (answered by $U$): stays. \textbf{PBE.}
+
+\textbf{Separating $(L, R')$.} $q = 0$, so $D$. The low type gets $1$ from $R'$ but $2$ from $L'$: deviates.
+Not a PBE.
+
+\textbf{Pooling $(R, R')$.} $q = \frac12 \ge \frac13$, so $U$. The low type gets $1$ but $2$ from $L'$:
+deviates. Not a PBE.
+
+\textbf{Pooling $(L, L')$.} $R$ is never sent, so $q$ is free. The low type never gains from $R'$
+(at most $1 < 2$). The high type gains from $R$ only if player~2 answers $U$ ($3 > 2$). So the profile is
+an equilibrium iff player~2 answers $D$ after $R$, which is optimal iff $q \le \frac13$. \textbf{PBE} with
+off-path belief $q \le \frac13$.
+
+\interp The separating equilibrium works because $R$ is attractive only to the high type: the low type
+gets at most $1$ from $R$ and $2$ from $L$. The pooling equilibrium survives on a pessimistic belief:
+player~2 must suspect that a deviation to $R$ comes from the low type with probability at least $\frac23$.
+Such a belief is not very plausible (only the high type could ever gain from $R$), which is what the
+intuitive criterion of item~70 formalizes; the exercise does not ask for it.
+
+\verify \texttt{check\_G\_L07.py} enumerates all sender and receiver profiles with off-path beliefs on a
+grid of step $\frac1{60}$: the PBE are exactly $(R, L')$ with $U$ and $(L, L')$ with $D$, and the supporting
+beliefs for the pooling one are $q \in [0, \frac13]$. Output: ``MG 9.1: PBE = separating (R,L') with U, q = 1;
+pooling (L,L') with D, q <= 1/3''. The book's worked answer reaches the same two equilibria.
+
+\mistakes
+\begin{itemize}
+  \item Using the prior $\frac12$ after $R$ in the separating candidate. Once only $H$ sends $R$, Bayes' rule
+  gives $q = 1$, not $\frac12$; the prior applies only in pooling on $R$.
+  \item In the pooling candidate on $L$, ``computing'' $q$ by Bayes' rule. Nobody sends $R$, so the
+  formula is $0/0$: the belief is free and must be \emph{chosen} to support $D$.
+  \item Reporting the pooling PBE without its belief. A PBE is a strategy profile \emph{and} a belief system:
+  write $q \le \frac13$, not ``pooling on $L$''.
+  \item Forgetting the low type's deviation check in $(R, R')$: player~2's reply $U$ is fine, but the low
+  type earns $1 < 2$.
+\end{itemize}
+
+\answer{(a) Yes: $(R, L')$, player~2 plays $U$ after $R$, belief $q = \Pr(H \mid R) = 1$. The reverse
+profile $(L, R')$ is not an equilibrium. (b) Yes: $(L, L')$, player~2 plays $D$ after $R$, supported by the
+off-path belief $q \le \frac13$. Pooling on $(R, R')$ is not an equilibrium.}
+\end{exsol}

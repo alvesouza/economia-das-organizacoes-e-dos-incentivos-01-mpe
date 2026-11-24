@@ -1,0 +1,92 @@
+% Solution: Tadelis (2013) Exercise 12.2 "Cournot Revisited". Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-tadelis-12-2.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Tadelis Exercise 12.2}{266}{Exam level}{4}
+\asked The BNE of the Cournot duopoly with inverse demand $p = a - b(q_1 + q_2)$ when each firm's
+marginal cost is $c_L$ with probability $\mu$ and $c_H > c_L$ with probability $1 - \mu$, independently,
+and privately known.
+
+\method Each firm has two types, so a strategy is a pair $(q_i(c_L), q_i(c_H))$ (Lecture~6,
+frame~29). Each type maximizes \emph{expected} profit against the rival's strategy; with linear demand
+only the rival's \emph{expected} output $\bar q_j = \mu q_j(c_L) + (1-\mu) q_j(c_H)$ matters. This is
+Lecture~6's homework~1 (frame~37), Cournot with private costs, in Tadelis's parametrization. Book:
+Gibbons \S3.1.A (Cournot under asymmetric information, pp.~144--146); Tadelis \S12.1.3 (pp.~250--252).
+Assume an interior solution.
+
+\solution
+\textbf{Step 1: one type's problem.} A firm of type $c$ facing a rival who produces $q_j(c_L)$ with
+probability $\mu$ and $q_j(c_H)$ with probability $1-\mu$ earns
+\[
+  E[\pi_i] = \mu\,\bigl(a - b(q + q_j(c_L)) - c\bigr)q + (1 - \mu)\bigl(a - b(q + q_j(c_H)) - c\bigr)q
+  = \bigl(a - c - b\bar q_j - bq\bigr)q .
+\]
+It is concave in $q$ (second derivative $-2b < 0$); the first-order condition $a - c - b\bar q_j - 2bq = 0$
+gives the type's best reply
+\[
+  q_i(c) = \frac{a - c - b\bar q_j}{2b}, \qquad c \in \{c_L, c_H\}.
+\]
+\textbf{Step 2: average the best replies.} Write $\bar c = \mu c_L + (1-\mu)c_H$. Averaging firm $i$'s two
+type conditions with weights $\mu$, $1-\mu$:
+\[
+  \bar q_i = \frac{a - \bar c - b\bar q_j}{2b} .
+\]
+This holds for $i = 1, 2$, a linear system in $(\bar q_1, \bar q_2)$ whose unique solution is symmetric:
+$2b\bar q = a - \bar c - b\bar q$, so
+\[
+  \bar q_1 = \bar q_2 = \bar q = \frac{a - \bar c}{3b} .
+\]
+\textbf{Step 3: back to the types.} Substituting $\bar q$ into Step~1:
+\[
+  q^*(c_L) = \frac{a - c_L - \frac{a - \bar c}{3}}{2b} = \frac{2a - 3c_L + \bar c}{6b}
+  = \frac{a - c_L}{3b} + \frac{(1-\mu)(c_H - c_L)}{6b},
+\]
+\[
+  q^*(c_H) = \frac{2a - 3c_H + \bar c}{6b} = \frac{a - c_H}{3b} - \frac{\mu(c_H - c_L)}{6b}.
+\]
+(Use $\bar c - c_L = (1-\mu)(c_H - c_L)$ and $\bar c - c_H = -\mu(c_H - c_L)$.) Because the system of
+Step~2 has a unique solution, so does the whole system, and both firms use the same strategy:
+the BNE is unique and symmetric. Interior requires $q^*(c_H) > 0$, i.e.\ $2a - 3c_H + \bar c > 0$.
+
+\textbf{Numerical example.} $a = 10$, $b = 1$, $c_L = 1$, $c_H = 3$, $\mu = \frac25$: $\bar c = \frac{11}5$,
+$\bar q = \frac{13}{5}$, $q^*(c_L) = \frac{16}{5} = 3.2$, $q^*(c_H) = \frac{11}{5} = 2.2$
+(complete-information Cournot against an identical rival: $3$ and $\frac73$).
+
+\textbf{Link to the homework (frame~37).} With $u_i = q_i(\theta_i - q_i - q_j)$, set $b = 1$ and
+$\theta_i = a - c_i$. Step~1 is exactly $q_i(\theta_i) = \frac{\theta_i - E[q_j(\theta_j)]}{2}$. Averaging,
+$E[q_i] = \frac{E[\theta_i] - E[q_j]}{2}$ for $i = 1,2$, so $E[q_i] = \frac{2E[\theta_i] - E[\theta_j]}{3}$ and
+\[
+  q_i(\theta_i) = \frac{\theta_i}{2} - \frac{2E[\theta_j] - E[\theta_i]}{6}.
+\]
+The derivation does not need two types or identical distributions, only independence and linearity.
+
+\interp Compare with complete-information Cournot against a rival of the same cost, $(a - c)/(3b)$. The
+low-cost type produces \emph{more}, because the rival might be high-cost and produce little; the
+high-cost type produces \emph{less}, because the rival might be low-cost and produce a lot. Each type
+responds to the rival's average output, which is a mix of the two types' quantities. Outputs are
+strategic substitutes, so uncertainty about the rival is resolved by best-responding to its mean.
+
+\verify \texttt{check\_F\_L06.py} solves the full four-equation system (two firms, two types, no
+symmetry imposed) with sympy and confirms the formulas and $\bar q = (a - \bar c)/(3b)$; at the numerical
+example it checks on a grid of step $\frac1{100}$ that $q^*(c_L)$ and $q^*(c_H)$ maximize each type's
+expected profit against the equilibrium rival; it also solves the homework version. Output: ``Tadelis
+12.2: q(cL) = (2a-3cL+cbar)/(6b), q(cH) = (2a-3cH+cbar)/(6b), unique; example 16/5, 11/5; homework
+q(theta) = theta/2 - (2E theta\_j - E theta\_i)/6''. Tadelis gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Plugging the rival's \emph{own-type} output into the best reply (``a low-cost firm faces a
+  low-cost rival''). Types are independent: every type faces the same mix, $\bar q_j$.
+  \item Using complete-information Cournot with the average cost, $(a - \bar c)/(3b)$, as each firm's
+  output. That is only the \emph{expected} output; each type produces a different quantity.
+  \item Writing a single first-order condition per firm. Each firm has two types, so there are four
+  conditions (two per firm), linked through $\bar q_j$.
+  \item Imposing symmetry without saying why. Here it follows from the uniqueness of the averaged
+  system; it is not an assumption.
+  \item Forgetting the interior condition: if $c_H$ is high, $q^*(c_H)$ can be negative and the
+  high-cost type produces $0$, which changes $\bar q$.
+\end{itemize}
+
+\answer{The unique BNE is symmetric: each firm produces $q^*(c_L) = \dfrac{a - c_L}{3b} +
+\dfrac{(1-\mu)(c_H - c_L)}{6b}$ when its cost is low and $q^*(c_H) = \dfrac{a - c_H}{3b} -
+\dfrac{\mu(c_H - c_L)}{6b}$ when it is high (interior case), with expected output $\bar q = \dfrac{a -
+\bar c}{3b}$, $\bar c = \mu c_L + (1-\mu)c_H$.}
+\end{exsol}

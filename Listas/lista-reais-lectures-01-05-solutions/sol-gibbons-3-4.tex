@@ -1,0 +1,84 @@
+% Solution: Gibbons (1992) Problem 3.4 (two games drawn by Nature). Input by \solitem.
+% Rewritten from ../pratica-lecture-07-solutions/sol-gibbons-3-4.tex, deepened. Check: check_F_L06.py.
+\begin{exsol}{Gibbons Problem 3.4}{169--170}{Exam level}{2}
+\asked All pure-strategy BNE when Nature picks Game~1 or Game~2 with probability $\frac12$ each,
+player~1 learns which game was drawn, player~2 does not, and they move simultaneously.
+
+\method The recipe of Lecture~6, frame~36: (1) each type of the informed player best-responds;
+(2) the uninformed player maximizes expected payoff with his belief; (3) keep profiles in which
+everyone best-responds at once. Strategies are type-contingent (frame~29): player~1's strategy is a
+pair $s_1 = (s_1(G_1), s_1(G_2)) \in \{T,B\}^2$, written $TT, TB, BT, BB$. Player~2 has one type.
+Book: Gibbons \S3.1.B--C (pp.~146--152).
+
+\solution
+\textbf{Step 1: player~1, type by type.}
+\begin{center}
+\begin{tabular}{l|cc}
+& against $L$ & against $R$\\\hline
+Game~1 type & $T$ ($1 > 0$) & $T$ or $B$ ($0 = 0$)\\
+Game~2 type & $T$ or $B$ ($0 = 0$) & $B$ ($2 > 0$)
+\end{tabular}
+\end{center}
+So $BR_1(L) = \{TT, TB\}$ and $BR_1(R) = \{TB, BB\}$. The strategy $BT$ is never a best reply.
+
+\textbf{Step 2: player~2.} He gets a positive payoff only in two cells: $(T,L)$ in Game~1 (payoff
+$1$) and $(B,R)$ in Game~2 (payoff $2$). With probability $\frac12$ on each game,
+\[
+  EU_2(L \mid s_1) = \tfrac12\cdot\mathbf 1[s_1(G_1) = T], \qquad
+  EU_2(R \mid s_1) = \tfrac12\cdot 2\cdot\mathbf 1[s_1(G_2) = B].
+\]
+\begin{center}
+\begin{tabular}{l|cccc}
+$s_1$ & $TT$ & $TB$ & $BT$ & $BB$\\\hline
+$EU_2(L)$ & $\frac12$ & $\frac12$ & $0$ & $0$\\
+$EU_2(R)$ & $0$ & $1$ & $0$ & $1$\\
+$BR_2$ & $L$ & $R$ & $L, R$ & $R$
+\end{tabular}
+\end{center}
+
+\textbf{Step 3: mutual best replies.}
+\begin{itemize}
+  \item $(TT, L)$: $TT \in BR_1(L)$ and $BR_2(TT) = L$. \checkmark
+  \item $(TB, L)$: $TB \in BR_1(L)$ but $BR_2(TB) = R$. \texttimes
+  \item $(TB, R)$: $TB \in BR_1(R)$ and $BR_2(TB) = R$. \checkmark
+  \item $(BB, R)$: $BB \in BR_1(R)$ and $BR_2(BB) = R$. \checkmark
+  \item $BT$ is in neither $BR_1(L)$ nor $BR_1(R)$, so no profile with $BT$ is an equilibrium.
+\end{itemize}
+Equivalently, in the $4 \times 2$ Bayesian normal form (ex-ante payoffs, each game weighted
+$\frac12$):
+\begin{center}
+\begin{tabular}{l|cc}
+& $L$ & $R$\\\hline
+$TT$ & $\br{\tfrac12}, \br{\tfrac12}$ & $0, 0$\\
+$TB$ & $\br{\tfrac12}, \tfrac12$ & $\br{1}, \br{1}$\\
+$BT$ & $0, \br{0}$ & $0, \br{0}$\\
+$BB$ & $0, 0$ & $\br{1}, \br{1}$
+\end{tabular}
+\end{center}
+The cells with both payoffs underlined are $(TT,L)$, $(TB,R)$ and $(BB,R)$.
+
+\interp Both players want to match the game: $(T,L)$ in Game~1, $(B,R)$ in Game~2. Player~1 knows
+the game but player~2 does not, and player~2 must commit to one column. The three equilibria are
+three ways to resolve this coordination problem: player~2 bets on Game~1 ($TT, L$) or on Game~2
+($TB, R$ and $BB, R$). In $(TB, R)$ and $(BB, R)$ the Game~1 type is indifferent, which is why both
+of its actions survive. $(TB,R)$ and $(BB,R)$ give player~2 an expected payoff of $1$, more than
+$\frac12$ in $(TT,L)$: the high-stakes Game~2 is worth coordinating on.
+
+\verify \texttt{check\_F\_L06.py} builds the $4\times 2$ Bayesian normal form from the two matrices
+and enumerates all eight profiles; it also checks the type-by-type test. Output: ``Gibbons 3.4: pure
+BNE = (TT,L), (TB,R), (BB,R)''. Gibbons gives no answer.
+
+\mistakes
+\begin{itemize}
+  \item Dropping $(TB,R)$ or $(BB,R)$ because the Game~1 type is ``not doing anything''. Ties are best
+  replies: when player~2 plays $R$ the Game~1 type gets $0$ either way, so both $T$ and $B$ qualify.
+  \item Solving each game separately and reporting $(T,L)$ and $(B,R)$ as ``the equilibria''. Player~2
+  cannot play $L$ in Game~1 and $R$ in Game~2: he does not know which game he is in.
+  \item Computing player~2's payoff from the realized game only. He must average over both games
+  with probability $\frac12$, using player~1's whole strategy.
+  \item Writing player~1's strategy as one action: in a Bayesian game it is one action per type.
+\end{itemize}
+
+\answer{Three pure-strategy BNE (player~1's strategy as action in Game~1, action in Game~2):
+$(TT, L)$, $(TB, R)$ and $(BB, R)$.}
+\end{exsol}

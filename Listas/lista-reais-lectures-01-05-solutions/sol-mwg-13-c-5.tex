@@ -1,0 +1,75 @@
+% Solution: Mas-Colell, Whinston & Green (1995) Exercise 13.C.5. Input by \solitem.
+% Rewritten and deepened from ../pratica-lecture-08-solutions/sol-mwg-13-c-5.tex. Check: check_G_L07.py.
+\begin{exsol}{MWG Exercise 13.C.5}{475}{Advanced}{4}
+\asked (a) When a risk-neutral consumer buys at the regulated price $p$ without information on quality;
+(b) whether pure ``money-burning'' advertising $A$ can support a separating PBE.
+
+\method (a) Expected surplus with the prior $\lambda$. (b) The separating test of Lecture~7 (frames~45--46):
+suppose types send different signals, derive beliefs by Bayes' rule, take the receiver's reply, and check
+whether the type that does \emph{not} want to be identified can imitate profitably. The key property is
+single crossing: a signal separates only if it is relatively cheaper for the type that wants to be
+recognized (MWG \S13.C, pp.~450--459, esp.\ the education-cost condition; Tadelis \S16.1). Slides: frames~38--40
+(a signal must be costly), 49 (``signaling works when the cost of the signal is sufficiently different across
+types''), 50 (Akerlof vs.\ Spence).
+
+\solution
+\textbf{Payoffs.} If the consumer buys, a firm of quality $i \in \{H, L\}$ earns $p - c_i - A$ and the consumer
+gets $v_i - p$; if she does not buy, the firm earns $-A$ (it produces nothing but has spent $A$) and the consumer
+$0$. Assumption: $v_H > p > v_L > c_H > c_L$.
+
+\textbf{(a)} Risk neutrality: the consumer buys iff her expected valuation covers the price,
+\[
+  \lambda v_H + (1 - \lambda) v_L \ \ge\ p
+  \iff \lambda \ \ge\ \bar\lambda = \frac{p - v_L}{v_H - v_L} \in (0, 1),
+\]
+where $\bar\lambda \in (0,1)$ because $v_L < p < v_H$. (At equality she is indifferent.)
+
+\textbf{(b) No separating PBE.} Suppose one exists: quality $H$ spends $A_H$, quality $L$ spends $A_L \ne A_H$.
+\begin{enumerate}[label=\arabic*.]
+  \item \emph{Beliefs.} Bayes' rule on the path: after $A_H$ the consumer is sure of high quality, after $A_L$
+  sure of low quality.
+  \item \emph{Replies.} After $A_H$ she buys ($v_H > p$); after $A_L$ she does not ($v_L < p$).
+  \item \emph{The high type's condition.} It must prefer $A_H$ to imitating $A_L$ (no sale):
+  $p - c_H - A_H \ge -A_L$.
+  \item \emph{The low type's temptation.} Imitating $A_H$ makes the consumer buy, so the low type earns
+  $p - c_L - A_H$. Since $c_L < c_H$,
+  \[
+    p - c_L - A_H \ >\ p - c_H - A_H \ \ge\ -A_L ,
+  \]
+  which is strictly more than its equilibrium payoff $-A_L$.
+\end{enumerate}
+The low type deviates: contradiction. The labels do not matter: in any separating profile only the type
+recognized as high sells, and the other type gains at least as much from copying it. Hence every PBE is
+pooling: both types advertise the same $A$ (in equilibrium, $A = 0$ unless off-path beliefs punish lower
+spending), and the consumer buys iff $\lambda \ge \bar\lambda$.
+
+\interp Advertising here is a pure ``burnt'' cost that is the \emph{same} for both types, while the benefit of a
+sale, the margin $p - c$, is \emph{larger} for the low-quality firm, because the price is fixed and its cost is
+lower. Single crossing runs the wrong way: whatever the high type is willing to burn to be believed, the low
+type is willing to burn more. Two things would restore separation: repeat purchases (a high-quality firm earns
+future sales once quality is learned, a low-quality one does not --- the Nelson/Milgrom--Roberts logic), or a
+signal whose cost is lower for high quality (a warranty, frame~25). The regulated price also removes the
+price itself as a signal.
+
+\verify \texttt{check\_G\_L07.py} derives $\bar\lambda$ with sympy and, for $v_H = 10$, $p = 6$, $v_L = 4$,
+$c_H = 3$, $c_L = 1$, $\lambda = \frac12$ (so $\bar\lambda = \frac13$) and $A \in \{0, \dots, 4\}$, enumerates every
+pure sender and receiver strategy with off-path beliefs on a grid of step $\frac1{60}$: $30$ pure PBE, all pooling,
+none separating. It also checks the identity $(p - c_L - A_H) - (p - c_H - A_H) = c_H - c_L > 0$. Output: ``MWG
+13.C.5: buy iff lambda >= (p - v\_L)/(v\_H - v\_L) (= 1/3 in the example); 30 pure PBE, all pooling, no separating
+PBE''. The MWG solutions manual reaches the same conclusion.
+
+\mistakes
+\begin{itemize}
+  \item Assuming high quality advertises more ``because it can afford it''. In this model it cannot: the
+  low-quality firm has the larger margin, so it can afford \emph{more}.
+  \item Forgetting that the firm pays $A$ even when there is no sale ($-A$, not $0$).
+  \item Using the prior after an on-path advertising level in a separating candidate. Bayes' rule gives
+  certainty there; the prior is only for pooling.
+  \item Concluding that advertising is useless in general. It fails here because the game is one-shot with a
+  fixed price; with repeat purchases it can separate.
+\end{itemize}
+
+\answer{(a) The consumer buys iff $\lambda v_H + (1-\lambda) v_L \ge p$, i.e.\ $\lambda \ge \frac{p - v_L}{v_H - v_L}$.
+(b) No. In a separating PBE only the high-advertising type sells, and the low-quality firm, whose margin
+$p - c_L$ exceeds $p - c_H$, strictly gains by copying the high type's advertising. Only pooling PBE exist.}
+\end{exsol}
